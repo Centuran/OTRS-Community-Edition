@@ -52,7 +52,7 @@
                             <input type="hidden" name="Subaction" value="Search"/>
                             <input type="hidden" name="Nav" value="[% Data.Nav | html %]"/>
                             <input type="text" name="Search" value="[% Data.Search | html %]" id="Search" title="[% Translate("Search") | html %]"/>
-                            <button type="submit" value="[% Translate("Search") | html %]" title="[% Translate("Search") | html %]"><i class="fa fa-search"></i></button>
+                            <button type="submit" value="[% Translate("Search") | html %]" title="[% Translate("Search") | html %]"><i class="mdi mdi-magnify"></i></button>
                         </form>
                         <p class="FieldExplanation">
                             [% Translate("Wildcards like '*' are allowed.") | html %]
