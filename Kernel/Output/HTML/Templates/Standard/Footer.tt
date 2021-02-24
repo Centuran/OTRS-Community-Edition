@@ -20,6 +20,12 @@
             [% Translate("Powered by %s™", "OTRS") | html %]
         [% END %]
     </a>
+    <br>
+
+    <a href="https://www.centuran.com/" target="_blank">
+        <img src="[% Config("Frontend::WebPath") %]skins/Agent/centuran/img/Centuran-logo.png"
+            title="Centuran Consulting" />
+    </a>
 [% END %]
 </div>
 
