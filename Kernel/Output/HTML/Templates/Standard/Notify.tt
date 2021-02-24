@@ -8,6 +8,7 @@
 <!-- start Notify -->
 <div class="MessageBox [% Data.BoxClass %]">
     <p>
+        <span class="Icon"></span>
 [% RenderBlockStart("LinkStart") %]
         <a href="[% Data.LinkStart %]" class="[% Data.LinkClass | html %]">
 [% RenderBlockEnd("LinkStart") %]
