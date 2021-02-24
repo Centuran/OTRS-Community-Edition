@@ -301,7 +301,7 @@ sub Output {
                 SortKeys => 1,
             );
             $Output
-                .= "\n<script type=\"text/javascript\">//<![CDATA[\n\"use strict\";\nCore.Config.AddConfig($JSONString);\n//]]></script>";
+                .= "\n<script type=\"application/javascript\">//<![CDATA[\n\"use strict\";\nCore.Config.AddConfig($JSONString);\n//]]></script>";
         }
         delete $Self->{_JSData};
     }
