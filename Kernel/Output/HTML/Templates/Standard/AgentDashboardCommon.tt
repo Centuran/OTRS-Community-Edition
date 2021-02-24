@@ -24,10 +24,14 @@
 [% RenderBlockStart("ContentSettings") %]
                     <li>
                         <span title="[% Translate(Data.Description) | html %]">
-                            <label for="Settings[% Data.Name | html %]">
-                                <input type="checkbox" name="Backend" id="Settings[% Data.Name | html %]" value="[% Data.Name | html %]" [% Data.Checked %] [% Data.Readonly %]/>
-                                [% Translate(Data.Title) | html %]
-                            </label>
+                            <input type="checkbox" name="Backend" id="Settings[% Data.Name | html %]" value="[% Data.Name | html %]" [% Data.Checked %] [% Data.Readonly %]/>
+                            <v-switch inset
+                                v-model="document.getElementById('Settings[% Data.Name | html %]').checked"
+                                >
+                                <template v-slot:label>
+                                    [% Translate(Data.Title) | html %]
+                                </template>
+                            </v-switch>
                         </span>
                     </li>
 [% RenderBlockEnd("ContentSettings") %]
