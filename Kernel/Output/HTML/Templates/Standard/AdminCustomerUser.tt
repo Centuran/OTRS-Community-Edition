@@ -128,7 +128,9 @@
 [% RenderBlockStart("NoDataFoundMsg") %]
                         <tr>
                             <td colspan="[% Data.ColSpan | html %]">
-                                [% Translate("No data found.") | html %]
+                                <p class="TableEmpty">
+                                    [% Translate("No data found.") | html %]
+                                </p>
                             </td>
                         </tr>
 [% RenderBlockEnd("NoDataFoundMsg") %]
