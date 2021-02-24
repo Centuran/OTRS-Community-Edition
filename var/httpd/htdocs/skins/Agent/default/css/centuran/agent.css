@@ -1,0 +1,769 @@
+@charset "UTF-8";
+body {
+  /* font-family: Roboto, sans-serif; */
+  font-family: Heebo, sans-serif;
+  font-size: 100%;
+}
+
+select {
+  -moz-appearance: auto;
+  -webkit-appearance: auto;
+}
+
+.v-application {
+  font-family: inherit;
+}
+
+#Header {
+  background: #04050e;
+  box-sizing: content-box;
+  height: 86px;
+}
+
+#ToolBar {
+  padding-left: 0;
+}
+#ToolBar li.UserAvatar div {
+  border-radius: 4px;
+}
+
+#NavigationContainer {
+  top: 69px;
+}
+
+#Navigation {
+  box-sizing: content-box;
+  font-family: Roboto, sans-serif;
+  padding-left: 0;
+}
+#Navigation > li > a {
+  font-size: 14px;
+  padding: 8px 14px 4px 14px;
+}
+#Navigation > li > a::after {
+  background-color: #f15a22;
+}
+#Navigation ul {
+  padding-left: 0;
+}
+#Navigation li::before {
+  background-color: #fff;
+  border-radius: inherit;
+  bottom: 0;
+  color: inherit;
+  content: "";
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+}
+#Navigation li.Selected::before {
+  opacity: 0.18;
+}
+#Navigation > .Active > ul > li:hover {
+  background-color: #f15a22;
+}
+#Navigation > .Active > ul > li:hover > a {
+  color: #000;
+}
+#Navigation > .Active > ul > li > a {
+  font-size: 120%;
+  padding: 10px 14px;
+}
+
+ul.BreadCrumb {
+  background: #eee;
+  border-radius: 4px;
+  box-shadow: none;
+  padding-bottom: 0.35em;
+  padding-left: 0;
+  padding-top: 0.35em;
+}
+
+ul.BreadCrumb li:before, ul.BreadCrumb li:after {
+  margin-top: -22px;
+}
+
+ul.BreadCrumb li::before {
+  border-left-color: #eee;
+}
+
+ul.BreadCrumb li > a, .BreadCrumb li > span {
+  color: #333;
+  line-height: normal;
+  padding: 0 2px;
+}
+
+.MessageBox {
+  background: none;
+  margin-top: 10px;
+}
+
+.MessageBox.Error {
+  background: none;
+}
+
+.MessageBox p {
+  border: thin solid;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  caret-color: #fb8c00;
+  color: #fb8c00;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.MessageBox p a {
+  color: #333;
+}
+
+.MessageBox p::before {
+  background-color: #fb8c00;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.12;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+
+.MessageBox.Error p {
+  color: #ff5252;
+}
+
+.MessageBox.Error p::before {
+  background: #ff5252;
+}
+
+.MessageBox.Error .Icon::before {
+  content: "󰳦";
+  font-family: "Material Design Icons";
+  font-size: 120%;
+  opacity: 1;
+  position: static;
+  vertical-align: middle;
+}
+
+.MessageBox.Error p a {
+  color: #333;
+}
+
+.MessageBox.Notice .Icon::before {
+  content: "󱇏";
+  font-family: "Material Design Icons";
+  font-size: 120%;
+  opacity: 1;
+  position: static;
+  vertical-align: middle;
+}
+
+.WidgetSimple {
+  background: #eee;
+  border-radius: 4px;
+  box-shadow: none;
+  margin-right: 0;
+}
+
+.WidgetSimple .Header {
+  line-height: 1;
+  padding: 10px;
+}
+
+.WidgetSimple > .Header h2,
+.WidgetSimple > .Header h3 {
+  color: #333;
+  font-size: inherit;
+  font-weight: bolder;
+  text-shadow: none;
+}
+
+.WidgetSimple .Content {
+  color: #333;
+  padding: 10px;
+}
+.WidgetSimple .Content ul.ActionList {
+  padding-left: 0;
+}
+
+button.CallForAction {
+  background-color: #f15a22;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 12px 32px;
+  position: relative;
+}
+button.CallForAction i.fa {
+  display: none;
+}
+button.CallForAction span {
+  border: none;
+  color: #fff;
+  font-size: inherit;
+  text-shadow: none;
+}
+button.CallForAction.Fullsize span {
+  padding: 0;
+}
+button.CallForAction::before {
+  background-color: #f15a22;
+  border-radius: inherit;
+  bottom: 0;
+  color: inherit;
+  content: "";
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+}
+button.CallForAction::before {
+  content: none;
+}
+button.CallForAction:hover {
+  background-color: #f15a22;
+}
+button.CallForAction:hover::before {
+  opacity: 0.08;
+}
+button.CallForAction:focus {
+  background-color: #f15a22;
+  outline: none;
+}
+button.CallForAction:active {
+  background-color: #f15a22;
+}
+button.CallForAction:active::before {
+  opacity: 0.08;
+}
+button.CallForAction.Inline {
+  height: 32px;
+  padding: 0 32px;
+  top: 1px;
+  vertical-align: middle;
+}
+button.CallForAction.Inline span {
+  line-height: inherit;
+}
+button.CallForAction span.v-ripple__container {
+  color: inherit;
+  position: absolute;
+}
+button.CallForAction span.v-ripple__container span.v-ripple__animation {
+  color: inherit;
+  position: absolute;
+}
+
+form label.Mandatory span.Marker {
+  top: initial;
+}
+
+.FormScreen .Cn-FormWrapper {
+  margin-left: calc(270px + 16px);
+}
+
+input[type=text] {
+  border: solid 1px rgba(0, 0, 0, 0.38);
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.87);
+  height: 32px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 5px;
+}
+
+.SearchBox input[type=text] {
+  border-right: solid 1px rgba(0, 0, 0, 0.38);
+  box-sizing: border-box;
+  font-family: Heebo, sans-serif;
+  font-size: inherit;
+  height: auto;
+  height: 32px;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.SearchBox button[type=submit] {
+  background: none;
+  border: none;
+  font: inherit;
+  height: 32px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+}
+
+.SidebarColumn .WidgetSimple .InputField_Container,
+.SidebarColumn .WidgetSimple .InputField_InputContainer,
+.SidebarColumn .WidgetSimple .InputField_Search {
+  width: 100% !important;
+}
+
+.SidebarColumn .WidgetSimple .InputField_Search {
+  box-sizing: border-box;
+}
+
+div.InputField_Selection {
+  height: 32px;
+  line-height: 32px;
+  top: 0;
+}
+
+div.InputField_Selection div.Text {
+  background: #e0e0e0;
+  border-radius: 100000px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  height: 22px;
+  line-height: 24px;
+  line-height: initial;
+  width: 108%;
+  text-align: center;
+}
+
+.DataTable {
+  border-radius: 4px;
+  border-spacing: 0;
+}
+
+.DataTable thead {
+  background: none;
+}
+
+.DataTable thead th {
+  background: none;
+  border: none;
+  border-bottom: thin solid rgba(0, 0, 0, 0.12);
+  font-size: inherit;
+  font-weight: 500;
+  text-transform: none;
+  padding: 10px 10px;
+}
+
+.DataTable p.TableEmpty {
+  color: #666;
+  padding: 2.6em 0;
+  text-align: center;
+}
+
+#Footer a {
+  display: initial;
+}
+
+#Footer img {
+  display: inline-block;
+  filter: grayscale(1);
+  margin: auto;
+  margin-top: 1.4em;
+  opacity: 0.5;
+  width: 110px;
+}
+
+#Footer a:hover img {
+  filter: none;
+  opacity: 0.8;
+}
+
+/* Login */
+.LoginScreen {
+  height: 100vh;
+  padding-top: 0;
+}
+.LoginScreen #AppWrapper {
+  border-top: solid 80px #000;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px - 40px);
+  padding-top: 40px;
+}
+.LoginScreen #LoginLogo {
+  margin-bottom: 40px;
+}
+.LoginScreen #Footer {
+  background-color: #000;
+  margin-top: auto;
+}
+.LoginScreen #Footer a {
+  color: #999;
+  text-shadow: none;
+}
+.LoginScreen #Footer img {
+  display: inline-block;
+  filter: grayscale(1) invert(100%);
+  margin: auto;
+  margin-top: 1.4em;
+  opacity: 0.5;
+  width: 110px;
+}
+.LoginScreen #Footer a:hover img {
+  filter: none;
+  opacity: 0.8;
+}
+
+.LoginScreen #LoginBox fieldset div input {
+  border: solid 1px rgba(0, 0, 0, 0.38);
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Heebo, sans-serif;
+  font-size: inherit;
+  height: 42px;
+  margin-top: 15px;
+  padding: 0 12px;
+  width: 100%;
+}
+.LoginScreen #LoginBox fieldset div:first-child input {
+  margin-top: 0;
+}
+.LoginScreen #LoginBox .TooltipErrorMessage {
+  margin-bottom: 15px;
+}
+.LoginScreen #LoginBox button[type=submit] {
+  margin-top: 25px;
+}
+
+.LoginScreen .SuccessBox,
+.LoginScreen .ErrorBox {
+  background: none;
+  margin-bottom: 1em;
+  position: relative;
+}
+.LoginScreen .SuccessBox span,
+.LoginScreen .ErrorBox span {
+  display: flex;
+}
+.LoginScreen .SuccessBox span::before,
+.LoginScreen .ErrorBox span::before {
+  margin-right: 0.2em;
+}
+.LoginScreen .SuccessBox {
+  border: thin solid;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #4caf50;
+}
+.LoginScreen .SuccessBox::before {
+  background-color: #4caf50;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.12;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+}
+.LoginScreen .SuccessBox span::before {
+  content: "󰗡";
+  font-family: "Material Design Icons";
+  font-size: 120%;
+  opacity: 1;
+  position: static;
+  vertical-align: middle;
+}
+.LoginScreen .ErrorBox {
+  border: thin solid;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #ff5252;
+}
+.LoginScreen .ErrorBox::before {
+  background-color: #ff5252;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.12;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+}
+.LoginScreen .ErrorBox span::before {
+  content: "󰳦";
+  font-family: "Material Design Icons";
+  font-size: 120%;
+  opacity: 1;
+  position: static;
+  vertical-align: middle;
+}
+
+/* Dashboard */
+fieldset.TableLike.FixedLabelSmall > label {
+  width: 10em;
+}
+
+fieldset.TableLike.FixedLabelSmall > .Field,
+fieldset.TableLike.FixedLabelSmall > .Row > .Field,
+fieldset.TableLike.FixedLabelSmall > .Value,
+fieldset.TableLike.FixedLabelSmall > .Row > .Value {
+  margin-left: 10em;
+}
+
+fieldset.TableLike > label,
+fieldset.TableLike > .Row > label {
+  color: #666;
+}
+
+ul.Tablelike li.Header {
+  text-transform: none;
+}
+
+div.AllocationListContainer {
+  margin-left: calc(10em + 10px);
+  padding: 10px;
+}
+div.AllocationListContainer div.Size1of2 {
+  position: relative;
+}
+div.AllocationListContainer div.Size1of2 ul.Tablelike {
+  border: none;
+}
+div.AllocationListContainer div.Size1of2 ul.Tablelike li.Header {
+  background: transparent;
+  border: none;
+  border-bottom: solid 1px #bbb;
+  font-size: inherit;
+  line-height: 1.9em;
+  margin-bottom: 10px;
+  padding-bottom: 0.3em;
+  padding-top: calc(0.3em - 10px);
+}
+div.AllocationListContainer div.Size1of2 div.FilterInputContainer {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+}
+div.AllocationListContainer div.Size1of2 div.FilterInputContainer input {
+  margin: 0;
+}
+div.AllocationListContainer div.Size1of2 ul.AllocationList {
+  background: #fff;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 155px;
+  max-height: 155px;
+  min-height: 155px;
+  padding: 4px;
+}
+div.AllocationListContainer div.Size1of2 ul.AllocationList li {
+  background: #eee;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  color: #555;
+  font-size: 90%;
+  margin-bottom: 4px;
+  padding-left: 10px;
+}
+div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 3px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.WidgetSimple .Buttons {
+  font-size: inherit;
+}
+.WidgetSimple .Buttons button {
+  padding: 6px 16px;
+}
+
+.DataTable,
+.TableSmall {
+  border-radius: 4px;
+  border-spacing: 0;
+  font-size: inherit;
+}
+.DataTable thead tr,
+.TableSmall thead tr {
+  background: none;
+}
+.DataTable thead th,
+.TableSmall thead th {
+  background: none;
+  border: none;
+  border-bottom: thin solid rgba(0, 0, 0, 0.12);
+  font-size: inherit;
+  font-weight: 500;
+  font-weight: bolder;
+  padding: 10px 10px;
+  text-transform: none;
+}
+.DataTable thead th.DashboardHeader, .DataTable thead th.DashboardHeader.SortAscendingLarge, .DataTable thead th.DashboardHeader.SortDescendingLarge, .DataTable thead th.OverviewHeader, .DataTable thead th.OverviewHeader.SortAscendingLarge, .DataTable thead th.OverviewHeader.SortDescendingLarge,
+.TableSmall thead th.DashboardHeader,
+.TableSmall thead th.DashboardHeader.SortAscendingLarge,
+.TableSmall thead th.DashboardHeader.SortDescendingLarge,
+.TableSmall thead th.OverviewHeader,
+.TableSmall thead th.OverviewHeader.SortAscendingLarge,
+.TableSmall thead th.OverviewHeader.SortDescendingLarge {
+  padding: 10px 20px 10px 1px;
+  padding-left: 1px;
+}
+.DataTable thead th a, .DataTable thead th span,
+.TableSmall thead th a,
+.TableSmall thead th span {
+  font-size: inherit;
+  font-weight: inherit;
+  padding-left: 0;
+  text-transform: none;
+}
+.DataTable thead th a.ColumnSettingsTrigger::after, .DataTable thead th.SortAscendingLarge a::after, .DataTable thead th.SortDescendingLarge a::after,
+.TableSmall thead th a.ColumnSettingsTrigger::after,
+.TableSmall thead th.SortAscendingLarge a::after,
+.TableSmall thead th.SortDescendingLarge a::after {
+  background: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  font-family: "Material Design Icons";
+  font-size: 110%;
+  height: 1.5em;
+  left: initial;
+  line-height: 150%;
+  margin-left: 0.4em;
+  position: static;
+  text-align: center;
+  text-shadow: none;
+  vertical-align: middle;
+  width: 1.5em;
+}
+.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger, .DataTable thead th.OverviewHeader a.ColumnSettingsTrigger,
+.TableSmall thead th.DashboardHeader a.ColumnSettingsTrigger,
+.TableSmall thead th.OverviewHeader a.ColumnSettingsTrigger {
+  display: initial;
+  float: none;
+  font-size: 100%;
+  height: 0;
+  margin-left: 0.4em;
+  opacity: 1;
+  position: static;
+  width: 0;
+}
+.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger::after, .DataTable thead th.OverviewHeader a.ColumnSettingsTrigger::after,
+.TableSmall thead th.DashboardHeader a.ColumnSettingsTrigger::after,
+.TableSmall thead th.OverviewHeader a.ColumnSettingsTrigger::after {
+  content: "󰈲";
+  margin-left: 0;
+}
+.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger i.fa, .DataTable thead th.OverviewHeader a.ColumnSettingsTrigger i.fa,
+.TableSmall thead th.DashboardHeader a.ColumnSettingsTrigger i.fa,
+.TableSmall thead th.OverviewHeader a.ColumnSettingsTrigger i.fa {
+  display: none;
+}
+.DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+.TableSmall thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after {
+  content: "󰅃";
+}
+.DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+.TableSmall thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after {
+  content: "󰅀";
+}
+.DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after, .DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+.TableSmall thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+.TableSmall thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after {
+  position: static;
+  text-shadow: none;
+}
+.DataTable thead th.SortAscendingLarge a.ColumnSettingsTrigger::after, .DataTable thead th.SortDescendingLarge a.ColumnSettingsTrigger::after,
+.TableSmall thead th.SortAscendingLarge a.ColumnSettingsTrigger::after,
+.TableSmall thead th.SortDescendingLarge a.ColumnSettingsTrigger::after {
+  content: "󰈲";
+}
+.DataTable thead th a,
+.TableSmall thead th a {
+  font-size: inherit;
+}
+.DataTable thead th.DashboardHeader > a, .DataTable thead th.DashboardHeader > span, .DataTable thead th.OverviewHeader > a, .DataTable thead th.OverviewHeader > span,
+.TableSmall thead th.DashboardHeader > a,
+.TableSmall thead th.DashboardHeader > span,
+.TableSmall thead th.OverviewHeader > a,
+.TableSmall thead th.OverviewHeader > span {
+  float: left;
+  height: initial;
+  line-height: 150%;
+}
+.DataTable tbody td,
+.TableSmall tbody td {
+  padding: 6px 10px;
+}
+
+.Tab.Actions {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+.Tab.Actions li {
+  border-left: solid 1px #ccc;
+  float: left;
+  font-size: smaller;
+}
+.Tab.Actions li:first-child {
+  border-left: none;
+}
+.Tab.Actions li:first-child a {
+  padding-left: 10px;
+}
+.Tab.Actions li a {
+  border-bottom: none;
+  color: #777;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.Tab.Actions li.Selected a {
+  background-color: #fff;
+}
+.Tab.Actions li:after {
+  content: none;
+}
+
+.SettingsWidget ul {
+  padding-left: 0;
+}
+.SettingsWidget ul input[type=checkbox] {
+  display: none;
+}
+
+/* New Ticket */
+.CustomerContainer {
+  box-shadow: none;
+  border-radius: 4px;
+}
+.CustomerContainer .CustomerTicketText {
+  border: none;
+  font-size: 85%;
+  padding-left: 10px;
+}
+.CustomerContainer .CustomerTicketText.MainCustomer {
+  background-color: #b3e5fc;
+  border: none;
+}
+
+.Field.cmt-otrs-datetime-hidden::first-line {
+  font-size: 0;
+}
+.Field.cmt-otrs-datetime-hidden select[name$=Day], .Field.cmt-otrs-datetime-hidden select[name$=Month], .Field.cmt-otrs-datetime-hidden select[name$=Year],
+.Field.cmt-otrs-datetime-hidden div.TooltipErrorMessage,
+.Field.cmt-otrs-datetime-hidden a.DatepickerIcon,
+.Field.cmt-otrs-datetime-hidden select[name$=Hour], .Field.cmt-otrs-datetime-hidden select[name$=Minute] {
+  display: none;
+}
+
+/*# sourceMappingURL=agent.css.map */
