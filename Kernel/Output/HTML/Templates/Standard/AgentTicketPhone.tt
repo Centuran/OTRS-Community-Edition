@@ -8,15 +8,6 @@
 
 <div class="MainBox ARIARoleMain FormScreen">
 
-    [% IF Data.TicketID %]
-    <h1>[% Translate("Split Into New Phone Ticket") | html %]</h1>
-    [% ELSIF Data.FromChatID %]
-    <h1>[% Translate("Save Chat Into New Phone Ticket") | html %]</h1>
-    [% ELSE %]
-    <h1>[% Translate("Create New Phone Ticket") | html %]</h1>
-    [% END %]
-
-    <p class="AsteriskExplanation">[% Translate("All fields marked with an asterisk (*) are mandatory.") | html %]</p>
 
     <div class="LayoutFixedSidebar SidebarLast">
 
@@ -34,6 +25,21 @@
         </div>
 
         <div class="ContentColumn">
+            <div class="Cn-FormWrapper">
+                <div class="WidgetSimple">
+                    <div class="Header">
+                        [% IF Data.TicketID %]
+                        <h2>[% Translate("Split Into New Phone Ticket") | html %]</h2>
+                        [% ELSIF Data.FromChatID %]
+                        <h2>[% Translate("Save Chat Into New Phone Ticket") | html %]</h2>
+                        [% ELSE %]
+                        <h2>[% Translate("Create New Phone Ticket") | html %]</h2>
+                        [% END %]
+                    </div>
+                    <div class="Content">
+
+    <p class="AsteriskExplanation">[% Translate("All fields marked with an asterisk (*) are mandatory.") | html %]</p>
+
             <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="NewPhoneTicket" class="Validate PreventMultipleSubmits">
                 <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                 <input type="hidden" name="Subaction" value="StoreNew"/>
@@ -340,6 +346,11 @@
                     </fieldset>
                 </form>
             </div>
+
+            </div>
+            </div>
+            </div>
+
             <div class="Clear"></div>
         </div>
         <div id="CustomerTickets"></div>
