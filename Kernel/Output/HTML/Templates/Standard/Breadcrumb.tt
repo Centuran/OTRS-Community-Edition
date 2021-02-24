@@ -8,9 +8,9 @@
 
 <ul class="BreadCrumb">
 [% IF Type == 'Agent' %]
-    <li><a href="[% Env('Baselink') %]" title="[% Translate("Home") | html %]"><i class="fa fa-home"></i></a></li>
+    <li><a href="[% Env('Baselink') %]" title="[% Translate("Home") | html %]"><i class="mdi mdi-home-outline"></i></a></li>
 [% ELSE %]
-    <li><a href="[% Env('Baselink') %]Action=Admin" title="[% Translate("Back to admin overview") | html %]"><i class="fa fa-home"></i></a></li>
+    <li><a href="[% Env('Baselink') %]Action=Admin" title="[% Translate("Back to admin overview") | html %]"><i class="mdi mdi-home-outline"></i></a></li>
 [% END %]
     [% FOREACH Item IN Path %]
         <li>
