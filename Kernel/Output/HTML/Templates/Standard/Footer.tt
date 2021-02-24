@@ -8,17 +8,8 @@
 
 <div id="Footer" class="ARIARoleContentinfo">
 [% IF !Config("Secure::DisableBanner") %]
-    <a href="[% IF !Data.IsLoginPage %]https://www.otrs.com[% ELSE %]https://www.otrs.com/otrs-business-solution-managed/[% END %]" title="[% Config("Product") | html %][% IF !Data.IsLoginPage %] [% Config("Version") | html %][% END %]" target="_blank">
-        <span></span>
-        [% IF Data.OTRSSTORMIsInstalled %]
-            [% Translate("%s powered by %s™", "STORM", "OTRS") | html %]
-        [% ELSIF Data.OTRSCONTROLIsInstalled %]
-            [% Translate("%s powered by %s™", "CONTROL", "OTRS") | html %]
-        [% ELSIF Data.OTRSBusinessIsInstalled %]
-            [% Translate("Powered by %s™", "OTRS Business Solution") | html %]
-        [% ELSE %]
-            [% Translate("Powered by %s™", "OTRS") | html %]
-        [% END %]
+    <a href="https://otrscommunityedition.com/" target="_blank">
+        [% Translate("Powered by %s", "((OTRS)) Community Edition") | html %]
     </a>
     <br>
 
