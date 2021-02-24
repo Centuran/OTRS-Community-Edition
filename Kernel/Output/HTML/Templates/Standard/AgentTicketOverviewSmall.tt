@@ -70,6 +70,8 @@
                     <th class="OverviewHeader [% Data.HeaderColumnName | html %] [% Data.CSS | html %]">
 
 [% RenderBlockStart("OverviewNavBarPageColumnFilter") %]
+                        <span class="Gray" title="[% Data.Title | html %]">[% Data.ColumnNameTranslated | html %]</span>
+
                         <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
                             <i class="fa fa-filter"></i>
                         </a>
@@ -83,10 +85,11 @@
 
                             </div>
                         </div>
-                        <span class="Gray" title="[% Data.Title | html %]">[% Data.ColumnNameTranslated | html %]</span>
 [% RenderBlockEnd("OverviewNavBarPageColumnFilter") %]
 
 [% RenderBlockStart("OverviewNavBarPageColumnFilterLink") %]
+                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=[% Data.ColumnName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.ColumnNameTranslated | html %]</a>
+
                         <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
                             <i class="fa fa-filter"></i>
                         </a>
@@ -103,7 +106,6 @@
 [% RenderBlockEnd("ContentLargeTicketGenericHeaderColumnFilterLinkUserSearch") %]
                             </div>
                         </div>
-                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=[% Data.ColumnName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.ColumnNameTranslated | html %]</a>
 [% RenderBlockEnd("OverviewNavBarPageColumnFilterLink") %]
 
 [% RenderBlockStart("OverviewNavBarPageColumnLink") %]

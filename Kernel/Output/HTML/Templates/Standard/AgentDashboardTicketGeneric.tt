@@ -78,6 +78,8 @@
                 <th class="DashboardHeader [% Data.HeaderColumnName | html %] [% Data.CSS | html %]" data-column="[% Data.HeaderColumnName | html %]">
 
 [% RenderBlockStart("ContentLargeTicketGenericHeaderColumnFilterLink") %]
+                    <a id="[% Data.HeaderColumnName | html %]OverviewControl[% Data.Name | html %]" name="[% Data.HeaderColumnName | html %]OverviewControl[% Data.Name | html %]" href="#" title="[% Data.Title | html %]" >[% Data.HeaderNameTranslated | html %]</a>
+
                     <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
                         <i class="fa fa-filter"></i>
                     </a>
@@ -94,8 +96,6 @@
                             <a href="#" class="DeleteFilter Hidden"><i class="fa fa-trash-o"></i></a>
                         </div>
                     </div>
-
-                    <a id="[% Data.HeaderColumnName | html %]OverviewControl[% Data.Name | html %]" name="[% Data.HeaderColumnName | html %]OverviewControl[% Data.Name | html %]" href="#" title="[% Data.Title | html %]" >[% Data.HeaderNameTranslated | html %]</a>
 
 [% RenderBlockEnd("ContentLargeTicketGenericHeaderColumnFilterLink") %]
 
