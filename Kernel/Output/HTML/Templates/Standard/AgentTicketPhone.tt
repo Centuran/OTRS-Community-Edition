@@ -281,6 +281,7 @@
 
                         <label>[% Translate("Pending date") | html %]:</label>
                         <div class="Field">
+                        <datetimepicker></datetimepicker>
                         [% Data.PendingDateString %]
                             <div id="DayError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                             <div id="HourError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
