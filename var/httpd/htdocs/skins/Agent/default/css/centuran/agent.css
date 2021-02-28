@@ -734,11 +734,33 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   content: none;
 }
 
+.SettingsWidget .Content {
+  padding-top: 0;
+}
 .SettingsWidget ul {
   padding-left: 0;
 }
-.SettingsWidget ul input[type=checkbox] {
+.SettingsWidget ul li {
+  padding-left: 10px;
+}
+.SettingsWidget ul li label {
+  padding: 0;
+}
+.SettingsWidget ul li label:hover {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  padding: unset;
+}
+.SettingsWidget ul li input[type=checkbox] {
   display: none;
+}
+.SettingsWidget ul li .v-input__slot {
+  align-items: normal;
+}
+.SettingsWidget ul li .v-label {
+  line-height: 120%;
+  margin-bottom: 0;
 }
 
 /* New Ticket */

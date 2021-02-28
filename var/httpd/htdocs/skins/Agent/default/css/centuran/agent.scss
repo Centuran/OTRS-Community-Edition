@@ -24,7 +24,7 @@
   font-size: 120%;
   opacity: 1;
   position: static;
-  vertical-align: middle; 
+  vertical-align: middle;
 }
 
 @mixin msg-background($type) {
@@ -845,11 +845,41 @@ div.AllocationListContainer {
   }
 }
 
-.SettingsWidget ul {
-  padding-left: 0;
+.SettingsWidget {
+  .Content {
+    padding-top: 0;
+  }
+  
+  ul {
+    padding-left: 0;
 
-  input[type="checkbox"] {
-    display: none;
+    li {
+      padding-left: 10px;
+
+      label {
+        padding: 0;
+
+        &:hover {
+          background-color: inherit;
+          border: none;
+          color: inherit;
+          padding: unset;
+        }
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      .v-input__slot {
+        align-items: normal;
+      }
+
+      .v-label {
+        line-height: 120%;
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
