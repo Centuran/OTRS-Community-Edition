@@ -33,6 +33,13 @@ my $Helper = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 # set fixed time
 $Helper->FixedTimeSet();
 
+my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+# Silence queueing error messages
+$ConfigObject->Set(
+    Key   => 'CheckEmailAddresses',
+    Value => 0,
+);
+
 my $TicketID = $TicketObject->TicketCreate(
     Title        => 'Some Ticket_Title',
     Queue        => 'Raw',
