@@ -719,10 +719,6 @@ sub LoadDefaults {
             Group  => 'admin',
             Module => 'Kernel::Output::HTML::Notification::AgentCloudServicesDisabled',
         },
-        '1100-OTRSBusiness' => {
-            Group  => 'admin',
-            Module => 'Kernel::Output::HTML::Notification::AgentOTRSBusiness',
-        },
         '2000-UID-Check' => {
             Module => 'Kernel::Output::HTML::Notification::UIDCheck',
         },
