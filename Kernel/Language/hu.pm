@@ -7771,7 +7771,7 @@ Az Ön segélyszolgálat csapata
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyfélfelületen.',
         'Number of tickets to be displayed in each page.' => 'Az egyes oldalakon megjelenített jegyek száma.',
-        'OTRS Group Services' => 'OTRS csoport szolgáltatások',
+        'Support Services' => 'Támogatás',
         'OTRS News' => 'OTRS hírek',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'Az OTRS képes egy vagy több csak olvasható tükör adatbázist használni az olyan költséges műveleteknél, mint például a szabad-szavas keresés vagy a statisztikák előállítása. Itt adhatja meg a DNS-t az első tükör adatbázishoz.',

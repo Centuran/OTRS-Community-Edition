@@ -7766,7 +7766,7 @@ Tu Equipo de Soporte
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Número de tickets desplegados en cada página del resultado de una búsqueda, en la interfaz del cliente.',
         'Number of tickets to be displayed in each page.' => '',
-        'OTRS Group Services' => 'Servicios del Grupo OTRS',
+        'Support Services' => 'Servicios de Apoyo',
         'OTRS News' => 'Novedades de OTRS',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS puede utilizar una o más bases de datos espejo de sólo lectura para operaciones costosas como la búsqueda de texto completo o la generación de estadísticas. Aquí puede especificar el DSN para la primera base de datos espejo.',

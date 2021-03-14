@@ -7781,7 +7781,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '顧客インタフェースの検索結果の各ページで表示される、チケット数です。',
         'Number of tickets to be displayed in each page.' => '',
-        'OTRS Group Services' => 'OTRSグループ・サービス',
+        'Support Services' => 'サポート',
         'OTRS News' => 'OTRSニュース',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRSは、フルテキスト検索や統計生成などの高価な操作に、1つまたは複数の読み取り専用ミラーデータベースを使用できます。 ここでは、最初のミラーデータベースのDSNを指定できます。',

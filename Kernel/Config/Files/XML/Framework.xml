@@ -4968,9 +4968,9 @@ via the Preferences button after logging in.
                         <Item Key="Order">4000</Item>
                     </Hash>
                 </Item>
-                <Item Key="OTRSGroup">
+                <Item Key="Support">
                     <Hash>
-                        <Item Key="Title" Translatable="1">OTRS Group Services</Item>
+                        <Item Key="Title" Translatable="1">Support Services</Item>
                         <Item Key="Order">5000</Item>
                     </Hash>
                 </Item>

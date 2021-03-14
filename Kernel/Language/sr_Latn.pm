@@ -7772,7 +7772,7 @@ Vaša tehnička podrška
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Broj tiketa koji će biti prikazani na svakoj strani rezultata pretrage u interfejsu klijenta.',
         'Number of tickets to be displayed in each page.' => 'Broj tiketa koji će biti prikazani na svakoj strani.',
-        'OTRS Group Services' => 'Servisi OTRS grupe',
+        'Support Services' => 'Podrška',
         'OTRS News' => 'OTRS novosti',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '„OTRS” može da koristi jednu ili više preslikanih baza podataka za skupe operacije kao što su pretraga teksta ili generisanje statistika. Ovde možete definisati DSN za prvu preslikanu bazu podataka.',

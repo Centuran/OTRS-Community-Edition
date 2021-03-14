@@ -7766,7 +7766,7 @@ Thanks for your help!
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Број тикета који ће бити приказани на свакој страни резултата претраге у интерфејсу клијента.',
         'Number of tickets to be displayed in each page.' => 'Број тикета који ће бити приказани на свакој страни.',
-        'OTRS Group Services' => 'Сервиси OTRS групе',
+        'Support Services' => 'Подршка',
         'OTRS News' => 'OTRS новости',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '„OTRS” може да користи једну или више пресликаних база података за скупе операције као што су претрага текста или генерисање статистика. Овде можете дефинисати DSN за прву пресликану базу података.',

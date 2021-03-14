@@ -7766,7 +7766,7 @@ Thanks for your help!
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '고객 인터페이스에서 검색 결과의 각 페이지에 표시할 티켓 수입니다.',
         'Number of tickets to be displayed in each page.' => '각 페이지에 표시할 티켓 수입니다.',
-        'OTRS Group Services' => 'OTRS 그룹 서비스',
+        'Support Services' => '지원하다',
         'OTRS News' => 'OTRS 뉴스',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS는 전체 텍스트 검색이나 통계 생성과 같은 값 비싼 작업에 대해 하나 이상의 읽기 전용 미러 데이터베이스를 사용할 수 있습니다. 여기서 첫 번째 미러 데이터베이스에 대해 DSN을 지정할 수 있습니다.',
