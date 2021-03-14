@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.761090416525567;
+    $Self->{Completeness}        = 0.761178861788618;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1259,7 +1259,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '右側のアイテムにカーソルを合わせてスターアイコンをクリックすると、お気に入りを追加できます。',
         'Links' => 'リンク',
-        'View the admin manual on Github' => 'Githubの管理マニュアルを表示',
+        'View the admin manual' => '管理者マニュアルを見る',
         'No Matches' => 'マッチなし',
         'Sorry, your search didn\'t match any items.' => '申し訳ありませんが、あなたの検索はどのアイテムにも一致しませんでした。',
         'Set as favorite' => 'お気に入りに指定',
@@ -7982,7 +7982,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             '担当者インタフェースのチケット構成画面で、オリジナルの送信者を、コンポーズ・アンサー上の現在の顧客のEメール・アドレスに置換します。',
         'Reports' => 'レポート',
-        'Reports (OTRS Business Solution™)' => 'レポート（OTRS Business Solution™）',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             '',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8590,7 +8589,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '',
         'Stat#' => '統計番号',
         'States' => 'ステータス',
-        'Statistic Reports overview.' => '',
         'Statistics overview.' => 'レポート一覧',
         'Status view' => 'ステータス・ビュー',
         'Stopped response time escalation.' => '応答時間のエスカレーションを停止しました。',

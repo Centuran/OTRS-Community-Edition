@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.337961395191331;
+    $Self->{Completeness}        = 0.338075880758808;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1256,7 +1256,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '',
         'Links' => '',
-        'View the admin manual on Github' => '',
+        'View the admin manual' => '',
         'No Matches' => '',
         'Sorry, your search didn\'t match any items.' => '',
         'Set as favorite' => '',
@@ -7960,7 +7960,6 @@ Thanks for your help!
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             '',
         'Reports' => '',
-        'Reports (OTRS Business Solution™)' => '',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             '',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8568,7 +8567,6 @@ Thanks for your help!
             '',
         'Stat#' => '統計#',
         'States' => '狀態',
-        'Statistic Reports overview.' => '',
         'Statistics overview.' => '',
         'Status view' => '狀態視圖',
         'Stopped response time escalation.' => '',

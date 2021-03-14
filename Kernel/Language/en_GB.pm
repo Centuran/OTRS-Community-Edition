@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.673721639011175;
+    $Self->{Completeness}        = 0.673780487804878;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -1257,7 +1257,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '',
         'Links' => '',
-        'View the admin manual on Github' => '',
+        'View the admin manual' => '',
         'No Matches' => '',
         'Sorry, your search didn\'t match any items.' => '',
         'Set as favorite' => '',
@@ -7970,7 +7970,6 @@ Thanks for your help!
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.',
         'Reports' => 'Reports',
-        'Reports (OTRS Business Solution™)' => 'Reports (OTRS Business Solution™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             'Reprocess mails from spool directory that could not be imported in the first place.',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8578,7 +8577,6 @@ Thanks for your help!
             'Starts a wildcard search of the active object after the link object mask is started.',
         'Stat#' => 'Stat#',
         'States' => 'States',
-        'Statistic Reports overview.' => '',
         'Statistics overview.' => '',
         'Status view' => 'Status view',
         'Stopped response time escalation.' => '',

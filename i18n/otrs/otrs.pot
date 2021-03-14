@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-07-01 07:05+0000\n"
+"POT-Creation-Date: 2021-03-14 01:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3783,7 +3783,7 @@ msgid "Links"
 msgstr ""
 
 #. Template: AdminNavigationBar
-msgid "View the admin manual on Github"
+msgid "View the admin manual"
 msgstr ""
 
 #. Template: AdminNavigationBar
@@ -21486,10 +21486,6 @@ msgid "Reports"
 msgstr ""
 
 #. SysConfig
-msgid "Reports (OTRS Business Solution™)"
-msgstr ""
-
-#. SysConfig
 msgid "Reprocess mails from spool directory that could not be imported in the first place."
 msgstr ""
 
@@ -22903,10 +22899,6 @@ msgstr ""
 
 #. SysConfig
 msgid "States"
-msgstr ""
-
-#. SysConfig
-msgid "Statistic Reports overview."
 msgstr ""
 
 #. SysConfig

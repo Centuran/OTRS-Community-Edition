@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.428547240094819;
+    $Self->{Completeness}        = 0.428353658536585;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1262,7 +1262,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             'Vous pouvez ajouter des favoris en passant avec votre souris sur l\'élément à ajouter et en cliquant sur l\'icône en forme d\'étoile.',
         'Links' => '',
-        'View the admin manual on Github' => 'Voir le manuel administrateur sur le site officiel',
+        'View the admin manual' => 'Voir le manuel administrateur',
         'No Matches' => '',
         'Sorry, your search didn\'t match any items.' => '',
         'Set as favorite' => '',
@@ -7964,7 +7964,6 @@ Thanks for your help!
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             '',
         'Reports' => 'Rapports',
-        'Reports (OTRS Business Solution™)' => 'Rapports (OTRS Business Solution™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             'Retraiter les courriels du répertoire de file d\'attente qui ne peuvent pas être importés la première fois.',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8572,7 +8571,6 @@ Thanks for your help!
             '',
         'Stat#' => 'Stat#',
         'States' => 'État',
-        'Statistic Reports overview.' => 'Vue d\'ensemble des rapports de statistiques.',
         'Statistics overview.' => 'Vue d\'ensemble des statistiques.',
         'Status view' => 'Vue par statut',
         'Stopped response time escalation.' => '',

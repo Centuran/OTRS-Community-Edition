@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.671859126312225;
+    $Self->{Completeness}        = 0.671747967479675;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1259,7 +1259,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '',
         'Links' => 'Enlaces',
-        'View the admin manual on Github' => '',
+        'View the admin manual' => '',
         'No Matches' => '',
         'Sorry, your search didn\'t match any items.' => '',
         'Set as favorite' => '',
@@ -7979,7 +7979,6 @@ El control del acceso adicional para demostrar o no demostrar éste enlace puede
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             '',
         'Reports' => 'Informes',
-        'Reports (OTRS Business Solution™)' => 'Reportes (OTRS Business Solution™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             '',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8587,7 +8586,6 @@ El control del acceso adicional para demostrar o no demostrar éste enlace puede
             '',
         'Stat#' => 'Estadística nº',
         'States' => 'Estado',
-        'Statistic Reports overview.' => 'Visión general informe estadísticas',
         'Statistics overview.' => 'Visión general de estadísticas.',
         'Status view' => 'Vista por estados',
         'Stopped response time escalation.' => '',

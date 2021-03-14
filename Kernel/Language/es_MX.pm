@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.799864544530985;
+    $Self->{Completeness}        = 0.799966124661247;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1254,7 +1254,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             'Puede agregar favoritos moviendo el cursos sobre el elemento por el lado derecho y haciendo clic en el ícono de estrella.',
         'Links' => 'Vínculos',
-        'View the admin manual on Github' => '',
+        'View the admin manual' => '',
         'No Matches' => 'No hay coincidencias',
         'Sorry, your search didn\'t match any items.' => 'Lo sentimos, su búsqueda no coincide con ningún elemento.',
         'Set as favorite' => 'Fijar como favorito',
@@ -5896,7 +5896,7 @@ Thanks for your help!
 ' => '
 Estimado Cliente,
 
-Desafortunadamente no hemos podido detectar un número de ticket válido en su consulta,
+Desafortunadamente no hemos podido detectar un número de ticket válido en su consulta, 
 por lo que este email no puede ser procesado.
 
 Por favor creé un nuevo ticket a través del panel de cliente.
@@ -7967,7 +7967,6 @@ Tu Equipo de Soporte
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             'Reemplaza el destinatario original con la dirección de correo electrónico del cliente actual, al redactar una respuesta en la ventana de redacción de tickets de la interfaz del agente.',
         'Reports' => 'Reportes',
-        'Reports (OTRS Business Solution™)' => 'Reportes (OTRS Business Solution™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             'Reprocesar los correos del directorio de carrete que no pudieron ser importados en primer lugar.',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8575,7 +8574,6 @@ Tu Equipo de Soporte
             '',
         'Stat#' => 'Estadística#',
         'States' => 'Estados',
-        'Statistic Reports overview.' => '',
         'Statistics overview.' => '',
         'Status view' => 'Vista de estados',
         'Stopped response time escalation.' => 'Detuvo la escalada de tiempo de respuesta.',

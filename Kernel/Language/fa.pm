@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.691500169319336;
+    $Self->{Completeness}        = 0.691565040650406;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1259,7 +1259,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '',
         'Links' => '',
-        'View the admin manual on Github' => '',
+        'View the admin manual' => '',
         'No Matches' => '',
         'Sorry, your search didn\'t match any items.' => '',
         'Set as favorite' => '',
@@ -7972,7 +7972,6 @@ Thanks for your help!
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             'جایگزین فرستنده اصلی با آدرس ایمیل مشتری فعلی در پاسخ نوشتن در صفحه نوشتن بلیط رابط عامل.',
         'Reports' => 'گزارش ها',
-        'Reports (OTRS Business Solution™)' => 'گزارش (OTRS کسب و کار راه حل ™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             'پردازش مجدد ایمیل از دایرکتوری قرقره است که نمی تواند در وهله اول وارد شود.',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8580,7 +8579,6 @@ Thanks for your help!
             'جستجوی کلمات از جسم فعال پس از ماسک لینک شی آغاز شده است.',
         'Stat#' => 'شماره گزارش',
         'States' => 'وضعیت',
-        'Statistic Reports overview.' => '',
         'Statistics overview.' => '',
         'Status view' => 'نمای وضعیت',
         'Stopped response time escalation.' => '',
