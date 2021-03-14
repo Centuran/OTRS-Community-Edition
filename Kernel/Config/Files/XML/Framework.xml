@@ -6457,7 +6457,7 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="Module">Kernel::Output::HTML::NavBar::ModuleAdmin</Item>
                 <Item Key="Name" Translatable="1">System Registration</Item>
-                <Item Key="Block">OTRSGroup</Item>
+                <Item Key="Block">Support</Item>
                 <Item Key="Description" Translatable="1">Manage system registration.</Item>
                 <Item Key="IconBig">fa-edit</Item>
                 <Item Key="IconSmall"></Item>
@@ -6527,7 +6527,7 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="Module">Kernel::Output::HTML::NavBar::ModuleAdmin</Item>
                 <Item Key="Name">OTRS Business Solution™</Item>
-                <Item Key="Block">OTRSGroup</Item>
+                <Item Key="Block">Support</Item>
                 <Item Key="Description" Translatable="1">Deploy and manage OTRS Business Solution™.</Item>
                 <Item Key="IconBig">fa-angle-double-up</Item>
                 <Item Key="IconSmall"></Item>
@@ -6637,7 +6637,7 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="Module">Kernel::Output::HTML::NavBar::ModuleAdmin</Item>
                 <Item Key="Name" Translatable="1">Support Data Collector</Item>
-                <Item Key="Block">OTRSGroup</Item>
+                <Item Key="Block">Support</Item>
                 <Item Key="Description" Translatable="1">Manage support data.</Item>
                 <Item Key="IconBig">fa-search</Item>
                 <Item Key="IconSmall"></Item>
@@ -6707,7 +6707,7 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="Module">Kernel::Output::HTML::NavBar::ModuleAdmin</Item>
                 <Item Key="Name" Translatable="1">Cloud Services</Item>
-                <Item Key="Block">OTRSGroup</Item>
+                <Item Key="Block">Support</Item>
                 <Item Key="Description" Translatable="1">Manage OTRS Group cloud services.</Item>
                 <Item Key="IconBig">fa-cloud</Item>
                 <Item Key="IconSmall"></Item>
