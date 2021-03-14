@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.677397376937489;
+    $Self->{Completeness}        = 0.677232447171097;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -3491,9 +3491,6 @@ sub Data {
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => 'La configurazione dei campi non è valida',
         'Objects configuration is not valid' => 'La configurazione degli oggetti non è valida',
-        'Database (%s)' => 'Database (%s)',
-        'Web service (%s)' => 'Servizio Web (%s)',
-        'Contact with data (%s)' => 'Contatto con i dati (%s)',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             'Impossibile ripristinare correttamente l\'ordine del Campo dinamico, controllare il registro errori per ulteriori dettagli.',
 

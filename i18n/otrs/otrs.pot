@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-03-14 17:53+0000\n"
+"POT-Creation-Date: 2021-03-14 18:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10104,18 +10104,6 @@ msgstr ""
 
 #. Perl Module: Kernel/Modules/AdminDynamicField.pm
 msgid "Objects configuration is not valid"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/AdminDynamicField.pm
-msgid "Database (%s)"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/AdminDynamicField.pm
-msgid "Web service (%s)"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/AdminDynamicField.pm
-msgid "Contact with data (%s)"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/AdminDynamicField.pm

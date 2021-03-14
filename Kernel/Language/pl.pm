@@ -3487,9 +3487,6 @@ sub Data {
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => 'Konfiguracja pól jest niepoprawna',
         'Objects configuration is not valid' => 'Konfiguracja obiektów jest niepoprawna',
-        'Database (%s)' => 'Baza danych (%s)',
-        'Web service (%s)' => 'Serwis sieciowy (%s)',
-        'Contact with data (%s)' => '',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             'Nie udało się prawidłowo przywrócić kolejności Pól Dynamicznych, więcej szczegółów znajduje się w pliku logu.',
 
