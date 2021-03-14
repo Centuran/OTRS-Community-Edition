@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.316565040650407;
+    $Self->{Completeness}        = 0.317093872008148;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -211,7 +211,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             '',
         'This feature is currently not available.' => 'Această opțiune nu este disponibilă.',
-        'Upgrade to %s' => 'Actualizează la %s',
         'Please activate this transport in order to use it.' => '',
         'No data found' => 'Nu au fost găsite date',
         'No notification method found.' => 'Nu a fost găsită nicio metodă de notificare.',
@@ -502,18 +501,6 @@ sub Data {
         'Add new field for object' => 'Adăugați un câmp nou la obiect',
         'Filter for Dynamic Fields' => '',
         'Filter for dynamic fields' => '',
-        'More Business Fields' => '',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '',
-        'Database' => 'Bază de date',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '',
-        'Web service' => 'Serviciu web',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '',
-        'Contact with data' => '',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Pentru a adăuga un câmp nou, selectați tipul de câmp dintr-una din lista obiectului, obiectul definește limitele câmpului și nu poate fi modificat după crearea câmpului.',
         'Dynamic Fields List' => 'Lista câmpurilor dinamice',
@@ -1150,10 +1137,6 @@ sub Data {
         'Delete web service' => 'Șterge serviciul web',
         'Do you really want to delete this web service?' => 'Sunteți sigur că vreți să ștergeți acest serviciu web?',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            '',
         'Import Ready2Adopt web service' => '',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '',
@@ -1333,6 +1316,7 @@ sub Data {
             'Felicitări %s a fost instalată corect și sistemul are ultima versiune!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Actualizează la %s',
         'Go to the OTRS customer portal' => 'Salt la portalul clienților OTRS',
         '%s will be available soon. Please check again in a few days.' =>
             '% va fi disponibilă în curând. Vă rugăm reveniți peste câteva zile.',
@@ -1449,9 +1433,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Pachetul nu a fost instalat corect! Vă rog, instalați pachetul din nou.',
         'Reinstall' => 'Reinstalare',
-        'Features for %s customers only' => '',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            '',
         'Package Information' => 'Informații despre pachet',
         'Download package' => 'Descărcare pachet',
         'Rebuild package' => '',
@@ -1545,8 +1526,6 @@ sub Data {
         'Import process configuration' => '',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1817,6 +1796,7 @@ sub Data {
         'Attribute' => '',
         'FQDN' => '',
         'OTRS Version' => 'Versiunea OTRS',
+        'Database' => 'Bază de date',
         'Operating System' => 'Sistem de operare',
         'Perl Version' => 'Versiunea Perl',
         'Optional description of this system.' => '',
@@ -3282,10 +3262,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
 
         # Template: Test
         'OTRS Test Page' => '',

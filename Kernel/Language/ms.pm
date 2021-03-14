@@ -23,7 +23,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.60230352303523;
+    $Self->{Completeness}        = 0.60295365812256;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -210,7 +210,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Ini adalah nilai lazim untuk menentukan ejen-ejen penerima yang tidak membuat pilihan untuk notifikasi ini dalam kesukaan mereka lagi. Jika kotak itu dibolehkan, notifikasi itu akan dihantar kepada ejen-ejen sepatutnya.',
         'This feature is currently not available.' => 'Ciri ini tidak tersedia.',
-        'Upgrade to %s' => 'Naik taraf kepada %s',
         'Please activate this transport in order to use it.' => '',
         'No data found' => 'Tiada data dijumpai',
         'No notification method found.' => 'Tiada kaedah pemberitahuan dijumpai.',
@@ -501,18 +500,6 @@ sub Data {
         'Add new field for object' => 'Tambah Bidang Baru bagi objek',
         'Filter for Dynamic Fields' => '',
         'Filter for dynamic fields' => '',
-        'More Business Fields' => '',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '',
-        'Database' => 'Pangkalan data',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '',
-        'Web service' => '',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '',
-        'Contact with data' => 'Kenalan dengan data',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Untuk menambah bidang baru , pilih jenis medan dari salah satu daripada senarai objek, objek yang mentakrifkan sempadan medan dan ia tidak boleh diubah selepas penciptaan medan.',
         'Dynamic Fields List' => 'Senarai bidang yang dinamik',
@@ -1149,10 +1136,6 @@ sub Data {
         'Delete web service' => 'Padam perkhidmatan web',
         'Do you really want to delete this web service?' => 'Anda pasti mahu memadam perkhidmatan web ini?',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Sila pastikan yang servis-servis web ini boleh bergantung pada modul-modul lain hanya terdapat dengan sesetengah %s tahap-tahap kontrak (ia akan ada satu notifikasi dengan butiran selanjutnya apabila mengimport).',
         'Import Ready2Adopt web service' => '',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '',
@@ -1332,6 +1315,7 @@ sub Data {
             'Tahniah, %s anda telah dipasang dengan betul dan terkini!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Naik taraf kepada %s',
         'Go to the OTRS customer portal' => '',
         '%s will be available soon. Please check again in a few days.' =>
             '%s akan disediakan tidak lama lagi. Sila semak semula dalam beberapa hari.',
@@ -1448,9 +1432,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Pakej tidak dikerah dengan betul! Sila memasang semula pakej.',
         'Reinstall' => 'Pasang semula',
-        'Features for %s customers only' => 'Ciri-ciri untuk pelanggan %s sahaja',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Dengan%s, anda boleh mendapat manfaat daripada ciri-ciri pilihan berikut. Sila telefon %s jika anda memerlukan maklumat lanjut.',
         'Package Information' => '',
         'Download package' => 'Muat pakej',
         'Rebuild package' => 'membina pakej',
@@ -1544,8 +1525,6 @@ sub Data {
         'Import process configuration' => 'Import konfigurasi proses',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1816,6 +1795,7 @@ sub Data {
         'Attribute' => 'Sifat',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'Versi OTRS',
+        'Database' => 'Pangkalan data',
         'Operating System' => 'Sistem Beroperasi',
         'Perl Version' => 'Versi Perl',
         'Optional description of this system.' => 'Pilihan huraian sistem ini.',
@@ -3281,10 +3261,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
 
         # Template: Test
         'OTRS Test Page' => 'Halaman percubaan OTRS',

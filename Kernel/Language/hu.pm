@@ -216,7 +216,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Ez az alapértelmezett érték az olyan hozzárendelt címzett ügyintézőknél, akik még nem választottak ennél az értesítésnél a beállításaikban. Ha a doboz engedélyezve van, akkor az értesítés el lesz küldve az ilyen ügyintézőknek.',
         'This feature is currently not available.' => 'Ez a szolgáltatás jelenleg nem érhető el.',
-        'Upgrade to %s' => 'Frissítés a következőre: %s',
         'Please activate this transport in order to use it.' => 'Kapcsolja be azt az átvitelt annak érdekében, hogy használni tudja.',
         'No data found' => 'Nem található adat',
         'No notification method found.' => 'Nem található értesítési módszer.',
@@ -507,18 +506,6 @@ sub Data {
         'Add new field for object' => 'Új mező hozzáadása az objektumhoz',
         'Filter for Dynamic Fields' => 'Szűrő a dinamikus mezőkhöz',
         'Filter for dynamic fields' => 'Szűrő a dinamikus mezőkhöz',
-        'More Business Fields' => 'Több üzleti mező',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            'Szeretné élvezni a vállalkozások számára készített további dinamikus mező típusok előnyeit? Frissítsen az %s szoftverre, hogy hozzáférést kapjon a következő mezőtípusokhoz:',
-        'Database' => 'Adatbázis',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            'Külső adatbázis használata beállítható adatforrásokként ennél a dinamikus mezőnél.',
-        'Web service' => 'Webszolgáltatás',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            'Külső webszolgáltatások beállíthatók adatforrásokként ennél a dinamikus mezőnél.',
-        'Contact with data' => 'Partneradatok',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            'Ez a funkció lehetővé teszi (több) partneradat hozzáadását a jegyhez.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Egy új mező hozzáadásához válassza ki a mezőtípust az objektum listájának egyikéből. Az objektum határozza meg a mező határát, és nem lehet azt megváltoztatni a mező létrehozása után.',
         'Dynamic Fields List' => 'Dinamikus mezők listája',
@@ -1155,10 +1142,6 @@ sub Data {
         'Delete web service' => 'Webszolgáltatás törlése',
         'Do you really want to delete this web service?' => 'Valóban törölni szeretné ezt a webszolgáltatást?',
         'Ready2Adopt Web Services' => 'Használatra kész webszolgáltatások',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            'Itt kapcsolhatja be a legjobb gyakorlatainkat bemutató, használatra kész webszolgáltatásokat, amelyek az %s részei.',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Ne feledje, hogy ezen webszolgáltatások függhetnek olyan egyéb moduloktól, amelyek csak bizonyos %s szerződési szintekkel érhetők el (lesz egy értesítés a további részletekkel az importáláskor).',
         'Import Ready2Adopt web service' => 'Használatra kész webszolgáltatás importálása',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             'Szeretné élvezni a szakértők által létrehozott webszolgáltatások előnyeit? Ahhoz, hogy importálhasson néhány kitapasztalt, használatra kész webszolgáltatást, frissítsen a következőre: %s.',
@@ -1338,6 +1321,7 @@ sub Data {
             'Gratulálunk, az %s helyesen van telepítve és naprakész!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Frissítés a következőre: %s',
         'Go to the OTRS customer portal' => 'Ugrás az OTRS ügyfélportáljára',
         '%s will be available soon. Please check again in a few days.' =>
             'Az %s hamarosan elérhető lesz. Ellenőrizze ismét néhány nap múlva.',
@@ -1454,9 +1438,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'A csomag nincs megfelelően üzembe állítva! Telepítse újra a csomagot.',
         'Reinstall' => 'Újratelepítés',
-        'Features for %s customers only' => 'Kizárólag %s ügyfelek számára elérhető funkciók',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Az %s használatával a következő opcionális szolgáltatások előnyeit élvezheti. Ha további információkra van szüksége, akkor vegye fel a kapcsolatot a következővel: %s.',
         'Package Information' => 'Csomaginformációk',
         'Download package' => 'Csomag letöltése',
         'Rebuild package' => 'Csomag újraépítése',
@@ -1551,8 +1532,6 @@ sub Data {
         'Ready2Adopt Processes' => 'Használatra kész folyamatok',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             'Itt kapcsolhatja be a legjobb gyakorlatainkat bemutató, használatra kész folyamatokat. Ne feledje, hogy néhány további beállítás lehet szükséges.',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            'Szeretné élvezni a szakértők által létrehozott folyamatok előnyeit? Ahhoz, hogy importálhasson néhány kitapasztalt, használatra kész folyamatot, frissítsen a következőre: %s.',
         'Import Ready2Adopt process' => 'Használatra kész folyamat importálása',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             'Egy új folyamat létrehozásához importálhat egy másik rendszerből exportált folyamatot, vagy létrehozhat egy teljesen újat.',
@@ -1822,6 +1801,7 @@ sub Data {
         'Attribute' => 'Jellemző',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'OTRS verzió',
+        'Database' => 'Adatbázis',
         'Operating System' => 'Operációs rendszer',
         'Perl Version' => 'Perl verzió',
         'Optional description of this system.' => 'A rendszer opcionális leírása.',
@@ -3287,10 +3267,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Navigáció',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            'Az %s használatával a rendszerbeállítások támogatják a verziókövetést, visszaállítást és a felhasználóra jellemző konfigurációs beállításokat.',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS tesztoldal',

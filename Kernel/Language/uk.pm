@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.498306233062331;
+    $Self->{Completeness}        = 0.49889662196571;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -211,7 +211,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Це типове значення для призначених агентів-одержувачів, які ще не зробили вибір для цього сповіщення в їх налаштуваннях. Якщо прапорець увімкнений, сповіщення буде відправлено для таких агентів.',
         'This feature is currently not available.' => 'Ця функція наразі недоступна.',
-        'Upgrade to %s' => 'Оновити до %s',
         'Please activate this transport in order to use it.' => '',
         'No data found' => 'Даних не знайдено',
         'No notification method found.' => 'Жодного метода сповіщення не знайдено.',
@@ -502,18 +501,6 @@ sub Data {
         'Add new field for object' => 'Додати нове полк для обєкту',
         'Filter for Dynamic Fields' => '',
         'Filter for dynamic fields' => '',
-        'More Business Fields' => '',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '',
-        'Database' => 'База даних',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '',
-        'Web service' => '',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '',
-        'Contact with data' => '',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Для того, щоб додати нове поле, виберіть тип поля з наступного переліку об\'єктів, об\'єкт визначає зв\'язки поля та не може бути змінений після його створення.',
         'Dynamic Fields List' => 'Список динамічних полів',
@@ -1150,10 +1137,6 @@ sub Data {
         'Delete web service' => 'Вилучити веб-службу',
         'Do you really want to delete this web service?' => 'Ви насправді хочете вилучити цю веб-службу?',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Зверніть увагу, що ці веб-служби можуть залежати від інших модулів, доступних тільки з певним %s рівнем контракту (буде повідомлення з більш докладними поясненнями при імпорті).',
         'Import Ready2Adopt web service' => '',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '',
@@ -1333,6 +1316,7 @@ sub Data {
             'Вітаємо, ваш %s встановлено правильно та має актуальну версію!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Оновити до %s',
         'Go to the OTRS customer portal' => 'Перейти до порталу клієнтів OTRS',
         '%s will be available soon. Please check again in a few days.' =>
             '%s незабаром буде доступний. Будь ласка, перевірте ще раз через кілька днів.',
@@ -1449,9 +1433,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Пакет розгорнуто некоректно! Будь ласка, перевстановіть пакет.',
         'Reinstall' => 'Переустановити',
-        'Features for %s customers only' => 'Функція тільки для клієнтів %s',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'З %s ви можете скористатися наступними додатковими функціями. Будь ласка зв\'яжіться із %s, якщо вам потрібна додаткова інформація.',
         'Package Information' => '',
         'Download package' => 'Скачати пакет',
         'Rebuild package' => 'Перезібрати пакет',
@@ -1545,8 +1526,6 @@ sub Data {
         'Import process configuration' => 'Імпортувати конфігурацію процесу',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1817,6 +1796,7 @@ sub Data {
         'Attribute' => 'Атрибут',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'Версій OTRS',
+        'Database' => 'База даних',
         'Operating System' => 'Операційна Система',
         'Perl Version' => 'Версія Perl',
         'Optional description of this system.' => 'Додатковий опис цієї системи.',
@@ -3282,10 +3262,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
 
         # Template: Test
         'OTRS Test Page' => 'Тестова сторінка OTRS',

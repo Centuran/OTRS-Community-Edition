@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.967987804878049;
+    $Self->{Completeness}        = 0.967917161772195;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -211,7 +211,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             '이것은 자신의 환경 설정에서이 통지에 대해 아직 선택하지 않은 할당 된 수신자 에이전트의 기본값입니다. 이 상자가 활성화되면 해당 에이전트에 알림이 전송됩니다.',
         'This feature is currently not available.' => '현재 이 기능을 사용할 수 없습니다.',
-        'Upgrade to %s' => '%s (으)로 업그레이드',
         'Please activate this transport in order to use it.' => '사용하려면이 운송을 활성화하십시오.',
         'No data found' => '데이터가 없습니다.',
         'No notification method found.' => '알림 방법이 없습니다.',
@@ -502,18 +501,6 @@ sub Data {
         'Add new field for object' => '객체에 대한 새 필드 추가',
         'Filter for Dynamic Fields' => '동적 필드 필터링',
         'Filter for dynamic fields' => '동적 필드 필터링',
-        'More Business Fields' => '더 많은 사업 분야',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '비즈니스를위한 추가적인 동적 필드 유형의 혜택을 원하십니까? 다음 필드 유형에 액세스하려면 %s로 업그레이드하십시오.',
-        'Database' => '데이터베이스',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '이 동적 필드에 대해 외부 데이터베이스를 구성 가능한 데이터 소스로 사용하십시오.',
-        'Web service' => '웹 서비스',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '외부 웹 서비스는 이 동적 필드의 데이터 소스로 구성될 수 있습니다.',
-        'Contact with data' => '데이터 연락처',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '이 기능을 사용하면 데이터가 있는 연락처를 티켓에 추가 할 수 있습니다.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             '새 필드를 추가하려면 객체 목록 중 하나에서 필드 유형을 선택하십시오. 객체는 필드의 경계를 정의하며 필드 작성 후에는 변경할 수 없습니다.',
         'Dynamic Fields List' => '동적 필드 목록',
@@ -1150,10 +1137,6 @@ sub Data {
         'Delete web service' => '웹 서비스 삭제',
         'Do you really want to delete this web service?' => '이 웹 서비스를 정말로 삭제 하시겠습니까?',
         'Ready2Adopt Web Services' => 'Ready2Adopt 웹 서비스',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '여기 %s의 일부인 모범 사례를 보여주는 Ready2Adopt 웹 서비스를 활성화 할 수 있습니다.',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            '이 웹 서비스는 특정 %s 계약 수준에서만 사용 가능한 다른 모듈에 의존 할 수 있습니다 (가져올 때 자세한 내용이있는 알림이 있음).',
         'Import Ready2Adopt web service' => 'Ready2Adopt 웹 서비스 가져 오기',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '전문가가 만든 웹 서비스의 혜택을 원하십니까? 일부 정교한 Ready2Adopt 웹 서비스를 가져 오려면 %s로 업그레이드하십시오.',
@@ -1333,6 +1316,7 @@ sub Data {
             '축하합니다. %s가 올바르게 설치되고 최신 상태입니다!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => '%s (으)로 업그레이드',
         'Go to the OTRS customer portal' => 'OTRS 고객 포털로 이동하십시오.',
         '%s will be available soon. Please check again in a few days.' =>
             '%s는 곧 제공될 예정입니다. 며칠 후에 다시 확인하십시오.',
@@ -1449,9 +1433,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             '패키지가 올바르게 배치되지 않았습니다! 패키지를 다시 설치하십시오.',
         'Reinstall' => '재설치',
-        'Features for %s customers only' => '%s 고객 전용 기능',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            '%s를 사용하면 다음과 같은 옵션 기능을 활용할 수 있습니다. 더 자세한 정보가 필요하시면 %s로 연락하십시오.',
         'Package Information' => '패키지 정보',
         'Download package' => '패키지 다운로드',
         'Rebuild package' => '패키지 다시 빌드',
@@ -1546,8 +1527,6 @@ sub Data {
         'Ready2Adopt Processes' => 'Ready2Adopt 프로세스',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             '여기에서 우수 사례를 보여주는 Ready2Adopt 프로세스를 활성화 할 수 있습니다. 추가 구성이 필요할 수 있습니다.',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            '전문가가 만든 프로세스의 혜택을 원하십니까? 일부 정교한 Ready2Adopt 프로세스를 가져 오려면 %s로 업그레이드하십시오.',
         'Import Ready2Adopt process' => 'Ready2Adopt 프로세스 가져 오기',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             '새 프로세스를 만들려면 다른 시스템에서 내 보낸 프로세스를 가져 오거나 완전히 새로운 프로세스를 생성 할 수 있습니다.',
@@ -1817,6 +1796,7 @@ sub Data {
         'Attribute' => '속성',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'OTRS 버전',
+        'Database' => '데이터베이스',
         'Operating System' => '운영 체제',
         'Perl Version' => '펄 버전',
         'Optional description of this system.' => '이 시스템에 대한 선택적 설명.',
@@ -3282,10 +3262,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '항해',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '%s에서 시스템 환경설정은 버전 관리, 롤백 및 사용자 별 구성 설정을 지원합니다.',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS 테스트 페이지',

@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.6664972899729;
+    $Self->{Completeness}        = 0.666610083177729;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -214,7 +214,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Wartość domyślna ustawienia odbioru tego powiadomienia dla agenta, który nie określił jeszcze tej wartości w swoich preferencjach. Jeśli pole jest zaznaczone, powiadomienie będzie do takich agentów wysyłane.',
         'This feature is currently not available.' => 'Ta funkcja jest obecnie niedostępna.',
-        'Upgrade to %s' => 'Zaktualizuj do %s',
         'Please activate this transport in order to use it.' => 'Aktywuj ten sposób transportu aby go użyć.',
         'No data found' => 'Nie znaleziono danych',
         'No notification method found.' => 'Nie znaleziono metody powiadomienia',
@@ -506,18 +505,6 @@ sub Data {
         'Add new field for object' => 'Dodaj nowej pole do obiektu',
         'Filter for Dynamic Fields' => 'Filtr dla Pól Dynamicznych',
         'Filter for dynamic fields' => 'Filtr dla pól dynamicznych',
-        'More Business Fields' => 'Więcej pól biznesowych',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            'Czy chcesz korzystać z dodatkowych dynamicznych typów pól dla firm? Uaktualnij do %s, aby uzyskać dostęp do następujących typów pól:',
-        'Database' => 'Baza danych',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            'Użyj zewnętrznych baz danych jako konfigurowalnych źródeł danych dla tego dynamicznego pola.',
-        'Web service' => 'Serwis sieciowy',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            'Dla tego pola dynamicznego można skonfigurować jako źródło danych zewnętrzny serwis sieciowy.',
-        'Contact with data' => 'Połącz z danymi',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            'Ta funkcja umożliwia dodawanie (wielu) kontaktów z danymi do biletów.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Aby dodać nowe pole, wybierz typ pola z listy obiektów. Wybrany obiekt definiuje typ pola, który nie będzie mógł być zmieniony po utworzeniu tego pola.',
         'Dynamic Fields List' => 'Lista pól dynamicznych',
@@ -1154,10 +1141,6 @@ sub Data {
         'Delete web service' => 'Usuń serwis sieciowy',
         'Do you really want to delete this web service?' => 'Czy na pewno chcesz usunąć serwis siecioy?',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            '',
         'Import Ready2Adopt web service' => '',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '',
@@ -1337,6 +1320,7 @@ sub Data {
             'Gratulacje, twój %szostał poprawnie zainstalowany i jest aktualny.',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Zaktualizuj do %s',
         'Go to the OTRS customer portal' => 'Przejdź do portalu klienta OTRS',
         '%s will be available soon. Please check again in a few days.' =>
             '%s będzie dostępny niebawem. Sprawdź ponownie za kilka dni.',
@@ -1453,9 +1437,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Pakiet wdrożony nieprawidłowo! Zainstaluj pakiet ponownie.',
         'Reinstall' => 'Przeinstaluj',
-        'Features for %s customers only' => 'Funkcje tylko dla %s klientów',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            '',
         'Package Information' => 'Informacja o pakietach',
         'Download package' => 'Pobierz pakiet',
         'Rebuild package' => 'Przebuduj pakiet',
@@ -1549,8 +1530,6 @@ sub Data {
         'Import process configuration' => 'Importuj konfigurację procesu',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1821,6 +1800,7 @@ sub Data {
         'Attribute' => 'Atrybut',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'Wersja OTRS',
+        'Database' => 'Baza danych',
         'Operating System' => 'System operacyjny',
         'Perl Version' => 'Wersja Perl',
         'Optional description of this system.' => 'Opcjonalny opis systemu',
@@ -3286,10 +3266,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Nawigacja',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS Strona testowa',

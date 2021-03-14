@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.513888888888889;
+    $Self->{Completeness}        = 0.514683415379392;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -211,7 +211,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             '',
         'This feature is currently not available.' => 'Esta funcionalidade non está dispoñíbel actualmente.',
-        'Upgrade to %s' => 'Mellorado a %s',
         'Please activate this transport in order to use it.' => '',
         'No data found' => 'Non se atoparon datos',
         'No notification method found.' => 'Non se atopou ningún método de notificación.',
@@ -502,18 +501,6 @@ sub Data {
         'Add new field for object' => 'Engadir un campo novo para o obxecto',
         'Filter for Dynamic Fields' => '',
         'Filter for dynamic fields' => '',
-        'More Business Fields' => '',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '',
-        'Database' => 'Base de datos',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '',
-        'Web service' => '',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '',
-        'Contact with data' => '',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Para engadir un novo campo, escolla o tipo de campo dun da lista de obxetos, o obxeto define os límites do campo e non pode ser modificado despois da creación do campo.',
         'Dynamic Fields List' => 'Listaxe dos Campos Dinámicos',
@@ -1150,10 +1137,6 @@ sub Data {
         'Delete web service' => 'Eliminar servizo web',
         'Do you really want to delete this web service?' => 'Desexa realmente eliminar este servicio web?',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            '',
         'Import Ready2Adopt web service' => '',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '',
@@ -1333,6 +1316,7 @@ sub Data {
             'Parabéns, o %s está instalado correctamente e actualizado!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Mellorado a %s',
         'Go to the OTRS customer portal' => '',
         '%s will be available soon. Please check again in a few days.' =>
             '%s estará dispoñíbel en breve. Comprobe de novo nuns días.',
@@ -1449,9 +1433,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'O paquete non foi correctamente despregado! Por favor, volva a instalar o paquete.',
         'Reinstall' => 'Reinstalar',
-        'Features for %s customers only' => 'Funcionalidades só para clientes %s',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Con %s, pódese beneficiar de ás seguintes funcionalidades opcionáis. Por favor contacte con %s se precisa mais información.',
         'Package Information' => '',
         'Download package' => 'Descargar paquete',
         'Rebuild package' => 'Reconstruír o paquete',
@@ -1545,8 +1526,6 @@ sub Data {
         'Import process configuration' => 'Configuración do proceso de importación',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1817,6 +1796,7 @@ sub Data {
         'Attribute' => 'Atributo',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'Versión do OTRS',
+        'Database' => 'Base de datos',
         'Operating System' => 'Sistema Operativo',
         'Perl Version' => 'Versión de Perl',
         'Optional description of this system.' => 'Descripción opcional deste sistema.',
@@ -3282,10 +3262,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
 
         # Template: Test
         'OTRS Test Page' => 'Páxina de probas do OTRS',

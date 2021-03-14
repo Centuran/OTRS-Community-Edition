@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.691565040650406;
+    $Self->{Completeness}        = 0.692581904600238;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -216,7 +216,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'این مقدار پیش فرض برای عوامل گیرنده اختصاص داده که یک انتخاب برای این اطلاع رسانی در تنظیمات خود را هنوز رتبهدهی نشده است. اگر در کادر فعال باشد، اطلاع رسانی خواهد شد به چنین عوامل فرستاده می شود.',
         'This feature is currently not available.' => 'این قابلیت در حال حاضر در دسترس نیست.',
-        'Upgrade to %s' => 'ارتقا به %s',
         'Please activate this transport in order to use it.' => '',
         'No data found' => 'داده ای یافت نشد',
         'No notification method found.' => 'هیچ روش اطلاع رسانی یافت نشد.',
@@ -507,18 +506,6 @@ sub Data {
         'Add new field for object' => 'اضافه کردن فیلد جدید برای موضوع',
         'Filter for Dynamic Fields' => '',
         'Filter for dynamic fields' => '',
-        'More Business Fields' => '',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '',
-        'Database' => 'پایگاه داده',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '',
-        'Web service' => '',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '',
-        'Contact with data' => '',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'برای اضافه کردن یک رشته جدید، نوع رشته را از یکی موضوع های لیست انتخاب کنید، موضوع مرز رشته را تعریف میکند و نمی توان آن را پس از ایجاد رشته  تغییر داد.',
         'Dynamic Fields List' => ' فهرست زمینه حرکتی',
@@ -1155,10 +1142,6 @@ sub Data {
         'Delete web service' => 'حذف وب سرویس',
         'Do you really want to delete this web service?' => 'آیا شما واقعا  حذف این وب سرویس رامی خواهید؟',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'لطفا توجه داشته باشید که این خدمات وب ممکن است در دیگر ماژول فقط با خاص در دسترس بستگی دارد %s سطح قرارداد (وجود خواهد داشت اطلاع رسانی با جزئیات بیشتر در هنگام وارد کردن).',
         'Import Ready2Adopt web service' => '',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '',
@@ -1338,6 +1321,7 @@ sub Data {
             'تبریک می گویم، شما %s به درستی نصب شده و بروزرسانی شده است !',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'ارتقا به %s',
         'Go to the OTRS customer portal' => '',
         '%s will be available soon. Please check again in a few days.' =>
             '%s به زودی در دسترس خواهد بود. لطفا پس از چند روز دوباره بررسی کنید.',
@@ -1454,9 +1438,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'بسته به درستی قرار نگرفته! لطفا بسته رامجدد نصب کنید .',
         'Reinstall' => 'نصب مجدد',
-        'Features for %s customers only' => 'ویژگی ها برای %s تنها مشتریان',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'با %s ، شما می توانید از ویژگی های اختیاری زیر بهره مند شوند. لطفا تماس با %s اگر شما نیاز به اطلاعات بیشتر.',
         'Package Information' => '',
         'Download package' => 'دریافت بسته',
         'Rebuild package' => 'ساخت مجدد بسته',
@@ -1550,8 +1531,6 @@ sub Data {
         'Import process configuration' => ' روند دریافت پیکربندی',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1822,6 +1801,7 @@ sub Data {
         'Attribute' => 'صفت',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'OTRS نسخه',
+        'Database' => 'پایگاه داده',
         'Operating System' => 'سیستم عامل',
         'Perl Version' => 'پرل نسخه',
         'Optional description of this system.' => 'توضیحات اختیاری این سیستم.',
@@ -3287,10 +3267,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
 
         # Template: Test
         'OTRS Test Page' => 'صفحه آزمایش سیستم',

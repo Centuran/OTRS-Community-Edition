@@ -217,7 +217,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             '如果选中这个复选框，即使分配为收件人的服务人员在偏好设置中没有选择接收这个通知，这个通知仍然会发送给该服务人员。',
         'This feature is currently not available.' => '该功能当前不可用。',
-        'Upgrade to %s' => '升级到 %s',
         'Please activate this transport in order to use it.' => '请激活此传输方式以使用它。',
         'No data found' => '没有找到数据',
         'No notification method found.' => '没有找到通知方法。',
@@ -508,18 +507,6 @@ sub Data {
         'Add new field for object' => '为对象添加新的字段',
         'Filter for Dynamic Fields' => '动态字段过滤器',
         'Filter for dynamic fields' => '动态字段过滤器',
-        'More Business Fields' => '更多商业版字段',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '您想要从商业版的额外动态字段类型中受益吗？ 升级到%s以访问以下字段类型：',
-        'Database' => '数据库',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '使用外部数据库作为此动态字段的可配置数据源。',
-        'Web service' => 'Web服务',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '外部Web服务可以配置为该动态字段的数据源。',
-        'Contact with data' => '连接数据',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '此功能允许将（多个）联系人信息添加到工单中。',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             '为了增加一个新的字段，从对象列表中选择一个字段类型，对象定义了字段的范围并且不能在创建后修改。',
         'Dynamic Fields List' => '动态字段列表',
@@ -1156,10 +1143,6 @@ sub Data {
         'Delete web service' => '删除Web服务',
         'Do you really want to delete this web service?' => '您真的想要删除这个Web服务吗？',
         'Ready2Adopt Web Services' => '即开即用的Web服务',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '你可以在这里激活即开即用的WEB服务，作为%s的一部分展示我们的最佳实践。',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            '请注意：这些WEB服务可能依赖于其它仅在某些%s合同级别中才可用的模块(导入时会有详细提示信息)。',
         'Import Ready2Adopt web service' => '导入即开即用的WEB服务',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '你想从专家创建的WEB服务中受益吗？升级到%s 就能导入一些复杂的即开即用的WEB服务。',
@@ -1339,6 +1322,7 @@ sub Data {
             '恭喜，你的%s 已经正确地安装到最新版本！',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => '升级到 %s',
         'Go to the OTRS customer portal' => '访问OTRS客户门户',
         '%s will be available soon. Please check again in a few days.' =>
             '%s 很快就可用了，请过几天再检查一次。',
@@ -1455,9 +1439,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             '软件包未正确安装！请重新安装软件包。',
         'Reinstall' => '重新安装',
-        'Features for %s customers only' => '仅%s 才能使用的功能',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            '你能从%s 得到以下可选的功能特性，请联系%s 获取更多信息。',
         'Package Information' => '软件包信息',
         'Download package' => '下载该软件包',
         'Rebuild package' => '重新编译',
@@ -1552,8 +1533,6 @@ sub Data {
         'Ready2Adopt Processes' => '即开即用的流程',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             '你可以在此激活能展示我们最佳实践的即开即用的流程，请注意这可能需要一些额外的配置。',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            '你想从专家创建的流程中受益吗？升级到%s 就能导入一些复杂的即开即用的流程。',
         'Import Ready2Adopt process' => '导入即开即用的流程',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             '为了创建新的流程，你可以导入从其它系统导出的流程配置文件，或者重新创建一个。',
@@ -1823,6 +1802,7 @@ sub Data {
         'Attribute' => '属性',
         'FQDN' => '正式域名',
         'OTRS Version' => 'OTRS版本',
+        'Database' => '数据库',
         'Operating System' => '操作系统',
         'Perl Version' => 'Perl版本',
         'Optional description of this system.' => '本系统可选的描述。',
@@ -3288,10 +3268,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '导航',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '使用%s，系统配置支持版本控制、回滚和用户特定的配置设置。',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS测试页',

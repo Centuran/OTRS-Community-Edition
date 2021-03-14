@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.671747967479675;
+    $Self->{Completeness}        = 0.671532846715328;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -216,7 +216,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Este es el valor por defecto para los agentes receptores asignados que no realizaron una elección para esta notificación aún en sus preferencias. Si la casilla está activada, la notificación será enviada a dichos agentes.',
         'This feature is currently not available.' => 'Esta característica no está disponible en este momento.',
-        'Upgrade to %s' => 'Actualizar a %s',
         'Please activate this transport in order to use it.' => 'Por favor active el transporte para poder usarlo',
         'No data found' => 'No se encontró ningún dato.',
         'No notification method found.' => 'No se encontró un método de notificación.',
@@ -507,18 +506,6 @@ sub Data {
         'Add new field for object' => 'Añadir un nuevo campo al objeto',
         'Filter for Dynamic Fields' => 'Filtrar por Campos dinámicos',
         'Filter for dynamic fields' => 'Filtrar por Campos dinámicos',
-        'More Business Fields' => 'Más Campos de Negocio',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            'Quieres beneficiarse de los tipos adicionales de campo dinámico para negocios? Actualisa a %s para obtener el acceso a los siguientes tipos de campos:',
-        'Database' => 'Base de datos',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            'Usa los bases de datos externos cómo los fuentes configurables de datos para éste campo dinámico.',
-        'Web service' => 'Servicio Web',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            'Servicios Web externos pueden ser configurados como las fuentes de datos para éste campo dinámico.',
-        'Contact with data' => 'Contacto con los datos',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            'Este elemento permite agregar (multiplicar) contactos con datos a los Tickets.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Para añadir un nuevo campo, seleccione el tipo de campo de la lista de objetos, el objeto define los limites del campo y no puede ser cambiado despues de la creación del campo.',
         'Dynamic Fields List' => 'Lista de Campos Dinámicos',
@@ -1155,10 +1142,6 @@ sub Data {
         'Delete web service' => 'Eliminar servicio web',
         'Do you really want to delete this web service?' => '¿Realmente desea eliminar este servicio web?',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Por favor considere que estos servicios de web pueden depender de otros módulos que son solo disponibles con el cierto porcentaje de niveles de contrato (habrá una notificación allí con siguientes detalles de importación)',
         'Import Ready2Adopt web service' => '',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             '',
@@ -1338,6 +1321,7 @@ sub Data {
             'Felicitaciones, su %s está instalado y actualizado correctamente.',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Actualizar a %s',
         'Go to the OTRS customer portal' => 'Ir al portal del cliente OTRS',
         '%s will be available soon. Please check again in a few days.' =>
             '%s estará disponible pronto. Por favor, puedes volver a intentarlo dentro de unos días .',
@@ -1454,9 +1438,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'El paquete no fue desplegado correctamente. Por favor, reinstale el paquete.',
         'Reinstall' => 'Reinstalar',
-        'Features for %s customers only' => 'Características sólo para clientes %s',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Con %s , usted puede beneficiarse de las siguientes características opcionales. Por favor contacte con %s si necesita más información.',
         'Package Information' => 'Información del Paquete',
         'Download package' => 'Descargar paquete',
         'Rebuild package' => 'Reconstruir paquete',
@@ -1550,8 +1531,6 @@ sub Data {
         'Import process configuration' => 'Configuración del proceso de importación',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1822,6 +1801,7 @@ sub Data {
         'Attribute' => 'Atributo',
         'FQDN' => 'Nombre de dominio totalmente calificado',
         'OTRS Version' => 'Versión De OTRS',
+        'Database' => 'Base de datos',
         'Operating System' => 'Sistema Operativo',
         'Perl Version' => 'Versión de Perl',
         'Optional description of this system.' => 'Descripción opcional de este sistema.',
@@ -3287,10 +3267,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
 
         # Template: Test
         'OTRS Test Page' => 'Página de prueba de OTRS',

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-03-14 01:18+0000\n"
+"POT-Creation-Date: 2021-03-14 13:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -588,10 +588,6 @@ msgstr ""
 
 #. Template: AdminAppointmentNotificationEvent
 msgid "This feature is currently not available."
-msgstr ""
-
-#. Template: AdminAppointmentNotificationEvent
-msgid "Upgrade to %s"
 msgstr ""
 
 #. Template: AdminAppointmentNotificationEvent
@@ -1492,38 +1488,6 @@ msgstr ""
 
 #. Template: AdminDynamicField
 msgid "Filter for dynamic fields"
-msgstr ""
-
-#. Template: AdminDynamicField
-msgid "More Business Fields"
-msgstr ""
-
-#. Template: AdminDynamicField
-msgid "Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:"
-msgstr ""
-
-#. Template: AdminDynamicField
-msgid "Database"
-msgstr ""
-
-#. Template: AdminDynamicField
-msgid "Use external databases as configurable data sources for this dynamic field."
-msgstr ""
-
-#. Template: AdminDynamicField
-msgid "Web service"
-msgstr ""
-
-#. Template: AdminDynamicField
-msgid "External web services can be configured as data sources for this dynamic field."
-msgstr ""
-
-#. Template: AdminDynamicField
-msgid "Contact with data"
-msgstr ""
-
-#. Template: AdminDynamicField
-msgid "This feature allows to add (multiple) contacts with data to tickets."
 msgstr ""
 
 #. Template: AdminDynamicField
@@ -3487,14 +3451,6 @@ msgid "Ready2Adopt Web Services"
 msgstr ""
 
 #. Template: AdminGenericInterfaceWebservice
-msgid "Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s."
-msgstr ""
-
-#. Template: AdminGenericInterfaceWebservice
-msgid "Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing)."
-msgstr ""
-
-#. Template: AdminGenericInterfaceWebservice
 msgid "Import Ready2Adopt web service"
 msgstr ""
 
@@ -3991,6 +3947,10 @@ msgid "Congratulations, your %s is correctly installed and up to date!"
 msgstr ""
 
 #. Template: AdminOTRSBusinessNotInstalled
+msgid "Upgrade to %s"
+msgstr ""
+
+#. Template: AdminOTRSBusinessNotInstalled
 msgid "Go to the OTRS customer portal"
 msgstr ""
 
@@ -4335,14 +4295,6 @@ msgid "Reinstall"
 msgstr ""
 
 #. Template: AdminPackageManager
-msgid "Features for %s customers only"
-msgstr ""
-
-#. Template: AdminPackageManager
-msgid "With %s, you can benefit from the following optional features. Please make contact with %s if you need more information."
-msgstr ""
-
-#. Template: AdminPackageManager
 msgid "Package Information"
 msgstr ""
 
@@ -4648,10 +4600,6 @@ msgstr ""
 
 #. Template: AdminProcessManagement
 msgid "Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required."
-msgstr ""
-
-#. Template: AdminProcessManagement
-msgid "Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes."
 msgstr ""
 
 #. Template: AdminProcessManagement
@@ -5464,6 +5412,10 @@ msgstr ""
 
 #. Template: AdminRegistration
 msgid "OTRS Version"
+msgstr ""
+
+#. Template: AdminRegistration
+msgid "Database"
 msgstr ""
 
 #. Template: AdminRegistration
@@ -9548,10 +9500,6 @@ msgstr ""
 
 #. Template: Navigation
 msgid "Navigation"
-msgstr ""
-
-#. Template: OTRSBusinessTeaser
-msgid "With %s, System Configuration supports versioning, rollback and user-specific configuration settings."
 msgstr ""
 
 #. Template: Test

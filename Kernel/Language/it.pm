@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.678184281842818;
+    $Self->{Completeness}        = 0.677474113053811;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -219,7 +219,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Questo è il valore predefinito per gli agenti destinatario assegnati che non hanno ancora scelto questa notifica nelle loro preferenze. Se la casella è abilitata, la notifica verrà inviata a tali agenti.',
         'This feature is currently not available.' => 'Questa funzionalità non è attualmente disponibile.',
-        'Upgrade to %s' => 'Aggiorna a %s',
         'Please activate this transport in order to use it.' => 'Si prega di attivare questo trasporto per poterlo utilizzare.',
         'No data found' => 'Nessun dato trovato',
         'No notification method found.' => 'Nessun metodo di notifica trovato.',
@@ -510,18 +509,6 @@ sub Data {
         'Add new field for object' => 'Aggiungi un nuovo campo per l\'oggetto',
         'Filter for Dynamic Fields' => 'Filtri per Campi dinamici',
         'Filter for dynamic fields' => 'Filtri per Campi dinamici',
-        'More Business Fields' => 'Più Campi Business',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            'Vorresti beneficiare di ulteriori tipi di Campo dinamico per le aziende? Esegui l\'upgrade a %s per ottenere l\'accesso ai seguenti tipi di campi:',
-        'Database' => 'Database',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            'Utilizzare database esterni come origini dati configurabili per questo Campo dinamico.',
-        'Web service' => 'Servizio web',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            'I servizi Web esterni possono essere configurati come origini dati per questo campo dinamico.',
-        'Contact with data' => 'Contatto con dati',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            'Questa funzione consente di aggiungere (più) contatti con dati ai ticket.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Per aggiungere un nuovo campo, selezionare il tipo di campo da uno degli elenchi dell\'oggetto, l\'oggetto definisce il limite del campo e non può essere modificato dopo la creazione del campo.',
         'Dynamic Fields List' => 'Elenco campi dinamici',
@@ -1158,10 +1145,6 @@ sub Data {
         'Delete web service' => 'Elimina il web service',
         'Do you really want to delete this web service?' => 'Vuoi davvero eliminare questo web service?',
         'Ready2Adopt Web Services' => 'Ready2Adopt Web Services',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            'Qui è possibile attivare i servizi Web Ready2Adopt in mostra le nostre migliori pratiche che fanno parte di %s.',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Si noti che questi servizi Web possono dipendere da altri moduli disponibili solo con determinati %s livelli di contratto (ci sarà una notifica con ulteriori dettagli durante l\'importazione).',
         'Import Ready2Adopt web service' => 'Importa il servizio Web Ready2Adopt',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             'Vorresti beneficiare dei servizi web creati da esperti? L\'aggiornamento a %s per importare alcuni sofisticati servizi web Ready2Adopt.',
@@ -1341,6 +1324,7 @@ sub Data {
             'Congratulazioni, il tuo %s è installato correttamente e aggiornato!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Aggiorna a %s',
         'Go to the OTRS customer portal' => 'Val al portale clienti di OTRS',
         '%s will be available soon. Please check again in a few days.' =>
             '%s sarà disponibile presto. Controlla nuovamente tra qualche giorno.',
@@ -1457,9 +1441,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Estensione non installata correttamente! Reinstallare il pacchetto.',
         'Reinstall' => 'Re-installa',
-        'Features for %s customers only' => 'Funzionalità solo per i clienti %s',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Con %s, puoi beneficiare delle seguenti funzionalità opzionali. Contatta %s se hai bisogno di ulteriori informazioni.',
         'Package Information' => 'Informazioni sul pacchetto',
         'Download package' => 'Scarica pacchetto',
         'Rebuild package' => 'Ricostruisci pacchetto',
@@ -1554,8 +1535,6 @@ sub Data {
         'Ready2Adopt Processes' => 'Processi Ready2Adopt',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             'Qui è possibile attivare i processi Ready2Adopt che mostrano le nostre migliori pratiche. Si noti che potrebbe essere necessaria una configurazione aggiuntiva.',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            'Vorresti beneficiare dei processi creati da esperti? L\'aggiornamento a %s per importare alcuni sofisticati processi Ready2Adopt.',
         'Import Ready2Adopt process' => 'Importa il processo Ready2Adopt',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             'Per creare un nuovo processo puoi importare un processo esportato da un altro sistema o crearne uno completamente nuovo.',
@@ -1825,6 +1804,7 @@ sub Data {
         'Attribute' => 'Attributo',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'Versione OTRS',
+        'Database' => 'Database',
         'Operating System' => 'Sistema operativo',
         'Perl Version' => 'Versione di Perl',
         'Optional description of this system.' => 'Descrizione facoltativa del sistema.',
@@ -3290,10 +3270,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Navigazione',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            'Con %s, Configurazione del sistema supporta il controllo delle versioni, il rollback e le impostazioni di configurazione specifiche dell\'utente.',
 
         # Template: Test
         'OTRS Test Page' => 'Pagina di test OTRS',

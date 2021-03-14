@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.996273712737127;
+    $Self->{Completeness}        = 0.996265489730097;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -217,7 +217,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Ovo je podrazumevana vrednost za pridružene operatere primaoce koji za ovo obaveštenje u svojim postavkama nisu još napravili izbor. Ako je boks aktiviran, obaveštenje će biti poslato takvim operaterima.',
         'This feature is currently not available.' => 'Ovo svojstvo trenutno nije dostupno.',
-        'Upgrade to %s' => 'Unapredi na %s',
         'Please activate this transport in order to use it.' => 'Molimo aktivirajte ovaj transport pre korišćenja.',
         'No data found' => 'Ništa nije pronađeno',
         'No notification method found.' => 'Nije pronađena metoda obaveštavanja.',
@@ -508,18 +507,6 @@ sub Data {
         'Add new field for object' => 'Dodaj novo polje objektu',
         'Filter for Dynamic Fields' => 'Filter za dinamička polja',
         'Filter for dynamic fields' => 'Filter za dinamička polja',
-        'More Business Fields' => 'Više poslovnih polja',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            'Da li želite mogućnost dodatnih poslovnih dinamičkih polja? Unapredite na %s za pristup sledećim vrstama polja:',
-        'Database' => 'Baza podataka',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            'Koristite eksterne baze podataka kao izvor podataka za ovo dinamičko polje.',
-        'Web service' => 'Veb servis',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            'Eksterni veb servisi se mogu konfigurisati kao izvor podataka za ovo dinamičko polje.',
-        'Contact with data' => 'Kontakt sa podacima',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            'Ova funkcija vam omogućava da dodate (višestruke) kontakte sa podacima tiketima.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Za dodavanje novog polja izaberite tip polja iz jedne od lista objekata. Objekt definiše granice polja i posle kreiranja polja se ne može menjati.',
         'Dynamic Fields List' => 'Lista dinamičkih polja',
@@ -1156,10 +1143,6 @@ sub Data {
         'Delete web service' => 'Obriši veb servis',
         'Do you really want to delete this web service?' => 'Da li stvarno želite da obrišete ovaj veb servis?',
         'Ready2Adopt Web Services' => 'Ready2Adopt veb servisi',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            'Ovde možete aktivirati Ready2Adopt veb servise spremne za upotrebu koji oslikavaju našu najbolju praksu koja je deo %s.',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Molimo da imate na umu da veb servisi mogu da zavise od drugih modula koji su dostupni u okviru određenih %s nivoa ugovora (postoji obavešetenje sa dodatnim detaljima pri uvozu).',
         'Import Ready2Adopt web service' => 'Uvezi Ready2Adopt veb servis',
         'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
             'Da li želite da iskoristite veb servise kreirane od strane eksperata? Unapredite na %s da bi mogli da uvezete sofisticirane Ready2Adopt veb servise spremne za upotrebu.',
@@ -1339,6 +1322,7 @@ sub Data {
             'Čestitamo, vaš %s je korektno instaliran i ažuran!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Unapredi na %s',
         'Go to the OTRS customer portal' => 'Idi na OTRS korisnički portal',
         '%s will be available soon. Please check again in a few days.' =>
             '%s će biti dostupna uskoro. Molimo, proverite ponovo za nekoliko dana.',
@@ -1455,9 +1439,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Paket nije korektno instaliran! Instalirajte ga ponovo.',
         'Reinstall' => 'Instaliraj ponovo',
-        'Features for %s customers only' => 'Svojstva samo za %s klijente',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Sa %s možete imati koristi od sledećih opcionih funkcija. Molimo da kontaktirate %s ukoliko su vam potrebne dodatne informacije.',
         'Package Information' => 'Informacije o paketu',
         'Download package' => 'Preuzmi paket',
         'Rebuild package' => 'Obnovi paket(rebuild)',
@@ -1552,8 +1533,6 @@ sub Data {
         'Ready2Adopt Processes' => 'Ready2Adopt procesi',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             'Ovde možete aktivirati Ready2Adopt procese primera najbolje prakse koji su spremni za upotrebu. Molimo obratite pažnju da je možda neophodna dodatna konfiguracija.',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            'Da li želite da iskoristite procese kreirane od strane eksperata? Unapredite na %s za uvoz primera sofisticiranih Ready2Adopt procesa spremnih za upotrebu.',
         'Import Ready2Adopt process' => 'Uvezi Ready2Adopt proces',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             'Za kreiranje novog procesa možete ili uvesti proces koji je izvezen iz drugog sistema ili kreirati kompletno nov.',
@@ -1823,6 +1802,7 @@ sub Data {
         'Attribute' => 'Atribut',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'OTRS verzija',
+        'Database' => 'Baza podataka',
         'Operating System' => 'Operativni sistem',
         'Perl Version' => 'Perl verzija',
         'Optional description of this system.' => 'Opcioni opis ovog sistema.',
@@ -3288,10 +3268,6 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Navigacija',
-
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            'Sa %s, sistemska konfiguracija podržava pregled promena, ponovno raspoređivanje i korisničke promene podešavanja.',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS test strana',
