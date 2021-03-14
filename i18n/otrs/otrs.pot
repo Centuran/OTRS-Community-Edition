@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-03-14 17:23+0000\n"
+"POT-Creation-Date: 2021-03-14 17:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8624,18 +8624,6 @@ msgstr ""
 
 #. Template: DraftNotifications
 msgid "Please note that this draft is outdated because the ticket was modified since this draft was created."
-msgstr ""
-
-#. Template: Header
-msgid "View notifications"
-msgstr ""
-
-#. Template: Header
-msgid "Notifications"
-msgstr ""
-
-#. Template: Header
-msgid "Notifications (OTRS Business Solution™)"
 msgstr ""
 
 #. Template: Header
@@ -18774,10 +18762,6 @@ msgid "Defines the parameters for the dashboard backend. \"Group\" is used to re
 msgstr ""
 
 #. SysConfig
-msgid "Defines the parameters for the dashboard backend. \"Group\" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). \"Default\" indicates if the plugin is enabled by default or if the user needs to enable it manually. \"CacheTTLLocal\" defines the cache expiration period in minutes for the plugin. \"Mandatory\" determines if the plugin is always shown and can not be removed by agents."
-msgstr ""
-
-#. SysConfig
 msgid "Defines the parameters for the dashboard backend. \"Limit\" defines the number of entries displayed by default. \"Group\" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). \"Default\" indicates if the plugin is enabled by default or if the user needs to enable it manually. \"CacheTTL\" indicates the cache expiration period in minutes for the plugin. \"Mandatory\" determines if the plugin is always shown and can not be removed by agents."
 msgstr ""
 
@@ -20858,14 +20842,6 @@ msgid "New process ticket"
 msgstr ""
 
 #. SysConfig
-msgid "News about OTRS releases!"
-msgstr ""
-
-#. SysConfig
-msgid "News about OTRS."
-msgstr ""
-
-#. SysConfig
 msgid "Next possible ticket states after adding a phone note in the ticket phone inbound screen of the agent interface."
 msgstr ""
 
@@ -20923,10 +20899,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Number of tickets to be displayed in each page."
-msgstr ""
-
-#. SysConfig
-msgid "OTRS News"
 msgstr ""
 
 #. SysConfig
@@ -21311,10 +21283,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Processes & Automation"
-msgstr ""
-
-#. SysConfig
-msgid "Product News"
 msgstr ""
 
 #. SysConfig
