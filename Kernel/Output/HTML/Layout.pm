@@ -1051,6 +1051,10 @@ sub Error {
         {
             $Param{ShowOTRSBusinessHint}++;
         }
+
+        # Disable hint
+        delete $Param{ShowOTRSBusinessHint};
+        # TODO: Eventually replace with our version of hint message
     }
 
     if ( $Param{BackendTraceback} ) {

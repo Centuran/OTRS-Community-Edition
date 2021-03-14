@@ -19,6 +19,7 @@
                     [% Translate(Data.Comment) | html %]
                 </p>
 
+                [%# Eventually replace with our version of hint message %]
                 [% IF Data.ShowOTRSBusinessHint %]
                 <div class="MessageBox Info">
                     <p class="SpacingTop">
