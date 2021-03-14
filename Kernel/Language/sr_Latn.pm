@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.996084439904665;
+    $Self->{Completeness}        = 0.996082439107477;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -6170,9 +6170,6 @@ Vaša tehnička podrška
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             'Proverava SystemID u detekciji broja tiketa za nastavljanja. Ako je isključeno, SystemID će biti promenjen nakon korišćenja sistema.',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            'Proverava dostupnost OTRS Business Solution™ za ovaj sistem.',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'Proverava status prava korišćenja OTRS Business Solution™.',
         'Child' => 'Child',
         'Chinese (Simplified)' => 'Kineski (uprošćeno)',
         'Chinese (Traditional)' => 'Kineski (tradicionalno)',
@@ -8027,7 +8024,6 @@ Vaša tehnička podrška
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Šalje sve odlazne imejlove kao nevidljive kopije (bcc) na određenu adresu. Molimo da ovo koristite samo za rezervne kopije.',
         'Sends customer notifications just to the mapped customer.' => 'Šalje klijentska obaveštenja samo mapiranom klijentu.',
-        'Sends registration information to OTRS group.' => 'Šalje registracione informacije OTRS grupi.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'Šalje obaveštenje za potsećanje o otključanom tiketu kad se dostigne datum podsetnika (šalje samo vlasniku tiketa).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>

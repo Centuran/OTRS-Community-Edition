@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.967654068777664;
+    $Self->{Completeness}        = 0.967637540453074;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -6164,9 +6164,6 @@ Thanks for your help!
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '후속 조치를 위해 티켓 번호 검색에서 SystemID를 확인합니다. 활성화되지 않은 경우 시스템을 사용한 후 SystemID가 변경됩니다.',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            '이 시스템에 대한 OTRS Business Solution ™의 가용성을 확인합니다.',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'OTRS Business Solution ™의 자격 상태를 확인합니다.',
         'Child' => '어린이',
         'Chinese (Simplified)' => '중국어(간체)',
         'Chinese (Traditional)' => '중국(전통)',
@@ -8021,7 +8018,6 @@ Thanks for your help!
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             '모든 발신 이메일을 bcc를 통해 지정된 주소로 보냅니다. 백업 목적으로 만 사용하십시오.',
         'Sends customer notifications just to the mapped customer.' => '매핑된 고객에게 고객 알림만 보냅니다.',
-        'Sends registration information to OTRS group.' => 'OTRS 그룹에 등록 정보를 보냅니다.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             '미리 알림 날짜에 도달 한 후 잠금 해제 된 티켓에 대한 미리 알림을 전송합니다 (티켓 소유자에게만 전송 됨).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>

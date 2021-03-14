@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.693054136874362;
+    $Self->{Completeness}        = 0.692897291773122;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -6169,9 +6169,6 @@ Thanks for your help!
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            'چک در دسترس بودن OTRS کسب و کار راه حل ™ برای این سیستم.',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'چک وضعیت استحقاق OTRS کسب و کار راه حل ™.',
         'Child' => 'فرعی',
         'Chinese (Simplified)' => 'چینی (ساده شده)',
         'Chinese (Traditional)' => 'چینی (سنتی)',
@@ -8026,7 +8023,6 @@ Thanks for your help!
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'می فرستد تمام ایمیل های خروجی از طریق BCC به آدرس مشخص شده. لطفا این تنها به دلایل پشتیبان استفاده کنید.',
         'Sends customer notifications just to the mapped customer.' => 'می فرستد اطلاعیه مشتری فقط به مشتری نقشه برداری.',
-        'Sends registration information to OTRS group.' => 'ارسال اطلاعات ثبت نام به گروه OTRS.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'می فرستد اطلاعیه یادآور بلیط قفل پس از رسیدن به تاریخ یادآوری (فقط به صاحب بلیط ارسال).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>

@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.938372488934287;
+    $Self->{Completeness}        = 0.938681655595299;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -6169,9 +6169,6 @@ Obrigado pela ajuda!
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             'Verifica o ID do Sistema na detecção de número de tickets para respostas. Se não ativado, o ID do sistema será alterado após utlização do sistema.',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            '',
-        'Checks the entitlement status of OTRS Business Solution™.' => '',
         'Child' => 'Filho',
         'Chinese (Simplified)' => 'Chinês (Simplificado)',
         'Chinese (Traditional)' => 'Chinês (Tradicional)',
@@ -8026,7 +8023,6 @@ Obrigado pela ajuda!
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Envia todos os e-mails enviados como uma cópia oculta ao endereço especificado. Favor utilizar isso apenas para motivos de backup.',
         'Sends customer notifications just to the mapped customer.' => 'Envia notificações de cliente somente para os clientes mapeados.',
-        'Sends registration information to OTRS group.' => 'Envia informações de registro para o Grupo OTRS.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'Envia notificações de lembrete de ticket desbloqueado após atingir a data de lembrete (enviado apenas para o proprietário do ticket).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>

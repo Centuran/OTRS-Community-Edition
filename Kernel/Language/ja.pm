@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.761661559414368;
+    $Self->{Completeness}        = 0.761710100493953;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -6169,9 +6169,6 @@ Thanks for your help!
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            'このシステムのOTRS Business Solution™の可用性をチェックします。',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'OTRS Business Solution™の権利の状態を確認します。',
         'Child' => '子',
         'Chinese (Simplified)' => '',
         'Chinese (Traditional)' => '',
@@ -8036,7 +8033,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Bccを経由して特定されたアドレスに送信Eメールを送ります。バックアップ目的のためにのみ使用してください。',
         'Sends customer notifications just to the mapped customer.' => '',
-        'Sends registration information to OTRS group.' => '',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'リマインダ日付を迎えたら、アンロック・チケットのリマインダ通知を送信します（チケット所有者だけに送信されます）。',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>

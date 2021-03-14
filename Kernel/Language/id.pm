@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.677562138236296;
+    $Self->{Completeness}        = 0.677397376937489;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -6166,9 +6166,6 @@ Helpdesk Team Anda
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            'Cek ketersediaan OTRS Business Solution™ untuk sistem ini.',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'Memeriksa status hak dari OTRS Business Solution™.',
         'Child' => 'Child',
         'Chinese (Simplified)' => 'Bahasa Tiongkok (yang disederhanakan)',
         'Chinese (Traditional)' => 'Cina (tradisional)',
@@ -8024,7 +8021,6 @@ Helpdesk Team Anda
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Mengirimkan semua email keluar melalui bcc ke alamat yang ditentukan. Silakan gunakan ini hanya untuk alasan cadangan.',
         'Sends customer notifications just to the mapped customer.' => '',
-        'Sends registration information to OTRS group.' => 'Mengirimkan informasi pendaftaran untuk kelompok OTRS.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'Mengirimkan pemberitahuan amaran terkunci tiket setelah mencapai tanggal yang ditetapkan (hanya dikirim ke pemilik tiket).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-03-14 17:47+0000\n"
+"POT-Creation-Date: 2021-03-14 17:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16910,14 +16910,6 @@ msgid "Checks the SystemID in ticket number detection for follow-ups. If not ena
 msgstr ""
 
 #. SysConfig
-msgid "Checks the availability of OTRS Business Solution™ for this system."
-msgstr ""
-
-#. SysConfig
-msgid "Checks the entitlement status of OTRS Business Solution™."
-msgstr ""
-
-#. SysConfig
 msgid "Child"
 msgstr ""
 
@@ -21631,10 +21623,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Sends customer notifications just to the mapped customer."
-msgstr ""
-
-#. SysConfig
-msgid "Sends registration information to OTRS group."
 msgstr ""
 
 #. SysConfig

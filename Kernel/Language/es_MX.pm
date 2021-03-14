@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.801498127340824;
+    $Self->{Completeness}        = 0.801737353091467;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -6164,9 +6164,6 @@ Tu Equipo de Soporte
             'Comprueba si un correo electrónico es un seguimiento de un ticket existente con un número de ticket externo que puede encontrar el módulo de filtro ExternalTicketNumberRecognition.',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             'Verifica el ID del Sistema en la detección del número de ticket para seguimientos. Si no está habilitado, el ID del Sistema se cambiará después de usar el sistema.',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            '',
-        'Checks the entitlement status of OTRS Business Solution™.' => '',
         'Child' => 'Hijo',
         'Chinese (Simplified)' => 'Chino (Simplificado)',
         'Chinese (Traditional)' => 'Chino (Tradicional)',
@@ -8021,7 +8018,6 @@ Tu Equipo de Soporte
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Envía todos los correos electrónicos salientes vía bcc a la dirección especificada. Por favor, utilice esta opción únicamente por motivos de copia de seguridad).',
         'Sends customer notifications just to the mapped customer.' => 'Envía las notificaciones de los clientes sólo al cliente asignado.',
-        'Sends registration information to OTRS group.' => 'Enviar información de registro a Grupo OTRS.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'Envía notificaciones de recordatorio de tickets desbloqueados a sus propietarios, luego que alcanzaron la fecha de recordatorio.',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>

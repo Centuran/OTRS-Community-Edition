@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.999829758256725;
+    $Self->{Completeness}        = 0.999829671265542;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -6169,9 +6169,6 @@ Thanks for your help!
             '检查电子邮件是否是带有外部工单编号的现有工单的跟进邮件，该工单编号可由ExternalTicketNumberRecognition过滤器模块找到。',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '在跟进工单的工单编号检测时检查系统ID。如果不启用，系统ID将在使用系统后更改。',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            '检查本系统的OTRS商业版可用性。',
-        'Checks the entitlement status of OTRS Business Solution™.' => '检查OTRS商业版的权利状态。',
         'Child' => '子',
         'Chinese (Simplified)' => '简体中文',
         'Chinese (Traditional)' => '繁体中文',
@@ -8026,7 +8023,6 @@ Thanks for your help!
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             '通过BCC（密件抄送）发送所有外发邮件到指定地址。请只在备份情况下使用这个选项。',
         'Sends customer notifications just to the mapped customer.' => '仅给映射的客户用户发送客户通知。',
-        'Sends registration information to OTRS group.' => '发送注册信息到OTRS集团。',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             '在到达提醒时间后发送解锁工单的提醒通知（只发送给工单所有者）。',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>
