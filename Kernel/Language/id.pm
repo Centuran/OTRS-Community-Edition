@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.677304362586997;
+    $Self->{Completeness}        = 0.67737003058104;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -4610,14 +4610,6 @@ bin/otrs.Daemon.pl status\').',
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'Mengaktifkan layanan cloud untuk melepaskan semua fitur OTRS!',
 
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%S Upgrade ke %s sekarang! %s',
-        'Please verify your license data!' => '',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'Lisensi untuk %s anda akan segera berakhir. Silahkan mengkontak %s untuk memperbarui kontrak anda!',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            'Pembaruan untuk %s anda telah tersedia, Tetapi ada konflik dengan versi kerangka anda! Silahkan untuk memperbarui Kerangka anda terlebih dahulu!',
-
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'Agen online: %s',
 
@@ -7984,7 +7976,6 @@ Helpdesk Team Anda
         'Resent email to "%s".' => '',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             'Ulang dan membuka pemilik tiket jika itu dipindahkan ke antrian yang lain.',
-        'Resource Overview (OTRS Business Solution™)' => '',
         'Responsible Tickets' => 'Tiket bertanggung jawab',
         'Responsible Tickets.' => 'Tiket penanggung jawab',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>

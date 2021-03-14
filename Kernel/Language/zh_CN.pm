@@ -4614,14 +4614,6 @@ sub Data {
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => '启用云服务以激活OTRS的所有功能！',
 
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '现在升级%s到%s！%s',
-        'Please verify your license data!' => '请验证您的许可证数据！',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            '您的%s的许可证即将过期， 请与%s联系续订您的合同！',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            '您的%s有新版本可用，但是与当前的框架版本不兼容！请先升级当前的框架版本！',
-
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => '在线服务人员：%s',
 
@@ -7986,7 +7978,6 @@ Thanks for your help!
         'Resent email to "%s".' => '已重发邮件到"%s"。',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             '如果工单转移到另一个队列，重置并解锁工单所有者。',
-        'Resource Overview (OTRS Business Solution™)' => '资源概览（OTRS商业版）',
         'Responsible Tickets' => '负责的工单',
         'Responsible Tickets.' => '负责的工单.',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>

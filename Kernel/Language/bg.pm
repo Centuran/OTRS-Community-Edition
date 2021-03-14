@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y - %T';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.211509081649975;
+    $Self->{Completeness}        = 0.211348963642542;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -4609,14 +4609,6 @@ sub Data {
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'Активирайте облачните услуги, за да отключите всички функции на OTRS.',
 
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '',
-        'Please verify your license data!' => '',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'Лицензът за вашето %s е на път да изтече. Моля, свържете се с %s, за да подновите договора си!',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            'Възможно е да има актуализация за вашето %s, но има проблем с версията на вашия фреймуърк ! Моля, актуализирайте първо вашия фреймуърк!',
-
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'Агент(и) онлайн: %s',
 
@@ -7971,7 +7963,6 @@ Thanks for your help!
         'Resent email to "%s".' => '',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             '',
-        'Resource Overview (OTRS Business Solution™)' => '',
         'Responsible Tickets' => '',
         'Responsible Tickets.' => '',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>

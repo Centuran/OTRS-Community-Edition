@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.692581904600238;
+    $Self->{Completeness}        = 0.692660550458716;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -4613,14 +4613,6 @@ sub Data {
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'فعال کردن سرویس های ابری به رها کردن تمام ویژگی های OTRS!',
 
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%s ارتقا به %s در حال حاضر! %s',
-        'Please verify your license data!' => '',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'مجوز %s شما رو به پایان است. لطفا برای بستن قرارداد مجدد با  %s تماس بگیرید.',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            'یک به روز رسانی برای  %s شماموجود است، اما یک مشکلی با نسخه چارچوب شما وجود دارد! لطفا ابتدا چارچوب خود را به روز رسانی کنید !',
-
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'کارشناس فعال: %s',
 
@@ -7986,7 +7978,6 @@ Thanks for your help!
         'Resent email to "%s".' => '',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             'بازنشانی و بازکردن دسترسی صاحب یک درخواست اگر آن را به صف دیگری انتقال داده.',
-        'Resource Overview (OTRS Business Solution™)' => '',
         'Responsible Tickets' => 'کارشناس درخواست',
         'Responsible Tickets.' => 'کارشناس درخواست.',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>

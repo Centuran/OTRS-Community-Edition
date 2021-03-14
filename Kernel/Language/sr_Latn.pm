@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.996265489730097;
+    $Self->{Completeness}        = 0.996262317363235;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -4614,14 +4614,6 @@ sub Data {
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'Aktivirajte servise u oblaku da bi omogućili sve OTRS funkcije!',
 
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%s Unapredite na %s sada! %s',
-        'Please verify your license data!' => 'Molimo proverite podatke vaše licence!',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'Licenca za vaš %s ističe uskoro. Molimo da kontaktirate %s radi obnove ugovora!',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            'Ažuriranje za vaš %s je dostupno, ali postoji neusaglašenost sa verzijom vašeg sistema! Molimo vas da prvo ažurirate verziju vašeg sistema!',
-
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'Operater na vezi: %s',
 
@@ -7987,7 +7979,6 @@ Vaša tehnička podrška
         'Resent email to "%s".' => 'Ponovo poslat imejl na "%s".',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             'Resetuje i otključava vlasnika ako je tiketa premešten u drugi red.',
-        'Resource Overview (OTRS Business Solution™)' => 'Pregled resursa (OTRS Business Solution™)',
         'Responsible Tickets' => 'Odgovorni tiketi',
         'Responsible Tickets.' => 'Odgovorni tiketi.',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>
