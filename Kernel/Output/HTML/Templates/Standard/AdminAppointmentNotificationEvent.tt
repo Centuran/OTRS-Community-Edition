@@ -8,8 +8,6 @@
 
 ## nofilter(TidyAll::Plugin::OTRS::TT::ScriptUsage)
 
-[% SET OTRSBusinessLabel = '<strong>OTRS Business Solution</strong>™' %]
-
 [% RenderBlockStart("Overview") %]
 <div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst">
     <h1 class="InvisibleText">[% Translate("Appointment Notification Management") | html %]</h1>
@@ -410,11 +408,6 @@
                             </p>
                         </div>
 [% RenderBlockEnd("TransportRowDisabled") %]
-[% RenderBlockStart("TransportRowRecommendation") %]
-                        <div class="Field Info">
-                            <a href="[% Env("Baselink") %]Action=AdminOTRSBusiness" class="Button"><i class="fa fa-angle-double-up"></i> [% Translate("Upgrade to %s") | html | ReplacePlaceholders(OTRSBusinessLabel) %]</a>
-                        </div>
-[% RenderBlockEnd("TransportRowRecommendation") %]
 [% RenderBlockStart("TransportRowNotActive") %]
                         <div class="Field Info">
                             <a href="[% Env("Baselink") %]Action=AdminCloudServices" class="Button"><i class="fa fa-angle-double-up"></i> [% Translate("Please activate this transport in order to use it.") | html %]</a>

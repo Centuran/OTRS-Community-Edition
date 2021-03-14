@@ -6,11 +6,6 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-[%
-SET OTRSBusinessLabel     = '<strong>OTRS Business Solution</strong>™';
-SET OTRSBusinessLinkLabelWithContractLevel = '<strong><a href="#" class="OTRSBusinessRequired">OTRS Business Solution™ PROFESSIONAL/ENTERPRISE</a></strong>';
-%]
-
 [% RenderBlockStart("Main") %]
 <div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst">
     <h1 class="InvisibleText">[% Translate("Web Service Management") | html %]</h1>
@@ -178,10 +173,6 @@ SET OTRSBusinessLinkLabelWithContractLevel = '<strong><a href="#" class="OTRSBus
             </div>
             <div class="Content">
             [% IF Data.ExampleWebServiceList %]
-                <p class="FieldExplanation">
-                    [% Translate("Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.") | html | ReplacePlaceholders(OTRSBusinessLabel) %]
-                    [% Translate("Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).") | html | ReplacePlaceholders(OTRSBusinessLabel) %]
-                </p>
                 <ul class="ActionList SpacingTop">
                     <li>
                         <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" class="Validate PreventMultipleSubmits">

@@ -6,8 +6,6 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-[% SET OTRSBusinessLabel = '<strong>OTRS Business Solution</strong>™' %]
-
 [% RenderBlockStart("EditMask") %]
 <div class="InnerContent">
     <form id="EditAppointmentForm" class="Validate PreventMultipleSubmits">
@@ -110,9 +108,6 @@
                 <p class="FieldExplanation">
                     [% Translate("This feature is currently not available.") | html %]
                 </p>
-            </div>
-            <div class="Field Info">
-                <a href="[% Env("Baselink") %]Action=AdminOTRSBusiness" class="Button"><i class="fa fa-angle-double-up"></i> [% Translate("Upgrade to %s") | html | ReplacePlaceholders(OTRSBusinessLabel) %]</a>
             </div>
 [% END %]
         </fieldset>
