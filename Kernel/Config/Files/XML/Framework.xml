@@ -6599,7 +6599,7 @@ via the Preferences button after logging in.
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="Frontend::Module###AdminCloudServices" Required="0" Valid="1">
+    <Setting Name="Frontend::Module###AdminCloudServices" Required="0" Valid="0">
         <Description Translatable="1">Frontend module registration for the agent interface.</Description>
         <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
         <Value>
