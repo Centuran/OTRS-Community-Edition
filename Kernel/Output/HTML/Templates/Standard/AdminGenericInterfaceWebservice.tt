@@ -188,10 +188,6 @@
                         </form>
                     </li>
                 </ul>
-            [% ELSE %]
-                <p class="FieldExplanation">
-                    [% Translate("Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.") | html | ReplacePlaceholders(OTRSBusinessLinkLabelWithContractLevel) %]
-                </p>
             [% END %]
             </div>
         </div>
