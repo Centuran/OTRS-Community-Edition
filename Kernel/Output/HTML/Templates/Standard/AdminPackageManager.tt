@@ -192,7 +192,6 @@
                     [% ELSIF Data.Type =='UpgradeIncompatible' %]
                     <h2>[% Translate("Package update requires a patch level update of OTRS.") | html %]</h2>
                     [% END %]
-                    <p>[% Translate("If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.") | html %]</p>
                     <p><strong>[% Translate("Everything else will be done as part of your contract.") | html %]</strong></p>
                     <p class="SpacingTop">[% Translate("Please note that your installed OTRS version is %s.", Config("Version")) | html %]</p>
                     [% IF Data.RequiredMinimumVersion %]

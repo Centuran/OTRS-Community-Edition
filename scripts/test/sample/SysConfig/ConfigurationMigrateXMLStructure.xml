@@ -325,20 +325,6 @@ Description
                     <AccessKey></AccessKey>
                 </NavBar>
                 <NavBar>
-                    <Group>expert</Group>
-                    <GroupRo>stats</GroupRo>
-                    <GroupRo>another</GroupRo>
-                    <Description Translatable="1"></Description>
-                    <Name Translatable="1">Reports (OTRS Business Solution™)</Name>
-                    <Link>Action=AgentStatisticsReports;Subaction=Overview</Link>
-                    <LinkOption>class="OTRSBusinessRequired"</LinkOption>
-                    <NavBar>Reports</NavBar>
-                    <Prio>100</Prio>
-                    <Type></Type>
-                    <Block></Block>
-                    <AccessKey></AccessKey>
-                </NavBar>
-                <NavBar>
                     <GroupRo>stats</GroupRo>
                     <Description Translatable="1"></Description>
                     <Name Translatable="1">Statistics</Name>
@@ -453,14 +439,6 @@ Description
     </ConfigItem>
     <ConfigItem Name="Test28" Required="1" Valid="1" ConfigLevel="200">
         <Description Translatable="1">Wrong Item.</Description>
-        <Group>TestGroup</Group>
-        <SubGroup>SubGroup</SubGroup>
-        <Setting>
-            <String1 Regex="">123</String1>
-        </Setting>
-    </ConfigItem>
-    <ConfigItem Name="Test29" Required="1" Valid="1" ConfigLevel="200">
-        <Description Translatable="1">OTRS Business Solution™, OTRS Verify™ (test utf8).</Description>
         <Group>TestGroup</Group>
         <SubGroup>SubGroup</SubGroup>
         <Setting>
