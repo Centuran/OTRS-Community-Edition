@@ -167,12 +167,12 @@
         </div>
 [% RenderBlockEnd("ActionList") %]
 [% RenderBlockStart("ExampleWebServices") %]
+        [% IF Data.ExampleWebServiceList %]
         <div class="WidgetSimple" id="ExampleWebServices">
             <div class="Header">
                 <h2>[% Translate("Ready2Adopt Web Services") | html %]</h2>
             </div>
             <div class="Content">
-            [% IF Data.ExampleWebServiceList %]
                 <ul class="ActionList SpacingTop">
                     <li>
                         <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" class="Validate PreventMultipleSubmits">
@@ -188,9 +188,9 @@
                         </form>
                     </li>
                 </ul>
-            [% END %]
             </div>
         </div>
+        [% END %]
 [% RenderBlockEnd("ExampleWebServices") %]
 [% RenderBlockStart("Hint") %]
         <div class="WidgetSimple">
