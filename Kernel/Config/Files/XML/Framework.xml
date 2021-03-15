@@ -2697,7 +2697,6 @@
         <Navigation>Core::Package</Navigation>
         <Value>
             <Array>
-                <Item>https://ftp.otrs.org/pub/otrs/misc/packages/repository.xml</Item>
             </Array>
         </Value>
     </Setting>
@@ -2706,7 +2705,8 @@
         <Navigation>Core::Package</Navigation>
         <Value>
             <Hash>
-                <Item Key="ftp://ftp.example.com/pub/otrs/misc/packages/">[Example] ftp://ftp.example.com/</Item>
+                <!--TODO: Add Centuran FTP -->
+                <!--<Item Key="ftp://ftp.example.com/pub/otrs/misc/packages/">[Example] ftp://ftp.example.com/</Item>-->
             </Hash>
         </Value>
     </Setting>
