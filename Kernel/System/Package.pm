@@ -5305,7 +5305,8 @@ framework version.
 Returns:
 
     %RepositoryList = (
-        'http://ftp.otrs.org/pub/otrs/packages' => 'OTRS Freebie Features',
+        'https://otrscommunityedition.com/download/packages/'
+            => '((OTRS)) Community Edition Freebie Features - Soon Available',
         # ...,
     );
 

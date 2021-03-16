@@ -2696,8 +2696,7 @@
         <Navigation>Core::Package</Navigation>
         <Value>
             <Hash>
-                <!--TODO: Add Centuran FTP -->
-                <!--<Item Key="ftp://ftp.example.com/pub/otrs/misc/packages/">[Example] ftp://ftp.example.com/</Item>-->
+                <Item Key="ftp://otrscommunityedition.com/download/packages/">[Example] ftp://otrscommunityedition.com/</Item>
             </Hash>
         </Value>
     </Setting>

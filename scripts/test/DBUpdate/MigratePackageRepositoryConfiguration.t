@@ -33,62 +33,62 @@ my @Tests = (
     {
         Name      => 'No ITSM Repositories',
         ConfigSet => {
-            'http://otrs.com' => 'Test Repository',
+            'http://otrscommunityedition.com/download' => 'Test Repository',
         },
         Success        => 1,
         ExpectedResult => {
-            'http://otrs.com' => 'Test Repository',
+            'http://otrscommunityedition.com/download' => 'Test Repository',
         },
     },
     {
         Name      => 'ITSM 33 Repository',
         ConfigSet => {
-            'http://otrs.com'                               => 'Test Repository',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
+            'http://otrscommunityedition.com/download'                  => 'Test Repository',
+            # 'http://otrscommunityedition.com/download/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            'http://otrscommunityedition.com/download'                                   => 'Test Repository',
+            # "http://otrscommunityedition.com/download/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 33 and 4 Repository',
         ConfigSet => {
-            'http://otrs.com'                               => 'Test Repository',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages4/'  => 'OTRS::ITSM 4 Master',
+            'http://otrscommunityedition.com/download'                    => 'Test Repository',
+            # 'http://otrscommunityedition.com/download/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
+            # 'http://otrscommunityedition.com/download/itsm/packages4/'  => 'OTRS::ITSM 4 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            'http://otrscommunityedition.com/download'                                              => 'Test Repository',
+            "http://otrscommunityedition.com/download/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 33 4 and 5 Repository',
         ConfigSet => {
-            'http://otrs.com'                               => 'Test Repository',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages4/'  => 'OTRS::ITSM 4 Master',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages5/'  => 'OTRS::ITSM 5 Master',
+            'http://otrscommunityedition.com/download'                    => 'Test Repository',
+            # 'http://otrscommunityedition.com/download/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
+            # 'http://otrscommunityedition.com/download/itsm/packages4/'  => 'OTRS::ITSM 4 Master',
+            # 'http://otrscommunityedition.com/download/itsm/packages5/'  => 'OTRS::ITSM 5 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            'http://otrscommunityedition.com/download'                                   => 'Test Repository',
+            # "http://otrscommunityedition.com/download/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 6 Repository',
         ConfigSet => {
-            'http://otrs.com'                              => 'Test Repository',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages6/' => 'OTRS::ITSM 6 Master',
+            'http://otrscommunityedition.com/download'                   => 'Test Repository',
+            # 'http://otrscommunityedition.com/download/itsm/packages6/' => 'OTRS::ITSM 6 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            'http://otrscommunityedition.com/download'                                   => 'Test Repository',
+            # "http://otrscommunityedition.com/download/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
         },
     },
 );

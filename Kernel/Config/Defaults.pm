@@ -1078,14 +1078,12 @@ sub LoadDefaults {
 
     # Package::RepositoryRoot
     # (get online repository list, use the fist availabe result)
-    $Self->{'Package::RepositoryRoot'} = [
-        'https://ftp.otrs.org/pub/otrs/misc/packages/repository.xml',
-    ];
+    $Self->{'Package::RepositoryRoot'} = [];
 
     # Package::RepositoryList
     # (repository list)
 #    $Self->{'Package::RepositoryList'} = {
-#        'ftp://ftp.example.com/pub/otrs/misc/packages/' => '[Example] ftp://ftp.example.com/',
+#        'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/',
 #    };
 
     # Package::Timeout

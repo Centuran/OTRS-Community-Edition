@@ -309,7 +309,7 @@ $Selenium->RunTest(
             Valid => 1,
             Key   => 'Package::RepositoryList',
             Value => {
-                'ftp://ftp.example.com/pub/otrs/misc/packages/' => '[Example] ftp://ftp.example.com/'
+                'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/'
             },
         );
 
@@ -319,7 +319,7 @@ $Selenium->RunTest(
         $NavigateToAdminPackageManager->();
         $Selenium->InputFieldValueSet(
             Element => '#Soruce',
-            Value   => 'ftp://ftp.example.com/pub/otrs/misc/packages/',
+            Value   => 'ftp://otrscommunityedition.com/download/packages/',
         );
 
         $ClickAction->("//button[\@name=\'GetRepositoryList']");
