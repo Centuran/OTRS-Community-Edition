@@ -19,7 +19,9 @@
 [% END %]
 
 [% IF !Config("Secure::DisableBanner") %]
-    <a href="https://otrscommunityedition.com/" target="_blank">
+    <a href="https://otrscommunityedition.com/" target="_blank"
+       title="[% Config("Product") | html %][% IF !Data.IsLoginPage %] [% Config("Version") | html %][% END %]"
+    >
         [% Translate("Powered by %s", "((OTRS)) Community Edition") | html %]
     </a>
     <br>
