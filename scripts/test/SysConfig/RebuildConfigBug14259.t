@@ -20,6 +20,7 @@ my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 my $CacheType = 'UnitTestRebuildConfig';
 
 my $ChildCount = $Kernel::OM->Get('Kernel::Config')->Get('UnitTest::TicketCreateNumber::ChildCount') || 5;
+my $Home       = $Kernel::OM->Get('Kernel::Config')->{Home};
 
 for my $ChildIndex ( 1 .. $ChildCount ) {
 
@@ -41,7 +42,7 @@ for my $ChildIndex ( 1 .. $ChildCount ) {
         $Kernel::OM->ObjectsDiscard();
 
         # Execute console command.
-        `$^X bin/otrs.Console.pl Maint::Config::Rebuild --time 180`;
+        `$^X $Home/bin/otrs.Console.pl Maint::Config::Rebuild --time 180`;
         my $ExitCode = $? >> 8;
 
         $Kernel::OM->Get('Kernel::System::Cache')->Set(
