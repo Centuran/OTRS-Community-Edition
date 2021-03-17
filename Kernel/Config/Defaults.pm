@@ -1078,7 +1078,9 @@ sub LoadDefaults {
 
     # Package::RepositoryRoot
     # (get online repository list, use the fist availabe result)
-    $Self->{'Package::RepositoryRoot'} = [];
+    $Self->{'Package::RepositoryRoot'} = [
+        'https://otrscommunityedition.com/download/packages/repository.xml',
+    ];
 
     # Package::RepositoryList
     # (repository list)

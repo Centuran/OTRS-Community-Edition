@@ -34,7 +34,7 @@ $Helper->ConfigSettingChange(
 my @FrameworkVersionParts = split /\./, $Kernel::OM->Get('Kernel::Config')->Get('Version');
 my $FrameworkVersion      = $FrameworkVersionParts[0];
 
-my $TestRepository      = 'http://otrscommunityedition.com/download';
+my $TestRepository      = 'https://otrscommunityedition.com/download';
 my $TestRepositoryLabel = '((OTRS)) Community Edition Freebie Features';
 my $ITSMLabel           = '((OTRS)) Community Edition::ITSM';
 
@@ -50,7 +50,7 @@ my @Tests = (
     {
         Name      => 'No ITSM Repositories',
         ConfigSet => {
-            $TestRepository => 'Test Repository',
+            $TestRepository             => 'Test Repository',
         },
         Success        => 1,
         ExpectedResult => {
@@ -75,8 +75,8 @@ my @Tests = (
         Name      => 'ITSM 33 and 4 Repository',
         ConfigSet => {
             $TestRepository                    => 'Test Repository',
-            "$TestRepository/itsm/packages33/" => '$ITSMLabel 3.3 Master',
-            # "$TestRepository/itsm/packages4/"  => '$ITSMLabel 4 Master',
+            # "$TestRepository/itsm/packages33/" => "$ITSMLabel 3.3 Master",
+            # "$TestRepository/itsm/packages4/"  => "$ITSMLabel 4 Master",
         },
         Success        => 1,
         ExpectedResult => {

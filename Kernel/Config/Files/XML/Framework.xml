@@ -2688,6 +2688,7 @@
         <Navigation>Core::Package</Navigation>
         <Value>
             <Array>
+                <Item>https://otrscommunityedition.com/download/packages/repository.xml</Item>
             </Array>
         </Value>
     </Setting>
