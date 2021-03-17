@@ -206,7 +206,7 @@ if ( ref $Success eq 'HASH' ) {
         {
             Name        => 'MissingSettings',
             IsValue     => scalar @MissingSettings,
-            ShouldValue => 4,
+            ShouldValue => 3,
         },
         {
             Name        => 'UnsuccessfullSettings',

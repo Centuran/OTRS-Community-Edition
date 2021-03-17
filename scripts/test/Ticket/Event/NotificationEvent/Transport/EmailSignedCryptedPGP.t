@@ -500,19 +500,18 @@ my @Tests = (
         VerifyDecryption => 0,
         Success          => 0,
     },
-    # TODO: Fix
-    # {
-    #     Name => 'PGP expired - send uncrypted',
-    #     Data => {
-    #         Events                   => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-    #         RecipientEmail           => ['pgptest@example.com'],
-    #         EmailSecuritySettings    => ['1'],
-    #         EmailSigningCrypting     => ['PGPCrypt'],
-    #         EmailMissingCryptingKeys => ['Send'],
-    #     },
-    #     VerifyDecryption => 0,
-    #     Success          => 1,
-    # },
+    {
+        Name => 'PGP expired - send uncrypted',
+        Data => {
+            Events                   => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
+            RecipientEmail           => ['pgptest@example.com'],
+            EmailSecuritySettings    => ['1'],
+            EmailSigningCrypting     => ['PGPCrypt'],
+            EmailMissingCryptingKeys => ['Send'],
+        },
+        VerifyDecryption => 0,
+        Success          => 1,
+    },
     {
         Name => 'PGP expired - skip delivery',
         Data => {
