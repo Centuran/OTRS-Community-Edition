@@ -62,31 +62,31 @@ sub Run {
         String => $FileString,
     );
 
-    my $Verified = $PackageObject->PackageVerify(
-        Package   => $FileString,
-        Structure => \%Structure,
-    ) || 'verified';
-    my %VerifyInfo = $PackageObject->PackageVerifyInfo();
-
-    # Check if installation of packages, which are not verified by us, is possible.
-    my $PackageAllowNotVerifiedPackages = $Kernel::OM->Get('Kernel::Config')->Get('Package::AllowNotVerifiedPackages');
-
-    if ( $Verified ne 'verified' ) {
-
-        if ( !$PackageAllowNotVerifiedPackages ) {
-
-            $Self->PrintError(
-                "$Structure{Name}->{Content}-$Structure{Version}->{Content} is not verified by the OTRS Group!\n\nThe installation of packages which are not verified by the OTRS Group is not possible by default."
-            );
-            return $Self->ExitCodeError();
-        }
-        else {
-
-            $Self->Print(
-                "<yellow>Package $Structure{Name}->{Content}-$Structure{Version}->{Content} not verified by the OTRS Group! It is recommended not to use this package.</yellow>\n"
-            );
-        }
-    }
+    # my $Verified = $PackageObject->PackageVerify(
+    #     Package   => $FileString,
+    #     Structure => \%Structure,
+    # ) || 'verified';
+    # my %VerifyInfo = $PackageObject->PackageVerifyInfo();
+    #
+    # # Check if installation of packages, which are not verified by us, is possible.
+    # my $PackageAllowNotVerifiedPackages = $Kernel::OM->Get('Kernel::Config')->Get('Package::AllowNotVerifiedPackages');
+    #
+    # if ( $Verified ne 'verified' ) {
+    #
+    #     if ( !$PackageAllowNotVerifiedPackages ) {
+    #
+    #         $Self->PrintError(
+    #             "$Structure{Name}->{Content}-$Structure{Version}->{Content} is not verified by the OTRS Group!\n\nThe installation of packages which are not verified by the OTRS Group is not possible by default."
+    #         );
+    #         return $Self->ExitCodeError();
+    #     }
+    #     else {
+    #
+    #         $Self->Print(
+    #             "<yellow>Package $Structure{Name}->{Content}-$Structure{Version}->{Content} not verified by the OTRS Group! It is recommended not to use this package.</yellow>\n"
+    #         );
+    #     }
+    # }
 
     # Intro screen.
     if ( $Structure{IntroUpgrade} ) {

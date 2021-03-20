@@ -23,6 +23,8 @@ our @ObjectDependencies = (
 sub Run {
     my ( $Self, %Param ) = @_;
 
+    return '';
+
     # Check if setting is activated.
     my $PackageAllowNotVerifiedPackages = $Kernel::OM->Get('Kernel::Config')->Get('Package::AllowNotVerifiedPackages');
     return '' if !$PackageAllowNotVerifiedPackages;

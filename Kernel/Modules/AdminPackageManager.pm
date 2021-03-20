@@ -200,18 +200,18 @@ sub Run {
         my %Structure = $PackageObject->PackageParse( String => $Package );
 
         # online verification
-        my $Verified = $PackageObject->PackageVerify(
-            Package   => $Package,
-            Structure => \%Structure,
-        ) || 'unknown';
-        my %VerifyInfo = $PackageObject->PackageVerifyInfo();
-
-        # translate description
-        if ( $LayoutObject->{LanguageObject} ) {
-            $VerifyInfo{Description} = $LayoutObject->{LanguageObject}->Translate(
-                $VerifyInfo{Description}
-            );
-        }
+        # my $Verified = $PackageObject->PackageVerify(
+        #     Package   => $Package,
+        #     Structure => \%Structure,
+        # ) || 'unknown';
+        # my %VerifyInfo = $PackageObject->PackageVerifyInfo();
+        #
+        # # translate description
+        # if ( $LayoutObject->{LanguageObject} ) {
+        #     $VerifyInfo{Description} = $LayoutObject->{LanguageObject}->Translate(
+        #         $VerifyInfo{Description}
+        #     );
+        # }
 
         # deploy check
         my $Deployed = $PackageObject->DeployCheck(
@@ -516,16 +516,16 @@ sub Run {
             );
         }
 
-        if ( $Verified ne 'verified' ) {
-
-            $Output .= $LayoutObject->Notify(
-                Priority => 'Error',
-                Data     => "$Name $Version - "
-                    . $LayoutObject->{LanguageObject}->Translate(
-                    "Package not verified by the OTRS Group! It is recommended not to use this package."
-                    ),
-            );
-        }
+        # if ( $Verified ne 'verified' ) {
+        #
+        #     $Output .= $LayoutObject->Notify(
+        #         Priority => 'Error',
+        #         Data     => "$Name $Version - "
+        #             . $LayoutObject->{LanguageObject}->Translate(
+        #             "Package not verified by the OTRS Group! It is recommended not to use this package."
+        #             ),
+        #     );
+        # }
 
         $Output .= $LayoutObject->Output(
             TemplateFile => 'AdminPackageManager',
@@ -1814,32 +1814,26 @@ sub Run {
     }
 
     # FeatureAddons
-    if ( $ConfigObject->Get('Package::ShowFeatureAddons') ) {
-
-        my $FeatureAddonData;
-        if ( !$Self->{CloudServicesDisabled} ) {
-            $FeatureAddonData = $Self->_GetFeatureAddonData();
-        }
-
-        if ( ref $FeatureAddonData eq 'ARRAY' && scalar @{$FeatureAddonData} > 0 ) {
-            $LayoutObject->Block(
-                Name => 'FeatureAddonList',
-            );
-
-            for my $Item ( @{$FeatureAddonData} ) {
-                $LayoutObject->Block(
-                    Name => 'FeatureAddonData',
-                    Data => $Item,
-                );
-            }
-        }
-    }
-
-    if ( $Self->{CloudServicesDisabled} ) {
-        $LayoutObject->Block(
-            Name => 'CloudServicesWarning',
-        );
-    }
+    # if ( $ConfigObject->Get('Package::ShowFeatureAddons') ) {
+    #
+    #     my $FeatureAddonData;
+    #     if ( !$Self->{CloudServicesDisabled} ) {
+    #         $FeatureAddonData = $Self->_GetFeatureAddonData();
+    #     }
+    #
+    #     if ( ref $FeatureAddonData eq 'ARRAY' && scalar @{$FeatureAddonData} > 0 ) {
+    #         $LayoutObject->Block(
+    #             Name => 'FeatureAddonList',
+    #         );
+    #
+    #         for my $Item ( @{$FeatureAddonData} ) {
+    #             $LayoutObject->Block(
+    #                 Name => 'FeatureAddonData',
+    #                 Data => $Item,
+    #             );
+    #         }
+    #     }
+    # }
 
     # Check if OTRS Daemon is running in the background.
     #   Get daemon state from the cache.
@@ -2078,28 +2072,28 @@ sub _InstallHandling {
     my %Structure = $PackageObject->PackageParse( String => $Param{Package} );
 
     # online verification
-    my $Verified = $PackageObject->PackageVerify(
-        Package   => $Param{Package},
-        Structure => \%Structure,
-    ) || 'verified';
-    my %VerifyInfo = $PackageObject->PackageVerifyInfo();
+    # my $Verified = $PackageObject->PackageVerify(
+    #     Package   => $Param{Package},
+    #     Structure => \%Structure,
+    # ) || 'verified';
+    # my %VerifyInfo = $PackageObject->PackageVerifyInfo();
 
     # translate description
-    if ( $LayoutObject->{LanguageObject} ) {
-        $VerifyInfo{Description} = $LayoutObject->{LanguageObject}->Translate(
-            $VerifyInfo{Description},
-            $VerifyInfo{PackageInstallPossible} ? '' : $LayoutObject->{Baselink},
-        );
-    }
+    # if ( $LayoutObject->{LanguageObject} ) {
+    #     $VerifyInfo{Description} = $LayoutObject->{LanguageObject}->Translate(
+    #         $VerifyInfo{Description},
+    #         $VerifyInfo{PackageInstallPossible} ? '' : $LayoutObject->{Baselink},
+    #     );
+    # }
 
     # vendor screen
-    if ( !$IntroInstallVendor && !$IntroInstallPre && $Verified ne 'verified' ) {
+    if ( !$IntroInstallVendor && !$IntroInstallPre ) {
 
         $LayoutObject->Block(
             Name => 'Intro',
             Data => {
                 %Param,
-                %VerifyInfo,
+                # %VerifyInfo,
                 Subaction => $Self->{Subaction},
                 Type      => 'IntroInstallVendor',
                 Name      => $Structure{Name}->{Content},
@@ -2107,13 +2101,13 @@ sub _InstallHandling {
             },
         );
 
-        if ( $VerifyInfo{PackageInstallPossible} ) {
+        # if ( $VerifyInfo{PackageInstallPossible} ) {
 
             $LayoutObject->Block(
                 Name => 'IntroForm',
                 Data => {
                     %Param,
-                    %VerifyInfo,
+                    # %VerifyInfo,
                     Subaction => $Self->{Subaction},
                     Type      => 'IntroInstallVendor',
                     Name      => $Structure{Name}->{Content},
@@ -2124,7 +2118,7 @@ sub _InstallHandling {
             $LayoutObject->Block(
                 Name => 'IntroCancel',
             );
-        }
+        # }
 
         my $Output = $LayoutObject->Header();
         $Output .= $LayoutObject->NavigationBar();
@@ -2145,17 +2139,17 @@ sub _InstallHandling {
     }
 
     # get cloud repositories
-    my $RepositoryCloudList;
-    if ( !$Self->{CloudServicesDisabled} ) {
-        $RepositoryCloudList = $PackageObject->RepositoryCloudList();
-    }
+    # my $RepositoryCloudList;
+    # if ( !$Self->{CloudServicesDisabled} ) {
+    #     $RepositoryCloudList = $PackageObject->RepositoryCloudList();
+    # }
 
     # in case Source is present on repository cloud list
     # the package should be retrieved using the CloudService backend
-    my $FromCloud = 0;
-    if ( $Param{Source} && $RepositoryCloudList->{ $Param{Source} } ) {
-        $FromCloud = 1;
-    }
+    # my $FromCloud = 0;
+    # if ( $Param{Source} && $RepositoryCloudList->{ $Param{Source} } ) {
+    #     $FromCloud = 1;
+    # }
 
     my %Response = $PackageObject->AnalyzePackageFrameworkRequirements(
         Framework => $Structure{Framework},
@@ -2203,11 +2197,11 @@ sub _InstallHandling {
             },
         );
 
-        if ( $Verified eq 'verified' && !$Self->{CloudServicesDisabled} ) {
-            $LayoutObject->Block(
-                Name => 'OTRSVerifyLogo',
-            );
-        }
+        # if ( $Verified eq 'verified' && !$Self->{CloudServicesDisabled} ) {
+        #     $LayoutObject->Block(
+        #         Name => 'OTRSVerifyLogo',
+        #     );
+        # }
 
         $LayoutObject->Block(
             Name => 'IntroForm',
@@ -2238,7 +2232,7 @@ sub _InstallHandling {
     elsif (
         $PackageObject->PackageInstall(
             String    => $Param{Package},
-            FromCloud => $FromCloud
+            # FromCloud => $FromCloud
         )
         )
     {
@@ -2276,11 +2270,11 @@ sub _InstallHandling {
                 },
             );
 
-            if ( $Verified eq 'verified' ) {
-                $LayoutObject->Block(
-                    Name => 'OTRSVerifyLogo',
-                );
-            }
+            # if ( $Verified eq 'verified' ) {
+            #     $LayoutObject->Block(
+            #         Name => 'OTRSVerifyLogo',
+            #     );
+            # }
 
             my $Output = $LayoutObject->Header();
             $Output .= $LayoutObject->NavigationBar();
