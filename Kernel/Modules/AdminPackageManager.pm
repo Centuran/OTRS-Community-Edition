@@ -199,6 +199,7 @@ sub Run {
         # parse package
         my %Structure = $PackageObject->PackageParse( String => $Package );
 
+        # TODO: PackageVerification
         # online verification
         # my $Verified = $PackageObject->PackageVerify(
         #     Package   => $Package,
@@ -516,6 +517,7 @@ sub Run {
             );
         }
 
+        # TODO: PackageVerification
         # if ( $Verified ne 'verified' ) {
         #
         #     $Output .= $LayoutObject->Notify(
@@ -1813,7 +1815,7 @@ sub Run {
         }
     }
 
-    # FeatureAddons
+    # TODO: FeatureAddons
     # if ( $ConfigObject->Get('Package::ShowFeatureAddons') ) {
     #
     #     my $FeatureAddonData;
@@ -2071,6 +2073,7 @@ sub _InstallHandling {
     # parse package
     my %Structure = $PackageObject->PackageParse( String => $Param{Package} );
 
+    # TODO: PackageVerification
     # online verification
     # my $Verified = $PackageObject->PackageVerify(
     #     Package   => $Param{Package},
@@ -2078,6 +2081,7 @@ sub _InstallHandling {
     # ) || 'verified';
     # my %VerifyInfo = $PackageObject->PackageVerifyInfo();
 
+    # TODO: PackageVerification
     # translate description
     # if ( $LayoutObject->{LanguageObject} ) {
     #     $VerifyInfo{Description} = $LayoutObject->{LanguageObject}->Translate(
@@ -2101,6 +2105,7 @@ sub _InstallHandling {
             },
         );
 
+        # TODO: PackageVerification
         # if ( $VerifyInfo{PackageInstallPossible} ) {
 
             $LayoutObject->Block(
@@ -2138,6 +2143,7 @@ sub _InstallHandling {
         );
     }
 
+    # TODO: PackageVerification
     # get cloud repositories
     # my $RepositoryCloudList;
     # if ( !$Self->{CloudServicesDisabled} ) {
@@ -2197,6 +2203,7 @@ sub _InstallHandling {
             },
         );
 
+        # TODO: PackageVerification
         # if ( $Verified eq 'verified' && !$Self->{CloudServicesDisabled} ) {
         #     $LayoutObject->Block(
         #         Name => 'OTRSVerifyLogo',
@@ -2232,6 +2239,7 @@ sub _InstallHandling {
     elsif (
         $PackageObject->PackageInstall(
             String    => $Param{Package},
+            # TODO: PackageVerification
             # FromCloud => $FromCloud
         )
         )
@@ -2270,6 +2278,7 @@ sub _InstallHandling {
                 },
             );
 
+            # TODO: PackageVerification
             # if ( $Verified eq 'verified' ) {
             #     $LayoutObject->Block(
             #         Name => 'OTRSVerifyLogo',

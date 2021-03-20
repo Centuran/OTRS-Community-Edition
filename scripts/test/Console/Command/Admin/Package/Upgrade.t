@@ -16,6 +16,13 @@ my $Helper        = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 my $PackageObject = $Kernel::OM->Get('Kernel::System::Package');
 my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
 
+# TODO: PackageVerification
+# $Helper->ConfigSettingChange(
+#     Valid => 1,
+#     Key   => 'Package::AllowNotVerifiedPackages',
+#     Value => 0,
+# );
+
 my $RandomID = $Helper->GetRandomID();
 
 # Override Request() from WebUserAgent to always return some test data without making any
@@ -51,6 +58,7 @@ my $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
+    # TODO: PackageVerification - for now test has reversed purpose
     0,
     "Admin::Package::Upgrade exit code - package upgraded",
 );
@@ -59,6 +67,7 @@ $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
+    # TODO: PackageVerification - for now test has reversed purpose
     0,
     "Admin::Package::Upgrade run without error",
 );

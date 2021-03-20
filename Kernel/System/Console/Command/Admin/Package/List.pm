@@ -85,6 +85,7 @@ sub Run {
 
     my $PackageNameOption             = $Self->GetOption('package-name');
     my $ShowDeploymentInfoOption      = $Self->GetOption('show-deployment-info');
+    # TODO: PackageVerification
     # my $ShowVerificationInfoOption    = $Self->GetOption('show-verification-info');
     # my $DeleteVerificationCacheOption = $Self->GetOption('delete-verification-cache');
 

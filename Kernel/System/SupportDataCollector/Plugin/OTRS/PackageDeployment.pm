@@ -50,6 +50,7 @@ sub Run {
             Result  => 'SCALAR',
         );
 
+        # TODO: PackageVerification
         # my $Verified = $PackageObject->PackageVerify(
         #     Package => $PackageContent,
         #     Name    => $Package->{Name}->{Content},

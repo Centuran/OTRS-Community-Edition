@@ -31,6 +31,13 @@ if ( $NumberOfPackagesInstalled > 8 ) {
     return 1;
 }
 
+# TODO: PackageVerification
+# $Helper->ConfigSettingChange(
+#     Valid => 1,
+#     Key   => 'Package::AllowNotVerifiedPackages',
+#     Value => 0,
+# );
+
 my $RandomID = $Helper->GetRandomID();
 
 # Override Request() from WebUserAgent to always return some test data without making any

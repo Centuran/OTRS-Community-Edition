@@ -62,6 +62,7 @@ sub Run {
         String => $FileString,
     );
 
+    # TODO: PackageVerification
     # my $Verified = $PackageObject->PackageVerify(
     #     Package   => $FileString,
     #     Structure => \%Structure,
