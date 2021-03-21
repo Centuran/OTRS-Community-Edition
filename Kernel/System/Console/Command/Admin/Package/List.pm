@@ -155,6 +155,7 @@ sub Run {
             }
         }
 
+        # TODO: PackageVerification
         # if ($ShowVerificationInfoOption) {
         #
         #     if ( !%VerificationInfo ) {

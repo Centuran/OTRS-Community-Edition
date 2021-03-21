@@ -1654,11 +1654,12 @@ sub Run {
         );
     }
 
+    # TODO: PackageVerification
     # verify packages if we have some
-    my %VerificationData;
-    if (@RepositoryList) {
-        %VerificationData = $PackageObject->PackageVerifyAll();
-    }
+    # my %VerificationData;
+    # if (@RepositoryList) {
+    #     %VerificationData = $PackageObject->PackageVerifyAll();
+    # }
 
     my %NotVerifiedPackages;
     my %UnknownVerficationPackages;
@@ -1679,16 +1680,17 @@ sub Run {
             },
         );
 
-        if (
-            $VerificationData{ $Package->{Name}->{Content} }
-            && $VerificationData{ $Package->{Name}->{Content} } eq 'verified'
-            && !$Self->{CloudServicesDisabled}
-            )
-        {
-            $LayoutObject->Block(
-                Name => 'ShowLocalPackageVerifyLogo',
-            );
-        }
+        # TODO: PackageVerification
+        # if (
+        #     $VerificationData{ $Package->{Name}->{Content} }
+        #     && $VerificationData{ $Package->{Name}->{Content} } eq 'verified'
+        #     && !$Self->{CloudServicesDisabled}
+        #     )
+        # {
+        #     $LayoutObject->Block(
+        #         Name => 'ShowLocalPackageVerifyLogo',
+        #     );
+        # }
 
         # show documentation link
         my %DocFile = $Self->_DocumentationGet( Filelist => $Package->{Filelist} );
@@ -1759,20 +1761,21 @@ sub Run {
             );
         }
 
-        if (
-            $VerificationData{ $Package->{Name}->{Content} }
-            && $VerificationData{ $Package->{Name}->{Content} } eq 'not_verified'
-            )
-        {
-            $NotVerifiedPackages{ $Package->{Name}->{Content} } = $Package->{Version}->{Content};
-        }
-        elsif (
-            $VerificationData{ $Package->{Name}->{Content} }
-            && $VerificationData{ $Package->{Name}->{Content} } eq 'unknown'
-            )
-        {
-            $UnknownVerficationPackages{ $Package->{Name}->{Content} } = $Package->{Version}->{Content};
-        }
+        # TODO: PackageVerification
+        # if (
+        #     $VerificationData{ $Package->{Name}->{Content} }
+        #     && $VerificationData{ $Package->{Name}->{Content} } eq 'not_verified'
+        #     )
+        # {
+        #     $NotVerifiedPackages{ $Package->{Name}->{Content} } = $Package->{Version}->{Content};
+        # }
+        # elsif (
+        #     $VerificationData{ $Package->{Name}->{Content} }
+        #     && $VerificationData{ $Package->{Name}->{Content} } eq 'unknown'
+        #     )
+        # {
+        #     $UnknownVerficationPackages{ $Package->{Name}->{Content} } = $Package->{Version}->{Content};
+        # }
 
     }
 

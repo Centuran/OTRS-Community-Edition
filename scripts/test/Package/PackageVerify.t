@@ -22,6 +22,7 @@ $OTRSVersion =~ s{ (\d+ \. \d+) .+ }{$1}msx;
 # Add x as patch level version.
 $OTRSVersion .= '.x';
 
+# TODO: PackageVerification
 # PackageVerification not possible with disabled cloud services
 
 # my $String = '<?xml version="1.0" encoding="utf-8" ?>

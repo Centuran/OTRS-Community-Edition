@@ -2023,6 +2023,9 @@ returns the info of the latest PackageVerify()
 sub PackageVerifyInfo {
     my ( $Self, %Param ) = @_;
 
+    # TODO: PackageVerification
+    return ();
+
     return () if !$Self->{PackageVerifyInfo};
     return () if ref $Self->{PackageVerifyInfo} ne 'HASH';
     return () if !%{ $Self->{PackageVerifyInfo} };
@@ -2049,6 +2052,9 @@ returns:
 
 sub PackageVerifyAll {
     my ( $Self, %Param ) = @_;
+
+    # TODO: PackageVerification
+    return ();
 
     # get installed package list
     my @PackageList = $Self->RepositoryList(
