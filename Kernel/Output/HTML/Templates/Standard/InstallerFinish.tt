@@ -56,12 +56,6 @@
                         <span class="Emphasis">[% Data.Password | html %]</span>
                     </div>
                     <div class="Clear"></div>
-
-                    <div class="Field Center">
-                        <p>((enjoy))</p>
-                        <p>[% Translate("Your OTRS Team") | html %]</p>
-                    </div>
-                    <div class="Clear"></div>
                 </fieldset>
             </div>
         </div>
