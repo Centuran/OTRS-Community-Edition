@@ -116,11 +116,15 @@ sub Run {
     # Get SysConfig object.
     my $SysConfigObject = $Kernel::OM->Get('Kernel::System::SysConfig');
 
+    # Set cleanup flag on first run after update
+    my $Cleanup = $Self->GetOption('cleanup')
+        || $Kernel::OM->Get('Kernel::Config')->Get('OTRSBusiness::ReleaseChannel');
+
     if (
         !$SysConfigObject->ConfigurationXML2DB(
             UserID  => 1,
             Force   => 1,
-            CleanUp => $Self->GetOption('cleanup'),
+            CleanUp => $Cleanup,
         )
         )
     {
@@ -177,3 +181,4 @@ sub PostRun {
 }
 
 1;
+
