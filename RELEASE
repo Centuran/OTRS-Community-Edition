@@ -1,2 +1,2 @@
-PRODUCT = OTRS
+PRODUCT = ((OTRS)) Community Edition
 VERSION = 6.0.x git

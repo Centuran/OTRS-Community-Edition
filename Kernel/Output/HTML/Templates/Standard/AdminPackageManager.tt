@@ -192,7 +192,6 @@
                     [% ELSIF Data.Type =='UpgradeIncompatible' %]
                     <h2>[% Translate("Package update requires a patch level update of OTRS.") | html %]</h2>
                     [% END %]
-                    <p><strong>[% Translate("Everything else will be done as part of your contract.") | html %]</strong></p>
                     <p class="SpacingTop">[% Translate("Please note that your installed OTRS version is %s.", Config("Version")) | html %]</p>
                     [% IF Data.RequiredMinimumVersion %]
                     <p><span class="MinimumRequired">[% Translate("To install this package, you need to update OTRS to version %s or newer.", Data.RequiredMinimumVersion) | html %]</span></p>
@@ -275,9 +274,10 @@
                     <h2>[% Translate(Data.Title) | html %]</h2>
                 </div>
                 <div class="Content">
-[% RenderBlockStart("OTRSVerifyLogo") %]
+[%# TODO: Eventually replace with ours? %]
+[%# RenderBlockStart("OTRSVerifyLogo") %]
                     <img src="[% Config("Frontend::ImagePath") %]/otrs-verify.png" class="OTRSVerifyLogoBig" />
-[% RenderBlockEnd("OTRSVerifyLogo") %]
+[%# RenderBlockEnd("OTRSVerifyLogo") %]
                     <div class="IntroInstall [% Data.VerifyCSSClass | html %]">
                         <h3>[% Data.Name | html %] [% Data.Version | html %]</h3>
                         [% Data.Description %]
@@ -454,9 +454,10 @@
 [% RenderBlockStart("ShowLocalPackage") %]
                             <tr>
                                 <td>
-[% RenderBlockStart("ShowLocalPackageVerifyLogo") %]
+[%# TODO: Eventually replace with ours? %]
+[%# RenderBlockStart("ShowLocalPackageVerifyLogo") %]
                                     <img src="[% Config("Frontend::ImagePath") %]/otrs-verify-small.png" class="OTRSVerifyLogo" alt="[% Translate("This package is verified by OTRSverify (tm)") | html %]" />
-[% RenderBlockEnd("ShowLocalPackageVerifyLogo") %]
+[%# RenderBlockEnd("ShowLocalPackageVerifyLogo") %]
                                     <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=View;Name=[% Data.Name | uri %];Version=[% Data.Version | uri %]">[% Data.Name | html %]</a>
                                 </td>
                                 <td>

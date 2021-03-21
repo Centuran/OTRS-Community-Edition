@@ -188,6 +188,7 @@
                         </form>
                     </li>
                 </ul>
+            [% END %]
             </div>
         </div>
         [% END %]
