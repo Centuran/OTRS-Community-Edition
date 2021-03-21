@@ -1,4 +1,4 @@
-The following persons contributed to OTRS:
+The following persons contributed to ((OTRS)) Community Edition and OTRS:
 
 * 1soproni <csaba@sopron.hu>
 * Alex Kantchev <ak@otrs.com>
@@ -39,6 +39,7 @@ The following persons contributed to OTRS:
 * Jens Pfeifer <jens.pfeifer@otrs.com>
 * Johannes Hörburger <johannes.hoerburger@otrs.com>
 * Johannes Nickel <hanne_hal@me.com>
+* Kamil Głuszak <kamil.gluszak@centuran.com>
 * Keith Moore <tenareth@gmail.com>
 * Luca Maranzano <liuk@linux.it>
 * Manuel Hecht <manuel.hecht@otrs.com>
@@ -54,6 +55,7 @@ The following persons contributed to OTRS:
 * Martin Gruner <martin.gruner@otrs.com>
 * Mathias Bräunling <mathias.braeunling@otrs.com>
 * Michael Tänzer <neo@nhng.de>
+* Michał Wojciechowski <michal.wojciechowski@centuran.com>
 * Michiel Beijen <michiel.beijen@otrs.com>
 * Milan Rakic <mrakic@s7designcreative.com>
 * Moritz Lenz <mlenz@noris.net>
