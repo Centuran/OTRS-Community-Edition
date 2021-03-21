@@ -31,18 +31,12 @@ if ( $NumberOfPackagesInstalled > 8 ) {
     return 1;
 }
 
-# Make sure to enable cloud services.
-$Helper->ConfigSettingChange(
-    Valid => 1,
-    Key   => 'CloudServices::Disabled',
-    Value => 0,
-);
-
-$Helper->ConfigSettingChange(
-    Valid => 1,
-    Key   => 'Package::AllowNotVerifiedPackages',
-    Value => 0,
-);
+# TODO: PackageVerification
+# $Helper->ConfigSettingChange(
+#     Valid => 1,
+#     Key   => 'Package::AllowNotVerifiedPackages',
+#     Value => 0,
+# );
 
 my $RandomID = $Helper->GetRandomID();
 
@@ -208,25 +202,10 @@ $Selenium->RunTest(
             'Message for aborting installation of package is displayed'
         );
 
-        # Continue with package installation.
-        $Helper->ConfigSettingChange(
-            Valid => 1,
-            Key   => 'Package::AllowNotVerifiedPackages',
-            Value => 1,
-        );
-
         # Allow web server to pick up the changed config setting.
         sleep 1;
 
         $NavigateToAdminPackageManager->();
-
-        # Check for notification.
-        $Self->True(
-            $Selenium->execute_script(
-                'return $("div.MessageBox.Error p:contains(\'The installation of packages which are not verified by the OTRS Group is activated. These packages could threaten your whole system! It is recommended not to use unverified packages.\')").length',
-            ),
-            'Install warning for not verified packages is displayed',
-        );
 
         $Selenium->find_element( '#FileUpload', 'css' )->send_keys($Location);
 
@@ -309,7 +288,7 @@ $Selenium->RunTest(
             Valid => 1,
             Key   => 'Package::RepositoryList',
             Value => {
-                'ftp://ftp.example.com/pub/otrs/misc/packages/' => '[Example] ftp://ftp.example.com/'
+                'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/'
             },
         );
 
@@ -319,7 +298,7 @@ $Selenium->RunTest(
         $NavigateToAdminPackageManager->();
         $Selenium->InputFieldValueSet(
             Element => '#Soruce',
-            Value   => 'ftp://ftp.example.com/pub/otrs/misc/packages/',
+            Value   => 'ftp://otrscommunityedition.com/download/packages/',
         );
 
         $ClickAction->("//button[\@name=\'GetRepositoryList']");

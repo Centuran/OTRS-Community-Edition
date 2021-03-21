@@ -335,30 +335,6 @@ Description
                     <Hash>
                         <Item Key="Group">
                             <Array>
-                                <Item>expert</Item>
-                            </Array>
-                        </Item>
-                        <Item Key="GroupRo">
-                            <Array>
-                                <Item>stats</Item>
-                                <Item>another</Item>
-                            </Array>
-                        </Item>
-                        <Item Key="Description" Translatable="1"></Item>
-                        <Item Key="Name" Translatable="1">Reports (OTRS Business Solution™)</Item>
-                        <Item Key="Link">Action=AgentStatisticsReports;Subaction=Overview</Item>
-                        <Item Key="LinkOption">class="OTRSBusinessRequired"</Item>
-                        <Item Key="NavBar">Reports</Item>
-                        <Item Key="Type"></Item>
-                        <Item Key="Block"></Item>
-                        <Item Key="AccessKey"></Item>
-                        <Item Key="Prio">100</Item>
-                    </Hash>
-                </Item>
-                <Item>
-                    <Hash>
-                        <Item Key="Group">
-                            <Array>
                                 <Item>admin</Item>
                                 <Item>expert</Item>
                             </Array>
@@ -616,13 +592,6 @@ Description
     </Setting>
     <Setting Name="Test28" Required="1" Valid="1" ConfigLevel="200">
         <Description Translatable="1">Wrong Item.</Description>
-        <Navigation>SubGroup</Navigation>
-        <Value>
-            <String1 Regex="">123</String1>
-        </Value>
-    </Setting>
-    <Setting Name="Test29" Required="1" Valid="1" ConfigLevel="200">
-        <Description Translatable="1">OTRS Business Solution™, OTRS Verify™ (test utf8).</Description>
         <Navigation>SubGroup</Navigation>
         <Value>
             <String1 Regex="">123</String1>

@@ -34,80 +34,87 @@ $Helper->ConfigSettingChange(
 my @FrameworkVersionParts = split /\./, $Kernel::OM->Get('Kernel::Config')->Get('Version');
 my $FrameworkVersion      = $FrameworkVersionParts[0];
 
+my $TestRepository      = 'https://otrscommunityedition.com/download';
+my $TestRepositoryLabel = '((OTRS)) Community Edition Freebie Features';
+my $ITSMLabel           = '((OTRS)) Community Edition::ITSM';
+
 my @Tests = (
     {
         Name           => 'No Repositories',
         ConfigSet      => {},
         Success        => 1,
         ExpectedResult => {
-            'http://ftp.otrs.org/pub/otrs/packages/' => 'OTRS Freebie Features'
+            "$TestRepository/packages/" => $TestRepositoryLabel
         },
     },
     {
         Name      => 'No ITSM Repositories',
         ConfigSet => {
-            'http://otrs.com' => 'Test Repository',
+            $TestRepository             => 'Test Repository',
         },
         Success        => 1,
         ExpectedResult => {
-            'http://ftp.otrs.org/pub/otrs/packages/' => 'OTRS Freebie Features',
-            'http://otrs.com'                        => 'Test Repository',
+            $TestRepository             => 'Test Repository',
+            "$TestRepository/packages/" => $TestRepositoryLabel,
         },
     },
     {
         Name      => 'ITSM 33 Repository',
         ConfigSet => {
-            'http://otrs.com'                               => 'Test Repository',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
+            $TestRepository        => 'Test Repository',
+            # "$TestRepository/itsm/packages33/" => '$ITSMLabel 3.3 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            'http://ftp.otrs.org/pub/otrs/packages/'                       => 'OTRS Freebie Features',
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            "$TestRepository/packages/"                       => $TestRepositoryLabel,
+            $TestRepository                                   => 'Test Repository',
+            # "$TestRepository/itsm/packages$FrameworkVersion/" => "$ITSMLabel $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 33 and 4 Repository',
         ConfigSet => {
-            'http://otrs.com'                               => 'Test Repository',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages4/'  => 'OTRS::ITSM 4 Master',
+            $TestRepository                    => 'Test Repository',
+            # "$TestRepository/itsm/packages33/" => "$ITSMLabel 3.3 Master",
+            # "$TestRepository/itsm/packages4/"  => "$ITSMLabel 4 Master",
         },
         Success        => 1,
         ExpectedResult => {
-            'http://ftp.otrs.org/pub/otrs/packages/'                       => 'OTRS Freebie Features',
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            "$TestRepository/packages/"                       => $TestRepositoryLabel,
+            $TestRepository                                   => 'Test Repository',
+            # "$TestRepository/itsm/packages$FrameworkVersion/" => "$ITSMLabel $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 33 4 and 5 Repository',
         ConfigSet => {
-            'http://otrs.com'                               => 'Test Repository',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages33/' => 'OTRS::ITSM 3.3 Master',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages4/'  => 'OTRS::ITSM 4 Master',
-            'http://ftp.otrs.org/pub/otrs/itsm/packages5/'  => 'OTRS::ITSM 5 Master',
+            $TestRepository                    => 'Test Repository',
+            # "$TestRepository/itsm/packages33/" => '$ITSMLabel 3.3 Master',
+            # "$TestRepository/itsm/packages4/"  => '$ITSMLabel 4 Master',
+            # "$TestRepository/itsm/packages5/"  => '$ITSMLabel 5 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            'http://ftp.otrs.org/pub/otrs/packages/'                       => 'OTRS Freebie Features',
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            "$TestRepository/packages/" => $TestRepositoryLabel,
+            $TestRepository             => 'Test Repository',
+            # "$TestRepository/itsm/packages$FrameworkVersion/"
+            #       => "$ITSMLabel $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 6 Repository',
         ConfigSet => {
-            'http://ftp.otrs.org/pub/otrs/packages/'                       => 'OTRS Freebie Features',
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            "$TestRepository/packages/" => $TestRepositoryLabel,
+            $TestRepository             => 'Test Repository',
+            # "$TestRepository/itsm/packages$FrameworkVersion/"
+            #       => "$ITSMLabel $FrameworkVersion Master",
         },
         Success        => 1,
         ExpectedResult => {
-            'http://ftp.otrs.org/pub/otrs/packages/'                       => 'OTRS Freebie Features',
-            'http://otrs.com'                                              => 'Test Repository',
-            "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/" => "OTRS::ITSM $FrameworkVersion Master",
+            "$TestRepository/packages/" => $TestRepositoryLabel,
+            $TestRepository             => 'Test Repository',
+            # "$TestRepository/itsm/packages$FrameworkVersion/"
+            #       => "$ITSMLabel $FrameworkVersion Master",
         },
     },
 );

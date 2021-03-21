@@ -16,18 +16,12 @@ my $Helper        = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 my $PackageObject = $Kernel::OM->Get('Kernel::System::Package');
 my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
 
-# Make sure to enable cloud services.
-$Helper->ConfigSettingChange(
-    Valid => 1,
-    Key   => 'CloudServices::Disabled',
-    Value => 0,
-);
-
-$Helper->ConfigSettingChange(
-    Valid => 1,
-    Key   => 'Package::AllowNotVerifiedPackages',
-    Value => 0,
-);
+# TODO: PackageVerification
+# $Helper->ConfigSettingChange(
+#     Valid => 1,
+#     Key   => 'Package::AllowNotVerifiedPackages',
+#     Value => 0,
+# );
 
 my $RandomID = $Helper->GetRandomID();
 
@@ -64,16 +58,18 @@ my $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
-    1,
-    "Admin::Package::Upgrade exit code - package is not verified",
+    # TODO: PackageVerification - for now test has reversed purpose
+    0,
+    "Admin::Package::Upgrade exit code - package upgraded",
 );
 
 $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
-    1,
-    "Admin::Package::Upgrade exit code without arguments",
+    # TODO: PackageVerification - for now test has reversed purpose
+    0,
+    "Admin::Package::Upgrade run without error",
 );
 
 1;

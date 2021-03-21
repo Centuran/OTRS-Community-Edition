@@ -50,14 +50,15 @@ sub Run {
             Result  => 'SCALAR',
         );
 
-        my $Verified = $PackageObject->PackageVerify(
-            Package => $PackageContent,
-            Name    => $Package->{Name}->{Content},
-        ) || 'unknown';
-
-        if ( $Verified ne 'verified' ) {
-            push @NotVerifiedPackages, "$Package->{Name}->{Content} $Package->{Version}->{Content}";
-        }
+        # TODO: PackageVerification
+        # my $Verified = $PackageObject->PackageVerify(
+        #     Package => $PackageContent,
+        #     Name    => $Package->{Name}->{Content},
+        # ) || 'unknown';
+        #
+        # if ( $Verified ne 'verified' ) {
+        #     push @NotVerifiedPackages, "$Package->{Name}->{Content} $Package->{Version}->{Content}";
+        # }
 
         my %PackageStructure = $PackageObject->PackageParse(
             String => $PackageContent,
