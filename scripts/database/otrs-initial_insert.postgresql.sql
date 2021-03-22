@@ -212,7 +212,7 @@ Your Ticket-Team
 -- ----------------------------------------------------------
 INSERT INTO system_address (value0, value1, comments, valid_id, queue_id, create_by, create_time, change_by, change_time)
     VALUES
-    ('otrs@localhost', 'OTRS System', 'Standard Address.', 1, 1, 1, current_timestamp, 1, current_timestamp);
+    ('otrsce@localhost', 'Support System', 'Standard Address.', 1, 1, 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table follow_up_possible
 -- ----------------------------------------------------------
@@ -336,9 +336,9 @@ You wrote:
 
 Your email will be answered by a human ASAP
 
-Have fun with OTRS! :-)
+Have fun with ((OTRS)) Community Edition!
 
-Your OTRS Team
+Your Support Team
 ', 'RE: <OTRS_CUSTOMER_SUBJECT[24]>', 'text/plain', '', 1, 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table auto_response
@@ -351,7 +351,7 @@ INSERT INTO auto_response (type_id, system_address_id, name, text0, text1, conte
 
 Please create a new ticket.
 
-Your OTRS Team
+Your Support Team
 ', 'Your email has been rejected! (RE: <OTRS_CUSTOMER_SUBJECT[24]>)', 'text/plain', '', 1, 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table auto_response
@@ -365,9 +365,9 @@ You wrote:
 
 Your email will be answered by a human ASAP.
 
-Have fun with OTRS!
+Have fun with ((OTRS)) Community Edition!
 
-Your OTRS Team
+Your Support Team
 ', 'RE: <OTRS_CUSTOMER_SUBJECT[24]>', 'text/plain', '', 1, 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table auto_response
@@ -383,9 +383,9 @@ You wrote:
 
 Your email will be answered by a human ASAP.
 
-Have fun with OTRS!
+Have fun with ((OTRS)) Community Edition!
 
-Your OTRS Team
+Your Support Team
 ', 'New ticket has been created! (RE: <OTRS_CUSTOMER_SUBJECT[24]>)', 'text/plain', '', 1, 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table ticket_type
@@ -770,7 +770,7 @@ INSERT INTO article_sender_type (name, valid_id, create_by, create_time, change_
 -- ----------------------------------------------------------
 INSERT INTO ticket (tn, queue_id, ticket_lock_id, user_id, responsible_user_id, ticket_priority_id, ticket_state_id, title, timeout, until_time, escalation_time, escalation_response_time, escalation_update_time, escalation_solution_time, create_by, create_time, change_by, change_time)
     VALUES
-    ('2015071510123456', 2, 1, 1, 1, 3, 1, 'Welcome to OTRS!', 0, 0, 0, 0, 0, 0, 1, current_timestamp, 1, current_timestamp);
+    ('2021031415926535', 2, 1, 1, 1, 3, 1, 'Welcome to ((OTRS)) Community Edition!', 0, 0, 0, 0, 0, 0, 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table communication_channel
 -- ----------------------------------------------------------
@@ -831,93 +831,95 @@ INSERT INTO article (ticket_id, communication_channel_id, article_sender_type_id
 -- ----------------------------------------------------------
 INSERT INTO article_data_mime (article_id, a_from, a_to, a_subject, a_body, a_message_id, incoming_time, content_path, create_by, create_time, change_by, change_time)
     VALUES
-    (1, 'OTRS Feedback <marketing@otrs.com>', 'Your OTRS System <otrs@localhost>', 'Welcome to OTRS!', 'Welcome to the OTRS Group’s community!
+    (1, '"((OTRS)) Community Edition" <otrsce@otrscommunityedition.com>', 'Your Support System <otrsce@localhost>', 'Welcome to ((OTRS)) Community Edition!', 'Welcome to ((OTRS)) Community Edition!
 
-Thank you for installing ((OTRS)) Community Edition, the world’s most popular open source service management software. It’s available in 40 languages and used by more than 170,000 companies worldwide.
+This release has been brought to you by Centuran Consulting.
 
-Please be aware that we do not offer official vendor support for the ((OTRS)) Community Edition.
+The free and open source ((OTRS)) Community Edition is no longer maintained and supported by its original developer, OTRS AG. Our goal at Centuran Consulting is to keep providing and further developing a free, reliable, and secure version of the system for the worldwide community of users.
 
-Resources for ((OTRS)) Community Edition Users
+Useful links:
+- Website: https://otrscommunityedition.com/
+- Documentation: https://otrscommunityedition.com/docs/
+- GitHub repository: https://github.com/centuran/otrs-community-edition/
 
-You can find updates and patches for ((OTRS)) Community Edition at https://community.otrs.com/download-otrs-community-edition/.
+Enjoy the new ((OTRS)) Community Edition!
 
-Find help and exchange ideas in our knowledge base at https://community.otrs.com/open-source/. Here, you’ll be able to take part of the OTRS Group’s Community and take advantage of our blog posts. You can report a bug, suggest a feature or discover online documentation.
-
-Mailing lists are also available at https://lists.otrs.org/
-
-Interested in OTRS? We offer professional service management solutions too.
-
-To get the most up-to-date version of OTRS and to receive the best possible support for your business, we recommend that you use our fully-managed version of OTRS: https://otrs.com/how-to-buy/.
-
-With this version, you’ll gain access to:
-
-- Exclusive features that are only available to OTRS users
-- The OTRS Feature Add-ons
-- Business process management support
-- Included professional services – training, support and consulting
-- All the latest security updates and patches
-- Implementation and configuration by our experts
-
-Find more information about OTRS support and consulting by visiting https://otrs.com/otrs-solutions/.
-
-Ready to get started with fully-managed OTRS instead? -> Contact Sales: https://otrs.com/contact/
-
-Best regards and ((enjoy)) ((OTRS)) Community Edition,
-
-Your OTRS Team
-', '<007@localhost>', 1436949030, '2015/07/15', 1, current_timestamp, 1, current_timestamp);
+The Development Team at
+Centuran Consulting
+', '<007@localhost>', 1615730400, '2021/03/14', 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
---  insert into table article_data_mime_plain
+--  insert into table article_data_mime_attachment
 -- ----------------------------------------------------------
-INSERT INTO article_data_mime_plain (article_id, body, create_by, create_time, change_by, change_time)
+INSERT INTO article_data_mime_attachment (article_id, content_type, content, filename, create_by, create_time, change_by, change_time)
     VALUES
-    (1, 'From: OTRS Feedback <marketing@otrs.com>
-To: Your OTRS System <otrs@localhost>
-Subject: Welcome to OTRS!
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+    (1, 'text/html; charset="utf-8"', '<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
 
-Welcome to the OTRS Group’s community!
+<body style="font-family: sans-serif; max-width: 50em;">
 
-Thank you for installing ((OTRS)) Community Edition, the world’s most popular open source service management software. It’s available in 40 languages and used by more than 170,000 companies worldwide.
+<p align="center" style="font-size: 125%;">
+    <br>
+    Welcome to <b>((OTRS)) Community Edition</b>!
+    <br>
+</p>
 
-Please be aware that we do not offer official vendor support for the ((OTRS)) Community Edition.
+<p align="center">
+    This release has been brought to you by <img moz-do-not-send="false"
+    src="data:image/png;base64,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"
+    alt="Centuran Consulting"
+    class="" style="vertical-align: middle; margin-left: 0.2em;" width="122"
+    height="25" align="middle">
+    <br>
+    <br>
+</p>
 
-Resources for ((OTRS)) Community Edition Users
+<p>
+    The free and open source ((OTRS)) Community Edition is no longer maintained
+    and supported by its original developer, OTRS AG. Our goal at
+    <a href="https://centuran.com/" title="Centuran Consulting">Centuran
+    Consulting</a> is to keep providing and further developing a free, reliable,
+    and secure version of the system for the worldwide community of users.
+</p>
 
-You can find updates and patches for ((OTRS)) Community Edition at https://community.otrs.com/download-otrs-community-edition/.
+<p>
+    Useful links:
+</p>
 
-Find help and exchange ideas in our knowledge base at https://community.otrs.com/open-source/. Here, you’ll be able to take part of the OTRS Group’s Community and take advantage of our blog posts. You can report a bug, suggest a feature or discover online documentation.
+<ul>
+    <li><b>Website:</b>
+    <a href="https://otrscommunityedition.com/">https://otrscommunityedition.com/</a></li>
+    <li><b>Documentation:</b>
+    <a href="https://otrscommunityedition.com/doc/">https://otrscommunityedition.com/doc/</a></li>
+    <li><b>GitHub Repository:</b>
+    <a href="https://github.com/Centuran/otrs-community-edition/">https://github.com/Centuran/otrs-community-edition/</a></li>
+</ul>
 
-Mailing lists are also available at https://lists.otrs.org/
+<p>
+    <br>
+    Enjoy the new ((OTRS)) Community Edition!
+</p>
 
-Interested in OTRS? We offer professional service management solutions too.
+<p style="font-size: 90%;">
+    <br>
+    The Development Team at
+    <br>
+    <img moz-do-not-send="false"
+    src="data:image/png;base64,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"
+    alt="Centuran Consulting"
+    class="" style="vertical-align: middle; margin-top: 0.4em;" width="122"
+    height="25" align="middle">
+</p>
 
-To get the most up-to-date version of OTRS and to receive the best possible support for your business, we recommend that you use our fully-managed version of OTRS: https://otrs.com/how-to-buy/.
-
-With this version, you’ll gain access to:
-
-- Exclusive features that are only available to OTRS users
-- The OTRS Feature Add-ons
-- Business process management support
-- Included professional services – training, support and consulting
-- All the latest security updates and patches
-- Implementation and configuration by our experts
-
-Find more information about OTRS support and consulting by visiting https://otrs.com/otrs-solutions/.
-
-Ready to get started with fully-managed OTRS instead? -> Contact Sales: https://otrs.com/contact/
-
-Best regards and ((enjoy)) ((OTRS)) Community Edition,
-
-Your OTRS Team
-', 1, current_timestamp, 1, current_timestamp);
+</body>
+</html>', 'file-1', 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table ticket_history
 -- ----------------------------------------------------------
 INSERT INTO ticket_history (name, history_type_id, ticket_id, type_id, article_id, priority_id, owner_id, state_id, queue_id, create_by, create_time, change_by, change_time)
     VALUES
-    ('New Ticket [2015071510123456] created.', 1, 1, 1, 1, 3, 1, 1, 1, 1, current_timestamp, 1, current_timestamp);
+    ('New Ticket [2021031415926535] created.', 1, 1, 1, 1, 3, 1, 1, 1, 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table notification_event
 -- ----------------------------------------------------------
