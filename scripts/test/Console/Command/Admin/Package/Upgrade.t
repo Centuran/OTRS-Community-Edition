@@ -58,18 +58,16 @@ my $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
-    # TODO: PackageVerification - for now test has reversed purpose
-    0,
-    "Admin::Package::Upgrade exit code - package upgraded",
+    1,
+    "Admin::Package::Upgrade exit code - package is not verified",
 );
 
 $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
-    # TODO: PackageVerification - for now test has reversed purpose
-    0,
-    "Admin::Package::Upgrade run without error",
+    1,
+    "Admin::Package::Upgrade exit code without arguments",
 );
 
 1;
