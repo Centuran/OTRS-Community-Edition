@@ -51,23 +51,30 @@ $Helper->CustomCodeActivate(
     Identifier => 'Admin::Package::Upgrade' . $RandomID,
 );
 
-my $Location             = $ConfigObject->Get('Home') . '/scripts/test/sample/PackageManager/TestPackage.opm';
+my $Location = $ConfigObject->Get('Home') . '/scripts/test/sample/PackageManager/TestPackage.opm';
+
+# Make sure that package is not installed
+my $UninstallCommandObject = $Kernel::OM->Get('Kernel::System::Console::Command::Admin::Package::Uninstall');
+$UninstallCommandObject->Execute($Location);
+
 my $UpgradeCommandObject = $Kernel::OM->Get('Kernel::System::Console::Command::Admin::Package::Upgrade');
 
 my $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
-    1,
-    "Admin::Package::Upgrade exit code - package is not verified",
+    # TODO: PackageVerification - for now test has reversed purpose
+    0,
+    "Admin::Package::Upgrade exit code - package upgraded",
 );
 
 $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
+    # TODO: PackageVerification - for now test has reversed purpose, package installed
     1,
-    "Admin::Package::Upgrade exit code without arguments",
+    "Admin::Package::Upgrade run with error - Can't upgrade, package already installed!",
 );
 
 1;

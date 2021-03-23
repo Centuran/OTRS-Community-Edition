@@ -62,6 +62,10 @@ if ( !$DeveloperSystem ) {
       </Filelist>
     </otrs_package>
     ';
+
+    # Make sure package is uninstalled
+    $PackageObject->PackageUninstall( String => $String );
+
     my $PackageInstall = $PackageObject->PackageInstall( String => $String );
 
     # check that the package is installed and files exists
