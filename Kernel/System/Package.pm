@@ -4229,15 +4229,14 @@ sub _FileRemove {
     # check if it's a framework file and if $RealFile.(backup|save) exists
     # then do not remove it!
     my %File = $Self->_ReadDistArchive( Home => $Home );
-    # TODO: PackageVerification
-    # if ( $File{ $Param{File}->{Location} } && ( !-e "$RealFile.backup" && !-e "$RealFile.save" ) ) {
-    #     $Kernel::OM->Get('Kernel::System::Log')->Log(
-    #         Priority => 'error',
-    #         Message  => "Can't remove file $RealFile, because it a framework file and no "
-    #             . "other one exists!",
-    #     );
-    #     return;
-    # }
+    if ( $File{ $Param{File}->{Location} } && ( !-e "$RealFile.backup" && !-e "$RealFile.save" ) ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => "Can't remove file $RealFile, because it a framework file and no "
+                . "other one exists!",
+        );
+        return;
+    }
 
     # remove old file
     if ( !$MainObject->FileDelete( Location => $RealFile ) ) {
