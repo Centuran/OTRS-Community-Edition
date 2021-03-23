@@ -178,29 +178,30 @@ $Selenium->RunTest(
         # Install test package.
         my $Location = $ConfigObject->Get('Home') . '/scripts/test/sample/PackageManager/TestPackage.opm';
 
-        $Selenium->find_element( '#FileUpload', 'css' )->send_keys($Location);
+        # TODO: PackageVerification, comment package unverified case
+        # $Selenium->find_element( '#FileUpload', 'css' )->send_keys($Location);
+        #
+        # $ClickAction->("//button[contains(.,'Install Package')]");
+        #
+        # # Check breadcrumb on Install screen.
+        # $CheckBreadcrumb->(
+        #     BreadcrumbText => 'Install Package:',
+        # );
 
-        $ClickAction->("//button[contains(.,'Install Package')]");
-
-        # Check breadcrumb on Install screen.
-        $CheckBreadcrumb->(
-            BreadcrumbText => 'Install Package:',
-        );
-
-        # Package is not verified, so it's not possible to continue with the installation.
-        $Self->Is(
-            $Selenium->execute_script("return \$('button[type=\"submit\"][value=\"Continue\"]').length"),
-            '0',
-            'Continue button not available because package is not verified'
-        );
-
-        $Self->True(
-            index(
-                $Selenium->get_page_source(),
-                'The installation of packages which are not verified by the OTRS Group is not possible by default.'
-            ) > 0,
-            'Message for aborting installation of package is displayed'
-        );
+        # # Package is not verified, so it's not possible to continue with the installation.
+        # $Self->Is(
+        #     $Selenium->execute_script("return \$('button[type=\"submit\"][value=\"Continue\"]').length"),
+        #     '0',
+        #     'Continue button not available because package is not verified'
+        # );
+        #
+        # $Self->True(
+        #     index(
+        #         $Selenium->get_page_source(),
+        #         'The installation of packages which are not verified by the OTRS Group is not possible by default.'
+        #     ) > 0,
+        #     'Message for aborting installation of package is displayed'
+        # );
 
         # Allow web server to pick up the changed config setting.
         sleep 1;
@@ -283,6 +284,7 @@ $Selenium->RunTest(
             'Info for incompatible package is shown'
         );
 
+        # TODO: Delete or refactor - No longer viable as we by default connect our base ftp and overwriting here doesn't work'
         # Set default repository list.
         $Helper->ConfigSettingChange(
             Valid => 1,
@@ -292,7 +294,7 @@ $Selenium->RunTest(
             },
         );
 
-        # Allow web server to pick up the changed SysConfig.
+        #Allow web server to pick up the changed SysConfig.
         sleep 3;
 
         $NavigateToAdminPackageManager->();
