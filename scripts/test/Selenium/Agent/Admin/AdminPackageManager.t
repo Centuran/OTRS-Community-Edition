@@ -285,32 +285,32 @@ $Selenium->RunTest(
         );
 
         # TODO: Delete or refactor - No longer viable as we by default connect our base ftp and overwriting here doesn't work'
-        # Set default repository list.
-        $Helper->ConfigSettingChange(
-            Valid => 1,
-            Key   => 'Package::RepositoryList',
-            Value => {
-                'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/'
-            },
-        );
-
-        #Allow web server to pick up the changed SysConfig.
-        sleep 3;
-
-        $NavigateToAdminPackageManager->();
-        $Selenium->InputFieldValueSet(
-            Element => '#Soruce',
-            Value   => 'ftp://otrscommunityedition.com/download/packages/',
-        );
-
-        $ClickAction->("//button[\@name=\'GetRepositoryList']");
-
-        # Check that there is a notification about no packages.
-        my $Notification = 'No packages found in selected repository. Please check log for more info!';
-        $Self->True(
-            $Selenium->execute_script("return \$('.MessageBox.Notice p:contains($Notification)').length"),
-            "$Notification - notification is found."
-        );
+        # # Set default repository list.
+        # $Helper->ConfigSettingChange(
+        #     Valid => 1,
+        #     Key   => 'Package::RepositoryList',
+        #     Value => {
+        #         'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/'
+        #     },
+        # );
+        #
+        # #Allow web server to pick up the changed SysConfig.
+        # sleep 3;
+        #
+        # $NavigateToAdminPackageManager->();
+        # $Selenium->InputFieldValueSet(
+        #     Element => '#Soruce',
+        #     Value   => 'ftp://otrscommunityedition.com/download/packages/',
+        # );
+        #
+        # $ClickAction->("//button[\@name=\'GetRepositoryList']");
+        #
+        # # Check that there is a notification about no packages.
+        # my $Notification = 'No packages found in selected repository. Please check log for more info!';
+        # $Self->True(
+        #     $Selenium->execute_script("return \$('.MessageBox.Notice p:contains($Notification)').length"),
+        #     "$Notification - notification is found."
+        # );
     }
 );
 
