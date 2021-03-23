@@ -981,9 +981,9 @@ sub PackageUpgrade {
 
                 if (
                     $Part->{TagType} eq 'End'
-                    && ( defined $NotUseTag      && $Part->{Tag} eq $NotUseTag )
-                    && ( defined $NotUseTagLevel && $Part->{TagLevel} eq $NotUseTagLevel )
-                    )
+                        && ( defined $NotUseTag      && $Part->{Tag} eq $NotUseTag )
+                        && ( defined $NotUseTagLevel && $Part->{TagLevel} eq $NotUseTagLevel )
+                )
                 {
                     $UseInstalled = 1;
                 }
@@ -994,17 +994,17 @@ sub PackageUpgrade {
             elsif (
                 (
                     defined $Part->{IfPackage}
-                    && !$Self->{MergedPackages}->{ $Part->{IfPackage} }
+                        && !$Self->{MergedPackages}->{ $Part->{IfPackage} }
                 )
-                || (
+                    || (
                     defined $Part->{IfNotPackage}
-                    &&
-                    (
-                        defined $Self->{MergedPackages}->{ $Part->{IfNotPackage} }
-                        || $Self->PackageIsInstalled( Name => $Part->{IfNotPackage} )
-                    )
+                        &&
+                        (
+                            defined $Self->{MergedPackages}->{ $Part->{IfNotPackage} }
+                                || $Self->PackageIsInstalled( Name => $Part->{IfNotPackage} )
+                        )
                 )
-                )
+            )
             {
                 # store Tag and TagLevel to be used later and found the end of this level
                 $NotUseTag      = $Part->{Tag};
@@ -1081,9 +1081,9 @@ sub PackageUpgrade {
 
                 if (
                     $Part->{TagType} eq 'End'
-                    && ( defined $NotUseTag      && $Part->{Tag} eq $NotUseTag )
-                    && ( defined $NotUseTagLevel && $Part->{TagLevel} eq $NotUseTagLevel )
-                    )
+                        && ( defined $NotUseTag      && $Part->{Tag} eq $NotUseTag )
+                        && ( defined $NotUseTagLevel && $Part->{TagLevel} eq $NotUseTagLevel )
+                )
                 {
                     $UseInstalled = 1;
                 }
@@ -1094,16 +1094,16 @@ sub PackageUpgrade {
             elsif (
                 (
                     defined $Part->{IfPackage}
-                    && !$Self->{MergedPackages}->{ $Part->{IfPackage} }
+                        && !$Self->{MergedPackages}->{ $Part->{IfPackage} }
                 )
-                || (
+                    || (
                     defined $Part->{IfNotPackage}
-                    && (
+                        && (
                         defined $Self->{MergedPackages}->{ $Part->{IfNotPackage} }
-                        || $Self->PackageIsInstalled( Name => $Part->{IfNotPackage} )
+                            || $Self->PackageIsInstalled( Name => $Part->{IfNotPackage} )
                     )
                 )
-                )
+            )
             {
                 # store Tag and TagLevel to be used later and found the end of this level
                 $NotUseTag      = $Part->{Tag};
@@ -1555,7 +1555,7 @@ sub PackageOnlineList {
             Priority => 'error',
             Message =>
                 Translatable(
-                'No packages for your framework version found in this repository, it only contains packages for other framework versions.'
+                    'No packages for your framework version found in this repository, it only contains packages for other framework versions.'
                 ),
         );
     }
@@ -1607,7 +1607,7 @@ sub PackageOnlineList {
                     VersionInstalled => $Package->{Version}->{Content},
                     Type             => 'Min',
                 )
-                )
+            )
             {
                 $Newest{$Data}->{Upgrade} = 1;
             }
@@ -1619,7 +1619,7 @@ sub PackageOnlineList {
                     VersionInstalled => $Package->{Version}->{Content},
                     Type             => 'Max',
                 )
-                )
+            )
             {
                 $InstalledSameVersion = 1;
             }
@@ -1694,8 +1694,8 @@ sub PackageOnlineGet {
 
         if (
             IsHashRefWithData($PackageResult)
-            && $PackageResult->{Package}
-            )
+                && $PackageResult->{Package}
+        )
         {
             $PackageFromCloud = $PackageResult->{Package};
         }
@@ -1879,7 +1879,7 @@ sub PackageVerify {
         $PackageVerifyInfo = {
             Description =>
                 Translatable(
-                "<p>If you continue to install this package, the following issues may occur:</p><ul><li>Security problems</li><li>Stability problems</li><li>Performance problems</li></ul><p>Please note that issues that are caused by working with this package are not covered by OTRS service contracts.</p>"
+                    "<p>If you continue to install this package, the following issues may occur:</p><ul><li>Security problems</li><li>Stability problems</li><li>Performance problems</li></ul><p>Please note that issues that are caused by working with this package are not covered by OTRS service contracts.</p>"
                 ),
             Title =>
                 Translatable('Package not verified by the OTRS Group! It is recommended not to use this package.'),
@@ -1891,7 +1891,7 @@ sub PackageVerify {
         $PackageVerifyInfo = {
             Description =>
                 Translatable(
-                '<p>The installation of packages which are not verified by the OTRS Group is not possible by default. You can activate the installation of not verified packages via the "AllowNotVerifiedPackages" system configuration setting.</p>'
+                    '<p>The installation of packages which are not verified by the OTRS Group is not possible by default. You can activate the installation of not verified packages via the "AllowNotVerifiedPackages" system configuration setting.</p>'
                 ),
             Title =>
                 Translatable('Package not verified by the OTRS Group! It is recommended not to use this package.'),
@@ -2252,10 +2252,10 @@ sub PackageBuild {
     TAG:
     for my $Tag (
         qw(Name Version Vendor URL License ChangeLog Description Framework OS
-        IntroInstall IntroUninstall IntroReinstall IntroUpgrade
-        PackageIsVisible PackageIsDownloadable PackageIsRemovable PackageAllowDirectUpdate PackageMerge
-        PackageRequired ModuleRequired CodeInstall CodeUpgrade CodeUninstall CodeReinstall)
-        )
+            IntroInstall IntroUninstall IntroReinstall IntroUpgrade
+            PackageIsVisible PackageIsDownloadable PackageIsRemovable PackageAllowDirectUpdate PackageMerge
+            PackageRequired ModuleRequired CodeInstall CodeUpgrade CodeUninstall CodeReinstall)
+    )
     {
 
         # don't use CodeInstall CodeUpgrade CodeUninstall CodeReinstall in index mode
@@ -2290,7 +2290,7 @@ sub PackageBuild {
 
                 for my $HashParam (
                     qw(Content Encode TagType Tag TagLevel TagCount TagKey TagLastLevel)
-                    )
+                )
                 {
                     $OldParam{$HashParam} = $Hash{$HashParam} || '';
                     delete $Hash{$HashParam};
@@ -2446,9 +2446,9 @@ sub PackageBuild {
                     }
                     if (
                         defined( $Tag->{Content} )
-                        && $Tag->{TagLevel} >= 4
-                        && $Tag->{Tag} !~ /(Foreign|Reference|Index)/
-                        )
+                            && $Tag->{TagLevel} >= 4
+                            && $Tag->{Tag} !~ /(Foreign|Reference|Index)/
+                    )
                     {
                         $XML .= $Self->_Encode( $Tag->{Content} );
                     }
@@ -3014,15 +3014,15 @@ sub AnalyzePackageFrameworkRequirements {
                             # skip equal version parts
                             next COUNT
                                 if $VersionParts{MinimumFrameworkRequired}->[$Count] eq
-                                $VersionParts{CurrentFramework}->[$Count];
+                                    $VersionParts{CurrentFramework}->[$Count];
 
                             # skip current framework verion parts containing "x"
                             next COUNT if $VersionParts{CurrentFramework}->[$Count] =~ /x/;
 
                             if (
                                 $VersionParts{CurrentFramework}->[$Count]
-                                > $VersionParts{MinimumFrameworkRequired}->[$Count]
-                                )
+                                    > $VersionParts{MinimumFrameworkRequired}->[$Count]
+                            )
                             {
                                 $FWCheck = 1;
                                 last COUNT;
@@ -3051,15 +3051,15 @@ sub AnalyzePackageFrameworkRequirements {
 
                             next COUNT
                                 if $VersionParts{MaximumFrameworkRequired}->[$Count] eq
-                                $VersionParts{CurrentFramework}->[$Count];
+                                    $VersionParts{CurrentFramework}->[$Count];
 
                             # skip current framework verion parts containing "x"
                             next COUNT if $VersionParts{CurrentFramework}->[$Count] =~ /x/;
 
                             if (
                                 $VersionParts{CurrentFramework}->[$Count]
-                                < $VersionParts{MaximumFrameworkRequired}->[$Count]
-                                )
+                                    < $VersionParts{MaximumFrameworkRequired}->[$Count]
+                            )
                             {
 
                                 $FWCheck = 1;
@@ -3525,10 +3525,10 @@ sub PackageUpgradeAllIsRunning {
     #   process from the CLI.
     if (
         !$IsRunning
-        && %SystemData
-        && $SystemData{Status}
-        && $SystemData{Status} eq 'Running'
-        )
+            && %SystemData
+            && $SystemData{Status}
+            && $SystemData{Status} eq 'Running'
+    )
     {
         $IsRunning = 1;
 
@@ -3659,16 +3659,16 @@ sub _Code {
         if (
             (
                 defined $Code->{IfPackage}
-                && !$Self->{MergedPackages}->{ $Code->{IfPackage} }
+                    && !$Self->{MergedPackages}->{ $Code->{IfPackage} }
             )
-            || (
+                || (
                 defined $Code->{IfNotPackage}
-                && (
+                    && (
                     $Self->{MergedPackages}->{ $Code->{IfNotPackage} }
-                    || $Self->PackageIsInstalled( Name => $Code->{IfNotPackage} )
+                        || $Self->PackageIsInstalled( Name => $Code->{IfNotPackage} )
                 )
             )
-            )
+        )
         {
             next CODE;
         }
@@ -3985,10 +3985,10 @@ sub _CheckPackageDepends {
 
         if (
             $Local->{PackageRequired}
-            && ref $Local->{PackageRequired} eq 'ARRAY'
-            && $Local->{Name}->{Content} ne $Param{Name}
-            && $Local->{Status} eq 'installed'
-            )
+                && ref $Local->{PackageRequired} eq 'ARRAY'
+                && $Local->{Name}->{Content} ne $Param{Name}
+                && $Local->{Status} eq 'installed'
+        )
         {
             for my $Module ( @{ $Local->{PackageRequired} } ) {
                 if ( $Param{Name} eq $Module->{Content} && !$Param{Force} ) {
@@ -3996,7 +3996,7 @@ sub _CheckPackageDepends {
                         Priority => 'error',
                         Message =>
                             "Sorry, can't uninstall package $Param{Name}, "
-                            . "because package $Local->{Name}->{Content} depends on it!",
+                                . "because package $Local->{Name}->{Content} depends on it!",
                     );
                     return;
                 }
@@ -4229,15 +4229,14 @@ sub _FileRemove {
     # check if it's a framework file and if $RealFile.(backup|save) exists
     # then do not remove it!
     my %File = $Self->_ReadDistArchive( Home => $Home );
-    # TODO: PackageVerification
-    # if ( $File{ $Param{File}->{Location} } && ( !-e "$RealFile.backup" && !-e "$RealFile.save" ) ) {
-    #     $Kernel::OM->Get('Kernel::System::Log')->Log(
-    #         Priority => 'error',
-    #         Message  => "Can't remove file $RealFile, because it a framework file and no "
-    #             . "other one exists!",
-    #     );
-    #     return;
-    # }
+    if ( $File{ $Param{File}->{Location} } && ( !-e "$RealFile.backup" && !-e "$RealFile.save" ) ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => "Can't remove file $RealFile, because it a framework file and no "
+                . "other one exists!",
+        );
+        return;
+    }
 
     # remove old file
     if ( !$MainObject->FileDelete( Location => $RealFile ) ) {
@@ -4590,8 +4589,8 @@ sub _MergedPackages {
             # upgrade code (merge)
             if (
                 $Param{Structure}->{CodeUpgrade}
-                && ref $Param{Structure}->{CodeUpgrade} eq 'ARRAY'
-                )
+                    && ref $Param{Structure}->{CodeUpgrade} eq 'ARRAY'
+            )
             {
 
                 my @Parts;
@@ -4626,8 +4625,8 @@ sub _MergedPackages {
             # upgrade database (merge)
             if (
                 $Param{Structure}->{DatabaseUpgrade}->{merge}
-                && ref $Param{Structure}->{DatabaseUpgrade}->{merge} eq 'ARRAY'
-                )
+                    && ref $Param{Structure}->{DatabaseUpgrade}->{merge} eq 'ARRAY'
+            )
             {
 
                 my @Parts;
@@ -4713,9 +4712,9 @@ sub _CheckDBInstalledOrMerged {
 
             if (
                 $Part->{TagType} eq 'End'
-                && ( defined $NotUseTag      && $Part->{Tag} eq $NotUseTag )
-                && ( defined $NotUseTagLevel && $Part->{TagLevel} eq $NotUseTagLevel )
-                )
+                    && ( defined $NotUseTag      && $Part->{Tag} eq $NotUseTag )
+                    && ( defined $NotUseTagLevel && $Part->{TagLevel} eq $NotUseTagLevel )
+            )
             {
                 $Use = 1;
             }
@@ -4726,17 +4725,17 @@ sub _CheckDBInstalledOrMerged {
         elsif (
             (
                 defined $Part->{IfPackage}
-                && !$Self->{MergedPackages}->{ $Part->{IfPackage} }
+                    && !$Self->{MergedPackages}->{ $Part->{IfPackage} }
             )
-            || (
+                || (
                 defined $Part->{IfNotPackage}
-                &&
-                (
-                    defined $Self->{MergedPackages}->{ $Part->{IfNotPackage} }
-                    || $Self->PackageIsInstalled( Name => $Part->{IfNotPackage} )
-                )
+                    &&
+                    (
+                        defined $Self->{MergedPackages}->{ $Part->{IfNotPackage} }
+                            || $Self->PackageIsInstalled( Name => $Part->{IfNotPackage} )
+                    )
             )
-            )
+        )
         {
             # store Tag and TagLevel to be used later and found the end of this level
             $NotUseTag      = $Part->{Tag};
@@ -4943,7 +4942,7 @@ sub _ConfigurationDeploy {
             Force   => 1,
             CleanUp => $CleanUp,
         )
-        )
+    )
     {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
