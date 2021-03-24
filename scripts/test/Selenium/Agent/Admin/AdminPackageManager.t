@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -284,33 +285,33 @@ $Selenium->RunTest(
             'Info for incompatible package is shown'
         );
 
-        # TODO: Delete or refactor - No longer viable as we by default connect our base ftp and overwriting here doesn't work'
-        # # Set default repository list.
-        # $Helper->ConfigSettingChange(
-        #     Valid => 1,
-        #     Key   => 'Package::RepositoryList',
-        #     Value => {
-        #         'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/'
-        #     },
-        # );
-        #
-        # #Allow web server to pick up the changed SysConfig.
-        # sleep 3;
-        #
-        # $NavigateToAdminPackageManager->();
-        # $Selenium->InputFieldValueSet(
-        #     Element => '#Soruce',
-        #     Value   => 'ftp://otrscommunityedition.com/download/packages/',
-        # );
-        #
-        # $ClickAction->("//button[\@name=\'GetRepositoryList']");
-        #
-        # # Check that there is a notification about no packages.
-        # my $Notification = 'No packages found in selected repository. Please check log for more info!';
-        # $Self->True(
-        #     $Selenium->execute_script("return \$('.MessageBox.Notice p:contains($Notification)').length"),
-        #     "$Notification - notification is found."
-        # );
+  # TODO: Delete or refactor - No longer viable as we by default connect our base ftp and overwriting here doesn't work'
+  # # Set default repository list.
+  # $Helper->ConfigSettingChange(
+  #     Valid => 1,
+  #     Key   => 'Package::RepositoryList',
+  #     Value => {
+  #         'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/'
+  #     },
+  # );
+  #
+  # #Allow web server to pick up the changed SysConfig.
+  # sleep 3;
+  #
+  # $NavigateToAdminPackageManager->();
+  # $Selenium->InputFieldValueSet(
+  #     Element => '#Soruce',
+  #     Value   => 'ftp://otrscommunityedition.com/download/packages/',
+  # );
+  #
+  # $ClickAction->("//button[\@name=\'GetRepositoryList']");
+  #
+  # # Check that there is a notification about no packages.
+  # my $Notification = 'No packages found in selected repository. Please check log for more info!';
+  # $Self->True(
+  #     $Selenium->execute_script("return \$('.MessageBox.Notice p:contains($Notification)').length"),
+  #     "$Notification - notification is found."
+  # );
     }
 );
 

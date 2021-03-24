@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -63,6 +64,7 @@ my $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
+
     # TODO: PackageVerification - for now test has reversed purpose
     0,
     "Admin::Package::Upgrade exit code - package upgraded",
@@ -72,6 +74,7 @@ $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
+
     # TODO: PackageVerification - for now test has reversed purpose, package installed
     1,
     "Admin::Package::Upgrade run with error - Can't upgrade, package already installed!",

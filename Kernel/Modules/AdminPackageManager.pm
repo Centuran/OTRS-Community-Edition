@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -2100,6 +2101,7 @@ sub _InstallHandling {
             Name => 'Intro',
             Data => {
                 %Param,
+
                 # %VerifyInfo,
                 Subaction => $Self->{Subaction},
                 Type      => 'IntroInstallVendor',
@@ -2111,21 +2113,23 @@ sub _InstallHandling {
         # TODO: PackageVerification
         # if ( $VerifyInfo{PackageInstallPossible} ) {
 
-            $LayoutObject->Block(
-                Name => 'IntroForm',
-                Data => {
-                    %Param,
-                    # %VerifyInfo,
-                    Subaction => $Self->{Subaction},
-                    Type      => 'IntroInstallVendor',
-                    Name      => $Structure{Name}->{Content},
-                    Version   => $Structure{Version}->{Content},
-                },
-            );
+        $LayoutObject->Block(
+            Name => 'IntroForm',
+            Data => {
+                %Param,
 
-            $LayoutObject->Block(
-                Name => 'IntroCancel',
-            );
+                # %VerifyInfo,
+                Subaction => $Self->{Subaction},
+                Type      => 'IntroInstallVendor',
+                Name      => $Structure{Name}->{Content},
+                Version   => $Structure{Version}->{Content},
+            },
+        );
+
+        $LayoutObject->Block(
+            Name => 'IntroCancel',
+        );
+
         # }
 
         my $Output = $LayoutObject->Header();
@@ -2241,7 +2245,8 @@ sub _InstallHandling {
     # install package
     elsif (
         $PackageObject->PackageInstall(
-            String    => $Param{Package},
+            String => $Param{Package},
+
             # TODO: PackageVerification
             # FromCloud => $FromCloud
         )

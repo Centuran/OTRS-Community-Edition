@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -47,51 +48,59 @@ my @Tests = (
     {
         Name      => 'ITSM 33 Repository',
         ConfigSet => {
-            $TestRepository                  => 'Test Repository',
+            $TestRepository => 'Test Repository',
+
             # "$TestRepository/itsm/packages33/" => '$ITSMLabel 3.3 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            $TestRepository                                   => 'Test Repository',
+            $TestRepository => 'Test Repository',
+
             # "$TestRepository/itsm/packages$FrameworkVersion/" => "$ITSMLabel $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 33 and 4 Repository',
         ConfigSet => {
-            $TestRepository                    => 'Test Repository',
+            $TestRepository => 'Test Repository',
+
             # "$TestRepository/itsm/packages33/" => '$ITSMLabel 3.3 Master',
             # "$TestRepository/itsm/packages4/"  => '$ITSMLabel 4 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            $TestRepository                                   => 'Test Repository',
+            $TestRepository => 'Test Repository',
+
             # "$TestRepository/itsm/packages$FrameworkVersion/" => "$ITSMLabel $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 33 4 and 5 Repository',
         ConfigSet => {
-            $TestRepository                    => 'Test Repository',
+            $TestRepository => 'Test Repository',
+
             # "$TestRepository/itsm/packages33/" => '$ITSMLabel 3.3 Master',
             # "$TestRepository/itsm/packages4/"  => '$ITSMLabel 4 Master',
             # "$TestRepository/itsm/packages5/"  => '$ITSMLabel 5 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            $TestRepository                                   => 'Test Repository',
+            $TestRepository => 'Test Repository',
+
             # "$TestRepository/itsm/packages$FrameworkVersion/" => "$ITSMLabel $FrameworkVersion Master",
         },
     },
     {
         Name      => 'ITSM 6 Repository',
         ConfigSet => {
-            $TestRepository                   => 'Test Repository',
+            $TestRepository => 'Test Repository',
+
             # "$TestRepository/itsm/packages6/" => '$ITSMLabel 6 Master',
         },
         Success        => 1,
         ExpectedResult => {
-            $TestRepository                                   => 'Test Repository',
+            $TestRepository => 'Test Repository',
+
             # "$TestRepository/itsm/packages$FrameworkVersion/" => "$ITSMLabel $FrameworkVersion Master",
         },
     },

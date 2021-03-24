@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -5830,7 +5831,7 @@ Thanks for your help!
 ' => '
 Estimado Cliente,
 
-Desafortunadamente no hemos podido detectar un número de ticket válido en su consulta, 
+Desafortunadamente no hemos podido detectar un número de ticket válido en su consulta,
 por lo que este email no puede ser procesado.
 
 Por favor creé un nuevo ticket a través del panel de cliente.

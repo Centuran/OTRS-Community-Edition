@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -47,7 +48,8 @@ sub Run {
     return 1 if $RepositoryList{$CurrentITSMRepository};
 
     # Make sure ITSM repository matches the current framework version.
-    my @Matches = grep { $_ =~ m{http://otrscommunityedition\.com/download/itsm/packages\d+/}msxi } sort keys %RepositoryList;
+    my @Matches
+        = grep { $_ =~ m{http://otrscommunityedition\.com/download/itsm/packages\d+/}msxi } sort keys %RepositoryList;
 
     return 1 if !@Matches;
 

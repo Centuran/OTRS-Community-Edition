@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -83,8 +84,9 @@ sub Run {
         return $Self->ExitCodeOk();
     }
 
-    my $PackageNameOption             = $Self->GetOption('package-name');
-    my $ShowDeploymentInfoOption      = $Self->GetOption('show-deployment-info');
+    my $PackageNameOption        = $Self->GetOption('package-name');
+    my $ShowDeploymentInfoOption = $Self->GetOption('show-deployment-info');
+
     # TODO: PackageVerification
     # my $ShowVerificationInfoOption    = $Self->GetOption('show-verification-info');
     # my $DeleteVerificationCacheOption = $Self->GetOption('delete-verification-cache');
