@@ -276,7 +276,7 @@
                 <div class="Content">
 [%# TODO: Eventually replace with ours? %]
 [%# RenderBlockStart("OTRSVerifyLogo") %]
-                    <img src="[% Config("Frontend::ImagePath") %]/otrs-verify.png" class="OTRSVerifyLogoBig" />
+                    <!---<img src="[#% Config("Frontend::ImagePath") %]/otrs-verify.png" class="OTRSVerifyLogoBig" />-->
 [%# RenderBlockEnd("OTRSVerifyLogo") %]
                     <div class="IntroInstall [% Data.VerifyCSSClass | html %]">
                         <h3>[% Data.Name | html %] [% Data.Version | html %]</h3>
@@ -456,7 +456,7 @@
                                 <td>
 [%# TODO: Eventually replace with ours? %]
 [%# RenderBlockStart("ShowLocalPackageVerifyLogo") %]
-                                    <img src="[% Config("Frontend::ImagePath") %]/otrs-verify-small.png" class="OTRSVerifyLogo" alt="[% Translate("This package is verified by OTRSverify (tm)") | html %]" />
+                                    <!--<img src="[#% Config("Frontend::ImagePath") %]/otrs-verify-small.png" class="OTRSVerifyLogo" alt="[#% Translate("This package is verified by OTRSverify (tm)") | html %]" />-->
 [%# RenderBlockEnd("ShowLocalPackageVerifyLogo") %]
                                     <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=View;Name=[% Data.Name | uri %];Version=[% Data.Version | uri %]">[% Data.Name | html %]</a>
                                 </td>
