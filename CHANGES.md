@@ -1,4 +1,8 @@
-# 6.0.31 ????-??-??
+# 6.0.31 2021-03-24
+ - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
+ - 2021-03-24 Updated CKEditor to version 4.16.0.
+ - 2021-03-24 Removed features dependent on services provided by the original vendor.
+ - 2021-03-24 Removed advertisement content and feature placeholders from the user interface.
  - 2020-12-07 Fixed Ticket#2020111942002059 - Improve PDF display of article fields in the customer interface.
 
 # 6.0.30 2020-10-12
