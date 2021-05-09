@@ -1,0 +1,159 @@
+stages:
+  - build
+  - apply
+  - test
+
+variables:
+  OTRS_CE_DEV_DEPLOY_TOKEN: ""
+  DOCKER_HOST: "tcp://localhost:2375"
+  DOCKER_DRIVER: "overlay2"
+
+#
+# Build Docker container images
+#
+
+build-otrs-db-image:
+  stage: build
+  image: docker:18.09
+  services:
+    - docker:18.09-dind
+  before_script: &before-build    # Add an anchor to reuse in other build jobs
+    - apk update
+    - apk add --no-cache ca-certificates git py-pip
+    - update-ca-certificates
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
+    - git clone https://gitlab+deploy-token-27:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.sidnet.info/centuran/otrs-ce-development /tmp/otrs-ce-development
+  script:
+    - cd /tmp/otrs-ce-development/setup/otrs-db
+    - cp "${CI_PROJECT_DIR}/scripts/database/"*.mysql.sql .
+    - docker pull "${CI_REGISTRY_IMAGE}/otrs-db:latest" || true
+    - docker build --cache-from "${CI_REGISTRY_IMAGE}/otrs-db:latest" -t "${CI_REGISTRY_IMAGE}/otrs-db:${CI_COMMIT_SHORT_SHA}" -t "${CI_REGISTRY_IMAGE}/otrs-db:latest" .
+    - docker push "${CI_REGISTRY_IMAGE}/otrs-db:latest"
+
+build-otrs-image:
+  stage: build
+  image: docker:18.09
+  services:
+    - docker:18.09-dind
+  before_script: *before-build
+  script:
+    - cd /tmp/otrs-ce-development/setup/otrs
+    - cp -r "${CI_PROJECT_DIR}" otrs-ce
+    - docker pull "${CI_REGISTRY_IMAGE}/otrs:latest" || true
+    - docker build --build-arg OTRS_CE_DIR=./otrs-ce --cache-from "${CI_REGISTRY_IMAGE}/otrs:latest" -t "${CI_REGISTRY_IMAGE}/otrs:${CI_COMMIT_SHORT_SHA}" -t "${CI_REGISTRY_IMAGE}/otrs:latest" .
+    - docker push "${CI_REGISTRY_IMAGE}/otrs:latest"
+
+build-selenium-images:
+  stage: build
+  image: docker:18.09
+  services:
+    - docker:18.09-dind
+  before_script: *before-build
+  script:
+    # Build Chrome image
+    - cd /tmp/otrs-ce-development/setup/selenium/chrome
+    - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
+    - docker pull "${CI_REGISTRY_IMAGE}/selenium-chrome:latest" || true
+    - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${CI_REGISTRY_IMAGE}/selenium-chrome:latest" -t "${CI_REGISTRY_IMAGE}/selenium-chrome:${CI_COMMIT_SHORT_SHA}" -t "${CI_REGISTRY_IMAGE}/selenium-chrome:latest" .
+    - docker push "${CI_REGISTRY_IMAGE}/selenium-chrome:latest"
+
+    # Build Firefox image
+    - cd /tmp/otrs-ce-development/setup/selenium/ff
+    - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
+    - docker pull "${CI_REGISTRY_IMAGE}/selenium-ff:latest" || true
+    - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${CI_REGISTRY_IMAGE}/selenium-ff:latest" -t "${CI_REGISTRY_IMAGE}/selenium-ff:${CI_COMMIT_SHORT_SHA}" -t "${CI_REGISTRY_IMAGE}/selenium-ff:latest" .
+    - docker push "${CI_REGISTRY_IMAGE}/selenium-ff:latest"
+
+#
+# Apply images to Kubernetes cluster
+#
+
+apply-images:
+  stage: apply
+  # Using this image based on Alpine Linux (rather than bitnami/kubectl used
+  # later in test stage) to be able to install tools with apk
+  image: roffe/kubectl
+  environment:
+    name: test/${CI_COMMIT_REF_NAME}
+    action: prepare
+  variables:
+    GITLAB_REGISTRY_USER: ""
+    GITLAB_REGISTRY_PASSWORD: ""
+    GIT_STRATEGY: none     # Don't check out the code
+  script:
+    - apk update
+    - apk add curl git
+  
+    # Install Kompose (https://kompose.io/installation/)
+    - curl -L https://github.com/kubernetes/kompose/releases/download/v1.22.0/kompose-linux-amd64 -o kompose
+    - chmod +x kompose
+    - mv ./kompose /usr/local/bin/kompose
+
+    # Clone OTRS CE Development repository and create .env file
+    - git clone https://gitlab+deploy-token-27:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.sidnet.info/centuran/otrs-ce-development /tmp/otrs-ce-development
+    - cd /tmp/otrs-ce-development
+    - touch .env
+    - cd -
+
+    # Convert Docker Compose configuration to Kubernetes using Kompose
+    - mkdir /tmp/kubernetes
+    - kompose -f /tmp/otrs-ce-development/docker-compose.yml -f /tmp/otrs-ce-development/docker-compose-selenium.yml convert -o /tmp/kubernetes/
+
+    # Generate secret configuration
+    - REGISTRY_SECRET_CONFIG=$(echo -n '{"auths":{"gitlab.dev.sidnet.info:5050":{"auth":"')$(echo -n "${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD}" | base64)'"}}}'
+    # TODO: Can't seem to be able to put spaces after ":"...
+    - kubectl delete --kubeconfig "${KUBECONFIG}" secret gitlab-registry-secret --ignore-not-found
+    - kubectl create --kubeconfig "${KUBECONFIG}" secret docker-registry gitlab-registry-secret --docker-server="${CI_REGISTRY}" --docker-username="${GITLAB_REGISTRY_USER}" --docker-password="${GITLAB_REGISTRY_PASSWORD}"
+    - kubectl get --kubeconfig "${KUBECONFIG}" secret gitlab-registry-secret --output=yaml > /tmp/kubernetes/gitlab-registry-secret.yaml
+
+    # Apply the configuration
+    - kubectl apply --kubeconfig "${KUBECONFIG}" -f /tmp/kubernetes
+
+#
+# Run tests
+#
+
+run-non-selenium-tests:
+  stage: test
+  timeout: 2h
+  image: bitnami/kubectl
+  environment:
+    name: test/${CI_COMMIT_REF_NAME}
+    # Action "prepare" denotes that this job only prepares the environment
+    # and does not deploy, otherwise GitLab doesn't allow multiple environment
+    # jobs to run simultaneously (and we do want to run tests in parallel).
+    action: prepare
+  variables:
+    GIT_STRATEGY: none     # Don't check out the code
+  script:
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- sh /root/blacklist-selenium-tests.sh
+    # TODO: Move the commands below to a shell script
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- /opt/otrs/bin/otrs.SetPermissions.pl
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Admin::Group::UserLink --user-name 'root@localhost' --group-name admin --permission rw
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Config::Rebuild --cleanup
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- supervisorctl restart apache2
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- sudo -u otrs /opt/otrs/bin/otrs.CheckSum.pl -a create
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- sudo -u otrs -i /opt/otrs/bin/otrs.Console.pl Dev::UnitTest::Run
+
+run-selenium-tests:
+  stage: test
+  timeout: 2h
+  image: bitnami/kubectl
+  environment:
+    name: test/${CI_COMMIT_REF_NAME}
+    action: prepare
+  variables:
+    GIT_STRATEGY: none     # Don't check out the code
+  script:
+    # Set database host to otrs-db-2
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sed -i '/^[^#].*{DatabaseHost} =/c\ \ \ \ $Self->{DatabaseHost} = '"'"'otrs-db-2'"'"';' /opt/otrs/Kernel/Config.pm
+    # Set TestHTTPHostname to otrs-2
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sed -i '/^[^#].*{TestHTTPHostname} =/c\ \ \ \ $Self->{TestHTTPHostname} = '"'"'otrs-2'"'"';' /opt/otrs/Kernel/Config.pm
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- /opt/otrs/bin/otrs.SetPermissions.pl
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Admin::Group::UserLink --user-name 'root@localhost' --group-name admin --permission rw
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Config::Rebuild --cleanup
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- supervisorctl restart apache2
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.CheckSum.pl -a create
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs -i /opt/otrs/bin/otrs.Console.pl Dev::UnitTest::Run --directory=Selenium
