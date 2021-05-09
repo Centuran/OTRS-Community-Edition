@@ -12,6 +12,17 @@ variables:
 # Build Docker container images
 #
 
+vars:
+  stage: build
+  image: docker:18.09
+  environment:
+    name: test/${CI_COMMIT_REF_NAME}
+  services:
+    - docker:18.09-dind
+  script:
+    - env
+    - set
+
 build-otrs-db-image:
   stage: build
   image: docker:18.09
