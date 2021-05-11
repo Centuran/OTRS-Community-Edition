@@ -54,9 +54,23 @@ use warnings;
 {
     no warnings 'redefine';
     sub Request {
+        my ( \$Self, \%Param ) = \@_;
+
+        my \$ResponseContent;
+        
+        if ( \$Param{URL} =~ m{/repository.xml\$} ) {
+            \$ResponseContent = '<otrs_repository_list version="1.0">' .
+                '<Repository><Name>Test</Name><URL>' .
+                'https://otrscommunityedition.com/download/packages/</URL>' .
+                '</Repository></otrs_repository_list>';
+        }
+        else {
+            \$ResponseContent = '{"Success":1,"Results":{"PackageManagement":[{"Operation":"PackageVerify","Data":{"Test":"not_verified","TestPackageIncompatible":"not_verified"},"Success":"1"}]},"ErrorMessage":""}';
+        }
+
         return (
             Status  => '200 OK',
-            Content => '{"Success":1,"Results":{"PackageManagement":[{"Operation":"PackageVerify","Data":{"Test":"not_verified","TestPackageIncompatible":"not_verified"},"Success":"1"}]},"ErrorMessage":""}',
+            Content => \\\$ResponseContent,
         );
     }
 }
