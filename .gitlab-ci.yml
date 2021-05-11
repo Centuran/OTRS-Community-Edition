@@ -2,6 +2,7 @@ stages:
   - build
   - apply
   - test
+  - cleanup
 
 variables:
   OTRS_CE_DEV_DEPLOY_TOKEN: ""
@@ -75,15 +76,25 @@ apply-images:
   image: roffe/kubectl
   environment:
     name: test/${CI_COMMIT_REF_NAME}
-    action: prepare
+    on_stop: cleanup-environment
+    auto_stop_in: 3 days
   variables:
     GITLAB_REGISTRY_USER: ""
     GITLAB_REGISTRY_PASSWORD: ""
     GIT_STRATEGY: none     # Don't check out the code
   script:
+    # Set variables used in docker-compose.yml
+    - export OTRS_IMAGE="${CI_REGISTRY_IMAGE}/otrs:latest"
+    - export OTRS_DB_IMAGE="${CI_REGISTRY_IMAGE}/otrs-db:latest"
+    - export SELENIUM_CHROME_IMAGE="${CI_REGISTRY_IMAGE}/selenium-chrome:latest"
+    - export SELENIUM_FF_IMAGE="${CI_REGISTRY_IMAGE}/selenium-ff:latest"
+
+    # Install Docker and do "docker login"
     - apk update
-    - apk add curl git
-  
+    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.10/community ca-certificates curl docker=18.09.8-r0 git
+    - update-ca-certificates
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
+
     # Install Kompose (https://kompose.io/installation/)
     - curl -L https://github.com/kubernetes/kompose/releases/download/v1.22.0/kompose-linux-amd64 -o kompose
     - chmod +x kompose
@@ -99,9 +110,7 @@ apply-images:
     - mkdir /tmp/kubernetes
     - kompose -f /tmp/otrs-ce-development/docker-compose.yml -f /tmp/otrs-ce-development/docker-compose-selenium.yml convert -o /tmp/kubernetes/
 
-    # Generate secret configuration
-    - REGISTRY_SECRET_CONFIG=$(echo -n '{"auths":{"gitlab.dev.sidnet.info:5050":{"auth":"')$(echo -n "${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD}" | base64)'"}}}'
-    # TODO: Can't seem to be able to put spaces after ":"...
+    # Create secret configuration file for registry access
     - kubectl delete --kubeconfig "${KUBECONFIG}" secret gitlab-registry-secret --ignore-not-found
     - kubectl create --kubeconfig "${KUBECONFIG}" secret docker-registry gitlab-registry-secret --docker-server="${CI_REGISTRY}" --docker-username="${GITLAB_REGISTRY_USER}" --docker-password="${GITLAB_REGISTRY_PASSWORD}"
     - kubectl get --kubeconfig "${KUBECONFIG}" secret gitlab-registry-secret --output=yaml > /tmp/kubernetes/gitlab-registry-secret.yaml
@@ -116,7 +125,7 @@ apply-images:
 run-non-selenium-tests:
   stage: test
   timeout: 2h
-  image: bitnami/kubectl
+  image: alpine
   environment:
     name: test/${CI_COMMIT_REF_NAME}
     # Action "prepare" denotes that this job only prepares the environment
@@ -125,6 +134,15 @@ run-non-selenium-tests:
     action: prepare
   variables:
     GIT_STRATEGY: none     # Don't check out the code
+  before_script: &before-test    # Add an anchor to reuse in other test jobs
+    # Install Docker and do "docker login"
+    - apk update
+    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.10/community ca-certificates curl docker=18.09.8-r0 git
+    - update-ca-certificates
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
+    # Install Kubectl
+    - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    - install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
   script:
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs -- sh /root/blacklist-selenium-tests.sh
     # TODO: Move the commands below to a shell script
@@ -139,12 +157,13 @@ run-non-selenium-tests:
 run-selenium-tests:
   stage: test
   timeout: 2h
-  image: bitnami/kubectl
+  image: alpine
   environment:
     name: test/${CI_COMMIT_REF_NAME}
     action: prepare
   variables:
     GIT_STRATEGY: none     # Don't check out the code
+  before_script: *before-test
   script:
     # Set database host to otrs-db-2
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sed -i '/^[^#].*{DatabaseHost} =/c\ \ \ \ $Self->{DatabaseHost} = '"'"'otrs-db-2'"'"';' /opt/otrs/Kernel/Config.pm
@@ -157,3 +176,25 @@ run-selenium-tests:
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- supervisorctl restart apache2
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.CheckSum.pl -a create
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs -i /opt/otrs/bin/otrs.Console.pl Dev::UnitTest::Run --directory=Selenium
+
+#
+# Cleanup the environment
+#
+
+cleanup-environment:
+  stage: cleanup
+  image: alpine
+  environment:
+    name: test/${CI_COMMIT_REF_NAME}
+    action: stop
+  when: manual
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - apk update
+    - apk add curl
+    # Install Kubectl
+    - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    - install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  script:
+    - kubectl --kubeconfig "${KUBECONFIG}" delete deployments --all
