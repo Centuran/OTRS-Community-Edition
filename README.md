@@ -1,5 +1,7 @@
 # ((OTRS)) Community Edition
 
+[![Tests](https://gitlab.dev.sidnet.info/michal.wojciechowski/otrs-community-edition/badges/master/pipeline.svg?key_text=tests&key_width=)]()
+
 ((OTRS)) Community Edition is a freely available, open source, web-based ticketing system used for Help Desk, Customer Service, and IT Service Management purposes.
 
 In January 2021, the development and support of the original version of ((OTRS)) Community Edition has been discontinued by its creators, the OTRS AG company. This project is an effort by [Centuran Consulting](https://centuran.com/) to keep maintaining a stable version of the software, as well as develop new features to make it even more useful and user-friendly.
