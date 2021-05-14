@@ -62,12 +62,12 @@ $Selenium->RunTest(
         my $ScriptAlias = $ConfigObject->Get('ScriptAlias');
         $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=AgentAppointmentCalendarOverview");
 
-        $Selenium->find_element( "#AppointmentCreateButton", 'css' )->click();
-        $Selenium->WaitFor( JavaScript => "return typeof(\$) === 'function' && \$('#Title').length" );
+        $Selenium->find_element("#AppointmentCreateButton", 'css' )->click();
+        $Selenium->WaitFor(JavaScript => 'return typeof($) === "function" && $("#Title").length');
 
         my $AppointmentName = "Appointment-$RandomID";
-        $Selenium->find_element( "#Title",       'css' )->send_keys("$AppointmentName");
-        $Selenium->find_element( "#Description", 'css' )->send_keys('Test appointment');
+        $Selenium->find_element("#Title",       'css')->send_keys("$AppointmentName");
+        $Selenium->find_element("#Description", 'css')->send_keys("Test appointment");
 
         my $Calendar1ID = $Calendar1{CalendarID};
         $Selenium->InputFieldValueSet(
@@ -75,8 +75,8 @@ $Selenium->RunTest(
             Value   => $Calendar1ID
         );
 
-        $Selenium->find_element( '#EditFormSubmit', 'css' )->click();
-        $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length' );
+        $Selenium->find_element("#EditFormSubmit", 'css')->click();
+        $Selenium->WaitFor(JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length');
         $Selenium->VerifiedRefresh();
 
         # Create test user 2.
@@ -118,7 +118,8 @@ $Selenium->RunTest(
 
         # Check for unauthorized access to events.
         $Selenium->get(
-            "${ScriptAlias}index.pl?Action=AgentAppointmentList;Subaction=ListAppointments;CalendarID=$Calendar1{CalendarID};ChallengeToken=$ChallengeToken;StartTime=2021-01-01T00:00:00;EndTime=2022-01-01T00:00:00"
+            "${ScriptAlias}index.pl?Action=AgentAppointmentList;Subaction=ListAppointments;CalendarID=$Calendar1{CalendarID};"
+          . "ChallengeToken=$ChallengeToken;StartTime=2021-01-01T00:00:00;EndTime=2022-01-01T00:00:00"
         );
 
         $Self->True(
