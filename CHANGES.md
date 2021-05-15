@@ -1,3 +1,7 @@
+# 6.0.32 2021-05-XX - Security release
+ - Fixed an XSS vulnerability in ticket overview  
+   (Thanks to Znuny GmbH and Nina Knipprath -- security advisory: https://www.znuny.org/en/advisories/zsa-2021-06)
+
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
  - 2021-03-24 Updated CKEditor to version 4.16.0.
