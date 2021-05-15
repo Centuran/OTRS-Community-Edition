@@ -1,3 +1,5 @@
+# 6.0.32 2021-05-XX - Security release
+
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
  - 2021-03-24 Updated CKEditor to version 4.16.0.
