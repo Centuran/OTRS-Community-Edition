@@ -23,17 +23,17 @@ $Selenium->RunTest(
 
         my $RandomID = $Helper->GetRandomID();
 
-        # Create test group 1.
-        my $GroupName1 = "test-calendar-group1-$RandomID";
-        my $GroupID1   = $Kernel::OM->Get('Kernel::System::Group')->GroupAdd(
-            Name    => $GroupName1,
+        # Create test group
+        my $Group   = "test-calendar-group1-$RandomID";
+        my $GroupID = $Kernel::OM->Get('Kernel::System::Group')->GroupAdd(
+            Name    => $Group,
             ValidID => 1,
             UserID  => 1,
         );
 
         # Create test user 1.
         my $TestUserLogin1 = $Helper->TestUserCreate(
-            Groups   => [ 'users', $GroupName1 ],
+            Groups   => [ 'users', $Group ],
         ) || die "Did not get test user 1";
 
         # Get UserID1.
@@ -41,11 +41,11 @@ $Selenium->RunTest(
             UserLogin => $TestUserLogin1,
         );
 
-        # Create a calendar for group 1.
+        # Create a calendar
         my %Calendar1 = $CalendarObject->CalendarCreate(
             CalendarName => "Calendar1-$RandomID",
             Color        => '#3A87AD',
-            GroupID      => $GroupID1,
+            GroupID      => $GroupID,
             UserID       => $UserID1,
             ValidID      => 1,
         );
