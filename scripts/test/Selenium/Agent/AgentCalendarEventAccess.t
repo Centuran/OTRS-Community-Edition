@@ -36,6 +36,10 @@ $Selenium->RunTest(
             Groups   => [ 'users', $Group ],
         ) || die "Did not get test user 1";
 
+        # Create test user 2.
+        my $TestUserLogin2 = $Helper->TestUserCreate()
+            || die "Did not get test user 2";
+
         # Get UserID1.
         my $UserID1 = $Kernel::OM->Get('Kernel::System::User')->UserLookup(
             UserLogin => $TestUserLogin1,
@@ -77,10 +81,6 @@ $Selenium->RunTest(
         $Selenium->find_element("#EditFormSubmit", 'css')->click();
         $Selenium->WaitFor(JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length');
         $Selenium->VerifiedRefresh();
-
-        # Create test user 2.
-        my $TestUserLogin2 = $Helper->TestUserCreate(
-        ) || die "Did not get test user 2";
 
         # Login as test user 2.
         $Selenium->Login(
