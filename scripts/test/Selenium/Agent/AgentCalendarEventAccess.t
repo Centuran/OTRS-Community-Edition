@@ -131,6 +131,52 @@ $Selenium->RunTest(
             '[]',
             'An empty list of appointments is returned for non-authorized user'
         );
+
+        # Cleanup
+
+        my $Deleted = 0;
+
+        # Delete appointment
+        my @AppointmentIDs = $AppointmentObject->AppointmentList(
+            CalendarID => $CalendarID,
+            Result     => 'ARRAY',
+        );
+        for my $AppointmentID (@AppointmentIDs) {
+            $Deleted += $AppointmentObject->AppointmentDelete(
+                AppointmentID => $AppointmentID,
+                UserID        => 1,
+            );
+        }
+        $Self->True(
+            $Deleted > 0,
+            "Appointments have been deleted"
+        );
+
+        my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+        # Delete calendar
+        $Deleted = $DBObject->Do(
+            SQL  => "DELETE FROM calendar WHERE id = ?",
+            Bind => [ \$CalendarID ],
+        );
+        $Self->True(
+            $Deleted,
+            "Calendar $Calendar{CalendarName} has been deleted",
+        );
+
+        # Delete group
+        $Deleted = $DBObject->Do(
+            SQL  => "DELETE FROM group_user WHERE group_id = ?",
+            Bind => [ \$GroupID ],
+        );
+        $Deleted = $DBObject->Do(
+            SQL  => "DELETE FROM groups WHERE id = ?",
+            Bind => [ \$GroupID ],
+        );
+        $Self->True(
+            $Deleted,
+            "Group $Group has been deleted",
+        );
     }
 );
 
