@@ -126,6 +126,11 @@ $Selenium->RunTest(
             "Unauthorized event access",
         );
 
+        $Self->Is(
+            $Selenium->get_body(),
+            '[]',
+            'An empty list of appointments is returned for non-authorized user'
+        );
     }
 );
 
