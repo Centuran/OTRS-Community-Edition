@@ -46,8 +46,8 @@ $Selenium->RunTest(
         );
 
         # Create a calendar
-        my %Calendar1 = $CalendarObject->CalendarCreate(
-            CalendarName => "Calendar1-$RandomID",
+        my %Calendar = $CalendarObject->CalendarCreate(
+            CalendarName => "Calendar-$RandomID",
             Color        => '#3A87AD',
             GroupID      => $GroupID,
             UserID       => $UserID1,
@@ -72,10 +72,10 @@ $Selenium->RunTest(
         $Selenium->find_element("#Title",       'css')->send_keys("$AppointmentName");
         $Selenium->find_element("#Description", 'css')->send_keys("Test appointment");
 
-        my $Calendar1ID = $Calendar1{CalendarID};
+        my $CalendarID = $Calendar{CalendarID};
         $Selenium->InputFieldValueSet(
             Element => '#CalendarID',
-            Value   => $Calendar1ID
+            Value   => $CalendarID
         );
 
         $Selenium->find_element("#EditFormSubmit", 'css')->click();
@@ -117,7 +117,7 @@ $Selenium->RunTest(
 
         # Check for unauthorized access to events.
         $Selenium->get(
-            "${ScriptAlias}index.pl?Action=AgentAppointmentList;Subaction=ListAppointments;CalendarID=$Calendar1{CalendarID};"
+            "${ScriptAlias}index.pl?Action=AgentAppointmentList;Subaction=ListAppointments;CalendarID=$Calendar{CalendarID};"
           . "ChallengeToken=$ChallengeToken;StartTime=2021-01-01T00:00:00;EndTime=2022-01-01T00:00:00"
         );
 
