@@ -1,4 +1,10 @@
 # 6.0.32 2021-05-XX - Security release
+ - Updated LWP CPAN module to version 6.54  
+   (there was a security issue in versions prior to 6.28)
+ - Updated XML::Simple CPAN module to version 2.25  
+   (there was a security issue in versions prior to 2.25)
+ - Updated YAML CPAN module to version 1.30  
+   (there was a security issue in versions prior to 1.30)
 
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
