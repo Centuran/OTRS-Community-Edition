@@ -123,7 +123,7 @@ $Selenium->RunTest(
 
         $Self->True(
             index($Selenium->get_page_source(), $AppointmentName) == -1,
-            "Unauthorized event access",
+            "The appointment data is not returned for non-authorized user",
         );
 
         $Self->Is(
