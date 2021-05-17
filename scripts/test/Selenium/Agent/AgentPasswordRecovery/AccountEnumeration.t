@@ -39,6 +39,6 @@ $Selenium->RunTest(
         );
 
     }
-)
+);
 
 1;
