@@ -27,7 +27,7 @@ $Selenium->RunTest(
         $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=LostPassword;User=$TestUserLogin;Token=bar");
         my $ExistingUserContent = $Selenium->get_body();
 
-        # Trigger action LostPassword for non existing agent.
+        # Trigger action LostPassword for non-existing agent.
         $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=LostPassword;User=foo;Token=bar");
         my $NonExistingUserContent = $Selenium->get_body();
 
