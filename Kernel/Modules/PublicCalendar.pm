@@ -53,7 +53,7 @@ sub Run {
     );
     if ( !%User ) {
         return $LayoutObject->ErrorScreen(
-            Message => Translatable('No such user!'),
+            Message => Translatable('No permission!'),
             Comment => Translatable('Please contact the administrator.'),
         );
     }
@@ -73,13 +73,6 @@ sub Run {
         );
     }
 
-    if ( $Calendar{ValidID} != 1 ) {
-        return $LayoutObject->ErrorScreen(
-            Message => Translatable('Invalid calendar!'),
-            Comment => Translatable('Please contact the administrator.'),
-        );
-    }
-
     # check access token
     my $AccessToken = $CalendarObject->GetAccessToken(
         CalendarID => $GetParam{CalendarID},
@@ -88,7 +81,14 @@ sub Run {
 
     if ( $AccessToken ne $GetParam{Token} ) {
         return $LayoutObject->ErrorScreen(
-            Message => Translatable('Invalid URL!'),
+            Message => Translatable('No permission!'),
+            Comment => Translatable('Please contact the administrator.'),
+        );
+    }
+
+    if ( $Calendar{ValidID} != 1 ) {
+        return $LayoutObject->ErrorScreen(
+            Message => Translatable('Invalid calendar!'),
             Comment => Translatable('Please contact the administrator.'),
         );
     }

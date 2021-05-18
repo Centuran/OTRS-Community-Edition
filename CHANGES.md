@@ -1,6 +1,8 @@
 # 6.0.32 2021-05-XX - Security release
  - Fixed agent and customer user account enumeration via "lost password" feature  
    (discovered during internal security audit)
+ - Fixed user account enumeration via public calendar URL  
+   (discovered during internal security audit)
 
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
