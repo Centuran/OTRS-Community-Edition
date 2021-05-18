@@ -26,18 +26,16 @@ $Selenium->RunTest(
 
         # Trigger action LostPassword for existing agent.
         $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=LostPassword;User=$TestUserLogin;Token=bar");
-        my $agentPageSource = $Selenium->get_page_source();
+        my $ExistingUserContent = $Selenium->get_body();
 
         # Trigger action LostPassword for non existing agent.
         $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=LostPassword;User=foo;Token=bar");
-        my $noAgentPageSource = $Selenium->get_page_source();
+        my $NonExistingUserContent = $Selenium->get_body();
 
-        # Assert equality between both.
         $Self->True(
-            $agentPageSource eq $noAgentPageSource,
-            "Agent enumeration possible",
+            $ExistingUserContent eq $NonExistingUserContent,
+            "The same content is returned for existing and non-existing accounts"
         );
-
     }
 );
 

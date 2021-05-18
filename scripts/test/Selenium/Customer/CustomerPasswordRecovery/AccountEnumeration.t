@@ -24,20 +24,18 @@ $Selenium->RunTest(
         # Create test customer.
         my $TestUserLogin = $Helper->TestCustomerUserCreate() || die "Did not get test customer";
 
-        # Trigger action LostPassword for existing agent.
+        # Trigger action LostPassword for existing customer user.
         $Selenium->VerifiedGet("${ScriptAlias}customer.pl?Action=CustomerLostPassword;User=$TestUserLogin;Token=bar");
-        my $customerPageSource = $Selenium->get_page_source();
+        my $ExistingUserContent = $Selenium->get_body();
 
-        # Trigger action LostPassword for non existing agent.
+        # Trigger action LostPassword for non-existing customer user.
         $Selenium->VerifiedGet("${ScriptAlias}customer.pl?Action=CustomerLostPassword;User=foo;Token=bar");
-        my $noCustomerPageSource = $Selenium->get_page_source();
+        my $NonExistingUserContent = $Selenium->get_body();
 
-        # Assert equality between both.
         $Self->True(
-            $customerPageSource eq $noCustomerPageSource,
-            "Customer enumeration possible",
+            $ExistingUserContent eq $NonExistingUserContent,
+            "The same content is returned for existing and non-existing accounts"
         );
-
     }
 );
 
