@@ -16,6 +16,7 @@
  - Fixed an XSS vulnerability in ticket overview  
    (Thanks to Znuny GmbH and Nina Knipprath -- security advisory: https://www.znuny.org/en/advisories/zsa-2021-06)
  - Fixed an issue with unauthorized listing of ticket recipients  
+ - Fixed an XSS issue in appointment edit popup  
    (discovered during internal security audit)
 
 # 6.0.31 2021-03-24
