@@ -8,6 +8,7 @@ variables:
   OTRS_CE_DEV_DEPLOY_TOKEN: ""
   DOCKER_HOST: "tcp://localhost:2375"
   DOCKER_DRIVER: "overlay2"
+  REGISTRY_PATH: "${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_NAME}"
 
 #
 # Build Docker container images
@@ -27,9 +28,9 @@ build-otrs-db-image:
   script:
     - cd /tmp/otrs-ce-development/setup/otrs-db
     - cp "${CI_PROJECT_DIR}/scripts/database/"*.mysql.sql .
-    - docker pull "${CI_REGISTRY_IMAGE}/otrs-db:latest" || true
-    - docker build --cache-from "${CI_REGISTRY_IMAGE}/otrs-db:latest" -t "${CI_REGISTRY_IMAGE}/otrs-db:${CI_COMMIT_SHORT_SHA}" -t "${CI_REGISTRY_IMAGE}/otrs-db:latest" .
-    - docker push "${CI_REGISTRY_IMAGE}/otrs-db:latest"
+    - docker pull "${REGISTRY_PATH}/otrs-db:latest" || true
+    - docker build --cache-from "${REGISTRY_PATH}/otrs-db:latest" -t "${REGISTRY_PATH}/otrs-db:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs-db:latest" .
+    - docker push "${REGISTRY_PATH}/otrs-db:latest"
 
 build-otrs-image:
   stage: build
@@ -40,9 +41,9 @@ build-otrs-image:
   script:
     - cd /tmp/otrs-ce-development/setup/otrs
     - cp -r "${CI_PROJECT_DIR}" otrs-ce
-    - docker pull "${CI_REGISTRY_IMAGE}/otrs:latest" || true
-    - docker build --build-arg OTRS_CE_DIR=./otrs-ce --cache-from "${CI_REGISTRY_IMAGE}/otrs:latest" -t "${CI_REGISTRY_IMAGE}/otrs:${CI_COMMIT_SHORT_SHA}" -t "${CI_REGISTRY_IMAGE}/otrs:latest" .
-    - docker push "${CI_REGISTRY_IMAGE}/otrs:latest"
+    - docker pull "${REGISTRY_PATH}/otrs:latest" || true
+    - docker build --build-arg OTRS_CE_DIR=./otrs-ce --cache-from "${REGISTRY_PATH}/otrs:latest" -t "${REGISTRY_PATH}/otrs:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs:latest" .
+    - docker push "${REGISTRY_PATH}/otrs:latest"
 
 build-selenium-images:
   stage: build
@@ -54,16 +55,16 @@ build-selenium-images:
     # Build Chrome image
     - cd /tmp/otrs-ce-development/setup/selenium/chrome
     - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
-    - docker pull "${CI_REGISTRY_IMAGE}/selenium-chrome:latest" || true
-    - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${CI_REGISTRY_IMAGE}/selenium-chrome:latest" -t "${CI_REGISTRY_IMAGE}/selenium-chrome:${CI_COMMIT_SHORT_SHA}" -t "${CI_REGISTRY_IMAGE}/selenium-chrome:latest" .
-    - docker push "${CI_REGISTRY_IMAGE}/selenium-chrome:latest"
+    - docker pull "${REGISTRY_PATH}/selenium-chrome:latest" || true
+    - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${REGISTRY_PATH}/selenium-chrome:latest" -t "${REGISTRY_PATH}/selenium-chrome:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/selenium-chrome:latest" .
+    - docker push "${REGISTRY_PATH}/selenium-chrome:latest"
 
     # Build Firefox image
     - cd /tmp/otrs-ce-development/setup/selenium/ff
     - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
-    - docker pull "${CI_REGISTRY_IMAGE}/selenium-ff:latest" || true
-    - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${CI_REGISTRY_IMAGE}/selenium-ff:latest" -t "${CI_REGISTRY_IMAGE}/selenium-ff:${CI_COMMIT_SHORT_SHA}" -t "${CI_REGISTRY_IMAGE}/selenium-ff:latest" .
-    - docker push "${CI_REGISTRY_IMAGE}/selenium-ff:latest"
+    - docker pull "${REGISTRY_PATH}/selenium-ff:latest" || true
+    - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${REGISTRY_PATH}/selenium-ff:latest" -t "${REGISTRY_PATH}/selenium-ff:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/selenium-ff:latest" .
+    - docker push "${REGISTRY_PATH}/selenium-ff:latest"
 
 #
 # Apply images to Kubernetes cluster
@@ -84,10 +85,10 @@ apply-images:
     GIT_STRATEGY: none     # Don't check out the code
   script:
     # Set variables used in docker-compose.yml
-    - export OTRS_IMAGE="${CI_REGISTRY_IMAGE}/otrs:latest"
-    - export OTRS_DB_IMAGE="${CI_REGISTRY_IMAGE}/otrs-db:latest"
-    - export SELENIUM_CHROME_IMAGE="${CI_REGISTRY_IMAGE}/selenium-chrome:latest"
-    - export SELENIUM_FF_IMAGE="${CI_REGISTRY_IMAGE}/selenium-ff:latest"
+    - export OTRS_IMAGE="${REGISTRY_PATH}/otrs:latest"
+    - export OTRS_DB_IMAGE="${REGISTRY_PATH}/otrs-db:latest"
+    - export SELENIUM_CHROME_IMAGE="${REGISTRY_PATH}/selenium-chrome:latest"
+    - export SELENIUM_FF_IMAGE="${REGISTRY_PATH}/selenium-ff:latest"
 
     # Install Docker and do "docker login"
     - apk update
