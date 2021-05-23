@@ -45,7 +45,7 @@ sub Pre {
         (                                            # $2
             (?:                                      # http or only www
                 (?: (?: http s? | ftp ) :\/\/) |     # http://, https:// and ftp://
-                (?: [a-z0-9\-]* \.?                  # allow for sub-domain or prefixes bug#12472
+                (?: [a-z0-9\-]{0,255} \.?            # allow for sub-domain or prefixes bug#12472
                     (?: www | ftp ) \. \w+           # www.something and ftp.something
                 )
             )

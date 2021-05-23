@@ -1,4 +1,6 @@
 # 6.0.32 2021-05-XX - Security release
+ - Fixed a ReDoS vulnerability in URL filtering method  
+   (Thanks to Znuny GmbH -- security advisory: https://www.znuny.org/en/advisories/zsa-2021-03)
 
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
