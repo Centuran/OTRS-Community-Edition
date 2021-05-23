@@ -1,4 +1,6 @@
 # 6.0.32 2021-05-XX - Security release
+ - Fixed an issue with unauthorized listing of ticket recipients  
+   (discovered during internal security audit)
 
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
