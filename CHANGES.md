@@ -3,6 +3,12 @@
    (thanks to Znuny GmbH -- security advisory: https://www.znuny.org/en/advisories/zsa-2021-03)
  - Fixed an issue with unauthorized access to calendar appointments  
    (discovered during internal security audit)
+ - Updated LWP CPAN module to version 6.54  
+   (there was a security issue in versions prior to 6.28)
+ - Updated XML::Simple CPAN module to version 2.25  
+   (there was a security issue in versions prior to 2.25)
+ - Updated YAML CPAN module to version 1.30  
+   (there was a security issue in versions prior to 1.30)
 
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
