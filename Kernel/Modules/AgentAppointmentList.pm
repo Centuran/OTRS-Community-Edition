@@ -105,9 +105,30 @@ sub Run {
                 }
             }
 
-            my @Appointments = $AppointmentObject->AppointmentList(
-                %GetParam,
+            # Remove unsupported parameters
+            my @AllowedParams = qw(
+                CalendarID Description EndTime Location ResourceID Result
+                StartTime TeamID Title
             );
+            for my $Param ( keys %GetParam ) {
+                if ( !grep { $Param eq $_ } @AllowedParams ) {
+                    delete $GetParam{$Param};
+                }
+            }
+
+            my @Appointments;
+
+            # Check if the user is actually allowed to access this calendar
+            my $Permission = $CalendarObject->CalendarPermissionGet(
+                CalendarID => $GetParam{CalendarID},
+                UserID     => $Self->{UserID},
+            );
+
+            if ($Permission ne '') {
+                @Appointments = $AppointmentObject->AppointmentList(
+                    %GetParam,
+                );
+            }
 
             # go through all appointments
             for my $Appointment (@Appointments) {
