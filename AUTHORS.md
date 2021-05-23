@@ -55,6 +55,7 @@ The following persons contributed to ((OTRS)) Community Edition and OTRS:
 * Martin Gruner <martin.gruner@otrs.com>
 * Mathias Bräunling <mathias.braeunling@otrs.com>
 * Michael Tänzer <neo@nhng.de>
+* Michał Andraka <michal.andraka@centuran.com>
 * Michał Wojciechowski <michal.wojciechowski@centuran.com>
 * Michiel Beijen <michiel.beijen@otrs.com>
 * Milan Rakic <mrakic@s7designcreative.com>

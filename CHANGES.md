@@ -9,6 +9,10 @@
    (there was a security issue in versions prior to 2.25)
  - Updated YAML CPAN module to version 1.30  
    (there was a security issue in versions prior to 1.30)
+ - Fixed agent and customer user account enumeration via "lost password" feature  
+   (discovered during internal security audit)
+ - Fixed user account enumeration via public calendar URL  
+   (discovered during internal security audit)
 
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.

@@ -630,6 +630,12 @@ sub Run {
         my $User  = $ParamObject->GetParam( Param => 'User' )  || '';
         my $Token = $ParamObject->GetParam( Param => 'Token' ) || '';
 
+        # Don't accept both user and token as parameters, as this allows
+        # for account enumeration
+        if ( $User && $Token ) {
+            return $LayoutObject->FatalError();
+        }
+
         # get user login by token
         if ( !$User && $Token ) {
 
