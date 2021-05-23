@@ -1,23 +1,24 @@
 # 6.0.32 2021-05-XX - Security release
- - Fixed a ReDoS vulnerability in URL filtering method  
-   (thanks to Znuny GmbH -- security advisory: https://www.znuny.org/en/advisories/zsa-2021-03)
  - Fixed an issue with unauthorized access to calendar appointments  
    (discovered during internal security audit)
+ - Fixed agent and customer user account enumeration via "lost password" feature  
+   (discovered during internal security audit)
+ - Fixed user account enumeration via public calendar URL  
+   (discovered during internal security audit)
+ - Fixed an issue with unauthorized listing of ticket recipients  
+   (discovered during internal security audit)
+ - Fixed an XSS issue in appointment edit popup  
+   (discovered during internal security audit)
+ - Fixed an XSS vulnerability in ticket overview  
+   (thanks to Znuny GmbH and Nina Knipprath -- security advisory: https://www.znuny.org/en/advisories/zsa-2021-06)
+ - Fixed a ReDoS vulnerability in URL filtering method  
+   (thanks to Znuny GmbH -- security advisory: https://www.znuny.org/en/advisories/zsa-2021-03)
  - Updated LWP CPAN module to version 6.54  
    (there was a security issue in versions prior to 6.28)
  - Updated XML::Simple CPAN module to version 2.25  
    (there was a security issue in versions prior to 2.25)
  - Updated YAML CPAN module to version 1.30  
    (there was a security issue in versions prior to 1.30)
- - Fixed agent and customer user account enumeration via "lost password" feature  
-   (discovered during internal security audit)
- - Fixed user account enumeration via public calendar URL  
-   (discovered during internal security audit)
- - Fixed an XSS vulnerability in ticket overview  
-   (Thanks to Znuny GmbH and Nina Knipprath -- security advisory: https://www.znuny.org/en/advisories/zsa-2021-06)
- - Fixed an issue with unauthorized listing of ticket recipients  
- - Fixed an XSS issue in appointment edit popup  
-   (discovered during internal security audit)
 
 # 6.0.31 2021-03-24
  - 2021-03-24 Updated jQuery Validation plugin to version 1.19.3.
