@@ -1,4 +1,4 @@
-# 6.0.32 2021-05-XX - Security release
+# 6.0.32 2021-05-24 - Security release
  - Fixed an issue with unauthorized access to calendar appointments  
    (discovered during internal security audit)
  - Fixed agent and customer user account enumeration via "lost password" feature  
