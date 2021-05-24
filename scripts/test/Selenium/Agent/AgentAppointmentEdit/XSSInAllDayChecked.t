@@ -44,10 +44,6 @@ $Selenium->RunTest(
             ValidID      => 1,
             UserID       => $TestUserID,
         );
-use Data::Dumper;
-print STDERR Dumper "Calendar-$RandomID";
-print STDERR Dumper $GroupID;
-print STDERR Dumper \%Calendar;
 
         my $AppointmentID = $AppointmentObject->AppointmentCreate(
             CalendarID => $Calendar{CalendarID},
