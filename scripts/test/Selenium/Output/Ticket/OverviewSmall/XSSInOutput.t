@@ -68,6 +68,8 @@ $Selenium->RunTest(
             UserID   => $TestUserID,
         );
         $Self->True( $TicketDeleted, "Ticket $TicketID deleted" );
+
+        $Kernel::OM->Get('Kernel::System::Cache')->CleanUp( Type => 'Ticket' );
     }
 );
 

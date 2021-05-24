@@ -140,6 +140,8 @@ $Selenium->RunTest(
             $Deleted,
             "Group $Group has been deleted",
         );
+
+        $Kernel::OM->Get('Kernel::System::Cache')->CleanUp( Type => 'Ticket' );
     }
 );
 
