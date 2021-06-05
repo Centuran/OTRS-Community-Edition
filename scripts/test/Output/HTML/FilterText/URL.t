@@ -28,7 +28,7 @@ my %TestStrings = (
 
     ('a' x 50000)           => ('a' x 50000),
 );
-my $TimeLimit = 1;
+my $TimeLimit = 3;
 
 my $Time = time;
 
