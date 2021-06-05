@@ -1,6 +1,6 @@
 # ((OTRS)) Community Edition
 
-[![Tests](https://gitlab.dev.sidnet.info/michal.wojciechowski/otrs-community-edition/badges/master/pipeline.svg?key_text=tests&key_width=)]()
+[![Tests](https://gitlab.dev.sidnet.info/centuran/otrs-community-edition/public-badges/master/pipeline.svg?key_text=tests&key_width=)]()
 
 ((OTRS)) Community Edition is a freely available, open source, web-based ticketing system used for Help Desk, Customer Service, and IT Service Management purposes.
 
