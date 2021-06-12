@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -150,6 +151,10 @@ my $StringSecond = '<?xml version="1.0" encoding="utf-8" ?>
   </Filelist>
 </otrs_package>
 ';
+
+# Make sure packages are uninstalled
+$PackageObject->PackageUninstall( String => $String );
+$PackageObject->PackageUninstall( String => $StringSecond );
 
 # check if the package is already installed - check by name
 my $PackageIsInstalledByName = $PackageObject->PackageIsInstalled( Name => 'Test' );

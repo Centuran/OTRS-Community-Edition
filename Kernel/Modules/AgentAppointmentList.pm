@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -104,9 +105,30 @@ sub Run {
                 }
             }
 
-            my @Appointments = $AppointmentObject->AppointmentList(
-                %GetParam,
+            # Remove unsupported parameters
+            my @AllowedParams = qw(
+                CalendarID Description EndTime Location ResourceID Result
+                StartTime TeamID Title
             );
+            for my $Param ( keys %GetParam ) {
+                if ( !grep { $Param eq $_ } @AllowedParams ) {
+                    delete $GetParam{$Param};
+                }
+            }
+
+            my @Appointments;
+
+            # Check if the user is actually allowed to access this calendar
+            my $Permission = $CalendarObject->CalendarPermissionGet(
+                CalendarID => $GetParam{CalendarID},
+                UserID     => $Self->{UserID},
+            );
+
+            if ($Permission ne '') {
+                @Appointments = $AppointmentObject->AppointmentList(
+                    %GetParam,
+                );
+            }
 
             # go through all appointments
             for my $Appointment (@Appointments) {

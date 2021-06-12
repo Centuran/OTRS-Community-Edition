@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -1679,6 +1680,11 @@ sub MigrateConfigEffectiveValues {
         %{ $Param{PackageLookupNewConfigName} } = ( %{ $Param{PackageLookupNewConfigName} }, %AdditionalMapping );
     }
 
+    # TODO: Flag more removed Sysconfig settings
+    my %SkipRemovedSysconfigSettings = (
+        'Frontend::NotifyModule###100-OTRSBusiness' => 1
+    );
+
     SETTINGNAME:
     for my $SettingName ( sort keys %OTRS5Config ) {
 
@@ -1809,6 +1815,11 @@ sub MigrateConfigEffectiveValues {
 
                     # build the new setting key
                     my $NewSettingKey = $SettingName . '###' . $SettingKeyFirstLevel;
+
+                    # Skip settings flaged as removed
+                    if ( $SkipRemovedSysconfigSettings{$NewSettingKey} ) {
+                        next SETTINGKEYFIRSTLEVEL;
+                    }
 
                     # Skip not longer existing settings.
                     if ( $NewSettingKey eq 'Ticket::Frontend::OverviewSmall###ColumnHeader' ) {

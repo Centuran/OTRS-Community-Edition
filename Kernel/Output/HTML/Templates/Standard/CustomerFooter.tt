@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -19,17 +20,16 @@
 [% END %]
 
 [% IF !Config("Secure::DisableBanner") %]
-    <a href="[% IF !Data.IsLoginPage %]https://www.otrs.com[% ELSE %]https://www.otrs.com/otrs-business-solution-managed/[% END %]" title="[% Config("Product") | html %][% IF !Data.IsLoginPage %] [% Config("Version") | html %][% END %]" target="_blank">
-        <span></span>
-        [% IF Data.OTRSSTORMIsInstalled %]
-            [% Translate("%s powered by %s™", "STORM", "OTRS") | html %]
-        [% ELSIF Data.OTRSCONTROLIsInstalled %]
-            [% Translate("%s powered by %s™", "CONTROL", "OTRS") | html %]
-        [% ELSIF Data.OTRSBusinessIsInstalled %]
-            [% Translate("Powered by %s™", "OTRS Business Solution") | html %]
-        [% ELSE %]
-            [% Translate("Powered by %s™", "OTRS") | html %]
-        [% END %]
+    <a href="https://otrscommunityedition.com/" target="_blank"
+       title="[% Config("Product") | html %][% IF !Data.IsLoginPage %] [% Config("Version") | html %][% END %]"
+    >
+        [% Translate("Powered by %s", "((OTRS)) Community Edition") | html %]
+    </a>
+    <br>
+
+    <a href="https://www.centuran.com/" target="_blank">
+        <img src="[% Config("Frontend::WebPath") %]skins/Customer/default/img/logo-centuran.png"
+            alt="Centuran Consulting" title="Centuran Consulting" />
     </a>
     <div class="Clear"></div>
 [% END %]

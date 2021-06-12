@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -573,6 +574,12 @@ sub Run {
         # get params
         my $User  = $ParamObject->GetParam( Param => 'User' )  || '';
         my $Token = $ParamObject->GetParam( Param => 'Token' ) || '';
+
+        # Don't accept both user and token as parameters, as this allows
+        # for account enumeration
+        if ( $User && $Token ) {
+            return $LayoutObject->CustomerFatalError();
+        }
 
         # get user login by token
         if ( !$User && $Token ) {

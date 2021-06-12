@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -1051,6 +1052,11 @@ sub Error {
         {
             $Param{ShowOTRSBusinessHint}++;
         }
+
+        # Disable hint
+        delete $Param{ShowOTRSBusinessHint};
+
+        # TODO: Eventually replace with our version of hint message
     }
 
     if ( $Param{BackendTraceback} ) {

@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -31,18 +32,12 @@ if ( $NumberOfPackagesInstalled > 8 ) {
     return 1;
 }
 
-# Make sure to enable cloud services.
-$Helper->ConfigSettingChange(
-    Valid => 1,
-    Key   => 'CloudServices::Disabled',
-    Value => 0,
-);
-
-$Helper->ConfigSettingChange(
-    Valid => 1,
-    Key   => 'Package::AllowNotVerifiedPackages',
-    Value => 0,
-);
+# TODO: PackageVerification
+# $Helper->ConfigSettingChange(
+#     Valid => 1,
+#     Key   => 'Package::AllowNotVerifiedPackages',
+#     Value => 0,
+# );
 
 my $RandomID = $Helper->GetRandomID();
 
@@ -59,9 +54,23 @@ use warnings;
 {
     no warnings 'redefine';
     sub Request {
+        my ( \$Self, \%Param ) = \@_;
+
+        my \$ResponseContent;
+        
+        if ( \$Param{URL} =~ m{/repository.xml\$} ) {
+            \$ResponseContent = '<otrs_repository_list version="1.0">' .
+                '<Repository><Name>Test</Name><URL>' .
+                'https://otrscommunityedition.com/download/packages/</URL>' .
+                '</Repository></otrs_repository_list>';
+        }
+        else {
+            \$ResponseContent = '{"Success":1,"Results":{"PackageManagement":[{"Operation":"PackageVerify","Data":{"Test":"not_verified","TestPackageIncompatible":"not_verified"},"Success":"1"}]},"ErrorMessage":""}';
+        }
+
         return (
             Status  => '200 OK',
-            Content => '{"Success":1,"Results":{"PackageManagement":[{"Operation":"PackageVerify","Data":{"Test":"not_verified","TestPackageIncompatible":"not_verified"},"Success":"1"}]},"ErrorMessage":""},
+            Content => \\\$ResponseContent,
         );
     }
 }
@@ -184,49 +193,35 @@ $Selenium->RunTest(
         # Install test package.
         my $Location = $ConfigObject->Get('Home') . '/scripts/test/sample/PackageManager/TestPackage.opm';
 
-        $Selenium->find_element( '#FileUpload', 'css' )->send_keys($Location);
+        # TODO: PackageVerification, comment package unverified case
+        # $Selenium->find_element( '#FileUpload', 'css' )->send_keys($Location);
+        #
+        # $ClickAction->("//button[contains(.,'Install Package')]");
+        #
+        # # Check breadcrumb on Install screen.
+        # $CheckBreadcrumb->(
+        #     BreadcrumbText => 'Install Package:',
+        # );
 
-        $ClickAction->("//button[contains(.,'Install Package')]");
-
-        # Check breadcrumb on Install screen.
-        $CheckBreadcrumb->(
-            BreadcrumbText => 'Install Package:',
-        );
-
-        # Package is not verified, so it's not possible to continue with the installation.
-        $Self->Is(
-            $Selenium->execute_script("return \$('button[type=\"submit\"][value=\"Continue\"]').length"),
-            '0',
-            'Continue button not available because package is not verified'
-        );
-
-        $Self->True(
-            index(
-                $Selenium->get_page_source(),
-                'The installation of packages which are not verified by the OTRS Group is not possible by default.'
-            ) > 0,
-            'Message for aborting installation of package is displayed'
-        );
-
-        # Continue with package installation.
-        $Helper->ConfigSettingChange(
-            Valid => 1,
-            Key   => 'Package::AllowNotVerifiedPackages',
-            Value => 1,
-        );
+        # # Package is not verified, so it's not possible to continue with the installation.
+        # $Self->Is(
+        #     $Selenium->execute_script("return \$('button[type=\"submit\"][value=\"Continue\"]').length"),
+        #     '0',
+        #     'Continue button not available because package is not verified'
+        # );
+        #
+        # $Self->True(
+        #     index(
+        #         $Selenium->get_page_source(),
+        #         'The installation of packages which are not verified by the OTRS Group is not possible by default.'
+        #     ) > 0,
+        #     'Message for aborting installation of package is displayed'
+        # );
 
         # Allow web server to pick up the changed config setting.
         sleep 1;
 
         $NavigateToAdminPackageManager->();
-
-        # Check for notification.
-        $Self->True(
-            $Selenium->execute_script(
-                'return $("div.MessageBox.Error p:contains(\'The installation of packages which are not verified by the OTRS Group is activated. These packages could threaten your whole system! It is recommended not to use unverified packages.\')").length',
-            ),
-            'Install warning for not verified packages is displayed',
-        );
 
         $Selenium->find_element( '#FileUpload', 'css' )->send_keys($Location);
 
@@ -304,32 +299,33 @@ $Selenium->RunTest(
             'Info for incompatible package is shown'
         );
 
-        # Set default repository list.
-        $Helper->ConfigSettingChange(
-            Valid => 1,
-            Key   => 'Package::RepositoryList',
-            Value => {
-                'ftp://ftp.example.com/pub/otrs/misc/packages/' => '[Example] ftp://ftp.example.com/'
-            },
-        );
-
-        # Allow web server to pick up the changed SysConfig.
-        sleep 3;
-
-        $NavigateToAdminPackageManager->();
-        $Selenium->InputFieldValueSet(
-            Element => '#Soruce',
-            Value   => 'ftp://ftp.example.com/pub/otrs/misc/packages/',
-        );
-
-        $ClickAction->("//button[\@name=\'GetRepositoryList']");
-
-        # Check that there is a notification about no packages.
-        my $Notification = 'No packages found in selected repository. Please check log for more info!';
-        $Self->True(
-            $Selenium->execute_script("return \$('.MessageBox.Notice p:contains($Notification)').length"),
-            "$Notification - notification is found."
-        );
+  # TODO: Delete or refactor - No longer viable as we by default connect our base ftp and overwriting here doesn't work'
+  # # Set default repository list.
+  # $Helper->ConfigSettingChange(
+  #     Valid => 1,
+  #     Key   => 'Package::RepositoryList',
+  #     Value => {
+  #         'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/'
+  #     },
+  # );
+  #
+  # #Allow web server to pick up the changed SysConfig.
+  # sleep 3;
+  #
+  # $NavigateToAdminPackageManager->();
+  # $Selenium->InputFieldValueSet(
+  #     Element => '#Soruce',
+  #     Value   => 'ftp://otrscommunityedition.com/download/packages/',
+  # );
+  #
+  # $ClickAction->("//button[\@name=\'GetRepositoryList']");
+  #
+  # # Check that there is a notification about no packages.
+  # my $Notification = 'No packages found in selected repository. Please check log for more info!';
+  # $Self->True(
+  #     $Selenium->execute_script("return \$('.MessageBox.Notice p:contains($Notification)').length"),
+  #     "$Notification - notification is found."
+  # );
     }
 );
 

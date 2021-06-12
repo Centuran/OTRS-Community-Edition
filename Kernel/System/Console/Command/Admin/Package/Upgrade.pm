@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -32,7 +33,7 @@ sub Configure {
     $Self->AddArgument(
         Name => 'location',
         Description =>
-            "Specify a file path, a remote repository (http://ftp.otrs.org/pub/otrs/packages/:Package-1.0.0.opm) or just any online repository (online:Package).",
+            "Specify a file path, a remote repository (http://otrscommunityedition.com/download/packages/:Package-1.0.0.opm) or just any online repository (online:Package).",
         Required   => 1,
         ValueRegex => qr/.*/smx,
     );
@@ -62,31 +63,32 @@ sub Run {
         String => $FileString,
     );
 
-    my $Verified = $PackageObject->PackageVerify(
-        Package   => $FileString,
-        Structure => \%Structure,
-    ) || 'verified';
-    my %VerifyInfo = $PackageObject->PackageVerifyInfo();
-
-    # Check if installation of packages, which are not verified by us, is possible.
-    my $PackageAllowNotVerifiedPackages = $Kernel::OM->Get('Kernel::Config')->Get('Package::AllowNotVerifiedPackages');
-
-    if ( $Verified ne 'verified' ) {
-
-        if ( !$PackageAllowNotVerifiedPackages ) {
-
-            $Self->PrintError(
-                "$Structure{Name}->{Content}-$Structure{Version}->{Content} is not verified by the OTRS Group!\n\nThe installation of packages which are not verified by the OTRS Group is not possible by default."
-            );
-            return $Self->ExitCodeError();
-        }
-        else {
-
-            $Self->Print(
-                "<yellow>Package $Structure{Name}->{Content}-$Structure{Version}->{Content} not verified by the OTRS Group! It is recommended not to use this package.</yellow>\n"
-            );
-        }
-    }
+# TODO: PackageVerification
+# my $Verified = $PackageObject->PackageVerify(
+#     Package   => $FileString,
+#     Structure => \%Structure,
+# ) || 'verified';
+# my %VerifyInfo = $PackageObject->PackageVerifyInfo();
+#
+# # Check if installation of packages, which are not verified by us, is possible.
+# my $PackageAllowNotVerifiedPackages = $Kernel::OM->Get('Kernel::Config')->Get('Package::AllowNotVerifiedPackages');
+#
+# if ( $Verified ne 'verified' ) {
+#
+#     if ( !$PackageAllowNotVerifiedPackages ) {
+#
+#         $Self->PrintError(
+#             "$Structure{Name}->{Content}-$Structure{Version}->{Content} is not verified by the OTRS Group!\n\nThe installation of packages which are not verified by the OTRS Group is not possible by default."
+#         );
+#         return $Self->ExitCodeError();
+#     }
+#     else {
+#
+#         $Self->Print(
+#             "<yellow>Package $Structure{Name}->{Content}-$Structure{Version}->{Content} not verified by the OTRS Group! It is recommended not to use this package.</yellow>\n"
+#         );
+#     }
+# }
 
     # Intro screen.
     if ( $Structure{IntroUpgrade} ) {

@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -83,18 +84,20 @@ sub Run {
         return $Self->ExitCodeOk();
     }
 
-    my $PackageNameOption             = $Self->GetOption('package-name');
-    my $ShowDeploymentInfoOption      = $Self->GetOption('show-deployment-info');
-    my $ShowVerificationInfoOption    = $Self->GetOption('show-verification-info');
-    my $DeleteVerificationCacheOption = $Self->GetOption('delete-verification-cache');
+    my $PackageNameOption        = $Self->GetOption('package-name');
+    my $ShowDeploymentInfoOption = $Self->GetOption('show-deployment-info');
 
-    my $CloudServicesDisabled = $Kernel::OM->Get('Kernel::Config')->Get('CloudServices::Disabled') || 0;
+    # TODO: PackageVerification
+    # my $ShowVerificationInfoOption    = $Self->GetOption('show-verification-info');
+    # my $DeleteVerificationCacheOption = $Self->GetOption('delete-verification-cache');
 
-    # Do not show verification status is cloud services are disabled.
-    if ( $CloudServicesDisabled && $ShowVerificationInfoOption ) {
-        $ShowVerificationInfoOption = 0;
-        $Self->Print("<red>Cloud Services are disabled OTRS Verify information can not be retrieved</red>\n");
-    }
+    # my $CloudServicesDisabled = $Kernel::OM->Get('Kernel::Config')->Get('CloudServices::Disabled') || 0;
+    #
+    # # Do not show verification status is cloud services are disabled.
+    # if ( $CloudServicesDisabled && $ShowVerificationInfoOption ) {
+    #     $ShowVerificationInfoOption = 0;
+    #     $Self->Print("<red>Cloud Services are disabled OTRS Verify information can not be retrieved</red>\n");
+    # }
 
     # Get package object
     my $PackageObject = $Kernel::OM->Get('Kernel::System::Package');
@@ -154,32 +157,33 @@ sub Run {
             }
         }
 
-        if ($ShowVerificationInfoOption) {
-
-            if ( !%VerificationInfo ) {
-
-                # Clear the package verification cache to get fresh results.
-                if ($DeleteVerificationCacheOption) {
-                    $Kernel::OM->Get('Kernel::System::Cache')->CleanUp(
-                        Type => 'PackageVerification',
-                    );
-                }
-
-                # Get verification info for all packages (this will create the cache again).
-                %VerificationInfo = $PackageObject->PackageVerifyAll();
-            }
-
-            if (
-                !defined $VerificationInfo{ $Package->{Name}->{Content} }
-                || $VerificationInfo{ $Package->{Name}->{Content} } ne 'verified'
-                )
-            {
-                $Self->Print("| <red>OTRS Verify:</red> Not Verified\n");
-            }
-            else {
-                $Self->Print("| <yellow>OTRS Verify:</yellow> Verified\n");
-            }
-        }
+        # TODO: PackageVerification
+        # if ($ShowVerificationInfoOption) {
+        #
+        #     if ( !%VerificationInfo ) {
+        #
+        #         # Clear the package verification cache to get fresh results.
+        #         if ($DeleteVerificationCacheOption) {
+        #             $Kernel::OM->Get('Kernel::System::Cache')->CleanUp(
+        #                 Type => 'PackageVerification',
+        #             );
+        #         }
+        #
+        #         # Get verification info for all packages (this will create the cache again).
+        #         %VerificationInfo = $PackageObject->PackageVerifyAll();
+        #     }
+        #
+        #     if (
+        #         !defined $VerificationInfo{ $Package->{Name}->{Content} }
+        #         || $VerificationInfo{ $Package->{Name}->{Content} } ne 'verified'
+        #         )
+        #     {
+        #         $Self->Print("| <red>OTRS Verify:</red> Not Verified\n");
+        #     }
+        #     else {
+        #         $Self->Print("| <yellow>OTRS Verify:</yellow> Verified\n");
+        #     }
+        # }
     }
     $Self->Print("+----------------------------------------------------------------------------+\n");
 

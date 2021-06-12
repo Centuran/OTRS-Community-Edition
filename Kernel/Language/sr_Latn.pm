@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # Copyright (C) 2010 Milorad Jovanovic <j.milorad at gmail.com>
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
@@ -30,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.9962749746021;
+    $Self->{Completeness}        = 0.995719178082192;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -217,7 +218,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Ovo je podrazumevana vrednost za pridružene operatere primaoce koji za ovo obaveštenje u svojim postavkama nisu još napravili izbor. Ako je boks aktiviran, obaveštenje će biti poslato takvim operaterima.',
         'This feature is currently not available.' => 'Ovo svojstvo trenutno nije dostupno.',
-        'Upgrade to %s' => 'Unapredi na %s',
         'Please activate this transport in order to use it.' => 'Molimo aktivirajte ovaj transport pre korišćenja.',
         'No data found' => 'Ništa nije pronađeno',
         'No notification method found.' => 'Nije pronađena metoda obaveštavanja.',
@@ -508,18 +508,6 @@ sub Data {
         'Add new field for object' => 'Dodaj novo polje objektu',
         'Filter for Dynamic Fields' => 'Filter za dinamička polja',
         'Filter for dynamic fields' => 'Filter za dinamička polja',
-        'More Business Fields' => 'Više poslovnih polja',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            'Da li želite mogućnost dodatnih poslovnih dinamičkih polja? Unapredite na %s za pristup sledećim vrstama polja:',
-        'Database' => 'Baza podataka',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            'Koristite eksterne baze podataka kao izvor podataka za ovo dinamičko polje.',
-        'Web service' => 'Veb servis',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            'Eksterni veb servisi se mogu konfigurisati kao izvor podataka za ovo dinamičko polje.',
-        'Contact with data' => 'Kontakt sa podacima',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            'Ova funkcija vam omogućava da dodate (višestruke) kontakte sa podacima tiketima.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Za dodavanje novog polja izaberite tip polja iz jedne od lista objekata. Objekt definiše granice polja i posle kreiranja polja se ne može menjati.',
         'Dynamic Fields List' => 'Lista dinamičkih polja',
@@ -1156,13 +1144,7 @@ sub Data {
         'Delete web service' => 'Obriši veb servis',
         'Do you really want to delete this web service?' => 'Da li stvarno želite da obrišete ovaj veb servis?',
         'Ready2Adopt Web Services' => 'Ready2Adopt veb servisi',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            'Ovde možete aktivirati Ready2Adopt veb servise spremne za upotrebu koji oslikavaju našu najbolju praksu koja je deo %s.',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Molimo da imate na umu da veb servisi mogu da zavise od drugih modula koji su dostupni u okviru određenih %s nivoa ugovora (postoji obavešetenje sa dodatnim detaljima pri uvozu).',
         'Import Ready2Adopt web service' => 'Uvezi Ready2Adopt veb servis',
-        'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
-            'Da li želite da iskoristite veb servise kreirane od strane eksperata? Unapredite na %s da bi mogli da uvezete sofisticirane Ready2Adopt veb servise spremne za upotrebu.',
         'After you save the configuration you will be redirected again to the edit screen.' =>
             'Nakon snimanja konfiguracije bićete ponovo preusmereni na prikaz ekrana za uređivanje.',
         'If you want to return to overview please click the "Go to overview" button.' =>
@@ -1260,7 +1242,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             'Možete dodati omiljene prevlačenjem kursora preko stavke sa desne strane i klikom na ikonicu zvezde.',
         'Links' => 'Veze',
-        'View the admin manual on Github' => 'Pregledajte uputstvo za administratore na Github',
+        'View the admin manual' => 'Pregledajte uputstvo za administratore',
         'No Matches' => 'Ništa nije pronađeno',
         'Sorry, your search didn\'t match any items.' => 'Žao nam je, vaša pretraga nije vratila rezultate.',
         'Set as favorite' => 'Stavi u omiljene',
@@ -1339,6 +1321,7 @@ sub Data {
             'Čestitamo, vaš %s je korektno instaliran i ažuran!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Unapredi na %s',
         'Go to the OTRS customer portal' => 'Idi na OTRS korisnički portal',
         '%s will be available soon. Please check again in a few days.' =>
             '%s će biti dostupna uskoro. Molimo, proverite ponovo za nekoliko dana.',
@@ -1418,8 +1401,6 @@ sub Data {
         'package information' => 'Informacije o paketu',
         'Package installation requires a patch level update of OTRS.' => 'Instalacija paketa zahteva ažuriranu verziju OTRS.',
         'Package update requires a patch level update of OTRS.' => 'Ažuriranje paketa zahteva ažuriranu verziju OTRS.',
-        'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
-            'Ukoliko ste korisnik OTRS Business Solution™, molimo posetite naš korisnički portal i podnesite zahtev.',
         'Please note that your installed OTRS version is %s.' => 'Trenutno instalirana OTRS verzija je %s.',
         'To install this package, you need to update OTRS to version %s or newer.' =>
             'Da biste instalirali ovaj paket, neophodno je da ažurirate vaš OTRS na verziju %s ili noviju.',
@@ -1442,9 +1423,6 @@ sub Data {
             'Molimo vas da budete sigurni da vaša baza podataka prihvata pakete veličine preko %s MB (trenutno prihvata samo pakete do %s MB). Molimo vas da prilagodite podešavanja \'max_allowed_packet\' na vašoj bazi podataka, da bi ste izbegli greške.',
         'Install' => 'Instaliraj',
         'Update repository information' => 'Ažuriraj informacije o spremištu',
-        'Cloud services are currently disabled.' => 'Servisi u oblaku su trenutno deaktivirani.',
-        'OTRS Verify™ can not continue!' => 'OTRS Verify™ ne može da nastavi!',
-        'Enable cloud services' => 'Aktiviraj servise u oblaku',
         'Update all installed packages' => 'Ažuriraj sve instalirane pakete',
         'Online Repository' => 'Mrežno spremište',
         'Action' => 'Akcija',
@@ -1455,9 +1433,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Paket nije korektno instaliran! Instalirajte ga ponovo.',
         'Reinstall' => 'Instaliraj ponovo',
-        'Features for %s customers only' => 'Svojstva samo za %s klijente',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Sa %s možete imati koristi od sledećih opcionih funkcija. Molimo da kontaktirate %s ukoliko su vam potrebne dodatne informacije.',
         'Package Information' => 'Informacije o paketu',
         'Download package' => 'Preuzmi paket',
         'Rebuild package' => 'Obnovi paket(rebuild)',
@@ -1552,8 +1527,6 @@ sub Data {
         'Ready2Adopt Processes' => 'Ready2Adopt procesi',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             'Ovde možete aktivirati Ready2Adopt procese primera najbolje prakse koji su spremni za upotrebu. Molimo obratite pažnju da je možda neophodna dodatna konfiguracija.',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            'Da li želite da iskoristite procese kreirane od strane eksperata? Unapredite na %s za uvoz primera sofisticiranih Ready2Adopt procesa spremnih za upotrebu.',
         'Import Ready2Adopt process' => 'Uvezi Ready2Adopt proces',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             'Za kreiranje novog procesa možete ili uvesti proces koji je izvezen iz drugog sistema ili kreirati kompletno nov.',
@@ -1823,6 +1796,7 @@ sub Data {
         'Attribute' => 'Atribut',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'OTRS verzija',
+        'Database' => 'Baza podataka',
         'Operating System' => 'Operativni sistem',
         'Perl Version' => 'Perl verzija',
         'Optional description of this system.' => 'Opcioni opis ovog sistema.',
@@ -2010,14 +1984,6 @@ sub Data {
         'This state is used in the following config settings:' => 'Ovo stanje se koristi u sledećim sistemskim podešavanjima: ',
 
         # Template: AdminSupportDataCollector
-        'Sending support data to OTRS Group is not possible!' => 'Slanje podataka za podršku OTRS grupi nije moguće!',
-        'Enable Cloud Services' => 'Aktiviraj servise u oblaku',
-        'This data is sent to OTRS Group on a regular basis. To stop sending this data please update your system registration.' =>
-            'Ovi podaci se šalju OTRS grupi u regularnom intervalu. Da zaustavite slanje ovih podataka molimo vas da ažurirate registraciju.',
-        'You can manually trigger the Support Data sending by pressing this button:' =>
-            'Možete manuelno aktivirati slanje podržanih podataka pritiskanjem ovog dugmeta:',
-        'Send Update' => 'Pošalji ažuriranje',
-        'Currently this data is only shown in this system.' => 'Trenutno su ovi podaci prikazani samo u ovom sistemu.',
         'A support bundle (including: system registration information, support data, a list of installed packages and all locally modified source code files) can be generated by pressing this button:' =>
             'Paket za podršku (uključujući: informacije o registraciji sistema, podatke za podršku, listu instaliranih paketa i svih lokalno modifikovanih datoteka izvornog koda) može biti generisan pritiskom na ovo dugme:',
         'Generate Support Bundle' => 'Generiši paket podrške',
@@ -2826,7 +2792,9 @@ sub Data {
 
         # Template: CloudServicesDisabled
         'This Feature Requires Cloud Services' => 'Ova funkcija zahteva servise u oblaku',
+        'Cloud services are currently disabled.' => 'Servisi u oblaku su trenutno deaktivirani.',
         'You can' => 'Vi možete',
+        'Enable cloud services' => 'Aktiviraj servise u oblaku',
         'go back to the previous page' => 'idi na prethodnu stranu',
 
         # Template: CustomerAccept
@@ -2849,8 +2817,7 @@ sub Data {
         'Traceback' => 'Isprati unazad',
 
         # Template: CustomerFooter
-        '%s powered by %s™' => '%s se pokreće od strane %s™',
-        'Powered by %s™' => 'Pokreće %s™',
+        'Powered by %s' => '',
 
         # Template: CustomerFooterJS
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
@@ -2945,12 +2912,6 @@ sub Data {
         'Ticket fields' => 'Polja tiketa',
 
         # Template: Error
-        'Really a bug? 5 out of 10 bug reports result from a wrong or incomplete installation of OTRS.' =>
-            'Stvarno greška? 5 od 10 prijavljenih grešaka su posledica pogrešne ili nekompletne OTRS instalacije.',
-        'With %s, our experts take care of correct installation and cover your back with support and periodic security updates.' =>
-            'Sa %s, naši eksperti će se pobrinuti za korektnu instalaciju i obezbediti podršku i povremena sigurnosna ažuriranja.',
-        'Contact our service team now.' => 'Kontaktirajte naš servisnim tim sada.',
-        'Send a bugreport' => 'Pošalji izveštaj o grešci',
         'Expand' => 'Proširi',
 
         # Template: AttachmentList
@@ -2969,9 +2930,6 @@ sub Data {
             'Molimo obratite pažnju da je ovaj nacrt zastareo jer je tiket modifikovan od kada je nacrt kreiran.',
 
         # Template: Header
-        'View notifications' => 'Pregled obaveštenja',
-        'Notifications' => 'Obaveštenja',
-        'Notifications (OTRS Business Solution™)' => 'Obaveštenja (OTRS Business Solution™)',
         'Personal preferences' => 'Lična podešavanja',
         'Logout' => 'Odjava',
         'You are logged in as' => 'Prijavljeni ste kao',
@@ -2984,15 +2942,9 @@ sub Data {
         'General Specifications and Mail Settings' => 'Opšte specifikacije i podešavanje pošte',
         'Finish' => 'Završi',
         'Welcome to %s' => 'Dobrodošli u %s',
-        'Germany' => 'Nemačka',
         'Phone' => 'Poziv',
-        'United States' => 'Sjedinjene Američke Države',
-        'Mexico' => 'Meksiko',
-        'Hungary' => 'Mađarska',
-        'Brazil' => 'Brazil',
-        'Singapore' => 'Singapur',
-        'Hong Kong' => 'Hong Kong',
         'Web site' => 'Veb sajt',
+        'GitHub repository' => '',
 
         # Template: InstallerConfigureMail
         'Configure Outbound Mail' => 'Podešavanje odlazne pošte',
@@ -3058,7 +3010,6 @@ sub Data {
         'Restart your webserver' => 'Ponovo pokrenite vaš veb server.',
         'After doing so your OTRS is up and running.' => 'Posle ovoga vaš OTRS je uključen i radi.',
         'Start page' => 'Početna strana',
-        'Your OTRS Team' => 'Vaš OTRS tim',
 
         # Template: InstallerLicense
         'Don\'t accept license' => 'Ne prihvataj licencu',
@@ -3289,10 +3240,6 @@ sub Data {
         # Template: Navigation
         'Navigation' => 'Navigacija',
 
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            'Sa %s, sistemska konfiguracija podržava pregled promena, ponovno raspoređivanje i korisničke promene podešavanja.',
-
         # Template: Test
         'OTRS Test Page' => 'OTRS test strana',
         'Unlock' => 'Otključaj',
@@ -3518,9 +3465,6 @@ sub Data {
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => 'Konfiguracija polja je nevažeća',
         'Objects configuration is not valid' => 'Konfiguracija objekta je nevažeća',
-        'Database (%s)' => 'Baza podataka (%s)',
-        'Web service (%s)' => 'Veb servis (%s)',
-        'Contact with data (%s)' => 'Kontakt sa podacima (%s)',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             'Nije moguće poništiti redosled dinamičkih polja, molimo da proverite OTRS logove za više informacija.',
 
@@ -3760,8 +3704,6 @@ sub Data {
         'Can\'t read %s!' => 'Nemoguće čitanje %s!',
         'File is OK' => 'Datoteka je u redu',
         'Package has locally modified files.' => 'Paket sadrži lokalno izmenjene datoteke.',
-        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
-            'Paket nije verifikovan od strane OTRS grupe! Preporučuje se da ne koristite ovaj paket.',
         'Not Started' => 'Nije pokrenuto',
         'Updated' => 'Ažurirano',
         'Already up-to-date' => 'Već ažurno',
@@ -3780,6 +3722,8 @@ sub Data {
         'Repository List' => 'Lista spremišta',
         'No packages found in selected repository. Please check log for more info!' =>
             'U izabranom spremištu nema paketa. Molimo proverite log za više informacija.',
+        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
+            'Paket nije verifikovan od strane OTRS grupe! Preporučuje se da ne koristite ovaj paket.',
         'Package not verified due a communication issue with verification server!' =>
             'Paket nije verifikovan zbog komunikacijskog problema sa verifikacionim serverom!',
         'Can\'t connect to OTRS Feature Add-on list server!' => 'Nije moguće povezati se sa OTRS Feature Add-on serverom!',
@@ -4366,7 +4310,6 @@ sub Data {
         'Show one article' => 'Prikaži jedan članak',
         'Show all articles' => 'Prikaži sve članke',
         'Show Ticket Timeline View' => 'Prikaži tikete na vremenskoj liniji',
-        'Show Ticket Timeline View (%s)' => 'Prikaži tikete na vremenskoj liniji (%s)',
 
         # Perl Module: Kernel/Modules/AjaxAttachment.pm
         'Got no FormID.' => 'Nije dat FormID.',
@@ -4637,14 +4580,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'Aktivirajte servise u oblaku da bi omogućili sve OTRS funkcije!',
-
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%s Unapredite na %s sada! %s',
-        'Please verify your license data!' => 'Molimo proverite podatke vaše licence!',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'Licenca za vaš %s ističe uskoro. Molimo da kontaktirate %s radi obnove ugovora!',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            'Ažuriranje za vaš %s je dostupno, ali postoji neusaglašenost sa verzijom vašeg sistema! Molimo vas da prvo ažurirate verziju vašeg sistema!',
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'Operater na vezi: %s',
@@ -6026,7 +5961,6 @@ Vaša tehnička podrška
         'Agents ↔ Groups' => 'Operateri ↔ grupe',
         'Agents ↔ Roles' => 'Operateri ↔ uloge',
         'All CustomerIDs of a customer user.' => 'Svi klijent ID klijent korisnika.',
-        'All attachments (OTRS Business Solution™)' => 'Svi prilozi (OTRS Business Solution™)',
         'All customer users of a CustomerID' => 'Svi klijenti korisnici za CustomerID',
         'All escalated tickets' => 'Svi eskalirani tiketi',
         'All new tickets, these tickets have not been worked on yet' => 'Svi novi tiketi, na njima još nije ništa rađeno',
@@ -6207,9 +6141,6 @@ Vaša tehnička podrška
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             'Proverava SystemID u detekciji broja tiketa za nastavljanja. Ako je isključeno, SystemID će biti promenjen nakon korišćenja sistema.',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            'Proverava dostupnost OTRS Business Solution™ za ovaj sistem.',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'Proverava status prava korišćenja OTRS Business Solution™.',
         'Child' => 'Child',
         'Chinese (Simplified)' => 'Kineski (uprošćeno)',
         'Chinese (Traditional)' => 'Kineski (tradicionalno)',
@@ -6522,8 +6453,6 @@ Vaša tehnička podrška
             'Definiše da li će operaterima biti dozvoljena prijava na sistem ukoliko nemaju podešen deljeni tajni ključ i time ne koriste dvofaktorski modul za identifikaciju.',
         'Defines if customers should be allowed to login if they have no shared secret stored in their preferences and therefore are not using two-factor authentication.' =>
             'Definiše da li će klijentima biti dozvoljena prijava na sistem ukoliko nemaju podešen deljeni tajni ključ pa zbog toga ne koriste dvofaktorski modul za identifikaciju.',
-        'Defines if the communication between this system and OTRS Group servers that provide cloud services is possible. If set to \'Disable cloud services\', some functionality will be lost such as system registration, support data sending, upgrading to and use of OTRS Business Solution™, OTRS Verify™, OTRS News and product News dashboard widgets, among others.' =>
-            'Definiše da li je moguća komunikacija između ovog sistema i servera OTRS grupe koji obezbeđuju servise u oblaku. Ako je podešeno na \'Onemogući servise u oblaku\' neke funkcionalnosti neće raditi, a to su registracija sistema, slanje podataka podrške, unapređenje na OTRS Business Solution™, OTRS verifikacija, OTRS novosti i novosti o proizvodu u dodacima na kontrolnoj tabli, između ostalih.',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.) in customer interface.' =>
             'Definiše da li će se koristiti poboljšani režim (omogućava korišćenje tabela, zamene, indeksiranja, eksponiranja, umetanja iz Word-a, itd) u interfejsu klijenta.',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.).' =>
@@ -6896,8 +6825,6 @@ Vaša tehnička podrška
         'Defines the module to authenticate customers.' => 'Određuje modul za autentifikaciju klijenata.',
         'Defines the module to display a notification if cloud services are disabled.' =>
             'Definiše modul za prikazivanje obaveštenja ako su servisi u oblaku onemogućeni.',
-        'Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.' =>
-            'Određuje modul za prikaz obaveštenja u raznim interfejsima u različitim prilikama za OTRS Business Solution™.',
         'Defines the module to display a notification in the agent interface if the OTRS Daemon is not running.' =>
             'Određuje modul za prikaz obaveštenja u interfejsu operatera ako OTRS sistemski servis ne radi.',
         'Defines the module to display a notification in the agent interface if the system configuration is out of sync.' =>
@@ -6910,8 +6837,6 @@ Vaša tehnička podrška
             'Određuje modul za prikaz obaveštenja u interfejsu operatera, ako je operater prijavljen na sistem dok je aktivno održavanje sistema.',
         'Defines the module to display a notification in the agent interface, if the agent session limit prior warning is reached.' =>
             'Određuje modul za prikaz obaveštenja u interfejsu operatera ako .je dostignut limit sesija operatera.',
-        'Defines the module to display a notification in the agent interface, if the installation of not verified packages is activated (only shown to admins).' =>
-            'Definiše modul za prikazivanje obaveštenja u interfejsu operatera, ukoliko je instalacija neverifikovanih paketa uključena (prikaz samo za administratore).',
         'Defines the module to display a notification in the agent interface, if the system is used by the admin user (normally you shouldn\'t work as admin).' =>
             'Definiše modul za prikazivanje obaveštenja u interfejsu operatera ako se sistem koristi od strane admin korisnika (normalno ne treba da rade kao administrator).',
         'Defines the module to display a notification in the agent interface, if there are invalid sysconfig settings deployed.' =>
@@ -6982,8 +6907,6 @@ Vaša tehnička podrška
             'Definiše parametre za dodatak komandne table. "Cmd" se koristi za komandne parametre. "Group" se koristi da ograniči pristup dodatku (npr. Group: admin;group1;group2;). "Default" određuje da li je dodatak podrazumevano aktiviran ili da je neophodno da ga korisnik manuelno aktivira. "CacheTTL" je vreme u minutima za keširanje dodatka. "Mandatory" određuje da li je dodatak uvek prikazan i ne može biti isključen od strane operatera.',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Definiše parametre za dodatak kontrolne table. "Group" se koristi da ograniči pristup dodatku (npr. Group: admin;group1;group2;). "Default" određuje da li je dodatak podrazumevano aktiviran ili da je neophodno da ga korisnik manuelno aktivira. "CacheTTL" je vreme u minutima za keširanje dodatka. "Mandatory" određuje da li je dodatak uvek prikazan i ne može biti isključen od strane operatera.',
-        'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            'Definiše parametre za dodatak kontrolne table. "Group" se koristi da ograniči pristup dodatku (npr. Group: admin;group1;group2;). "Default" određuje da li je dodatak podrazumevano aktiviran ili da je neophodno da ga korisnik manuelno aktivira. "CacheTTLLocal" je vreme u minutima za keširanje dodatka. "Mandatory" određuje da li je dodatak uvek prikazan i ne može biti isključen od strane operatera.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Definiše parametre za dodatak kontrolne table. "Limit" definiše podrazumevani broj prikazanih stavki. "Group" se koristi da ograniči pristup dodatku (npr. Group: admin;group1;group2;). "Default" određuje da li je dodatak podrazumevano aktiviran ili da je neophodno da ga korisnik manuelno aktivira. "CacheTTL" je vreme u minutima za keširanje dodatka. "Mandatory" određuje da li je dodatak uvek prikazan i ne može biti isključen od strane operatera.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7122,7 +7045,6 @@ Vaša tehnička podrška
         'Deletes requested sessions if they have timed out.' => 'Briše zahtevanu sesiju ako je isteklo vreme.',
         'Delivers extended debugging information in the frontend in case any AJAX errors occur, if enabled.' =>
             'Omogućava pribavljanje dodatnih informacija o greškama u interfejsu, u slučaju problema sa AJAX metodom.',
-        'Deploy and manage OTRS Business Solution™.' => 'Primeni i upravljaj OTRS Business Solution™.',
         'Detached' => 'Odvojeno',
         'Determines if a button to delete a link should be displayed next to each link in each zoom mask.' =>
             'Određuje da li se prikazuje dugme za brisanje pored svake veze u detaljnom pregledu tiketa.',
@@ -7162,6 +7084,7 @@ Vaša tehnička podrška
             'Onemogućava HTTP zaglavlje "X-Frame-Options: SAMEORIGIN" radi učitavanja OTRS u okviru IFRAME na drugim stranama. Onemogućavanje ovog HTTP zaglavlja snosi sigurnosni rizik! Isključite ga samo ako znate šta radite!',
         'Disable autocomplete in the login screen.' => '',
         'Disable cloud services' => 'Onemogući servise u oblaku',
+        'Disable cloud services.' => '',
         'Disables sending reminder notifications to the responsible agent of a ticket (Ticket::Responsible needs to be enabled).' =>
             'Onemogućuje slanje obaveštenja podsetnika odgovornom operateru tiketa (Ticket::Responsible mora biti uključeno).',
         'Disables the redirection to the last screen overview / dashboard after a ticket is closed.' =>
@@ -7675,7 +7598,6 @@ Vaša tehnička podrška
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'Određuje da li sesije koriste HTML kolačiće. Ukoliko su kolačići isključeni ili klijentski pretraživač ih ne podržava, sistem će raditi uobičajeno i dodavaće ID sesije u svim vezama.',
         'Malay' => 'Malajski',
-        'Manage OTRS Group cloud services.' => 'Upravlja uslugama u oblaku OTRS grupe.',
         'Manage PGP keys for email encryption.' => 'Upravlja PGP ključevima za imejl šifrovanje.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Upravljanje POP3 ili IMAP nalozima za preuzimanje email-a od.',
         'Manage S/MIME certificates for email encryption.' => 'Upravljaj S/MIME sertifikatima za imej enkripciju.',
@@ -7683,7 +7605,6 @@ Vaša tehnička podrška
         'Manage different calendars.' => 'Upravljanje različitim kalendarima.',
         'Manage existing sessions.' => 'Upravljanje postojećim sesijama.',
         'Manage support data.' => 'Upravljanje podacima podrške.',
-        'Manage system registration.' => 'Upravljanje sistem registracijom.',
         'Manage tasks triggered by event or time based execution.' => 'Upravlja zadacima pokrenutim od događaja ili na osnovu vremenskog izvršavanja.',
         'Mark as Spam!' => 'Označi kao Spam!',
         'Mark this ticket as junk!' => 'Označi ovaj tiket kao besmislen junk!',
@@ -7782,8 +7703,6 @@ Vaša tehnička podrška
         'New Year\'s Day' => 'Nova godina',
         'New Year\'s Eve' => 'Doček nove godine',
         'New process ticket' => 'Novi tiket procesa',
-        'News about OTRS releases!' => 'Vesti o OTRS izdanjima!',
-        'News about OTRS.' => 'Novosti o OTRS.',
         'Next possible ticket states after adding a phone note in the ticket phone inbound screen of the agent interface.' =>
             'Sledeći mogući status tiketa nakon dodavanja poziva u ekranu dolaznih poziva tiketa u interfejsu operatera.',
         'Next possible ticket states after adding a phone note in the ticket phone outbound screen of the agent interface.' =>
@@ -7804,8 +7723,6 @@ Vaša tehnička podrška
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Broj tiketa koji će biti prikazani na svakoj strani rezultata pretrage u interfejsu klijenta.',
         'Number of tickets to be displayed in each page.' => 'Broj tiketa koji će biti prikazani na svakoj strani.',
-        'OTRS Group Services' => 'Servisi OTRS grupe',
-        'OTRS News' => 'OTRS novosti',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '„OTRS” može da koristi jednu ili više preslikanih baza podataka za skupe operacije kao što su pretraga teksta ili generisanje statistika. Ovde možete definisati DSN za prvu preslikanu bazu podataka.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7942,7 +7859,6 @@ Vaša tehnička podrška
         'Process pending tickets.' => 'Proces tiket na čekanju.',
         'ProcessID' => 'ID procesa',
         'Processes & Automation' => 'Procesi & automatizacija',
-        'Product News' => 'Novosti o proizvodu',
         'Protection against CSRF (Cross Site Request Forgery) exploits (for more info see https://en.wikipedia.org/wiki/Cross-site_request_forgery).' =>
             'Zaštita od CSRF eksploatacije (Cross Site Request Forgery, za više informacija pogledajte https://en.wikipedia.org/wiki/Cross-site_request_forgery).',
         'Provides a matrix overview of the tickets per state per queue' =>
@@ -7973,7 +7889,6 @@ Vaša tehnička podrška
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             'Zamenjuje originalnog pošiljaoca sa imejl adresom aktuelnog klijenta pri kreiranju odgovora u prozoru za pisanje odgovora interfejsa operatera.',
         'Reports' => 'Izveštaji',
-        'Reports (OTRS Business Solution™)' => 'Izveštaji (OTRS Business Solution™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             'Ponovo obradi imejlove iz direktorijuma reda čekanja koji prvi put nisu mogli biti uvezeni.',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8012,7 +7927,6 @@ Vaša tehnička podrška
         'Resent email to "%s".' => 'Ponovo poslat imejl na "%s".',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             'Resetuje i otključava vlasnika ako je tiketa premešten u drugi red.',
-        'Resource Overview (OTRS Business Solution™)' => 'Pregled resursa (OTRS Business Solution™)',
         'Responsible Tickets' => 'Odgovorni tiketi',
         'Responsible Tickets.' => 'Odgovorni tiketi.',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>
@@ -8075,7 +7989,6 @@ Vaša tehnička podrška
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Šalje sve odlazne imejlove kao nevidljive kopije (bcc) na određenu adresu. Molimo da ovo koristite samo za rezervne kopije.',
         'Sends customer notifications just to the mapped customer.' => 'Šalje klijentska obaveštenja samo mapiranom klijentu.',
-        'Sends registration information to OTRS group.' => 'Šalje registracione informacije OTRS grupi.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'Šalje obaveštenje za potsećanje o otključanom tiketu kad se dostigne datum podsetnika (šalje samo vlasniku tiketa).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>
@@ -8423,8 +8336,6 @@ Vaša tehnička podrška
             'Prikazuje listu svih mogućih operatera (svi operateri sa dozvolom za napomenu za red/tiket) radi utvrđivanja ko treba da bude informisan o ovoj napomeni, na ekranu odgovornosti za tiket u interfejsu operatera.',
         'Shows a preview of the ticket overview (CustomerInfo => 1 - shows also Customer-Info, CustomerInfoMaxSize max. size in characters of Customer-Info).' =>
             'Prikazuje pregleda tiketa (Info klijenta => 1 - pokazuje i podatke o klijentu, Maksimalna veličina prikaza podataka o klijentu u karakterima).',
-        'Shows a teaser link in the menu for the ticket attachment view of OTRS Business Solution™.' =>
-            'Prikazuje reklamnu vezu u meniju za pregled priloga tiketa iz OTRS Business Solution™.',
         'Shows all both ro and rw queues in the queue view.' => 'Prikazuje sve, i ro i rw redove na pregledu redova.',
         'Shows all both ro and rw tickets in the service view.' => 'Prikazuje sve, i ro i rw tikete na pregledu usluga.',
         'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
@@ -8563,13 +8474,10 @@ Vaša tehnička podrška
             'Određuje da li će prilozi (MIMEBase) članaka biti indeksirani za pretragu.',
         'Specify how many sub directory levels to use when creating cache files. This should prevent too many cache files being in one directory.' =>
             'Navođenje koliko nivoa poddirektorijuma da koristi prilikom kreiranja keš datoteka. To bi trebalo da spreči previše keš datoteka u jednom direktorijumu.',
-        'Specify the channel to be used to fetch OTRS Business Solution™ updates. Warning: Development releases might not be complete, your system might experience unrecoverable errors and on extreme cases could become unresponsive!' =>
-            'Definiše kanal za ažuriranje OTRS Business Solution™. Upozorenje: beta izdanja mogu biti nekompletna, vaš sistem može dobiti nepopravljive greške i, u ekstremnim slučajevima, prestati da reaguje.',
         'Specify the password to authenticate for the first mirror database.' =>
             'Navedi lozinku za autorizaciju na prvu preslikanu bazu podataka.',
         'Specify the username to authenticate for the first mirror database.' =>
             'Navedi korisničko ime za autorizaciju na prvu preslikanu bazu podataka.',
-        'Stable' => ' Stabilno',
         'Standard available permissions for agents within the application. If more permissions are needed, they can be entered here. Permissions must be defined to be effective. Some other good permissions have also been provided built-in: note, close, pending, customer, freetext, move, compose, responsible, forward, and bounce. Make sure that "rw" is always the last registered permission.' =>
             'Standardne raspoložive dozvole za operatere unutar aplikacije. Ukoliko je potrebno više dozvola oni mogu uneti ovde. Dozvole moraju biti definisane da budu efektivne. Neke druge dozvole su takođe obezbeđene ugrađivanjem u: napomenu, zatvori, na čekanju, klijent, slobodan tekst, pomeri, otvori, odgovoran, prosledi i povrati. Obezbedite da "rw" uvek bude poslednja registrovana dozvola.',
         'Start number for statistics counting. Every new stat increments this number.' =>
@@ -8581,7 +8489,6 @@ Vaša tehnička podrška
             'Počinje džoker pretragu aktivnog objekta nakon pokretanja veze maske objekta.',
         'Stat#' => 'Statistika#',
         'States' => 'Stanja',
-        'Statistic Reports overview.' => 'Pregled statističkih izveštaja.',
         'Statistics overview.' => 'Pregled statistika.',
         'Status view' => 'Pregled statusa',
         'Stopped response time escalation.' => 'Obustavljena eskalacija vremena odgovora.',
@@ -8592,6 +8499,7 @@ Vaša tehnička podrška
         'Strips empty lines on the ticket preview in the service view.' =>
             'Uklanja prazne linije u prikazu tiketa na pregledu usluga.',
         'Support Agent' => 'Operater podrške',
+        'Support Services' => 'Podrška',
         'Swahili' => 'Svahili',
         'Swedish' => 'Švedski',
         'System Address Display Name' => 'Naziv za prikaz sistemske adrese',
@@ -8781,7 +8689,6 @@ Vaša tehnička podrška
         'Uses richtext for viewing and editing: articles, salutations, signatures, standard templates, auto responses and notifications.' =>
             'Koristi richtekt format za pregled i uređivanje: članaka, pozdrava, potpisa, standardnih šablona, automatskih odgovora i obaveštenja.',
         'Vietnam' => 'Vijetnamski',
-        'View all attachments of the current ticket' => 'Prikaz svih priloga tiketa',
         'View performance benchmark results.' => 'Pregled rezultata provere performansi.',
         'Watch this ticket' => 'Nadgledaj ovaj tiket',
         'Watched Tickets' => 'Posmatrani tiket',

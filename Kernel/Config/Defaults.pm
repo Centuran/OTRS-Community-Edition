@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -105,7 +106,7 @@ sub LoadDefaults {
 
     # ProductName
     # (Application name displayed in frontend.)
-    $Self->{ProductName} = 'OTRS 6';
+    $Self->{ProductName} = '((OTRS)) Community Edition';
 
     # --------------------------------------------------- #
     # database settings                                   #
@@ -719,10 +720,6 @@ sub LoadDefaults {
             Group  => 'admin',
             Module => 'Kernel::Output::HTML::Notification::AgentCloudServicesDisabled',
         },
-        '1100-OTRSBusiness' => {
-            Group  => 'admin',
-            Module => 'Kernel::Output::HTML::Notification::AgentOTRSBusiness',
-        },
         '2000-UID-Check' => {
             Module => 'Kernel::Output::HTML::Notification::UIDCheck',
         },
@@ -990,7 +987,7 @@ sub LoadDefaults {
     $Self->{'Loader::Customer::CommonJS'}->{'000-Framework'} = [
         'thirdparty/jquery-3.5.1/jquery.js',
         'thirdparty/jquery-browser-detection/jquery-browser-detection.js',
-        'thirdparty/jquery-validate-1.16.0/jquery.validate.js',
+        'thirdparty/jquery-validate-1.19.3/jquery.validate.js',
         'thirdparty/jquery-ui-1.12.1/jquery-ui.js',
         'thirdparty/jquery-pubsub/pubsub.js',
         'thirdparty/jquery-jstree-3.3.7/jquery.jstree.js',
@@ -1030,7 +1027,7 @@ sub LoadDefaults {
         'thirdparty/jquery-browser-detection/jquery-browser-detection.js',
         'thirdparty/jquery-ui-1.12.1/jquery-ui.js',
         'thirdparty/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.js',
-        'thirdparty/jquery-validate-1.16.0/jquery.validate.js',
+        'thirdparty/jquery-validate-1.19.3/jquery.validate.js',
         'thirdparty/jquery-pubsub/pubsub.js',
         'thirdparty/jquery-jstree-3.3.7/jquery.jstree.js',
         'thirdparty/nunjucks-3.0.1/nunjucks.js',
@@ -1083,13 +1080,13 @@ sub LoadDefaults {
     # Package::RepositoryRoot
     # (get online repository list, use the fist availabe result)
     $Self->{'Package::RepositoryRoot'} = [
-        'https://ftp.otrs.org/pub/otrs/misc/packages/repository.xml',
+        'https://otrscommunityedition.com/download/packages/repository.xml',
     ];
 
     # Package::RepositoryList
     # (repository list)
 #    $Self->{'Package::RepositoryList'} = {
-#        'ftp://ftp.example.com/pub/otrs/misc/packages/' => '[Example] ftp://ftp.example.com/',
+#        'ftp://otrscommunityedition.com/download/packages/' => '[Example] ftp://otrscommunityedition.com/',
 #    };
 
     # Package::Timeout

@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.9962749746021;
+    $Self->{Completeness}        = 0.999486301369863;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -217,7 +217,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             '如果选中这个复选框，即使分配为收件人的服务人员在偏好设置中没有选择接收这个通知，这个通知仍然会发送给该服务人员。',
         'This feature is currently not available.' => '该功能当前不可用。',
-        'Upgrade to %s' => '升级到 %s',
         'Please activate this transport in order to use it.' => '请激活此传输方式以使用它。',
         'No data found' => '没有找到数据',
         'No notification method found.' => '没有找到通知方法。',
@@ -508,18 +507,6 @@ sub Data {
         'Add new field for object' => '为对象添加新的字段',
         'Filter for Dynamic Fields' => '动态字段过滤器',
         'Filter for dynamic fields' => '动态字段过滤器',
-        'More Business Fields' => '更多商业版字段',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '您想要从商业版的额外动态字段类型中受益吗？ 升级到%s以访问以下字段类型：',
-        'Database' => '数据库',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '使用外部数据库作为此动态字段的可配置数据源。',
-        'Web service' => 'Web服务',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '外部Web服务可以配置为该动态字段的数据源。',
-        'Contact with data' => '连接数据',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '此功能允许将（多个）联系人信息添加到工单中。',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             '为了增加一个新的字段，从对象列表中选择一个字段类型，对象定义了字段的范围并且不能在创建后修改。',
         'Dynamic Fields List' => '动态字段列表',
@@ -695,10 +682,10 @@ sub Data {
         'No change time settings.' => '没有修改时间设置。',
         'Ticket changed' => '工单修改时间',
         'Ticket changed between' => '工单修改时间（在...之间）',
-        'Last close times' => '',
-        'No last close time settings.' => '',
-        'Ticket last close' => '',
-        'Ticket last close between' => '',
+        'Last close times' => '最后关闭时间',
+        'No last close time settings.' => '没有最后关闭时间设置。',
+        'Ticket last close' => '工单最后关闭时间',
+        'Ticket last close between' => '工单最后关闭时间（在...之间）',
         'Close times' => '关闭时间',
         'No close time settings.' => '没有关闭时间设置。',
         'Ticket closed' => '工单关闭时间',
@@ -856,7 +843,7 @@ sub Data {
         'Intervals calculated to exceed the maximum retry interval will then automatically be shortened accordingly.' =>
             '计算出超过最大重试间隔的间隔将自动相应缩短。',
         'Example: If a request is initially triggered at 10:00 with initial interval at \'1 minute\', retry factor at \'2\' and maximum interval at \'5 minutes\', retries would be triggered at 10:01 (1 minute), 10:03 (2 minutes), 10:07 (4 minutes), 10:12 (8=>5 minutes), 10:17, ...' =>
-            '示例：示例：如果一个请求的初始时间间隔为“1分钟”，重试因子为“2”，最大间隔为“5分钟”，初始触发在10:00，重试将触发在10:01（1分钟），10 ：03（2分钟），10:07（4分钟），10:12（8 => 5分钟），10:17，...',
+            '示例：如果一个请求的初始时间间隔为“1分钟”，重试因子为“2”，最大间隔为“5分钟”，初始触发在10:00，重试将触发在10:01（1分钟），10 ：03（2分钟），10:07（4分钟），10:12（8 => 5分钟），10:17，...',
         'Maximum retry count' => '最大重试次数',
         'Maximum number of retries before a failing request is discarded, not counting the initial request.' =>
             '失败请求被丢弃之前的最大重试次数，不计入初始请求。',
@@ -1156,13 +1143,7 @@ sub Data {
         'Delete web service' => '删除Web服务',
         'Do you really want to delete this web service?' => '您真的想要删除这个Web服务吗？',
         'Ready2Adopt Web Services' => '即开即用的Web服务',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '你可以在这里激活即开即用的WEB服务，作为%s的一部分展示我们的最佳实践。',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            '请注意：这些WEB服务可能依赖于其它仅在某些%s合同级别中才可用的模块(导入时会有详细提示信息)。',
         'Import Ready2Adopt web service' => '导入即开即用的WEB服务',
-        'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
-            '你想从专家创建的WEB服务中受益吗？升级到%s 就能导入一些复杂的即开即用的WEB服务。',
         'After you save the configuration you will be redirected again to the edit screen.' =>
             '保存配置文件后，页面将再次转到编辑页面。',
         'If you want to return to overview please click the "Go to overview" button.' =>
@@ -1260,7 +1241,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '你可以移动鼠标到条目的右上角并点击星形图标来将条目添加到收藏夹。',
         'Links' => '链接',
-        'View the admin manual on Github' => '查看Github上的管理手册',
+        'View the admin manual' => '查看管理员手册',
         'No Matches' => '无匹配',
         'Sorry, your search didn\'t match any items.' => '对不起，你的搜索不匹配任何条目。',
         'Set as favorite' => '添加到收藏夹',
@@ -1339,6 +1320,7 @@ sub Data {
             '恭喜，你的%s 已经正确地安装到最新版本！',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => '升级到 %s',
         'Go to the OTRS customer portal' => '访问OTRS客户门户',
         '%s will be available soon. Please check again in a few days.' =>
             '%s 很快就可用了，请过几天再检查一次。',
@@ -1418,8 +1400,6 @@ sub Data {
         'package information' => '软件包信息',
         'Package installation requires a patch level update of OTRS.' => '安装软件包需要将OTRS补丁级别更新。',
         'Package update requires a patch level update of OTRS.' => '升级软件包需要将OTRS补丁级别更新。',
-        'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
-            '如果您是OTRS 商业版™客户，请访问我们的客户门户并提交请求。',
         'Please note that your installed OTRS version is %s.' => '请注意，您安装的OTRS版本是%s。',
         'To install this package, you need to update OTRS to version %s or newer.' =>
             '安装这个软件包，你需要升级OTRS版本到%s或者更高。',
@@ -1442,9 +1422,6 @@ sub Data {
             '请确认你的数据库能够接收大于%s MB的数据包（目前能够接收的最大数据包为%s MB）。为了避免程序报错，请调整数据库max_allowed_packet参数。',
         'Install' => '安装',
         'Update repository information' => '更新软件仓库信息',
-        'Cloud services are currently disabled.' => '云服务当前被禁用了。',
-        'OTRS Verify™ can not continue!' => 'OTRS Verify™（OTRS验证）不能继续！',
-        'Enable cloud services' => '启用云服务',
         'Update all installed packages' => '更新所有已安装的软件包',
         'Online Repository' => '在线软件仓库',
         'Action' => '操作',
@@ -1455,9 +1432,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             '软件包未正确安装！请重新安装软件包。',
         'Reinstall' => '重新安装',
-        'Features for %s customers only' => '仅%s 才能使用的功能',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            '你能从%s 得到以下可选的功能特性，请联系%s 获取更多信息。',
         'Package Information' => '软件包信息',
         'Download package' => '下载该软件包',
         'Rebuild package' => '重新编译',
@@ -1552,8 +1526,6 @@ sub Data {
         'Ready2Adopt Processes' => '即开即用的流程',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             '你可以在此激活能展示我们最佳实践的即开即用的流程，请注意这可能需要一些额外的配置。',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            '你想从专家创建的流程中受益吗？升级到%s 就能导入一些复杂的即开即用的流程。',
         'Import Ready2Adopt process' => '导入即开即用的流程',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             '为了创建新的流程，你可以导入从其它系统导出的流程配置文件，或者重新创建一个。',
@@ -1823,6 +1795,7 @@ sub Data {
         'Attribute' => '属性',
         'FQDN' => '正式域名',
         'OTRS Version' => 'OTRS版本',
+        'Database' => '数据库',
         'Operating System' => '操作系统',
         'Perl Version' => 'Perl版本',
         'Optional description of this system.' => '本系统可选的描述。',
@@ -2010,14 +1983,6 @@ sub Data {
         'This state is used in the following config settings:' => '这个状态已用于以下的系统配置设置：',
 
         # Template: AdminSupportDataCollector
-        'Sending support data to OTRS Group is not possible!' => '不能将支持数据发送给OTRS集团！',
-        'Enable Cloud Services' => '启用云服务',
-        'This data is sent to OTRS Group on a regular basis. To stop sending this data please update your system registration.' =>
-            '这些数据被定期发送到OTRS集团，要停止发送这些数据，请更新你的系统注册配置。',
-        'You can manually trigger the Support Data sending by pressing this button:' =>
-            '你可以通过这个按钮手动发送支持数据：',
-        'Send Update' => '发送更新',
-        'Currently this data is only shown in this system.' => '目前支持数据只是在本地系统上显示。',
         'A support bundle (including: system registration information, support data, a list of installed packages and all locally modified source code files) can be generated by pressing this button:' =>
             '点击以下按钮生成支持数据包（包括：系统注册信息、支持数据、已安装软件包列表和本地所有修改过的源代码文件）：',
         'Generate Support Bundle' => '生成支持数据包',
@@ -2170,13 +2135,13 @@ sub Data {
         'A standard template with this name already exists!' => '模板名称已存在！',
         'Template' => '模版',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
-            '',
+            '获取当前/最新服务人员文章主题的前20个字符(当前用于回复和转发，最新用于备注模板类型)。其它模板类型不支持此标记。',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
-            '',
+            '获取当前/最新服务人员文章正文的前5行(当前用于回复和转发，最新用于备注模板类型)。其它模板类型不支持此标记。',
         'To get the first 20 characters of the subject of the current/latest article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
-            '',
+            '获取当前/最新文章主题的前20个字符(当前用于回复和转发，最新用于备注模板类型)。其它模板类型不支持此标记。',
         'To get the first 5 lines of the body of the current/latest article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
-            '',
+            '获取当前/最新文章正文的前5行(当前用于回复和转发，最新用于备注模板类型)。其它模板类型不支持此标记。',
         'Create type templates only supports this smart tags' => '“Create创建”类型的模板只支持以下智能标签',
         'Example template' => '模板样例',
         'The current ticket state is' => '当前工单状态是',
@@ -2826,7 +2791,9 @@ sub Data {
 
         # Template: CloudServicesDisabled
         'This Feature Requires Cloud Services' => '这个功能需要启用云服务',
+        'Cloud services are currently disabled.' => '云服务当前被禁用了。',
         'You can' => '你可以',
+        'Enable cloud services' => '启用云服务',
         'go back to the previous page' => '返回上一页',
 
         # Template: CustomerAccept
@@ -2849,8 +2816,7 @@ sub Data {
         'Traceback' => '追溯',
 
         # Template: CustomerFooter
-        '%s powered by %s™' => '%s由%s™提供技术支持',
-        'Powered by %s™' => '由%s™提供技术支持',
+        'Powered by %s' => '',
 
         # Template: CustomerFooterJS
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
@@ -2945,12 +2911,6 @@ sub Data {
         'Ticket fields' => '工单字段',
 
         # Template: Error
-        'Really a bug? 5 out of 10 bug reports result from a wrong or incomplete installation of OTRS.' =>
-            '真的是一个BUG吗？十个BUG报告有五个起因于错误或不完整的OTRS安装。',
-        'With %s, our experts take care of correct installation and cover your back with support and periodic security updates.' =>
-            '通过%s，我们的专家通过技术支持和定期安全更新来确保正确安装且后台程序正常。',
-        'Contact our service team now.' => '现在就联系我们的服务团队。',
-        'Send a bugreport' => '发送一个BUG报告',
         'Expand' => '展开',
 
         # Template: AttachmentList
@@ -2969,9 +2929,6 @@ sub Data {
             '请注意，这个草稿已经过时了，因为这个草稿创建后该工单已经被修改过了。',
 
         # Template: Header
-        'View notifications' => '查看通知',
-        'Notifications' => '通知',
-        'Notifications (OTRS Business Solution™)' => '通知 (OTRS商业版)',
         'Personal preferences' => '个人偏好设置',
         'Logout' => '注销',
         'You are logged in as' => '您已登录为',
@@ -2984,15 +2941,9 @@ sub Data {
         'General Specifications and Mail Settings' => '一般设定和邮件配置',
         'Finish' => '完成',
         'Welcome to %s' => '欢迎使用%s',
-        'Germany' => '德国',
         'Phone' => '电话',
-        'United States' => '美国',
-        'Mexico' => '墨西哥',
-        'Hungary' => '匈牙利',
-        'Brazil' => '巴西',
-        'Singapore' => '新加坡',
-        'Hong Kong' => '香港',
         'Web site' => '网址',
+        'GitHub repository' => '',
 
         # Template: InstallerConfigureMail
         'Configure Outbound Mail' => '外发邮件配置',
@@ -3058,7 +3009,6 @@ sub Data {
         'Restart your webserver' => '重启web服务器',
         'After doing so your OTRS is up and running.' => '完成这些后，您的OTRS系统就启动并运行了。',
         'Start page' => '开始页面',
-        'Your OTRS Team' => 'OTRS团队',
 
         # Template: InstallerLicense
         'Don\'t accept license' => '不同意许可',
@@ -3289,10 +3239,6 @@ sub Data {
         # Template: Navigation
         'Navigation' => '导航',
 
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '使用%s，系统配置支持版本控制、回滚和用户特定的配置设置。',
-
         # Template: Test
         'OTRS Test Page' => 'OTRS测试页',
         'Unlock' => '解锁',
@@ -3518,9 +3464,6 @@ sub Data {
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => '不是有效的字段配置',
         'Objects configuration is not valid' => '不是有效的对象配置',
-        'Database (%s)' => '数据库 (%s)',
-        'Web service (%s)' => 'Web服务(%s)',
-        'Contact with data (%s)' => '联系人信息（%s）',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             '不能正确地重置动态字段顺序，请检查错误日志以获得更多详细信息。',
 
@@ -3760,8 +3703,6 @@ sub Data {
         'Can\'t read %s!' => '不能读取%s！',
         'File is OK' => '文件正常',
         'Package has locally modified files.' => '软件包中有本地修改过的文件。',
-        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
-            '扩展包未经OTRS检验！不推荐使用该扩展包.',
         'Not Started' => '没有启动',
         'Updated' => '更新时间',
         'Already up-to-date' => '已经是最新的',
@@ -3780,6 +3721,8 @@ sub Data {
         'Repository List' => '软件仓库列表',
         'No packages found in selected repository. Please check log for more info!' =>
             '在选定的软件仓库中找不到软件包， 请查看日志以获取更多信息！',
+        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
+            '扩展包未经OTRS检验！不推荐使用该扩展包.',
         'Package not verified due a communication issue with verification server!' =>
             '不能验证软件包，因为与验证服务器无法正常通信！',
         'Can\'t connect to OTRS Feature Add-on list server!' => '不能连接到OTRS附加功能列表服务器！',
@@ -4366,7 +4309,6 @@ sub Data {
         'Show one article' => '显示单一信件',
         'Show all articles' => '显示所有信件',
         'Show Ticket Timeline View' => '以时间轴视图显示工单',
-        'Show Ticket Timeline View (%s)' => '显示工单时间轴视图(%s)',
 
         # Perl Module: Kernel/Modules/AjaxAttachment.pm
         'Got no FormID.' => '没有获取到表单ID。',
@@ -4637,14 +4579,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => '启用云服务以激活OTRS的所有功能！',
-
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '现在升级%s到%s！%s',
-        'Please verify your license data!' => '请验证您的许可证数据！',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            '您的%s的许可证即将过期， 请与%s联系续订您的合同！',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            '您的%s有新版本可用，但是与当前的框架版本不兼容！请先升级当前的框架版本！',
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => '在线服务人员：%s',
@@ -4996,7 +4930,7 @@ sub Data {
         'Setting character_set_client needs to be utf8.' => 'character_set_client 需要设置为utf8。',
         'Server Database Charset' => '服务器端数据库字符集',
         'This character set is not yet supported, please see https://bugs.otrs.org/show_bug.cgi?id=12361. Please convert your database to the character set \'utf8\'.' =>
-            '',
+            '尚不支持此字符集，请参阅https://bugs.otrs.org/show_bug.cgi?id=12361。请将您的数据库转换为字符集‘utf8’。',
         'The setting character_set_database needs to be \'utf8\'.' => 'character_set_database 需要设置为\'utf8\'。',
         'Table Charset' => '表字符集',
         'There were tables found which do not have \'utf8\' as charset.' =>
@@ -5907,6 +5841,7 @@ Thanks for your help!
 请通过客户网页创建一个新的工单。
 
 感谢您的支持！
+
 您的服务台团队
 ',
         ' (work units)' => ' （工作日）',
@@ -6024,7 +5959,6 @@ Thanks for your help!
         'Agents ↔ Groups' => '服务人员 ↔ 组',
         'Agents ↔ Roles' => '服务人员 ↔ 角色',
         'All CustomerIDs of a customer user.' => '一个客户用户的所有客户ID。',
-        'All attachments (OTRS Business Solution™)' => '所有附件（OTRS商业解决方案）',
         'All customer users of a CustomerID' => '一个客户ID的所有客户用户',
         'All escalated tickets' => '所有升级的工单',
         'All new tickets, these tickets have not been worked on yet' => '所有新建工单，这些工单目前还没有被处理',
@@ -6202,12 +6136,9 @@ Thanks for your help!
         'Checks if an E-Mail is a followup to an existing ticket by searching the subject for a valid ticket number.' =>
             '通过搜索主题中的有效工单号，检查一个邮件是否是跟进到已存在的工单。',
         'Checks if an email is a follow-up to an existing ticket with external ticket number which can be found by ExternalTicketNumberRecognition filter module.' =>
-            '',
+            '检查电子邮件是否是带有外部工单编号的现有工单的跟进邮件，该工单编号可由ExternalTicketNumberRecognition过滤器模块找到。',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '在跟进工单的工单编号检测时检查系统ID。如果不启用，系统ID将在使用系统后更改。',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            '检查本系统的OTRS商业版可用性。',
-        'Checks the entitlement status of OTRS Business Solution™.' => '检查OTRS商业版的权利状态。',
         'Child' => '子',
         'Chinese (Simplified)' => '简体中文',
         'Chinese (Traditional)' => '繁体中文',
@@ -6520,8 +6451,6 @@ Thanks for your help!
             '定义是否允许因在个人偏好设置中没有存储共享密钥而不能使用双因素身份验证的服务人员登录。',
         'Defines if customers should be allowed to login if they have no shared secret stored in their preferences and therefore are not using two-factor authentication.' =>
             '定义是否允许因在个人偏好设置中没有存储共享密钥而不能使用双因素身份验证的客户用户登录。',
-        'Defines if the communication between this system and OTRS Group servers that provide cloud services is possible. If set to \'Disable cloud services\', some functionality will be lost such as system registration, support data sending, upgrading to and use of OTRS Business Solution™, OTRS Verify™, OTRS News and product News dashboard widgets, among others.' =>
-            '定义本系统能否与OTRS集团提供云服务的服务器通信。如果设置为“禁用云服务”，某些功能如系统注册、发送支持数据、升级到OTRS Business Solution™（OTRS商业解决方案）、OTRS Verify™（OTRS验证）、仪表板中的OTRS新闻和产品新闻小部件等将失效。',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.) in customer interface.' =>
             '定义客户界面是否使用增强模式（启用表格、替换、下标、上标、从WORD粘贴等功能）。',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.).' =>
@@ -6894,8 +6823,6 @@ Thanks for your help!
         'Defines the module to authenticate customers.' => '定义客户身份验证的模块。',
         'Defines the module to display a notification if cloud services are disabled.' =>
             '定义云服务被禁用时显示一个通知消息的模块。',
-        'Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.' =>
-            '定义在不同界面不同场合显示OTRS商业版通知的模块。',
         'Defines the module to display a notification in the agent interface if the OTRS Daemon is not running.' =>
             '定义服务人员界面如果OTRS守护进程没有运行就显示一个通知的模块。',
         'Defines the module to display a notification in the agent interface if the system configuration is out of sync.' =>
@@ -6908,8 +6835,6 @@ Thanks for your help!
             '定义服务人员界面如果服务人员在系统维护期间登录系统就显示一个通知的模块。',
         'Defines the module to display a notification in the agent interface, if the agent session limit prior warning is reached.' =>
             '定义服务人员界面如果服务人员会话数达到预警值时就显示一个通知的模块。',
-        'Defines the module to display a notification in the agent interface, if the installation of not verified packages is activated (only shown to admins).' =>
-            '如果启用了安装未经验证的软件包，则定义在服务人员界面中显示通知的模块（仅系统管理员会显示）。',
         'Defines the module to display a notification in the agent interface, if the system is used by the admin user (normally you shouldn\'t work as admin).' =>
             '定义服务人员界面如果以管理员帐户登录系统（正常情况下您不应该用管理员帐户工作）就显示一个通知的模块。',
         'Defines the module to display a notification in the agent interface, if there are invalid sysconfig settings deployed.' =>
@@ -6980,8 +6905,6 @@ Thanks for your help!
             '定义仪表板后端参数。“Cmd”用于指定带有参数的命令。“GROUP（组）”用于到本插件的访问权限限制（如 Group:admin;group1;group2）。“Default（默认）”代表这个插件是默认启用还是需要用户手动启用。“CacheTTL”表明本插件的缓存过期时间（单位：分钟）。“Mandatory（强制）”确定插件是否始终显示且不能被服务人员移除。',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '定义仪表板后端参数。“GROUP（组）”用于到本插件的访问权限限制（如 Group:admin;group1;group2）。“Default（默认）”代表这个插件是默认启用还是需要用户手动启用。“CacheTTL”定义本插件的缓存过期时间（单位：分钟）。“Mandatory（强制）”确定插件是否始终显示且不能被服务人员移除。',
-        'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '定义仪表板后端参数。“GROUP（组）”用于到本插件的访问权限限制（如 Group:admin;group1;group2）。“Default（默认）”代表这个插件是默认启用还是需要用户手动启用。“CacheTTLLocal”表明本插件的缓存过期时间（单位：分钟）。“Mandatory（强制）”确定插件是否始终显示且不能被服务人员移除。',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '定义仪表板后端参数。“Limit（限制”）定义默认显示的条目数。“GROUP（组）”用于到本插件的访问权限限制（如 Group:admin;group1;group2）。“Default（默认）”代表这个插件是默认启用还是需要用户手动启用。“CacheTTL”表明本插件的缓存过期时间（单位：分钟）。“Mandatory（强制）”确定插件是否始终显示且不能被服务人员移除。',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7120,7 +7043,6 @@ Thanks for your help!
         'Deletes requested sessions if they have timed out.' => '删除超时的会话请求。',
         'Delivers extended debugging information in the frontend in case any AJAX errors occur, if enabled.' =>
             '启用后，如果发生了任何的AJAX错误，就在前端传递扩展的调试信息。',
-        'Deploy and manage OTRS Business Solution™.' => '部署并管理OTRS商业版。',
         'Detached' => '已卸下',
         'Determines if a button to delete a link should be displayed next to each link in each zoom mask.' =>
             '确定在每个详情遮罩窗口中是否应在每个链接旁边显示删除链接的按钮。',
@@ -7158,8 +7080,9 @@ Thanks for your help!
             '禁用HHTP头"Content-Security-Policy"以便允许载入扩展的脚本内容。禁用这个HTTP头可能引起安全问题！仅在您知道您在干什么时才禁用它！',
         'Disable HTTP header "X-Frame-Options: SAMEORIGIN" to allow OTRS to be included as an IFrame in other websites. Disabling this HTTP header can be a security issue! Only disable it, if you know what you are doing!' =>
             '禁用HHTP头"X-Frame-Options: SAMEORIGIN" 以便允许OTRS可以包含在其它网址的IFrame框架中。禁用这个HTTP头可能有安全问题！仅在您知道您在干什么时才禁用它！',
-        'Disable autocomplete in the login screen.' => '',
+        'Disable autocomplete in the login screen.' => '在登录屏幕中禁用自动完成功能。',
         'Disable cloud services' => '禁用云服务',
+        'Disable cloud services.' => '',
         'Disables sending reminder notifications to the responsible agent of a ticket (Ticket::Responsible needs to be enabled).' =>
             '禁止发送提醒通知给工单负责人（需要启用Ticket::Responsible设置）。',
         'Disables the redirection to the last screen overview / dashboard after a ticket is closed.' =>
@@ -7428,7 +7351,7 @@ Thanks for your help!
             '使最终用户能够覆盖转换文件中定义的CSV文件分隔符。 请注意：将\'Active（激活）\'设置为0只会阻止服务人员在个人偏好设置中编辑此组的设置，但仍然允许管理员以其他用户的名义编辑这些设置。 使用\'PreferenceGroup\'来控制这些设置应该显示在用户界面的哪个区域。',
         'Global Search Module.' => '全局搜索模块。',
         'Go to dashboard!' => '进入仪表板！',
-        'Good PGP signature.' => '',
+        'Good PGP signature.' => '良好的PGP签名。',
         'Google Authenticator' => '谷歌身份验证器',
         'Graph: Bar Chart' => '图形：条形图',
         'Graph: Line Chart' => '图形：折线图',
@@ -7585,7 +7508,7 @@ Thanks for your help!
         'It is possible to configure different themes, for example to distinguish between agents and customers, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid theme on your system. Please see the example entries for the proper form of the regex.' =>
             '配置不同主题是可能的，例如：区分系统中基于域名的不同服务人员和客户。您可以使用一个正则表达式配置一个键/内容组合来匹配一个域名。“键”应该匹配域名，“值”是一个系统中有效的皮肤。请参照样例条目修改正则表达式的合适格式。',
         'It was not possible to check the PGP signature, this may be caused by a missing public key or an unsupported algorithm.' =>
-            '',
+            '无法检查PGP签名，这可能是由于缺少公钥或不支持的算法造成的。',
         'Italian' => '意大利语',
         'Italian stop words for fulltext index. These words will be removed from the search index.' =>
             '全文索引的意大利语停止词，这些词将从搜索索引中移除。',
@@ -7673,7 +7596,6 @@ Thanks for your help!
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             '让会话管理使用HTML Cookies。如果禁用了html cookies或客户端浏览器禁用了html cookies，系统仍会正常工作，并将会话ID追加到链接地址中。',
         'Malay' => '马来语',
-        'Manage OTRS Group cloud services.' => '管理 OTRS 集团云服务。',
         'Manage PGP keys for email encryption.' => '管理邮件加密的PGP密钥。',
         'Manage POP3 or IMAP accounts to fetch email from.' => '管理收取邮件的POP3或IMAP帐号。',
         'Manage S/MIME certificates for email encryption.' => '管理邮件加密的S/MIME证书。',
@@ -7681,7 +7603,6 @@ Thanks for your help!
         'Manage different calendars.' => '管理不同的日历。',
         'Manage existing sessions.' => '管理已登录会话。',
         'Manage support data.' => '管理支持数据。',
-        'Manage system registration.' => '管理系统注册。',
         'Manage tasks triggered by event or time based execution.' => '管理事件触发或基于时间执行的任务。',
         'Mark as Spam!' => '标记为垃圾!',
         'Mark this ticket as junk!' => '标记这个工单为垃圾!',
@@ -7780,14 +7701,12 @@ Thanks for your help!
         'New Year\'s Day' => '新年',
         'New Year\'s Eve' => '除夕',
         'New process ticket' => '新的流程工单',
-        'News about OTRS releases!' => 'OTRS版本新闻！',
-        'News about OTRS.' => 'OTRS新闻。',
         'Next possible ticket states after adding a phone note in the ticket phone inbound screen of the agent interface.' =>
             '服务人员界面工单电话接入屏幕在添加一个电话备注后工单可能的下一状态。',
         'Next possible ticket states after adding a phone note in the ticket phone outbound screen of the agent interface.' =>
             '服务人员界面工单电话拨出屏幕在添加一个电话备注后工单可能的下一状态。',
-        'No public key found.' => '',
-        'No valid OpenPGP data found.' => '',
+        'No public key found.' => '没有找到公钥。',
+        'No valid OpenPGP data found.' => '没有找到有效的OpenPGP数据。',
         'None' => '没有',
         'Norwegian' => '挪威语',
         'Notification Settings' => '通知设置',
@@ -7802,8 +7721,6 @@ Thanks for your help!
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '客户界面搜索结果每页显示的工单数。',
         'Number of tickets to be displayed in each page.' => '每页显示的工单数量。',
-        'OTRS Group Services' => 'OTRS集团服务',
-        'OTRS News' => 'OTRS新闻',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS能够使用一个或多个只读镜像数据库以扩展操作（如全文搜索或生成统计报表）。您可以在这里指定第一个镜像数据库的DSN（数据源名称）。',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7940,7 +7857,6 @@ Thanks for your help!
         'Process pending tickets.' => '处理挂起的工单。',
         'ProcessID' => '流程ID',
         'Processes & Automation' => '流程和自动化',
-        'Product News' => '产品新闻',
         'Protection against CSRF (Cross Site Request Forgery) exploits (for more info see https://en.wikipedia.org/wiki/Cross-site_request_forgery).' =>
             '针对CSRF(跨站请求伪造)漏洞利用的保护(参阅 https://en.wikipedia.org/wiki/Cross-site_request_forgery 获取更多信息)。',
         'Provides a matrix overview of the tickets per state per queue' =>
@@ -7971,7 +7887,6 @@ Thanks for your help!
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             '服务人员界面工单编写屏幕，用客户当前的邮件地址替换编写回复时的原始发件人。',
         'Reports' => '报表',
-        'Reports (OTRS Business Solution™)' => '报表 (OTRS商业版)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             '从spool目录中重新处理的邮件不能被导入到第一的位置。',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8010,7 +7925,6 @@ Thanks for your help!
         'Resent email to "%s".' => '已重发邮件到"%s"。',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             '如果工单转移到另一个队列，重置并解锁工单所有者。',
-        'Resource Overview (OTRS Business Solution™)' => '资源概览（OTRS商业版）',
         'Responsible Tickets' => '负责的工单',
         'Responsible Tickets.' => '负责的工单.',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>
@@ -8073,7 +7987,6 @@ Thanks for your help!
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             '通过BCC（密件抄送）发送所有外发邮件到指定地址。请只在备份情况下使用这个选项。',
         'Sends customer notifications just to the mapped customer.' => '仅给映射的客户用户发送客户通知。',
-        'Sends registration information to OTRS group.' => '发送注册信息到OTRS集团。',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             '在到达提醒时间后发送解锁工单的提醒通知（只发送给工单所有者）。',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>
@@ -8421,8 +8334,6 @@ Thanks for your help!
             '在服务人员界面工单负责人屏幕，显示这个工单所有可能的服务人员（需要具有这个队列或工单的备注权限）列表，用于确定谁将收到关于这个备注的通知。',
         'Shows a preview of the ticket overview (CustomerInfo => 1 - shows also Customer-Info, CustomerInfoMaxSize max. size in characters of Customer-Info).' =>
             '显示工单概览的预览（如果参数CustomerInfo值为1，还将显示客户信息，参数CustomerInfoMaxSize定义了显示客户信息的最大字符数）。',
-        'Shows a teaser link in the menu for the ticket attachment view of OTRS Business Solution™.' =>
-            '在OTRS 商业版™的工单附件视图的菜单中显示一个头部预览链接。',
         'Shows all both ro and rw queues in the queue view.' => '在工单队列视图中显示所有RO（只读）和RW（读写）队列。',
         'Shows all both ro and rw tickets in the service view.' => '在工单服务视图中显示所有RO（只读）和RW（读写）服务。',
         'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
@@ -8495,7 +8406,7 @@ Thanks for your help!
             '如果启用，则以长格式显示时间（天、小时、分钟）；如果不启用，则以短格式显示时间（天、小时）。',
         'Shows time use complete description (days, hours, minutes), if enabled; or just first letter (d, h, m), if not enabled.' =>
             '如果启用，则显示时间的完整描述（天、小时、分钟）；如果不启用，则只显示时间的首字母（d-天，h-时,m-分）。',
-        'Signature data.' => '',
+        'Signature data.' => '签名数据。',
         'Signatures' => '签名',
         'Simple' => '简单',
         'Skin' => '皮肤',
@@ -8561,13 +8472,10 @@ Thanks for your help!
             '指定（MIMEBase）文章附件是否将被索引和可搜索。',
         'Specify how many sub directory levels to use when creating cache files. This should prevent too many cache files being in one directory.' =>
             '指定在创建缓存文件时使用多少级子目录，这可以防止一个目录中有太多的缓存文件。',
-        'Specify the channel to be used to fetch OTRS Business Solution™ updates. Warning: Development releases might not be complete, your system might experience unrecoverable errors and on extreme cases could become unresponsive!' =>
-            '指定获取OTRS商业版更新的通道。警告：开发版可能无法完成更新，您的系统可能经历无法恢复的错误，并且系统在极端情况下可能变得无法响应！',
         'Specify the password to authenticate for the first mirror database.' =>
             '指定第一个镜像数据库的认证密码。',
         'Specify the username to authenticate for the first mirror database.' =>
             '指定第一个镜像数据库的认证用户名。',
-        'Stable' => '稳定的',
         'Standard available permissions for agents within the application. If more permissions are needed, they can be entered here. Permissions must be defined to be effective. Some other good permissions have also been provided built-in: note, close, pending, customer, freetext, move, compose, responsible, forward, and bounce. Make sure that "rw" is always the last registered permission.' =>
             '系统中服务人员可用的标准权限，如果需要更多的权限，可以在这里输入。权限必须已定义好且有效，一些好的权限已经内置：备注、关闭、挂起、客户、自定义字段、转移、编写、负责人、转发和退回。请确保“rw（读写）始终是注册权限的最后一条。',
         'Start number for statistics counting. Every new stat increments this number.' =>
@@ -8579,7 +8487,6 @@ Thanks for your help!
             '在打开链接对象遮罩屏幕后搜索一次所有活动对象。',
         'Stat#' => '统计号',
         'States' => '状态',
-        'Statistic Reports overview.' => '统计报告概览。',
         'Statistics overview.' => '统计概览。',
         'Status view' => '状态视图',
         'Stopped response time escalation.' => '响应时间升级已停止。',
@@ -8590,6 +8497,7 @@ Thanks for your help!
         'Strips empty lines on the ticket preview in the service view.' =>
             '在工单服务视图工单预览时去掉空白行。',
         'Support Agent' => '维护人员',
+        'Support Services' => '支持服务',
         'Swahili' => '斯瓦希里语',
         'Swedish' => '瑞典语',
         'System Address Display Name' => '系统邮件地址显示姓名',
@@ -8600,13 +8508,13 @@ Thanks for your help!
         'Templates ↔ Queues' => '模板↔队列',
         'Textarea' => '文本区域',
         'Thai' => '泰国语',
-        'The PGP signature is expired.' => '',
+        'The PGP signature is expired.' => 'PGP签名已过期。',
         'The PGP signature was made by a revoked key, this could mean that the signature is forged.' =>
-            '',
-        'The PGP signature was made by an expired key.' => '',
+            'PGP签名是由撤销的密钥生成的，这可能意味着签名是伪造的。',
+        'The PGP signature was made by an expired key.' => 'PGP签名是由过期密钥创建的。',
         'The PGP signature with the keyid has not been verified successfully.' =>
-            '',
-        'The PGP signature with the keyid is good.' => '',
+            '未成功验证带有密钥ID的PGP签名。',
+        'The PGP signature with the keyid is good.' => '带有密钥ID的PGP签名是好的。',
         'The agent skin\'s InternalName which should be used in the agent interface. Please check the available skins in Frontend::Agent::Skins.' =>
             '服务人员界面皮肤的内部名称，请在Frontend::Agent::Loader::Agent::Skin中检查可用的皮肤。',
         'The customer skin\'s InternalName which should be used in the customer interface. Please check the available skins in Frontend::Customer::Skins.' =>
@@ -8666,7 +8574,7 @@ Thanks for your help!
         'This is the default orange - black skin for the customer interface.' =>
             '这是客户界面默认的橙色-黑色皮肤。',
         'This is the default orange - black skin.' => '这是默认的橙色-黑色皮肤。',
-        'This key is not certified with a trusted signature!' => '',
+        'This key is not certified with a trusted signature!' => '此密钥未使用可信签名进行认证！',
         'This module and its PreRun() function will be executed, if defined, for every request. This module is useful to check some user options or to display news about new applications.' =>
             '每次请求时这个模块和它的PreRun()函数（如果定义了）将被执行。',
         'This module is part of the admin area of OTRS.' => '这个模块是OTRS系统管理的一部分。',
@@ -8779,7 +8687,6 @@ Thanks for your help!
         'Uses richtext for viewing and editing: articles, salutations, signatures, standard templates, auto responses and notifications.' =>
             '查看和编辑以下内容时使用富文本：信件、问候语、签名、标准模板、自动响应和通知。',
         'Vietnam' => '越南语',
-        'View all attachments of the current ticket' => '查看当前工单的所有附件',
         'View performance benchmark results.' => '查看性能基准测试结果.',
         'Watch this ticket' => '关注这个工单',
         'Watched Tickets' => '关注的工单',

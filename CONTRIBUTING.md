@@ -1,1 +1,1 @@
-Please see [the instructions at doc.otrs.com](https://doc.otrs.com/).
+Please visit the [((OTRS)) Community Edition website](https://otrscommunityedition.com/).

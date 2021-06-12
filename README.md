@@ -1,62 +1,45 @@
-What is ((OTRS)) Community Edition?
-===================================
-((OTRS)) Community Edition is one of the most flexible web-based ticketing
-systems used for Customer Service, Help Desk, IT Service Management.
-With a fast implementation and easy customization to your needs it
-helps you reducing costs and increasing the efficiency and transparency
-of your business communication. Please note that ((OTRS)) Community Edition
-offers limited [**OTRS**](https://www.otrs.com) functionality.
+# ((OTRS)) Community Edition
 
-You can find a list of features in the
-[online documentation](https://doc.otrs.com/doc/manual/admin/6.0/en/html/otrs.html#features-of-otrs).
+[![Tests](https://gitlab.dev.sidnet.info/centuran/otrs-community-edition/public-badges/master/pipeline.svg?key_text=tests&key_width=)]()
+
+((OTRS)) Community Edition is a freely available, open source, web-based ticketing system used for Help Desk, Customer Service, and IT Service Management purposes.
+
+In January 2021, the development and support of the original version of ((OTRS)) Community Edition has been discontinued by its creators, the OTRS AG company. This project is an effort by [Centuran Consulting](https://centuran.com/) to keep maintaining a stable version of the software, as well as develop new features to make it even more useful and user-friendly.
 
 
-License
-=======
-It is distributed under the GNU General Public License - see the
-accompanying [COPYING](COPYING) file for more details.
+## License
+
+The software is distributed under the GNU General Public License. See the
+included [COPYING](COPYING) file for more details.
 
 
-Documentation
-=============
-You can find documentation [online](https://doc.otrs.com/). The source code of OTRS and its public extension
-modules is available on [github](https://github.com/OTRS).
+## Documentation
+
+The documentation for ((OTRS)) Community Edition is [available online](https://otrscommunityedition.com/doc/).
 
 
-Professional Services for OTRS
-==============================
+## System Requirements
 
-Whether you need help in configuring or customizing OTRS or you want to be on the safe side,
-don't hesitate to contact us: We offer a wide range of professional services such as
-world-wide enterprise support, consulting and engineering including process design,
-implementation, customization, application support, and fully managed service.
+Operating system:
+- Linux (Debian or RedHat recommended)
+- Perl version 5.16.0 or higher
 
-We offer best professional support from the OTRS team, reliable OTRS security and regular free updates as well as an
-[exclusive set of additional Business Features](https://otrs.com/how-to-buy/packages/#feature-add-ons) that you can
-flexibly activate or deactivate according to different deployment scenarios.
+Web server:
+- Apache2 + mod_perl2 (recommended)
+- Web server with CGI support (CGI is not recommended)
 
-The [OTRS Group](https://www.otrs.com/) offers specific [training programs](https://otrs.com/academy/#trainings) in
-different countries. You can either participate in one of our public OTRS Administrator training seminars which take
-place regularly, or benefit from an inhouse training seminar that covers all the specific needs of your company.
-
-Software requirements
-=====================
-Perl
-- Perl 5.16.0 or higher
-
-Webserver
-- Apache2 + mod_perl2 or higher (recommended)
-- Webserver with CGI support (CGI is not recommended)
-
-Databases
-- MySQL 5.0 or higher (MySQL 8+ is [not supported](https://bugs.otrs.org/show_bug.cgi?id=13866))
+Databases:
+- MySQL 5.0 or higher (MySQL 8 and higher is not supported)
 - MariaDB
 - PostgreSQL 9.2 or higher
-- Oracle 10g or higher (OTRS 9 will not support Oracle as application database anymore)
+- Oracle 10g or higher
 
-Browsers
-- Use a modern web browser.
-- These browsers are not supported:
-  - Internet Explorer before version 11 (OTRS 9 will not support Internet Explorer anymore)
-  - Firefox before version 31
-  - Safari before version 6
+
+## Web Browser Support
+
+((OTRS)) Community Edition works on all modern web browsers.
+
+The following browsers are not supported:
+  - Internet Explorer version 11 and lower
+  - Firefox version 31 and lower
+  - Safari version 6 and lower

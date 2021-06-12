@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -123,8 +124,9 @@ $Self->True(
 my $CommandObject = $Kernel::OM->Get('Kernel::System::Console::Command::Dev::Package::Build');
 my $ExitCode      = $CommandObject->Execute(
     '--version', '5.0.1', '--module-directory',
-    'scripts/test/sample/SysConfig/Migration/Package/TestPackage/',
-    'scripts/test/sample/SysConfig/Migration/Package/TestPackage/TestPackage.sopm', 'var/tmp/'
+    $Home . '/scripts/test/sample/SysConfig/Migration/Package/TestPackage/',
+    $Home . '/scripts/test/sample/SysConfig/Migration/Package/TestPackage/TestPackage.sopm',
+    $Home . '/var/tmp/'
 );
 
 $Self->Is(
@@ -135,7 +137,7 @@ $Self->Is(
 
 # install the package
 $CommandObject = $Kernel::OM->Get('Kernel::System::Console::Command::Admin::Package::Install');
-$ExitCode      = $CommandObject->Execute('var/tmp/TestPackage-5.0.1.opm');
+$ExitCode      = $CommandObject->Execute( $Home . '/var/tmp/TestPackage-5.0.1.opm' );
 
 $Self->Is(
     $ExitCode,
@@ -153,9 +155,9 @@ $ExitCode      = $CommandObject->Execute(
     '--version',
     '6.0.1',
     '--module-directory',
-    'scripts/test/sample/SysConfig/Migration/Package/TestPackage/',
-    'scripts/test/sample/SysConfig/Migration/Package/TestPackage/TestPackage.sopm',
-    'var/tmp/',
+    $Home . '/scripts/test/sample/SysConfig/Migration/Package/TestPackage/',
+    $Home . '/scripts/test/sample/SysConfig/Migration/Package/TestPackage/TestPackage.sopm',
+    $Home . '/var/tmp/',
 );
 
 $Self->Is(
@@ -166,7 +168,7 @@ $Self->Is(
 
 # upgrade the package
 $CommandObject = $Kernel::OM->Get('Kernel::System::Console::Command::Admin::Package::Upgrade');
-$ExitCode      = $CommandObject->Execute('var/tmp/TestPackage-6.0.1.opm');
+$ExitCode      = $CommandObject->Execute( $Home . '/var/tmp/TestPackage-6.0.1.opm' );
 
 $Self->Is(
     $ExitCode,

@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # Copyright (C) 2010-2011 Kaz Kamimura <kamypus at yahoo.co.jp>
 # Copyright (C) 2011/12/08 Kaoru Hayama TIS Inc.
 # Copyright (C) 2014 Norihiro Tanaka NTT Data Intellilink Corp.
@@ -27,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.761090416525567;
+    $Self->{Completeness}        = 0.7625;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -214,7 +215,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'これは、全ての担当者の個々の環境設定に通知にチェックが入ります。そして通知されます。',
         'This feature is currently not available.' => 'この機能は現在利用できません。',
-        'Upgrade to %s' => '%s にアップグレードする',
         'Please activate this transport in order to use it.' => '使用するには、このトランスポートを有効にしてください。',
         'No data found' => 'データがありません',
         'No notification method found.' => '通知方法が見つかりませんでした。',
@@ -505,18 +505,6 @@ sub Data {
         'Add new field for object' => 'オブジェクトに新規領域を追加',
         'Filter for Dynamic Fields' => 'ダイナミック・フィールドでフィルター',
         'Filter for dynamic fields' => 'ダイナミック・フィールドでフィルター',
-        'More Business Fields' => 'その他のビジネス分野',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '',
-        'Database' => 'データベース',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '外部データベースをこの ダイナミック・フィールド の構成データソースとして使用します。',
-        'Web service' => 'ウェブサービス',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '外部Webサービスをこの ダイナミック・フィールド のデータソースとして設定できます。',
-        'Contact with data' => 'データと接続',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             '新しいフィールドを追加するには、オブジェクトのリストの1つからフィールドタイプを選択します。オブジェクトはフィールドの境界を定義し、フィールドの作成後は変更できません。',
         'Dynamic Fields List' => 'ダイナミック・フィールド 一覧',
@@ -1155,13 +1143,7 @@ sub Data {
         'Delete web service' => 'ウェブサービスの削除',
         'Do you really want to delete this web service?' => '本当にこのWebサービスを削除しますか？',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            '',
         'Import Ready2Adopt web service' => '',
-        'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
-            '',
         'After you save the configuration you will be redirected again to the edit screen.' =>
             '',
         'If you want to return to overview please click the "Go to overview" button.' =>
@@ -1259,7 +1241,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '右側のアイテムにカーソルを合わせてスターアイコンをクリックすると、お気に入りを追加できます。',
         'Links' => 'リンク',
-        'View the admin manual on Github' => 'Githubの管理マニュアルを表示',
+        'View the admin manual' => '管理者マニュアルを見る',
         'No Matches' => 'マッチなし',
         'Sorry, your search didn\'t match any items.' => '申し訳ありませんが、あなたの検索はどのアイテムにも一致しませんでした。',
         'Set as favorite' => 'お気に入りに指定',
@@ -1338,6 +1320,7 @@ sub Data {
             'おめでとうございます。 %s は最新版として正常にインストールされました。',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => '%s にアップグレードする',
         'Go to the OTRS customer portal' => 'OTRSのカスタマーポータルへアクセス',
         '%s will be available soon. Please check again in a few days.' =>
             '%sはもうすぐ有効になります。数日後に確認してください。',
@@ -1418,8 +1401,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'package information' => 'パッケージ情報',
         'Package installation requires a patch level update of OTRS.' => '',
         'Package update requires a patch level update of OTRS.' => '',
-        'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
-            'OTRS Business Solution™のお客様は、カスタマーポータルにアクセスしてリクエストを提出してください。',
         'Please note that your installed OTRS version is %s.' => 'インストールされているOTRSのバージョンは%sです。',
         'To install this package, you need to update OTRS to version %s or newer.' =>
             'このパッケージをインストールするには、OTRSのバージョンを%s以上にアップデートする必要があります。',
@@ -1442,9 +1423,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
             '',
         'Install' => 'インストール',
         'Update repository information' => 'リポジトリ情報を更新',
-        'Cloud services are currently disabled.' => 'クラウドサービスは現在無効化されています',
-        'OTRS Verify™ can not continue!' => 'OTRS Verify™️が継続できません！',
-        'Enable cloud services' => 'クラウドサービスの有効化',
         'Update all installed packages' => 'インストールされているパッケージを全て更新する',
         'Online Repository' => 'オンラインリポジトリ',
         'Action' => '操作',
@@ -1455,9 +1433,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Package not correctly deployed! Please reinstall the package.' =>
             'パッケージが正しくデプロイされません。再インストールしてください。',
         'Reinstall' => '再インストール',
-        'Features for %s customers only' => '',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            '',
         'Package Information' => 'パッケージ情報',
         'Download package' => 'パッケージをダウンロード',
         'Rebuild package' => 'パッケージを再構成',
@@ -1551,8 +1526,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Import process configuration' => 'プロセスの設定をインポート',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1823,6 +1796,7 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Attribute' => '属性',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'OTRSバージョン',
+        'Database' => 'データベース',
         'Operating System' => 'オペレーションシステム',
         'Perl Version' => 'Perl バージョン',
         'Optional description of this system.' => '',
@@ -2010,14 +1984,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'This state is used in the following config settings:' => 'このステータスは、次の設定で使用されます。',
 
         # Template: AdminSupportDataCollector
-        'Sending support data to OTRS Group is not possible!' => 'OTRS Group へのサポートデータの送信ができません！',
-        'Enable Cloud Services' => 'クラウドサービスを有効にする',
-        'This data is sent to OTRS Group on a regular basis. To stop sending this data please update your system registration.' =>
-            'このデータは定期的にOTRSグループに送られます。 このデータの送信を停止するには、システム登録を更新して下さい。',
-        'You can manually trigger the Support Data sending by pressing this button:' =>
-            '手動でこのボタンを押すことにより、サポートデータを送信することができます。',
-        'Send Update' => '更新を送信',
-        'Currently this data is only shown in this system.' => 'このデータは現在このシステム上で表示されています。',
         'A support bundle (including: system registration information, support data, a list of installed packages and all locally modified source code files) can be generated by pressing this button:' =>
             'このボタンを押すとサポートバンドル(システム登録情報、サポートに必要なデータ、インストールされているパッケージリスト、変更されているソース)が作成されます。',
         'Generate Support Bundle' => 'サポートバンドルの生成',
@@ -2826,7 +2792,9 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
 
         # Template: CloudServicesDisabled
         'This Feature Requires Cloud Services' => 'この機能にはクラウドサービスが必要',
+        'Cloud services are currently disabled.' => 'クラウドサービスは現在無効化されています',
         'You can' => '次のことができます: ',
+        'Enable cloud services' => 'クラウドサービスの有効化',
         'go back to the previous page' => '直前のページに戻る',
 
         # Template: CustomerAccept
@@ -2849,8 +2817,7 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Traceback' => 'トレースバック',
 
         # Template: CustomerFooter
-        '%s powered by %s™' => '%spowered by %s',
-        'Powered by %s™' => 'powered by %s™',
+        'Powered by %s' => '',
 
         # Template: CustomerFooterJS
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
@@ -2945,12 +2912,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Ticket fields' => 'チケット・フィールド',
 
         # Template: Error
-        'Really a bug? 5 out of 10 bug reports result from a wrong or incomplete installation of OTRS.' =>
-            '本当にバグですか？ 10つのバグレポートのうち5つは、OTRSのインストールが間違っているか不完全であることに起因しています。',
-        'With %s, our experts take care of correct installation and cover your back with support and periodic security updates.' =>
-            '',
-        'Contact our service team now.' => '今すぐ、サービス担当までご連絡ください。',
-        'Send a bugreport' => 'バグ報告を送信',
         'Expand' => '展開',
 
         # Template: AttachmentList
@@ -2969,9 +2930,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
             'このドラフトは、このドラフトが作成されてから改訂されたため、古くなっています。',
 
         # Template: Header
-        'View notifications' => '通知を見る',
-        'Notifications' => '通知',
-        'Notifications (OTRS Business Solution™)' => '通知(OTRS Business Solution™)',
         'Personal preferences' => '個人設定',
         'Logout' => 'ログアウト',
         'You are logged in as' => 'ログイン中: ',
@@ -2984,15 +2942,9 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'General Specifications and Mail Settings' => '共通仕様とメール設定',
         'Finish' => '完了',
         'Welcome to %s' => '%s にようこそ',
-        'Germany' => '',
         'Phone' => '電話',
-        'United States' => '',
-        'Mexico' => '',
-        'Hungary' => '',
-        'Brazil' => '',
-        'Singapore' => '',
-        'Hong Kong' => '',
         'Web site' => 'Webサイト',
+        'GitHub repository' => '',
 
         # Template: InstallerConfigureMail
         'Configure Outbound Mail' => '送信メール設定',
@@ -3058,7 +3010,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Restart your webserver' => 'Webサーバを再起動してください。',
         'After doing so your OTRS is up and running.' => 'その後、OTRSの起動を実行してください。',
         'Start page' => 'スタートページ',
-        'Your OTRS Team' => 'Your OTRS Team',
 
         # Template: InstallerLicense
         'Don\'t accept license' => 'ライセンスに同意しない',
@@ -3289,10 +3240,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         # Template: Navigation
         'Navigation' => 'ナビゲーション',
 
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
-
         # Template: Test
         'OTRS Test Page' => 'OTRS テストページ',
         'Unlock' => 'ロック解除',
@@ -3519,9 +3466,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => '',
         'Objects configuration is not valid' => '',
-        'Database (%s)' => 'データベース (%s)',
-        'Web service (%s)' => 'Webサービス (%s)',
-        'Contact with data (%s)' => 'データ接続 (%s)',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             'ダイナミック・フィールドのオーダー定義を初期化できませんでした。詳細はエラーログを参照願います。',
 
@@ -3761,8 +3705,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Can\'t read %s!' => '%s を読み込めません！',
         'File is OK' => 'ファイルは正常です',
         'Package has locally modified files.' => 'パッケージにはローカルに変更されたファイルがあります。',
-        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
-            'パッケージはOTRSグループによって検証されていません。このパッケージの利用を推奨しません。',
         'Not Started' => '始まっていない',
         'Updated' => '更新しました',
         'Already up-to-date' => 'すでに最新版です。',
@@ -3781,6 +3723,8 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Repository List' => 'リポジトリ・リスト',
         'No packages found in selected repository. Please check log for more info!' =>
             '',
+        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
+            'パッケージはOTRSグループによって検証されていません。このパッケージの利用を推奨しません。',
         'Package not verified due a communication issue with verification server!' =>
             '',
         'Can\'t connect to OTRS Feature Add-on list server!' => 'OTRSアドオンリストサーバーに接続できませんでした！',
@@ -4367,7 +4311,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Show one article' => '一つの記事を閲覧',
         'Show all articles' => '全ての記事を閲覧',
         'Show Ticket Timeline View' => '',
-        'Show Ticket Timeline View (%s)' => '',
 
         # Perl Module: Kernel/Modules/AjaxAttachment.pm
         'Got no FormID.' => '',
@@ -4638,14 +4581,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'クラウドサービスを利用して、OTRSのすべての機能を活用しましょう！',
-
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%s は %sに更新されました！ %s',
-        'Please verify your license data!' => '',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'あなたの %s のライセンスはもうすぐ失効します。　 %s にお問い合わせいただき更新を行ってください。',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            ' %s のアップデートが利用可能です。しかしあなたのフレームワークのバージョンとコンフリクトしていますので、事前にフレームワークの更新を行ってください。',
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'オンラインの担当者: %s',
@@ -6025,7 +5960,6 @@ Thanks for your help!
         'Agents ↔ Groups' => '担当者 ↔ グループ',
         'Agents ↔ Roles' => '担当者 ↔ ロール',
         'All CustomerIDs of a customer user.' => '顧客ユーザーの全てのCustomerID',
-        'All attachments (OTRS Business Solution™)' => 'すべての添付ファイル（OTRS Business Solution™）',
         'All customer users of a CustomerID' => '顧客IDの全ての顧客ユーザー',
         'All escalated tickets' => '全エスカレーションチケット',
         'All new tickets, these tickets have not been worked on yet' => '全新規チケット。まだ着手されていません',
@@ -6206,9 +6140,6 @@ Thanks for your help!
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            'このシステムのOTRS Business Solution™の可用性をチェックします。',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'OTRS Business Solution™の権利の状態を確認します。',
         'Child' => '子',
         'Chinese (Simplified)' => '',
         'Chinese (Traditional)' => '',
@@ -6520,8 +6451,6 @@ Thanks for your help!
         'Defines if agents should be allowed to login if they have no shared secret stored in their preferences and therefore are not using two-factor authentication.' =>
             '',
         'Defines if customers should be allowed to login if they have no shared secret stored in their preferences and therefore are not using two-factor authentication.' =>
-            '',
-        'Defines if the communication between this system and OTRS Group servers that provide cloud services is possible. If set to \'Disable cloud services\', some functionality will be lost such as system registration, support data sending, upgrading to and use of OTRS Business Solution™, OTRS Verify™, OTRS News and product News dashboard widgets, among others.' =>
             '',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.) in customer interface.' =>
             '顧客インタフェースで拡張モードを使用すべきかどうかを定義します(これにより、表・置換機能・各種スクリプト・Wordからの貼り付けなどが利用可能になります)。',
@@ -6904,8 +6833,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Defines the module to authenticate customers.' => '顧客を認証するモジュールを定義します。',
         'Defines the module to display a notification if cloud services are disabled.' =>
             '',
-        'Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.' =>
-            'OTRS Business Solution™の様々な機会に異なるインタフェースで通知を表示するモジュールを定義します。',
         'Defines the module to display a notification in the agent interface if the OTRS Daemon is not running.' =>
             '',
         'Defines the module to display a notification in the agent interface if the system configuration is out of sync.' =>
@@ -6917,8 +6844,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Defines the module to display a notification in the agent interface, if the agent is logged in while having system maintenance active.' =>
             '',
         'Defines the module to display a notification in the agent interface, if the agent session limit prior warning is reached.' =>
-            '',
-        'Defines the module to display a notification in the agent interface, if the installation of not verified packages is activated (only shown to admins).' =>
             '',
         'Defines the module to display a notification in the agent interface, if the system is used by the admin user (normally you shouldn\'t work as admin).' =>
             'もし、システムがアドミン・ユーザによって使用されている場合、担当者インタフェースにおいて通知を表示させるモジュールを定義します（通常はアドミンとして行動する必要はありません）。',
@@ -6989,8 +6914,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
-        'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
@@ -7130,7 +7053,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Deletes requested sessions if they have timed out.' => 'リクエストされたセッションがタイムアウトしている場合に削除します。',
         'Delivers extended debugging information in the frontend in case any AJAX errors occur, if enabled.' =>
             '',
-        'Deploy and manage OTRS Business Solution™.' => 'OTRS Business Solution™のデプロイと管理',
         'Detached' => '',
         'Determines if a button to delete a link should be displayed next to each link in each zoom mask.' =>
             '',
@@ -7170,6 +7092,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             'HTTPヘッダ"X-Frame-Options: SAMEORIGIN”を無効化し、OTRSを外部のWebサイトの一部としてiframeに埋め込むことを許可します。 このHTTPヘッダを無効にすることにより、セキュリティ上の問題が生じることがあります! 変更内容をよく理解している場合に限り無効化を実行してください!',
         'Disable autocomplete in the login screen.' => '',
         'Disable cloud services' => 'クラウドサービスの無効化',
+        'Disable cloud services.' => '',
         'Disables sending reminder notifications to the responsible agent of a ticket (Ticket::Responsible needs to be enabled).' =>
             'チケットの責任者である担当者への、リマインダー通知の送信を無効にします(Ticket::Responsibleが有効にされる必要があります)。',
         'Disables the redirection to the last screen overview / dashboard after a ticket is closed.' =>
@@ -7683,7 +7606,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'セッション管理に、htmlクッキーを使用させるようにします。htmlクッキーが無効にされている場合、またはクライアント・ブラウザがhtmlクッキーを無効にしている場合、システムは通常どおり動作し、またセッションIDをリンクに付け加えます。',
         'Malay' => 'マレー語',
-        'Manage OTRS Group cloud services.' => 'OTRSグループのクラウドサービスの管理',
         'Manage PGP keys for email encryption.' => 'メール暗号用のPGP鍵管理',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'メール受信用POP3/IMAPアカウント管理',
         'Manage S/MIME certificates for email encryption.' => 'メール暗号用のS/MIME証明書管理',
@@ -7691,7 +7613,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Manage different calendars.' => '様々なカレンダーを管理します。',
         'Manage existing sessions.' => '既存セッション管理',
         'Manage support data.' => 'サポート情報の管理',
-        'Manage system registration.' => 'システム登録の管理',
         'Manage tasks triggered by event or time based execution.' => 'イベントトリガーまたは時間ベースで実行されるタスクの管理',
         'Mark as Spam!' => '迷惑メールにする',
         'Mark this ticket as junk!' => 'このチケットをジャンクとしてマークします!',
@@ -7791,8 +7712,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'New Year\'s Day' => '元日',
         'New Year\'s Eve' => '大晦日',
         'New process ticket' => '新規プロセスチケット',
-        'News about OTRS releases!' => 'OTRSリリース情報!',
-        'News about OTRS.' => '',
         'Next possible ticket states after adding a phone note in the ticket phone inbound screen of the agent interface.' =>
             '',
         'Next possible ticket states after adding a phone note in the ticket phone outbound screen of the agent interface.' =>
@@ -7813,8 +7732,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '顧客インタフェースの検索結果の各ページで表示される、チケット数です。',
         'Number of tickets to be displayed in each page.' => '',
-        'OTRS Group Services' => 'OTRSグループ・サービス',
-        'OTRS News' => 'OTRSニュース',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRSは、フルテキスト検索や統計生成などの高価な操作に、1つまたは複数の読み取り専用ミラーデータベースを使用できます。 ここでは、最初のミラーデータベースのDSNを指定できます。',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7951,7 +7868,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Process pending tickets.' => '保留中プロセスチケット',
         'ProcessID' => 'プロセスID',
         'Processes & Automation' => 'プロセス & 自動化',
-        'Product News' => '製品ニュース',
         'Protection against CSRF (Cross Site Request Forgery) exploits (for more info see https://en.wikipedia.org/wiki/Cross-site_request_forgery).' =>
             '',
         'Provides a matrix overview of the tickets per state per queue' =>
@@ -7982,7 +7898,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             '担当者インタフェースのチケット構成画面で、オリジナルの送信者を、コンポーズ・アンサー上の現在の顧客のEメール・アドレスに置換します。',
         'Reports' => 'レポート',
-        'Reports (OTRS Business Solution™)' => 'レポート（OTRS Business Solution™）',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             '',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8021,7 +7936,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Resent email to "%s".' => '',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             'チケットの所有者を、チケットが移動された、または別のキューに移動した場合、リセットおよびアンロックします。',
-        'Resource Overview (OTRS Business Solution™)' => 'リソース表示 (OTRS Business Solution™)',
         'Responsible Tickets' => '',
         'Responsible Tickets.' => '',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>
@@ -8084,7 +7998,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Bccを経由して特定されたアドレスに送信Eメールを送ります。バックアップ目的のためにのみ使用してください。',
         'Sends customer notifications just to the mapped customer.' => '',
-        'Sends registration information to OTRS group.' => '',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'リマインダ日付を迎えたら、アンロック・チケットのリマインダ通知を送信します（チケット所有者だけに送信されます）。',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>
@@ -8432,8 +8345,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '担当者インタフェースのチケット責任者画面で、全ての可能性ある担当者（キュー/チケットにメモ許可を有する全ての担当者）のリストを表示し、そのメモについて誰に通知するべきかを決定します。',
         'Shows a preview of the ticket overview (CustomerInfo => 1 - shows also Customer-Info, CustomerInfoMaxSize max. size in characters of Customer-Info).' =>
             'チケット一覧のプレビューを表示します(CustomerInfo => 1 - 顧客情報も表示しますCustomerInfoMaxSize max ? 顧客情報の文字サイズです)。',
-        'Shows a teaser link in the menu for the ticket attachment view of OTRS Business Solution™.' =>
-            '',
         'Shows all both ro and rw queues in the queue view.' => 'キュー・ビューで、roとrwの両方全てのキューを表示します。',
         'Shows all both ro and rw tickets in the service view.' => 'サービス・ビュー内の読み取り専用と読み書き可能なチケットの両方を全て表示する。',
         'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
@@ -8572,13 +8483,10 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '',
         'Specify how many sub directory levels to use when creating cache files. This should prevent too many cache files being in one directory.' =>
             '',
-        'Specify the channel to be used to fetch OTRS Business Solution™ updates. Warning: Development releases might not be complete, your system might experience unrecoverable errors and on extreme cases could become unresponsive!' =>
-            '',
         'Specify the password to authenticate for the first mirror database.' =>
             'データベースの第一ミラーの認証パスワードを指定してください。',
         'Specify the username to authenticate for the first mirror database.' =>
             '',
-        'Stable' => '安定',
         'Standard available permissions for agents within the application. If more permissions are needed, they can be entered here. Permissions must be defined to be effective. Some other good permissions have also been provided built-in: note, close, pending, customer, freetext, move, compose, responsible, forward, and bounce. Make sure that "rw" is always the last registered permission.' =>
             'アプリケーション内で担当者にとって標準的に利用可能な許可です。もし、さらに多くの許可が必要であれば、ここで加えることができます。許可は、効果的になるように設定する必要があります。いくつか他の良い許可も、ビルト・インで提供されています：note, close, pending, customer, freetext, move, compose, responsible, forward, bounce。“rw”は、常に最後の登録許可であることを確認してください。',
         'Start number for statistics counting. Every new stat increments this number.' =>
@@ -8590,7 +8498,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '',
         'Stat#' => '統計番号',
         'States' => 'ステータス',
-        'Statistic Reports overview.' => '',
         'Statistics overview.' => 'レポート一覧',
         'Status view' => 'ステータス・ビュー',
         'Stopped response time escalation.' => '応答時間のエスカレーションを停止しました。',
@@ -8601,6 +8508,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Strips empty lines on the ticket preview in the service view.' =>
             '',
         'Support Agent' => '',
+        'Support Services' => 'サポート',
         'Swahili' => 'スワヒリ語',
         'Swedish' => 'スウェーデン語',
         'System Address Display Name' => 'システムアドレスの表示名',
@@ -8790,7 +8698,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Uses richtext for viewing and editing: articles, salutations, signatures, standard templates, auto responses and notifications.' =>
             '作成と表示確認にリッチテキストを利用します。: 記事、挨拶、署名、標準テンプレート、自動応答と通知',
         'Vietnam' => 'ベトナム',
-        'View all attachments of the current ticket' => '現在のチケットにある全ての添付ファイルを表示する',
         'View performance benchmark results.' => 'パフォーマンス・ベンチマーク結果を見る。',
         'Watch this ticket' => 'このチケットを見る。',
         'Watched Tickets' => '監視チケット',

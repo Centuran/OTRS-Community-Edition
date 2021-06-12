@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -28,9 +29,16 @@ $Kernel::OM->ObjectParamAdd(
 );
 my $Helper = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 
-$Kernel::OM->Get('Kernel::Config')->Set(
+my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+$ConfigObject->Set(
     Key   => 'Ticket::UnlockOnAway',
     Value => 1,
+);
+
+# Silence queueing error messages
+$ConfigObject->Set(
+    Key   => 'CheckEmailAddresses',
+    Value => 0,
 );
 
 my ( $TestUserLogin, $TestUserID ) = $Helper->TestUserCreate(

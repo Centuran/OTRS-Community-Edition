@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -269,22 +270,6 @@ $Selenium->RunTest(
             my $Element = $Selenium->find_element("//a[contains(\@href, \'Action=$Action')]");
             $Element->is_enabled();
             $Element->is_displayed();
-        }
-
-        my $OTRSBusinessIsInstalled = $Kernel::OM->Get('Kernel::System::OTRSBusiness')->OTRSBusinessIsInstalled();
-        my $OBTeaser                = $LanguageObject->Translate('All attachments (OTRS Business Solution™)');
-        my $OBTeaserFound           = index( $Selenium->get_page_source(), $OBTeaser ) > -1;
-        if ( !$OTRSBusinessIsInstalled ) {
-            $Self->True(
-                $OBTeaserFound,
-                "OTRSBusiness teaser found on page",
-            );
-        }
-        else {
-            $Self->False(
-                $OBTeaserFound,
-                "OTRSBusiness teaser not found on page",
-            );
         }
 
         # Verify article order in zoom screen.

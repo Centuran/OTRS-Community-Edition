@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -20,6 +21,7 @@ my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 my $CacheType = 'UnitTestRebuildConfig';
 
 my $ChildCount = $Kernel::OM->Get('Kernel::Config')->Get('UnitTest::TicketCreateNumber::ChildCount') || 5;
+my $Home       = $Kernel::OM->Get('Kernel::Config')->{Home};
 
 for my $ChildIndex ( 1 .. $ChildCount ) {
 
@@ -41,7 +43,7 @@ for my $ChildIndex ( 1 .. $ChildCount ) {
         $Kernel::OM->ObjectsDiscard();
 
         # Execute console command.
-        `$^X bin/otrs.Console.pl Maint::Config::Rebuild --time 180`;
+        `$^X $Home/bin/otrs.Console.pl Maint::Config::Rebuild --time 180`;
         my $ExitCode = $? >> 8;
 
         $Kernel::OM->Get('Kernel::System::Cache')->Set(

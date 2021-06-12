@@ -344,6 +344,21 @@ textarea.cke_dialog_ui_input_textarea:focus {
     padding-left: 0;
 }
 
+#Footer img {
+    display: inline-block;
+    filter: grayscale(1);
+    margin: auto;
+    margin-top: 1em;
+    opacity: 0.55;
+    transition: all 0.3s ease;
+    width: 7.2rem;
+}
+
+#Footer a:hover img {
+    filter: none;
+    opacity: 1;
+}
+
 /**
  * @subsection  Clear
  */

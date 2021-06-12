@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -50,7 +51,7 @@
             <div class="Content">
                 <ul class="ActionList">
                     <li>
-                        <a href="https://doc.otrs.com/doc/manual/admin/[% Data.ManualVersion | uri %].0/en/html/index.html" target="_blank" class="CallForAction Fullsize Center"><span><i class="fa fa-book"></i>[% Translate("View the admin manual on Github") | html %]</span></a>
+                        <a href="https://otrscommunityedition.com/doc/manual/admin/[% Data.ManualVersion | uri %].0/en/html/index.html" target="_blank" class="CallForAction Fullsize Center"><span><i class="fa fa-book"></i>[% Translate("View the admin manual") | html %]</span></a>
                     </li>
                 </ul>
             </div>

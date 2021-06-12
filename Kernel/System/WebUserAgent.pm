@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -126,7 +127,7 @@ If you need to set credentials
             User     => 'otrs_user',
             Password => 'otrs_password',
             Realm    => 'OTRS Unittests',
-            Location => 'ftp.otrs.org:80',
+            Location => 'otrscommunityedition.com:80',
         },
         SkipSSLVerification => 1, # (optional)
         NoLog               => 1, # (optional)

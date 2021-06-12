@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -48,6 +49,9 @@ sub Run {
 
         $GetParam{$Key} = $ParamObject->GetParam( Param => $Key );
     }
+
+    # Filter out parameters which should not be set in the request
+    delete $GetParam{AllDayChecked};
 
     my $ConfigObject      = $Kernel::OM->Get('Kernel::Config');
     my $LayoutObject      = $Kernel::OM->Get('Kernel::Output::HTML::Layout');

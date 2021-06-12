@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -16,18 +17,12 @@ my $Helper        = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 my $PackageObject = $Kernel::OM->Get('Kernel::System::Package');
 my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
 
-# Make sure to enable cloud services.
-$Helper->ConfigSettingChange(
-    Valid => 1,
-    Key   => 'CloudServices::Disabled',
-    Value => 0,
-);
-
-$Helper->ConfigSettingChange(
-    Valid => 1,
-    Key   => 'Package::AllowNotVerifiedPackages',
-    Value => 0,
-);
+# TODO: PackageVerification
+# $Helper->ConfigSettingChange(
+#     Valid => 1,
+#     Key   => 'Package::AllowNotVerifiedPackages',
+#     Value => 0,
+# );
 
 my $RandomID = $Helper->GetRandomID();
 
@@ -46,7 +41,7 @@ use warnings;
     sub Request {
         return (
             Status  => '200 OK',
-            Content => '{"Success":1,"Results":{"PackageManagement":[{"Operation":"PackageVerify","Data":{"Test":"not_verified","TestPackageIncompatible":"not_verified"},"Success":"1"}]},"ErrorMessage":""},
+            Content => '{"Success":1,"Results":{"PackageManagement":[{"Operation":"PackageVerify","Data":{"Test":"not_verified","TestPackageIncompatible":"not_verified"},"Success":"1"}]},"ErrorMessage":""}',
         );
     }
 }
@@ -57,23 +52,32 @@ $Helper->CustomCodeActivate(
     Identifier => 'Admin::Package::Upgrade' . $RandomID,
 );
 
-my $Location             = $ConfigObject->Get('Home') . '/scripts/test/sample/PackageManager/TestPackage.opm';
+my $Location = $ConfigObject->Get('Home') . '/scripts/test/sample/PackageManager/TestPackage.opm';
+
+# Make sure that package is not installed
+my $UninstallCommandObject = $Kernel::OM->Get('Kernel::System::Console::Command::Admin::Package::Uninstall');
+$UninstallCommandObject->Execute($Location);
+
 my $UpgradeCommandObject = $Kernel::OM->Get('Kernel::System::Console::Command::Admin::Package::Upgrade');
 
 my $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
-    1,
-    "Admin::Package::Upgrade exit code - package is not verified",
+
+    # TODO: PackageVerification - for now test has reversed purpose
+    0,
+    "Admin::Package::Upgrade exit code - package upgraded",
 );
 
 $ExitCode = $UpgradeCommandObject->Execute($Location);
 
 $Self->Is(
     $ExitCode,
+
+    # TODO: PackageVerification - for now test has reversed purpose, package installed
     1,
-    "Admin::Package::Upgrade exit code without arguments",
+    "Admin::Package::Upgrade run with error - Can't upgrade, package already installed!",
 );
 
 1;

@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -72,7 +73,7 @@
                     [% Translate("Attention") | html %]: [% Translate("Please also update the states in SysConfig where needed.") | html %]
                 </p>
                 <p class="FieldExplanation">
-                    [% Translate("See also") | html %]: <a href="https://doc.otrs.com/doc" target="_blank">https://doc.otrs.com/doc</a>
+                    [% Translate("See also") | html %]: <a href="https://otrscommunityedition.com/doc" target="_blank">https://otrscommunityedition.com/doc</a>
                 </p>
             </div>
         </div>

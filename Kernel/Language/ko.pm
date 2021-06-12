@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.96799864544531;
+    $Self->{Completeness}        = 0.968493150684931;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -211,7 +212,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             '이것은 자신의 환경 설정에서이 통지에 대해 아직 선택하지 않은 할당 된 수신자 에이전트의 기본값입니다. 이 상자가 활성화되면 해당 에이전트에 알림이 전송됩니다.',
         'This feature is currently not available.' => '현재 이 기능을 사용할 수 없습니다.',
-        'Upgrade to %s' => '%s (으)로 업그레이드',
         'Please activate this transport in order to use it.' => '사용하려면이 운송을 활성화하십시오.',
         'No data found' => '데이터가 없습니다.',
         'No notification method found.' => '알림 방법이 없습니다.',
@@ -502,18 +502,6 @@ sub Data {
         'Add new field for object' => '객체에 대한 새 필드 추가',
         'Filter for Dynamic Fields' => '동적 필드 필터링',
         'Filter for dynamic fields' => '동적 필드 필터링',
-        'More Business Fields' => '더 많은 사업 분야',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '비즈니스를위한 추가적인 동적 필드 유형의 혜택을 원하십니까? 다음 필드 유형에 액세스하려면 %s로 업그레이드하십시오.',
-        'Database' => '데이터베이스',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '이 동적 필드에 대해 외부 데이터베이스를 구성 가능한 데이터 소스로 사용하십시오.',
-        'Web service' => '웹 서비스',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '외부 웹 서비스는 이 동적 필드의 데이터 소스로 구성될 수 있습니다.',
-        'Contact with data' => '데이터 연락처',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '이 기능을 사용하면 데이터가 있는 연락처를 티켓에 추가 할 수 있습니다.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             '새 필드를 추가하려면 객체 목록 중 하나에서 필드 유형을 선택하십시오. 객체는 필드의 경계를 정의하며 필드 작성 후에는 변경할 수 없습니다.',
         'Dynamic Fields List' => '동적 필드 목록',
@@ -1150,13 +1138,7 @@ sub Data {
         'Delete web service' => '웹 서비스 삭제',
         'Do you really want to delete this web service?' => '이 웹 서비스를 정말로 삭제 하시겠습니까?',
         'Ready2Adopt Web Services' => 'Ready2Adopt 웹 서비스',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '여기 %s의 일부인 모범 사례를 보여주는 Ready2Adopt 웹 서비스를 활성화 할 수 있습니다.',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            '이 웹 서비스는 특정 %s 계약 수준에서만 사용 가능한 다른 모듈에 의존 할 수 있습니다 (가져올 때 자세한 내용이있는 알림이 있음).',
         'Import Ready2Adopt web service' => 'Ready2Adopt 웹 서비스 가져 오기',
-        'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
-            '전문가가 만든 웹 서비스의 혜택을 원하십니까? 일부 정교한 Ready2Adopt 웹 서비스를 가져 오려면 %s로 업그레이드하십시오.',
         'After you save the configuration you will be redirected again to the edit screen.' =>
             '구성을 저장하면 편집 화면으로 다시 이동합니다.',
         'If you want to return to overview please click the "Go to overview" button.' =>
@@ -1254,7 +1236,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '오른쪽에있는 항목 위로 커서를 이동하고 별 모양 아이콘을 클릭하여 즐겨 찾기를 추가 할 수 있습니다.',
         'Links' => '링크',
-        'View the admin manual on Github' => 'Github에서 관리자 매뉴얼보기',
+        'View the admin manual' => '관리자 매뉴얼보기',
         'No Matches' => '일치하지 않는다.',
         'Sorry, your search didn\'t match any items.' => '죄송합니다. 검색 결과와 일치하지 않습니다.',
         'Set as favorite' => '즐겨찾기로 설정',
@@ -1333,6 +1315,7 @@ sub Data {
             '축하합니다. %s가 올바르게 설치되고 최신 상태입니다!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => '%s (으)로 업그레이드',
         'Go to the OTRS customer portal' => 'OTRS 고객 포털로 이동하십시오.',
         '%s will be available soon. Please check again in a few days.' =>
             '%s는 곧 제공될 예정입니다. 며칠 후에 다시 확인하십시오.',
@@ -1412,8 +1395,6 @@ sub Data {
         'package information' => '패키지 정보',
         'Package installation requires a patch level update of OTRS.' => '패키지를 설치하려면 OTRS의 패치 레벨 업데이트가 필요합니다. ',
         'Package update requires a patch level update of OTRS.' => '패키지 업데이트에는 OTRS의 패치 수준 업데이트가 필요합니다. ',
-        'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
-            'OTRS Business Solution ™ 고객 인 경우 고객 포털을 방문하여 요청을 제출하십시오.',
         'Please note that your installed OTRS version is %s.' => '설치된 OTRS 버전은 %s입니다.',
         'To install this package, you need to update OTRS to version %s or newer.' =>
             '이 패키지를 설치하려면 OTRS를 버전 %s 이상으로 업데이트해야합니다.',
@@ -1436,9 +1417,6 @@ sub Data {
             '데이터베이스가 %s 크기 이상의 패키지를 수락하는지 확인하십시오 (현재 패키지는 최대 %s MB 만 허용). 오류를 피하기 위해 데이터베이스의 max_allowed_packet 설정을 조정하십시오.',
         'Install' => '설치',
         'Update repository information' => '저장소 정보 업데이트',
-        'Cloud services are currently disabled.' => '클라우드 서비스는 현재 사용할 수 없습니다.',
-        'OTRS Verify™ can not continue!' => 'OTRS Verify ™를 계속할 수 없습니다!',
-        'Enable cloud services' => '클라우드 서비스 사용',
         'Update all installed packages' => '설치된 모든 패키지를 업데이트 하십시오.',
         'Online Repository' => '온라인 저장소',
         'Action' => '동작',
@@ -1449,9 +1427,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             '패키지가 올바르게 배치되지 않았습니다! 패키지를 다시 설치하십시오.',
         'Reinstall' => '재설치',
-        'Features for %s customers only' => '%s 고객 전용 기능',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            '%s를 사용하면 다음과 같은 옵션 기능을 활용할 수 있습니다. 더 자세한 정보가 필요하시면 %s로 연락하십시오.',
         'Package Information' => '패키지 정보',
         'Download package' => '패키지 다운로드',
         'Rebuild package' => '패키지 다시 빌드',
@@ -1546,8 +1521,6 @@ sub Data {
         'Ready2Adopt Processes' => 'Ready2Adopt 프로세스',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             '여기에서 우수 사례를 보여주는 Ready2Adopt 프로세스를 활성화 할 수 있습니다. 추가 구성이 필요할 수 있습니다.',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            '전문가가 만든 프로세스의 혜택을 원하십니까? 일부 정교한 Ready2Adopt 프로세스를 가져 오려면 %s로 업그레이드하십시오.',
         'Import Ready2Adopt process' => 'Ready2Adopt 프로세스 가져 오기',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             '새 프로세스를 만들려면 다른 시스템에서 내 보낸 프로세스를 가져 오거나 완전히 새로운 프로세스를 생성 할 수 있습니다.',
@@ -1817,6 +1790,7 @@ sub Data {
         'Attribute' => '속성',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'OTRS 버전',
+        'Database' => '데이터베이스',
         'Operating System' => '운영 체제',
         'Perl Version' => '펄 버전',
         'Optional description of this system.' => '이 시스템에 대한 선택적 설명.',
@@ -2004,14 +1978,6 @@ sub Data {
         'This state is used in the following config settings:' => '이 상태는 다음 구성 설정에서 사용됩니다.',
 
         # Template: AdminSupportDataCollector
-        'Sending support data to OTRS Group is not possible!' => 'OTRS 그룹에 지원 데이터를 보낼 수 없습니다!',
-        'Enable Cloud Services' => '클라우드 서비스 사용',
-        'This data is sent to OTRS Group on a regular basis. To stop sending this data please update your system registration.' =>
-            '이 데이터는 정기적으로 OTRS 그룹에 전송됩니다. 이 데이터의 전송을 중지하려면 시스템 등록을 업데이트하십시오.',
-        'You can manually trigger the Support Data sending by pressing this button:' =>
-            '이 버튼을 눌러 Support Data를 수동으로 트리거 할 수 있습니다 :',
-        'Send Update' => '업데이트 보내기',
-        'Currently this data is only shown in this system.' => '현재 이 데이터는 이 시스템에만 표시됩니다.',
         'A support bundle (including: system registration information, support data, a list of installed packages and all locally modified source code files) can be generated by pressing this button:' =>
             '이 단추를 누르면 지원 번들 (시스템 등록 정보, 지원 데이터, 설치된 패키지 목록 및 모든 로컬로 수정 된 소스 코드 파일 포함)을 생성 할 수 있습니다.',
         'Generate Support Bundle' => '지원 번들 생성',
@@ -2820,7 +2786,9 @@ sub Data {
 
         # Template: CloudServicesDisabled
         'This Feature Requires Cloud Services' => '이 기능에는 클라우드 서비스가 필요합니다.',
+        'Cloud services are currently disabled.' => '클라우드 서비스는 현재 사용할 수 없습니다.',
         'You can' => '너는 할 수있다.',
+        'Enable cloud services' => '클라우드 서비스 사용',
         'go back to the previous page' => '이전 페이지로 돌아가기',
 
         # Template: CustomerAccept
@@ -2843,8 +2811,7 @@ sub Data {
         'Traceback' => '역 추적',
 
         # Template: CustomerFooter
-        '%s powered by %s™' => '%s powered by %s™',
-        'Powered by %s™' => 'Powered by %s™',
+        'Powered by %s' => '',
 
         # Template: CustomerFooterJS
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
@@ -2939,12 +2906,6 @@ sub Data {
         'Ticket fields' => '타켓 필드',
 
         # Template: Error
-        'Really a bug? 5 out of 10 bug reports result from a wrong or incomplete installation of OTRS.' =>
-            '정말 버그입니까? 10가지 중 5 가지 버그 리포트는 OTRS의 잘못되었거나 불완전한 설치로 인해 발생합니다.',
-        'With %s, our experts take care of correct installation and cover your back with support and periodic security updates.' =>
-            '%s의 비용으로 전문가가 정확한 설치를 처리하고 지원 및 정기 보안 업데이트로 등을 제공합니다.',
-        'Contact our service team now.' => '지금 서비스 팀에 문의하십시오.',
-        'Send a bugreport' => 'bugreport 보내기',
         'Expand' => '넓히다',
 
         # Template: AttachmentList
@@ -2963,9 +2924,6 @@ sub Data {
             '이 초안이 작성된 이후 티켓이 수정되었기 때문에 이 초안은 구식입니다.',
 
         # Template: Header
-        'View notifications' => '알림보기',
-        'Notifications' => '알림',
-        'Notifications (OTRS Business Solution™)' => '알림 (OTRS Business Solution ™)',
         'Personal preferences' => '개인 환경설정',
         'Logout' => '로그아웃',
         'You are logged in as' => '귀하는 다음 계정으로 로그인했습니다.',
@@ -2978,15 +2936,9 @@ sub Data {
         'General Specifications and Mail Settings' => '일반 사양 및 메일 설정',
         'Finish' => '끝',
         'Welcome to %s' => '%s에 오신 것을 환영합니다.',
-        'Germany' => '',
         'Phone' => '전화',
-        'United States' => '',
-        'Mexico' => '',
-        'Hungary' => '',
-        'Brazil' => '',
-        'Singapore' => '',
-        'Hong Kong' => '',
         'Web site' => '웹 사이트',
+        'GitHub repository' => '',
 
         # Template: InstallerConfigureMail
         'Configure Outbound Mail' => '아웃 바운드 메일 구성',
@@ -3052,7 +3004,6 @@ sub Data {
         'Restart your webserver' => '웹 서버 다시 시작',
         'After doing so your OTRS is up and running.' => '그렇게하면 OTRS가 실행됩니다.',
         'Start page' => '시작 페이지',
-        'Your OTRS Team' => 'OTRS 팀',
 
         # Template: InstallerLicense
         'Don\'t accept license' => '면허를 받지마라.',
@@ -3283,10 +3234,6 @@ sub Data {
         # Template: Navigation
         'Navigation' => '항해',
 
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '%s에서 시스템 환경설정은 버전 관리, 롤백 및 사용자 별 구성 설정을 지원합니다.',
-
         # Template: Test
         'OTRS Test Page' => 'OTRS 테스트 페이지',
         'Unlock' => '잠금해제',
@@ -3512,9 +3459,6 @@ sub Data {
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => '필드 설정이 바르지 않습니다.',
         'Objects configuration is not valid' => '오브젝트 설정이 바르지 않습니다.',
-        'Database (%s)' => '데이터베이스 (%s)',
-        'Web service (%s)' => '웹 서비스 (%s)',
-        'Contact with data (%s)' => '데이터와의 접촉 (%s)',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             '동적 필드 순서를 제대로 재설정 할 수 없습니다. 자세한 내용은 오류 로그를 확인하십시오.',
 
@@ -3754,8 +3698,6 @@ sub Data {
         'Can\'t read %s!' => '%s를 읽을 수 없습니다!',
         'File is OK' => '파일은 정상입니다.',
         'Package has locally modified files.' => '패키지에 로컬로 수정된 파일이 있습니다.',
-        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
-            '패키지가 OTRS 그룹에 의해 확인되지 않았습니다! 이 패키지를 사용하지 않는 것이 좋습니다.',
         'Not Started' => '시작되지 않음',
         'Updated' => '업데이트 됨',
         'Already up-to-date' => '이미 최신',
@@ -3774,6 +3716,8 @@ sub Data {
         'Repository List' => '저장소 목록',
         'No packages found in selected repository. Please check log for more info!' =>
             '',
+        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
+            '패키지가 OTRS 그룹에 의해 확인되지 않았습니다! 이 패키지를 사용하지 않는 것이 좋습니다.',
         'Package not verified due a communication issue with verification server!' =>
             '확인 서버와의 통신 문제로 인해 패키지가 확인되지 않았습니다!',
         'Can\'t connect to OTRS Feature Add-on list server!' => 'OTRS 기능 추가 기능 목록 서버에 연결할 수 없습니다!',
@@ -4360,7 +4304,6 @@ sub Data {
         'Show one article' => '기사 한 개 표시',
         'Show all articles' => '모든 기사 표시',
         'Show Ticket Timeline View' => '티켓 타임 라인보기 표시',
-        'Show Ticket Timeline View (%s)' => '티켓 타임라인 보기 (%s)',
 
         # Perl Module: Kernel/Modules/AjaxAttachment.pm
         'Got no FormID.' => 'FormID 없음.',
@@ -4631,14 +4574,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => '클라우드 서비스로 모든 OTRS 기능을 구현할 수 있습니다!',
-
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%s 지금 %s로 업그레이드하십시오! %s',
-        'Please verify your license data!' => '라이센스 데이터를 확인 하십시오!',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            '%s에 대한 라이센스가 곧 만료됩니다. 계약을 갱신 하시려면%s와 연락하십시오!',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            '%s의 업데이트를 사용할 수 있지만 프레임 워크 버전과 충돌이 있습니다! 먼저 프레임 워크를 업데이트하십시오!',
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => '온라인 상담원 : %s',
@@ -6020,7 +5955,6 @@ Thanks for your help!
         'Agents ↔ Groups' => '에이전트 ↔ 그룹',
         'Agents ↔ Roles' => '에이전트 ↔ 역할',
         'All CustomerIDs of a customer user.' => '고객 사용자의 모든 고객 ID.',
-        'All attachments (OTRS Business Solution™)' => '모든 첨부 파일 (OTRS Business Solution ™)',
         'All customer users of a CustomerID' => 'CustomerID의 모든 고객 사용자',
         'All escalated tickets' => '모든 에스컬레이션된 티켓',
         'All new tickets, these tickets have not been worked on yet' => '모든 새로운 티켓이 그 티켓은 아직 작동하지 않았습니다.',
@@ -6201,9 +6135,6 @@ Thanks for your help!
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '후속 조치를 위해 티켓 번호 검색에서 SystemID를 확인합니다. 활성화되지 않은 경우 시스템을 사용한 후 SystemID가 변경됩니다.',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            '이 시스템에 대한 OTRS Business Solution ™의 가용성을 확인합니다.',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'OTRS Business Solution ™의 자격 상태를 확인합니다.',
         'Child' => '어린이',
         'Chinese (Simplified)' => '중국어(간체)',
         'Chinese (Traditional)' => '중국(전통)',
@@ -6516,8 +6447,6 @@ Thanks for your help!
             '상담원이 기본 설정에 공유 암호가 저장되어 있지 않아 이중 인증을 사용하지 않는 경우 로그인을 허용해야하는지 여부를 정의합니다.',
         'Defines if customers should be allowed to login if they have no shared secret stored in their preferences and therefore are not using two-factor authentication.' =>
             '공유 설정이 환경 설정에 저장되어 있지 않아 이중 인증을 사용하지 않는 경우 고객이 로그인 할 수 있도록 허용해야하는지 정의합니다.',
-        'Defines if the communication between this system and OTRS Group servers that provide cloud services is possible. If set to \'Disable cloud services\', some functionality will be lost such as system registration, support data sending, upgrading to and use of OTRS Business Solution™, OTRS Verify™, OTRS News and product News dashboard widgets, among others.' =>
-            '클라우드 서비스를 제공하는이 시스템과 OTRS 그룹 서버 간의 통신이 가능한지 여부를 정의합니다. \'클라우드 서비스 사용 안 함\'으로 설정하면 시스템 등록, 지원 데이터 전송, OTRS Business Solution ™, OTRS Verify ™, OTRS News 및 제품 뉴스 대시 보드 위젯 등의 업그레이드 및 사용과 같은 일부 기능이 손실됩니다.',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.) in customer interface.' =>
             '고객 인터페이스에서 확장 모드를 사용해야하는지 (테이블, 바꾸기, 아래첨자, 위 첨자, 단어에서 붙여넣기 등 사용가능) 정의합니다.',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.).' =>
@@ -6890,8 +6819,6 @@ Thanks for your help!
         'Defines the module to authenticate customers.' => '고객을 인증할 모듈을 정의합니다.',
         'Defines the module to display a notification if cloud services are disabled.' =>
             '클라우드 서비스가 비활성화 된 경우 알림을 표시할 모듈을 정의합니다.',
-        'Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.' =>
-            'OTRS Business Solution ™의 여러 경우에 서로 다른 인터페이스에 알림을 표시 할 모듈을 정의합니다.',
         'Defines the module to display a notification in the agent interface if the OTRS Daemon is not running.' =>
             'OTRS 데몬이 실행되고 있지 않은 경우 에이전트 인터페이스에 알림을 표시 할 모듈을 정의합니다.',
         'Defines the module to display a notification in the agent interface if the system configuration is out of sync.' =>
@@ -6904,8 +6831,6 @@ Thanks for your help!
             '시스템 유지 관리가 활성화 된 상태에서 에이전트가 로그인 한 경우 에이전트 인터페이스에 알림을 표시할 모듈을 정의합니다.',
         'Defines the module to display a notification in the agent interface, if the agent session limit prior warning is reached.' =>
             '에이전트 세션 제한 사전 경고에 도달하면 에이전트 인터페이스에 알림을 표시 할 모듈을 정의합니다.',
-        'Defines the module to display a notification in the agent interface, if the installation of not verified packages is activated (only shown to admins).' =>
-            '',
         'Defines the module to display a notification in the agent interface, if the system is used by the admin user (normally you shouldn\'t work as admin).' =>
             '관리자 사용자가 시스템을 사용하는 경우 에이전트 인터페이스에 알림을 표시 할 모듈을 정의합니다 (일반적으로 관리자로 사용하면 안 됨).',
         'Defines the module to display a notification in the agent interface, if there are invalid sysconfig settings deployed.' =>
@@ -6976,8 +6901,6 @@ Thanks for your help!
             '대시 보드 백엔드의 매개 변수를 정의합니다. "Cmd"는 매개 변수가있는 명령을 지정하는 데 사용됩니다. "그룹"은 플러그인 (예 : 그룹 : 관리자, 그룹 1, 그룹 2)에 대한 액세스를 제한하는 데 사용됩니다. "기본값"은 플러그인이 기본적으로 활성화되어 있는지 또는 사용자가 수동으로 활성화해야하는지 여부를 나타냅니다. "CacheTTL"은 플러그인의 캐시 만기 기간을 나타냅니다. "필수"는 플러그인이 항상 표시되는지 여부를 결정하며 에이전트가 플러그인을 제거 할 수 없습니다.',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '대시 보드 백엔드의 매개 변수를 정의합니다. "그룹"은 플러그인 (예 : 그룹 : 관리자, 그룹 1, 그룹 2)에 대한 액세스를 제한하는 데 사용됩니다. "기본값"은 플러그인이 기본적으로 활성화되어 있는지 또는 사용자가 수동으로 활성화해야하는지 여부를 나타냅니다. "CacheTTL"은 플러그인의 캐시 만기 기간을 나타냅니다. "필수"는 플러그인이 항상 표시되는지 여부를 결정하며 에이전트가 플러그인을 제거 할 수 없습니다.',
-        'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '대시 보드 백엔드의 매개 변수를 정의합니다. "그룹"은 플러그인 (예 : 그룹 : 관리자, 그룹 1, 그룹 2)에 대한 액세스를 제한하는 데 사용됩니다. "기본값"은 플러그인이 기본적으로 활성화되어 있는지 또는 사용자가 수동으로 활성화해야하는지 여부를 나타냅니다. "CacheTTLLocal"은 플러그인의 캐시 만기 기간을 분 단위로 정의합니다. "필수"는 플러그인이 항상 표시되는지 여부를 결정하며 에이전트가 플러그인을 제거 할 수 없습니다.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '대시 보드 백엔드의 매개 변수를 정의합니다. "제한"은 기본적으로 표시되는 항목 수를 정의합니다. "그룹"은 플러그인 (예 : 그룹 : 관리자, 그룹 1, 그룹 2)에 대한 액세스를 제한하는 데 사용됩니다. "기본값"은 플러그인이 기본적으로 활성화되어 있는지 또는 사용자가 수동으로 활성화해야하는지 여부를 나타냅니다. "CacheTTL"은 플러그인의 캐시 만기 기간을 나타냅니다. "필수"는 플러그인이 항상 표시되는지 여부를 결정하며 에이전트가 플러그인을 제거 할 수 없습니다.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7116,7 +7039,6 @@ Thanks for your help!
         'Deletes requested sessions if they have timed out.' => '요청한 세션이 시간 초과된 경우 삭제합니다.',
         'Delivers extended debugging information in the frontend in case any AJAX errors occur, if enabled.' =>
             '활성화 된 경우 AJAX 오류가 발생할 경우 프론트 엔드에 확장 디버깅 정보를 제공합니다.',
-        'Deploy and manage OTRS Business Solution™.' => 'OTRS Business Solution ™ 배포 및 관리',
         'Detached' => '분리된',
         'Determines if a button to delete a link should be displayed next to each link in each zoom mask.' =>
             '링크를 삭제할 버튼이 각 줌 마스크의 각 링크 옆에 표시되어야 하는지 여부를 결정합니다.',
@@ -7156,6 +7078,7 @@ Thanks for your help!
             'HTTP 헤더 "X-Frame-Options : SAMEORIGIN"을 사용하지 않도록 설정하여 OTRS를 다른 웹 사이트의 IFrame으로 포함 할 수 있습니다. 이 HTTP 헤더를 비활성화하면 보안 문제가 발생할 수 있습니다! 자신이하는 일을 아는 경우에만 사용을 중지하십시오!',
         'Disable autocomplete in the login screen.' => '',
         'Disable cloud services' => '클라우드 서비스 사용 중지',
+        'Disable cloud services.' => '',
         'Disables sending reminder notifications to the responsible agent of a ticket (Ticket::Responsible needs to be enabled).' =>
             '책임있는 에이전트에게 티켓 알림을 보내는 것을 비활성화합니다 (Ticket :: Responsible을 활성화해야합니다).',
         'Disables the redirection to the last screen overview / dashboard after a ticket is closed.' =>
@@ -7669,7 +7592,6 @@ Thanks for your help!
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             '세션 관리가 html 쿠키를 사용하게합니다. html 쿠키가 비활성화되거나 클라이언트 브라우저가 html 쿠키를 비활성화 한 경우 시스템은 평소와 같이 작동하고 링크에 세션 ID를 추가합니다.',
         'Malay' => '말레이 사람',
-        'Manage OTRS Group cloud services.' => 'OTRS 그룹 클라우드 서비스를 관리합니다.',
         'Manage PGP keys for email encryption.' => '전자 메일 암호화를위한 PGP 키 관리.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'POP3 또는 IMAP 계정을 관리하여 전자 메일을 가져옵니다.',
         'Manage S/MIME certificates for email encryption.' => '전자 메일 암호화를위한 S / MIME 인증서를 관리합니다.',
@@ -7677,7 +7599,6 @@ Thanks for your help!
         'Manage different calendars.' => '다른 캘린더를 관리하십시오.',
         'Manage existing sessions.' => '기존 세션을 관리합니다.',
         'Manage support data.' => '지원 데이터를 관리합니다.',
-        'Manage system registration.' => '시스템 등록을 관리합니다.',
         'Manage tasks triggered by event or time based execution.' => '이벤트 또는 시간 기반 실행에 의해 트리거된 작업을 관리합니다.',
         'Mark as Spam!' => '스팸으로 표시하십시오!',
         'Mark this ticket as junk!' => '이 티켓을 정크로 표시하십시오!',
@@ -7776,8 +7697,6 @@ Thanks for your help!
         'New Year\'s Day' => '새해첫날',
         'New Year\'s Eve' => '새해 전날',
         'New process ticket' => '새 프로세스 티켓',
-        'News about OTRS releases!' => 'OTRS 출시에 대한 뉴스!',
-        'News about OTRS.' => 'OTRS에 관한 뉴스.',
         'Next possible ticket states after adding a phone note in the ticket phone inbound screen of the agent interface.' =>
             '다음 가능한 티켓 상태는 에이전트 인터페이스의 티켓 인바운드 인바운드 화면에 전화 메모를 추가한 후의 상태입니다.',
         'Next possible ticket states after adding a phone note in the ticket phone outbound screen of the agent interface.' =>
@@ -7798,8 +7717,6 @@ Thanks for your help!
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '고객 인터페이스에서 검색 결과의 각 페이지에 표시할 티켓 수입니다.',
         'Number of tickets to be displayed in each page.' => '각 페이지에 표시할 티켓 수입니다.',
-        'OTRS Group Services' => 'OTRS 그룹 서비스',
-        'OTRS News' => 'OTRS 뉴스',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS는 전체 텍스트 검색이나 통계 생성과 같은 값 비싼 작업에 대해 하나 이상의 읽기 전용 미러 데이터베이스를 사용할 수 있습니다. 여기서 첫 번째 미러 데이터베이스에 대해 DSN을 지정할 수 있습니다.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7936,7 +7853,6 @@ Thanks for your help!
         'Process pending tickets.' => '대기중인 티켓 처리.',
         'ProcessID' => 'ProcessID',
         'Processes & Automation' => '프로세스 및 자동화',
-        'Product News' => '제품 뉴스',
         'Protection against CSRF (Cross Site Request Forgery) exploits (for more info see https://en.wikipedia.org/wiki/Cross-site_request_forgery).' =>
             '',
         'Provides a matrix overview of the tickets per state per queue' =>
@@ -7967,7 +7883,6 @@ Thanks for your help!
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             '상담원 인터페이스의 티켓 작성 화면에서 작성 응답에 원래 보낸 사람을 현재 고객의 전자 메일 주소로 바꿉니다.',
         'Reports' => '보고서',
-        'Reports (OTRS Business Solution™)' => '보고서 (OTRS Business Solution™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             '처음부터 가져올 수 없었던 스풀 디렉토리의 메일을 다시 처리하십시오.',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8006,7 +7921,6 @@ Thanks for your help!
         'Resent email to "%s".' => '이메일을 "%s"로 다시 보내십시오.',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             '다른 대기열로 이동된 티켓의 소유자를 재설정하고 잠금 해제합니다.',
-        'Resource Overview (OTRS Business Solution™)' => '리소스 개요 (OTRS Business Solution ™)',
         'Responsible Tickets' => '책임 티켓',
         'Responsible Tickets.' => '책임 티켓.',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>
@@ -8069,7 +7983,6 @@ Thanks for your help!
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             '모든 발신 이메일을 bcc를 통해 지정된 주소로 보냅니다. 백업 목적으로 만 사용하십시오.',
         'Sends customer notifications just to the mapped customer.' => '매핑된 고객에게 고객 알림만 보냅니다.',
-        'Sends registration information to OTRS group.' => 'OTRS 그룹에 등록 정보를 보냅니다.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             '미리 알림 날짜에 도달 한 후 잠금 해제 된 티켓에 대한 미리 알림을 전송합니다 (티켓 소유자에게만 전송 됨).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>
@@ -8417,8 +8330,6 @@ Thanks for your help!
             '에이전트 인터페이스의 티켓 책임 화면에서 가능한 모든 에이전트 (대기열 / 티켓에 대한 메모 권한이있는 모든 에이전트)의 목록을 표시하여이 참고 사항에 대한 정보를 제공해야합니다.',
         'Shows a preview of the ticket overview (CustomerInfo => 1 - shows also Customer-Info, CustomerInfoMaxSize max. size in characters of Customer-Info).' =>
             '티켓 개요의 미리보기를 표시합니다 (CustomerInfo => 1 - Customer-Info, CustomerInfoMaxSize 최대 크기는 Customer-Info의 문자로 표시).',
-        'Shows a teaser link in the menu for the ticket attachment view of OTRS Business Solution™.' =>
-            '메뉴에 OTRS Business Solution ™의 티켓 첨부보기에 대한 티저 링크를 표시합니다.',
         'Shows all both ro and rw queues in the queue view.' => '대기열보기에서 ro 및 rw 대기열을 모두 표시합니다.',
         'Shows all both ro and rw tickets in the service view.' => '서비스보기에서 ro와 rw 티켓을 모두 표시합니다.',
         'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
@@ -8557,13 +8468,10 @@ Thanks for your help!
             '(MIMEBase) 아티클 첨부 파일을 인덱싱하여 검색 할 수 있는지 여부를 지정합니다.',
         'Specify how many sub directory levels to use when creating cache files. This should prevent too many cache files being in one directory.' =>
             '캐시 파일을 만들 때 사용할 하위 디렉토리 수준 수를 지정하십시오. 이렇게하면 너무 많은 캐시 파일이 하나의 디렉토리에 있는 것을 방지할 수 있습니다.',
-        'Specify the channel to be used to fetch OTRS Business Solution™ updates. Warning: Development releases might not be complete, your system might experience unrecoverable errors and on extreme cases could become unresponsive!' =>
-            'OTRS Business Solution ™ 업데이트를 가져 오는 데 사용할 채널을 지정하십시오. 경고 : 개발 릴리스가 완전하지 않을 수 있습니다. 시스템에 복구 할 수없는 오류가 발생할 수 있으며 극단적 인 경우에 응답하지 않을 수 있습니다!',
         'Specify the password to authenticate for the first mirror database.' =>
             '첫 번째 미러 데이터베이스에 대해 인증할 암호를 지정하십시오.',
         'Specify the username to authenticate for the first mirror database.' =>
             '첫 번째 미러 데이터베이스에 대해 인증할 사용자 이름을 지정하십시오.',
-        'Stable' => '안정된',
         'Standard available permissions for agents within the application. If more permissions are needed, they can be entered here. Permissions must be defined to be effective. Some other good permissions have also been provided built-in: note, close, pending, customer, freetext, move, compose, responsible, forward, and bounce. Make sure that "rw" is always the last registered permission.' =>
             '응용 프로그램 내의 에이전트에 대한 표준 사용 권한. 더 많은 권한이 필요하면 여기에 입력 할 수 있습니다. 권한은 효과가 있도록 정의되어야합니다. 메모, 닫기, 보류 중, 고객, 프리 텍스트, 이동, 작성, 책임, 전달 및 반송과 같은 기타 훌륭한 사용 권한도 내장되어 있습니다. "rw"가 항상 마지막으로 등록 된 권한인지 확인하십시오.',
         'Start number for statistics counting. Every new stat increments this number.' =>
@@ -8575,7 +8483,6 @@ Thanks for your help!
             '링크 개체 마스크가 시작된 후 활성 개체의 와일드 카드 검색을 시작합니다.',
         'Stat#' => '통계#',
         'States' => '상태',
-        'Statistic Reports overview.' => '통계 보고서 개요.',
         'Statistics overview.' => '통계 개요.',
         'Status view' => '상태 보기',
         'Stopped response time escalation.' => '응답 시간 에스컬레이션이 중지되었습니다.',
@@ -8586,6 +8493,7 @@ Thanks for your help!
         'Strips empty lines on the ticket preview in the service view.' =>
             '서비스보기의 티켓 미리보기에서 빈 줄을 제거합니다.',
         'Support Agent' => '',
+        'Support Services' => '지원하다',
         'Swahili' => '스와힐리어',
         'Swedish' => '스웨덴어',
         'System Address Display Name' => '시스템 주소 표시 이름',
@@ -8775,7 +8683,6 @@ Thanks for your help!
         'Uses richtext for viewing and editing: articles, salutations, signatures, standard templates, auto responses and notifications.' =>
             '기사, 인사말, 서명, 표준 템플릿, 자동 응답 및 알림과 같은보기 및 편집을 위해 richtext를 사용합니다.',
         'Vietnam' => '베트남',
-        'View all attachments of the current ticket' => '현재 티켓의 첨부 파일 모두보기',
         'View performance benchmark results.' => '실적 벤치 마크 결과를 봅니다.',
         'Watch this ticket' => '티켓보기',
         'Watched Tickets' => '이미본티켓',

@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -397,23 +398,8 @@ $Selenium->RunTest(
         $Element->is_enabled();
         $Element->is_displayed();
 
-        my $OTRSBusinessIsInstalled = $Kernel::OM->Get('Kernel::System::OTRSBusiness')->OTRSBusinessIsInstalled();
-        my $OTRSSTORMIsInstalled    = $Kernel::OM->Get('Kernel::System::OTRSBusiness')->OTRSSTORMIsInstalled();
-        my $OTRSCONTROLIsInstalled  = $Kernel::OM->Get('Kernel::System::OTRSBusiness')->OTRSCONTROLIsInstalled();
-
-        my $FooterMessage;
-        if ($OTRSSTORMIsInstalled) {
-            $FooterMessage = 'STORM powered by OTRS';
-        }
-        elsif ($OTRSCONTROLIsInstalled) {
-            $FooterMessage = 'CONTROL powered by OTRS';
-        }
-        elsif ($OTRSBusinessIsInstalled) {
-            $FooterMessage = 'Powered by OTRS Business Solution';
-        }
-        else {
-            $FooterMessage = 'Powered by ' . $ConfigObject->Get('Product');
-        }
+        # TODO: Fix to $ConfigObject->Get('Product') after merge
+        my $FooterMessage = 'Powered by ((OTRS)) Community Edition';
 
         # Get secure disable banner.
         my $SecureDisableBanner = $ConfigObject->Get('Secure::DisableBanner');

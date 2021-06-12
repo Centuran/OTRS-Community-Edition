@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -23,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.602268879105994;
+    $Self->{Completeness}        = 0.603938356164384;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -210,7 +211,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Ini adalah nilai lazim untuk menentukan ejen-ejen penerima yang tidak membuat pilihan untuk notifikasi ini dalam kesukaan mereka lagi. Jika kotak itu dibolehkan, notifikasi itu akan dihantar kepada ejen-ejen sepatutnya.',
         'This feature is currently not available.' => 'Ciri ini tidak tersedia.',
-        'Upgrade to %s' => 'Naik taraf kepada %s',
         'Please activate this transport in order to use it.' => '',
         'No data found' => 'Tiada data dijumpai',
         'No notification method found.' => 'Tiada kaedah pemberitahuan dijumpai.',
@@ -501,18 +501,6 @@ sub Data {
         'Add new field for object' => 'Tambah Bidang Baru bagi objek',
         'Filter for Dynamic Fields' => '',
         'Filter for dynamic fields' => '',
-        'More Business Fields' => '',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            '',
-        'Database' => 'Pangkalan data',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            '',
-        'Web service' => '',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            '',
-        'Contact with data' => 'Kenalan dengan data',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            '',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Untuk menambah bidang baru , pilih jenis medan dari salah satu daripada senarai objek, objek yang mentakrifkan sempadan medan dan ia tidak boleh diubah selepas penciptaan medan.',
         'Dynamic Fields List' => 'Senarai bidang yang dinamik',
@@ -1149,13 +1137,7 @@ sub Data {
         'Delete web service' => 'Padam perkhidmatan web',
         'Do you really want to delete this web service?' => 'Anda pasti mahu memadam perkhidmatan web ini?',
         'Ready2Adopt Web Services' => '',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Sila pastikan yang servis-servis web ini boleh bergantung pada modul-modul lain hanya terdapat dengan sesetengah %s tahap-tahap kontrak (ia akan ada satu notifikasi dengan butiran selanjutnya apabila mengimport).',
         'Import Ready2Adopt web service' => '',
-        'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
-            '',
         'After you save the configuration you will be redirected again to the edit screen.' =>
             'Selepas anda menyimpan konfigurasi anda akan dibawa semula ke skrin sunting.',
         'If you want to return to overview please click the "Go to overview" button.' =>
@@ -1253,7 +1235,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             '',
         'Links' => '',
-        'View the admin manual on Github' => '',
+        'View the admin manual' => '',
         'No Matches' => '',
         'Sorry, your search didn\'t match any items.' => '',
         'Set as favorite' => '',
@@ -1332,6 +1314,7 @@ sub Data {
             'Tahniah, %s anda telah dipasang dengan betul dan terkini!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Naik taraf kepada %s',
         'Go to the OTRS customer portal' => '',
         '%s will be available soon. Please check again in a few days.' =>
             '%s akan disediakan tidak lama lagi. Sila semak semula dalam beberapa hari.',
@@ -1411,8 +1394,6 @@ sub Data {
         'package information' => '',
         'Package installation requires a patch level update of OTRS.' => '',
         'Package update requires a patch level update of OTRS.' => '',
-        'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
-            '',
         'Please note that your installed OTRS version is %s.' => '',
         'To install this package, you need to update OTRS to version %s or newer.' =>
             '',
@@ -1435,9 +1416,6 @@ sub Data {
             'Sila pastikan pangkalan data anda menerima pakej melebihi saiz %s MB (buat masa ini ia hanya menerima pakej sehingga %s MB). Sila sesuaikan tetapan max_paket_dibenarkan pada pangkalan data anda agar tidak terdapat ralat.',
         'Install' => 'Pasang',
         'Update repository information' => 'Kemaskini maklumat repositori',
-        'Cloud services are currently disabled.' => 'Servis-servis awan tidak dibolehkan buat sementara.',
-        'OTRS Verify™ can not continue!' => 'OTRS Verify™ tidak boleh diteruskan.',
-        'Enable cloud services' => 'Bolehkan servis-servis awan',
         'Update all installed packages' => '',
         'Online Repository' => 'repositori talian',
         'Action' => 'Tindakan',
@@ -1448,9 +1426,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Pakej tidak dikerah dengan betul! Sila memasang semula pakej.',
         'Reinstall' => 'Pasang semula',
-        'Features for %s customers only' => 'Ciri-ciri untuk pelanggan %s sahaja',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Dengan%s, anda boleh mendapat manfaat daripada ciri-ciri pilihan berikut. Sila telefon %s jika anda memerlukan maklumat lanjut.',
         'Package Information' => '',
         'Download package' => 'Muat pakej',
         'Rebuild package' => 'membina pakej',
@@ -1544,8 +1519,6 @@ sub Data {
         'Import process configuration' => 'Import konfigurasi proses',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1816,6 +1789,7 @@ sub Data {
         'Attribute' => 'Sifat',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'Versi OTRS',
+        'Database' => 'Pangkalan data',
         'Operating System' => 'Sistem Beroperasi',
         'Perl Version' => 'Versi Perl',
         'Optional description of this system.' => 'Pilihan huraian sistem ini.',
@@ -2003,14 +1977,6 @@ sub Data {
         'This state is used in the following config settings:' => '',
 
         # Template: AdminSupportDataCollector
-        'Sending support data to OTRS Group is not possible!' => 'Menghantar data sokongan kepada Kumpulan OTRS adalah tidak mungkin!',
-        'Enable Cloud Services' => 'Bolehkan Servis Awan',
-        'This data is sent to OTRS Group on a regular basis. To stop sending this data please update your system registration.' =>
-            'Data ini dihantar kepada Kumpulan OTRS secara tetap. Untuk berhenti menghantar data ini sila kemas kini pendaftaran sistem anda.',
-        'You can manually trigger the Support Data sending by pressing this button:' =>
-            'Anda boleh secara manual mencetuskan penghantaran data sokongan dengan menekan butang ini:',
-        'Send Update' => 'Hantar Kemaskini',
-        'Currently this data is only shown in this system.' => 'Pada masa ini data ini hanya ditunjukkan di dalam sistem.',
         'A support bundle (including: system registration information, support data, a list of installed packages and all locally modified source code files) can be generated by pressing this button:' =>
             'Bungkusan sokongan (termasuk: maklumat pendaftaran sistem, data sokongan, senarai pemasangan pakej dan semua fail-fail kod sumber ubahsuai tempatan) boleh dihasilkan dengan menekan butang ini:',
         'Generate Support Bundle' => 'Menghasilkan Berkas Sokongan',
@@ -2819,7 +2785,9 @@ sub Data {
 
         # Template: CloudServicesDisabled
         'This Feature Requires Cloud Services' => '',
+        'Cloud services are currently disabled.' => 'Servis-servis awan tidak dibolehkan buat sementara.',
         'You can' => 'Anda boleh',
+        'Enable cloud services' => 'Bolehkan servis-servis awan',
         'go back to the previous page' => 'kembali ke halaman sebelum',
 
         # Template: CustomerAccept
@@ -2842,8 +2810,7 @@ sub Data {
         'Traceback' => 'Menjejaki kembali',
 
         # Template: CustomerFooter
-        '%s powered by %s™' => '',
-        'Powered by %s™' => '',
+        'Powered by %s' => '',
 
         # Template: CustomerFooterJS
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
@@ -2938,12 +2905,6 @@ sub Data {
         'Ticket fields' => 'Medan tiket',
 
         # Template: Error
-        'Really a bug? 5 out of 10 bug reports result from a wrong or incomplete installation of OTRS.' =>
-            '',
-        'With %s, our experts take care of correct installation and cover your back with support and periodic security updates.' =>
-            '',
-        'Contact our service team now.' => 'Hubungi kumpulan servis kami sekarang.',
-        'Send a bugreport' => 'Hantar laporan bug',
         'Expand' => 'Kembang',
 
         # Template: AttachmentList
@@ -2962,9 +2923,6 @@ sub Data {
             '',
 
         # Template: Header
-        'View notifications' => 'Lihat pemberitahuan',
-        'Notifications' => '',
-        'Notifications (OTRS Business Solution™)' => '',
         'Personal preferences' => '',
         'Logout' => 'Log keluar',
         'You are logged in as' => 'Anda menlog masuk sebagai',
@@ -2977,15 +2935,9 @@ sub Data {
         'General Specifications and Mail Settings' => 'Spesifikasi Am dan Tetapan Mail',
         'Finish' => 'selesai',
         'Welcome to %s' => 'Selamat datang ke %s',
-        'Germany' => '',
         'Phone' => 'Telefon',
-        'United States' => '',
-        'Mexico' => '',
-        'Hungary' => '',
-        'Brazil' => '',
-        'Singapore' => '',
-        'Hong Kong' => '',
         'Web site' => 'Laman web',
+        'GitHub repository' => '',
 
         # Template: InstallerConfigureMail
         'Configure Outbound Mail' => 'Konfigurasi penghantaran mel',
@@ -3051,7 +3003,6 @@ sub Data {
         'Restart your webserver' => 'Mulakan semula webserver anda.',
         'After doing so your OTRS is up and running.' => 'Selepas berbuat demikian OTRS anda akan bersedia untuk dijalankan',
         'Start page' => 'Halaman mula',
-        'Your OTRS Team' => 'Team OTRS anda',
 
         # Template: InstallerLicense
         'Don\'t accept license' => 'Jangan menerima lesen',
@@ -3282,10 +3233,6 @@ sub Data {
         # Template: Navigation
         'Navigation' => '',
 
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            '',
-
         # Template: Test
         'OTRS Test Page' => 'Halaman percubaan OTRS',
         'Unlock' => 'Membuka',
@@ -3511,9 +3458,6 @@ sub Data {
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => 'Konfigurasi bidang-bidang tidak layak',
         'Objects configuration is not valid' => 'Konfigurasi objek-objek tidak layak',
-        'Database (%s)' => '',
-        'Web service (%s)' => '',
-        'Contact with data (%s)' => '',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             'Tidak boleh membetulkan semula susunan Bidang Dinamik dengan elok, sila semak log kesalahan untuk maklumat lanjut.',
 
@@ -3753,8 +3697,6 @@ sub Data {
         'Can\'t read %s!' => '',
         'File is OK' => '',
         'Package has locally modified files.' => '',
-        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
-            'Pakej tidak disahkan oleh Kumpulan OTRS! Ia adalah disyorkan untuk tidak menggunakan pakej ini.',
         'Not Started' => '',
         'Updated' => '',
         'Already up-to-date' => '',
@@ -3773,6 +3715,8 @@ sub Data {
         'Repository List' => '',
         'No packages found in selected repository. Please check log for more info!' =>
             '',
+        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
+            'Pakej tidak disahkan oleh Kumpulan OTRS! Ia adalah disyorkan untuk tidak menggunakan pakej ini.',
         'Package not verified due a communication issue with verification server!' =>
             'Pakej tidak disahkan berikutan isu komunikasi dengan pelayan pengesahan!',
         'Can\'t connect to OTRS Feature Add-on list server!' => '',
@@ -4359,7 +4303,6 @@ sub Data {
         'Show one article' => 'Tunjukkan satu artikel',
         'Show all articles' => 'Tunjukkan kesemua artikel',
         'Show Ticket Timeline View' => 'Papar Garis Masa Tiket',
-        'Show Ticket Timeline View (%s)' => '',
 
         # Perl Module: Kernel/Modules/AjaxAttachment.pm
         'Got no FormID.' => '',
@@ -4630,14 +4573,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'Membolehkan servis awan untuk mengeluarkan semua ciri-ciri OTRS!',
-
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%s Naik taraf ke %s sekarang! %s',
-        'Please verify your license data!' => '',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'Lesen untuk %s anda hampir tamat tempoh. Sila telefon %s untuk memperbaharui kontrak anda!',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            'Kemas kini untuk %s anda boleh didapati, tetapi terdapat konflik dengan versi rangka kerja anda! Sila kemas kini rangka kerja anda terlebih dahulu!',
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'Egen dalam talian: %s',
@@ -6021,7 +5956,6 @@ dalaman.',
         'Agents ↔ Groups' => '',
         'Agents ↔ Roles' => '',
         'All CustomerIDs of a customer user.' => '',
-        'All attachments (OTRS Business Solution™)' => '',
         'All customer users of a CustomerID' => 'Semua pengguna pelanggan PelangganID',
         'All escalated tickets' => 'Semua peningkatan tiket',
         'All new tickets, these tickets have not been worked on yet' => 'Semua tiket baru, tiket ini masih belum dijalankan lagi',
@@ -6202,9 +6136,6 @@ dalaman.',
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             '',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            'Periksa ketersediaan Penyelesaian Bisnes OTRS™ untuk sistem ini.',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'Periksa status hak Penyelesaian Bisnes OTRS™.',
         'Child' => 'Child',
         'Chinese (Simplified)' => 'Cina (dipermudahkan)',
         'Chinese (Traditional)' => 'Cina (Tradisional)',
@@ -6517,8 +6448,6 @@ dalaman.',
             'Mentakrifkan jika ejen harus dibenarkan untuk log masuk jika mereka tidak mempunyai rahsia dikongsi disimpan di dalam pilihan mereka dan oleh itu tidak menggunakan pengesahan dua faktor.',
         'Defines if customers should be allowed to login if they have no shared secret stored in their preferences and therefore are not using two-factor authentication.' =>
             'Mentakrifkan jika pelanggan harus dibenarkan untuk log masuk jika mereka tidak mempunyai rahsia dikongsi disimpan di dalam pilihan mereka dan oleh itu tidak menggunakan pengesahan dua faktor.',
-        'Defines if the communication between this system and OTRS Group servers that provide cloud services is possible. If set to \'Disable cloud services\', some functionality will be lost such as system registration, support data sending, upgrading to and use of OTRS Business Solution™, OTRS Verify™, OTRS News and product News dashboard widgets, among others.' =>
-            '',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.) in customer interface.' =>
             '',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.).' =>
@@ -6892,8 +6821,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Defines the module to authenticate customers.' => 'Mentakrifkan modul untuk mengesahkan pelanggan.',
         'Defines the module to display a notification if cloud services are disabled.' =>
             '',
-        'Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.' =>
-            'Mentakrifkan modul untuk memaparkan pemberitahuan dalam antara muka yang berbeza pada masa yang berlainan bagi Penyelesaian OTRS™.',
         'Defines the module to display a notification in the agent interface if the OTRS Daemon is not running.' =>
             'Mentakrifkan modul untuk memaparkan pemberitahuan dalam antara muka ejen jika OTRS Daemon tidak berjalan.',
         'Defines the module to display a notification in the agent interface if the system configuration is out of sync.' =>
@@ -6905,8 +6832,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Defines the module to display a notification in the agent interface, if the agent is logged in while having system maintenance active.' =>
             'Mentakrifkan modul untuk memaparkan pemberitahuan dalam antara muka ejen, jika ejen log masuk sambil mengalami penyelenggaraan sistem aktif.',
         'Defines the module to display a notification in the agent interface, if the agent session limit prior warning is reached.' =>
-            '',
-        'Defines the module to display a notification in the agent interface, if the installation of not verified packages is activated (only shown to admins).' =>
             '',
         'Defines the module to display a notification in the agent interface, if the system is used by the admin user (normally you shouldn\'t work as admin).' =>
             'Mentakrifkan modul untuk mempamerkan notifikasi dalam paparan ejen, jika sistem digunakan oleh pengguna admin (kebiasaannya anda tidak patut berkerja sebagai admin).',
@@ -6977,8 +6902,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
-        'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
@@ -7118,7 +7041,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Deletes requested sessions if they have timed out.' => 'Memadam sesi yang diminta jika mereka telah tamat masa.',
         'Delivers extended debugging information in the frontend in case any AJAX errors occur, if enabled.' =>
             '',
-        'Deploy and manage OTRS Business Solution™.' => 'Menggerakkan dan menguruskan Penyelesaian Bisnes OTRS™.',
         'Detached' => '',
         'Determines if a button to delete a link should be displayed next to each link in each zoom mask.' =>
             '',
@@ -7158,6 +7080,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Menyahaktif header HTTP "Pilihan Bingkai-X: SAMEORIGIN" untuk membenarkan OTRS untuk dimasukkan sebagai IFrame dalam laman web lain. Menyahaktifkan header HTTP ini boleh menjadi isu keselamatan! Hanya nyahaktifkannya, jika anda tahu apa yang anda lakukan!',
         'Disable autocomplete in the login screen.' => '',
         'Disable cloud services' => '',
+        'Disable cloud services.' => '',
         'Disables sending reminder notifications to the responsible agent of a ticket (Ticket::Responsible needs to be enabled).' =>
             '',
         'Disables the redirection to the last screen overview / dashboard after a ticket is closed.' =>
@@ -7671,7 +7594,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'Membuatkan pengurusan sesi menggunakan cookies html. Jika cookies html dimatikan atau browser klien matikan cookies html, sistem akan berjalan seperti biasa dan melampirkan id sesi kepada pautan.',
         'Malay' => 'Melayu',
-        'Manage OTRS Group cloud services.' => 'Uruskan perkhidmatan cloud Kumpulan OTRS.',
         'Manage PGP keys for email encryption.' => 'Mengurus kunci PGP untuk enkripsi emel.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Mengurus akaun POP3 atau IMAP untuk mengambil emel dari.',
         'Manage S/MIME certificates for email encryption.' => 'Mengurus Perakuan S/MIME untuk enkripsi emel.',
@@ -7679,7 +7601,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Manage different calendars.' => '',
         'Manage existing sessions.' => 'Mengurus sesi yang sedia ada.',
         'Manage support data.' => 'Urus data sokongan.',
-        'Manage system registration.' => 'Urus pendaftaran sistem.',
         'Manage tasks triggered by event or time based execution.' => 'Uruskan tugas yang dicetuskan oleh acara atau pelaksanaan berdasarkan masa.',
         'Mark as Spam!' => 'Tanda sebagai Spam!',
         'Mark this ticket as junk!' => 'Tanda tiket ini sebagai junk!',
@@ -7778,8 +7699,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'New Year\'s Day' => 'Hari Tahun Baru',
         'New Year\'s Eve' => 'Perayaan Tahun Baru',
         'New process ticket' => 'Tiket proses baharu',
-        'News about OTRS releases!' => 'Berita mengenai pengeluaran OTRS!',
-        'News about OTRS.' => '',
         'Next possible ticket states after adding a phone note in the ticket phone inbound screen of the agent interface.' =>
             'Status tiket yang mungkin yang seterusnya selepas menambah nota telefon dalam skrin tiket telefon masuk dari paparan ejen.',
         'Next possible ticket states after adding a phone note in the ticket phone outbound screen of the agent interface.' =>
@@ -7800,8 +7719,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Jumlah tiket yang akan dipamerkan dalam setiap halaman dari hasil carian dalam paparan pelanggan.',
         'Number of tickets to be displayed in each page.' => '',
-        'OTRS Group Services' => '',
-        'OTRS News' => 'Berita OTRS',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS boleh menggunakan salah satu atau lebih pangkalan data cermin baca sahaja untuk operasi mahal seperti carian atau statistik teks penuh generasi. Di sini anda boleh menentukan DSN untuk pangkalan data cermin pertama.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7938,7 +7855,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Process pending tickets.' => 'Proses tiket ditangguh.',
         'ProcessID' => 'IDProses',
         'Processes & Automation' => '',
-        'Product News' => 'Berita produk',
         'Protection against CSRF (Cross Site Request Forgery) exploits (for more info see https://en.wikipedia.org/wiki/Cross-site_request_forgery).' =>
             '',
         'Provides a matrix overview of the tickets per state per queue' =>
@@ -7969,7 +7885,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             'Menggantikan pengganti asal dengan alamat emel pelanggan semasa pada jawapan dikarang dalam skrin karang tiket dari paparan ejen.',
         'Reports' => 'Laporan',
-        'Reports (OTRS Business Solution™)' => 'Proses (Penyelesaian Bisnes OTRS™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             'Proses semula mel daripada direktori spool yang tidak boleh diimport pada mulanya.',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8008,7 +7923,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Resent email to "%s".' => '',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             'Reset dan membuka pemilik sesuatu tiket jika ia telah dipindahkan ke aturan yang lain.',
-        'Resource Overview (OTRS Business Solution™)' => '',
         'Responsible Tickets' => '',
         'Responsible Tickets.' => '',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>
@@ -8071,7 +7985,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Hantar kesemua emel keluar melalui bcc kepada alamat tertentu. Sila guna ini hanya untuk tindak balas sokongan.',
         'Sends customer notifications just to the mapped customer.' => '',
-        'Sends registration information to OTRS group.' => 'Hantar maklumat pendaftaran kepada kumpulan OTRS.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'Hantar notifikasi peringatan tiket terbuka selapas mencapai tarikh peringatan (hanya hantar kepada pemilik tiket).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>
@@ -8419,8 +8332,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Menunjukkan senarai kesemua ejen yang mungkin (semua ejen dengan kebenara nota pada aturan/tiket) untuk menentukan siapa yang sepatutnya diberitahu mengenai nota ini, dalam skrin tanggungjawab tiket dari paparan ejen.',
         'Shows a preview of the ticket overview (CustomerInfo => 1 - shows also Customer-Info, CustomerInfoMaxSize max. size in characters of Customer-Info).' =>
             'Menunjukkan previu overview tiket (CustomerInfo => 1 - tunjuk juga maklumat pelanggan, CustomerInfoMaxSize saiz maksimum aksara maklumat pelanggan).',
-        'Shows a teaser link in the menu for the ticket attachment view of OTRS Business Solution™.' =>
-            '',
         'Shows all both ro and rw queues in the queue view.' => 'Menunjukkan kesemua aturan kedua-dua ro dan rw dalam paparan aturan.',
         'Shows all both ro and rw tickets in the service view.' => 'Menunjukkan semua kedua-dua tiket ro dan rw dalam pandangan servis.',
         'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
@@ -8559,13 +8470,10 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             '',
         'Specify how many sub directory levels to use when creating cache files. This should prevent too many cache files being in one directory.' =>
             'Berikan butir berapa banyak peringkat direktori sub untuk digunakan apabila mencipta fail cache. Ini sepatutnya mengelakkan terlalu banyak fail cache di dalam satu direktori.',
-        'Specify the channel to be used to fetch OTRS Business Solution™ updates. Warning: Development releases might not be complete, your system might experience unrecoverable errors and on extreme cases could become unresponsive!' =>
-            'Berikan butir saluran untuk digunakan untuk memperoleh kemaskini Solusi Bisnes OTRS™. Amaran: Pelepasan pembangunan mungkin tidak lengkap, sistem anda mungkin mengalami ralat yang tidak diliputi dan dalam kes yang ekstrem mungkin tidak bertindak balas.',
         'Specify the password to authenticate for the first mirror database.' =>
             'Nyatakan kata laluan untuk mengesahkan pada pangkalan data cermin pertama.',
         'Specify the username to authenticate for the first mirror database.' =>
             'Nyatakan nama pengguna untuk mengesahkan pada pangkalan data cermin pertama.',
-        'Stable' => '',
         'Standard available permissions for agents within the application. If more permissions are needed, they can be entered here. Permissions must be defined to be effective. Some other good permissions have also been provided built-in: note, close, pending, customer, freetext, move, compose, responsible, forward, and bounce. Make sure that "rw" is always the last registered permission.' =>
             'Standard kebenaran disediakan untuk ejen dalam aplikasi. Jika lebih banyak kebenaran yang diperlukan, mereka boleh dimasukkan di sini. Kebenaran mesti ditakrifkan untuk menjadi berkesan. Beberapa kebenaran lain yang baik juga telah disediakan terbina dalam: Note, close pending, customer, freetext, move, compose, responsible, forward, dan bounce. Pastikan bahawa "rw" sentiasa kebenaran berdaftar terakhir.',
         'Start number for statistics counting. Every new stat increments this number.' =>
@@ -8577,7 +8485,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Memulakan carian wildcard pada objek aktif selepas pautan mask objek dimulakan.',
         'Stat#' => 'Nombor Statistik.',
         'States' => 'Status',
-        'Statistic Reports overview.' => '',
         'Statistics overview.' => '',
         'Status view' => 'Paparan statistik',
         'Stopped response time escalation.' => '',
@@ -8588,6 +8495,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Strips empty lines on the ticket preview in the service view.' =>
             'Jalur baris kosong pada pratonton tiket dalam pandangan perkhidmatan.',
         'Support Agent' => '',
+        'Support Services' => '',
         'Swahili' => 'Swahili',
         'Swedish' => 'Sweden',
         'System Address Display Name' => '',
@@ -8777,7 +8685,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Uses richtext for viewing and editing: articles, salutations, signatures, standard templates, auto responses and notifications.' =>
             'Menggunakan richtext untuk melihat dan mengedit : artikel, tanda hormat, tandatangan, templat standard, respon auto dan pemberitahuan.',
         'Vietnam' => 'Vietnam',
-        'View all attachments of the current ticket' => '',
         'View performance benchmark results.' => 'Melihat hasil penanda aras prestasi.',
         'Watch this ticket' => 'Perhatikan tiket ini',
         'Watched Tickets' => 'Tiket Diperhati',

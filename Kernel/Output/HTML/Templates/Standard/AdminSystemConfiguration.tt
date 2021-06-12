@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -8,7 +9,7 @@
 
 [%
     SET DocumentationLinkText  = Translate('online administrator documentation');
-    SET DocumentationLink      = "<a href='https://doc.otrs.com/doc/manual/admin/" _ Data.ManualVersion _ ".0/en/html/configuration.html#sysconfig' target='_blank'>" _ DocumentationLinkText.html() _ "</a>";
+    SET DocumentationLink      = "<a href='https://otrscommunityedition.com/doc/manual/admin/" _ Data.ManualVersion _ ".0/en/html/configuration.html#sysconfig' target='_blank'>" _ DocumentationLinkText.html() _ "</a>";
 %]
 
 <div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst">
@@ -38,7 +39,6 @@
         [% INCLUDE "SystemConfiguration/Sidebar/Navigation.tt" %]
         [% END %]
         [% INCLUDE "SystemConfiguration/Sidebar/Help.tt" %]
-        [% INCLUDE "SystemConfiguration/Sidebar/OTRSBusinessTeaser.tt" %]
         [% INCLUDE "SystemConfiguration/Sidebar/DynamicActions.tt" %]
     </div>
 

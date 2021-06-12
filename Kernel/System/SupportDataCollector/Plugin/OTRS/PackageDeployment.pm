@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -50,14 +51,15 @@ sub Run {
             Result  => 'SCALAR',
         );
 
-        my $Verified = $PackageObject->PackageVerify(
-            Package => $PackageContent,
-            Name    => $Package->{Name}->{Content},
-        ) || 'unknown';
-
-        if ( $Verified ne 'verified' ) {
-            push @NotVerifiedPackages, "$Package->{Name}->{Content} $Package->{Version}->{Content}";
-        }
+        # TODO: PackageVerification
+        # my $Verified = $PackageObject->PackageVerify(
+        #     Package => $PackageContent,
+        #     Name    => $Package->{Name}->{Content},
+        # ) || 'unknown';
+        #
+        # if ( $Verified ne 'verified' ) {
+        #     push @NotVerifiedPackages, "$Package->{Name}->{Content} $Package->{Version}->{Content}";
+        # }
 
         my %PackageStructure = $PackageObject->PackageParse(
             String => $PackageContent,

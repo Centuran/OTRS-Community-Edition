@@ -35,7 +35,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.930748391466306;
+    $Self->{Completeness}        = 0.930650684931507;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -222,7 +222,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Это значение по умолчанию назначаемое агентам получателям, которые не имеют возможности сделать выбор для этого уведомления в своих настройках. Если включено, уведомление будет отправляться таким агентам.',
         'This feature is currently not available.' => 'Эта функция в данный момент не доступна',
-        'Upgrade to %s' => 'Обновление до %s',
         'Please activate this transport in order to use it.' => 'Включите этот способ передачи для его использования.',
         'No data found' => 'Данные не найдены',
         'No notification method found.' => 'Не задан метод уведомлений.',
@@ -513,18 +512,6 @@ sub Data {
         'Add new field for object' => 'Добавить новое поле для объекта',
         'Filter for Dynamic Fields' => 'Фильтр для динамических полей',
         'Filter for dynamic fields' => 'Фильтр для динамических полей',
-        'More Business Fields' => 'Больше Business Fields',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            'Желаете получить больше выгоды от динамических полей для бизнеса? Обновите систему до %s для доступа к следующим типам полей:',
-        'Database' => 'База данных',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            'Используйте внешние БД как конфигурируемые источники данных для этих динамических полей',
-        'Web service' => 'Веб-сервисы',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            'Внешние веб-сервисы могут быть настроены как источники данных для этих динамических полей.',
-        'Contact with data' => 'Contact with data',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            'Эта возможность позволяет добавить (несколько) контакты с данными к заявкам.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Чтобы добавить новое поле, выберите один из типов из появившегося списка, тип определяет границы использования для поля и он не может быть изменен после создания поля.',
         'Dynamic Fields List' => 'Список динамических полей',
@@ -1161,13 +1148,7 @@ sub Data {
         'Delete web service' => 'Удалить веб-сервис',
         'Do you really want to delete this web service?' => 'Действительно удалить этот веб-сервис?',
         'Ready2Adopt Web Services' => 'Ready2Adopt веб-сервисы',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            'Здесь вы можете активировать Ready2Adopt веб-сервисы, демонстрирующие наши лучшие практики, которые являются частью %s.',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Обратите внимание, что эти веб-сервисы могут зависеть от других модулей, доступных только для определённых уровней контракта %s (во время импортирования появится уведомление с подробностями).',
         'Import Ready2Adopt web service' => 'Импорт Ready2Adopt веб-сервис',
-        'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
-            'Хотите ли получить выгоду от веб-сервисов, созданных экспертами? Обновитесь до %sдля импорта некоторых сложных Ready2Adopt веб-сервисов.',
         'After you save the configuration you will be redirected again to the edit screen.' =>
             'После сохранения конфигурации вы будете перенаправлены обратно на экран редактирования.',
         'If you want to return to overview please click the "Go to overview" button.' =>
@@ -1265,7 +1246,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             'Можно добавить отдельные настройки в Избранные кликнув мышкой по "звездочке" справа в списке параметров.',
         'Links' => 'Ссылки',
-        'View the admin manual on Github' => 'Смотрите руководство администратора на Github',
+        'View the admin manual' => 'Смотрите руководство администратора',
         'No Matches' => 'Совпадений не найдено',
         'Sorry, your search didn\'t match any items.' => 'К сожалению, поиск не дал результатов.',
         'Set as favorite' => 'Назначить избранным',
@@ -1344,6 +1325,7 @@ sub Data {
             'Поздравляем, ваш %s правильно установлен и имеет последнюю версию!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Обновление до %s',
         'Go to the OTRS customer portal' => 'Перейти на портал клиентов OTRS',
         '%s will be available soon. Please check again in a few days.' =>
             'Обновление для %s будет скоро доступно. Проверьте повторно в ближайшие дни.',
@@ -1423,8 +1405,6 @@ sub Data {
         'package information' => 'Информация о пакете',
         'Package installation requires a patch level update of OTRS.' => 'Установка пакета требует обновления уровня патчей OTRS.',
         'Package update requires a patch level update of OTRS.' => 'Обновление пакета требует обновления уровня патчей OTRS.',
-        'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
-            'Если вы являетесь покупателем OTRS Business Solution™ посетите наш клиентский портал и отправьте запрос.',
         'Please note that your installed OTRS version is %s.' => 'Установлена OTRS версии %s.',
         'To install this package, you need to update OTRS to version %s or newer.' =>
             'Для установки пакета необходимо обновить OTRS до версии %s или выше.',
@@ -1447,9 +1427,6 @@ sub Data {
             'Убедитесь что ваша СУБД принимает пакеты размером больше %s MB (текущее значение размера пакета - до %s MB). Измените значение параметра max_allowed_packet для вашей СУБД во избежание ошибок.',
         'Install' => 'Установить',
         'Update repository information' => 'Обновить информацию репозитория',
-        'Cloud services are currently disabled.' => 'Облачные сервисы в настоящее время отключены.',
-        'OTRS Verify™ can not continue!' => 'OTRS Verify™ не может быть продолжена!',
-        'Enable cloud services' => 'Включить облачный сервис',
         'Update all installed packages' => 'Обновить все установленные пакеты',
         'Online Repository' => 'Онлайновый репозиторий',
         'Action' => 'Действие',
@@ -1460,9 +1437,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Пакет установлен некорректно! Переустановите пакет.',
         'Reinstall' => 'Переустановить',
-        'Features for %s customers only' => 'Эти возможности доступны тоько для клиентов - %s ',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'С %s, вы получите следующие дополнительные возможности. Свяжитесь с %s если нуждаетесь в дополнительной информации.',
         'Package Information' => 'Информация о пакете',
         'Download package' => 'Скачать пакет',
         'Rebuild package' => 'Пересобрать пакет',
@@ -1556,8 +1530,6 @@ sub Data {
         'Import process configuration' => 'Импортировать конфигурацию Процесса',
         'Ready2Adopt Processes' => '',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
-            '',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
             '',
         'Import Ready2Adopt process' => '',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
@@ -1828,6 +1800,7 @@ sub Data {
         'Attribute' => 'Атрибут',
         'FQDN' => 'Полное имя домена',
         'OTRS Version' => 'Версия OTRS',
+        'Database' => 'База данных',
         'Operating System' => 'Операционная система',
         'Perl Version' => 'Версия Perl',
         'Optional description of this system.' => 'Необязательное описание этой системы',
@@ -2015,14 +1988,6 @@ sub Data {
         'This state is used in the following config settings:' => 'Это состояние используется в следующих параметрах конфигурации:',
 
         # Template: AdminSupportDataCollector
-        'Sending support data to OTRS Group is not possible!' => 'Отправка необходимых данных в OTRS Group невозможна!',
-        'Enable Cloud Services' => 'Включить облачный сервис',
-        'This data is sent to OTRS Group on a regular basis. To stop sending this data please update your system registration.' =>
-            'Эти данные отправляются в OTRS Group на регулярной основе. Чтобы прекратить отправку этих данных, обновите регистрацию вашей системы.',
-        'You can manually trigger the Support Data sending by pressing this button:' =>
-            'Вы можете вручную запустить передачу данных поддержки нажатием на эту кнопку:',
-        'Send Update' => 'Отправить обновление',
-        'Currently this data is only shown in this system.' => 'В настоящее время эти данные только отображаются в этой системе.',
         'A support bundle (including: system registration information, support data, a list of installed packages and all locally modified source code files) can be generated by pressing this button:' =>
             'Пакет поддержки (включая сведения о регистрации системы, данные поддержки, список установленных пакетов и локально изменённые файлы с исходным кодом) можно сгенерировать нажатием этой кнопки:',
         'Generate Support Bundle' => 'Сгенерировать пакет поддержки',
@@ -2831,7 +2796,9 @@ sub Data {
 
         # Template: CloudServicesDisabled
         'This Feature Requires Cloud Services' => 'Эта функция требует Облачные Сервисы',
+        'Cloud services are currently disabled.' => 'Облачные сервисы в настоящее время отключены.',
         'You can' => 'Вы можете',
+        'Enable cloud services' => 'Включить облачный сервис',
         'go back to the previous page' => 'перейти на предыдущую страницу',
 
         # Template: CustomerAccept
@@ -2854,8 +2821,7 @@ sub Data {
         'Traceback' => 'Трассировка',
 
         # Template: CustomerFooter
-        '%s powered by %s™' => '%s используется в %s™',
-        'Powered by %s™' => 'Используется в %s™',
+        'Powered by %s' => '',
 
         # Template: CustomerFooterJS
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
@@ -2950,12 +2916,6 @@ sub Data {
         'Ticket fields' => 'Поля заявки',
 
         # Template: Error
-        'Really a bug? 5 out of 10 bug reports result from a wrong or incomplete installation of OTRS.' =>
-            'Вы уверены, что это ошибка? В 5 случаях из 10 ошибки возникают из-за некорректной или незавершенной установки OTRS.',
-        'With %s, our experts take care of correct installation and cover your back with support and periodic security updates.' =>
-            'С %s, наши специалисты позаботятся о правильности установки  и осуществят поддержку и проведение периодических обновлений безопасности.',
-        'Contact our service team now.' => 'Свяжитесь с нашей командой поддержки.',
-        'Send a bugreport' => 'Отправить сообщение об ошибке',
         'Expand' => 'Развернуть',
 
         # Template: AttachmentList
@@ -2974,9 +2934,6 @@ sub Data {
             'Обратите внимание, что черновик устарел, так как заявка была обновлена после его создания.',
 
         # Template: Header
-        'View notifications' => 'Просмотр уведомлений',
-        'Notifications' => 'Уведомления',
-        'Notifications (OTRS Business Solution™)' => 'Уведомления (OTRS Business Solution™)',
         'Personal preferences' => 'Персональные настройки',
         'Logout' => 'Выход',
         'You are logged in as' => 'Вы вошли как',
@@ -2989,15 +2946,9 @@ sub Data {
         'General Specifications and Mail Settings' => 'Общие указания и настройки почты',
         'Finish' => 'Закончить',
         'Welcome to %s' => 'Добро пожаловать в %s',
-        'Germany' => 'Германия',
         'Phone' => 'Телефон',
-        'United States' => 'США',
-        'Mexico' => 'Мексика',
-        'Hungary' => 'Венгрия',
-        'Brazil' => 'Бразилия',
-        'Singapore' => 'Сингапур',
-        'Hong Kong' => 'Гонконг',
         'Web site' => 'Веб-сайт',
+        'GitHub repository' => '',
 
         # Template: InstallerConfigureMail
         'Configure Outbound Mail' => 'Конфигурация исходящей почты',
@@ -3063,7 +3014,6 @@ sub Data {
         'Restart your webserver' => 'Перезапустите ваш веб-сервер',
         'After doing so your OTRS is up and running.' => 'После этих действий ваша система OTRS станет запущенной и работающей.',
         'Start page' => 'Главная страница',
-        'Your OTRS Team' => 'Команда разработчиков OTRS',
 
         # Template: InstallerLicense
         'Don\'t accept license' => 'Не принимаю условия лицензии',
@@ -3294,10 +3244,6 @@ sub Data {
         # Template: Navigation
         'Navigation' => 'Навигация',
 
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            'В %s, в Конфигурации системы поддерживаются версии, откат и различные пользовательские наборы настроек.',
-
         # Template: Test
         'OTRS Test Page' => 'Тестовая страница OTRS',
         'Unlock' => 'Разблокировать',
@@ -3523,9 +3469,6 @@ sub Data {
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => 'Настройка полей неверна',
         'Objects configuration is not valid' => 'Настройка объектов неверна',
-        'Database (%s)' => 'База данных (%s)',
-        'Web service (%s)' => 'Веб-сервис (%s)',
-        'Contact with data (%s)' => 'Контакт с данными (%s)',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             'Невозможно правильно сбросить очередность Dynamic Field, подробности в логе ошибок.',
 
@@ -3765,8 +3708,6 @@ sub Data {
         'Can\'t read %s!' => 'Не возможно прочитать %s!',
         'File is OK' => 'Файлы ОК',
         'Package has locally modified files.' => 'Пакет содержит локально изменённые файлы.',
-        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
-            'Пакет не верифицирован OTRS Group! Его использование не рекомендуется.',
         'Not Started' => 'Не запущено',
         'Updated' => 'Обновлено',
         'Already up-to-date' => 'Уже обновлено',
@@ -3785,6 +3726,8 @@ sub Data {
         'Repository List' => 'Список репозиториев',
         'No packages found in selected repository. Please check log for more info!' =>
             '',
+        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
+            'Пакет не верифицирован OTRS Group! Его использование не рекомендуется.',
         'Package not verified due a communication issue with verification server!' =>
             'Пакет не проверен из-за неполадок со связью с сервером верификации!',
         'Can\'t connect to OTRS Feature Add-on list server!' => 'Невозможно подключиться к серверу со списком  OTRS Feature Add-on!',
@@ -4095,13 +4038,13 @@ sub Data {
         'Parameter %s is missing.' => 'Параметры %s пропущен.',
         'Invalid Subaction.' => 'Недопустимый Subaction.',
         'Statistic could not be imported.' => 'Отчет не может быть импортирован',
-        'Please upload a valid statistic file.' => 'Пожалуйста загрузите правильный файл отчета.',
+        'Please upload a valid statistic file.' => 'Загрузите корректный файл отчёта.',
         'Export: Need StatID!' => 'Экспорт: нужен StatID!',
         'Delete: Get no StatID!' => 'Удаление: Нет StatID!',
         'Need StatID!' => 'Требуется StatID!',
         'Could not load stat.' => 'Не удалось загрузить статистику.',
         'Add New Statistic' => 'Добавить новый отчет',
-        'Could not create statistic.' => 'Не удалось создать статистику',
+        'Could not create statistic.' => 'Не удалось создать отчёт.',
         'Run: Get no %s!' => 'Выполнение: Нет %s!',
 
         # Perl Module: Kernel/Modules/AgentTicketActionCommon.pm
@@ -4110,8 +4053,8 @@ sub Data {
         'Loading draft failed!' => 'Загрузка черновика не удалась!',
         'Sorry, you need to be the ticket owner to perform this action.' =>
             'Извините, для выполнения этого действия вам необходимо быть владельцем заявки.',
-        'Please change the owner first.' => 'Пожалуйста, сначала измените владельца',
-        'FormDraft functionality disabled!' => 'Опция FormDraft отключена!',
+        'Please change the owner first.' => 'Сначала измените владельца.',
+        'FormDraft functionality disabled!' => 'Функция FormDraft отключена!',
         'Draft name is required!' => 'Необходимо задать название черновика!',
         'FormDraft name %s is already in use!' => 'Имя FormDraft %s уже используется!',
         'Could not perform validation on field %s!' => 'Не удалось выполнить проверку для поля %s!',
@@ -4131,13 +4074,13 @@ sub Data {
         'Wrong Subaction!' => 'Неправильный Subaction!',
 
         # Perl Module: Kernel/Modules/AgentTicketBulk.pm
-        'Can\'t lock Tickets, no TicketIDs are given!' => 'Невозможно заблокировать заявку, не задан TicketID!',
-        'Ticket (%s) is not unlocked!' => 'Заявка (%s) была разблокирована!',
+        'Can\'t lock Tickets, no TicketIDs are given!' => 'Невозможно заблокировать заявки, не указаны TicketID!',
+        'Ticket (%s) is not unlocked!' => 'Заявка (%s) не была разблокирована!',
         'The following tickets were ignored because they are locked by another agent or you don\'t have write access to tickets: %s.' =>
-            '',
+            'Следующие заявки были проигнорированы, потому что они были заблокированы другим агентом или у вас нет прав на изменение этих заявок: %s.',
         'The following ticket was ignored because it is locked by another agent or you don\'t have write access to ticket: %s.' =>
-            '',
-        'You need to select at least one ticket.' => 'Вам нужно выбрать как минимум одну заявку.',
+            'Следующая заявка была проигнорирована, потому что она была заблокирована другим агентом или у вас нет прав на изменение заявки: %s.',
+        'You need to select at least one ticket.' => 'Выберите хотя бы одну заявку.',
         'Bulk feature is not enabled!' => 'Массовое действие не разрешено!',
         'No selectable TicketID is given!' => 'Не задан доступный TicketID!',
         'You either selected no ticket or only tickets which are locked by other agents.' =>
@@ -4148,20 +4091,20 @@ sub Data {
 
         # Perl Module: Kernel/Modules/AgentTicketCompose.pm
         'Article subject will be empty if the subject contains only the ticket hook!' =>
-            '',
-        'Address %s replaced with registered customer address.' => 'Адрес %s заменен зарегистрированным адресом клиента',
-        'Customer user automatically added in Cc.' => 'Клиент автоматически добавлен в поле Сс',
+            'Тема заметки будет пустой, если тема состоит только из хука заявки!',
+        'Address %s replaced with registered customer address.' => 'Адрес %s заменён зарегистрированным адресом клиента.',
+        'Customer user automatically added in Cc.' => 'Клиент автоматически добавлен копию сообщения.',
 
         # Perl Module: Kernel/Modules/AgentTicketEmail.pm
         'Ticket "%s" created!' => 'Создана заявка «%s»!',
         'No Subaction!' => 'Нет Subaction!',
 
         # Perl Module: Kernel/Modules/AgentTicketEmailOutbound.pm
-        'Got no TicketID!' => 'Не получен TicketID!',
+        'Got no TicketID!' => 'Не указан TicketID!',
         'System Error!' => 'Системная ошибка!',
 
         # Perl Module: Kernel/Modules/AgentTicketEmailResend.pm
-        'No ArticleID is given!' => 'Не задан ArticleID!',
+        'No ArticleID is given!' => 'Не указан ArticleID!',
 
         # Perl Module: Kernel/Modules/AgentTicketEscalationView.pm
         'Next week' => 'Следующая неделя',
@@ -4371,7 +4314,6 @@ sub Data {
         'Show one article' => 'Отобразить одно сообщение',
         'Show all articles' => 'Отобразить все сообщения',
         'Show Ticket Timeline View' => 'Показать заявку в хронологическом виде',
-        'Show Ticket Timeline View (%s)' => 'Показать заявку в хронологическом виде (%s)',
 
         # Perl Module: Kernel/Modules/AjaxAttachment.pm
         'Got no FormID.' => 'Отсутствует FormID.',
@@ -4643,14 +4585,6 @@ sub Data {
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'Включите облачные сервисы, чтобы получить доступ ко всем возможностям OTRS!',
 
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%s Обновление до %s сейчас! %s',
-        'Please verify your license data!' => 'Проверьте , пожалуйста данные лицензии!',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'Лицензия на ваш продукт %s истекает. Свяжитесь, пожалуйста с %s для обновления контракта!',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            'Обновление для вашего продукта %s доступна, но оно не соответствует версии вашего основного продукта! Обновите его сначала!',
-
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'Агент онлайн: %s',
 
@@ -4670,7 +4604,7 @@ sub Data {
             'Период обслуживания системы: начало в %s, ожидаемое окончание %s',
 
         # Perl Module: Kernel/Output/HTML/Notification/DaemonCheck.pm
-        'OTRS Daemon is not running.' => 'Служба OTRS не запущена',
+        'OTRS Daemon is not running.' => 'Служба OTRS не запущена.',
 
         # Perl Module: Kernel/Output/HTML/Notification/OutofOfficeCheck.pm
         'You have Out of Office enabled, would you like to disable it?' =>
@@ -5135,7 +5069,7 @@ sub Data {
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
         'Daemon' => 'Служба ',
         'Daemon is running.' => 'Демон работает.',
-        'Daemon is not running.' => 'Служба не запущена',
+        'Daemon is not running.' => 'Служба не запущена.',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
         'Database Records' => 'Записи базы данных',
@@ -6031,7 +5965,6 @@ Thanks for your help!
         'Agents ↔ Groups' => 'Агенты ↔ Группы',
         'Agents ↔ Roles' => 'Агенты ↔ Роли',
         'All CustomerIDs of a customer user.' => 'Все Компании клиента.',
-        'All attachments (OTRS Business Solution™)' => 'Все вложения (OTRS Business Solution™)',
         'All customer users of a CustomerID' => 'Все клиенты Компании',
         'All escalated tickets' => 'Все эскалированные заявки',
         'All new tickets, these tickets have not been worked on yet' => 'Все новые заявки; с этими заявками еще никто не работал',
@@ -6212,9 +6145,6 @@ Thanks for your help!
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             'Проверяет SystemID в номере заявки при обнаружении ответа клиент (follow-ups). Если выключено, SystemID будет изменен после использования системы.',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            'Проверьте доступность OTRS Business Solution™ для этой системы.',
-        'Checks the entitlement status of OTRS Business Solution™.' => 'Проверить состояние прав доступа к OTRS Business Solution™.',
         'Child' => 'Потомок',
         'Chinese (Simplified)' => 'Китайский (упрощённый)',
         'Chinese (Traditional)' => 'Китайский (традиционный)',
@@ -6527,8 +6457,6 @@ Thanks for your help!
             'Задает возможность входа для агента, если для него не задан секретный ключ хранимый в его личных настройках, т.е. не используется двух-факторная аутентификация.',
         'Defines if customers should be allowed to login if they have no shared secret stored in their preferences and therefore are not using two-factor authentication.' =>
             'Задает возможность входа для клиента, если для него не задан секретный ключ хранимый в его личных настройках, т.е. не используется двух-факторная аутентификация.',
-        'Defines if the communication between this system and OTRS Group servers that provide cloud services is possible. If set to \'Disable cloud services\', some functionality will be lost such as system registration, support data sending, upgrading to and use of OTRS Business Solution™, OTRS Verify™, OTRS News and product News dashboard widgets, among others.' =>
-            '',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.) in customer interface.' =>
             'Включает расширенные средства редактирования (использование таблиц, замены, подстрочный индекс, надстрочный индекс, вставить из слова и т. д.) в интерфейсе клиента.',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.).' =>
@@ -6901,8 +6829,6 @@ Thanks for your help!
         'Defines the module to authenticate customers.' => 'Задает модуль аутентификации клиентов',
         'Defines the module to display a notification if cloud services are disabled.' =>
             'Задаёт модуль, который показывает уведомление, если отключён облачный сервис.',
-        'Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.' =>
-            'Задает модуль, который показывает уведомление в различных интерфейсах, в различных случаях в OTRS Business Solution™.',
         'Defines the module to display a notification in the agent interface if the OTRS Daemon is not running.' =>
             'Задает модуль который показывает уведомление в интерфейсе агента, если не запущен OTRS Daemon.',
         'Defines the module to display a notification in the agent interface if the system configuration is out of sync.' =>
@@ -6915,8 +6841,6 @@ Thanks for your help!
             'Задает модуль который показывает уведомление в интерфейсе агента, если агент зашел в систему, когда она в состоянии Профилактика/Обслуживание системы.',
         'Defines the module to display a notification in the agent interface, if the agent session limit prior warning is reached.' =>
             'Задает модуль который показывает уведомление в интерфейсе агента, если достигнуто время для предупреждения о превышении лимита времени сеанса агента.',
-        'Defines the module to display a notification in the agent interface, if the installation of not verified packages is activated (only shown to admins).' =>
-            '',
         'Defines the module to display a notification in the agent interface, if the system is used by the admin user (normally you shouldn\'t work as admin).' =>
             'Задает модуль который показывает уведомление в интерфейсе агента, что вы зашли в систему как администратор (в обычном режиме вы не должны работать под этой учетной записью).',
         'Defines the module to display a notification in the agent interface, if there are invalid sysconfig settings deployed.' =>
@@ -6987,8 +6911,6 @@ Thanks for your help!
             'Определяет параметры Дайджеста. "Cmd" используется для указания команды с параметрами. "Group" используется для ограничения доступа к разделу (например, Group: admin;group1;group2;). "Default" указывает, будет ли раздел доступен по умолчанию или агент должен активировать его вручную. "CacheTTLLocal" указывает время обновления кэша в минутах для этого раздела. "Mandatory" определяет, будет ли раздел отображаться всегда без возможности убрать его агентами.',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Определяет параметры Дайджеста. "Group" используется для ограничения доступа к разделу (например, Group: admin;group1;group2;). "Default" указывает, будет ли раздел доступен по умолчанию или агент должен активировать его вручную. "CacheTTL" указывает время обновления кэша в минутах для этого раздела. "Mandatory" определяет, будет ли раздел отображаться всегда без возможности убрать его агентами.',
-        'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            'Определяет параметры Дайджеста. "Group" используется для ограничения доступа к разделу (например, Group: admin;group1;group2;). "Default" указывает, будет ли раздел доступен по умолчанию или агент должен активировать его вручную. "CacheTTLLocal" определяет время обновления кэша в минутах для этого раздела. "Mandatory" определяет, будет ли раздел отображаться всегда без возможности убрать его агентами.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Определяет параметры Дайджеста. "Limit" определяет число записей, отображаемых по умолчанию. "Group" используется для ограничения доступа к разделу (например, Group: admin;group1;group2;). "Default" указывает, будет ли раздел доступен по умолчанию или агент должен активировать его вручную. "CacheTTL" указывает время обновления кэша в минутах для этого раздела. "Mandatory" определяет, будет ли раздел отображаться всегда без возможности убрать его агентами.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7127,7 +7049,6 @@ Thanks for your help!
         'Deletes requested sessions if they have timed out.' => 'Удаляет запрошенные сеансы с истекшим сроком.',
         'Delivers extended debugging information in the frontend in case any AJAX errors occur, if enabled.' =>
             'Если включено, то в случае появления каких-либо ошибок AJAX, предоставляет во фронтенде расширенную отладочную информацию.',
-        'Deploy and manage OTRS Business Solution™.' => 'Развертывание и управление OTRS Business Solution™.',
         'Detached' => '',
         'Determines if a button to delete a link should be displayed next to each link in each zoom mask.' =>
             '',
@@ -7167,6 +7088,7 @@ Thanks for your help!
             'Отключить HTTP-заголовок "X-Frame-Options: SAMEORIGIN", чтобы разрешить встраивать OTRS в IFrame на других сайтах. Отключение этого заголовка может вызвать проблемы с безопасностью! Отключайте только если уверены в своих действиях!',
         'Disable autocomplete in the login screen.' => '',
         'Disable cloud services' => 'Отключить облачные сервисы',
+        'Disable cloud services.' => '',
         'Disables sending reminder notifications to the responsible agent of a ticket (Ticket::Responsible needs to be enabled).' =>
             '',
         'Disables the redirection to the last screen overview / dashboard after a ticket is closed.' =>
@@ -7680,7 +7602,6 @@ Thanks for your help!
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'Позволяет использовать html cookies для управления сеансами. Если html cookies выключены, или в браузере клиента выключено использование html cookies, в этом случае система работает как обычно и добавляет session id к ссылке.',
         'Malay' => 'Малайский',
-        'Manage OTRS Group cloud services.' => 'Управление облачными сервисами OTRS Group.',
         'Manage PGP keys for email encryption.' => 'Управления PGP ключами для шифрования почтовых сообщений.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Управление учётными записями POP3 или IMAP для получения почтовых сообщений.',
         'Manage S/MIME certificates for email encryption.' => 'Управление S/MIME сертификатами для шифрования почты',
@@ -7688,7 +7609,6 @@ Thanks for your help!
         'Manage different calendars.' => 'Управлять различными календарями.',
         'Manage existing sessions.' => 'Управление активными сеансами.',
         'Manage support data.' => 'Управление данными для поддержки.',
-        'Manage system registration.' => 'Регистрация системы на портале OTRS Group',
         'Manage tasks triggered by event or time based execution.' => 'Управление заданиями, основанными на событиях или времени выполнения',
         'Mark as Spam!' => 'Пометить как спам!',
         'Mark this ticket as junk!' => 'Пометить эту заявку как мусор!',
@@ -7787,8 +7707,6 @@ Thanks for your help!
         'New Year\'s Day' => 'Новый Год',
         'New Year\'s Eve' => 'Канун Нового Года',
         'New process ticket' => 'Новая процессная заявка',
-        'News about OTRS releases!' => 'Новости о новых релизах OTRS!',
-        'News about OTRS.' => 'Новости о OTRS',
         'Next possible ticket states after adding a phone note in the ticket phone inbound screen of the agent interface.' =>
             'Следующее доступное состояние после добавления заметки при регистрации входящего звонка в интерфейсе агента.',
         'Next possible ticket states after adding a phone note in the ticket phone outbound screen of the agent interface.' =>
@@ -7809,8 +7727,6 @@ Thanks for your help!
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Количество заявок которое показывается на каждой странице при выводе результатов поиска в интерфейсе клиента.',
         'Number of tickets to be displayed in each page.' => 'Количество заявок, отображаемых на каждой странице.',
-        'OTRS Group Services' => '',
-        'OTRS News' => 'Новости OTRS',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS может использовать одну или более зеркальных БД, в режиме только для чтения, для ресурсоёмких операций, типа полнотекстового поиска или генерации отчетов. Здесь вы можете указать имя/DSN для первой зеркальной БД.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7947,7 +7863,6 @@ Thanks for your help!
         'Process pending tickets.' => 'Обработать отложенные заявки.',
         'ProcessID' => 'ProcessID',
         'Processes & Automation' => 'Процессы и автоматизация',
-        'Product News' => 'Новости о продукте',
         'Protection against CSRF (Cross Site Request Forgery) exploits (for more info see https://en.wikipedia.org/wiki/Cross-site_request_forgery).' =>
             '',
         'Provides a matrix overview of the tickets per state per queue' =>
@@ -7978,7 +7893,6 @@ Thanks for your help!
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             'Заменяет оригинального отправителя текущим почтовым адресом клиента при написании ответа в интерфейсе агента.',
         'Reports' => 'Отчеты',
-        'Reports (OTRS Business Solution™)' => 'Отчеты (OTRS Business Solution™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             '',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8017,7 +7931,6 @@ Thanks for your help!
         'Resent email to "%s".' => '',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             'Сбрасывает Владельца и разблокирует заявку при перемещении ее в другую очередь.',
-        'Resource Overview (OTRS Business Solution™)' => 'Обзор ресурсов (OTRS Business Solution™)',
         'Responsible Tickets' => 'Ответственные заявки',
         'Responsible Tickets.' => 'Ответственные заявки',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>
@@ -8080,7 +7993,6 @@ Thanks for your help!
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Отсылать всю исходящую почту через bcc на заданные адреса. Используйте эту опцию только резервного копирования.',
         'Sends customer notifications just to the mapped customer.' => '',
-        'Sends registration information to OTRS group.' => 'Отправляет регистрационные данные в OTRS group.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'Посылать напоминание о разблокированных заявках после истечения времени напоминания (посылается только владельцу заявки).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>
@@ -8428,8 +8340,6 @@ Thanks for your help!
             'Показывает список всех доступных агентов (всех агентов с правами note для очереди/заявки), чтобы определить кого нужно информировать об этой заметке при назначении Ответственного за заявку в интерфейсе агента.',
         'Shows a preview of the ticket overview (CustomerInfo => 1 - shows also Customer-Info, CustomerInfoMaxSize max. size in characters of Customer-Info).' =>
             'Допускает использование режима предпросмотра при просмотре заявок (CustomerInfo => 1 - показывает также информацию о клиенте, CustomerInfoMaxSize макс. размер в символах для Customer-Info).',
-        'Shows a teaser link in the menu for the ticket attachment view of OTRS Business Solution™.' =>
-            '',
         'Shows all both ro and rw queues in the queue view.' => 'Показывает заявки агентов с правами ro и rw в просмотре очередей.',
         'Shows all both ro and rw tickets in the service view.' => 'Показывает заявки агентов с правами ro и rw в просмотре сервисов.',
         'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
@@ -8568,13 +8478,10 @@ Thanks for your help!
             'Определяет, будут ли вложения сообщений (MIMEBase) проиндексированы и доступны для поиска.',
         'Specify how many sub directory levels to use when creating cache files. This should prevent too many cache files being in one directory.' =>
             'Задает количество уровней подкаталога для кэш файлов. параметр предотвращает от создания большого количества файлов в одном каталоге.',
-        'Specify the channel to be used to fetch OTRS Business Solution™ updates. Warning: Development releases might not be complete, your system might experience unrecoverable errors and on extreme cases could become unresponsive!' =>
-            'Задает канал для получения обновлений OTRS Business Solution™. Предупреждение: Development-релизы могут быть незавершенными, в вашей системе могут проявляться неисправимые ошибки и в экстремальных случаях она может перестать отвечать на запросы!',
         'Specify the password to authenticate for the first mirror database.' =>
             'Задайте пароль для аутентификации для первой зеркалируемой БД.',
         'Specify the username to authenticate for the first mirror database.' =>
             'Задайте имя пользователя для аутентификации в первой зеркалируемой БД.',
-        'Stable' => 'Стабильный',
         'Standard available permissions for agents within the application. If more permissions are needed, they can be entered here. Permissions must be defined to be effective. Some other good permissions have also been provided built-in: note, close, pending, customer, freetext, move, compose, responsible, forward, and bounce. Make sure that "rw" is always the last registered permission.' =>
             'Задает набор доступных прав агентов в системе. Если требуются дополнительные права, они могут быть заданы здесь. Права должны быть определены, чтобы использоваться в системе. Некоторые другие полезные права, также встроены в систему: note, close, pending, customer, freetext, move, compose, responsible, forward, и bounce. Последней строкой в таблице всегда дорлжна быть строка с "rw".',
         'Start number for statistics counting. Every new stat increments this number.' =>
@@ -8586,7 +8493,6 @@ Thanks for your help!
             'Запускает поиск с символами подстановки активного объекта в окне связывания объектов.',
         'Stat#' => 'Отчет#',
         'States' => 'Состояния',
-        'Statistic Reports overview.' => 'Обзор статистических отчетов.',
         'Statistics overview.' => 'Обзор статистики.',
         'Status view' => 'Просмотр статусов',
         'Stopped response time escalation.' => '',
@@ -8597,6 +8503,7 @@ Thanks for your help!
         'Strips empty lines on the ticket preview in the service view.' =>
             'Убирает пустые строки при предпросмотре заявки в обзоре сервисов.',
         'Support Agent' => '',
+        'Support Services' => '',
         'Swahili' => 'Суахили',
         'Swedish' => 'Шведский',
         'System Address Display Name' => 'Отображаемое имя для System Address',
@@ -8786,7 +8693,6 @@ Thanks for your help!
         'Uses richtext for viewing and editing: articles, salutations, signatures, standard templates, auto responses and notifications.' =>
             'Использует форматированный текст для просмотра и редактирования: сообщений, приветствий, подписей, стандартных шаблонов, автоответов и уведомлений.',
         'Vietnam' => 'Вьетнамский',
-        'View all attachments of the current ticket' => 'Просмотреть все вложения текущей заявки',
         'View performance benchmark results.' => 'Просмотр результатов измерения производительности.',
         'Watch this ticket' => 'Наблюдать за этой заявкой',
         'Watched Tickets' => 'Наблюдаемые заявки',

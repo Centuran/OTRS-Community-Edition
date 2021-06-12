@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
 # Copyright (C) 2003 Gilberto Cezar de Almeida <gibalmeida at hotmail.com>
 # Copyright (C) 2005 Alterado por Glaucia C. Messina (glauglauu@yahoo.com)
 # Copyright (C) 2007-2010 Fabricio Luiz Machado <soprobr gmail.com>
@@ -29,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.938367761598375;
+    $Self->{Completeness}        = 0.938527397260274;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -216,7 +217,6 @@ sub Data {
         'This is the default value for assigned recipient agents who didn\'t make a choice for this notification in their preferences yet. If the box is enabled, the notification will be sent to such agents.' =>
             'Esse é o valor padrão atribuído para agentes destinatários que ainda não fizeram uma escolha para essa notificação em suas preferências. Se a caixa estiver habilitada, a notificação será enviada para esses agentes.',
         'This feature is currently not available.' => 'Este recurso não está disponível no momento.',
-        'Upgrade to %s' => 'Atualize para %s',
         'Please activate this transport in order to use it.' => 'Por favor ative este transporte para usá-lo.',
         'No data found' => 'Dados não encontrado',
         'No notification method found.' => 'Método de notificação não existente',
@@ -507,18 +507,6 @@ sub Data {
         'Add new field for object' => 'Adicionar novo campo ao objeto',
         'Filter for Dynamic Fields' => 'Filtro para Campos Dinâmicos',
         'Filter for dynamic fields' => 'Filtro para campos dinâmicos',
-        'More Business Fields' => 'Mais campos de negócio',
-        'Would you like to benefit from additional dynamic field types for businesses? Upgrade to %s to get access to the following field types:' =>
-            'Você gostaria de ter o benefício de campos dinâmicos adicionais para negócios? Atualize para %s e tenha acesso aos seguintes tipos de campos:',
-        'Database' => 'Banco de Dados',
-        'Use external databases as configurable data sources for this dynamic field.' =>
-            'Utilize bancos de dados externos como fontes de dado configuráveis para este campo dinâmico.',
-        'Web service' => 'Serviço Web',
-        'External web services can be configured as data sources for this dynamic field.' =>
-            'Web services externos podem ser configurados como fonte de dados para este campo dinâmico.',
-        'Contact with data' => 'Contato com dados',
-        'This feature allows to add (multiple) contacts with data to tickets.' =>
-            'Este recurso permite adicionar (multiplos) contatos com dados para chamados.',
         'To add a new field, select the field type from one of the object\'s list, the object defines the boundary of the field and it can\'t be changed after the field creation.' =>
             'Para adicionar um novo campo, selecione o tipo de campo em uma das listas de objetos. O objeto define o domínio do campo e não pode ser alterado após a criação.',
         'Dynamic Fields List' => 'Lista de Campos Dinâmicos',
@@ -1155,13 +1143,7 @@ sub Data {
         'Delete web service' => 'Apagar Web Service',
         'Do you really want to delete this web service?' => 'Você realmente deseja apagar este web service?',
         'Ready2Adopt Web Services' => 'Webservices Ready2Adopt',
-        'Here you can activate Ready2Adopt web services showcasing our best practices that are a part of %s.' =>
-            '',
-        'Please note that these web services may depend on other modules only available with certain %s contract levels (there will be a notification with further details when importing).' =>
-            'Por favor note que estes web services podem depender de outros módulos disponíveis apenas com certos %s níveis de contrato (haverá uma notificação com maiores detalhes quando da importação).',
         'Import Ready2Adopt web service' => 'Importar web service Ready2Adopt ',
-        'Would you like to benefit from web services created by experts? Upgrade to %s to import some sophisticated Ready2Adopt web services.' =>
-            '',
         'After you save the configuration you will be redirected again to the edit screen.' =>
             'Após salvar as configuração você será redirecionado novamente para a tela de edição.',
         'If you want to return to overview please click the "Go to overview" button.' =>
@@ -1259,7 +1241,7 @@ sub Data {
         'You can add favorites by moving your cursor over items on the right side and clicking the star icon.' =>
             'Você pode adicionar favoritos, movendo o cursor sobre os itens do lado direito e clicando no ícone da estrela.',
         'Links' => 'Links',
-        'View the admin manual on Github' => 'Veja o manual de administração no Github',
+        'View the admin manual' => 'Veja o manual de administração',
         'No Matches' => 'Sem resultados',
         'Sorry, your search didn\'t match any items.' => 'Desculpe, sua pesquisa não retornou nenhum item.',
         'Set as favorite' => 'Definir como favorito',
@@ -1338,6 +1320,7 @@ sub Data {
             'Parabéns, seu %s está corretamente instalado e atualizado!',
 
         # Template: AdminOTRSBusinessNotInstalled
+        'Upgrade to %s' => 'Atualize para %s',
         'Go to the OTRS customer portal' => 'Vá para o portal de clientes do OTRS',
         '%s will be available soon. Please check again in a few days.' =>
             '%s estará disponível em breve. Por favor, verifique novamente em poucos dias.',
@@ -1417,8 +1400,6 @@ sub Data {
         'package information' => 'informação do pacote',
         'Package installation requires a patch level update of OTRS.' => 'Pacote de Instalação requer atualização do OTRS',
         'Package update requires a patch level update of OTRS.' => 'Atualização do pacote requer atualização de nível do OTRS',
-        'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
-            'Se você é um cliente OTRS Business Solution™, por favor visite nosso portal de clientes e registre um pedido.',
         'Please note that your installed OTRS version is %s.' => 'Por favor note que a sua versão do OTRS instalada é %s.',
         'To install this package, you need to update OTRS to version %s or newer.' =>
             'Para instalar este pacote, você precisa atualizar seu OTRS para versão %s ou superior.',
@@ -1441,9 +1422,6 @@ sub Data {
             'Por favor, certifique-se de que seu banco de dados aceita pacotes com mais de %s MB de tamanho (tamanho máximo suportado é de %s MB). Altere o parâmetro max_allowed_packet do seu banco de dados para evitar erros.',
         'Install' => 'Instalar',
         'Update repository information' => 'Atualizar Informação de Repositório',
-        'Cloud services are currently disabled.' => 'Serviços de nuvem atualmente desabilitados.',
-        'OTRS Verify™ can not continue!' => 'OTRS Verify™ não pode continuar',
-        'Enable cloud services' => 'Habilitar serviços de nuvem',
         'Update all installed packages' => 'Atualiazar todos pacotes instalados',
         'Online Repository' => 'Repositório Online',
         'Action' => 'Ação',
@@ -1454,9 +1432,6 @@ sub Data {
         'Package not correctly deployed! Please reinstall the package.' =>
             'Pacote não instalado corretamente! Por favor, reinstale o pacote.',
         'Reinstall' => 'Reinstalar',
-        'Features for %s customers only' => 'Características %s só para clientes',
-        'With %s, you can benefit from the following optional features. Please make contact with %s if you need more information.' =>
-            'Com %s, você pode beneficiar os seguintes recursos opcionais. Por favor, faça contato com %s se precisar de mais informações.',
         'Package Information' => 'Informação de Pacote',
         'Download package' => 'Baixar Pacote',
         'Rebuild package' => 'Reconstruir Pacote',
@@ -1551,8 +1526,6 @@ sub Data {
         'Ready2Adopt Processes' => 'Processos Ready2Adopt',
         'Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.' =>
             'Aqui você pode ativar processos Ready2Adopt que demonstram nossas boas práticas. Por favor observe que alguma configuração adicional pode ser necessária.',
-        'Would you like to benefit from processes created by experts? Upgrade to %s to import some sophisticated Ready2Adopt processes.' =>
-            '',
         'Import Ready2Adopt process' => 'Importar processos Ready2Adopt',
         'To create a new Process you can either import a Process that was exported from another system or create a complete new one.' =>
             'Para criar um novo Processo você pode importar um Processo exportado de outro sistema ou criar um Processo completamente novo.',
@@ -1822,6 +1795,7 @@ sub Data {
         'Attribute' => 'Atributo',
         'FQDN' => 'FQDN',
         'OTRS Version' => 'Versão do OTRS',
+        'Database' => 'Banco de Dados',
         'Operating System' => 'Sistema Operacional',
         'Perl Version' => 'Versão Perl',
         'Optional description of this system.' => 'Descrição opcional deste sistema.',
@@ -2009,14 +1983,6 @@ sub Data {
         'This state is used in the following config settings:' => 'Este estato é utilizado nas seguintes configurações:',
 
         # Template: AdminSupportDataCollector
-        'Sending support data to OTRS Group is not possible!' => 'Envio de dados de suporte para o grupo OTRS não é possível',
-        'Enable Cloud Services' => 'Habilitar Serviços de Nuvem',
-        'This data is sent to OTRS Group on a regular basis. To stop sending this data please update your system registration.' =>
-            'Estes dados são enviados para o Grupo OTRS regularmente. Para parar de enviar estes dados, por favor atualize seu registro de sistema.',
-        'You can manually trigger the Support Data sending by pressing this button:' =>
-            'Você pode disparar manualmente o envio de Dados de Suporte pressionando este botão:',
-        'Send Update' => 'Enviar Atualização',
-        'Currently this data is only shown in this system.' => 'Atualmente estes dados são mostrados apenas neste sistema.',
         'A support bundle (including: system registration information, support data, a list of installed packages and all locally modified source code files) can be generated by pressing this button:' =>
             'Um pacote de suporte (incluindo: informações de registro do sistema, dados de suporte, uma lista de pacotes instalados e todos os arquivos de código fonte modificados localmente) pode ser gerado pressionando este botão:',
         'Generate Support Bundle' => 'Gerar Pacote de Suporte',
@@ -2825,7 +2791,9 @@ sub Data {
 
         # Template: CloudServicesDisabled
         'This Feature Requires Cloud Services' => 'Esta Funcionalidade Necessita de Serviços em Nuvem',
+        'Cloud services are currently disabled.' => 'Serviços de nuvem atualmente desabilitados.',
         'You can' => 'Você pode',
+        'Enable cloud services' => 'Habilitar serviços de nuvem',
         'go back to the previous page' => 'retornar à página anterior',
 
         # Template: CustomerAccept
@@ -2848,8 +2816,7 @@ sub Data {
         'Traceback' => 'Rastreamento',
 
         # Template: CustomerFooter
-        '%s powered by %s™' => '%s powered by %s™',
-        'Powered by %s™' => 'Powered by %s™',
+        'Powered by %s' => '',
 
         # Template: CustomerFooterJS
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
@@ -2944,12 +2911,6 @@ sub Data {
         'Ticket fields' => 'Campos de chamado',
 
         # Template: Error
-        'Really a bug? 5 out of 10 bug reports result from a wrong or incomplete installation of OTRS.' =>
-            'Realmente um  erro? 5 de 10 informes de erro resultam de uma errada ou incompleta instalação do OTRS.',
-        'With %s, our experts take care of correct installation and cover your back with support and periodic security updates.' =>
-            'Com %s, nossos especialistas vão cuidar de uma instalação correta e da sua retaguarda com suporte e atualizações de segurança periódicas.',
-        'Contact our service team now.' => 'Contacte agora a nossa equipe de serviço.',
-        'Send a bugreport' => 'Enviar um relatório de erro',
         'Expand' => 'Expandir',
 
         # Template: AttachmentList
@@ -2968,9 +2929,6 @@ sub Data {
             'Por favor, observer que este rascunho está desatualizado já que o chamado foi alterado desde quando o rascunho foi criado.',
 
         # Template: Header
-        'View notifications' => 'Visualizar notificações',
-        'Notifications' => 'Notificações',
-        'Notifications (OTRS Business Solution™)' => '',
         'Personal preferences' => 'Preferências Pessoais',
         'Logout' => 'Sair',
         'You are logged in as' => 'Você está logado como',
@@ -2983,15 +2941,9 @@ sub Data {
         'General Specifications and Mail Settings' => 'Especificações Gerais e Configurações de E-mail',
         'Finish' => 'Finalizar',
         'Welcome to %s' => 'Bem-vindo a %s',
-        'Germany' => 'Alemanha',
         'Phone' => 'Telefone',
-        'United States' => 'Estados Unidos',
-        'Mexico' => 'México',
-        'Hungary' => 'Hungria',
-        'Brazil' => 'Brasil',
-        'Singapore' => 'Singapura',
-        'Hong Kong' => 'Hong Kong',
         'Web site' => 'Website',
+        'GitHub repository' => '',
 
         # Template: InstallerConfigureMail
         'Configure Outbound Mail' => 'Configurar E-mail de Saída',
@@ -3057,7 +3009,6 @@ sub Data {
         'Restart your webserver' => 'Reiniciar o webserver',
         'After doing so your OTRS is up and running.' => 'Após fazer isto, seu sistema OTRS estará pronto para uso.',
         'Start page' => 'Iniciar página',
-        'Your OTRS Team' => 'Sua Equipe de Suporte',
 
         # Template: InstallerLicense
         'Don\'t accept license' => 'Não aceitar licença',
@@ -3288,10 +3239,6 @@ sub Data {
         # Template: Navigation
         'Navigation' => 'Navegação',
 
-        # Template: OTRSBusinessTeaser
-        'With %s, System Configuration supports versioning, rollback and user-specific configuration settings.' =>
-            'Com %s a Configuração do Sistema suporta versionamento, rollback e parâmetros de configuração específicos por usuário.',
-
         # Template: Test
         'OTRS Test Page' => 'Página de Teste do Gerenciador de Chamados',
         'Unlock' => 'Desbloquear',
@@ -3517,9 +3464,6 @@ sub Data {
         # Perl Module: Kernel/Modules/AdminDynamicField.pm
         'Fields configuration is not valid' => 'Configuração do campo não é válida.',
         'Objects configuration is not valid' => 'Configuração dos objetos não são válidas',
-        'Database (%s)' => 'Base de dados (%s)',
-        'Web service (%s)' => 'Web service (%s)',
-        'Contact with data (%s)' => 'Contato com dados (%s)',
         'Could not reset Dynamic Field order properly, please check the error log for more details.' =>
             'Não foi possível resetar corretamente a ordem do campo Dinâmico, verifique o log de erros para obter mais detalhes.',
 
@@ -3759,8 +3703,6 @@ sub Data {
         'Can\'t read %s!' => 'Não pôde ser lido %s!',
         'File is OK' => 'Arquivo está ok',
         'Package has locally modified files.' => 'Pacote possui arquivos locais modificados.',
-        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
-            'O pacote não foi verificado pelo Grupo OTRS! O seu uso não é recomendado.',
         'Not Started' => 'Não Iniciado',
         'Updated' => 'Atualizado',
         'Already up-to-date' => 'Atual',
@@ -3779,6 +3721,8 @@ sub Data {
         'Repository List' => 'Lista de Repositório',
         'No packages found in selected repository. Please check log for more info!' =>
             'Nenhum pacote encontrado no repositório selecionado. Favor verificar o log para mais informações!',
+        'Package not verified by the OTRS Group! It is recommended not to use this package.' =>
+            'O pacote não foi verificado pelo Grupo OTRS! O seu uso não é recomendado.',
         'Package not verified due a communication issue with verification server!' =>
             'Pacote não verificado devido a um problema de comunicação com o servidor de verificação!',
         'Can\'t connect to OTRS Feature Add-on list server!' => 'Não foi possível conectar com o servidor da lista de recursos adicionais (add-ons) da OTRS!',
@@ -4365,7 +4309,6 @@ sub Data {
         'Show one article' => 'Exibir um Artigo',
         'Show all articles' => 'Exibir Todos os Artigos',
         'Show Ticket Timeline View' => 'Mostrar a Cronologia do Chamado',
-        'Show Ticket Timeline View (%s)' => 'Mostrar a Visão de Linha do Tempo do Ticket (%s)',
 
         # Perl Module: Kernel/Modules/AjaxAttachment.pm
         'Got no FormID.' => 'Não contém ID de Formulário.',
@@ -4636,14 +4579,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentCloudServicesDisabled.pm
         'Enable cloud services to unleash all OTRS features!' => 'Habilite serviços de nuvem para liberar todos os recursos do OTRS!',
-
-        # Perl Module: Kernel/Output/HTML/Notification/AgentOTRSBusiness.pm
-        '%s Upgrade to %s now! %s' => '%s Atualize para %s agora! %s',
-        'Please verify your license data!' => 'Favor verificar os dados de sua licença!',
-        'The license for your %s is about to expire. Please make contact with %s to renew your contract!' =>
-            'A licença do seu %s está prestes a expirar. Por favor entre em contato com %s para revonar o seu contrato!',
-        'An update for your %s is available, but there is a conflict with your framework version! Please update your framework first!' =>
-            'Uma atualização para o seu %s está disponível, porém existe um conflito com a versão do seu framework! Por favor em primeiro lugar atualize o seu framework!',
 
         # Perl Module: Kernel/Output/HTML/Notification/AgentOnline.pm
         'Online Agent: %s' => 'Atendentes Online: %s',
@@ -6025,7 +5960,6 @@ Obrigado pela ajuda!
         'Agents ↔ Groups' => 'Atendentes ↔ Grupos',
         'Agents ↔ Roles' => 'Atendentes ↔ Papéis',
         'All CustomerIDs of a customer user.' => 'Todos IDs de Clientes de um usuário cliente.',
-        'All attachments (OTRS Business Solution™)' => 'Todos anexos (OTRS Business Solution™)',
         'All customer users of a CustomerID' => 'Todos os usuários clientes de uma CustomerID.',
         'All escalated tickets' => 'Todos os chamados escalados',
         'All new tickets, these tickets have not been worked on yet' => 'Todos os chamados novos, estes chamados não foram trabalhados ainda',
@@ -6206,9 +6140,6 @@ Obrigado pela ajuda!
             '',
         'Checks the SystemID in ticket number detection for follow-ups. If not enabled, SystemID will be changed after using the system.' =>
             'Verifica o ID do Sistema na detecção de número de tickets para respostas. Se não ativado, o ID do sistema será alterado após utlização do sistema.',
-        'Checks the availability of OTRS Business Solution™ for this system.' =>
-            '',
-        'Checks the entitlement status of OTRS Business Solution™.' => '',
         'Child' => 'Filho',
         'Chinese (Simplified)' => 'Chinês (Simplificado)',
         'Chinese (Traditional)' => 'Chinês (Tradicional)',
@@ -6521,8 +6452,6 @@ Obrigado pela ajuda!
             'Define se um agente deve ser autorizado a logar se não tiverem segredo compartilhado armazenado em suas preferências e, consequentemente, não estão utlizando autenticação de 2 fatores.',
         'Defines if customers should be allowed to login if they have no shared secret stored in their preferences and therefore are not using two-factor authentication.' =>
             'Define se um cliente deve ser autorizado a logar se não tiverem segredo compartilhado armazenado em suas preferências e, consequentemente, não estão utlizando autenticação de dois fatores.',
-        'Defines if the communication between this system and OTRS Group servers that provide cloud services is possible. If set to \'Disable cloud services\', some functionality will be lost such as system registration, support data sending, upgrading to and use of OTRS Business Solution™, OTRS Verify™, OTRS News and product News dashboard widgets, among others.' =>
-            'Define se é possível a comunicação entre este sistema e os servidores do Grupo OTRS que provêem serviços em nuvem. Se definido como \'Desativar serviços em nuvem\', algumas funcionalidades serão perdidas como registro de sistema, envio de dados de suporte, atualização e utilização de OTRS Business Solution™, OTRS Verify™, Notícias OTRS e widgets de painel sobre notícias de produto, entre outros.',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.) in customer interface.' =>
             '',
         'Defines if the enhanced mode should be used (enables use of table, replace, subscript, superscript, paste from word, etc.).' =>
@@ -6895,8 +6824,6 @@ Obrigado pela ajuda!
         'Defines the module to authenticate customers.' => 'Define os módulos de autenticação dos clientes.',
         'Defines the module to display a notification if cloud services are disabled.' =>
             'Define o módulo para exibir uma notificação se serviços em nuvem estiverem desativados.',
-        'Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.' =>
-            '',
         'Defines the module to display a notification in the agent interface if the OTRS Daemon is not running.' =>
             'Define o módulo para exibir uma notificação se o OTRS Daemon não estiver sendo executado.',
         'Defines the module to display a notification in the agent interface if the system configuration is out of sync.' =>
@@ -6909,8 +6836,6 @@ Obrigado pela ajuda!
             'Define o módulo para exibir uma notificação na interface de agente se o usuário estiver logado enquanto uma manutenção do sistema estiver ativa.',
         'Defines the module to display a notification in the agent interface, if the agent session limit prior warning is reached.' =>
             'Define o módulo para exibir uma notificação na interface de agente se o alerta prévio de limite de sessão de agente tiver sido atingido.',
-        'Defines the module to display a notification in the agent interface, if the installation of not verified packages is activated (only shown to admins).' =>
-            'Define o módulo para exibir uma notificação na interface de agente se a instalação de pacotes não verificados estiver ativada (exibido apenas para administradores).',
         'Defines the module to display a notification in the agent interface, if the system is used by the admin user (normally you shouldn\'t work as admin).' =>
             'Define o módulo para exibir uma notificação na interface de agente se o sistema estiver em uso pelo usuário administrador (normalmente você não deveria trabalhar como administrador).',
         'Defines the module to display a notification in the agent interface, if there are invalid sysconfig settings deployed.' =>
@@ -6981,8 +6906,6 @@ Obrigado pela ajuda!
             'Define os parâmetros para o backend do painel. "Cmd" é utilizado para especificar comandos com parâmetros. "Group" é utilizado para restringir o acesso ao plugin (por exemplo, Group: admin;group1;group2;). "Default" indica se o plugin é ativado como padrão ou se o usuário precisa ativar manualmente. "CacheTTL" indica o tempo de expiração do  cache, em minutos, para o plugin. "Mandatory" determina se o plugin é exibido sempre e não pode ser removido pelos agentes.',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Define os parâmetros para o backend do painel. "Group" é utilizado para restringir o acesso ao plugin (por exemplo, Group: admin;group1;group2;). "Default" indica se o plugin é ativado como padrão ou se o usuário precisa ativar manualmente. "CacheTTL" indica o tempo de expiração do cache, em minutos, para o plugin. "Mandatory" determina se o plugin é exibido sempre e não pode ser removido pelos agentes.',
-        'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            'Define os parâmetros para o backend do painel. "Cmd" é utilizado para especificar comandos com parâmetros. "Group" é utilizado para restringir o acesso ao plugin (por exemplo, Group: admin;group1;group2;). "Default" indica se o plugin é ativado como padrão ou se o usuário precisa ativar manualmente. "CacheTTL" indica o tempo de expiração do cache, em minutos, para o plugin. "Mandatory" determina se o plugin é exibido sempre e não pode ser removido pelos agentes.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Define os parâmetros para o backend do painel. "Limit" define o número de entradas exibidas como padrão. "Group" é utilizado para restringir o acesso ao plugin (por exemplo, Group: admin;group1;group2;). "Default" indica se o plugin é ativado como padrão ou se o usuário precisa ativar manualmente. "CacheTTL" indica o tempo de expiração do cache, em minutos, para o plugin. "Mandatory" determina se o plugin é exibido sempre e não pode ser removido pelos agentes.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTLLocal" defines the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7121,7 +7044,6 @@ Obrigado pela ajuda!
         'Deletes requested sessions if they have timed out.' => 'Exclui as sessões solicitadas se elas tiverem expirado.',
         'Delivers extended debugging information in the frontend in case any AJAX errors occur, if enabled.' =>
             'Entrega informações de depuração extendidas no frontend caso um erro AJAX ocorra, se ativado.',
-        'Deploy and manage OTRS Business Solution™.' => 'Implementar e gerenciar o OTRS Business Solution™.',
         'Detached' => 'Separado',
         'Determines if a button to delete a link should be displayed next to each link in each zoom mask.' =>
             'Determina se um botão para excluir um link pode ser exibido próximo a cada associação em cada máscara de zoom.',
@@ -7161,6 +7083,7 @@ Obrigado pela ajuda!
             'Desativa o cabeçalho HTTP "X-Frame-Options: SAMEORIGIN" para que o OTRS seja incluído como um IFrame em outras páginas web. Desativar este cabeçalho HTTP pode ser um problema de segurança! Só desative se você souber o que está fazendo.',
         'Disable autocomplete in the login screen.' => '',
         'Disable cloud services' => 'Desabilitar serviços de nuvem',
+        'Disable cloud services.' => '',
         'Disables sending reminder notifications to the responsible agent of a ticket (Ticket::Responsible needs to be enabled).' =>
             'Desativa o envio automático de notificações de lembrete para o agente responsável por um ticket (Ticket::Responsible precisa estar ativado).',
         'Disables the redirection to the last screen overview / dashboard after a ticket is closed.' =>
@@ -7674,7 +7597,6 @@ Obrigado pela ajuda!
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             '',
         'Malay' => 'Malásio',
-        'Manage OTRS Group cloud services.' => 'Gerenciar serviços de nuvem OTRS Group.',
         'Manage PGP keys for email encryption.' => 'Gerenciar chaves PGP para encriptação de e-mail.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Gerenciar contas POP3 e IMAP para buscar e-mails.',
         'Manage S/MIME certificates for email encryption.' => 'Gerenciar certificados S/MIME para encriptação de e-mail.',
@@ -7682,7 +7604,6 @@ Obrigado pela ajuda!
         'Manage different calendars.' => 'Gerenciar calendário diferentes.',
         'Manage existing sessions.' => 'Gerenciar sessões existentes.',
         'Manage support data.' => 'Gerenciar dados de suporte.',
-        'Manage system registration.' => 'Gerenciar registro do sistema.',
         'Manage tasks triggered by event or time based execution.' => 'Gerenciar tarefas disparadas por evento ou com execução baseada em tempo.',
         'Mark as Spam!' => 'Marque como Spam',
         'Mark this ticket as junk!' => 'Marcar este chamado como lixo!',
@@ -7781,8 +7702,6 @@ Obrigado pela ajuda!
         'New Year\'s Day' => 'Ano Novo',
         'New Year\'s Eve' => 'Véspera de Ano Novo',
         'New process ticket' => 'Novo chamado via processo',
-        'News about OTRS releases!' => 'Notícias sobre lançamentos OTRS!',
-        'News about OTRS.' => 'Notícias sobre OTRS.',
         'Next possible ticket states after adding a phone note in the ticket phone inbound screen of the agent interface.' =>
             'Próximos estados de ticket possíveis após adicionar uma nota de telefonema na tela de telefonema recebido da interface de agente.',
         'Next possible ticket states after adding a phone note in the ticket phone outbound screen of the agent interface.' =>
@@ -7803,8 +7722,6 @@ Obrigado pela ajuda!
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '',
         'Number of tickets to be displayed in each page.' => 'Número de tickets que serão exibidos por página.',
-        'OTRS Group Services' => 'Serviços do Grupo OTRS',
-        'OTRS News' => 'Notícias sobre o OTRS',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7941,7 +7858,6 @@ Obrigado pela ajuda!
         'Process pending tickets.' => 'Tickets pendentes de processo.',
         'ProcessID' => 'ID de Processo',
         'Processes & Automation' => 'Processos e Automação',
-        'Product News' => 'Notícias do Produto',
         'Protection against CSRF (Cross Site Request Forgery) exploits (for more info see https://en.wikipedia.org/wiki/Cross-site_request_forgery).' =>
             '',
         'Provides a matrix overview of the tickets per state per queue' =>
@@ -7972,7 +7888,6 @@ Obrigado pela ajuda!
         'Replaces the original sender with current customer\'s email address on compose answer in the ticket compose screen of the agent interface.' =>
             'Substitui o remetente original pelo endereço de e-mail do cliente atual ao compor uma resposta na tela de composição de ticket da interface de agente.',
         'Reports' => 'Relatórios',
-        'Reports (OTRS Business Solution™)' => 'Relatórios (OTRS Business Solution™)',
         'Reprocess mails from spool directory that could not be imported in the first place.' =>
             '',
         'Required permissions to change the customer of a ticket in the agent interface.' =>
@@ -8011,7 +7926,6 @@ Obrigado pela ajuda!
         'Resent email to "%s".' => 'Reenviar e-mail para "%s".',
         'Resets and unlocks the owner of a ticket if it was moved to another queue.' =>
             'Reinicia a propriedade e desbloqueia o chamado se ele for movido para outra fila.',
-        'Resource Overview (OTRS Business Solution™)' => 'Visão geral de recurso (OTRS Business Solution™)',
         'Responsible Tickets' => 'Tickets de sua Responsabilidade',
         'Responsible Tickets.' => 'Tickets de sua Responsabilidade.',
         'Restores a ticket from the archive (only if the event is a state change to any open available state).' =>
@@ -8074,7 +7988,6 @@ Obrigado pela ajuda!
         'Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.' =>
             'Envia todos os e-mails enviados como uma cópia oculta ao endereço especificado. Favor utilizar isso apenas para motivos de backup.',
         'Sends customer notifications just to the mapped customer.' => 'Envia notificações de cliente somente para os clientes mapeados.',
-        'Sends registration information to OTRS group.' => 'Envia informações de registro para o Grupo OTRS.',
         'Sends reminder notifications of unlocked ticket after reaching the reminder date (only sent to ticket owner).' =>
             'Envia notificações de lembrete de ticket desbloqueado após atingir a data de lembrete (enviado apenas para o proprietário do ticket).',
         'Sends the notifications which are configured in the admin interface under "Ticket Notifications".' =>
@@ -8422,8 +8335,6 @@ Obrigado pela ajuda!
             'Mostra lista de todos agentes possíveis (todos agentes com permissões de nota na fila/ticket) para determinar quem pode ser infomado sobre esta nota na tela de responsável pelo ticket da interface de agente.',
         'Shows a preview of the ticket overview (CustomerInfo => 1 - shows also Customer-Info, CustomerInfoMaxSize max. size in characters of Customer-Info).' =>
             'Mostra uma visão prévia da visão geral de ticket (CustomerInfo => 1 - também mostra Informação de Cliente, CustomerInfoMaxSize tamanho máximo, em caracteres, da Informação de Cliente).',
-        'Shows a teaser link in the menu for the ticket attachment view of OTRS Business Solution™.' =>
-            '',
         'Shows all both ro and rw queues in the queue view.' => 'Mostrar todas filas tanto ro quanto rw na visão de fila.',
         'Shows all both ro and rw tickets in the service view.' => 'Mostrar todos tickets, tanto ro quanto rw, na visão de serviço.',
         'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
@@ -8562,13 +8473,10 @@ Obrigado pela ajuda!
             'Especifica se os anexos de artigo (MIMEBase) serão indexados e pesquisáveis.',
         'Specify how many sub directory levels to use when creating cache files. This should prevent too many cache files being in one directory.' =>
             'Especificar quantos níveis de subdiretórios utilizar quando criar arquivos de cache. Isso deve prevenir que muitos arquivos de cache fiquem em um diretório.',
-        'Specify the channel to be used to fetch OTRS Business Solution™ updates. Warning: Development releases might not be complete, your system might experience unrecoverable errors and on extreme cases could become unresponsive!' =>
-            'Especificar o canal a ser utilizado para buscar atualizações OTRS Business Solution™. Atenção: Lançamentos de desenvolvimento podem não estar completos e seu sistema pode apresentar erros irrecuperáveis e, em casos extremos, pode se tornar não responsivo!',
         'Specify the password to authenticate for the first mirror database.' =>
             'Especificar a senha para autenticar o primeiro banco de dados espelhado.',
         'Specify the username to authenticate for the first mirror database.' =>
             'Especificar o nome de usuário para autenticar o primeiro banco de dados espelhado.',
-        'Stable' => 'Estável',
         'Standard available permissions for agents within the application. If more permissions are needed, they can be entered here. Permissions must be defined to be effective. Some other good permissions have also been provided built-in: note, close, pending, customer, freetext, move, compose, responsible, forward, and bounce. Make sure that "rw" is always the last registered permission.' =>
             'Define as permissões padrão disponíveis para atendentes dentro da aplicação. Se mais permissões são necessárias, elas podem ser adicionadas aqui. Permissões devem ser definidas para serem efetivas. Algumas outras permissões úteis foram definidas internamente: nota, fechar, lembrete de pendente, cliente, campos livres, mover, compor chamado, responsável, encaminhar e devolver. Assegure-se que a permissão "rw" é a última permissão registrada.',
         'Start number for statistics counting. Every new stat increments this number.' =>
@@ -8580,7 +8488,6 @@ Obrigado pela ajuda!
             'Inicia uma pequisa curinga do objeto ativo após a máscara de objeto de associção ter sido iniciada.',
         'Stat#' => 'Estatística Nº:.',
         'States' => 'Estado',
-        'Statistic Reports overview.' => 'Visão Geral de Estatísticas',
         'Statistics overview.' => 'Resumo de Estatísticas',
         'Status view' => 'Visão de Estados',
         'Stopped response time escalation.' => 'Parou o escalonamento do tempo de resposta.',
@@ -8591,6 +8498,7 @@ Obrigado pela ajuda!
         'Strips empty lines on the ticket preview in the service view.' =>
             'Elimina linhas vazias na visão prévia de ticket da visão de serviço.',
         'Support Agent' => 'Agente de Suporte',
+        'Support Services' => 'Serviços de Suporte',
         'Swahili' => 'Swahili',
         'Swedish' => 'Sueco',
         'System Address Display Name' => 'Nome de Exibição do Endereço de Sistema',
@@ -8780,7 +8688,6 @@ Obrigado pela ajuda!
         'Uses richtext for viewing and editing: articles, salutations, signatures, standard templates, auto responses and notifications.' =>
             'Usar RichText quando visualizar e editar: artigos, saudações, assinaturas, modelos, auto respostas e notificações.',
         'Vietnam' => 'Vietnamita',
-        'View all attachments of the current ticket' => 'Ver todos os anexos do chamado atual',
         'View performance benchmark results.' => 'Ver resultados da avaliação de desempenho.',
         'Watch this ticket' => 'Monitorar esse chamado',
         'Watched Tickets' => 'Chamados Monitorados',
