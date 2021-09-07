@@ -7768,7 +7768,7 @@ via the Preferences button after logging in.
                 <Item>Core.InputFields.css</Item>
                 <Item>Core.Print.css</Item>
                 <Item>Core.Animations.css</Item>
-                <Item>centuran/agent.css</Item>
+                <!-- <Item>centuran/agent.css</Item> -->
             </Array>
         </Value>
     </Setting>
