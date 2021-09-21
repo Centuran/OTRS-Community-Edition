@@ -38,9 +38,9 @@
 <script>
 new Vue({
     el: '#vue-app',
-    vuetify: new Vuetify(
+    vuetify: new Vuetify({
         theme: { disable: true }
-    ),
+    }),
     components: {
         'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue')
     },
