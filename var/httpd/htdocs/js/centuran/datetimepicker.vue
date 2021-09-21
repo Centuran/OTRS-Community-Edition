@@ -1,16 +1,37 @@
+<!-- TODO: make colors styleable with theme CSS -->
 <template>
   <div>
-    <v-menu ref="menu" eager bottom offset-overflow offset-y
-        :content-class="`menu-pointing ${modeClass}`" @input="updateClasses">
+    <v-menu ref="menuDate" eager bottom offset-overflow offset-y
+        :content-class="`menu-pointing ${modeClasses.menuDate}`"
+        @input="updateClasses('menuDate')">
       <template v-slot:activator="{ on, attrs }">
-        <input ref="dateInput" type="text" v-model="date.displayed" v-on="on" />
+        <input ref="dateInput" type="text" v-model="date.displayed" v-on="on"
+          class="dateTimePicker-dateInput" />
       </template>
       <v-date-picker
         v-model="date.picked"
-        color="light-blue"
+        color="#f15a22"
         :no-title="true"
       ></v-date-picker>
       <!-- TODO: Add "Today" button in default slot -->
+    </v-menu>
+    <v-menu ref="menuTime" eager bottom offset-overflow offset-y
+        v-model="timeMenuIsOpen"
+        :close-on-content-click="false"
+        :content-class="`menu-pointing ${modeClasses.menuTime}`"
+        @input="updateClasses('menuTime')">
+      <template v-slot:activator="{ on, attrs }">
+        <input ref="timeInput" type="text" v-model="time.picked" v-on="on"
+          class="dateTimePicker-timeInput" />
+      </template>
+      <!-- TODO: Use 12/24-hour format, depending on locale -->
+      <v-time-picker
+        v-if="timeMenuIsOpen"
+        v-model="time.picked"
+        color="#f15a22"
+        :no-title="true"
+        @click:minute="$refs.menuTime.isActive = false"
+      ></v-time-picker>
     </v-menu>
   </div>
 </template>
@@ -20,16 +41,27 @@ module.exports = {
   data: function () {
     return {
       date: {
-        value: new Date(),
-        displayed: "",
-        picked: ""
+        value: new Date(), // Selected date object
+        displayed: "",     // Displayed/edited date string
+        picked: ""         // Date string from the date picker
       },
-      modeClass: "",
+      time: {
+        value: { h: 0, m: 0 }, // Selected time object
+        picked: ""             // Time string from the time picker
+      },
+      modeClasses: {
+        menuDate: "",
+        menuTime: ""
+      },
       selects: {
-        day:   null,
-        month: null,
-        year:  null
-      }
+        day:    null,
+        month:  null,
+        year:   null,
+        hour:   null,
+        minute: null
+      },
+      // https://github.com/vuetifyjs/vuetify/issues/4502#issuecomment-403077205
+      timeMenuIsOpen: false
     };
   },
   watch: {
@@ -42,8 +74,31 @@ module.exports = {
       this.selects.year.value  = this.date.value.getFullYear();
     },
     'date.picked': function (picked) {
+      // If the date input has focus, do not update date.value
+      // and date.displayed, because this will change the contents of the input
+      // while the user is entering it.
+      if (document.activeElement === this.$refs.dateInput)
+        return;
+
       this.date.value = new Date(picked);
       this.date.displayed = this.formatDate(this.date.value);
+    },
+    'date.displayed': function (displayed) {
+      // Wrapped in a try block, because the value might be
+      // an invalid/incomplete date
+      try {
+        this.date.picked = this.formatDateAsISO(new Date(displayed));
+      }
+      catch {}
+    },
+    'time.picked': function (picked) {
+      this.time.value = {
+        h: parseInt(picked.split(':')[0]),
+        m: parseInt(picked.split(':')[1])
+      };
+
+      this.selects.hour.value   = this.time.value.h;
+      this.selects.minute.value = this.time.value.m;
     }
   },
   methods: {
@@ -53,11 +108,17 @@ module.exports = {
     formatDate: function (date) {
       return this.formatDateAsISO(date);
     },
+    formatTime: function (time) {
+      return ('00' + time.h).slice(-2) + ':' + ('00' + time.m).slice(-2);
+    },
     initializeFromSelects: function () {
       var parentNode = this.$el.parentNode;
-      this.selects.day   = parentNode.querySelector('select[name$="Day"]');
-      this.selects.month = parentNode.querySelector('select[name$="Month"]');
-      this.selects.year  = parentNode.querySelector('select[name$="Year"]');
+
+      this.selects.day    = parentNode.querySelector('select[name$="Day"]');
+      this.selects.month  = parentNode.querySelector('select[name$="Month"]');
+      this.selects.year   = parentNode.querySelector('select[name$="Year"]');
+      this.selects.hour   = parentNode.querySelector('select[name$="Hour"]');
+      this.selects.minute = parentNode.querySelector('select[name$="Minute"]');
 
       if (this.selects.day)
         this.date.value.setDate(this.selects.day.value);
@@ -68,16 +129,23 @@ module.exports = {
 
       this.date.picked = this.formatDateAsISO(this.date.value);
       this.date.displayed = this.formatDate(this.date.value);
+
+      if (this.selects.hour)
+        this.time.value.h = parseInt(this.selects.hour.value);
+      if (this.selects.minute)
+        this.time.value.m = parseInt(this.selects.minute.value);
+
+      this.time.picked = this.formatTime(this.time.value);
     },
-    updateClasses: function () {
+    updateClasses: function (ref) {
       setTimeout((function () {
-        var content   = this.$refs.menu.$refs.content;
+        var content   = this.$refs[ref].$refs.content;
         var dateInput = this.$refs.dateInput;
         
         if (content.offsetTop != 0 && content.offsetTop < dateInput.offsetTop)
-          this.modeClass = 'menu-above';
+          this.modeClasses[ref] = 'menu-above';
         else
-          this.modeClass = 'menu-below';
+          this.modeClasses[ref] = 'menu-below';
       }).bind(this), 100);
     }
   },
@@ -94,14 +162,12 @@ module.exports = {
 }
 </script>
 
-<style scoped>
-</style>
-
 <style>
 .menu-below {
   contain: initial;
   margin-top: 16px;
   overflow: visible;
+  /* z-index: 1000 !important; */
 }
 
 .menu-below::before {
@@ -117,12 +183,14 @@ module.exports = {
   top: 0;
   transform: translateY(-100%);
   width: 30px;
+  /* z-index: auto; */
 }
 
 .menu-above {
   contain: initial;
   margin-top: -16px;
   overflow: visible;
+  /* z-index: 1000 !important */
 }
 
 .menu-above::before {
@@ -137,5 +205,15 @@ module.exports = {
   position: absolute;
   text-shadow: 0px 0px 10px rgb(0 0 0 / 65%);
   width: 30px;
+  /* z-index: auto; */
+}
+
+input.dateTimePicker-dateInput {
+  width: 8em;
+}
+
+input.dateTimePicker-timeInput {
+  margin-left: 0.5em;
+  width: 6em;
 }
 </style>
