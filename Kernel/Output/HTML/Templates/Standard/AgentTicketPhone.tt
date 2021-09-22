@@ -26,7 +26,7 @@
         </div>
 
         <div class="ContentColumn">
-            <div class="Cn-FormWrapper">
+            <div class="cmt-form-wrapper">
                 <div class="WidgetSimple">
                     <div class="Header">
                         [% IF Data.TicketID %]
