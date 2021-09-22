@@ -1,0 +1,874 @@
+@use "sass:string";
+
+@import 'variables';
+
+@import 'icons';
+
+// TODO: Remove in favor of @function mdi()
+@mixin mdi($codepoint) {
+  content: $codepoint;
+  font-family: "Material Design Icons";  
+}
+
+@function priority-color($priority) {
+  $colors: (
+    5: #ff0000,
+    4: #ffc940,
+    3: #aaaaaa,
+    2: #0059ff,
+    1: #00a000
+  );
+
+  @return map-get($map: $colors, $key: $priority);
+}
+
+.Flag.Small {
+  height: auto;
+  width: auto;
+  
+  span {
+    border-radius: 0.2em;
+    height: 1em;
+    width: 1em;
+  }
+}
+
+@for $priority from 1 through 5 {
+  .Flag span.PriorityID-#{$priority} {
+    background-color: priority-color($priority);
+  }
+}
+
+@function msg-icon($type) {
+  $icons: (
+    "error":   "\0F0CE6", // alert-octagon-outline
+    "info":    "\0F02FD", // information-outline
+    "notice":  "\0F11CF", // alert-rhombus-outline
+    "success": "\0F05E1"  // check-circle-outline
+  );
+
+  @return map-get($map: $icons, $key: $type);
+}
+
+@function msg-color($type, $alpha: "ff") {
+  $colors: (
+    "error":   #ff5252,
+    "info":    #2196f3,
+    "notice":  #fb8c00,
+    "success": #4caf50
+  );
+
+  @return string.unquote(map-get($map: $colors, $key: $type) + $alpha);
+}
+
+@mixin msg-icon-before($type) {
+  content: msg-icon($type);
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+
+@mixin msg-background($type) {
+  background-color: msg-color($type);
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: .12;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+}
+
+@mixin msg-box($type) {
+  background: none;  
+  border-radius: 4px;
+  caret-color:rgb(251, 140, 0);
+  color: msg-color($type);
+  margin-top: 10px;
+
+  .Icon {
+    display: inline;
+    margin-right: 0;
+    margin-top: 0;
+    padding: 0;
+    vertical-align: middle;
+  }
+
+  .Icon::before {
+    @include msg-icon-before($type);
+  }
+
+  p {
+    border: thin solid;
+    border-color: msg-color($type);
+    border-radius: 4px;
+    border-width: 1px 1px 1px 8px;
+    box-shadow: 0px 1px 0px msg-color($type, "34"); // 0x34 -> 0.2
+    caret-color: msg-color($type);
+    color: msg-color($type);
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0.75em;
+
+    &::after {
+      background-color: msg-color($type);
+      border-radius: inherit;
+      bottom: 0;
+      content: "";
+      left: 0;
+      opacity: .05;
+      position: absolute;
+      pointer-events: none;
+      right: 0;
+      top: 0;
+      margin: inherit;
+    }
+
+    a {
+      color: #333;
+    }
+  }
+}
+
+@mixin button-group($item: "li") {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  font-size: initial;
+  margin-bottom: 8px;
+  padding-left: 0;
+
+  #{$item} {
+    @include minor-button();
+
+    border-radius: 0;
+    box-shadow: none;
+
+    &:first-child {
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+
+      a {
+        padding-left: 10px;
+      }
+    }
+
+    &:not(:last-child) {
+      border-right: none;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+  
+    &.Selected a {
+      background-color: #fff;
+    }
+
+    &::after {
+      content: none;
+    }
+
+    &.Last {
+      background-color: #f8f8f8;
+    }
+  }
+}
+
+@mixin priority-flag {
+  height: initial;
+  left: initial;
+  position: static;
+  top: initial;
+  width: initial;
+
+  span {
+    border-radius: 0.2em;
+    height: auto;
+    width: 1.8em;
+
+    // Border around the priority flag
+    &::after {
+      content: "";
+      border-bottom: solid 2px #000;
+      border-radius: inherit;
+      bottom: 0;
+      display: block;
+      height: inherit;
+      left: 0;
+      opacity: 0.2;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: inherit;
+    }
+  }
+}
+
+@mixin minor-button {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0,0,0, 0.2), 0px 1px 0px rgba(0,0,0, 0.2);  
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+
+  // Style like action buttons
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+
+  overflow: hidden;
+
+  & > a {
+    border-bottom: none;
+    color: #444;
+    display: inline-block;
+    padding: 5px 10px;
+    vertical-align: middle;
+
+    &:hover {
+      color: #444;
+      text-decoration: underline;
+      text-decoration-color: #f15a22;
+
+      background: #fff;
+    }
+  }
+}
+
+/* Modernized select boxes */
+
+.jstree-InputField {
+  font-size: 85%;
+
+  .jstree-wholerow-ul {
+    .jstree-wholerow {
+      height: auto;
+      line-height: initial;
+
+      &:hover,
+      &.jstree-wholerow-hovered,
+      &.jstree-wholerow-clicked:hover {
+        background-color: #f15a22;
+      }
+    }
+  
+    .jstree-anchor {
+      height: auto;
+      line-height: initial;
+    }
+
+    .jstree-hovered {
+      background-color: #f15a22;
+    }
+  }
+}
+
+.MessageBox.Error {
+  @include msg-box("error");
+}
+
+.MessageBox.Notice {
+  @include msg-box("notice");
+}
+
+code,
+.v-application code,
+.v-application.theme--light code {
+  font-family: 'Roboto Mono', monospace, fixed;
+  font-size: 90%;
+  padding: 0.1em 0.2em;
+  background-color: rgba(119, 136, 153, 0.15); // RGB values of lightslategray
+}
+
+textarea {
+  border: solid 1px $form-field-border-color;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: 'Roboto Mono', monospace, fixed;
+  font-size: 90%;
+  padding: $form-field-padding;
+}
+
+dl {
+  dt {
+    font-size: initial;
+    line-height: 1.5;
+  }
+
+  dd {
+    line-height: 1.5;
+    margin-left: 0.8em;
+  }
+}
+
+fieldset.TableLike.FixedLabelSmall > label {
+  width: 8em;
+}
+
+fieldset.TableLike.FixedLabelSmall > .Field,
+fieldset.TableLike.FixedLabelSmall > .Row > .Field,
+fieldset.TableLike.FixedLabelSmall > .Value,
+fieldset.TableLike.FixedLabelSmall > .Row > .Value {
+  margin-left: 8em;
+}
+
+fieldset.TableLike {
+  .Field, .RichTextField {
+    padding-left: 14px; // Increased from original 10px
+  }
+
+  & > label,
+  & > .Row > label {
+    color: #666;
+  }
+
+  p.Value {
+    margin-bottom: 0;
+  }
+
+  // Label that's displayed above the value
+  label.cmt-stacked {
+    float: none;
+    text-align: left;
+    width: 100%;
+
+    & + p.Value {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+ul.Tablelike li.Header {
+  text-transform: none;
+}
+
+.WidgetSimple {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+
+  .Header {
+    .WidgetAction.Toggle {
+      height: auto;
+      margin: 0;
+      width: auto;
+
+      &::before {
+        font-family: "Material Design Icons";
+        font-size: 120%;
+        line-height: 120%;
+      }
+    }
+
+    i.fa {
+      display: none !important;
+    }
+  }
+
+  &.Collapsed .Header {
+    .WidgetAction.Toggle::before {
+      content: "\0F0140"; // chevron-down
+    }
+  }
+
+  &.Expanded .Header {
+    .WidgetAction.Toggle::before {
+      content: "\0F0143"; // chevron-up
+    }
+  }
+
+  .Content {
+    border-top: solid 1px ghostwhite;
+  }
+}
+
+/* Action Row */
+
+.ActionRow {
+  .WidgetSimple .Content > & {
+    margin-left: 0;
+  }
+
+  .Actions {
+    display: flex;
+
+    li {
+      font-size: inherit;
+
+      // This pseudoelement fills the 2px gap between the contents
+      // of the top-level item and the sub-level dropdown list (caused by a 2px
+      // margin-top above the list), eliminating the problem that the list
+      // disappeared when the pointer was placed inside the gap.
+      &::after {
+        content: "";
+        float: none;
+        background: transparent;
+        height: 2px;
+        margin: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+
+    & > li {
+      align-self: center;
+      float: left;
+      font-size: 85%;
+      line-height: initial;
+      margin: 0;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &[id^="nav-"] {
+        @include minor-button();
+
+        border-radius: 0;
+        // Override box shadow to not include the outer blurred part
+        box-shadow: 0px 1px 0px #c8c8c8;
+        overflow: visible;
+        
+        &:first-child {
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 0;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 0;
+        }
+
+        &:not(:first-child) {
+          border-left: none;
+        }
+      }
+
+      &[id^="nav-"] + li[id^="nav-"] {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      &:not([id^="nav-"]) {
+        margin-left: 0.5em;
+      }
+
+      // TODO: Need to set right border radius to 4px for the last item with
+      // an ID of "nav-*", but it's probably not possible in CSS (no "followed
+      // by" selector). Maybe set a class in JS?
+
+      a,
+      span.ClusterLink {
+        padding: 5px 10px;
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+body .Cluster ul ul {
+  border-radius: 0 0 4px 4px;
+  left: 0;
+  margin-top: 2px;
+  top: 100%;
+
+  li {
+    line-height: initial;
+  }
+}
+
+.ItemActions {
+  .Actions {
+    display: flex;
+
+    li {
+      font-size: 85%;
+
+      &::after {
+        content: none;
+        // TODO: Might want to add a pseudoelement like in .Actions above
+      }
+    }
+
+    & > li {
+      align-self: center;
+      float: left;
+      line-height: initial;
+      margin: 0;
+
+      border: solid 1px #ccc;
+      box-shadow:
+        0px 1px 0px rgba(0, 0, 0, 0.2),
+        0px 1px 0px rgba(0, 0, 0, 0.2);
+
+      &:first-child {
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+      }
+
+      &:not(:first-child) {
+        border-left: none;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      &.cmt-item-action-dropdown {
+        border: none;
+        box-shadow: none;
+        margin-left: 0.5em;
+
+        label::after {
+          // Add a colon after the "Reply" and "Forward" labels
+          content: ":";
+        }
+
+        input {
+          box-shadow: 0px 1px 0px rgba(0,0,0,0.2),0px 1px 0px rgba(0,0,0,0.2);
+          
+          border-bottom: solid 2px #fff;
+          box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+        }
+      }
+
+      &.cmt-item-action-link-last {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      a, span.ClusterLink {
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+
+/* Unread articles marker */
+
+div.UnreadArticles {
+  line-height: 15px; // Equal to originally set height
+  margin: 0;
+  padding: 0 !important;
+  vertical-align: initial;
+  width: auto;
+
+  span.UnreadArticles {
+    margin: 0;
+    padding: 0 !important;
+    width: auto;
+
+    &::before {
+      color: #aaa;
+      content: "\0F04CE"; // star
+      font-family: "Material Design Icons";
+      font-size: 150%;
+    }
+
+    &.Remarkable::before {
+      color: #ffc940;
+    }
+
+    i.fa {
+      display: none !important;
+    }
+  }
+}
+
+/* Dialog windows */
+
+.Dialog {
+  border-radius: 4px;
+  overflow: hidden;
+
+  & > .Header {
+    height: auto;
+
+    h1 {
+      font-size: inherit;
+      font-weight: bold;
+      margin-bottom: 0;
+      padding: 10px;
+    }
+  }
+
+  .Content {
+    .ContentFooter {
+      padding: 10px 0;
+    }
+  }
+}
+
+/* Action buttons */
+
+a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  background-color: #f15a22;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 12px 32px;
+  padding: 0.3em 1.2em;
+  position: relative;
+  transition: all ease-in 0.1s;
+
+  i.fa {
+    // Hide FontAwesome icons by default (to only selectively show the ones
+    // that have been replaced with Material Design counterparts)
+    display: none;
+  }
+
+  span {
+    border: none;
+    color: #fff;
+    font-size: inherit;
+    font-weight: 500;
+    text-shadow: none;
+  }
+
+  &.Fullsize span {
+    padding: 0;
+  }
+
+  &.Fullsize.Center span i {
+    left: auto;
+    position: static;
+    top: auto;
+  }
+
+  &::before {
+    background-color: #f15a22;
+    border-radius: inherit;
+    bottom: 0;
+    color: inherit;
+    content: "";
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity .2s cubic-bezier(.4,0,.6,1);
+  }
+
+  &::before {
+    content: none;
+  }
+
+  &:hover {
+    background-color: #f15a22;
+    border: solid 1px #ff6a32;
+    color: #fff;
+    
+    &::before {
+      opacity: .08;
+    }
+
+    span i.fa::before {
+      color: #fff;
+    }
+  }
+
+  &:focus {
+    background-color: #f15a22;
+    outline: none;
+  }
+
+  &:active {
+    background-color: #f15a22;
+
+    &::before {
+      opacity: .08;
+    }
+  }
+
+  &.Inline {
+    height: 32px;
+    padding: 0 32px;
+    top: 1px;
+    vertical-align: middle;
+
+    span {
+      line-height: inherit;
+    }
+  }
+
+  span.v-ripple__container {
+    color: inherit;
+    position: absolute;
+
+    span.v-ripple__animation {
+      color: inherit;
+      position: absolute;
+    }
+  }
+}
+
+a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  background: #f8f8f8;
+  color: #444;
+  padding: 0.3em 1.2em;
+
+  // Border and shadow for regular action buttons when displayed on a light
+  // (white) background
+  border: solid 1px #ddd;
+  box-shadow: 0px 1px 0px #ccc, 0px 1px 10px #f8f8f8;
+
+  span {
+    color: inherit;
+    padding: 0;
+  }
+
+  &:hover {
+    border: solid 1px #ff6a32;
+  }
+
+  &.Primary {
+    background-color: #f15a22;
+    border: solid 1px #ff6a32;
+    color: #fff;
+    padding: 0.3em 1.2em;
+
+    // TODO: Hover
+  }
+}
+
+// Disable action buttons
+a.CallForAction.Disabled,
+.v-application a.CallForAction.Disabled,
+button.CallForAction.Disabled {
+  color: #888;
+  background: #d0d0d0 !important;
+  border: solid 1px #d8d8d8 !important;
+  border-bottom: solid 1px #d8d8d8 !important;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee;
+}
+
+// Regular action buttons when inside a widget or other elements with a gray
+// background
+.WidgetSimple .Content,
+.Dialog .ContentFooter {
+  a.CallForAction,
+  .v-application a.CallForAction,
+  button.CallForAction {
+    &:not(.Primary) {
+      border: solid 1px #fff;
+      box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
+
+      &:hover {
+        border: solid 1px #ff6a32;
+      }
+    }
+  }
+}
+
+// Action buttons in process elements sidebar widget (which has white
+// background)
+.ProcessManagementEditScreen #ProcessElements a.CallForAction {
+  // Extend the original class to revert to styles for white background
+  @extend .CallForAction;
+  width: auto;
+}
+
+// Action button icons
+a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  display: inline;
+  position: static;
+
+  i.fa {
+    display: inline;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    margin-right: 0.15em;
+
+    &::before {
+      color: #f15a22;
+      color: lightslategray;
+      color: slategray;
+      content: "";
+      font-family: "Material Design Icons";
+      font-weight: bold;
+    }
+    
+    @each $fa_name, $mdi_name in $fa_to_mdi {
+      &.fa-#{$fa_name}::before {
+        // TODO: Remove f-f and color when no longer needed
+        font-family: "Material Design Icons";
+        // color: #666;
+        content: mdi($mdi_name);
+      }
+    }
+  }
+}
+
+a.CallForAction.Fullsize span,
+.v-application a.CallForAction.Fullsize span,
+button.CallForAction.Fullsize span {
+  i.fa {
+    color: inherit;
+    margin-right: 0.3em;
+  }
+}
+
+a.CallForAction.Disabled,
+.v-application a.CallForAction.Disabled,
+button.CallForAction.Disabled {
+  i.fa::before {
+    color: #888;
+  }
+}
+
+/* List displayed as table */
+
+ul.Tablelike {
+  background-color: $table-head-background;
+  border-radius: 4px;
+  overflow: hidden;
+
+  li {
+    padding: $table-cell-padding;
+
+    &.Header {
+      background: none;
+      border: none;
+      border-bottom: thin solid rgba(0, 0, 0, 0.12);
+      font-size: inherit;
+      font-weight: bold;
+    }
+  }
+}
+
+/* Popup windows */
+
+.LayoutPopup > .Footer .CallForAction {
+  padding: 0.8em 1.8em;
+}
+
+/* Rules to override what Vuetify does */
+
+.v-application ol, .v-application ul {
+  padding-left: 0;
+}
+
+/* Newly introduced rules (TODO: Move to a separate file) */
+
+// Invisible element to force a break into next flex row
+hr.cmt-flex-break {
+  height: 0;
+  width: 100%;
+  // NOTE: This element needs to be assigned the appropriate order inside parent
+}

@@ -1,0 +1,19 @@
+.ActionList {
+  a[href*="Subaction=Import"].CallForAction {
+    i.fa-upload {
+      color: inherit;
+      
+      &::before {
+        content: mdi("import");
+        display: inline;
+        font-family: "Material Design Icons";
+      }
+    }
+  }
+}
+
+.PreviewContainer {
+  .CallForAction {
+    width: auto;
+  }
+}

@@ -1,56 +1,17 @@
-@function msg-icon($type) {
-  $icons: (
-    "error":   "\0F0CE6",
-    "notice":  "\0F11CF",
-    "success": "\0F05E1"
-  );
+@import 'agent/variables';
 
-  @return map-get($map: $icons, $key: $type);
-}
-
-@function msg-color($type) {
-  $colors: (
-    "error":   #ff5252,
-    "notice":  #fb8c00,
-    "success": #4caf50
-  );
-
-  @return map-get($map: $colors, $key: $type);
-}
-
-@mixin msg-icon-before($type) {
-  content: msg-icon($type);
-  font-family: "Material Design Icons";
-  font-size: 120%;
-  opacity: 1;
-  position: static;
-  vertical-align: middle;
-}
-
-@mixin msg-background($type) {
-  background-color: msg-color($type);
-  border-radius: inherit;
-  bottom: 0;
-  content: "";
-  left: 0;
-  opacity: .12;
-  position: absolute;
-  pointer-events: none;
-  right: 0;
-  top: 0;
-}
-
-@mixin msg-box($type) {
-  border: thin solid;
-  border-radius: 4px;
-  caret-color:rgb(251, 140, 0);
-  color: msg-color($type);
-}
+@import 'agent/base';
+@import 'agent/toolbar';
 
 body {
   /* font-family: Roboto, sans-serif; */
   font-family: Heebo, sans-serif;
   font-size: 100%;
+}
+
+a,
+.v-application a {
+  color: $link-color;
 }
 
 select {
@@ -90,6 +51,7 @@ select {
 
   & > li > a {
     font-size: 14px;
+    font-size: inherit;
     padding: 8px 14px 4px 14px;  
 
     &::after {
@@ -123,6 +85,8 @@ select {
   }
 
   & > .Active > ul > li {
+    font-size: inherit;
+
     &:hover {
       background-color: #f15a22;
       
@@ -132,7 +96,8 @@ select {
     }
 
     & > a {
-      font-size: 120%;
+      //font-size: 120%;
+      font-size: 90%;
       padding: 10px 14px;
     }
   }
@@ -161,75 +126,24 @@ ul.BreadCrumb li > a, .BreadCrumb li > span {
   padding: 0 2px;
 }
 
-.MessageBox {
-  background: none;
-  margin-top: 10px;
-}
-
-.MessageBox.Error {
-  background: none;
-}
-
-.MessageBox p {
-  border: thin solid;
-  border-radius: 4px;
-  border-width: 1px 1px 1px 8px;
-  caret-color:rgb(251, 140, 0);
-  color: #fb8c00;
-  margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.MessageBox p a {
-  color: #333;
-}
-
-.MessageBox p::before {
-  background-color: #fb8c00;
-  border-radius: inherit;
-  bottom: 0;
-  content: "";
-  left: 0;
-  opacity: .12;
-  position: absolute;
-  pointer-events: none;
-  right: 0;
-  top: 0;
-  margin: inherit;
-}
-
-.MessageBox.Error p {
-  color: #ff5252;
-}
-
-.MessageBox.Error p::before {
-  background: #ff5252;
-}
-
-.MessageBox.Error .Icon::before {
-  @include msg-icon-before("error");
-}
-
-.MessageBox.Error p a {
-  color: #333;
-}
-
-.MessageBox.Notice .Icon::before {
-  @include msg-icon-before("notice");
-}
-
-
 .WidgetSimple {
   background: #eee;
   border-radius: 4px;
-  box-shadow: none;
   margin-right: 0;
 }
 
-.WidgetSimple .Header {
+.WidgetSimple .Header,
+.WidgetSimple.Collapsed.AnimationRunning .Header,
+.WidgetSimple.Expanded.AnimationRunning .Header {
   line-height: 1;
   padding: 10px;
+}
+
+.Expanded.AnimationRunning > .Header > .WidgetAction.Toggle {
+  height: auto;
+  float: left;
+  margin: 0;
+  width: auto;
 }
 
 .WidgetSimple > .Header h2,
@@ -249,117 +163,32 @@ ul.BreadCrumb li > a, .BreadCrumb li > span {
   }
 }
 
-button.CallForAction {
-  background-color: #f15a22;
-  border: none;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 12px 32px;
-  position: relative;
-
-  i.fa {
-    display: none;
-  }
-
-  span {
-    border: none;
-    color: #fff;
-    font-size: inherit;
-    text-shadow: none;
-  }
-
-  &.Fullsize span {
-    padding: 0;
-  }
-
-  &::before {
-    background-color: #f15a22;
-    border-radius: inherit;
-    bottom: 0;
-    color: inherit;
-    content: "";
-    left: 0;
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: opacity .2s cubic-bezier(.4,0,.6,1);
-  }
-
-  &::before {
-    content: none;
-  }
-
-  &:hover {
-    background-color: #f15a22;
-
-    &::before {
-      opacity: .08;
-    }
-  }
-
-  &:focus {
-    background-color: #f15a22;
-    outline: none;
-  }
-
-  &:active {
-    background-color: #f15a22;
-
-    &::before {
-      opacity: .08;
-    }
-  }
-
-  &.Inline {
-    height: 32px;
-    padding: 0 32px;
-    top: 1px;
-    vertical-align: middle;
-
-    span {
-      line-height: inherit;
-    }
-  }
-
-  span.v-ripple__container {
-    color: inherit;
-    position: absolute;
-
-    span.v-ripple__animation {
-      color: inherit;
-      position: absolute;
-    }
-  }
-}
-
 form {
   label.Mandatory span.Marker {
     top: initial;
   }
 }
 
-// TODO: Cn was supposed to be a prefix (for "Centuran"), probably better
-// to use lowercase classes and "cmt" as a prefix for "Comet"
-.FormScreen .Cn-FormWrapper {
+.FormScreen .cmt-form-wrapper {
   margin-left: calc(270px + 16px);
 }
 
 input[type="text"] {
   border: solid 1px rgba(0,0,0,.38);
+  border: solid 1px #d2d2d2;
   border-radius: 4px;
   box-shadow: none;
   color: rgba(0,0,0,.87);
   height: 32px;
   font-family: inherit;
   font-size: inherit;
-  padding: 5px;
+  padding: $form-field-padding;
 }
 
 .SearchBox input[type="text"] {
+  border: solid 1px #d2d2d2;
   border-right: solid 1px rgba(0,0,0,.38);
+  border-right: solid 1px $form-field-border-color;
   box-sizing: border-box;
   font-family: Heebo, sans-serif;
   font-size: inherit;
@@ -380,6 +209,10 @@ input[type="text"] {
   width: 32px;
 }
 
+.LayoutFixedSidebar.SidebarLast > .SidebarColumn {
+  width: 20em;
+}
+
 .SidebarColumn .WidgetSimple .InputField_Container,
 .SidebarColumn .WidgetSimple .InputField_InputContainer,
 .SidebarColumn .WidgetSimple .InputField_Search {
@@ -390,20 +223,88 @@ input[type="text"] {
   box-sizing: border-box;
 }
 
-div.InputField_Selection {
+div.InputField_InputContainer {
+  align-items: center;
+  display: flex;
   height: 32px;
-  line-height: 32px;
-  top: 0;
+
+  .InputField_Search {
+    position: relative;
+  }
+
+  .InputField_More {
+    top: auto;
+  }
+}
+
+div.InputField_ListContainer {
+  z-index: 9999;
+}
+
+div.InputField_Selection {
+  align-items: center;
+  background: #e0e0e0;
+  border-radius: 50px;
+  display: inline-block;
+  height: auto;
+  line-height: 20px;
+  padding: 0 0.3em;
+  position: absolute;
+  top: auto;
+  vertical-align: middle;
+  z-index: 1;
+
+  div.Remove {
+    background: none;
+    font-family: "Material Design Icons";
+    font-size: inherit;
+    height: auto;
+    line-height: inherit;
+    overflow: hidden;
+    padding-left: 0;
+    //position: absolute;
+    //right: -26px;
+    vertical-align: middle;
+    
+    a {
+      position: relative;
+      //width: 0;
+      //color: #e0e0e0;
+      padding: 0;
+      line-height: inherit;
+      font-size: 0;
+
+      &::before {
+        //background: #e0e0e0;
+        //border-radius: 0 50px 50px 0;
+        color: #888;
+        content: "\0F1398"; // close-thick
+        font-size: initial;
+        height: 100%;
+        left: 0;
+        line-height: inherit;
+        padding: 0;
+        padding-right: 0;
+        padding-left: 0;
+        position: static;
+        top: 0;
+        vertical-align: middle;
+        width: auto;
+      }
+    }
+  }
 }
 
 div.InputField_Selection div.Text {
-  background: #e0e0e0;
-  border-radius: 100000px;
+  //background: #e0e0e0;
+  border-radius: 50px;
   color: rgba(0,0,0,.87);
-  font-size: 14px;
+  font-size: inherit;
   height: 22px;
-  line-height: 24px;
-  line-height: initial;
+  line-height: 20px;
+
+  height: auto;
+  line-height: auto;
 
   // FIXME: For whatever reason, this causes Chrome to freeze when e.g. widget
   // settings are expanded for "Reminder Tickets" on the Dashboard. This affects
@@ -423,8 +324,15 @@ div.InputField_Selection div.Text {
   // }
 
   // Semi-acceptable workaround
-  width: 108%;
+  //width: calc(100% + 10px);
   text-align: center;
+
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  border-radius: 0;
+  line-height: inherit;
+  height: 100%;
 }
 
 .DataTable {
@@ -519,7 +427,7 @@ div.InputField_Selection div.Text {
     a:hover img {
       filter: none;
       opacity: 0.8;
-    }    
+    }
   }
 }
 
@@ -553,68 +461,7 @@ div.InputField_Selection div.Text {
   }
 }
 
-.LoginScreen {
-  .SuccessBox,
-  .ErrorBox {
-    background: none;
-    margin-bottom: 1em;
-    position: relative;
-
-    span {
-      display: flex;
-
-      &::before {
-        margin-right: 0.2em;  
-      }
-    }
-  }
-
-  .SuccessBox {
-    @include msg-box("success");
-
-    &::before {
-      @include msg-background("success");
-    }
-
-    span::before {
-      @include msg-icon-before("success");
-    }
-  }
-
-  .ErrorBox {
-    @include msg-box("error");
-
-    &::before {
-      @include msg-background("error");
-    }
-
-    span::before {
-      @include msg-icon-before("error");
-    }
-  }
-}
-
 /* Dashboard */
-
-fieldset.TableLike.FixedLabelSmall > label {
-  width: 10em;
-}
-
-fieldset.TableLike.FixedLabelSmall > .Field,
-fieldset.TableLike.FixedLabelSmall > .Row > .Field,
-fieldset.TableLike.FixedLabelSmall > .Value,
-fieldset.TableLike.FixedLabelSmall > .Row > .Value {
-  margin-left: 10em;
-}
-
-fieldset.TableLike > label,
-fieldset.TableLike > .Row > label {
-  color: #666;
-}
-
-ul.Tablelike li.Header {
-  text-transform: none;
-}
 
 div.AllocationListContainer {
   margin-left: calc(10em + 10px);
@@ -688,6 +535,7 @@ div.AllocationListContainer {
 }
 
 .DataTable,
+.Sortable.DataTable,
 .TableSmall {
   border-radius: 4px;
   border-spacing: 0;
@@ -707,18 +555,24 @@ div.AllocationListContainer {
     padding: 10px 10px;
     text-transform: none;
       
+    &.SortAscending,
+    &.SortDescending,
     &.DashboardHeader,
     &.DashboardHeader.SortAscendingLarge,
     &.DashboardHeader.SortDescendingLarge,
     &.OverviewHeader,
     &.OverviewHeader.SortAscendingLarge,
     &.OverviewHeader.SortDescendingLarge {
+      border-bottom-color: rgba(0, 0, 0, .12);
       padding: 10px 20px 10px 1px;
       padding-left: 1px;
+      white-space: nowrap;
     }
 
-    & a,
-    & span {
+    a,
+    span {
+      background: none;
+      display: inline;
       font-size: inherit;
       font-weight: inherit;
       padding-left: 0;
@@ -726,6 +580,8 @@ div.AllocationListContainer {
     }
 
     a.ColumnSettingsTrigger::after,
+    &.SortAscending a::after,
+    &.SortDescending a::after,
     &.SortAscendingLarge a::after,
     &.SortDescendingLarge a::after {
       background: #ddd;
@@ -750,14 +606,13 @@ div.AllocationListContainer {
       float: none;
       font-size: 100%;
       height: 0;
-      margin-left: 0.4em;
+      margin-left: -0.4em;
       opacity: 1;
       position: static;
       width: 0;
 
       &::after {
-        content: "\0F0232";
-        margin-left: 0;
+        content: "\0F0232"; // filter
       }
       
       i.fa {
@@ -765,14 +620,15 @@ div.AllocationListContainer {
       }
     }
 
+    &.SortAscending a::after,
     &.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after {
       content: "\0F0143";
     }
 
+    &.SortDescending a::after,
     &.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after {
       content: "\0F0140";
     }
-
 
     &.SortAscendingLarge a,
     &.SortDescendingLarge a {
@@ -797,52 +653,51 @@ div.AllocationListContainer {
     &.DashboardHeader > span,
     &.OverviewHeader > a,
     &.OverviewHeader > span {
-      float: left;
+      float: none;
       height: initial;
       line-height: 150%;
     }
   }
 
-  tbody td {
-    padding: 6px 10px;
+  tbody {
+    tr {
+      &:hover {
+        td {
+          background-color: #fb8c00;
+        }
+      }
+
+      td {
+        border-right: solid 1px #ddd;
+        padding: $table-cell-padding;
+      }
+
+      td:last-child {
+        border-right: none;
+      }
+
+      &.Row td.QueueOverviewTotals {
+        border-top: solid 2px #ddd;
+      }
+    }
+  }
+
+  tr.MasterAction {
+    &:hover {
+      span.UnreadArticles.Remarkable::before {
+        // Outline to make the star stand out on similar background
+        text-shadow:
+          -1px  0px 0px rgba(0, 0, 0, 0.35),
+           0px -1px 0px rgba(0, 0, 0, 0.35),
+           1px  0px 0px rgba(0, 0, 0, 0.35),
+           0px  1px 0px rgba(0, 0, 0, 0.35);
+      }
+    }
   }
 }
 
 .Tab.Actions {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-  margin-bottom: 8px;
-  padding-left: 0;
-
-  li {
-    border-left: solid 1px #ccc;
-    float: left;
-    font-size: smaller;
-
-    &:first-child {
-      border-left: none;
-
-      a {
-        padding-left: 10px;
-      }
-    }
-
-    a {
-      border-bottom: none;
-      color: #777;
-      padding: 5px 10px;
-      vertical-align: middle;
-    }
-
-    &.Selected a {
-      background-color: #fff;
-    }
-
-    &:after {
-      content: none;
-    }
-  }
+  @include button-group();
 }
 
 .SettingsWidget {
@@ -873,6 +728,10 @@ div.AllocationListContainer {
 
       .v-input__slot {
         align-items: normal;
+
+        .v-input--selection-controls__input {
+          transform: scale(0.75);
+        }
       }
 
       .v-label {
@@ -881,6 +740,15 @@ div.AllocationListContainer {
       }
     }
   }
+}
+
+.FieldExplanation,
+.AsteriskExplanation {
+  font-size: 14px;
+}
+
+p.FieldExplanation {
+  margin: 5px 0;
 }
 
 /* New Ticket */
@@ -913,3 +781,36 @@ div.AllocationListContainer {
     display: none;
   }
 }
+
+/* Ticket status view */
+
+.OverviewBox {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .OverviewControl {    
+    border-radius: 4px;
+    overflow: hidden;
+
+    & > div {
+      padding: 0;
+    }
+  }
+}
+
+.OverviewLarge {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@import 'agent/admin';
+@import 'agent/calendar';
+@import 'agent/dashboard';
+@import 'agent/icons';
+@import 'agent/login';
+@import 'agent/new-ticket';
+@import 'agent/process-management'; // TODO: Move to agent/admin/process-management?
+@import 'agent/statistics';
+@import 'agent/sysconfig'; // TODO: Move to agent/admin/sysconfig?
+@import 'agent/ticket-overview';
+@import 'agent/ticket-zoom';

@@ -1,0 +1,200 @@
+div.Headline {
+  display: flex;
+  align-items: center;
+
+  .Flag {
+    @include priority-flag();
+  }
+
+  h1 {
+    font-size: 110%;
+  }
+  
+  .Flag + h1 {
+    margin-left: 0.5em;
+  }
+}
+
+.ActionRow .Actions {
+  // Display "Back" (which is the first item) separately, since it's not really
+  // an "action"
+  li#nav-Back {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    a::before {
+      @include mdi("\0F004D"); // arrow-left
+      margin-right: 0.25em;
+    }
+
+    & + li {
+      border-left: solid 1px #ccc;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      margin-left: 0.5em;
+    }
+  }
+
+  li {
+    form {
+      input {
+        box-shadow: 0px 1px 0px rgba(0,0,0,0.2),0px 1px 0px rgba(0,0,0,0.2);
+
+        border-bottom: solid 2px #fff;
+        box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+      }
+    }
+  }
+}
+
+#ArticleTableBody {
+  .Scroller {
+    border-radius: 4px;
+    height: 10em;
+  }
+
+  #ArticleTable { 
+    overflow: initial;
+    
+    thead {
+      overflow: auto;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+  }
+}
+
+.MessageBrowser {
+  @include msg-box("info");
+
+  p {
+    background: transparent;
+    color: #333;
+    font-size: smaller;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.5em 0.75em;
+    text-align: left;
+
+    &::before {
+      @include msg-icon-before("info");
+      color: msg-color("info");
+    }
+  }
+
+  a.Close {
+    &::before {
+      @include mdi("\0F0156"); // close
+      color: msg-color("info");
+      margin-left: -0.5em;
+    }
+
+    i.fa {
+      display: none;
+    }
+  }
+}
+
+// FIXME: There's a lot of playing with flex element order inside #ArticleItems,
+// consider switching to a simpler solution (possibly by changing the structure
+// of HTML)
+#ArticleItems {
+  .ArticleMailContent {
+    padding-left: 0;
+    padding-right: 0;
+
+    .ItemActions {
+      padding-left: 0;
+      margin-bottom: 6px;
+    }
+  }
+
+  .Incoming {
+    .Avatar {
+      margin-left: 1em;
+      order: 4;
+    }
+
+    .ArticleMailContentHTMLWrapper {
+      margin-left: 0;
+      margin-right: 0;
+      order: 3;
+    }
+  }
+
+  .Outgoing {
+    .Avatar {
+      margin-right: 1em;
+      order: 3;
+    }
+
+    .ArticleMailContentHTMLWrapper {
+      margin-left: 0;
+      margin-right: 0;
+      order: 4;
+    }
+  }
+}
+
+.ArticleMailContent {
+  padding-left: 0;
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .Avatar {
+    border-radius: 50%;
+    flex-grow: 0;
+    order: 4;
+    padding: 3px;
+    position: static;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  .ItemActions {
+    order: 1;
+
+    & + hr.cmt-flex-break {
+      order: 2;
+    }
+  }
+
+  .ArticleMailContentHTMLWrapper {
+    align-self: flex-start;
+    border-radius: 4px;
+    flex-grow: 1;
+    margin-right: 0;
+    order: 3;
+
+    iframe {
+      border-radius: 4px;
+    }
+  }
+
+  hr.cmt-flex-break {
+    order: 5;
+  }
+
+  .ArticleAttachments {
+    order: 6;
+  }
+}
+
+#ArticleItems .Outgoing {
+  .ArticleMailContent {
+    .ItemActions,
+    .ArticleAttachments {
+      left: 50px;       // Account for avatar width
+      margin-left: 1em; // Account for avatar right margin
+      margin-right: 0;
+      position: relative;
+    }
+  }
+}
+
+/* Ticket Information box */
