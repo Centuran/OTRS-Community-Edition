@@ -52,6 +52,7 @@
 [% RenderBlockEnd("InlineActionRowItemHTML") %]
             </ul>
 [% RenderBlockEnd("InlineActionRow") %]
+            <div class="cmt-ticket-overview-ml-flags">
 [% RenderBlockStart("Bulk") %]
             <div class="Checkbox">
                 <input class="Checkbox" type="checkbox" name="TicketID" title="[% Translate("Select this ticket") | html %]" value="[% Data.TicketID | html %]" autocomplete="off" />
@@ -68,6 +69,7 @@
             </div>
 [% RenderBlockEnd("MetaIcon") %]
 [% RenderBlockEnd("Meta") %]
+            </div>
             <h2>
                 <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %]" class="MasterActionLink">[% Config("Ticket::Hook") %][% Config("Ticket::HookDivider") %][% Data.TicketNumber %] &ndash; [% Data.Title | html %]</a>
             </h2>
