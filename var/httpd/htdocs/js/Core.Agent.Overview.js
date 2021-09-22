@@ -303,7 +303,7 @@ Core.Agent.Overview = (function (TargetNS) {
      */
     TargetNS.InitInlineActions = function () {
         $('.OverviewMedium > li, .OverviewLarge > li').on('mouseenter', function() {
-            $(this).find('ul.InlineActions').css('top', '0px');
+            $(this).find('ul.InlineActions').addClass('cmt-inline-actions-shown');
 
             Core.App.Publish('Event.Agent.TicketOverview.InlineActions.Shown');
         });
@@ -321,7 +321,7 @@ Core.Agent.Overview = (function (TargetNS) {
                 return false;
             }
 
-            $(this).find('ul.InlineActions').css('top', '-35px');
+            $(this).find('ul.InlineActions').removeClass('cmt-inline-actions-shown');
 
             Core.App.Publish('Event.Agent.TicketOverview.InlineActions.Hidden', [$(this).find('ul.InlineActions')]);
         });
