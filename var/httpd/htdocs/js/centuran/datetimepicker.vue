@@ -12,6 +12,8 @@
         v-model="date.picked"
         color="#f15a22"
         :no-title="true"
+        @click.native.stop
+        @input="$refs.menuDate.isActive = false"
       ></v-date-picker>
       <!-- TODO: Add "Today" button in default slot -->
     </v-menu>
@@ -30,6 +32,7 @@
         v-model="time.picked"
         color="#f15a22"
         :no-title="true"
+        @click.native.stop
         @click:minute="$refs.menuTime.isActive = false"
       ></v-time-picker>
     </v-menu>
