@@ -142,6 +142,12 @@
 #[% RenderBlockEnd("DynamicField_Field2Plain") %]
 #                        </td>
 #[% RenderBlockEnd("DynamicField_Field2") %]
+
+# Empty element to account for unset dynamic field block (and have the same
+# number of columns in every row)
+                        <td>
+                        </td>
+
                         <td>
                             <label>[% Translate("Update Time") | html %]</label>
 [% RenderBlockStart("UpdateTime") %]
