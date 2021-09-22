@@ -52,6 +52,28 @@ new Vue({
         };
     }
 });
+
+new MutationObserver(function (mutations, observer) {
+    var newDialogs =
+        document.querySelectorAll('body > .Dialog:not(.__vue_processed)');
+
+    newDialogs.forEach(function (dialog) {
+        var fields = dialog.querySelectorAll('.Field.__vue_datetimepicker');
+
+        fields.forEach(function (field) {
+            new Vue({
+                el: field,
+                vuetify: new Vuetify({ theme: { disable: true } }),
+                components: {
+                    'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue')
+                }
+            });
+
+            dialog.classList.add('__vue_processed');
+        });
+    });
+}).observe(document.body,
+    { attributes: false, childList: true, subtree: false }); 
 </script>
 
 </body>
