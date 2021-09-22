@@ -115,7 +115,7 @@
         <fieldset class="TableLike">
             <legend><span>[% Translate("Date/Time") | html %]</span></legend>
             <label for="StartDay">[% Translate("Start date") | html %]:</label>
-            <div class="Field">
+            <div class="Field __vue_datetimepicker">
 [% IF ( Data.TicketAppointmentRuleID && Data.ReadOnlyStart ) || Data.PermissionLevel < 2 %]
                 <p id="StartDay" class="ReadOnlyValue">[% Data.StartDate | Localize("TimeLong") %]</p>
 [% ELSE %]
@@ -123,12 +123,13 @@
                     <p>[% Translate("Invalid date!") | html %]</p>
                     <p>[% Translate("Please set this to value before End date.") | html %]</p>
                 </div>
+                <datetimepicker></datetimepicker>
                 [% Data.StartDateString %]
 [% END %]
             </div>
             <div class="Clear"></div>
             <label for="EndDay">[% Translate("End date") | html %]:</label>
-            <div class="Field">
+            <div class="Field __vue_datetimepicker">
 [% IF ( Data.TicketAppointmentRuleID && Data.ReadOnlyDuration ) || Data.PermissionLevel < 2 %]
                 <p id="EndDay" class="ReadOnlyValue">[% Data.EndDate | Localize("TimeLong") %]</p>
 [% ELSE %]
@@ -136,6 +137,7 @@
                     <p>[% Translate("Invalid date!") | html %]</p>
                     <p>[% Translate("Please set this to value after Start date.") | html %]</p>
                 </div>
+                <datetimepicker></datetimepicker>
                 [% Data.EndDateString %]
 [% END %]
             </div>
