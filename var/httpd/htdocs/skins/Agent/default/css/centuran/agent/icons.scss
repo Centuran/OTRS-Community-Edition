@@ -1,0 +1,58 @@
+$fa_to_mdi: (
+  "arrows-h":    "arrow-left-right",
+  "arrows-v":    "arrow-up-down",
+  "bar-chart":   "chart-bar",
+  "bell-o":      "bell",
+  "building":    "office-building",
+  "building-o":  "office-building",
+  "calendar":    "calendar",
+  "filter":      "filter",
+  "paperclip":   "paperclip",
+  "plus-square": "plus",
+  "reply":       "reply",
+  "user":        "account",
+  "users":       "account-group"
+);
+
+$mdi_codes: (
+  "account":              "\0F0004",
+  "account-box-multiple": "\0F0934",
+  "account-clock":        "\0F0B56",
+  "account-group":        "\0F0849",
+  "account-outline":      "\0F0013",
+  "arrow-left-right":     "\0F0E73",
+  "arrow-up-down":        "\0F0E79",
+  "bell":                 "\0F009A",
+  "chart-bar":            "\0F0128",
+  "calendar":             "\0F00ED",
+  "certificate":          "\0F0124",
+  "close-thick":          "\0F1398",
+  "cog-transfer":         "\0F105B",
+  "database-search":      "\0F0866",
+  "download":             "\0F01DA",
+  "email":                "\0F01EE",
+  "email-alert":          "\0F06CF",
+  "file-certificate":     "\0F1186",
+  "file-document":        "\0F0219",
+  "file-key":             "\0F1184",
+  "filter":               "\0F0232",
+  "folder-text":          "\0F0C82",
+  "form-select":          "\0F1400",
+  "import":               "\0F02FA",
+  "menu-right":           "\0F035F",
+  "office-building":      "\0F0991",
+  "paperclip":            "\0F03E2",
+  "playlist-check":       "\0F05C7",
+  "plus":                 "\0F0415",
+  "progress-wrench":      "\0F0CBD",
+  "refresh":              "\0F0450",
+  "reply":                "\0F045A",
+  "robot":                "\0F06A9",
+  "sort-ascending":       "\0F04BC",
+  "tag-multiple":         "\0F04FB",
+  "timeline-text":        "\0F0BD3"
+);
+
+@function mdi($name) {
+  @return map-get($map: $mdi_codes, $key: $name);
+}
