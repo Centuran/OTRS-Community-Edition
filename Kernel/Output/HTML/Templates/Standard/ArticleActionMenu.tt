@@ -14,7 +14,7 @@
 
     [% IF Item.ItemType == 'Dropdown' %]
         [% IF Item.DropdownType == 'Forward' %]
-            <li>
+            <li class="cmt-item-action-dropdown">
                 <form title="[% Translate(Data.Name) | html %]" action="[% Env("CGIHandle") %]" method="get" id="[% Item.FormID | html %]">
                     <input type="hidden" name="Action" value="[% Item.Action | html %]"/>
                     <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
@@ -25,7 +25,7 @@
                 </form>
             </li>
         [% ELSIF Item.DropdownType == 'Reply' %]
-            <li>
+            <li class="cmt-item-action-dropdown">
                 <form title="[% Translate(Item.Name) | html %]" action="[% Env("CGIHandle") %]" method="get" id="[% Item.FormID | html %]">
                     <input type="hidden" name="Action" value="[% Item.Action | html %]"/>
                     <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
@@ -38,7 +38,11 @@
         [% END %]
 
     [% ELSIF Item.ItemType == 'Link' %]
-        <li>
+        [% IF loop.next() && loop.next().ItemType != 'Link' %]
+            <li class="cmt-item-action-link cmt-item-action-link-last">
+        [% ELSE %]
+            <li class="cmt-item-action-link">
+        [% END %]
             <a href="[% IF Item.Link.match('^(?!(mailto)|(http(s)?):)') %][% Env("Baselink") %][% END %][% Item.Link %]" class="[% Item.Class | html %]" [% Item.LinkParam %] title="[% Translate(Item.Description) | html %]">[% Translate(Item.Name) | html %]</a>
         </li>
     [% END %]
