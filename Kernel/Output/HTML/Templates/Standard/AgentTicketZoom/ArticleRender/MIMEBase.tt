@@ -122,6 +122,7 @@
                 </div>
 
                 [% PROCESS ArticleActionMenu.tt %]
+                <hr class="cmt-flex-break" />
 
 [% IF Data.HTML %]
                 <div class="ArticleMailContentHTMLWrapper">
@@ -173,6 +174,7 @@ function CheckIFrameHeight(IFrameID) {
                 [% END %]
 
 [% IF Data.Attachments && Data.Attachments.size() %]
+                <hr class="cmt-flex-break" />
                 <ul class="ArticleAttachments">
                 [% FOREACH Attachment IN Data.Attachments %]
                     <li title="[% Attachment.Filename | html %]">
