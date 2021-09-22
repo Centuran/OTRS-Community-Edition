@@ -26,7 +26,7 @@
                     <li>
                         <span title="[% Translate(Data.Description) | html %]">
                             <input type="checkbox" name="Backend" id="Settings[% Data.Name | html %]" value="[% Data.Name | html %]" [% Data.Checked %] [% Data.Readonly %]/>
-                            <v-switch inset hide-details
+                            <v-switch inset hide-details color="#24408c"
                                 v-model="document.getElementById('Settings[% Data.Name | html %]').checked"
                                 >
                                 <template v-slot:label>
