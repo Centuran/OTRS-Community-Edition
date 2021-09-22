@@ -599,6 +599,9 @@ sub _Show {
                 my $SelectHTML = $Item->{HTML};
                 $SelectHTML =~ s/id="DestQueueID"/id="DestQueueID$TicketID"/xmig;
                 $SelectHTML =~ s/for="DestQueueID"/for="DestQueueID$TicketID"/xmig;
+                # FIXME: This might be a leftover that's not needed anymore
+                # $SelectHTML =~ s/(<select.*?)>/$1 data-parent="#TicketID_$TicketID .Content">/xmi;
+
                 $LayoutObject->Block(
                     Name => 'InlineActionRowItemHTML',
                     Data => {
