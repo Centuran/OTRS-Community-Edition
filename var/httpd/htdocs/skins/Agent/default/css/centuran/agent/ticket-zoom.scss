@@ -164,13 +164,17 @@ div.Headline {
     }
   }
 
-  .ArticleMailContentHTMLWrapper {
+  .ArticleBody {
     align-self: flex-start;
     border-radius: 4px;
     flex-grow: 1;
     margin-right: 0;
     order: 3;
-
+  }
+  
+  .ArticleMailContentHTMLWrapper {
+    @extend .ArticleBody;
+    
     iframe {
       border-radius: 4px;
     }

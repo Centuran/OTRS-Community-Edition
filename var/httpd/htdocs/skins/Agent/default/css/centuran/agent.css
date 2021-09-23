@@ -3873,7 +3873,7 @@ div.Headline .Flag + h1 {
 .ArticleMailContent .ItemActions + hr.cmt-flex-break {
   order: 2;
 }
-.ArticleMailContent .ArticleMailContentHTMLWrapper {
+.ArticleMailContent .ArticleBody, .ArticleMailContent .ArticleMailContentHTMLWrapper {
   align-self: flex-start;
   border-radius: 4px;
   flex-grow: 1;
