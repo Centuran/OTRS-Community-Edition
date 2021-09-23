@@ -2,7 +2,7 @@
 <template>
   <div>
     <v-menu ref="menuDate" eager bottom offset-overflow offset-y
-        :content-class="`menu-pointing ${modeClasses.menuDate}`"
+        :content-class="`menu-pointing ${menuClasses.menuDate}`"
         @input="updateClasses('menuDate')">
       <template v-slot:activator="{ on, attrs }">
         <input ref="dateInput" type="text" v-model="date.displayed" v-on="on"
@@ -20,7 +20,7 @@
     <v-menu ref="menuTime" eager bottom offset-overflow offset-y
         v-model="timeMenuIsOpen"
         :close-on-content-click="false"
-        :content-class="`menu-pointing ${modeClasses.menuTime}`"
+        :content-class="`menu-pointing ${menuClasses.menuTime}`"
         @input="updateClasses('menuTime')">
       <template v-slot:activator="{ on, attrs }">
         <input ref="timeInput" type="text" v-model="time.picked" v-on="on"
@@ -52,7 +52,7 @@ module.exports = {
         value: { h: 0, m: 0 }, // Selected time object
         picked: ""             // Time string from the time picker
       },
-      modeClasses: {
+      menuClasses: {
         menuDate: "",
         menuTime: ""
       },
@@ -146,9 +146,9 @@ module.exports = {
         var dateInput = this.$refs.dateInput;
         
         if (content.offsetTop != 0 && content.offsetTop < dateInput.offsetTop)
-          this.modeClasses[ref] = 'menu-above';
+          this.menuClasses[ref] = 'menu-above';
         else
-          this.modeClasses[ref] = 'menu-below';
+          this.menuClasses[ref] = 'menu-below';
       }).bind(this), 100);
     }
   },
