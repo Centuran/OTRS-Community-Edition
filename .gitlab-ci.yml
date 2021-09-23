@@ -23,6 +23,8 @@ build-otrs-db-image:
     - apk update
     - apk add --no-cache ca-certificates git
     - update-ca-certificates
+    - echo "${REGISTRY_PATH}"
+    - echo "${CI_REGISTRY}/${CI_PROJECT_PATH}"
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}/${CI_PROJECT_PATH}"
     - git clone https://gitlab+deploy-token-27:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.sidnet.info/centuran/otrs-ce-development /tmp/otrs-ce-development
   script:
