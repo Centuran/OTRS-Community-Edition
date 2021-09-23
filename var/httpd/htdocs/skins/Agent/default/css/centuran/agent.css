@@ -1,8 +1,825 @@
-@charset "UTF-8";
+.Flag.Small {
+  height: auto;
+  width: auto;
+}
+.Flag.Small span {
+  border-radius: 0.2em;
+  height: 1em;
+  width: 1em;
+}
+
+.Flag span.PriorityID-1 {
+  background-color: #00a000;
+}
+
+.Flag span.PriorityID-2 {
+  background-color: #0059ff;
+}
+
+.Flag span.PriorityID-3 {
+  background-color: #aaaaaa;
+}
+
+.Flag span.PriorityID-4 {
+  background-color: #ffc940;
+}
+
+.Flag span.PriorityID-5 {
+  background-color: #ff0000;
+}
+
+/* Modernized select boxes */
+.jstree-InputField {
+  font-size: 85%;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
+  height: auto;
+  line-height: initial;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-clicked:hover {
+  background-color: #f15a22;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-anchor {
+  height: auto;
+  line-height: initial;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-hovered {
+  background-color: #f15a22;
+}
+
+.MessageBox.Error {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #ff5252ff;
+  margin-top: 10px;
+}
+.MessageBox.Error .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.MessageBox.Error .Icon::before {
+  content: "\f0ce6";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.MessageBox.Error p {
+  border: thin solid;
+  border-color: #ff5252ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #ff525234;
+  caret-color: #ff5252ff;
+  color: #ff5252ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+.MessageBox.Error p::after {
+  background-color: #ff5252ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.MessageBox.Error p a {
+  color: #333;
+}
+
+.MessageBox.Notice {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #fb8c00ff;
+  margin-top: 10px;
+}
+.MessageBox.Notice .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.MessageBox.Notice .Icon::before {
+  content: "\f11cf";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.MessageBox.Notice p {
+  border: thin solid;
+  border-color: #fb8c00ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #fb8c0034;
+  caret-color: #fb8c00ff;
+  color: #fb8c00ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+.MessageBox.Notice p::after {
+  background-color: #fb8c00ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.MessageBox.Notice p a {
+  color: #333;
+}
+
+code,
+.v-application code,
+.v-application.theme--light code {
+  font-family: "Roboto Mono", monospace, fixed;
+  font-size: 90%;
+  padding: 0.1em 0.2em;
+  background-color: rgba(119, 136, 153, 0.15);
+}
+
+textarea {
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: "Roboto Mono", monospace, fixed;
+  font-size: 90%;
+  padding: 5px;
+}
+
+dl dt {
+  font-size: initial;
+  line-height: 1.5;
+}
+dl dd {
+  line-height: 1.5;
+  margin-left: 0.8em;
+}
+
+fieldset.TableLike.FixedLabelSmall > label {
+  width: 8em;
+}
+
+fieldset.TableLike.FixedLabelSmall > .Field,
+fieldset.TableLike.FixedLabelSmall > .Row > .Field,
+fieldset.TableLike.FixedLabelSmall > .Value,
+fieldset.TableLike.FixedLabelSmall > .Row > .Value {
+  margin-left: 8em;
+}
+
+fieldset.TableLike .Field, fieldset.TableLike .RichTextField {
+  padding-left: 14px;
+}
+fieldset.TableLike > label, fieldset.TableLike > .Row > label {
+  color: #666;
+}
+fieldset.TableLike p.Value {
+  margin-bottom: 0;
+}
+fieldset.TableLike label.cmt-stacked {
+  float: none;
+  text-align: left;
+  width: 100%;
+}
+fieldset.TableLike label.cmt-stacked + p.Value {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+ul.Tablelike li.Header {
+  text-transform: none;
+}
+
+.WidgetSimple {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
+.WidgetSimple .Header .WidgetAction.Toggle {
+  height: auto;
+  margin: 0;
+  width: auto;
+}
+.WidgetSimple .Header .WidgetAction.Toggle::before {
+  font-family: "Material Design Icons";
+  font-size: 120%;
+  line-height: 120%;
+}
+.WidgetSimple .Header i.fa {
+  display: none !important;
+}
+.WidgetSimple.Collapsed .Header .WidgetAction.Toggle::before {
+  content: "\f0140";
+}
+.WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
+  content: "\f0143";
+}
+.WidgetSimple .Content {
+  border-top: solid 1px ghostwhite;
+}
+
+/* Action Row */
+.WidgetSimple .Content > .ActionRow {
+  margin-left: 0;
+}
+.ActionRow .Actions {
+  display: flex;
+}
+.ActionRow .Actions li {
+  font-size: inherit;
+}
+.ActionRow .Actions li::after {
+  content: "";
+  float: none;
+  background: transparent;
+  height: 2px;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+}
+.ActionRow .Actions > li {
+  align-self: center;
+  float: left;
+  font-size: 85%;
+  line-height: initial;
+  margin: 0;
+}
+.ActionRow .Actions > li:first-child {
+  padding-left: 0;
+}
+.ActionRow .Actions > li[id^=nav-] {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: 0px 1px 0px #c8c8c8;
+  overflow: visible;
+}
+.ActionRow .Actions > li[id^=nav-] > a {
+  border-bottom: none;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.ActionRow .Actions > li[id^=nav-] > a:hover {
+  color: #444;
+  text-decoration: underline;
+  text-decoration-color: #f15a22;
+  background: #fff;
+}
+.ActionRow .Actions > li[id^=nav-]:first-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0;
+}
+.ActionRow .Actions > li[id^=nav-]:not(:first-child) {
+  border-left: none;
+}
+.ActionRow .Actions > li[id^=nav-] + li[id^=nav-] {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.ActionRow .Actions > li:not([id^=nav-]) {
+  margin-left: 0.5em;
+}
+.ActionRow .Actions > li a,
+.ActionRow .Actions > li span.ClusterLink {
+  padding: 5px 10px;
+  border-bottom: none;
+}
+
+body .Cluster ul ul {
+  border-radius: 0 0 4px 4px;
+  left: 0;
+  margin-top: 2px;
+  top: 100%;
+}
+body .Cluster ul ul li {
+  line-height: initial;
+}
+
+.ItemActions .Actions {
+  display: flex;
+}
+.ItemActions .Actions li {
+  font-size: 85%;
+}
+.ItemActions .Actions li::after {
+  content: none;
+}
+.ItemActions .Actions > li {
+  align-self: center;
+  float: left;
+  line-height: initial;
+  margin: 0;
+  border: solid 1px #ccc;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
+.ItemActions .Actions > li:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.ItemActions .Actions > li:not(:first-child) {
+  border-left: none;
+}
+.ItemActions .Actions > li:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.ItemActions .Actions > li.cmt-item-action-dropdown {
+  border: none;
+  box-shadow: none;
+  margin-left: 0.5em;
+}
+.ItemActions .Actions > li.cmt-item-action-dropdown label::after {
+  content: ":";
+}
+.ItemActions .Actions > li.cmt-item-action-dropdown input {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  border-bottom: solid 2px #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+}
+.ItemActions .Actions > li.cmt-item-action-link-last {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.ItemActions .Actions > li a, .ItemActions .Actions > li span.ClusterLink {
+  padding: 5px 10px;
+}
+
+/* Unread articles marker */
+div.UnreadArticles {
+  line-height: 15px;
+  margin: 0;
+  padding: 0 !important;
+  vertical-align: initial;
+  width: auto;
+}
+div.UnreadArticles span.UnreadArticles {
+  margin: 0;
+  padding: 0 !important;
+  width: auto;
+}
+div.UnreadArticles span.UnreadArticles::before {
+  color: #aaa;
+  content: "\f04ce";
+  font-family: "Material Design Icons";
+  font-size: 150%;
+}
+div.UnreadArticles span.UnreadArticles.Remarkable::before {
+  color: #ffc940;
+}
+div.UnreadArticles span.UnreadArticles i.fa {
+  display: none !important;
+}
+
+/* Dialog windows */
+.Dialog {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.Dialog > .Header {
+  height: auto;
+}
+.Dialog > .Header h1 {
+  font-size: inherit;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding: 10px;
+}
+.Dialog .Content .ContentFooter {
+  padding: 10px 0;
+}
+
+/* Action buttons */
+a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  background-color: #f15a22;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 12px 32px;
+  padding: 0.3em 1.2em;
+  position: relative;
+  transition: all ease-in 0.1s;
+}
+a.CallForAction i.fa, .ProcessManagementEditScreen #ProcessElements a.CallForAction i.fa,
+.v-application a.CallForAction i.fa,
+button.CallForAction i.fa {
+  display: none;
+}
+a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  border: none;
+  color: #fff;
+  font-size: inherit;
+  font-weight: 500;
+  text-shadow: none;
+}
+a.CallForAction.Fullsize span, .ProcessManagementEditScreen #ProcessElements a.Fullsize.CallForAction span,
+.v-application a.CallForAction.Fullsize span,
+button.CallForAction.Fullsize span {
+  padding: 0;
+}
+a.CallForAction.Fullsize.Center span i, .ProcessManagementEditScreen #ProcessElements a.Fullsize.Center.CallForAction span i,
+.v-application a.CallForAction.Fullsize.Center span i,
+button.CallForAction.Fullsize.Center span i {
+  left: auto;
+  position: static;
+  top: auto;
+}
+a.CallForAction::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction::before,
+.v-application a.CallForAction::before,
+button.CallForAction::before {
+  background-color: #f15a22;
+  border-radius: inherit;
+  bottom: 0;
+  color: inherit;
+  content: "";
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+}
+a.CallForAction::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction::before,
+.v-application a.CallForAction::before,
+button.CallForAction::before {
+  content: none;
+}
+a.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover,
+.v-application a.CallForAction:hover,
+button.CallForAction:hover {
+  background-color: #f15a22;
+  border: solid 1px #ff6a32;
+  color: #fff;
+}
+a.CallForAction:hover::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover::before,
+.v-application a.CallForAction:hover::before,
+button.CallForAction:hover::before {
+  opacity: 0.08;
+}
+a.CallForAction:hover span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover span i.fa::before,
+.v-application a.CallForAction:hover span i.fa::before,
+button.CallForAction:hover span i.fa::before {
+  color: #fff;
+}
+a.CallForAction:focus, .ProcessManagementEditScreen #ProcessElements a.CallForAction:focus,
+.v-application a.CallForAction:focus,
+button.CallForAction:focus {
+  background-color: #f15a22;
+  outline: none;
+}
+a.CallForAction:active, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active,
+.v-application a.CallForAction:active,
+button.CallForAction:active {
+  background-color: #f15a22;
+}
+a.CallForAction:active::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active::before,
+.v-application a.CallForAction:active::before,
+button.CallForAction:active::before {
+  opacity: 0.08;
+}
+a.CallForAction.Inline, .ProcessManagementEditScreen #ProcessElements a.Inline.CallForAction,
+.v-application a.CallForAction.Inline,
+button.CallForAction.Inline {
+  height: 32px;
+  padding: 0 32px;
+  top: 1px;
+  vertical-align: middle;
+}
+a.CallForAction.Inline span, .ProcessManagementEditScreen #ProcessElements a.Inline.CallForAction span,
+.v-application a.CallForAction.Inline span,
+button.CallForAction.Inline span {
+  line-height: inherit;
+}
+a.CallForAction span.v-ripple__container, .ProcessManagementEditScreen #ProcessElements a.CallForAction span.v-ripple__container,
+.v-application a.CallForAction span.v-ripple__container,
+button.CallForAction span.v-ripple__container {
+  color: inherit;
+  position: absolute;
+}
+a.CallForAction span.v-ripple__container span.v-ripple__animation, .ProcessManagementEditScreen #ProcessElements a.CallForAction span.v-ripple__container span.v-ripple__animation,
+.v-application a.CallForAction span.v-ripple__container span.v-ripple__animation,
+button.CallForAction span.v-ripple__container span.v-ripple__animation {
+  color: inherit;
+  position: absolute;
+}
+
+a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  background: #f8f8f8;
+  color: #444;
+  padding: 0.3em 1.2em;
+  border: solid 1px #ddd;
+  box-shadow: 0px 1px 0px #ccc, 0px 1px 10px #f8f8f8;
+}
+a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  color: inherit;
+  padding: 0;
+}
+a.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover,
+.v-application a.CallForAction:hover,
+button.CallForAction:hover {
+  border: solid 1px #ff6a32;
+}
+a.CallForAction.Primary, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction,
+.v-application a.CallForAction.Primary,
+button.CallForAction.Primary {
+  background-color: #f15a22;
+  border: solid 1px #ff6a32;
+  color: #fff;
+  padding: 0.3em 1.2em;
+}
+
+a.CallForAction.Disabled, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction,
+.v-application a.CallForAction.Disabled,
+button.CallForAction.Disabled {
+  color: #888;
+  background: #d0d0d0 !important;
+  border: solid 1px #d8d8d8 !important;
+  border-bottom: solid 1px #d8d8d8 !important;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee;
+}
+
+.WidgetSimple .Content a.CallForAction:not(.Primary), .WidgetSimple .Content .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary), .ProcessManagementEditScreen #ProcessElements .WidgetSimple .Content a.CallForAction:not(.Primary),
+.WidgetSimple .Content .v-application a.CallForAction:not(.Primary),
+.WidgetSimple .Content button.CallForAction:not(.Primary),
+.Dialog .ContentFooter a.CallForAction:not(.Primary),
+.Dialog .ContentFooter .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary),
+.ProcessManagementEditScreen #ProcessElements .Dialog .ContentFooter a.CallForAction:not(.Primary),
+.Dialog .ContentFooter .v-application a.CallForAction:not(.Primary),
+.Dialog .ContentFooter button.CallForAction:not(.Primary) {
+  border: solid 1px #fff;
+  box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
+}
+.WidgetSimple .Content a.CallForAction:not(.Primary):hover, .WidgetSimple .Content .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary):hover, .ProcessManagementEditScreen #ProcessElements .WidgetSimple .Content a.CallForAction:not(.Primary):hover,
+.WidgetSimple .Content .v-application a.CallForAction:not(.Primary):hover,
+.WidgetSimple .Content button.CallForAction:not(.Primary):hover,
+.Dialog .ContentFooter a.CallForAction:not(.Primary):hover,
+.Dialog .ContentFooter .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary):hover,
+.ProcessManagementEditScreen #ProcessElements .Dialog .ContentFooter a.CallForAction:not(.Primary):hover,
+.Dialog .ContentFooter .v-application a.CallForAction:not(.Primary):hover,
+.Dialog .ContentFooter button.CallForAction:not(.Primary):hover {
+  border: solid 1px #ff6a32;
+}
+
+.ProcessManagementEditScreen #ProcessElements a.CallForAction {
+  width: auto;
+}
+
+a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  display: inline;
+  position: static;
+}
+a.CallForAction span i.fa, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa,
+.v-application a.CallForAction span i.fa,
+button.CallForAction span i.fa {
+  display: inline;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  margin-right: 0.15em;
+}
+a.CallForAction span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa::before,
+.v-application a.CallForAction span i.fa::before,
+button.CallForAction span i.fa::before {
+  color: #f15a22;
+  color: lightslategray;
+  color: slategray;
+  content: "";
+  font-family: "Material Design Icons";
+  font-weight: bold;
+}
+a.CallForAction span i.fa.fa-arrows-h::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-arrows-h::before,
+.v-application a.CallForAction span i.fa.fa-arrows-h::before,
+button.CallForAction span i.fa.fa-arrows-h::before {
+  font-family: "Material Design Icons";
+  content: "\f0e73";
+}
+a.CallForAction span i.fa.fa-arrows-v::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-arrows-v::before,
+.v-application a.CallForAction span i.fa.fa-arrows-v::before,
+button.CallForAction span i.fa.fa-arrows-v::before {
+  font-family: "Material Design Icons";
+  content: "\f0e79";
+}
+a.CallForAction span i.fa.fa-bar-chart::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-bar-chart::before,
+.v-application a.CallForAction span i.fa.fa-bar-chart::before,
+button.CallForAction span i.fa.fa-bar-chart::before {
+  font-family: "Material Design Icons";
+  content: "\f0128";
+}
+a.CallForAction span i.fa.fa-bell-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-bell-o::before,
+.v-application a.CallForAction span i.fa.fa-bell-o::before,
+button.CallForAction span i.fa.fa-bell-o::before {
+  font-family: "Material Design Icons";
+  content: "\f009a";
+}
+a.CallForAction span i.fa.fa-building::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-building::before,
+.v-application a.CallForAction span i.fa.fa-building::before,
+button.CallForAction span i.fa.fa-building::before {
+  font-family: "Material Design Icons";
+  content: "\f0991";
+}
+a.CallForAction span i.fa.fa-building-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-building-o::before,
+.v-application a.CallForAction span i.fa.fa-building-o::before,
+button.CallForAction span i.fa.fa-building-o::before {
+  font-family: "Material Design Icons";
+  content: "\f0991";
+}
+a.CallForAction span i.fa.fa-calendar::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-calendar::before,
+.v-application a.CallForAction span i.fa.fa-calendar::before,
+button.CallForAction span i.fa.fa-calendar::before {
+  font-family: "Material Design Icons";
+  content: "\f00ed";
+}
+a.CallForAction span i.fa.fa-filter::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-filter::before,
+.v-application a.CallForAction span i.fa.fa-filter::before,
+button.CallForAction span i.fa.fa-filter::before {
+  font-family: "Material Design Icons";
+  content: "\f0232";
+}
+a.CallForAction span i.fa.fa-paperclip::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-paperclip::before,
+.v-application a.CallForAction span i.fa.fa-paperclip::before,
+button.CallForAction span i.fa.fa-paperclip::before {
+  font-family: "Material Design Icons";
+  content: "\f03e2";
+}
+a.CallForAction span i.fa.fa-plus-square::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-plus-square::before,
+.v-application a.CallForAction span i.fa.fa-plus-square::before,
+button.CallForAction span i.fa.fa-plus-square::before {
+  font-family: "Material Design Icons";
+  content: "\f0415";
+}
+a.CallForAction span i.fa.fa-reply::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-reply::before,
+.v-application a.CallForAction span i.fa.fa-reply::before,
+button.CallForAction span i.fa.fa-reply::before {
+  font-family: "Material Design Icons";
+  content: "\f045a";
+}
+a.CallForAction span i.fa.fa-user::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-user::before,
+.v-application a.CallForAction span i.fa.fa-user::before,
+button.CallForAction span i.fa.fa-user::before {
+  font-family: "Material Design Icons";
+  content: "\f0004";
+}
+a.CallForAction span i.fa.fa-users::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-users::before,
+.v-application a.CallForAction span i.fa.fa-users::before,
+button.CallForAction span i.fa.fa-users::before {
+  font-family: "Material Design Icons";
+  content: "\f0849";
+}
+
+a.CallForAction.Fullsize span i.fa, .ProcessManagementEditScreen #ProcessElements a.Fullsize.CallForAction span i.fa,
+.v-application a.CallForAction.Fullsize span i.fa,
+button.CallForAction.Fullsize span i.fa {
+  color: inherit;
+  margin-right: 0.3em;
+}
+
+a.CallForAction.Disabled i.fa::before, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction i.fa::before,
+.v-application a.CallForAction.Disabled i.fa::before,
+button.CallForAction.Disabled i.fa::before {
+  color: #888;
+}
+
+/* List displayed as table */
+ul.Tablelike {
+  background-color: #fdfdfd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+ul.Tablelike li {
+  padding: 6px 10px;
+}
+ul.Tablelike li.Header {
+  background: none;
+  border: none;
+  border-bottom: thin solid rgba(0, 0, 0, 0.12);
+  font-size: inherit;
+  font-weight: bold;
+}
+
+/* Popup windows */
+.LayoutPopup > .Footer .CallForAction, .LayoutPopup > .Footer .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements .LayoutPopup > .Footer a.CallForAction {
+  padding: 0.8em 1.8em;
+}
+
+/* Rules to override what Vuetify does */
+.v-application ol, .v-application ul {
+  padding-left: 0;
+}
+
+/* Newly introduced rules (TODO: Move to a separate file) */
+hr.cmt-flex-break {
+  height: 0;
+  width: 100%;
+}
+
+#ToolBar li {
+  height: 2em;
+  line-height: 2em;
+  width: 2em;
+}
+#ToolBar li i.fa {
+  display: none !important;
+}
+#ToolBar li a span.Counter {
+  background: #1976d2;
+  border-radius: 50px;
+  bottom: 25%;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: block;
+  left: 115%;
+  line-height: 22px;
+  min-width: 22px;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 0 3px;
+  position: absolute;
+  text-align: center;
+  text-indent: 0 !important;
+  width: auto;
+  z-index: 1000;
+}
+#ToolBar li.UserAvatar {
+  margin-left: 0;
+}
+#ToolBar li.UserAvatar a {
+  height: 42px;
+  width: 42px;
+}
+#ToolBar li.UserAvatar a img {
+  height: 40px;
+  width: 40px;
+}
+#ToolBar li.Locked.New i.icon-small.icon-show-new {
+  display: none !important;
+}
+#ToolBar li.Locked.New a::after {
+  content: "\f08ee";
+}
+#ToolBar li.Locked a::after {
+  color: #f15a22;
+  content: "\f033e";
+  font-family: "Material Design Icons";
+  font-size: 225%;
+  left: 9999px;
+  position: absolute;
+}
+
 body {
   /* font-family: Roboto, sans-serif; */
   font-family: Heebo, sans-serif;
   font-size: 100%;
+}
+
+a,
+.v-application a {
+  color: #2e53b5;
 }
 
 select {
@@ -38,6 +855,7 @@ select {
 }
 #Navigation > li > a {
   font-size: 14px;
+  font-size: inherit;
   padding: 8px 14px 4px 14px;
 }
 #Navigation > li > a::after {
@@ -63,6 +881,9 @@ select {
 #Navigation li.Selected::before {
   opacity: 0.18;
 }
+#Navigation > .Active > ul > li {
+  font-size: inherit;
+}
 #Navigation > .Active > ul > li:hover {
   background-color: #f15a22;
 }
@@ -70,7 +891,7 @@ select {
   color: #000;
 }
 #Navigation > .Active > ul > li > a {
-  font-size: 120%;
+  font-size: 90%;
   padding: 10px 14px;
 }
 
@@ -97,84 +918,24 @@ ul.BreadCrumb li > a, .BreadCrumb li > span {
   padding: 0 2px;
 }
 
-.MessageBox {
-  background: none;
-  margin-top: 10px;
-}
-
-.MessageBox.Error {
-  background: none;
-}
-
-.MessageBox p {
-  border: thin solid;
-  border-radius: 4px;
-  border-width: 1px 1px 1px 8px;
-  caret-color: #fb8c00;
-  color: #fb8c00;
-  margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.MessageBox p a {
-  color: #333;
-}
-
-.MessageBox p::before {
-  background-color: #fb8c00;
-  border-radius: inherit;
-  bottom: 0;
-  content: "";
-  left: 0;
-  opacity: 0.12;
-  position: absolute;
-  pointer-events: none;
-  right: 0;
-  top: 0;
-  margin: inherit;
-}
-
-.MessageBox.Error p {
-  color: #ff5252;
-}
-
-.MessageBox.Error p::before {
-  background: #ff5252;
-}
-
-.MessageBox.Error .Icon::before {
-  content: "󰳦";
-  font-family: "Material Design Icons";
-  font-size: 120%;
-  opacity: 1;
-  position: static;
-  vertical-align: middle;
-}
-
-.MessageBox.Error p a {
-  color: #333;
-}
-
-.MessageBox.Notice .Icon::before {
-  content: "󱇏";
-  font-family: "Material Design Icons";
-  font-size: 120%;
-  opacity: 1;
-  position: static;
-  vertical-align: middle;
-}
-
 .WidgetSimple {
   background: #eee;
   border-radius: 4px;
-  box-shadow: none;
   margin-right: 0;
 }
 
-.WidgetSimple .Header {
+.WidgetSimple .Header,
+.WidgetSimple.Collapsed.AnimationRunning .Header,
+.WidgetSimple.Expanded.AnimationRunning .Header {
   line-height: 1;
   padding: 10px;
+}
+
+.Expanded.AnimationRunning > .Header > .WidgetAction.Toggle {
+  height: auto;
+  float: left;
+  margin: 0;
+  width: auto;
 }
 
 .WidgetSimple > .Header h2,
@@ -193,88 +954,17 @@ ul.BreadCrumb li > a, .BreadCrumb li > span {
   padding-left: 0;
 }
 
-button.CallForAction {
-  background-color: #f15a22;
-  border: none;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 12px 32px;
-  position: relative;
-}
-button.CallForAction i.fa {
-  display: none;
-}
-button.CallForAction span {
-  border: none;
-  color: #fff;
-  font-size: inherit;
-  text-shadow: none;
-}
-button.CallForAction.Fullsize span {
-  padding: 0;
-}
-button.CallForAction::before {
-  background-color: #f15a22;
-  border-radius: inherit;
-  bottom: 0;
-  color: inherit;
-  content: "";
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
-}
-button.CallForAction::before {
-  content: none;
-}
-button.CallForAction:hover {
-  background-color: #f15a22;
-}
-button.CallForAction:hover::before {
-  opacity: 0.08;
-}
-button.CallForAction:focus {
-  background-color: #f15a22;
-  outline: none;
-}
-button.CallForAction:active {
-  background-color: #f15a22;
-}
-button.CallForAction:active::before {
-  opacity: 0.08;
-}
-button.CallForAction.Inline {
-  height: 32px;
-  padding: 0 32px;
-  top: 1px;
-  vertical-align: middle;
-}
-button.CallForAction.Inline span {
-  line-height: inherit;
-}
-button.CallForAction span.v-ripple__container {
-  color: inherit;
-  position: absolute;
-}
-button.CallForAction span.v-ripple__container span.v-ripple__animation {
-  color: inherit;
-  position: absolute;
-}
-
 form label.Mandatory span.Marker {
   top: initial;
 }
 
-.FormScreen .Cn-FormWrapper {
-  margin-left: calc(270px + 16px);
+.FormScreen .cmt-form-wrapper {
+  margin-left: 286px;
 }
 
 input[type=text] {
   border: solid 1px rgba(0, 0, 0, 0.38);
+  border: solid 1px #d2d2d2;
   border-radius: 4px;
   box-shadow: none;
   color: rgba(0, 0, 0, 0.87);
@@ -285,7 +975,9 @@ input[type=text] {
 }
 
 .SearchBox input[type=text] {
+  border: solid 1px #d2d2d2;
   border-right: solid 1px rgba(0, 0, 0, 0.38);
+  border-right: solid 1px #d2d2d2;
   box-sizing: border-box;
   font-family: Heebo, sans-serif;
   font-size: inherit;
@@ -306,6 +998,10 @@ input[type=text] {
   width: 32px;
 }
 
+.LayoutFixedSidebar.SidebarLast > .SidebarColumn {
+  width: 20em;
+}
+
 .SidebarColumn .WidgetSimple .InputField_Container,
 .SidebarColumn .WidgetSimple .InputField_InputContainer,
 .SidebarColumn .WidgetSimple .InputField_Search {
@@ -316,22 +1012,82 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-div.InputField_Selection {
+div.InputField_InputContainer {
+  align-items: center;
+  display: flex;
   height: 32px;
-  line-height: 32px;
+}
+div.InputField_InputContainer .InputField_Search {
+  position: relative;
+}
+div.InputField_InputContainer .InputField_More {
+  top: auto;
+}
+
+div.InputField_ListContainer {
+  z-index: 9999;
+}
+
+div.InputField_Selection {
+  align-items: center;
+  background: #e0e0e0;
+  border-radius: 50px;
+  display: inline-block;
+  height: auto;
+  line-height: 20px;
+  padding: 0 0.3em;
+  position: absolute;
+  top: auto;
+  vertical-align: middle;
+  z-index: 1;
+}
+div.InputField_Selection div.Remove {
+  background: none;
+  font-family: "Material Design Icons";
+  font-size: inherit;
+  height: auto;
+  line-height: inherit;
+  overflow: hidden;
+  padding-left: 0;
+  vertical-align: middle;
+}
+div.InputField_Selection div.Remove a {
+  position: relative;
+  padding: 0;
+  line-height: inherit;
+  font-size: 0;
+}
+div.InputField_Selection div.Remove a::before {
+  color: #888;
+  content: "\f1398";
+  font-size: initial;
+  height: 100%;
+  left: 0;
+  line-height: inherit;
+  padding: 0;
+  padding-right: 0;
+  padding-left: 0;
+  position: static;
   top: 0;
+  vertical-align: middle;
+  width: auto;
 }
 
 div.InputField_Selection div.Text {
-  background: #e0e0e0;
-  border-radius: 100000px;
+  border-radius: 50px;
   color: rgba(0, 0, 0, 0.87);
-  font-size: 14px;
+  font-size: inherit;
   height: 22px;
-  line-height: 24px;
-  line-height: initial;
-  width: 108%;
+  line-height: 20px;
+  height: auto;
+  line-height: auto;
   text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  border-radius: 0;
+  line-height: inherit;
+  height: 100%;
 }
 
 .DataTable {
@@ -436,94 +1192,7 @@ div.InputField_Selection div.Text {
   margin-top: 25px;
 }
 
-.LoginScreen .SuccessBox,
-.LoginScreen .ErrorBox {
-  background: none;
-  margin-bottom: 1em;
-  position: relative;
-}
-.LoginScreen .SuccessBox span,
-.LoginScreen .ErrorBox span {
-  display: flex;
-}
-.LoginScreen .SuccessBox span::before,
-.LoginScreen .ErrorBox span::before {
-  margin-right: 0.2em;
-}
-.LoginScreen .SuccessBox {
-  border: thin solid;
-  border-radius: 4px;
-  caret-color: #fb8c00;
-  color: #4caf50;
-}
-.LoginScreen .SuccessBox::before {
-  background-color: #4caf50;
-  border-radius: inherit;
-  bottom: 0;
-  content: "";
-  left: 0;
-  opacity: 0.12;
-  position: absolute;
-  pointer-events: none;
-  right: 0;
-  top: 0;
-}
-.LoginScreen .SuccessBox span::before {
-  content: "󰗡";
-  font-family: "Material Design Icons";
-  font-size: 120%;
-  opacity: 1;
-  position: static;
-  vertical-align: middle;
-}
-.LoginScreen .ErrorBox {
-  border: thin solid;
-  border-radius: 4px;
-  caret-color: #fb8c00;
-  color: #ff5252;
-}
-.LoginScreen .ErrorBox::before {
-  background-color: #ff5252;
-  border-radius: inherit;
-  bottom: 0;
-  content: "";
-  left: 0;
-  opacity: 0.12;
-  position: absolute;
-  pointer-events: none;
-  right: 0;
-  top: 0;
-}
-.LoginScreen .ErrorBox span::before {
-  content: "󰳦";
-  font-family: "Material Design Icons";
-  font-size: 120%;
-  opacity: 1;
-  position: static;
-  vertical-align: middle;
-}
-
 /* Dashboard */
-fieldset.TableLike.FixedLabelSmall > label {
-  width: 10em;
-}
-
-fieldset.TableLike.FixedLabelSmall > .Field,
-fieldset.TableLike.FixedLabelSmall > .Row > .Field,
-fieldset.TableLike.FixedLabelSmall > .Value,
-fieldset.TableLike.FixedLabelSmall > .Row > .Value {
-  margin-left: 10em;
-}
-
-fieldset.TableLike > label,
-fieldset.TableLike > .Row > label {
-  color: #666;
-}
-
-ul.Tablelike li.Header {
-  text-transform: none;
-}
-
 div.AllocationListContainer {
   margin-left: calc(10em + 10px);
   padding: 10px;
@@ -586,16 +1255,19 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 }
 
 .DataTable,
+.Sortable.DataTable,
 .TableSmall {
   border-radius: 4px;
   border-spacing: 0;
   font-size: inherit;
 }
 .DataTable thead tr,
+.Sortable.DataTable thead tr,
 .TableSmall thead tr {
   background: none;
 }
 .DataTable thead th,
+.Sortable.DataTable thead th,
 .TableSmall thead th {
   background: none;
   border: none;
@@ -606,26 +1278,50 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   padding: 10px 10px;
   text-transform: none;
 }
-.DataTable thead th.DashboardHeader, .DataTable thead th.DashboardHeader.SortAscendingLarge, .DataTable thead th.DashboardHeader.SortDescendingLarge, .DataTable thead th.OverviewHeader, .DataTable thead th.OverviewHeader.SortAscendingLarge, .DataTable thead th.OverviewHeader.SortDescendingLarge,
+.DataTable thead th.SortAscending, .DataTable thead th.SortDescending, .DataTable thead th.DashboardHeader, .DataTable thead th.DashboardHeader.SortAscendingLarge, .DataTable thead th.DashboardHeader.SortDescendingLarge, .DataTable thead th.OverviewHeader, .DataTable thead th.OverviewHeader.SortAscendingLarge, .DataTable thead th.OverviewHeader.SortDescendingLarge,
+.Sortable.DataTable thead th.SortAscending,
+.Sortable.DataTable thead th.SortDescending,
+.Sortable.DataTable thead th.DashboardHeader,
+.Sortable.DataTable thead th.DashboardHeader.SortAscendingLarge,
+.Sortable.DataTable thead th.DashboardHeader.SortDescendingLarge,
+.Sortable.DataTable thead th.OverviewHeader,
+.Sortable.DataTable thead th.OverviewHeader.SortAscendingLarge,
+.Sortable.DataTable thead th.OverviewHeader.SortDescendingLarge,
+.TableSmall thead th.SortAscending,
+.TableSmall thead th.SortDescending,
 .TableSmall thead th.DashboardHeader,
 .TableSmall thead th.DashboardHeader.SortAscendingLarge,
 .TableSmall thead th.DashboardHeader.SortDescendingLarge,
 .TableSmall thead th.OverviewHeader,
 .TableSmall thead th.OverviewHeader.SortAscendingLarge,
 .TableSmall thead th.OverviewHeader.SortDescendingLarge {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
   padding: 10px 20px 10px 1px;
   padding-left: 1px;
+  white-space: nowrap;
 }
-.DataTable thead th a, .DataTable thead th span,
+.DataTable thead th a,
+.DataTable thead th span,
+.Sortable.DataTable thead th a,
+.Sortable.DataTable thead th span,
 .TableSmall thead th a,
 .TableSmall thead th span {
+  background: none;
+  display: inline;
   font-size: inherit;
   font-weight: inherit;
   padding-left: 0;
   text-transform: none;
 }
-.DataTable thead th a.ColumnSettingsTrigger::after, .DataTable thead th.SortAscendingLarge a::after, .DataTable thead th.SortDescendingLarge a::after,
+.DataTable thead th a.ColumnSettingsTrigger::after, .DataTable thead th.SortAscending a::after, .DataTable thead th.SortDescending a::after, .DataTable thead th.SortAscendingLarge a::after, .DataTable thead th.SortDescendingLarge a::after,
+.Sortable.DataTable thead th a.ColumnSettingsTrigger::after,
+.Sortable.DataTable thead th.SortAscending a::after,
+.Sortable.DataTable thead th.SortDescending a::after,
+.Sortable.DataTable thead th.SortAscendingLarge a::after,
+.Sortable.DataTable thead th.SortDescendingLarge a::after,
 .TableSmall thead th a.ColumnSettingsTrigger::after,
+.TableSmall thead th.SortAscending a::after,
+.TableSmall thead th.SortDescending a::after,
 .TableSmall thead th.SortAscendingLarge a::after,
 .TableSmall thead th.SortDescendingLarge a::after {
   background: #ddd;
@@ -644,94 +1340,166 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   width: 1.5em;
 }
 .DataTable thead th.DashboardHeader a.ColumnSettingsTrigger, .DataTable thead th.OverviewHeader a.ColumnSettingsTrigger,
+.Sortable.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger,
+.Sortable.DataTable thead th.OverviewHeader a.ColumnSettingsTrigger,
 .TableSmall thead th.DashboardHeader a.ColumnSettingsTrigger,
 .TableSmall thead th.OverviewHeader a.ColumnSettingsTrigger {
   display: initial;
   float: none;
   font-size: 100%;
   height: 0;
-  margin-left: 0.4em;
+  margin-left: -0.4em;
   opacity: 1;
   position: static;
   width: 0;
 }
 .DataTable thead th.DashboardHeader a.ColumnSettingsTrigger::after, .DataTable thead th.OverviewHeader a.ColumnSettingsTrigger::after,
+.Sortable.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger::after,
+.Sortable.DataTable thead th.OverviewHeader a.ColumnSettingsTrigger::after,
 .TableSmall thead th.DashboardHeader a.ColumnSettingsTrigger::after,
 .TableSmall thead th.OverviewHeader a.ColumnSettingsTrigger::after {
-  content: "󰈲";
-  margin-left: 0;
+  content: "\f0232";
 }
 .DataTable thead th.DashboardHeader a.ColumnSettingsTrigger i.fa, .DataTable thead th.OverviewHeader a.ColumnSettingsTrigger i.fa,
+.Sortable.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger i.fa,
+.Sortable.DataTable thead th.OverviewHeader a.ColumnSettingsTrigger i.fa,
 .TableSmall thead th.DashboardHeader a.ColumnSettingsTrigger i.fa,
 .TableSmall thead th.OverviewHeader a.ColumnSettingsTrigger i.fa {
   display: none;
 }
-.DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+.DataTable thead th.SortAscending a::after, .DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+.Sortable.DataTable thead th.SortAscending a::after,
+.Sortable.DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+.TableSmall thead th.SortAscending a::after,
 .TableSmall thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after {
-  content: "󰅃";
+  content: "\f0143";
 }
-.DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+.DataTable thead th.SortDescending a::after, .DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+.Sortable.DataTable thead th.SortDescending a::after,
+.Sortable.DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+.TableSmall thead th.SortDescending a::after,
 .TableSmall thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after {
-  content: "󰅀";
+  content: "\f0140";
 }
 .DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after, .DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+.Sortable.DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+.Sortable.DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
 .TableSmall thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
 .TableSmall thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after {
   position: static;
   text-shadow: none;
 }
 .DataTable thead th.SortAscendingLarge a.ColumnSettingsTrigger::after, .DataTable thead th.SortDescendingLarge a.ColumnSettingsTrigger::after,
+.Sortable.DataTable thead th.SortAscendingLarge a.ColumnSettingsTrigger::after,
+.Sortable.DataTable thead th.SortDescendingLarge a.ColumnSettingsTrigger::after,
 .TableSmall thead th.SortAscendingLarge a.ColumnSettingsTrigger::after,
 .TableSmall thead th.SortDescendingLarge a.ColumnSettingsTrigger::after {
-  content: "󰈲";
+  content: "\f0232";
 }
 .DataTable thead th a,
+.Sortable.DataTable thead th a,
 .TableSmall thead th a {
   font-size: inherit;
 }
 .DataTable thead th.DashboardHeader > a, .DataTable thead th.DashboardHeader > span, .DataTable thead th.OverviewHeader > a, .DataTable thead th.OverviewHeader > span,
+.Sortable.DataTable thead th.DashboardHeader > a,
+.Sortable.DataTable thead th.DashboardHeader > span,
+.Sortable.DataTable thead th.OverviewHeader > a,
+.Sortable.DataTable thead th.OverviewHeader > span,
 .TableSmall thead th.DashboardHeader > a,
 .TableSmall thead th.DashboardHeader > span,
 .TableSmall thead th.OverviewHeader > a,
 .TableSmall thead th.OverviewHeader > span {
-  float: left;
+  float: none;
   height: initial;
   line-height: 150%;
 }
-.DataTable tbody td,
-.TableSmall tbody td {
+.DataTable tbody tr:hover td,
+.Sortable.DataTable tbody tr:hover td,
+.TableSmall tbody tr:hover td {
+  background-color: #fb8c00;
+}
+.DataTable tbody tr td,
+.Sortable.DataTable tbody tr td,
+.TableSmall tbody tr td {
+  border-right: solid 1px #ddd;
   padding: 6px 10px;
+}
+.DataTable tbody tr td:last-child,
+.Sortable.DataTable tbody tr td:last-child,
+.TableSmall tbody tr td:last-child {
+  border-right: none;
+}
+.DataTable tbody tr.Row td.QueueOverviewTotals,
+.Sortable.DataTable tbody tr.Row td.QueueOverviewTotals,
+.TableSmall tbody tr.Row td.QueueOverviewTotals {
+  border-top: solid 2px #ddd;
+}
+.DataTable tr.MasterAction:hover span.UnreadArticles.Remarkable::before,
+.Sortable.DataTable tr.MasterAction:hover span.UnreadArticles.Remarkable::before,
+.TableSmall tr.MasterAction:hover span.UnreadArticles.Remarkable::before {
+  text-shadow: -1px 0px 0px rgba(0, 0, 0, 0.35), 0px -1px 0px rgba(0, 0, 0, 0.35), 1px 0px 0px rgba(0, 0, 0, 0.35), 0px 1px 0px rgba(0, 0, 0, 0.35);
 }
 
 .Tab.Actions {
-  border: solid 1px #ccc;
   border-radius: 4px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  font-size: initial;
   margin-bottom: 8px;
   padding-left: 0;
 }
 .Tab.Actions li {
-  border-left: solid 1px #ccc;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
   float: left;
   font-size: smaller;
+  height: auto;
+  padding: 0;
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+.Tab.Actions li > a {
+  border-bottom: none;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.Tab.Actions li > a:hover {
+  color: #444;
+  text-decoration: underline;
+  text-decoration-color: #f15a22;
+  background: #fff;
 }
 .Tab.Actions li:first-child {
-  border-left: none;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
 }
 .Tab.Actions li:first-child a {
   padding-left: 10px;
 }
-.Tab.Actions li a {
-  border-bottom: none;
-  color: #777;
-  padding: 5px 10px;
-  vertical-align: middle;
+.Tab.Actions li:not(:last-child) {
+  border-right: none;
+}
+.Tab.Actions li:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
 .Tab.Actions li.Selected a {
   background-color: #fff;
 }
-.Tab.Actions li:after {
+.Tab.Actions li::after {
   content: none;
+}
+.Tab.Actions li.Last {
+  background-color: #f8f8f8;
 }
 
 .SettingsWidget .Content {
@@ -758,9 +1526,21 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .SettingsWidget ul li .v-input__slot {
   align-items: normal;
 }
+.SettingsWidget ul li .v-input__slot .v-input--selection-controls__input {
+  transform: scale(0.75);
+}
 .SettingsWidget ul li .v-label {
   line-height: 120%;
   margin-bottom: 0;
+}
+
+.FieldExplanation,
+.AsteriskExplanation {
+  font-size: 14px;
+}
+
+p.FieldExplanation {
+  margin: 5px 0;
 }
 
 /* New Ticket */
@@ -787,5 +1567,2337 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .Field.cmt-otrs-datetime-hidden select[name$=Hour], .Field.cmt-otrs-datetime-hidden select[name$=Minute] {
   display: none;
 }
+
+/* Ticket status view */
+.OverviewBox {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.OverviewBox .OverviewControl {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.OverviewBox .OverviewControl > div {
+  padding: 0;
+}
+
+.OverviewLarge {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.ItemListGrid {
+  display: grid;
+  gap: 10px 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-top: 0;
+}
+.ItemListGrid > li {
+  border: solid 1px #e0e0e0;
+  border-radius: 4px;
+  display: block;
+  float: none;
+  height: auto;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  max-width: none;
+  min-width: none;
+  width: auto;
+}
+.ItemListGrid > li > a {
+  background: #e0e0e0;
+  background: #f6f6f6;
+  background-size: 11%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
+  padding: 0.8em;
+  padding-top: 0.8em;
+  text-align: left;
+  transition: all ease 0.2s;
+}
+.ItemListGrid > li > a:not(.Disabled):hover {
+  background: #fff;
+}
+.ItemListGrid > li span.Title {
+  font-size: inherit;
+  font-weight: 500;
+  margin: 0;
+  margin-left: 15%;
+}
+.ItemListGrid > li span.Description {
+  font-size: 90%;
+  margin: 0;
+  margin-left: 15%;
+}
+
+.ItemListGrid.WithIcons > li {
+  background: #f0f0f0;
+  height: auto;
+}
+.ItemListGrid.WithIcons > li span.Icons {
+  border: none;
+  height: auto;
+  left: 0.8em;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0.8em;
+  width: 10%;
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa {
+  font-size: 150%;
+  line-height: inherit;
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa::before {
+  font-family: "Material Design Icons";
+  content: "";
+  transition: all ease 0.2s;
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.Icon2 {
+  background: transparent;
+  border: none;
+  left: 50%;
+  top: 25%;
+  padding: 0;
+  font-size: 100% !important;
+  position: relative;
+  left: -10%;
+  top: 12%;
+  margin-left: -0.5em;
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.Icon2::before {
+  color: #a9b3bd !important;
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-arrows-h::before {
+  content: "\f0e73";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-arrows-v::before {
+  content: "\f0e79";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-bar-chart::before {
+  content: "\f0128";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-bell-o::before {
+  content: "\f009a";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-building::before {
+  content: "\f0991";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-building-o::before {
+  content: "\f0991";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-calendar::before {
+  content: "\f00ed";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-filter::before {
+  content: "\f0232";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-paperclip::before {
+  content: "\f03e2";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-plus-square::before {
+  content: "\f0415";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-reply::before {
+  content: "\f045a";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-user::before {
+  content: "\f0004";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-users::before {
+  content: "\f0849";
+}
+.ItemListGrid.WithIcons > li > a {
+  padding-top: 0.8em;
+}
+.ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons {
+  background: none;
+}
+.ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons i.fa::before {
+  color: #f15a22 !important;
+  color: #f15a22 !important;
+}
+.ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons i.fa.Icon2 {
+  background: transparent;
+}
+.ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons i.fa.Icon2::before {
+  color: #ff9a62 !important;
+  color: #f7a282 !important;
+}
+
+.ItemListGrid.WithIcons > li > a {
+  background: linear-gradient(90deg, #fff 15%, #ccc 15.2%, transparent 15.4%);
+}
+.ItemListGrid.WithIcons > li span.Title,
+.ItemListGrid.WithIcons > li span.Description {
+  margin-left: 16.5%;
+}
+
+.ItemListGrid.WithIcons > li > a {
+  background: #e9e9e9;
+}
+.ItemListGrid.WithIcons > li span.Icons {
+  background: #fff;
+  border: solid 1px #f0f0f0;
+  border-radius: 50%;
+  height: 2.8em;
+  width: 2.8em;
+  text-align: center;
+  line-height: 2.8em;
+  top: 0.4em;
+  left: 0.4em;
+}
+
+.ItemListGrid.WithIcons > li > a {
+  background: #f2f2f2;
+}
+.ItemListGrid.WithIcons > li span.Title {
+  color: #f15a22;
+}
+
+.ItemListGrid.WithIcons > li > a {
+  background: #f2f2f2;
+}
+.ItemListGrid.WithIcons > li span.Title {
+  color: #333;
+}
+
+.ItemListGrid.WithIcons > li > a {
+  background: #f8f8f8;
+  border: solid 1px #fff;
+  box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
+  color: #444;
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa::before {
+  color: slategray !important;
+}
+.ItemListGrid.WithIcons > li span.Title {
+  color: #333;
+}
+
+.ItemListGrid.WithIcons li[data-module=AdminACL] span.Icons i.fa::before {
+  content: "\f05c7";
+}
+.ItemListGrid.WithIcons li[data-module=AdminAttachment] span.Icons i.fa::before {
+  content: "\f03e2";
+}
+.ItemListGrid.WithIcons li[data-module=AdminAutoResponse] span.Icons i.fa::before {
+  content: "\f045a";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerCompany] span.Icons i.fa::before {
+  content: "\f0991";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerGroup] span.Icons i.fa::before {
+  content: "\f0991";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerGroup] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerGroup] span.Icons i.fa.Icon2::before {
+  content: "\f0849";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUser] span.Icons i.fa::before {
+  content: "\f0013";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserCustomer] span.Icons i.fa::before {
+  content: "\f0013";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserCustomer] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserCustomer] span.Icons i.fa.Icon2::before {
+  content: "\f0991";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserGroup] span.Icons i.fa::before {
+  content: "\f0013";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserGroup] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserGroup] span.Icons i.fa.Icon2::before {
+  content: "\f0849";
+}
+.ItemListGrid.WithIcons li[data-module=AdminDynamicField] span.Icons i.fa::before {
+  content: "\f1400";
+}
+.ItemListGrid.WithIcons li[data-module=AdminEmail] span.Icons i.fa::before {
+  content: "\f06cf";
+}
+.ItemListGrid.WithIcons li[data-module=AdminGenericAgent] span.Icons i.fa::before {
+  content: "\f06a9";
+}
+.ItemListGrid.WithIcons li[data-module=AdminGenericInterfaceWebservice] span.Icons i.fa::before {
+  content: "\f105b";
+}
+.ItemListGrid.WithIcons li[data-module=AdminGroup] span.Icons i.fa::before {
+  content: "\f0849";
+}
+.ItemListGrid.WithIcons li[data-module=AdminPGP] span.Icons i.fa::before {
+  content: "\f1184";
+}
+.ItemListGrid.WithIcons li[data-module=AdminPriority] span.Icons i.fa {
+  transform: rotate(180deg) scaleX(-1);
+}
+.ItemListGrid.WithIcons li[data-module=AdminPriority] span.Icons i.fa::before {
+  content: "\f04bc";
+}
+.ItemListGrid.WithIcons li[data-module=AdminProcessManagement] span.Icons i.fa::before {
+  content: "\f0bd3";
+}
+.ItemListGrid.WithIcons li[data-module=AdminQueue] span.Icons i.fa::before {
+  content: "\f0c82";
+}
+.ItemListGrid.WithIcons li[data-module=AdminQueueAutoResponse] span.Icons i.fa::before {
+  content: "\f045a";
+}
+.ItemListGrid.WithIcons li[data-module=AdminQueueAutoResponse] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminQueueAutoResponse] span.Icons i.fa.Icon2::before {
+  content: "\f0c82";
+}
+.ItemListGrid.WithIcons li[data-module=AdminQueueTemplates] span.Icons i.fa::before {
+  content: "\f0219";
+}
+.ItemListGrid.WithIcons li[data-module=AdminQueueTemplates] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminQueueTemplates] span.Icons i.fa.Icon2::before {
+  content: "\f0c82";
+}
+.ItemListGrid.WithIcons li[data-module=AdminRole] span.Icons i.fa::before {
+  content: "\f0934";
+}
+.ItemListGrid.WithIcons li[data-module=AdminRoleGroup] span.Icons i.fa::before {
+  content: "\f0934";
+}
+.ItemListGrid.WithIcons li[data-module=AdminRoleGroup] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminRoleGroup] span.Icons i.fa.Icon2::before {
+  content: "\f0849";
+}
+.ItemListGrid.WithIcons li[data-module=AdminRoleUser] span.Icons i.fa::before {
+  content: "\f0004";
+}
+.ItemListGrid.WithIcons li[data-module=AdminRoleUser] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminRoleUser] span.Icons i.fa.Icon2::before {
+  content: "\f0934";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSelectBox] span.Icons i.fa::before {
+  content: "\f0866";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSession] span.Icons i.fa::before {
+  content: "\f0b56";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSLA] span.Icons i.fa::before {
+  content: "\f1186";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSMIME] span.Icons i.fa::before {
+  content: "\f0124";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSystemAddress] span.Icons i.fa::before {
+  content: "\f01ee";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSystemMaintenance] span.Icons i.fa::before {
+  content: "\f0cbd";
+}
+.ItemListGrid.WithIcons li[data-module=AdminTemplate] span.Icons i.fa::before {
+  content: "\f0219";
+}
+.ItemListGrid.WithIcons li[data-module=AdminTemplateAttachment] span.Icons i.fa::before {
+  content: "\f03e2";
+}
+.ItemListGrid.WithIcons li[data-module=AdminTemplateAttachment] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminTemplateAttachment] span.Icons i.fa.Icon2::before {
+  content: "\f0219";
+}
+
+.Flag.Small {
+  height: auto;
+  width: auto;
+}
+.Flag.Small span {
+  border-radius: 0.2em;
+  height: 1em;
+  width: 1em;
+}
+
+.Flag span.PriorityID-1 {
+  background-color: #00a000;
+}
+
+.Flag span.PriorityID-2 {
+  background-color: #0059ff;
+}
+
+.Flag span.PriorityID-3 {
+  background-color: #aaaaaa;
+}
+
+.Flag span.PriorityID-4 {
+  background-color: #ffc940;
+}
+
+.Flag span.PriorityID-5 {
+  background-color: #ff0000;
+}
+
+/* Modernized select boxes */
+.jstree-InputField {
+  font-size: 85%;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
+  height: auto;
+  line-height: initial;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-clicked:hover {
+  background-color: #f15a22;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-anchor {
+  height: auto;
+  line-height: initial;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-hovered {
+  background-color: #f15a22;
+}
+
+.MessageBox.Error {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #ff5252ff;
+  margin-top: 10px;
+}
+.MessageBox.Error .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.MessageBox.Error .Icon::before {
+  content: "\f0ce6";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.MessageBox.Error p {
+  border: thin solid;
+  border-color: #ff5252ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #ff525234;
+  caret-color: #ff5252ff;
+  color: #ff5252ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+.MessageBox.Error p::after {
+  background-color: #ff5252ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.MessageBox.Error p a {
+  color: #333;
+}
+
+.MessageBox.Notice {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #fb8c00ff;
+  margin-top: 10px;
+}
+.MessageBox.Notice .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.MessageBox.Notice .Icon::before {
+  content: "\f11cf";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.MessageBox.Notice p {
+  border: thin solid;
+  border-color: #fb8c00ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #fb8c0034;
+  caret-color: #fb8c00ff;
+  color: #fb8c00ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+.MessageBox.Notice p::after {
+  background-color: #fb8c00ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.MessageBox.Notice p a {
+  color: #333;
+}
+
+code,
+.v-application code,
+.v-application.theme--light code {
+  font-family: "Roboto Mono", monospace, fixed;
+  font-size: 90%;
+  padding: 0.1em 0.2em;
+  background-color: rgba(119, 136, 153, 0.15);
+}
+
+textarea {
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: "Roboto Mono", monospace, fixed;
+  font-size: 90%;
+  padding: 5px;
+}
+
+dl dt {
+  font-size: initial;
+  line-height: 1.5;
+}
+dl dd {
+  line-height: 1.5;
+  margin-left: 0.8em;
+}
+
+fieldset.TableLike.FixedLabelSmall > label {
+  width: 8em;
+}
+
+fieldset.TableLike.FixedLabelSmall > .Field,
+fieldset.TableLike.FixedLabelSmall > .Row > .Field,
+fieldset.TableLike.FixedLabelSmall > .Value,
+fieldset.TableLike.FixedLabelSmall > .Row > .Value {
+  margin-left: 8em;
+}
+
+fieldset.TableLike .Field, fieldset.TableLike .RichTextField {
+  padding-left: 14px;
+}
+fieldset.TableLike > label, fieldset.TableLike > .Row > label {
+  color: #666;
+}
+fieldset.TableLike p.Value {
+  margin-bottom: 0;
+}
+fieldset.TableLike label.cmt-stacked {
+  float: none;
+  text-align: left;
+  width: 100%;
+}
+fieldset.TableLike label.cmt-stacked + p.Value {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+ul.Tablelike li.Header {
+  text-transform: none;
+}
+
+.WidgetSimple {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
+.WidgetSimple .Header .WidgetAction.Toggle {
+  height: auto;
+  margin: 0;
+  width: auto;
+}
+.WidgetSimple .Header .WidgetAction.Toggle::before {
+  font-family: "Material Design Icons";
+  font-size: 120%;
+  line-height: 120%;
+}
+.WidgetSimple .Header i.fa {
+  display: none !important;
+}
+.WidgetSimple.Collapsed .Header .WidgetAction.Toggle::before {
+  content: "\f0140";
+}
+.WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
+  content: "\f0143";
+}
+.WidgetSimple .Content {
+  border-top: solid 1px ghostwhite;
+}
+
+/* Action Row */
+.WidgetSimple .Content > .ActionRow {
+  margin-left: 0;
+}
+.ActionRow .Actions {
+  display: flex;
+}
+.ActionRow .Actions li {
+  font-size: inherit;
+}
+.ActionRow .Actions li::after {
+  content: "";
+  float: none;
+  background: transparent;
+  height: 2px;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+}
+.ActionRow .Actions > li {
+  align-self: center;
+  float: left;
+  font-size: 85%;
+  line-height: initial;
+  margin: 0;
+}
+.ActionRow .Actions > li:first-child {
+  padding-left: 0;
+}
+.ActionRow .Actions > li[id^=nav-] {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: 0px 1px 0px #c8c8c8;
+  overflow: visible;
+}
+.ActionRow .Actions > li[id^=nav-] > a {
+  border-bottom: none;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.ActionRow .Actions > li[id^=nav-] > a:hover {
+  color: #444;
+  text-decoration: underline;
+  text-decoration-color: #f15a22;
+  background: #fff;
+}
+.ActionRow .Actions > li[id^=nav-]:first-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0;
+}
+.ActionRow .Actions > li[id^=nav-]:not(:first-child) {
+  border-left: none;
+}
+.ActionRow .Actions > li[id^=nav-] + li[id^=nav-] {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.ActionRow .Actions > li:not([id^=nav-]) {
+  margin-left: 0.5em;
+}
+.ActionRow .Actions > li a,
+.ActionRow .Actions > li span.ClusterLink {
+  padding: 5px 10px;
+  border-bottom: none;
+}
+
+body .Cluster ul ul {
+  border-radius: 0 0 4px 4px;
+  left: 0;
+  margin-top: 2px;
+  top: 100%;
+}
+body .Cluster ul ul li {
+  line-height: initial;
+}
+
+.ItemActions .Actions {
+  display: flex;
+}
+.ItemActions .Actions li {
+  font-size: 85%;
+}
+.ItemActions .Actions li::after {
+  content: none;
+}
+.ItemActions .Actions > li {
+  align-self: center;
+  float: left;
+  line-height: initial;
+  margin: 0;
+  border: solid 1px #ccc;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
+.ItemActions .Actions > li:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.ItemActions .Actions > li:not(:first-child) {
+  border-left: none;
+}
+.ItemActions .Actions > li:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.ItemActions .Actions > li.cmt-item-action-dropdown {
+  border: none;
+  box-shadow: none;
+  margin-left: 0.5em;
+}
+.ItemActions .Actions > li.cmt-item-action-dropdown label::after {
+  content: ":";
+}
+.ItemActions .Actions > li.cmt-item-action-dropdown input {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  border-bottom: solid 2px #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+}
+.ItemActions .Actions > li.cmt-item-action-link-last {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.ItemActions .Actions > li a, .ItemActions .Actions > li span.ClusterLink {
+  padding: 5px 10px;
+}
+
+/* Unread articles marker */
+div.UnreadArticles {
+  line-height: 15px;
+  margin: 0;
+  padding: 0 !important;
+  vertical-align: initial;
+  width: auto;
+}
+div.UnreadArticles span.UnreadArticles {
+  margin: 0;
+  padding: 0 !important;
+  width: auto;
+}
+div.UnreadArticles span.UnreadArticles::before {
+  color: #aaa;
+  content: "\f04ce";
+  font-family: "Material Design Icons";
+  font-size: 150%;
+}
+div.UnreadArticles span.UnreadArticles.Remarkable::before {
+  color: #ffc940;
+}
+div.UnreadArticles span.UnreadArticles i.fa {
+  display: none !important;
+}
+
+/* Dialog windows */
+.Dialog {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.Dialog > .Header {
+  height: auto;
+}
+.Dialog > .Header h1 {
+  font-size: inherit;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding: 10px;
+}
+.Dialog .Content .ContentFooter {
+  padding: 10px 0;
+}
+
+/* Action buttons */
+a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  background-color: #f15a22;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 12px 32px;
+  padding: 0.3em 1.2em;
+  position: relative;
+  transition: all ease-in 0.1s;
+}
+a.CallForAction i.fa, .ProcessManagementEditScreen #ProcessElements a.CallForAction i.fa,
+.v-application a.CallForAction i.fa,
+button.CallForAction i.fa {
+  display: none;
+}
+a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  border: none;
+  color: #fff;
+  font-size: inherit;
+  font-weight: 500;
+  text-shadow: none;
+}
+a.CallForAction.Fullsize span, .ProcessManagementEditScreen #ProcessElements a.Fullsize.CallForAction span,
+.v-application a.CallForAction.Fullsize span,
+button.CallForAction.Fullsize span {
+  padding: 0;
+}
+a.CallForAction.Fullsize.Center span i, .ProcessManagementEditScreen #ProcessElements a.Fullsize.Center.CallForAction span i,
+.v-application a.CallForAction.Fullsize.Center span i,
+button.CallForAction.Fullsize.Center span i {
+  left: auto;
+  position: static;
+  top: auto;
+}
+a.CallForAction::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction::before,
+.v-application a.CallForAction::before,
+button.CallForAction::before {
+  background-color: #f15a22;
+  border-radius: inherit;
+  bottom: 0;
+  color: inherit;
+  content: "";
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+}
+a.CallForAction::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction::before,
+.v-application a.CallForAction::before,
+button.CallForAction::before {
+  content: none;
+}
+a.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover,
+.v-application a.CallForAction:hover,
+button.CallForAction:hover {
+  background-color: #f15a22;
+  border: solid 1px #ff6a32;
+  color: #fff;
+}
+a.CallForAction:hover::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover::before,
+.v-application a.CallForAction:hover::before,
+button.CallForAction:hover::before {
+  opacity: 0.08;
+}
+a.CallForAction:hover span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover span i.fa::before,
+.v-application a.CallForAction:hover span i.fa::before,
+button.CallForAction:hover span i.fa::before {
+  color: #fff;
+}
+a.CallForAction:focus, .ProcessManagementEditScreen #ProcessElements a.CallForAction:focus,
+.v-application a.CallForAction:focus,
+button.CallForAction:focus {
+  background-color: #f15a22;
+  outline: none;
+}
+a.CallForAction:active, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active,
+.v-application a.CallForAction:active,
+button.CallForAction:active {
+  background-color: #f15a22;
+}
+a.CallForAction:active::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active::before,
+.v-application a.CallForAction:active::before,
+button.CallForAction:active::before {
+  opacity: 0.08;
+}
+a.CallForAction.Inline, .ProcessManagementEditScreen #ProcessElements a.Inline.CallForAction,
+.v-application a.CallForAction.Inline,
+button.CallForAction.Inline {
+  height: 32px;
+  padding: 0 32px;
+  top: 1px;
+  vertical-align: middle;
+}
+a.CallForAction.Inline span, .ProcessManagementEditScreen #ProcessElements a.Inline.CallForAction span,
+.v-application a.CallForAction.Inline span,
+button.CallForAction.Inline span {
+  line-height: inherit;
+}
+a.CallForAction span.v-ripple__container, .ProcessManagementEditScreen #ProcessElements a.CallForAction span.v-ripple__container,
+.v-application a.CallForAction span.v-ripple__container,
+button.CallForAction span.v-ripple__container {
+  color: inherit;
+  position: absolute;
+}
+a.CallForAction span.v-ripple__container span.v-ripple__animation, .ProcessManagementEditScreen #ProcessElements a.CallForAction span.v-ripple__container span.v-ripple__animation,
+.v-application a.CallForAction span.v-ripple__container span.v-ripple__animation,
+button.CallForAction span.v-ripple__container span.v-ripple__animation {
+  color: inherit;
+  position: absolute;
+}
+
+a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  background: #f8f8f8;
+  color: #444;
+  padding: 0.3em 1.2em;
+  border: solid 1px #ddd;
+  box-shadow: 0px 1px 0px #ccc, 0px 1px 10px #f8f8f8;
+}
+a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  color: inherit;
+  padding: 0;
+}
+a.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover,
+.v-application a.CallForAction:hover,
+button.CallForAction:hover {
+  border: solid 1px #ff6a32;
+}
+a.CallForAction.Primary, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction,
+.v-application a.CallForAction.Primary,
+button.CallForAction.Primary {
+  background-color: #f15a22;
+  border: solid 1px #ff6a32;
+  color: #fff;
+  padding: 0.3em 1.2em;
+}
+
+a.CallForAction.Disabled, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction,
+.v-application a.CallForAction.Disabled,
+button.CallForAction.Disabled {
+  color: #888;
+  background: #d0d0d0 !important;
+  border: solid 1px #d8d8d8 !important;
+  border-bottom: solid 1px #d8d8d8 !important;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee;
+}
+
+.WidgetSimple .Content a.CallForAction:not(.Primary), .WidgetSimple .Content .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary), .ProcessManagementEditScreen #ProcessElements .WidgetSimple .Content a.CallForAction:not(.Primary),
+.WidgetSimple .Content .v-application a.CallForAction:not(.Primary),
+.WidgetSimple .Content button.CallForAction:not(.Primary),
+.Dialog .ContentFooter a.CallForAction:not(.Primary),
+.Dialog .ContentFooter .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary),
+.ProcessManagementEditScreen #ProcessElements .Dialog .ContentFooter a.CallForAction:not(.Primary),
+.Dialog .ContentFooter .v-application a.CallForAction:not(.Primary),
+.Dialog .ContentFooter button.CallForAction:not(.Primary) {
+  border: solid 1px #fff;
+  box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
+}
+.WidgetSimple .Content a.CallForAction:not(.Primary):hover, .WidgetSimple .Content .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary):hover, .ProcessManagementEditScreen #ProcessElements .WidgetSimple .Content a.CallForAction:not(.Primary):hover,
+.WidgetSimple .Content .v-application a.CallForAction:not(.Primary):hover,
+.WidgetSimple .Content button.CallForAction:not(.Primary):hover,
+.Dialog .ContentFooter a.CallForAction:not(.Primary):hover,
+.Dialog .ContentFooter .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary):hover,
+.ProcessManagementEditScreen #ProcessElements .Dialog .ContentFooter a.CallForAction:not(.Primary):hover,
+.Dialog .ContentFooter .v-application a.CallForAction:not(.Primary):hover,
+.Dialog .ContentFooter button.CallForAction:not(.Primary):hover {
+  border: solid 1px #ff6a32;
+}
+
+.ProcessManagementEditScreen #ProcessElements a.CallForAction {
+  width: auto;
+}
+
+a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  display: inline;
+  position: static;
+}
+a.CallForAction span i.fa, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa,
+.v-application a.CallForAction span i.fa,
+button.CallForAction span i.fa {
+  display: inline;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  margin-right: 0.15em;
+}
+a.CallForAction span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa::before,
+.v-application a.CallForAction span i.fa::before,
+button.CallForAction span i.fa::before {
+  color: #f15a22;
+  color: lightslategray;
+  color: slategray;
+  content: "";
+  font-family: "Material Design Icons";
+  font-weight: bold;
+}
+a.CallForAction span i.fa.fa-arrows-h::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-arrows-h::before,
+.v-application a.CallForAction span i.fa.fa-arrows-h::before,
+button.CallForAction span i.fa.fa-arrows-h::before {
+  font-family: "Material Design Icons";
+  content: "\f0e73";
+}
+a.CallForAction span i.fa.fa-arrows-v::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-arrows-v::before,
+.v-application a.CallForAction span i.fa.fa-arrows-v::before,
+button.CallForAction span i.fa.fa-arrows-v::before {
+  font-family: "Material Design Icons";
+  content: "\f0e79";
+}
+a.CallForAction span i.fa.fa-bar-chart::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-bar-chart::before,
+.v-application a.CallForAction span i.fa.fa-bar-chart::before,
+button.CallForAction span i.fa.fa-bar-chart::before {
+  font-family: "Material Design Icons";
+  content: "\f0128";
+}
+a.CallForAction span i.fa.fa-bell-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-bell-o::before,
+.v-application a.CallForAction span i.fa.fa-bell-o::before,
+button.CallForAction span i.fa.fa-bell-o::before {
+  font-family: "Material Design Icons";
+  content: "\f009a";
+}
+a.CallForAction span i.fa.fa-building::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-building::before,
+.v-application a.CallForAction span i.fa.fa-building::before,
+button.CallForAction span i.fa.fa-building::before {
+  font-family: "Material Design Icons";
+  content: "\f0991";
+}
+a.CallForAction span i.fa.fa-building-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-building-o::before,
+.v-application a.CallForAction span i.fa.fa-building-o::before,
+button.CallForAction span i.fa.fa-building-o::before {
+  font-family: "Material Design Icons";
+  content: "\f0991";
+}
+a.CallForAction span i.fa.fa-calendar::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-calendar::before,
+.v-application a.CallForAction span i.fa.fa-calendar::before,
+button.CallForAction span i.fa.fa-calendar::before {
+  font-family: "Material Design Icons";
+  content: "\f00ed";
+}
+a.CallForAction span i.fa.fa-filter::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-filter::before,
+.v-application a.CallForAction span i.fa.fa-filter::before,
+button.CallForAction span i.fa.fa-filter::before {
+  font-family: "Material Design Icons";
+  content: "\f0232";
+}
+a.CallForAction span i.fa.fa-paperclip::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-paperclip::before,
+.v-application a.CallForAction span i.fa.fa-paperclip::before,
+button.CallForAction span i.fa.fa-paperclip::before {
+  font-family: "Material Design Icons";
+  content: "\f03e2";
+}
+a.CallForAction span i.fa.fa-plus-square::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-plus-square::before,
+.v-application a.CallForAction span i.fa.fa-plus-square::before,
+button.CallForAction span i.fa.fa-plus-square::before {
+  font-family: "Material Design Icons";
+  content: "\f0415";
+}
+a.CallForAction span i.fa.fa-reply::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-reply::before,
+.v-application a.CallForAction span i.fa.fa-reply::before,
+button.CallForAction span i.fa.fa-reply::before {
+  font-family: "Material Design Icons";
+  content: "\f045a";
+}
+a.CallForAction span i.fa.fa-user::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-user::before,
+.v-application a.CallForAction span i.fa.fa-user::before,
+button.CallForAction span i.fa.fa-user::before {
+  font-family: "Material Design Icons";
+  content: "\f0004";
+}
+a.CallForAction span i.fa.fa-users::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-users::before,
+.v-application a.CallForAction span i.fa.fa-users::before,
+button.CallForAction span i.fa.fa-users::before {
+  font-family: "Material Design Icons";
+  content: "\f0849";
+}
+
+a.CallForAction.Fullsize span i.fa, .ProcessManagementEditScreen #ProcessElements a.Fullsize.CallForAction span i.fa,
+.v-application a.CallForAction.Fullsize span i.fa,
+button.CallForAction.Fullsize span i.fa {
+  color: inherit;
+  margin-right: 0.3em;
+}
+
+a.CallForAction.Disabled i.fa::before, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction i.fa::before,
+.v-application a.CallForAction.Disabled i.fa::before,
+button.CallForAction.Disabled i.fa::before {
+  color: #888;
+}
+
+/* List displayed as table */
+ul.Tablelike {
+  background-color: #fdfdfd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+ul.Tablelike li {
+  padding: 6px 10px;
+}
+ul.Tablelike li.Header {
+  background: none;
+  border: none;
+  border-bottom: thin solid rgba(0, 0, 0, 0.12);
+  font-size: inherit;
+  font-weight: bold;
+}
+
+/* Popup windows */
+.LayoutPopup > .Footer .CallForAction, .LayoutPopup > .Footer .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements .LayoutPopup > .Footer a.CallForAction {
+  padding: 0.8em 1.8em;
+}
+
+/* Rules to override what Vuetify does */
+.v-application ol, .v-application ul {
+  padding-left: 0;
+}
+
+/* Newly introduced rules (TODO: Move to a separate file) */
+hr.cmt-flex-break {
+  height: 0;
+  width: 100%;
+}
+
+.fc .fc-button-group {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  font-size: initial;
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+.fc .fc-button-group button {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+.fc .fc-button-group button > a {
+  border-bottom: none;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.fc .fc-button-group button > a:hover {
+  color: #444;
+  text-decoration: underline;
+  text-decoration-color: #f15a22;
+  background: #fff;
+}
+.fc .fc-button-group button:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.fc .fc-button-group button:first-child a {
+  padding-left: 10px;
+}
+.fc .fc-button-group button:not(:last-child) {
+  border-right: none;
+}
+.fc .fc-button-group button:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.fc .fc-button-group button.Selected a {
+  background-color: #fff;
+}
+.fc .fc-button-group button::after {
+  content: none;
+}
+.fc .fc-button-group button.Last {
+  background-color: #f8f8f8;
+}
+.fc .fc-button-group > button {
+  border-radius: 0;
+  color: #444;
+  line-height: 18px;
+  margin-left: 0;
+  padding: 5px 10px;
+}
+.fc .fc-button-group > button:hover, .fc .fc-button-group > button.fc-state-hover {
+  background-color: transparent !important;
+  border-color: #d8d8d8 #d8d8d8 #fff #d8d8d8 !important;
+  color: #444;
+  text-decoration: underline;
+}
+.fc .fc-button-group > button:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.fc .fc-button-group > button:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.fc .fc-button-group > button.fc-state-active {
+  background-color: #fff !important;
+  border-color: #d8d8d8 #d8d8d8 #fff #d8d8d8 !important;
+  font-weight: bold;
+}
+.fc .fc-button-group > button.fc-state-disabled, .fc .fc-button-group > button.fc-state-disabled:hover, .fc .fc-button-group > button.fc-state-disabled.fc-state-hover {
+  background-color: #ddd !important;
+  border-color: #ccc #ccc #ddd #ccc !important;
+}
+.fc .fc-button-group > button:after {
+  content: none;
+}
+
+.fc-toolbar h2 {
+  font-size: 16px;
+}
+
+.fc-view-container {
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.fc-view-container td.fc-head-container.fc-widget-header {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.fc-view-container tbody.fc-body > tr > td.fc-widget-content {
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+.fc-view table thead.fc-head td.fc-widget-header,
+.fc-view table thead.fc-head th.fc-widget-header {
+  font-size: 13.3px;
+  font-weight: bold;
+}
+
+.AppointmentTooltip {
+  border-radius: 4px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+[id$=TicketStats-box] [id$=-TicketStats] svg {
+  margin-left: -0.3em;
+}
+[id$=TicketStats-box] [id$=-TicketStats] svg text {
+  font: 11px Heebo !important;
+}
+
+.LoginScreen .SuccessBox,
+.LoginScreen .ErrorBox {
+  background: none;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px 1px 1px 8px;
+  margin-bottom: 1em;
+  padding-left: 17px;
+  position: relative;
+}
+.LoginScreen .SuccessBox span,
+.LoginScreen .ErrorBox span {
+  display: flex;
+}
+.LoginScreen .SuccessBox span::before,
+.LoginScreen .ErrorBox span::before {
+  margin-right: 0.2em;
+}
+.LoginScreen .SuccessBox span::after,
+.LoginScreen .ErrorBox span::after {
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.12;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.LoginScreen .SuccessBox {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #4caf50ff;
+  margin-top: 10px;
+  border-color: #4caf50ff;
+}
+.LoginScreen .SuccessBox .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.LoginScreen .SuccessBox .Icon::before {
+  content: "\f05e1";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.LoginScreen .SuccessBox p {
+  border: thin solid;
+  border-color: #4caf50ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #4caf5034;
+  caret-color: #4caf50ff;
+  color: #4caf50ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+.LoginScreen .SuccessBox p::after {
+  background-color: #4caf50ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.LoginScreen .SuccessBox p a {
+  color: #333;
+}
+.LoginScreen .SuccessBox span::before {
+  content: "\f05e1";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.LoginScreen .SuccessBox span::after {
+  background-color: #4caf50ff;
+}
+.LoginScreen .ErrorBox {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #ff5252ff;
+  margin-top: 10px;
+  border-color: #ff5252ff;
+}
+.LoginScreen .ErrorBox .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.LoginScreen .ErrorBox .Icon::before {
+  content: "\f0ce6";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.LoginScreen .ErrorBox p {
+  border: thin solid;
+  border-color: #ff5252ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #ff525234;
+  caret-color: #ff5252ff;
+  color: #ff5252ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+.LoginScreen .ErrorBox p::after {
+  background-color: #ff5252ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.LoginScreen .ErrorBox p a {
+  color: #333;
+}
+.LoginScreen .ErrorBox span::before {
+  content: "\f0ce6";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.LoginScreen .ErrorBox span::after {
+  background-color: #ff5252ff;
+}
+
+.CustomerContainer {
+  font-size: 13pt;
+  padding: 0 0.8em;
+  width: 75%;
+}
+.CustomerContainer .CustomerTicketText {
+  padding-left: 0.25em;
+}
+.CustomerContainer .CustomerTicketText.Radio, .CustomerContainer .CustomerTicketText.MainCustomer {
+  background-color: transparent;
+  text-overflow: ellipsis;
+  width: 90%;
+}
+.CustomerContainer .CustomerTicketText.MainCustomer {
+  font-weight: bold;
+}
+.CustomerContainer .CustomerTicketRemove {
+  color: #888;
+  float: right;
+}
+.CustomerContainer .CustomerTicketRemove::after {
+  content: "\f1398";
+  font-family: "Material Design Icons";
+}
+.CustomerContainer .CustomerTicketRemove i.fa {
+  display: none;
+}
+
+button#SelectionCustomerID {
+  top: initial;
+}
+
+a#OwnerSelectionGetAll::after {
+  content: "\f0450";
+  font-family: "Material Design Icons";
+  font-size: 22px;
+  vertical-align: middle;
+}
+a#OwnerSelectionGetAll i.fa {
+  display: none;
+}
+
+input#Subject {
+  font-size: initial;
+  font-weight: 500;
+}
+
+#OptionCustomer {
+  background: #eee;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  color: #444;
+  font-size: 14px;
+  padding: 0.1em 0.5em;
+}
+#OptionCustomer::before {
+  content: "\f0013";
+  font-family: "Material Design Icons";
+  margin-right: 0.2em;
+}
+
+#RichTextField #cke_RichText {
+  border-radius: 4px !important;
+}
+#RichTextField #cke_RichText .cke_inner {
+  background: none;
+}
+#RichTextField #cke_RichText .cke_inner .cke_top {
+  border-radius: 4px 4px 0 0;
+}
+#RichTextField #cke_RichText .cke_inner .cke_bottom {
+  border-radius: 0 0 4px 4px;
+}
+
+.DnDUpload {
+  border-radius: 4px;
+}
+.DnDUpload i.fa.fa-download::before {
+  content: "\f01da";
+  font-family: "Material Design Icons";
+}
+.DnDUpload .ReadyForUpload {
+  font-size: 14px;
+}
+
+.Field.SpacingTop:last-child {
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+#CustomerInfo fieldset.TableLike.FixedLabelSmall label {
+  width: 6em;
+}
+#CustomerInfo fieldset.TableLike.FixedLabelSmall p.Value {
+  margin-left: 6em;
+  width: auto;
+}
+#CustomerInfo fieldset i.NoOpenTicket,
+#CustomerInfo fieldset a.NoOpenTicket {
+  margin-top: 1em;
+}
+#CustomerInfo fieldset i.NoOpenTicket::before {
+  color: #1976d2;
+  content: "\f04fb";
+  font-family: "Material Design Icons";
+}
+#CustomerInfo fieldset a.NoOpenTicket {
+  text-decoration: none;
+}
+
+#DiagramTooltip {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.ActionList a[href*="Subaction=Import"].CallForAction i.fa-upload, .ActionList .ProcessManagementEditScreen #ProcessElements a[href*="Subaction=Import"].CallForAction i.fa-upload, .ProcessManagementEditScreen #ProcessElements .ActionList a[href*="Subaction=Import"].CallForAction i.fa-upload {
+  color: inherit;
+}
+.ActionList a[href*="Subaction=Import"].CallForAction i.fa-upload::before, .ActionList .ProcessManagementEditScreen #ProcessElements a[href*="Subaction=Import"].CallForAction i.fa-upload::before, .ProcessManagementEditScreen #ProcessElements .ActionList a[href*="Subaction=Import"].CallForAction i.fa-upload::before {
+  content: "\f02fa";
+  display: inline;
+  font-family: "Material Design Icons";
+}
+
+.PreviewContainer .CallForAction, .PreviewContainer .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements .PreviewContainer a.CallForAction {
+  width: auto;
+}
+
+#UserWidgetState_SystemConfiguration_Sticky .CallForAction, #UserWidgetState_SystemConfiguration_Sticky .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements #UserWidgetState_SystemConfiguration_Sticky a.CallForAction {
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+}
+
+#ConfigTree {
+  font-size: 90%;
+}
+#ConfigTree li.jstree-node {
+  background-image: none;
+}
+#ConfigTree li.jstree-node::before {
+  content: "\f035f";
+  display: inline-block;
+  font-family: "Material Design Icons";
+  font-size: 150%;
+  transition: all ease 0.2s;
+  visibility: hidden;
+}
+#ConfigTree li.jstree-node.jstree-closed::before, #ConfigTree li.jstree-node.jstree-open::before {
+  visibility: visible;
+}
+#ConfigTree li.jstree-node.jstree-open::before {
+  transform: rotate(90deg);
+}
+#ConfigTree li.jstree-node .jstree-icon {
+  margin-left: -20px;
+  opacity: 0;
+  position: absolute;
+}
+#ConfigTree > ul > .jstree-node {
+  margin-left: 0;
+}
+#ConfigTree .jstree-node {
+  margin-left: 14px;
+}
+
+.WidgetSimple.Setting {
+  font-size: initial;
+}
+.WidgetSimple.Setting .SettingContent {
+  font-size: initial;
+}
+.WidgetSimple.Setting .SettingContent .AlreadyDisabled div.InputField_Selection {
+  background-color: #d0d0d0;
+}
+.WidgetSimple.Setting .SettingContent .AlreadyDisabled div.InputField_Selection div.Text {
+  background-color: transparent;
+  color: #666;
+}
+
+.Array button.AddArrayItem,
+.Hash button.AddHashKey {
+  width: 100%;
+  position: static;
+}
+.Array button.AddArrayItem span.InvisibleText,
+.Hash button.AddHashKey span.InvisibleText {
+  width: auto;
+  height: auto;
+  text-indent: initial;
+  position: static !important;
+  left: auto;
+  top: auto;
+}
+
+.OverviewBox h1 {
+  font-size: 110%;
+  padding-left: 0;
+}
+.QueueOverview {
+  margin-left: 0;
+}
+
+.QueueOverviewList {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  font-size: initial;
+  margin-bottom: 8px;
+  padding-left: 0;
+  float: left;
+}
+.QueueOverviewList li {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+.QueueOverviewList li > a {
+  border-bottom: none;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.QueueOverviewList li > a:hover {
+  color: #444;
+  text-decoration: underline;
+  text-decoration-color: #f15a22;
+  background: #fff;
+}
+.QueueOverviewList li:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.QueueOverviewList li:first-child a {
+  padding-left: 10px;
+}
+.QueueOverviewList li:not(:last-child) {
+  border-right: none;
+}
+.QueueOverviewList li:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.QueueOverviewList li.Selected a {
+  background-color: #fff;
+}
+.QueueOverviewList li::after {
+  content: none;
+}
+.QueueOverviewList li.Last {
+  background-color: #f8f8f8;
+}
+.QueueOverviewList a.Active {
+  background-color: #fff;
+}
+
+.OverviewControl,
+.Content.Overview {
+  font-size: initial;
+}
+.OverviewControl .ControlRow,
+.Content.Overview .ControlRow {
+  background-color: #eee;
+  border-bottom: solid 1px #ddd;
+  padding: 10px;
+}
+.OverviewControl .ControlRow .Tabs,
+.Content.Overview .ControlRow .Tabs {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  font-size: initial;
+  margin-bottom: 8px;
+  padding-left: 0;
+  float: left;
+  margin-bottom: 0;
+}
+.OverviewControl .ControlRow .Tabs li,
+.Content.Overview .ControlRow .Tabs li {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+.OverviewControl .ControlRow .Tabs li > a,
+.Content.Overview .ControlRow .Tabs li > a {
+  border-bottom: none;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.OverviewControl .ControlRow .Tabs li > a:hover,
+.Content.Overview .ControlRow .Tabs li > a:hover {
+  color: #444;
+  text-decoration: underline;
+  text-decoration-color: #f15a22;
+  background: #fff;
+}
+.OverviewControl .ControlRow .Tabs li:first-child,
+.Content.Overview .ControlRow .Tabs li:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.OverviewControl .ControlRow .Tabs li:first-child a,
+.Content.Overview .ControlRow .Tabs li:first-child a {
+  padding-left: 10px;
+}
+.OverviewControl .ControlRow .Tabs li:not(:last-child),
+.Content.Overview .ControlRow .Tabs li:not(:last-child) {
+  border-right: none;
+}
+.OverviewControl .ControlRow .Tabs li:last-child,
+.Content.Overview .ControlRow .Tabs li:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.OverviewControl .ControlRow .Tabs li.Selected a,
+.Content.Overview .ControlRow .Tabs li.Selected a {
+  background-color: #fff;
+}
+.OverviewControl .ControlRow .Tabs li::after,
+.Content.Overview .ControlRow .Tabs li::after {
+  content: none;
+}
+.OverviewControl .ControlRow .Tabs li.Last,
+.Content.Overview .ControlRow .Tabs li.Last {
+  background-color: #f8f8f8;
+}
+.OverviewControl .ControlRow .Tabs li.Active,
+.Content.Overview .ControlRow .Tabs li.Active {
+  background-color: #fff;
+  font-weight: bold;
+}
+.OverviewControl .ControlRow .Tabs li > a,
+.Content.Overview .ControlRow .Tabs li > a {
+  font-size: inherit;
+}
+.OverviewControl .ControlRow .Tabs li:not(.Active):hover, .OverviewControl .ControlRow .Tabs li:not(.Active) a:hover,
+.Content.Overview .ControlRow .Tabs li:not(.Active):hover,
+.Content.Overview .ControlRow .Tabs li:not(.Active) a:hover {
+  background-color: transparent;
+}
+.OverviewControl .ControlRow .Tabs li a span::before,
+.Content.Overview .ControlRow .Tabs li a span::before {
+  content: "(";
+}
+.OverviewControl .ControlRow .Tabs li a span::after,
+.Content.Overview .ControlRow .Tabs li a span::after {
+  content: ")";
+}
+.OverviewControl .ActionRow,
+.Content.Overview .ActionRow {
+  border-top: solid 1px ghostwhite;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.OverviewControl .ActionRow ul.Actions li.AlwaysPresent,
+.Content.Overview .ActionRow ul.Actions li.AlwaysPresent {
+  margin-left: 10px;
+}
+.OverviewControl .ActionRow ul.Actions li.AlwaysPresent span,
+.Content.Overview .ActionRow ul.Actions li.AlwaysPresent span {
+  font-size: initial;
+  text-align: center;
+  width: 2.4em;
+}
+.OverviewControl .ActionRow ul.Actions li.AlwaysPresent span input#SelectAllTickets,
+.Content.Overview .ActionRow ul.Actions li.AlwaysPresent span input#SelectAllTickets {
+  margin: 0;
+}
+.OverviewControl .ActionRow ul.Actions li.AlwaysPresent:first-child,
+.Content.Overview .ActionRow ul.Actions li.AlwaysPresent:first-child {
+  margin-left: 6px;
+}
+.OverviewControl .ActionRow ul.Actions li.AlwaysPresent:first-child span,
+.Content.Overview .ActionRow ul.Actions li.AlwaysPresent:first-child span {
+  padding: 0;
+}
+.OverviewControl .ActionRow ul.Actions li#BulkAction,
+.Content.Overview .ActionRow ul.Actions li#BulkAction {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  overflow: hidden;
+}
+.OverviewControl .ActionRow ul.Actions li#BulkAction > a,
+.Content.Overview .ActionRow ul.Actions li#BulkAction > a {
+  border-bottom: none;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.OverviewControl .ActionRow ul.Actions li#BulkAction > a:hover,
+.Content.Overview .ActionRow ul.Actions li#BulkAction > a:hover {
+  color: #444;
+  text-decoration: underline;
+  text-decoration-color: #f15a22;
+  background: #fff;
+}
+.OverviewControl .ActionRow ul.Actions li#BulkAction.Inactive a,
+.Content.Overview .ActionRow ul.Actions li#BulkAction.Inactive a {
+  background-color: rgba(120, 120, 120, 0.3);
+  opacity: 0.5;
+}
+.OverviewControl .ActionRow ul.Actions li#BulkAction.Inactive a:hover,
+.Content.Overview .ActionRow ul.Actions li#BulkAction.Inactive a:hover {
+  text-decoration: none;
+}
+.OverviewControl .ActionRow ul.Actions li#BulkAction,
+.Content.Overview .ActionRow ul.Actions li#BulkAction {
+  margin-left: 10px;
+}
+.OverviewControl .ActionRow ul.Actions li.SortBy,
+.Content.Overview .ActionRow ul.Actions li.SortBy {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  overflow: hidden;
+}
+.OverviewControl .ActionRow ul.Actions li.SortBy > a,
+.Content.Overview .ActionRow ul.Actions li.SortBy > a {
+  border-bottom: none;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.OverviewControl .ActionRow ul.Actions li.SortBy > a:hover,
+.Content.Overview .ActionRow ul.Actions li.SortBy > a:hover {
+  color: #444;
+  text-decoration: underline;
+  text-decoration-color: #f15a22;
+  background: #fff;
+}
+.OverviewControl .ActionRow ul.Actions li.SortBy select,
+.Content.Overview .ActionRow ul.Actions li.SortBy select {
+  border-left: solid 10px transparent;
+  border-right: solid 10px transparent;
+  font-size: inherit;
+  margin-top: 0;
+  padding: 5px 0;
+}
+
+.Overview.TicketList table.TableSmall thead tr th.Checkbox,
+.Overview.TicketList table.TableSmall thead tr td.Checkbox,
+.Overview.TicketList table.TableSmall tbody tr th.Checkbox,
+.Overview.TicketList table.TableSmall tbody tr td.Checkbox {
+  text-align: center;
+}
+.Overview.TicketList table.TableSmall thead tr th.Checkbox .Checkbox,
+.Overview.TicketList table.TableSmall thead tr td.Checkbox .Checkbox,
+.Overview.TicketList table.TableSmall tbody tr th.Checkbox .Checkbox,
+.Overview.TicketList table.TableSmall tbody tr td.Checkbox .Checkbox {
+  margin-left: 0;
+}
+.Overview.TicketList table.TableSmall thead td:first-child,
+.Overview.TicketList table.TableSmall tbody td:first-child {
+  padding-top: 6px;
+}
+.Overview.TicketList table.TableSmall tbody td.Flags {
+  line-height: 18px;
+  padding: 6px 10px;
+  text-align: center;
+}
+.Overview.TicketList table.TableSmall tbody td.Flags .Flag span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Overview.OverviewMedium .Checkbox,
+.Overview.OverviewLarge .Checkbox {
+  position: initial;
+}
+.Overview.OverviewMedium .Flag,
+.Overview.OverviewLarge .Flag {
+  height: initial;
+  left: initial;
+  position: static;
+  top: initial;
+  width: initial;
+}
+.Overview.OverviewMedium .Flag span,
+.Overview.OverviewLarge .Flag span {
+  border-radius: 0.2em;
+  height: auto;
+  width: 1.8em;
+}
+.Overview.OverviewMedium .Flag span::after,
+.Overview.OverviewLarge .Flag span::after {
+  content: "";
+  border-bottom: solid 2px #000;
+  border-radius: inherit;
+  bottom: 0;
+  display: block;
+  height: inherit;
+  left: 0;
+  opacity: 0.2;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: inherit;
+}
+.Overview.OverviewMedium div.UnreadArticles,
+.Overview.OverviewLarge div.UnreadArticles {
+  position: initial;
+}
+.Overview.OverviewMedium div.UnreadArticles span.UnreadArticles,
+.Overview.OverviewLarge div.UnreadArticles span.UnreadArticles {
+  position: initial;
+}
+.Overview.OverviewMedium div.UnreadArticles span.UnreadArticles i.fa,
+.Overview.OverviewLarge div.UnreadArticles span.UnreadArticles i.fa {
+  position: initial;
+}
+
+.Overview.OverviewMedium,
+.Overview.OverviewLarge {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.Overview.OverviewMedium > li,
+.Overview.OverviewLarge > li {
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.Overview.OverviewMedium > li:not(:last-child),
+.Overview.OverviewLarge > li:not(:last-child) {
+  margin-bottom: 0.4em;
+}
+.Overview.OverviewMedium .Actions.InlineActions,
+.Overview.OverviewLarge .Actions.InlineActions {
+  border-bottom-left-radius: 4px;
+  height: auto;
+  padding-left: 0.8em;
+  top: 0;
+  transform: translate(0, -90%);
+  z-index: 9999;
+}
+.Overview.OverviewMedium .Actions.InlineActions.cmt-inline-actions-shown,
+.Overview.OverviewLarge .Actions.InlineActions.cmt-inline-actions-shown {
+  transform: translate(0, 0);
+}
+.Overview.OverviewMedium .Actions.InlineActions li:last-child:after,
+.Overview.OverviewLarge .Actions.InlineActions li:last-child:after {
+  content: "";
+  margin: 0;
+}
+.Overview.OverviewMedium .Actions.InlineActions li:last-child form,
+.Overview.OverviewLarge .Actions.InlineActions li:last-child form {
+  padding: 0.8em;
+}
+.Overview.OverviewMedium .cmt-ticket-overview-ml-flags,
+.Overview.OverviewLarge .cmt-ticket-overview-ml-flags {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 2.4em;
+}
+.Overview.OverviewMedium .cmt-ticket-overview-ml-flags div.Checkbox,
+.Overview.OverviewLarge .cmt-ticket-overview-ml-flags div.Checkbox {
+  height: auto;
+  line-height: 1.6em;
+  margin-bottom: 0.4em;
+  width: auto;
+}
+.Overview.OverviewMedium .cmt-ticket-overview-ml-flags div.Checkbox input.Checkbox,
+.Overview.OverviewLarge .cmt-ticket-overview-ml-flags div.Checkbox input.Checkbox {
+  margin: 0;
+  vertical-align: text-top;
+}
+.Overview.OverviewMedium .cmt-ticket-overview-ml-flags div.Flag,
+.Overview.OverviewLarge .cmt-ticket-overview-ml-flags div.Flag {
+  border: none;
+  line-height: 2em;
+  margin-bottom: 0.4em;
+}
+.Overview.OverviewMedium .cmt-ticket-overview-ml-flags div.Flag span,
+.Overview.OverviewLarge .cmt-ticket-overview-ml-flags div.Flag span {
+  height: 1em;
+  position: relative;
+  width: 1em;
+}
+.Overview.OverviewMedium .cmt-ticket-overview-ml-flags div.UnreadArticles,
+.Overview.OverviewLarge .cmt-ticket-overview-ml-flags div.UnreadArticles {
+  height: auto;
+  line-height: 2em;
+  margin-bottom: 0.4em;
+  width: auto;
+}
+.Overview.OverviewMedium .Content h2,
+.Overview.OverviewLarge .Content h2 {
+  font-size: initial;
+  height: auto;
+  margin-bottom: 10px;
+  margin-left: calc(2.4em + 10px);
+}
+.Overview.OverviewMedium .Content .Infos,
+.Overview.OverviewLarge .Content .Infos {
+  color: #333;
+  margin-left: calc(2.4em + 10px);
+}
+.Overview.OverviewMedium .Content .Infos td,
+.Overview.OverviewLarge .Content .Infos td {
+  padding-bottom: 1em;
+}
+.Overview.OverviewMedium .Content .Infos td label,
+.Overview.OverviewLarge .Content .Infos td label {
+  font-size: 90%;
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  text-decoration: underline;
+}
+
+.Overview.OverviewMedium li.MasterAction .Content .cmt-ticket-overview-ml-flags {
+  margin-right: 10px;
+}
+
+.Overview.OverviewLarge li.MasterAction > .Content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Infos {
+  flex: 0.4;
+  float: none;
+  margin-left: calc(2.4em + 10px);
+  margin-top: 0;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Infos h2, .Overview.OverviewLarge li.MasterAction > .Content .Infos table {
+  margin-left: 0px;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Infos h2 {
+  height: auto;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Infos table {
+  margin-top: 2px;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Preview {
+  flex: 0.6;
+  float: none;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Preview ul {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Preview ul h3 {
+  font-size: inherit;
+  padding: 0.2em 0.1em;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Preview ul h3 a {
+  height: auto;
+  line-height: 1.25;
+}
+.Overview.OverviewLarge li.MasterAction > .Content .Preview ul .ItemActions {
+  padding: 8px;
+}
+
+div.Headline {
+  display: flex;
+  align-items: center;
+}
+div.Headline .Flag {
+  height: initial;
+  left: initial;
+  position: static;
+  top: initial;
+  width: initial;
+}
+div.Headline .Flag span {
+  border-radius: 0.2em;
+  height: auto;
+  width: 1.8em;
+}
+div.Headline .Flag span::after {
+  content: "";
+  border-bottom: solid 2px #000;
+  border-radius: inherit;
+  bottom: 0;
+  display: block;
+  height: inherit;
+  left: 0;
+  opacity: 0.2;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: inherit;
+}
+div.Headline h1 {
+  font-size: 110%;
+}
+div.Headline .Flag + h1 {
+  margin-left: 0.5em;
+}
+
+.ActionRow .Actions li#nav-Back {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.ActionRow .Actions li#nav-Back a::before {
+  content: "\f004d";
+  font-family: "Material Design Icons";
+  margin-right: 0.25em;
+}
+.ActionRow .Actions li#nav-Back + li {
+  border-left: solid 1px #ccc;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  margin-left: 0.5em;
+}
+.ActionRow .Actions li form input {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+  border-bottom: solid 2px #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+}
+
+#ArticleTableBody .Scroller {
+  border-radius: 4px;
+  height: 10em;
+}
+#ArticleTableBody #ArticleTable {
+  overflow: initial;
+}
+#ArticleTableBody #ArticleTable thead {
+  overflow: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.MessageBrowser {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #2196f3ff;
+  margin-top: 10px;
+}
+.MessageBrowser .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.MessageBrowser .Icon::before {
+  content: "\f02fd";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.MessageBrowser p {
+  border: thin solid;
+  border-color: #2196f3ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #2196f334;
+  caret-color: #2196f3ff;
+  color: #2196f3ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+.MessageBrowser p::after {
+  background-color: #2196f3ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.MessageBrowser p a {
+  color: #333;
+}
+.MessageBrowser p {
+  background: transparent;
+  color: #333;
+  font-size: smaller;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+.MessageBrowser p::before {
+  content: "\f02fd";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+  color: #2196f3ff;
+}
+.MessageBrowser a.Close::before {
+  content: "\f0156";
+  font-family: "Material Design Icons";
+  color: #2196f3ff;
+  margin-left: -0.5em;
+}
+.MessageBrowser a.Close i.fa {
+  display: none;
+}
+
+#ArticleItems .ArticleMailContent {
+  padding-left: 0;
+  padding-right: 0;
+}
+#ArticleItems .ArticleMailContent .ItemActions {
+  padding-left: 0;
+  margin-bottom: 6px;
+}
+#ArticleItems .Incoming .Avatar {
+  margin-left: 1em;
+  order: 4;
+}
+#ArticleItems .Incoming .ArticleMailContentHTMLWrapper {
+  margin-left: 0;
+  margin-right: 0;
+  order: 3;
+}
+#ArticleItems .Outgoing .Avatar {
+  margin-right: 1em;
+  order: 3;
+}
+#ArticleItems .Outgoing .ArticleMailContentHTMLWrapper {
+  margin-left: 0;
+  margin-right: 0;
+  order: 4;
+}
+
+.ArticleMailContent {
+  padding-left: 0;
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.ArticleMailContent .Avatar {
+  border-radius: 50%;
+  flex-grow: 0;
+  order: 4;
+  padding: 3px;
+  position: static;
+}
+.ArticleMailContent .Avatar img {
+  border-radius: 50%;
+}
+.ArticleMailContent .ItemActions {
+  order: 1;
+}
+.ArticleMailContent .ItemActions + hr.cmt-flex-break {
+  order: 2;
+}
+.ArticleMailContent .ArticleMailContentHTMLWrapper {
+  align-self: flex-start;
+  border-radius: 4px;
+  flex-grow: 1;
+  margin-right: 0;
+  order: 3;
+}
+.ArticleMailContent .ArticleMailContentHTMLWrapper iframe {
+  border-radius: 4px;
+}
+.ArticleMailContent hr.cmt-flex-break {
+  order: 5;
+}
+.ArticleMailContent .ArticleAttachments {
+  order: 6;
+}
+
+#ArticleItems .Outgoing .ArticleMailContent .ItemActions,
+#ArticleItems .Outgoing .ArticleMailContent .ArticleAttachments {
+  left: 50px;
+  margin-left: 1em;
+  margin-right: 0;
+  position: relative;
+}
+
+/* Ticket Information box */
 
 /*# sourceMappingURL=agent.css.map */
