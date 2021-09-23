@@ -3835,6 +3835,7 @@ div.Headline .Flag + h1 {
   margin-left: 1em;
   order: 4;
 }
+#ArticleItems .Incoming .ArticleBody,
 #ArticleItems .Incoming .ArticleMailContentHTMLWrapper {
   margin-left: 0;
   margin-right: 0;
@@ -3844,6 +3845,7 @@ div.Headline .Flag + h1 {
   margin-right: 1em;
   order: 3;
 }
+#ArticleItems .Outgoing .ArticleBody,
 #ArticleItems .Outgoing .ArticleMailContentHTMLWrapper {
   margin-left: 0;
   margin-right: 0;

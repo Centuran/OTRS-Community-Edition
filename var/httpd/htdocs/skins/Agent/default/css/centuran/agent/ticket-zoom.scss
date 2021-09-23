@@ -116,6 +116,7 @@ div.Headline {
       order: 4;
     }
 
+    .ArticleBody,
     .ArticleMailContentHTMLWrapper {
       margin-left: 0;
       margin-right: 0;
@@ -129,6 +130,7 @@ div.Headline {
       order: 3;
     }
 
+    .ArticleBody,
     .ArticleMailContentHTMLWrapper {
       margin-left: 0;
       margin-right: 0;
@@ -174,7 +176,7 @@ div.Headline {
   
   .ArticleMailContentHTMLWrapper {
     @extend .ArticleBody;
-    
+
     iframe {
       border-radius: 4px;
     }
