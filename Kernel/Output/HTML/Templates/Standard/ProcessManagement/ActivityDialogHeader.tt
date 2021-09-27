@@ -54,6 +54,11 @@
     </div>
 
     <div class="ContentColumn">
+
+        <div class="cmt-form-wrapper">
+            <div class="WidgetSimple">
+                <div class="Content">
+
         <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="[% Data.FormName %]" id="[% Data.FormID %]" class="Validate PreventMultipleSubmits">
             <input type="hidden" name="Action" value="[% Env("Action") %]"/>
             <input type="hidden" name="Subaction" value="[% Data.Subaction | html %]"/>
