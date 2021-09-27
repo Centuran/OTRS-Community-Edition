@@ -37,6 +37,7 @@ X-OTRS-Login: [% Env("Baselink") %]
             position: absolute;
             right: 10px;
             top: 0;
+            z-index: 10001;
         }    
     </style>
 
