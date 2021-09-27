@@ -97,6 +97,10 @@
 }
 .MessageBox.Error p a {
   color: #333;
+  transition: color ease 0.2s;
+}
+.MessageBox.Error p a:hover {
+  color: currentColor;
 }
 
 .MessageBox.Notice {
@@ -149,6 +153,10 @@
 }
 .MessageBox.Notice p a {
   color: #333;
+  transition: color ease 0.2s;
+}
+.MessageBox.Notice p a:hover {
+  color: currentColor;
 }
 
 code,
@@ -234,7 +242,7 @@ ul.Tablelike li.Header {
 .WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
   content: "\f0143";
 }
-.WidgetSimple .Content {
+.WidgetSimple > .Content {
   border-top: solid 1px ghostwhite;
 }
 
@@ -489,7 +497,10 @@ a.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a.CallForAc
 button.CallForAction:hover {
   background-color: #f15a22;
   border: solid 1px #ff6a32;
+  background-color: #24408c;
+  border: solid 1px #0f1b3b;
   color: #fff;
+  color: white;
 }
 a.CallForAction:hover::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover::before,
 .v-application a.CallForAction:hover::before,
@@ -500,17 +511,12 @@ a.CallForAction:hover span i.fa::before, .ProcessManagementEditScreen #ProcessEl
 .v-application a.CallForAction:hover span i.fa::before,
 button.CallForAction:hover span i.fa::before {
   color: #fff;
+  color: white;
 }
 a.CallForAction:focus, .ProcessManagementEditScreen #ProcessElements a.CallForAction:focus,
 .v-application a.CallForAction:focus,
 button.CallForAction:focus {
-  background-color: #f15a22;
   outline: none;
-}
-a.CallForAction:active, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active,
-.v-application a.CallForAction:active,
-button.CallForAction:active {
-  background-color: #f15a22;
 }
 a.CallForAction:active::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active::before,
 .v-application a.CallForAction:active::before,
@@ -546,32 +552,38 @@ button.CallForAction span.v-ripple__container span.v-ripple__animation {
 a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
 .v-application a.CallForAction,
 button.CallForAction {
-  background: #f8f8f8;
-  color: #444;
+  background: transparent;
+  color: rgba(20, 36, 79, 0.8);
   padding: 0.3em 1.2em;
-  border: solid 1px #ddd;
-  box-shadow: 0px 1px 0px #ccc, 0px 1px 10px #f8f8f8;
+  border: solid 1px rgba(36, 64, 140, 0.4);
+  box-shadow: 0px 1px 0px #99a;
 }
-a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
-.v-application a.CallForAction span,
-button.CallForAction span {
-  color: inherit;
-  padding: 0;
-}
-a.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover,
-.v-application a.CallForAction:hover,
-button.CallForAction:hover {
-  border: solid 1px #ff6a32;
+a.CallForAction:active, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active,
+.v-application a.CallForAction:active,
+button.CallForAction:active {
+  background: #24408c;
+  color: white;
 }
 a.CallForAction.Primary, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction,
 .v-application a.CallForAction.Primary,
 button.CallForAction.Primary {
   background-color: #f15a22;
   border: solid 1px #ff6a32;
+  box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
   color: #fff;
   padding: 0.3em 1.2em;
 }
-
+a.CallForAction.Primary:hover, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction:hover,
+.v-application a.CallForAction.Primary:hover,
+button.CallForAction.Primary:hover {
+  background-color: #de3e02;
+}
+a.CallForAction.Primary:hover span, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction:hover span,
+.v-application a.CallForAction.Primary:hover span,
+button.CallForAction.Primary:hover span {
+  text-shadow: 0 0 20px #fff;
+  transition: all ease-in 0.1s;
+}
 a.CallForAction.Disabled, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction,
 .v-application a.CallForAction.Disabled,
 button.CallForAction.Disabled {
@@ -579,7 +591,13 @@ button.CallForAction.Disabled {
   background: #d0d0d0 !important;
   border: solid 1px #d8d8d8 !important;
   border-bottom: solid 1px #d8d8d8 !important;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee !important;
+}
+a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  color: inherit;
+  padding: 0;
 }
 
 .WidgetSimple .Content a.CallForAction:not(.Primary), .WidgetSimple .Content .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary), .ProcessManagementEditScreen #ProcessElements .WidgetSimple .Content a.CallForAction:not(.Primary),
@@ -591,21 +609,19 @@ button.CallForAction.Disabled {
 .Dialog .ContentFooter .v-application a.CallForAction:not(.Primary),
 .Dialog .ContentFooter button.CallForAction:not(.Primary) {
   border: solid 1px #fff;
+  border: solid 1px rgba(36, 64, 140, 0.4);
   box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
-}
-.WidgetSimple .Content a.CallForAction:not(.Primary):hover, .WidgetSimple .Content .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary):hover, .ProcessManagementEditScreen #ProcessElements .WidgetSimple .Content a.CallForAction:not(.Primary):hover,
-.WidgetSimple .Content .v-application a.CallForAction:not(.Primary):hover,
-.WidgetSimple .Content button.CallForAction:not(.Primary):hover,
-.Dialog .ContentFooter a.CallForAction:not(.Primary):hover,
-.Dialog .ContentFooter .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary):hover,
-.ProcessManagementEditScreen #ProcessElements .Dialog .ContentFooter a.CallForAction:not(.Primary):hover,
-.Dialog .ContentFooter .v-application a.CallForAction:not(.Primary):hover,
-.Dialog .ContentFooter button.CallForAction:not(.Primary):hover {
-  border: solid 1px #ff6a32;
+  box-shadow: 0px 1px 0px #99a;
 }
 
 .ProcessManagementEditScreen #ProcessElements a.CallForAction {
   width: auto;
+}
+
+#EditFormCancel.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a#EditFormCancel.CallForAction:hover {
+  background-color: rgba(36, 64, 140, 0.1);
+  border-color: rgba(36, 64, 140, 0.4);
+  color: rgba(31, 55, 120, 0.8);
 }
 
 a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
@@ -626,9 +642,7 @@ button.CallForAction span i.fa {
 a.CallForAction span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa::before,
 .v-application a.CallForAction span i.fa::before,
 button.CallForAction span i.fa::before {
-  color: #f15a22;
-  color: lightslategray;
-  color: slategray;
+  color: rgba(20, 36, 79, 0.8);
   content: "";
   font-family: "Material Design Icons";
   font-weight: bold;
@@ -636,80 +650,74 @@ button.CallForAction span i.fa::before {
 a.CallForAction span i.fa.fa-arrows-h::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-arrows-h::before,
 .v-application a.CallForAction span i.fa.fa-arrows-h::before,
 button.CallForAction span i.fa.fa-arrows-h::before {
-  font-family: "Material Design Icons";
   content: "\f0e73";
 }
 a.CallForAction span i.fa.fa-arrows-v::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-arrows-v::before,
 .v-application a.CallForAction span i.fa.fa-arrows-v::before,
 button.CallForAction span i.fa.fa-arrows-v::before {
-  font-family: "Material Design Icons";
   content: "\f0e79";
 }
 a.CallForAction span i.fa.fa-bar-chart::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-bar-chart::before,
 .v-application a.CallForAction span i.fa.fa-bar-chart::before,
 button.CallForAction span i.fa.fa-bar-chart::before {
-  font-family: "Material Design Icons";
   content: "\f0128";
 }
 a.CallForAction span i.fa.fa-bell-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-bell-o::before,
 .v-application a.CallForAction span i.fa.fa-bell-o::before,
 button.CallForAction span i.fa.fa-bell-o::before {
-  font-family: "Material Design Icons";
   content: "\f009a";
 }
 a.CallForAction span i.fa.fa-building::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-building::before,
 .v-application a.CallForAction span i.fa.fa-building::before,
 button.CallForAction span i.fa.fa-building::before {
-  font-family: "Material Design Icons";
   content: "\f0991";
 }
 a.CallForAction span i.fa.fa-building-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-building-o::before,
 .v-application a.CallForAction span i.fa.fa-building-o::before,
 button.CallForAction span i.fa.fa-building-o::before {
-  font-family: "Material Design Icons";
   content: "\f0991";
 }
 a.CallForAction span i.fa.fa-calendar::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-calendar::before,
 .v-application a.CallForAction span i.fa.fa-calendar::before,
 button.CallForAction span i.fa.fa-calendar::before {
-  font-family: "Material Design Icons";
   content: "\f00ed";
 }
 a.CallForAction span i.fa.fa-filter::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-filter::before,
 .v-application a.CallForAction span i.fa.fa-filter::before,
 button.CallForAction span i.fa.fa-filter::before {
-  font-family: "Material Design Icons";
   content: "\f0232";
 }
 a.CallForAction span i.fa.fa-paperclip::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-paperclip::before,
 .v-application a.CallForAction span i.fa.fa-paperclip::before,
 button.CallForAction span i.fa.fa-paperclip::before {
-  font-family: "Material Design Icons";
   content: "\f03e2";
 }
 a.CallForAction span i.fa.fa-plus-square::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-plus-square::before,
 .v-application a.CallForAction span i.fa.fa-plus-square::before,
 button.CallForAction span i.fa.fa-plus-square::before {
-  font-family: "Material Design Icons";
   content: "\f0415";
 }
 a.CallForAction span i.fa.fa-reply::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-reply::before,
 .v-application a.CallForAction span i.fa.fa-reply::before,
 button.CallForAction span i.fa.fa-reply::before {
-  font-family: "Material Design Icons";
   content: "\f045a";
 }
 a.CallForAction span i.fa.fa-user::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-user::before,
 .v-application a.CallForAction span i.fa.fa-user::before,
 button.CallForAction span i.fa.fa-user::before {
-  font-family: "Material Design Icons";
   content: "\f0004";
 }
 a.CallForAction span i.fa.fa-users::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-users::before,
 .v-application a.CallForAction span i.fa.fa-users::before,
 button.CallForAction span i.fa.fa-users::before {
-  font-family: "Material Design Icons";
   content: "\f0849";
+}
+a.CallForAction.Disabled span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction span i.fa::before, a.CallForAction.Disabled:hover span i.fa::before,
+.v-application a.CallForAction.Disabled span i.fa::before,
+.v-application a.CallForAction.Disabled:hover span i.fa::before,
+button.CallForAction.Disabled span i.fa::before,
+button.CallForAction.Disabled:hover span i.fa::before {
+  color: #888;
 }
 
 a.CallForAction.Fullsize span i.fa, .ProcessManagementEditScreen #ProcessElements a.Fullsize.CallForAction span i.fa,
@@ -717,12 +725,6 @@ a.CallForAction.Fullsize span i.fa, .ProcessManagementEditScreen #ProcessElement
 button.CallForAction.Fullsize span i.fa {
   color: inherit;
   margin-right: 0.3em;
-}
-
-a.CallForAction.Disabled i.fa::before, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction i.fa::before,
-.v-application a.CallForAction.Disabled i.fa::before,
-button.CallForAction.Disabled i.fa::before {
-  color: #888;
 }
 
 /* List displayed as table */
@@ -767,7 +769,7 @@ hr.cmt-flex-break {
   display: none !important;
 }
 #ToolBar li a span.Counter {
-  background: #1976d2;
+  background-color: #2e53b5;
   border-radius: 50px;
   bottom: 25%;
   box-sizing: border-box;
@@ -1396,6 +1398,16 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .TableSmall thead th.SortDescendingLarge a.ColumnSettingsTrigger::after {
   content: "\f0232";
 }
+.DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after, .DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after, .DataTable thead th.FilterActive a.ColumnSettingsTrigger::after,
+.Sortable.DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+.Sortable.DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+.Sortable.DataTable thead th.FilterActive a.ColumnSettingsTrigger::after,
+.TableSmall thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+.TableSmall thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+.TableSmall thead th.FilterActive a.ColumnSettingsTrigger::after {
+  background-color: #2e53b5;
+  color: white;
+}
 .DataTable thead th a,
 .Sortable.DataTable thead th a,
 .TableSmall thead th a {
@@ -1766,10 +1778,13 @@ p.FieldExplanation {
 }
 
 .ItemListGrid.WithIcons > li > a {
-  background: #f8f8f8;
-  border: solid 1px #fff;
-  box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
+  background: transparent;
+  border: solid 1px rgba(36, 64, 140, 0.4);
+  box-shadow: 0px 1px 0px #99a;
   color: #444;
+}
+.ItemListGrid.WithIcons > li > a:not(.Disabled):hover {
+  border: solid 1px rgba(36, 64, 140, 0.4);
 }
 .ItemListGrid.WithIcons > li span.Icons i.fa::before {
   color: slategray !important;
@@ -2019,6 +2034,10 @@ p.FieldExplanation {
 }
 .MessageBox.Error p a {
   color: #333;
+  transition: color ease 0.2s;
+}
+.MessageBox.Error p a:hover {
+  color: currentColor;
 }
 
 .MessageBox.Notice {
@@ -2071,6 +2090,10 @@ p.FieldExplanation {
 }
 .MessageBox.Notice p a {
   color: #333;
+  transition: color ease 0.2s;
+}
+.MessageBox.Notice p a:hover {
+  color: currentColor;
 }
 
 code,
@@ -2156,7 +2179,7 @@ ul.Tablelike li.Header {
 .WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
   content: "\f0143";
 }
-.WidgetSimple .Content {
+.WidgetSimple > .Content {
   border-top: solid 1px ghostwhite;
 }
 
@@ -2411,7 +2434,10 @@ a.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a.CallForAc
 button.CallForAction:hover {
   background-color: #f15a22;
   border: solid 1px #ff6a32;
+  background-color: #24408c;
+  border: solid 1px #0f1b3b;
   color: #fff;
+  color: white;
 }
 a.CallForAction:hover::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover::before,
 .v-application a.CallForAction:hover::before,
@@ -2422,17 +2448,12 @@ a.CallForAction:hover span i.fa::before, .ProcessManagementEditScreen #ProcessEl
 .v-application a.CallForAction:hover span i.fa::before,
 button.CallForAction:hover span i.fa::before {
   color: #fff;
+  color: white;
 }
 a.CallForAction:focus, .ProcessManagementEditScreen #ProcessElements a.CallForAction:focus,
 .v-application a.CallForAction:focus,
 button.CallForAction:focus {
-  background-color: #f15a22;
   outline: none;
-}
-a.CallForAction:active, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active,
-.v-application a.CallForAction:active,
-button.CallForAction:active {
-  background-color: #f15a22;
 }
 a.CallForAction:active::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active::before,
 .v-application a.CallForAction:active::before,
@@ -2468,32 +2489,38 @@ button.CallForAction span.v-ripple__container span.v-ripple__animation {
 a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
 .v-application a.CallForAction,
 button.CallForAction {
-  background: #f8f8f8;
-  color: #444;
+  background: transparent;
+  color: rgba(20, 36, 79, 0.8);
   padding: 0.3em 1.2em;
-  border: solid 1px #ddd;
-  box-shadow: 0px 1px 0px #ccc, 0px 1px 10px #f8f8f8;
+  border: solid 1px rgba(36, 64, 140, 0.4);
+  box-shadow: 0px 1px 0px #99a;
 }
-a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
-.v-application a.CallForAction span,
-button.CallForAction span {
-  color: inherit;
-  padding: 0;
-}
-a.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a.CallForAction:hover,
-.v-application a.CallForAction:hover,
-button.CallForAction:hover {
-  border: solid 1px #ff6a32;
+a.CallForAction:active, .ProcessManagementEditScreen #ProcessElements a.CallForAction:active,
+.v-application a.CallForAction:active,
+button.CallForAction:active {
+  background: #24408c;
+  color: white;
 }
 a.CallForAction.Primary, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction,
 .v-application a.CallForAction.Primary,
 button.CallForAction.Primary {
   background-color: #f15a22;
   border: solid 1px #ff6a32;
+  box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
   color: #fff;
   padding: 0.3em 1.2em;
 }
-
+a.CallForAction.Primary:hover, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction:hover,
+.v-application a.CallForAction.Primary:hover,
+button.CallForAction.Primary:hover {
+  background-color: #de3e02;
+}
+a.CallForAction.Primary:hover span, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction:hover span,
+.v-application a.CallForAction.Primary:hover span,
+button.CallForAction.Primary:hover span {
+  text-shadow: 0 0 20px #fff;
+  transition: all ease-in 0.1s;
+}
 a.CallForAction.Disabled, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction,
 .v-application a.CallForAction.Disabled,
 button.CallForAction.Disabled {
@@ -2501,7 +2528,13 @@ button.CallForAction.Disabled {
   background: #d0d0d0 !important;
   border: solid 1px #d8d8d8 !important;
   border-bottom: solid 1px #d8d8d8 !important;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee !important;
+}
+a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
+.v-application a.CallForAction span,
+button.CallForAction span {
+  color: inherit;
+  padding: 0;
 }
 
 .WidgetSimple .Content a.CallForAction:not(.Primary), .WidgetSimple .Content .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary), .ProcessManagementEditScreen #ProcessElements .WidgetSimple .Content a.CallForAction:not(.Primary),
@@ -2513,21 +2546,19 @@ button.CallForAction.Disabled {
 .Dialog .ContentFooter .v-application a.CallForAction:not(.Primary),
 .Dialog .ContentFooter button.CallForAction:not(.Primary) {
   border: solid 1px #fff;
+  border: solid 1px rgba(36, 64, 140, 0.4);
   box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
-}
-.WidgetSimple .Content a.CallForAction:not(.Primary):hover, .WidgetSimple .Content .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary):hover, .ProcessManagementEditScreen #ProcessElements .WidgetSimple .Content a.CallForAction:not(.Primary):hover,
-.WidgetSimple .Content .v-application a.CallForAction:not(.Primary):hover,
-.WidgetSimple .Content button.CallForAction:not(.Primary):hover,
-.Dialog .ContentFooter a.CallForAction:not(.Primary):hover,
-.Dialog .ContentFooter .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(.Primary):hover,
-.ProcessManagementEditScreen #ProcessElements .Dialog .ContentFooter a.CallForAction:not(.Primary):hover,
-.Dialog .ContentFooter .v-application a.CallForAction:not(.Primary):hover,
-.Dialog .ContentFooter button.CallForAction:not(.Primary):hover {
-  border: solid 1px #ff6a32;
+  box-shadow: 0px 1px 0px #99a;
 }
 
 .ProcessManagementEditScreen #ProcessElements a.CallForAction {
   width: auto;
+}
+
+#EditFormCancel.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a#EditFormCancel.CallForAction:hover {
+  background-color: rgba(36, 64, 140, 0.1);
+  border-color: rgba(36, 64, 140, 0.4);
+  color: rgba(31, 55, 120, 0.8);
 }
 
 a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
@@ -2548,9 +2579,7 @@ button.CallForAction span i.fa {
 a.CallForAction span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa::before,
 .v-application a.CallForAction span i.fa::before,
 button.CallForAction span i.fa::before {
-  color: #f15a22;
-  color: lightslategray;
-  color: slategray;
+  color: rgba(20, 36, 79, 0.8);
   content: "";
   font-family: "Material Design Icons";
   font-weight: bold;
@@ -2558,80 +2587,74 @@ button.CallForAction span i.fa::before {
 a.CallForAction span i.fa.fa-arrows-h::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-arrows-h::before,
 .v-application a.CallForAction span i.fa.fa-arrows-h::before,
 button.CallForAction span i.fa.fa-arrows-h::before {
-  font-family: "Material Design Icons";
   content: "\f0e73";
 }
 a.CallForAction span i.fa.fa-arrows-v::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-arrows-v::before,
 .v-application a.CallForAction span i.fa.fa-arrows-v::before,
 button.CallForAction span i.fa.fa-arrows-v::before {
-  font-family: "Material Design Icons";
   content: "\f0e79";
 }
 a.CallForAction span i.fa.fa-bar-chart::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-bar-chart::before,
 .v-application a.CallForAction span i.fa.fa-bar-chart::before,
 button.CallForAction span i.fa.fa-bar-chart::before {
-  font-family: "Material Design Icons";
   content: "\f0128";
 }
 a.CallForAction span i.fa.fa-bell-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-bell-o::before,
 .v-application a.CallForAction span i.fa.fa-bell-o::before,
 button.CallForAction span i.fa.fa-bell-o::before {
-  font-family: "Material Design Icons";
   content: "\f009a";
 }
 a.CallForAction span i.fa.fa-building::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-building::before,
 .v-application a.CallForAction span i.fa.fa-building::before,
 button.CallForAction span i.fa.fa-building::before {
-  font-family: "Material Design Icons";
   content: "\f0991";
 }
 a.CallForAction span i.fa.fa-building-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-building-o::before,
 .v-application a.CallForAction span i.fa.fa-building-o::before,
 button.CallForAction span i.fa.fa-building-o::before {
-  font-family: "Material Design Icons";
   content: "\f0991";
 }
 a.CallForAction span i.fa.fa-calendar::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-calendar::before,
 .v-application a.CallForAction span i.fa.fa-calendar::before,
 button.CallForAction span i.fa.fa-calendar::before {
-  font-family: "Material Design Icons";
   content: "\f00ed";
 }
 a.CallForAction span i.fa.fa-filter::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-filter::before,
 .v-application a.CallForAction span i.fa.fa-filter::before,
 button.CallForAction span i.fa.fa-filter::before {
-  font-family: "Material Design Icons";
   content: "\f0232";
 }
 a.CallForAction span i.fa.fa-paperclip::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-paperclip::before,
 .v-application a.CallForAction span i.fa.fa-paperclip::before,
 button.CallForAction span i.fa.fa-paperclip::before {
-  font-family: "Material Design Icons";
   content: "\f03e2";
 }
 a.CallForAction span i.fa.fa-plus-square::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-plus-square::before,
 .v-application a.CallForAction span i.fa.fa-plus-square::before,
 button.CallForAction span i.fa.fa-plus-square::before {
-  font-family: "Material Design Icons";
   content: "\f0415";
 }
 a.CallForAction span i.fa.fa-reply::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-reply::before,
 .v-application a.CallForAction span i.fa.fa-reply::before,
 button.CallForAction span i.fa.fa-reply::before {
-  font-family: "Material Design Icons";
   content: "\f045a";
 }
 a.CallForAction span i.fa.fa-user::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-user::before,
 .v-application a.CallForAction span i.fa.fa-user::before,
 button.CallForAction span i.fa.fa-user::before {
-  font-family: "Material Design Icons";
   content: "\f0004";
 }
 a.CallForAction span i.fa.fa-users::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-users::before,
 .v-application a.CallForAction span i.fa.fa-users::before,
 button.CallForAction span i.fa.fa-users::before {
-  font-family: "Material Design Icons";
   content: "\f0849";
+}
+a.CallForAction.Disabled span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction span i.fa::before, a.CallForAction.Disabled:hover span i.fa::before,
+.v-application a.CallForAction.Disabled span i.fa::before,
+.v-application a.CallForAction.Disabled:hover span i.fa::before,
+button.CallForAction.Disabled span i.fa::before,
+button.CallForAction.Disabled:hover span i.fa::before {
+  color: #888;
 }
 
 a.CallForAction.Fullsize span i.fa, .ProcessManagementEditScreen #ProcessElements a.Fullsize.CallForAction span i.fa,
@@ -2639,12 +2662,6 @@ a.CallForAction.Fullsize span i.fa, .ProcessManagementEditScreen #ProcessElement
 button.CallForAction.Fullsize span i.fa {
   color: inherit;
   margin-right: 0.3em;
-}
-
-a.CallForAction.Disabled i.fa::before, .ProcessManagementEditScreen #ProcessElements a.Disabled.CallForAction i.fa::before,
-.v-application a.CallForAction.Disabled i.fa::before,
-button.CallForAction.Disabled i.fa::before {
-  color: #888;
 }
 
 /* List displayed as table */
@@ -2894,6 +2911,10 @@ hr.cmt-flex-break {
 }
 .LoginScreen .SuccessBox p a {
   color: #333;
+  transition: color ease 0.2s;
+}
+.LoginScreen .SuccessBox p a:hover {
+  color: currentColor;
 }
 .LoginScreen .SuccessBox span::before {
   content: "\f05e1";
@@ -2957,6 +2978,10 @@ hr.cmt-flex-break {
 }
 .LoginScreen .ErrorBox p a {
   color: #333;
+  transition: color ease 0.2s;
+}
+.LoginScreen .ErrorBox p a:hover {
+  color: currentColor;
 }
 .LoginScreen .ErrorBox span::before {
   content: "\f0ce6";
@@ -3081,6 +3106,15 @@ input#Subject {
 }
 #CustomerInfo fieldset a.NoOpenTicket {
   text-decoration: none;
+}
+
+/* Rules specific to process tickets */
+.FormScreen .cmt-form-wrapper .WidgetSimple > .Content:first-child {
+  border-top: none;
+}
+
+#ActivityDialogContent .LayoutPopup > .Content {
+  background-color: inherit;
 }
 
 #DiagramTooltip {
@@ -3794,6 +3828,10 @@ div.Headline .Flag + h1 {
 }
 .MessageBrowser p a {
   color: #333;
+  transition: color ease 0.2s;
+}
+.MessageBrowser p a:hover {
+  color: currentColor;
 }
 .MessageBrowser p {
   background: transparent;
