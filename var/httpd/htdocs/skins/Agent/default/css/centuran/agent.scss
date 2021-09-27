@@ -642,6 +642,13 @@ div.AllocationListContainer {
       }
     }
 
+    &.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+    &.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+    &.FilterActive a.ColumnSettingsTrigger::after {
+      background-color: lighten($secondary-color, 10%);
+      color: white;
+    }
+
     a {
       font-size: inherit;
     }
