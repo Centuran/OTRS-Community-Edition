@@ -9,9 +9,6 @@
 
 <div class="MainBox ARIARoleMain FormScreen">
 
-    <h1>[% Translate("Create New Email Ticket") | html %]</h1>
-    <p class="AsteriskExplanation">[% Translate("All fields marked with an asterisk (*) are mandatory.") | html %]</p>
-
     <div class="LayoutFixedSidebar SidebarLast">
 
         <div class="SidebarColumn">
@@ -29,6 +26,15 @@
         </div>
 
         <div class="ContentColumn">
+            <div class="cmt-form-wrapper">
+                <div class="WidgetSimple">
+                    <div class="Header">
+                        <h2>[% Translate("Create New Email Ticket") | html %]</h2>
+                    </div>
+                    <div class="Content">
+    
+    <p class="AsteriskExplanation">[% Translate("All fields marked with an asterisk (*) are mandatory.") | html %]</p>
+
             <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="NewEmailTicket" class="Validate PreventMultipleSubmits">
                 <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                 <input type="hidden" name="Subaction" value="StoreNew"/>
@@ -426,6 +432,7 @@
                     <label>[% Translate("Pending date") | html %]:</label>
                     <div class="Field">
                         [% Data.PendingDateString %]
+                        <datetimepicker></datetimepicker>
                         <div id="DayServerError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                         <div id="HourServerError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                         <p class="FieldExplanation">[% Translate("For all pending* states.") | html %]</p>
@@ -491,6 +498,11 @@
                 </fieldset>
             </form>
         </div>
+
+        </div>
+        </div>
+        </div>
+
         <div class="Clear"></div>
     </div>
     <div id="CustomerTickets"></div>
