@@ -131,6 +131,11 @@
 
     a {
       color: #333;
+      transition: color ease 0.2s;
+
+      &:hover {
+        color: currentColor;
+      }
     }
   }
 }
