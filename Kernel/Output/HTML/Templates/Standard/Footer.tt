@@ -57,7 +57,8 @@ new Vue({
         theme: { disable: true }
     }),
     components: {
-        'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue')
+        'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue'),
+        'toggleswitch':   httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/toggleswitch.vue')
     },
     data() {
         return {
