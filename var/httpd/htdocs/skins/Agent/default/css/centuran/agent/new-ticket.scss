@@ -140,3 +140,16 @@ input#Subject {
     }
   }
 }
+
+/* Rules specific to process tickets */
+
+.FormScreen .cmt-form-wrapper .WidgetSimple > .Content:first-child {
+  // A .WidgetSimple container with no .Header is used to display dynamic
+  // process ticket content, so we need to remove the border that is there
+  // to separate .Header from .Content
+  border-top: none;
+}
+
+#ActivityDialogContent .LayoutPopup > .Content {
+  background-color: inherit;
+}
