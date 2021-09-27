@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html style="overflow-y: hidden;">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <style type="text/css">
+    .container {
+      padding: 0;
+    }
+
+    .v-input--switch {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-container fluid>
+          <v-row>
+            <v-col>
+              <div style="float:right;">
+                <v-switch
+                  v-model="window.__use_new_agent_ui"
+                  label="Enable new style"
+                  color="#24408c"
+                  @change="window.localStorage.setItem('__use_new_agent_ui', window.__use_new_agent_ui); window.parent.location.reload(true);">
+                </v-switch>
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    window.parent.__use_new_agent_ui = window.parent.localStorage.getItem('__use_new_agent_ui') === 'true';
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: function () {
+        return {
+          window: window.parent
+        };
+      }
+    });
+  </script>
+</body>
+</html>

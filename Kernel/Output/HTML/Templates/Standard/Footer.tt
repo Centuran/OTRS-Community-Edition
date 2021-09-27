@@ -20,9 +20,16 @@
             alt="Centuran Consulting" title="Centuran Consulting" />
     </a>
 [% END %]
+
+    <iframe id="_ui-switch"
+        src="[% Config("Frontend::WebPath") %]ui-switch.html"></iframe>
 </div>
 
-</v-app></div>
+<!-- </v-app></div> -->
+<script type="text/javascript">
+if (window.localStorage.getItem('__use_new_agent_ui') === 'true')
+    document.write('</v-app></div>');
+</script>
 
 [% InsertTemplate("FooterJS.tt") %]
 
@@ -36,6 +43,11 @@
 
 #<script src="[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.js"></script>
 <script>
+(function () {
+
+if (window.localStorage.getItem('__use_new_agent_ui') !== 'true')
+    return;
+
 new Vue({
     el: '#vue-app',
     vuetify: new Vuetify({
@@ -73,7 +85,9 @@ new MutationObserver(function (mutations, observer) {
         });
     });
 }).observe(document.body,
-    { attributes: false, childList: true, subtree: false }); 
+    { attributes: false, childList: true, subtree: false });
+
+})();
 </script>
 
 </body>

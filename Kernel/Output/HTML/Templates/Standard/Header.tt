@@ -14,7 +14,14 @@
 [% InsertTemplate("HTMLHead.tt") %]
 <body class="[% Data.BodyClass | html %]">
     <a name="Top"></a>
-    <div id="AppWrapper"><div id="vue-app"><v-app>
+    <div id="AppWrapper">
+    
+    <!-- <div id="vue-app"><v-app> -->
+    <script type="text/javascript">
+    if (window.localStorage.getItem('__use_new_agent_ui') === 'true')
+        document.write('<div id="vue-app"><v-app>');
+    </script>
+    
     <div id="Header" class="ARIARoleBanner">
         <div id="Logo"></div>
         <ul id="ToolBar">
