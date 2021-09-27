@@ -176,11 +176,13 @@
                                         <label>[% Translate("Start") | html %]:</label>
                                         <div class="Field">
                                             [% Data.OptionStart %]
+                                            <datetimepicker mode="date"></datetimepicker>
                                         </div>
                                         <div class="Clear"></div>
                                         <label>[% Translate("End") | html %]:</label>
                                         <div class="Field">
                                             [% Data.OptionEnd %]
+                                            <datetimepicker mode="date"></datetimepicker>
                                         </div>
                                         <div class="Clear"></div>
                                     </div>
