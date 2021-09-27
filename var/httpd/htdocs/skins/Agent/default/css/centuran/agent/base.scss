@@ -667,7 +667,10 @@ button.CallForAction {
   &:hover {
     background-color: #f15a22;
     border: solid 1px #ff6a32;
+    background-color: $button-action-hover-background-color;
+    border: solid 1px $button-action-hover-border-color;
     color: #fff;
+    color: $button-action-hover-text-color;
     
     &::before {
       opacity: .08;
@@ -675,17 +678,15 @@ button.CallForAction {
 
     span i.fa::before {
       color: #fff;
+      color: $button-action-hover-icon-color;
     }
   }
 
   &:focus {
-    background-color: #f15a22;
     outline: none;
   }
 
   &:active {
-    background-color: #f15a22;
-
     &::before {
       opacity: .08;
     }
@@ -716,43 +717,54 @@ button.CallForAction {
 a.CallForAction,
 .v-application a.CallForAction,
 button.CallForAction {
-  background: #f8f8f8;
-  color: #444;
+  background: $button-action-background-color;
+  color: $button-action-text-color;
   padding: 0.3em 1.2em;
 
   // Border and shadow for regular action buttons when displayed on a light
   // (white) background
-  border: solid 1px #ddd;
-  box-shadow: 0px 1px 0px #ccc, 0px 1px 10px #f8f8f8;
-
-  span {
-    color: inherit;
-    padding: 0;
-  }
+  border: solid 1px $button-action-border-color;
+  box-shadow: $button-action-box-shadow;
 
   &:hover {
-    border: solid 1px #ff6a32;
+    //border: solid 1px #ff6a32;
+  }
+
+  &:active {
+    background: $button-action-hover-background-color;
+    color: $button-action-hover-text-color;
   }
 
   &.Primary {
     background-color: #f15a22;
     border: solid 1px #ff6a32;
+    box-shadow: $button-action-primary-box-shadow;
     color: #fff;
     padding: 0.3em 1.2em;
 
-    // TODO: Hover
+    &:hover {
+      background-color: $button-action-primary-hover-background-color;
+      
+      span {
+        text-shadow: 0 0 20px #fff;
+        transition: all ease-in 0.1s;
+      }
+    }
   }
-}
 
-// Disable action buttons
-a.CallForAction.Disabled,
-.v-application a.CallForAction.Disabled,
-button.CallForAction.Disabled {
-  color: #888;
-  background: #d0d0d0 !important;
-  border: solid 1px #d8d8d8 !important;
-  border-bottom: solid 1px #d8d8d8 !important;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee;
+  // Disabled action buttons
+  &.Disabled {
+    color: $button-action-disabled-text-color;
+    background: #d0d0d0 !important;
+    border: solid 1px #d8d8d8 !important;
+    border-bottom: solid 1px #d8d8d8 !important;
+    box-shadow: $button-action-disabled-box-shadow !important;
+  }
+
+  span {
+    color: inherit;
+    padding: 0;
+  }
 }
 
 // Regular action buttons when inside a widget or other elements with a gray
@@ -764,11 +776,9 @@ button.CallForAction.Disabled {
   button.CallForAction {
     &:not(.Primary) {
       border: solid 1px #fff;
+      border: solid 1px $button-action-border-color;
       box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
-
-      &:hover {
-        border: solid 1px #ff6a32;
-      }
+      box-shadow: $button-action-box-shadow;
     }
   }
 }
@@ -781,35 +791,50 @@ button.CallForAction.Disabled {
   width: auto;
 }
 
+// Cancel buttons have different hover style
+#EditFormCancel.CallForAction {
+  &:hover {
+    background-color: $button-action-cancel-hover-background-color;
+    border-color: $button-action-border-color;
+    color: $button-action-cancel-hover-text-color;
+  }
+}
+
 // Action button icons
-a.CallForAction span,
-.v-application a.CallForAction span,
-button.CallForAction span {
-  display: inline;
-  position: static;
-
-  i.fa {
+a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  span {
     display: inline;
-    font-size: inherit;
-    line-height: inherit;
-    margin: 0;
-    margin-right: 0.15em;
+    position: static;
 
-    &::before {
-      color: #f15a22;
-      color: lightslategray;
-      color: slategray;
-      content: "";
-      font-family: "Material Design Icons";
-      font-weight: bold;
-    }
-    
-    @each $fa_name, $mdi_name in $fa_to_mdi {
-      &.fa-#{$fa_name}::before {
-        // TODO: Remove f-f and color when no longer needed
+    i.fa {
+      display: inline;
+      font-size: inherit;
+      line-height: inherit;
+      margin: 0;
+      margin-right: 0.15em;
+
+      &::before {
+        color: $button-action-icon-color;
+        content: "";
         font-family: "Material Design Icons";
-        // color: #666;
-        content: mdi($mdi_name);
+        font-weight: bold;
+      }
+      
+      @each $fa_name, $mdi_name in $fa_to_mdi {
+        &.fa-#{$fa_name}::before {
+          content: mdi($mdi_name);
+        }
+      }
+    }
+  }
+
+  &.Disabled {
+    span,
+    &:hover span {
+      i.fa::before {
+        color: #888;
       }
     }
   }
@@ -821,14 +846,6 @@ button.CallForAction.Fullsize span {
   i.fa {
     color: inherit;
     margin-right: 0.3em;
-  }
-}
-
-a.CallForAction.Disabled,
-.v-application a.CallForAction.Disabled,
-button.CallForAction.Disabled {
-  i.fa::before {
-    color: #888;
   }
 }
 
