@@ -17,8 +17,10 @@
       ></v-date-picker>
       <!-- TODO: Add "Today" button in default slot -->
     </v-menu>
-    <v-menu ref="menuTime" eager bottom offset-overflow offset-y
+    <v-menu v-if="mode.match(/time$/)"
+        ref="menuTime"
         v-model="timeMenuIsOpen"
+        eager bottom offset-overflow offset-y
         :close-on-content-click="false"
         :content-class="`menu-pointing ${menuClasses.menuTime}`"
         @input="updateClasses('menuTime')">
@@ -41,6 +43,11 @@
 
 <script>
 module.exports = {
+  props: {
+    mode: {
+      default: 'date/time',
+    }
+  },
   data: function () {
     return {
       date: {
@@ -100,8 +107,10 @@ module.exports = {
         m: parseInt(picked.split(':')[1])
       };
 
-      this.selects.hour.value   = this.time.value.h;
-      this.selects.minute.value = this.time.value.m;
+      if (this.selects.hour)
+        this.selects.hour.value = this.time.value.h;
+      if (this.selects.minute)
+        this.selects.minute.value = this.time.value.m;
     }
   },
   methods: {
@@ -142,15 +151,21 @@ module.exports = {
     },
     updateClasses: function (ref) {
       setTimeout((function () {
-        var content   = this.$refs[ref].$refs.content;
-        var dateInput = this.$refs.dateInput;
-        
-        if (content.offsetTop != 0 && content.offsetTop < dateInput.offsetTop)
+        var contentOffsetTop   = this.offset(this.$refs[ref].$refs.content).top;
+        var dateInputOffsetTop = this.offset(this.$refs.dateInput).top;
+
+        if (contentOffsetTop != 0 && contentOffsetTop < dateInputOffsetTop)
           this.menuClasses[ref] = 'menu-above';
         else
           this.menuClasses[ref] = 'menu-below';
       }).bind(this), 100);
-    }
+    },
+    offset: function (element) {
+	    var rect = element.getBoundingClientRect(),
+	      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+	      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	    return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
+	  }
   },
   mounted: function () {
     this.$el.parentElement.classList.toggle('cmt-otrs-datetime-hidden', true);
