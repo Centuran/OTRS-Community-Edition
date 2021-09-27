@@ -45,6 +45,9 @@ if (window.localStorage.getItem('__use_new_agent_ui') === 'true')
 <script>
 (function () {
 
+if (window.localStorage.getItem('__use_new_agent_ui') === null)
+    window.localStorage.setItem('__use_new_agent_ui', true);
+
 if (window.localStorage.getItem('__use_new_agent_ui') !== 'true')
     return;
 
