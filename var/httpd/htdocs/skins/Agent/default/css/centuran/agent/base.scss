@@ -391,7 +391,7 @@ ul.Tablelike li.Header {
     }
   }
 
-  .Content {
+  & > .Content {
     border-top: solid 1px ghostwhite;
   }
 }
