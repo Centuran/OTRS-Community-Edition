@@ -69,6 +69,15 @@ new Vue({
     }
 });
 
+// FIXME: This is an ugly-ish workaround for an issue when unset select fields
+// suddenly have the first option pre-selected after Vue initialization above
+// (i.e. $('#some-select').val() returns null just before Vue initialization,
+// and some value right after). Resetting the inner HTML of the element seems
+// to fix this.
+jQuery('select').each(function () {
+    jQuery(this).html(jQuery(this).html());
+});
+
 new MutationObserver(function (mutations, observer) {
     var newDialogs =
         document.querySelectorAll('body > .Dialog:not(.__vue_processed)');
