@@ -825,8 +825,12 @@ a,
 }
 
 select {
-  -moz-appearance: auto;
-  -webkit-appearance: auto;
+  -moz-appearance: auto !important;
+  -webkit-appearance: auto !important;
+}
+select.Modernize {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .v-application {
@@ -1037,7 +1041,7 @@ div.InputField_Selection {
   display: inline-block;
   height: auto;
   line-height: 20px;
-  padding: 0 0.3em;
+  padding: 2px 8px;
   position: absolute;
   top: auto;
   vertical-align: middle;
@@ -1052,12 +1056,14 @@ div.InputField_Selection div.Remove {
   overflow: hidden;
   padding-left: 0;
   vertical-align: middle;
+  overflow: visible;
 }
 div.InputField_Selection div.Remove a {
   position: relative;
   padding: 0;
   line-height: inherit;
   font-size: 0;
+  left: 4px;
 }
 div.InputField_Selection div.Remove a::before {
   color: #888;
@@ -1076,6 +1082,7 @@ div.InputField_Selection div.Remove a::before {
 }
 
 div.InputField_Selection div.Text {
+  background: #e0e0e0;
   border-radius: 50px;
   color: rgba(0, 0, 0, 0.87);
   font-size: inherit;
@@ -1083,7 +1090,7 @@ div.InputField_Selection div.Text {
   line-height: 20px;
   height: auto;
   line-height: auto;
-  text-align: center;
+  padding: 0 !important;
   display: inline-block;
   vertical-align: middle;
   background: none;
@@ -1783,14 +1790,25 @@ p.FieldExplanation {
   box-shadow: 0px 1px 0px #99a;
   color: #444;
 }
+.ItemListGrid.WithIcons > li > a span.Icons i.fa::before {
+  color: slategray !important;
+}
+.ItemListGrid.WithIcons > li > a span.Title {
+  color: #333;
+}
 .ItemListGrid.WithIcons > li > a:not(.Disabled):hover {
   border: solid 1px rgba(36, 64, 140, 0.4);
 }
-.ItemListGrid.WithIcons > li span.Icons i.fa::before {
-  color: slategray !important;
+.ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons {
+  border-color: #f15a22;
+  background-color: #f15a22;
 }
-.ItemListGrid.WithIcons > li span.Title {
-  color: #333;
+.ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons i.fa::before {
+  color: white !important;
+}
+.ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons i.fa.Icon2::before {
+  color: #e6e6e6 !important;
+  color: #f9b49a !important;
 }
 
 .ItemListGrid.WithIcons li[data-module=AdminACL] span.Icons i.fa::before {
