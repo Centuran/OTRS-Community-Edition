@@ -359,23 +359,72 @@ ul.Tablelike li.Header {
 }
 
 .WidgetSimple {
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
 
   .Header {
-    .WidgetAction.Toggle {
-      height: auto;
-      margin: 0;
-      width: auto;
-
-      &::before {
-        font-family: "Material Design Icons";
-        font-size: 120%;
-        line-height: 120%;
-      }
+    .ActionMenu {
+      margin-right: 10px;
+      position: absolute;
+      right: 0;
+      top: initial;
     }
 
-    i.fa {
-      display: none !important;
+    .WidgetAction {
+      width: auto;
+      height: auto;
+
+      &.Toggle {
+        height: auto;
+        margin: 0;
+        width: auto;
+
+        &::before {
+          font-family: "Material Design Icons";
+          font-size: 120%;
+          line-height: 120%;
+        }
+
+        a {
+          height: 100%;
+          width: 100%;
+
+          &:hover i.fa {
+            background: none;
+          }
+        }
+      }
+
+      a {
+        font-size: initial;
+        height: auto;
+        display: inline-block;
+
+        i.fa {
+          font-size: initial;
+          padding: 0.2em;
+    
+          &::before {
+            font-family: "Material Design Icons";
+            font-size: 110%;
+          }
+    
+          // Widget settings
+          &.fa-cog::before {
+            content: mdi("dots-vertical");
+          }
+    
+          // Close widget
+          &.fa-times::before {
+            content: mdi("close-thick");
+          }
+        }
+
+        &:hover i.fa {
+          color: $secondary-color;
+          background: #ddd;
+          border-radius: 50px;
+        }
+      }
     }
   }
 
