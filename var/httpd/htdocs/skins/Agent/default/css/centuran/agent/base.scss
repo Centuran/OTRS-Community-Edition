@@ -846,7 +846,8 @@ button.CallForAction {
 }
 
 // Cancel buttons have different hover style
-#EditFormCancel.CallForAction {
+#EditFormCancel.CallForAction,
+.WidgetSettingsForm button.CallForAction[id$="_cancel"] {
   &:hover {
     background-color: $button-action-cancel-hover-background-color;
     border-color: $button-action-border-color;
