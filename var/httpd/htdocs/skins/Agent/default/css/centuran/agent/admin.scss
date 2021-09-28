@@ -198,17 +198,31 @@
       box-shadow: $button-action-box-shadow;
       color: #444;
 
+      span.Icons i.fa::before {
+        color: slategray !important;
+      }
+  
+      span.Title {
+        color: #333;
+      }
+
       &:not(.Disabled):hover {
         border: solid 1px $button-action-border-color;
+
+        span.Icons {
+          border-color: $primary-color;
+          background-color: $primary-color;
+
+          i.fa::before {
+            color: white !important;
+          }
+
+          i.fa.Icon2::before {
+            color: darken(white, 10%) !important;
+            color: lighten($primary-color, 25%) !important;
+          }
+        }
       }
-    }
-
-    span.Icons i.fa::before {
-      color: slategray !important;
-    }
-
-    span.Title {
-      color: #333;
     }
   }
 }
