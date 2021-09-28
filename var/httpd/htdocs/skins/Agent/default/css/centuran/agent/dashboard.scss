@@ -5,3 +5,50 @@
     font: 11px Heebo !important;
   }
 }
+
+.SidebarColumn .SettingsWidget {
+  .Content {
+    padding-top: 0;
+
+    & > form > ul {
+      padding-bottom: 0.4em;
+      padding-left: 0;
+
+      li {
+        padding-left: 0;
+
+        label {
+          padding: 0;
+  
+          &:hover {
+            background-color: inherit;
+            border: none;
+            color: inherit;
+            padding: unset;
+          }
+        }
+  
+        input[type="checkbox"] {
+          display: none;
+        }
+  
+        .v-input--switch {
+          margin-top: 0.4em;
+        }
+
+        .v-input__slot {
+          align-items: normal;
+  
+          .v-input--selection-controls__input {
+            transform: scale(0.75);
+          }
+        }
+  
+        .v-label {
+          line-height: 120%;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

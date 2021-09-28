@@ -705,48 +705,6 @@ div.AllocationListContainer {
   @include button-group();
 }
 
-.SettingsWidget {
-  .Content {
-    padding-top: 0;
-  }
-  
-  ul {
-    padding-left: 0;
-
-    li {
-      padding-left: 10px;
-
-      label {
-        padding: 0;
-
-        &:hover {
-          background-color: inherit;
-          border: none;
-          color: inherit;
-          padding: unset;
-        }
-      }
-
-      input[type="checkbox"] {
-        display: none;
-      }
-
-      .v-input__slot {
-        align-items: normal;
-
-        .v-input--selection-controls__input {
-          transform: scale(0.75);
-        }
-      }
-
-      .v-label {
-        line-height: 120%;
-        margin-bottom: 0;
-      }
-    }
-  }
-}
-
 .FieldExplanation,
 .AsteriskExplanation {
   font-size: 14px;
