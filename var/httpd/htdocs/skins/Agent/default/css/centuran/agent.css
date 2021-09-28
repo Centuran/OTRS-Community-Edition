@@ -221,7 +221,17 @@ ul.Tablelike li.Header {
 }
 
 .WidgetSimple {
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+}
+.WidgetSimple .Header .ActionMenu {
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+  top: initial;
+}
+.WidgetSimple .Header .WidgetAction {
+  width: auto;
+  height: auto;
 }
 .WidgetSimple .Header .WidgetAction.Toggle {
   height: auto;
@@ -233,8 +243,36 @@ ul.Tablelike li.Header {
   font-size: 120%;
   line-height: 120%;
 }
-.WidgetSimple .Header i.fa {
-  display: none !important;
+.WidgetSimple .Header .WidgetAction.Toggle a {
+  height: 100%;
+  width: 100%;
+}
+.WidgetSimple .Header .WidgetAction.Toggle a:hover i.fa {
+  background: none;
+}
+.WidgetSimple .Header .WidgetAction a {
+  font-size: initial;
+  height: auto;
+  display: inline-block;
+}
+.WidgetSimple .Header .WidgetAction a i.fa {
+  font-size: initial;
+  padding: 0.2em;
+}
+.WidgetSimple .Header .WidgetAction a i.fa::before {
+  font-family: "Material Design Icons";
+  font-size: 110%;
+}
+.WidgetSimple .Header .WidgetAction a i.fa.fa-cog::before {
+  content: "\f01d9";
+}
+.WidgetSimple .Header .WidgetAction a i.fa.fa-times::before {
+  content: "\f1398";
+}
+.WidgetSimple .Header .WidgetAction a:hover i.fa {
+  color: #24408c;
+  background: #ddd;
+  border-radius: 50px;
 }
 .WidgetSimple.Collapsed .Header .WidgetAction.Toggle::before {
   content: "\f0140";
@@ -1752,7 +1790,7 @@ p.FieldExplanation {
 }
 .ItemListGrid.WithIcons > li span.Title,
 .ItemListGrid.WithIcons > li span.Description {
-  margin-left: 16.5%;
+  margin-left: 17%;
 }
 
 .ItemListGrid.WithIcons > li > a {
@@ -2176,7 +2214,17 @@ ul.Tablelike li.Header {
 }
 
 .WidgetSimple {
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+}
+.WidgetSimple .Header .ActionMenu {
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+  top: initial;
+}
+.WidgetSimple .Header .WidgetAction {
+  width: auto;
+  height: auto;
 }
 .WidgetSimple .Header .WidgetAction.Toggle {
   height: auto;
@@ -2188,8 +2236,36 @@ ul.Tablelike li.Header {
   font-size: 120%;
   line-height: 120%;
 }
-.WidgetSimple .Header i.fa {
-  display: none !important;
+.WidgetSimple .Header .WidgetAction.Toggle a {
+  height: 100%;
+  width: 100%;
+}
+.WidgetSimple .Header .WidgetAction.Toggle a:hover i.fa {
+  background: none;
+}
+.WidgetSimple .Header .WidgetAction a {
+  font-size: initial;
+  height: auto;
+  display: inline-block;
+}
+.WidgetSimple .Header .WidgetAction a i.fa {
+  font-size: initial;
+  padding: 0.2em;
+}
+.WidgetSimple .Header .WidgetAction a i.fa::before {
+  font-family: "Material Design Icons";
+  font-size: 110%;
+}
+.WidgetSimple .Header .WidgetAction a i.fa.fa-cog::before {
+  content: "\f01d9";
+}
+.WidgetSimple .Header .WidgetAction a i.fa.fa-times::before {
+  content: "\f1398";
+}
+.WidgetSimple .Header .WidgetAction a:hover i.fa {
+  color: #24408c;
+  background: #ddd;
+  border-radius: 50px;
 }
 .WidgetSimple.Collapsed .Header .WidgetAction.Toggle::before {
   content: "\f0140";
