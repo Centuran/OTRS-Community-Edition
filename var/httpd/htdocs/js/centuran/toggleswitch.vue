@@ -1,11 +1,12 @@
 <!-- TODO: make colors styleable with theme CSS -->
 <template>
   <v-switch
-    v-model="checkbox.checked"
+    v-model="checked"
     :label="label"
     inset
     hide-details
-    color="#24408c">
+    color="#24408c"
+    @change="checkbox.checked = checked">
   </v-switch>
 </template>
 
@@ -23,13 +24,8 @@ module.exports = {
       label: ''
     };
   },
-  // watch: {
-  //   'checked': function (checked) {
-  //     this.checkbox.checked = checked;
-  //   }
-  // },
   methods: {
-    initializeFromCheckbox: function () {
+    initializeFromCheckbox: function (lastTry) {
       var sibling = this.$el.previousElementSibling;
       
       while (sibling) {
@@ -50,9 +46,12 @@ module.exports = {
         sibling = sibling.previousElementSibling;
       }
 
-      // TODO: Handle error when checkbox wasn't found
-
-      this.checkbox.style.display = 'none';
+      if (this.checkbox) {
+        this.checked = this.checkbox.checked;
+        this.checkbox.style.display = 'none';
+      }
+      else if (!lastTry)
+        setTimeout(this.initializeFromCheckbox.bind(this, true), 0);
     },
   },
   mounted: function () {
