@@ -18,8 +18,23 @@ select {
   // This overrides Vuetify's "-*-appearance: none" which caused a page freeze
   // in both Chrome and Firefox. Probably related to a similar problem
   // with "div.InputField_Selection div.Text" and its padding.
-  -moz-appearance: auto;
-  -webkit-appearance: auto;
+  //
+  // Upon further investigation, the problem was an endless JS loop
+  // in Core.UI.InputFields.js which happened when the script tried to shorten
+  // the displayed text of the selection (in the "modernized" input field)
+  // by replacing part of the text with an ellipsis ("..."), but even with
+  // the shortest possible text (just the ellipsis itself) it was still over
+  // the maximum width. Since the maximum width was calculated based on
+  // the width of the original <select>, adding some breathing space
+  // (i.e. padding -- added below to &.Modernize) to the select seems to fix
+  // the problem.
+  -moz-appearance: auto !important;
+  -webkit-appearance: auto !important;
+
+  &.Modernize {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 
 .v-application {
@@ -248,7 +263,7 @@ div.InputField_Selection {
   display: inline-block;
   height: auto;
   line-height: 20px;
-  padding: 0 0.3em;
+  padding: 2px 8px;
   position: absolute;
   top: auto;
   vertical-align: middle;
@@ -296,7 +311,7 @@ div.InputField_Selection {
 }
 
 div.InputField_Selection div.Text {
-  //background: #e0e0e0;
+  background: #e0e0e0;
   border-radius: 50px;
   color: rgba(0,0,0,.87);
   font-size: inherit;
@@ -306,27 +321,8 @@ div.InputField_Selection div.Text {
   height: auto;
   line-height: auto;
 
-  // FIXME: For whatever reason, this causes Chrome to freeze when e.g. widget
-  // settings are expanded for "Reminder Tickets" on the Dashboard. This affects
-  // the "shown" select box displayed in the settings, probably by interfering
-  // with modernize somehow. I tried setting "padding-left/right" separately,
-  // setting position/display, using border as padding, etc. to no effect.
-  // Happened on both Chrome and Chromium, Firefox is fine.
-  //
-  // padding: 0 10px;
- 
-  // text-indent: 6px; // Tried this as a workaround -- same problem
-
-  // &::before, &::after { // This didn't help either
-  //   content: "";
-  //   width: 6px;
-  //   display: inline-block;
-  // }
-
-  // Semi-acceptable workaround
-  //width: calc(100% + 10px);
-  text-align: center;
-
+  padding: 0 !important;
+  
   display: inline-block;
   vertical-align: middle;
   background: none;

@@ -195,6 +195,11 @@ Core.UI.InputFields = (function (TargetNS) {
         }
     };
 
+    if ($('#vue-app').length) {
+        Config.InputFieldPadding = 5;
+        Config.SelectionBoxOffsetLeft = 5;
+    }
+
     /**
      * @name Activate
      * @memberof Core.UI.InputFields
@@ -530,6 +535,11 @@ Core.UI.InputFields = (function (TargetNS) {
                                 $TextObj.text().substring(0, $TextObj.text().length - 4)
                                 + '...'
                             );
+
+                            // Don't end up in an endless loop if the text can't
+                            // be shortened anymore
+                            if ($TextObj.text() == '...')
+                                break;
                         }
 
                         // Offset the box and show it
