@@ -280,6 +280,7 @@ div.InputField_Selection {
     //position: absolute;
     //right: -26px;
     vertical-align: middle;
+    overflow: visible;
     
     a {
       position: relative;
@@ -288,6 +289,7 @@ div.InputField_Selection {
       padding: 0;
       line-height: inherit;
       font-size: 0;
+      left: 4px;
 
       &::before {
         //background: #e0e0e0;
