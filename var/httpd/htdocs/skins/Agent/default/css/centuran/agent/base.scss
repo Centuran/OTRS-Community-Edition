@@ -140,6 +140,41 @@
   }
 }
 
+@mixin minor-button {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0,0,0, 0.2), 0px 1px 0px rgba(0,0,0, 0.2);  
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+
+  // Style like action buttons
+  border: solid 1px #d8d8d8;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
+  border-bottom-color: #fff;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+
+  overflow: hidden;
+
+  & > a {
+    border-bottom: none;
+    color: #444;
+    display: inline-block;
+    padding: 5px 10px;
+    vertical-align: middle;
+
+    &:hover {
+      color: #444;
+      text-decoration: underline;
+      text-decoration-color: #f15a22;
+
+      background: #fff;
+    }
+  }
+}
+
 @mixin button-group($item: "li") {
   border-radius: 4px;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
@@ -211,41 +246,6 @@
       right: 0;
       top: 0;
       width: inherit;
-    }
-  }
-}
-
-@mixin minor-button {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0,0,0, 0.2), 0px 1px 0px rgba(0,0,0, 0.2);  
-  float: left;
-  font-size: smaller;
-  height: auto;
-  padding: 0;
-
-  // Style like action buttons
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
-
-  overflow: hidden;
-
-  & > a {
-    border-bottom: none;
-    color: #444;
-    display: inline-block;
-    padding: 5px 10px;
-    vertical-align: middle;
-
-    &:hover {
-      color: #444;
-      text-decoration: underline;
-      text-decoration-color: #f15a22;
-
-      background: #fff;
     }
   }
 }
