@@ -57,6 +57,66 @@ div.Headline {
   }
 }
 
+// TODO: This is copypasted from base.scss .WidgetSimple .Header .ActionMenu,
+// should probably by DRY-ified
+.WidgetAction {
+  width: auto;
+  height: auto;
+
+  &.Toggle {
+    height: auto;
+    margin: 0;
+    width: auto;
+
+    &::before {
+      font-family: "Material Design Icons";
+      font-size: 120%;
+      line-height: 120%;
+    }
+
+    a {
+      height: 100%;
+      width: 100%;
+
+      &:hover i.fa {
+        background: none;
+      }
+    }
+  }
+
+  a {
+    font-size: initial;
+    height: auto;
+    display: inline-block;
+
+    i.fa {
+      font-size: initial;
+      padding: 0.2em;
+
+      &::before {
+        font-family: "Material Design Icons";
+        font-size: 110%;
+      }
+
+      // Widget settings
+      &.fa-cog::before {
+        content: mdi("dots-vertical");
+      }
+
+      // Close widget
+      &.fa-times::before {
+        content: mdi("close-thick");
+      }
+    }
+
+    &:hover i.fa {
+      color: $secondary-color;
+      background: #ddd;
+      border-radius: 50px;
+    }
+  }
+}
+
 #ArticleTableBody {
   .Scroller {
     border-radius: 4px;
@@ -110,6 +170,12 @@ div.Headline {
 // consider switching to a simpler solution (possibly by changing the structure
 // of HTML)
 #ArticleItems {
+  .ActionMenu .WidgetAction.Expand {
+    i.fa.fa-info::before {
+      content: mdi("more");
+    }
+  }
+
   .ArticleMailContent {
     padding-left: 0;
     padding-right: 0;
