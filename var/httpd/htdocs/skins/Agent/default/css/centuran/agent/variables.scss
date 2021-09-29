@@ -4,6 +4,9 @@ $primary-color: #f15a22;
 $secondary-color: #24408c;
 $link-color: darken($primary-color, 10%);
 $link-color: lighten($secondary-color, 10%);
+$primary-action-color: $primary-color;
+$secondary-action-color: lighten($secondary-color, 10%);
+$secondary-action-color: $secondary-color;
 
 $base-font-size: 16px;
 $secondary-font-size: 13.3px;
