@@ -643,7 +643,7 @@ div.AllocationListContainer {
     &.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
     &.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
     &.FilterActive a.ColumnSettingsTrigger::after {
-      background-color: lighten($secondary-color, 10%);
+      background-color: $secondary-action-color;
       color: white;
     }
 
