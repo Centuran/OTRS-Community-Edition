@@ -101,6 +101,15 @@ new MutationObserver(function (mutations, observer) {
     { attributes: false, childList: true, subtree: false });
 
 })();
+
+// Add custom class to action list items that should be followed by free space
+// (i.e. those which are the last in a group)
+$(function () {
+    $('.ActionRow .Actions li, .ItemActions .Actions li').each(function () {
+        if ($(this).next('li').find('> a, > span.ClusterLink').length == 0)
+            this.classList.add('cmt-item-action-link-last');
+    });
+});
 </script>
 
 </body>
