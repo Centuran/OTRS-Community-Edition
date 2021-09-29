@@ -289,7 +289,74 @@ ul.Tablelike li.Header {
   margin-left: 0;
 }
 .ActionRow .Actions {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
+  font-size: initial;
+  margin-bottom: 8px;
+  padding-left: 0;
   display: flex;
+  margin-bottom: 0;
+}
+.ActionRow .Actions > li {
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: none;
+  border-radius: 0;
+}
+.ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
+  background: #f8f8f8;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
+}
+.ActionRow .Actions > li:hover > a, .ActionRow .Actions > li:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
+}
+.ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
+  border-radius: 0;
+  box-shadow: none;
+}
+.ActionRow .Actions > li:first-child > a, .ActionRow .Actions > li:first-child > span.ClusterLink {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  padding-left: 10px;
+}
+.ActionRow .Actions > li:not(:last-child) > a, .ActionRow .Actions > li:not(:last-child) > span.ClusterLink {
+  border-right: none;
+}
+.ActionRow .Actions > li:not(:last-child):hover > a, .ActionRow .Actions > li:not(:last-child):hover > span.ClusterLink {
+  border-right: none !important;
+}
+.ActionRow .Actions > li:last-child > a, .ActionRow .Actions > li:last-child > span.ClusterLink, .ActionRow .Actions > li.cmt-item-action-link-last > a, .ActionRow .Actions > li.cmt-item-action-link-last > span.ClusterLink {
+  border-bottom-right-radius: 4px;
+  border-right: solid 1px #ccc;
+  border-top-right-radius: 4px;
+}
+.ActionRow .Actions > li:last-child:hover > a, .ActionRow .Actions > li:last-child:hover > span.ClusterLink, .ActionRow .Actions > li.cmt-item-action-link-last:hover > a, .ActionRow .Actions > li.cmt-item-action-link-last:hover > span.ClusterLink {
+  border-right: solid 1px #2e53b5 !important;
+}
+.ActionRow .Actions > li.Selected a,
+.ActionRow .Actions > li a.Active {
+  color: white;
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right-color: #2e53b5;
+  font-weight: normal;
+}
+.ActionRow .Actions > li::after {
+  content: none;
 }
 .ActionRow .Actions li {
   font-size: inherit;
@@ -314,35 +381,8 @@ ul.Tablelike li.Header {
   padding-left: 0;
 }
 .ActionRow .Actions > li[id^=nav-] {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
-  float: left;
-  font-size: smaller;
-  height: auto;
-  padding: 0;
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
-  overflow: hidden;
   border-radius: 0;
-  box-shadow: 0px 1px 0px #c8c8c8;
   overflow: visible;
-}
-.ActionRow .Actions > li[id^=nav-] > a {
-  border-bottom: none;
-  color: #444;
-  display: inline-block;
-  padding: 5px 10px;
-  vertical-align: middle;
-}
-.ActionRow .Actions > li[id^=nav-] > a:hover {
-  color: #444;
-  text-decoration: underline;
-  text-decoration-color: #f15a22;
-  background: #fff;
 }
 .ActionRow .Actions > li[id^=nav-]:first-child {
   border-bottom-left-radius: 4px;
@@ -360,20 +400,24 @@ ul.Tablelike li.Header {
 .ActionRow .Actions > li:not([id^=nav-]) {
   margin-left: 0.5em;
 }
-.ActionRow .Actions > li a,
 .ActionRow .Actions > li span.ClusterLink {
+  color: #444;
   padding: 5px 10px;
-  border-bottom: none;
 }
 
 body .Cluster ul ul {
   border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
   left: 0;
   margin-top: 2px;
   top: 100%;
 }
 body .Cluster ul ul li {
   line-height: initial;
+}
+body .Cluster ul ul li a:hover {
+  background-color: #24408c;
+  color: white;
 }
 
 .ItemActions .Actions {
@@ -390,8 +434,6 @@ body .Cluster ul ul li {
   float: left;
   line-height: initial;
   margin: 0;
-  border: solid 1px #ccc;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 .ItemActions .Actions > li:first-child {
   border-bottom-left-radius: 4px;
@@ -417,7 +459,7 @@ body .Cluster ul ul li {
   border-bottom: solid 2px #fff;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
 }
-.ItemActions .Actions > li.cmt-item-action-link-last {
+.ItemActions .Actions > li.cmt-item-action-link-last a {
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -656,7 +698,8 @@ button.CallForAction span {
   width: auto;
 }
 
-#EditFormCancel.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a#EditFormCancel.CallForAction:hover {
+#EditFormCancel.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a#EditFormCancel.CallForAction:hover,
+.WidgetSettingsForm button.CallForAction[id$=_cancel]:hover {
   background-color: rgba(36, 64, 140, 0.1);
   border-color: rgba(36, 64, 140, 0.4);
   color: rgba(31, 55, 120, 0.8);
@@ -1450,7 +1493,7 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .TableSmall thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
 .TableSmall thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
 .TableSmall thead th.FilterActive a.ColumnSettingsTrigger::after {
-  background-color: #2e53b5;
+  background-color: #24408c;
   color: white;
 }
 .DataTable thead th a,
@@ -1501,94 +1544,70 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .Tab.Actions {
   border-radius: 4px;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
   margin-bottom: 8px;
   padding-left: 0;
 }
-.Tab.Actions li {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+.Tab.Actions > li {
   float: left;
   font-size: smaller;
   height: auto;
   padding: 0;
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
   overflow: hidden;
-  border-radius: 0;
   box-shadow: none;
+  border-radius: 0;
 }
-.Tab.Actions li > a {
-  border-bottom: none;
+.Tab.Actions > li > a, .Tab.Actions > li > span.ClusterLink {
+  background: #f8f8f8;
   color: #444;
   display: inline-block;
   padding: 5px 10px;
   vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
 }
-.Tab.Actions li > a:hover {
-  color: #444;
-  text-decoration: underline;
-  text-decoration-color: #f15a22;
-  background: #fff;
+.Tab.Actions > li:hover > a, .Tab.Actions > li:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
 }
-.Tab.Actions li:first-child {
+.Tab.Actions > li > a, .Tab.Actions > li > span.ClusterLink {
+  border-radius: 0;
+  box-shadow: none;
+}
+.Tab.Actions > li:first-child > a, .Tab.Actions > li:first-child > span.ClusterLink {
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
-}
-.Tab.Actions li:first-child a {
   padding-left: 10px;
 }
-.Tab.Actions li:not(:last-child) {
+.Tab.Actions > li:not(:last-child) > a, .Tab.Actions > li:not(:last-child) > span.ClusterLink {
   border-right: none;
 }
-.Tab.Actions li:last-child {
+.Tab.Actions > li:not(:last-child):hover > a, .Tab.Actions > li:not(:last-child):hover > span.ClusterLink {
+  border-right: none !important;
+}
+.Tab.Actions > li:last-child > a, .Tab.Actions > li:last-child > span.ClusterLink, .Tab.Actions > li.cmt-item-action-link-last > a, .Tab.Actions > li.cmt-item-action-link-last > span.ClusterLink {
   border-bottom-right-radius: 4px;
+  border-right: solid 1px #ccc;
   border-top-right-radius: 4px;
 }
-.Tab.Actions li.Selected a {
-  background-color: #fff;
+.Tab.Actions > li:last-child:hover > a, .Tab.Actions > li:last-child:hover > span.ClusterLink, .Tab.Actions > li.cmt-item-action-link-last:hover > a, .Tab.Actions > li.cmt-item-action-link-last:hover > span.ClusterLink {
+  border-right: solid 1px #2e53b5 !important;
 }
-.Tab.Actions li::after {
+.Tab.Actions > li.Selected a,
+.Tab.Actions > li a.Active {
+  color: white;
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right-color: #2e53b5;
+  font-weight: normal;
+}
+.Tab.Actions > li::after {
   content: none;
-}
-.Tab.Actions li.Last {
-  background-color: #f8f8f8;
-}
-
-.SettingsWidget .Content {
-  padding-top: 0;
-}
-.SettingsWidget ul {
-  padding-left: 0;
-}
-.SettingsWidget ul li {
-  padding-left: 10px;
-}
-.SettingsWidget ul li label {
-  padding: 0;
-}
-.SettingsWidget ul li label:hover {
-  background-color: inherit;
-  border: none;
-  color: inherit;
-  padding: unset;
-}
-.SettingsWidget ul li input[type=checkbox] {
-  display: none;
-}
-.SettingsWidget ul li .v-input__slot {
-  align-items: normal;
-}
-.SettingsWidget ul li .v-input__slot .v-input--selection-controls__input {
-  transform: scale(0.75);
-}
-.SettingsWidget ul li .v-label {
-  line-height: 120%;
-  margin-bottom: 0;
 }
 
 .FieldExplanation,
@@ -2282,7 +2301,74 @@ ul.Tablelike li.Header {
   margin-left: 0;
 }
 .ActionRow .Actions {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
+  font-size: initial;
+  margin-bottom: 8px;
+  padding-left: 0;
   display: flex;
+  margin-bottom: 0;
+}
+.ActionRow .Actions > li {
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: none;
+  border-radius: 0;
+}
+.ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
+  background: #f8f8f8;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
+}
+.ActionRow .Actions > li:hover > a, .ActionRow .Actions > li:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
+}
+.ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
+  border-radius: 0;
+  box-shadow: none;
+}
+.ActionRow .Actions > li:first-child > a, .ActionRow .Actions > li:first-child > span.ClusterLink {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  padding-left: 10px;
+}
+.ActionRow .Actions > li:not(:last-child) > a, .ActionRow .Actions > li:not(:last-child) > span.ClusterLink {
+  border-right: none;
+}
+.ActionRow .Actions > li:not(:last-child):hover > a, .ActionRow .Actions > li:not(:last-child):hover > span.ClusterLink {
+  border-right: none !important;
+}
+.ActionRow .Actions > li:last-child > a, .ActionRow .Actions > li:last-child > span.ClusterLink, .ActionRow .Actions > li.cmt-item-action-link-last > a, .ActionRow .Actions > li.cmt-item-action-link-last > span.ClusterLink {
+  border-bottom-right-radius: 4px;
+  border-right: solid 1px #ccc;
+  border-top-right-radius: 4px;
+}
+.ActionRow .Actions > li:last-child:hover > a, .ActionRow .Actions > li:last-child:hover > span.ClusterLink, .ActionRow .Actions > li.cmt-item-action-link-last:hover > a, .ActionRow .Actions > li.cmt-item-action-link-last:hover > span.ClusterLink {
+  border-right: solid 1px #2e53b5 !important;
+}
+.ActionRow .Actions > li.Selected a,
+.ActionRow .Actions > li a.Active {
+  color: white;
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right-color: #2e53b5;
+  font-weight: normal;
+}
+.ActionRow .Actions > li::after {
+  content: none;
 }
 .ActionRow .Actions li {
   font-size: inherit;
@@ -2307,35 +2393,8 @@ ul.Tablelike li.Header {
   padding-left: 0;
 }
 .ActionRow .Actions > li[id^=nav-] {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
-  float: left;
-  font-size: smaller;
-  height: auto;
-  padding: 0;
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
-  overflow: hidden;
   border-radius: 0;
-  box-shadow: 0px 1px 0px #c8c8c8;
   overflow: visible;
-}
-.ActionRow .Actions > li[id^=nav-] > a {
-  border-bottom: none;
-  color: #444;
-  display: inline-block;
-  padding: 5px 10px;
-  vertical-align: middle;
-}
-.ActionRow .Actions > li[id^=nav-] > a:hover {
-  color: #444;
-  text-decoration: underline;
-  text-decoration-color: #f15a22;
-  background: #fff;
 }
 .ActionRow .Actions > li[id^=nav-]:first-child {
   border-bottom-left-radius: 4px;
@@ -2353,20 +2412,24 @@ ul.Tablelike li.Header {
 .ActionRow .Actions > li:not([id^=nav-]) {
   margin-left: 0.5em;
 }
-.ActionRow .Actions > li a,
 .ActionRow .Actions > li span.ClusterLink {
+  color: #444;
   padding: 5px 10px;
-  border-bottom: none;
 }
 
 body .Cluster ul ul {
   border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
   left: 0;
   margin-top: 2px;
   top: 100%;
 }
 body .Cluster ul ul li {
   line-height: initial;
+}
+body .Cluster ul ul li a:hover {
+  background-color: #24408c;
+  color: white;
 }
 
 .ItemActions .Actions {
@@ -2383,8 +2446,6 @@ body .Cluster ul ul li {
   float: left;
   line-height: initial;
   margin: 0;
-  border: solid 1px #ccc;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 .ItemActions .Actions > li:first-child {
   border-bottom-left-radius: 4px;
@@ -2410,7 +2471,7 @@ body .Cluster ul ul li {
   border-bottom: solid 2px #fff;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
 }
-.ItemActions .Actions > li.cmt-item-action-link-last {
+.ItemActions .Actions > li.cmt-item-action-link-last a {
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -2649,7 +2710,8 @@ button.CallForAction span {
   width: auto;
 }
 
-#EditFormCancel.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a#EditFormCancel.CallForAction:hover {
+#EditFormCancel.CallForAction:hover, .ProcessManagementEditScreen #ProcessElements a#EditFormCancel.CallForAction:hover,
+.WidgetSettingsForm button.CallForAction[id$=_cancel]:hover {
   background-color: rgba(36, 64, 140, 0.1);
   border-color: rgba(36, 64, 140, 0.4);
   color: rgba(31, 55, 120, 0.8);
@@ -2794,62 +2856,70 @@ hr.cmt-flex-break {
 .fc .fc-button-group {
   border-radius: 4px;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
   margin-bottom: 8px;
   padding-left: 0;
 }
-.fc .fc-button-group button {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+.fc .fc-button-group > button {
   float: left;
   font-size: smaller;
   height: auto;
   padding: 0;
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
   overflow: hidden;
-  border-radius: 0;
   box-shadow: none;
+  border-radius: 0;
 }
-.fc .fc-button-group button > a {
-  border-bottom: none;
+.fc .fc-button-group > button > a, .fc .fc-button-group > button > span.ClusterLink {
+  background: #f8f8f8;
   color: #444;
   display: inline-block;
   padding: 5px 10px;
   vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
 }
-.fc .fc-button-group button > a:hover {
-  color: #444;
-  text-decoration: underline;
-  text-decoration-color: #f15a22;
-  background: #fff;
+.fc .fc-button-group > button:hover > a, .fc .fc-button-group > button:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
 }
-.fc .fc-button-group button:first-child {
+.fc .fc-button-group > button > a, .fc .fc-button-group > button > span.ClusterLink {
+  border-radius: 0;
+  box-shadow: none;
+}
+.fc .fc-button-group > button:first-child > a, .fc .fc-button-group > button:first-child > span.ClusterLink {
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
-}
-.fc .fc-button-group button:first-child a {
   padding-left: 10px;
 }
-.fc .fc-button-group button:not(:last-child) {
+.fc .fc-button-group > button:not(:last-child) > a, .fc .fc-button-group > button:not(:last-child) > span.ClusterLink {
   border-right: none;
 }
-.fc .fc-button-group button:last-child {
+.fc .fc-button-group > button:not(:last-child):hover > a, .fc .fc-button-group > button:not(:last-child):hover > span.ClusterLink {
+  border-right: none !important;
+}
+.fc .fc-button-group > button:last-child > a, .fc .fc-button-group > button:last-child > span.ClusterLink, .fc .fc-button-group > button.cmt-item-action-link-last > a, .fc .fc-button-group > button.cmt-item-action-link-last > span.ClusterLink {
   border-bottom-right-radius: 4px;
+  border-right: solid 1px #ccc;
   border-top-right-radius: 4px;
 }
-.fc .fc-button-group button.Selected a {
-  background-color: #fff;
+.fc .fc-button-group > button:last-child:hover > a, .fc .fc-button-group > button:last-child:hover > span.ClusterLink, .fc .fc-button-group > button.cmt-item-action-link-last:hover > a, .fc .fc-button-group > button.cmt-item-action-link-last:hover > span.ClusterLink {
+  border-right: solid 1px #2e53b5 !important;
 }
-.fc .fc-button-group button::after {
+.fc .fc-button-group > button.Selected a,
+.fc .fc-button-group > button a.Active {
+  color: white;
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right-color: #2e53b5;
+  font-weight: normal;
+}
+.fc .fc-button-group > button::after {
   content: none;
-}
-.fc .fc-button-group button.Last {
-  background-color: #f8f8f8;
 }
 .fc .fc-button-group > button {
   border-radius: 0;
@@ -2921,6 +2991,43 @@ hr.cmt-flex-break {
 }
 [id$=TicketStats-box] [id$=-TicketStats] svg text {
   font: 11px Heebo !important;
+}
+
+.SidebarColumn .SettingsWidget .Content {
+  padding-top: 0;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul {
+  padding-bottom: 0.4em;
+  padding-left: 0;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul li {
+  padding-left: 0;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul li label {
+  padding: 0;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul li label:hover {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  padding: unset;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul li input[type=checkbox] {
+  display: none;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul li .v-input--switch {
+  margin-top: 0.4em;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul li .v-input__slot {
+  align-items: normal;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul li .v-input__slot .v-input--selection-controls__input {
+  transform: scale(0.75);
+  margin-right: 0.2em;
+}
+.SidebarColumn .SettingsWidget .Content > form > ul li .v-label {
+  line-height: 120%;
+  margin-bottom: 0;
 }
 
 .LoginScreen .SuccessBox,
@@ -3305,66 +3412,78 @@ input#Subject {
 .QueueOverviewList {
   border-radius: 4px;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
   margin-bottom: 8px;
   padding-left: 0;
   float: left;
 }
-.QueueOverviewList li {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+.QueueOverviewList > li {
   float: left;
   font-size: smaller;
   height: auto;
   padding: 0;
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
   overflow: hidden;
-  border-radius: 0;
   box-shadow: none;
+  border-radius: 0;
 }
-.QueueOverviewList li > a {
-  border-bottom: none;
+.QueueOverviewList > li > a, .QueueOverviewList > li > span.ClusterLink {
+  background: #f8f8f8;
   color: #444;
   display: inline-block;
   padding: 5px 10px;
   vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
 }
-.QueueOverviewList li > a:hover {
-  color: #444;
-  text-decoration: underline;
-  text-decoration-color: #f15a22;
-  background: #fff;
+.QueueOverviewList > li:hover > a, .QueueOverviewList > li:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
 }
-.QueueOverviewList li:first-child {
+.QueueOverviewList > li > a, .QueueOverviewList > li > span.ClusterLink {
+  border-radius: 0;
+  box-shadow: none;
+}
+.QueueOverviewList > li:first-child > a, .QueueOverviewList > li:first-child > span.ClusterLink {
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
-}
-.QueueOverviewList li:first-child a {
   padding-left: 10px;
 }
-.QueueOverviewList li:not(:last-child) {
+.QueueOverviewList > li:not(:last-child) > a, .QueueOverviewList > li:not(:last-child) > span.ClusterLink {
   border-right: none;
 }
-.QueueOverviewList li:last-child {
+.QueueOverviewList > li:not(:last-child):hover > a, .QueueOverviewList > li:not(:last-child):hover > span.ClusterLink {
+  border-right: none !important;
+}
+.QueueOverviewList > li:last-child > a, .QueueOverviewList > li:last-child > span.ClusterLink, .QueueOverviewList > li.cmt-item-action-link-last > a, .QueueOverviewList > li.cmt-item-action-link-last > span.ClusterLink {
   border-bottom-right-radius: 4px;
+  border-right: solid 1px #ccc;
   border-top-right-radius: 4px;
 }
-.QueueOverviewList li.Selected a {
-  background-color: #fff;
+.QueueOverviewList > li:last-child:hover > a, .QueueOverviewList > li:last-child:hover > span.ClusterLink, .QueueOverviewList > li.cmt-item-action-link-last:hover > a, .QueueOverviewList > li.cmt-item-action-link-last:hover > span.ClusterLink {
+  border-right: solid 1px #2e53b5 !important;
 }
-.QueueOverviewList li::after {
+.QueueOverviewList > li.Selected a,
+.QueueOverviewList > li a.Active {
+  color: white;
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right-color: #2e53b5;
+  font-weight: normal;
+}
+.QueueOverviewList > li::after {
   content: none;
 }
-.QueueOverviewList li.Last {
-  background-color: #f8f8f8;
-}
 .QueueOverviewList a.Active {
-  background-color: #fff;
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right: solid 1px #2e53b5;
+  color: white;
+  font-weight: initial;
 }
 
 .OverviewControl,
@@ -3374,95 +3493,125 @@ input#Subject {
 .OverviewControl .ControlRow,
 .Content.Overview .ControlRow {
   background-color: #eee;
-  border-bottom: solid 1px #ddd;
   padding: 10px;
 }
 .OverviewControl .ControlRow .Tabs,
 .Content.Overview .ControlRow .Tabs {
   border-radius: 4px;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
   margin-bottom: 8px;
   padding-left: 0;
   float: left;
   margin-bottom: 0;
 }
-.OverviewControl .ControlRow .Tabs li,
-.Content.Overview .ControlRow .Tabs li {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
+.OverviewControl .ControlRow .Tabs > li,
+.Content.Overview .ControlRow .Tabs > li {
   float: left;
   font-size: smaller;
   height: auto;
   padding: 0;
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
   overflow: hidden;
-  border-radius: 0;
   box-shadow: none;
+  border-radius: 0;
 }
-.OverviewControl .ControlRow .Tabs li > a,
-.Content.Overview .ControlRow .Tabs li > a {
-  border-bottom: none;
+.OverviewControl .ControlRow .Tabs > li > a, .OverviewControl .ControlRow .Tabs > li > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li > a,
+.Content.Overview .ControlRow .Tabs > li > span.ClusterLink {
+  background: #f8f8f8;
   color: #444;
   display: inline-block;
   padding: 5px 10px;
   vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
 }
-.OverviewControl .ControlRow .Tabs li > a:hover,
-.Content.Overview .ControlRow .Tabs li > a:hover {
-  color: #444;
-  text-decoration: underline;
-  text-decoration-color: #f15a22;
-  background: #fff;
+.OverviewControl .ControlRow .Tabs > li:hover > a, .OverviewControl .ControlRow .Tabs > li:hover > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li:hover > a,
+.Content.Overview .ControlRow .Tabs > li:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
 }
-.OverviewControl .ControlRow .Tabs li:first-child,
-.Content.Overview .ControlRow .Tabs li:first-child {
+.OverviewControl .ControlRow .Tabs > li > a, .OverviewControl .ControlRow .Tabs > li > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li > a,
+.Content.Overview .ControlRow .Tabs > li > span.ClusterLink {
+  border-radius: 0;
+  box-shadow: none;
+}
+.OverviewControl .ControlRow .Tabs > li:first-child > a, .OverviewControl .ControlRow .Tabs > li:first-child > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li:first-child > a,
+.Content.Overview .ControlRow .Tabs > li:first-child > span.ClusterLink {
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
-}
-.OverviewControl .ControlRow .Tabs li:first-child a,
-.Content.Overview .ControlRow .Tabs li:first-child a {
   padding-left: 10px;
 }
-.OverviewControl .ControlRow .Tabs li:not(:last-child),
-.Content.Overview .ControlRow .Tabs li:not(:last-child) {
+.OverviewControl .ControlRow .Tabs > li:not(:last-child) > a, .OverviewControl .ControlRow .Tabs > li:not(:last-child) > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li:not(:last-child) > a,
+.Content.Overview .ControlRow .Tabs > li:not(:last-child) > span.ClusterLink {
   border-right: none;
 }
-.OverviewControl .ControlRow .Tabs li:last-child,
-.Content.Overview .ControlRow .Tabs li:last-child {
+.OverviewControl .ControlRow .Tabs > li:not(:last-child):hover > a, .OverviewControl .ControlRow .Tabs > li:not(:last-child):hover > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li:not(:last-child):hover > a,
+.Content.Overview .ControlRow .Tabs > li:not(:last-child):hover > span.ClusterLink {
+  border-right: none !important;
+}
+.OverviewControl .ControlRow .Tabs > li:last-child > a, .OverviewControl .ControlRow .Tabs > li:last-child > span.ClusterLink, .OverviewControl .ControlRow .Tabs > li.cmt-item-action-link-last > a, .OverviewControl .ControlRow .Tabs > li.cmt-item-action-link-last > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li:last-child > a,
+.Content.Overview .ControlRow .Tabs > li:last-child > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li.cmt-item-action-link-last > a,
+.Content.Overview .ControlRow .Tabs > li.cmt-item-action-link-last > span.ClusterLink {
   border-bottom-right-radius: 4px;
+  border-right: solid 1px #ccc;
   border-top-right-radius: 4px;
 }
-.OverviewControl .ControlRow .Tabs li.Selected a,
-.Content.Overview .ControlRow .Tabs li.Selected a {
-  background-color: #fff;
+.OverviewControl .ControlRow .Tabs > li:last-child:hover > a, .OverviewControl .ControlRow .Tabs > li:last-child:hover > span.ClusterLink, .OverviewControl .ControlRow .Tabs > li.cmt-item-action-link-last:hover > a, .OverviewControl .ControlRow .Tabs > li.cmt-item-action-link-last:hover > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li:last-child:hover > a,
+.Content.Overview .ControlRow .Tabs > li:last-child:hover > span.ClusterLink,
+.Content.Overview .ControlRow .Tabs > li.cmt-item-action-link-last:hover > a,
+.Content.Overview .ControlRow .Tabs > li.cmt-item-action-link-last:hover > span.ClusterLink {
+  border-right: solid 1px #2e53b5 !important;
 }
-.OverviewControl .ControlRow .Tabs li::after,
-.Content.Overview .ControlRow .Tabs li::after {
+.OverviewControl .ControlRow .Tabs > li.Selected a,
+.OverviewControl .ControlRow .Tabs > li a.Active,
+.Content.Overview .ControlRow .Tabs > li.Selected a,
+.Content.Overview .ControlRow .Tabs > li a.Active {
+  color: white;
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right-color: #2e53b5;
+  font-weight: normal;
+}
+.OverviewControl .ControlRow .Tabs > li::after,
+.Content.Overview .ControlRow .Tabs > li::after {
   content: none;
-}
-.OverviewControl .ControlRow .Tabs li.Last,
-.Content.Overview .ControlRow .Tabs li.Last {
-  background-color: #f8f8f8;
 }
 .OverviewControl .ControlRow .Tabs li.Active,
 .Content.Overview .ControlRow .Tabs li.Active {
-  background-color: #fff;
-  font-weight: bold;
+  background-color: transparent;
+}
+.OverviewControl .ControlRow .Tabs li.Active > a,
+.Content.Overview .ControlRow .Tabs li.Active > a {
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right-color: #2e53b5;
+  color: white;
 }
 .OverviewControl .ControlRow .Tabs li > a,
 .Content.Overview .ControlRow .Tabs li > a {
   font-size: inherit;
 }
-.OverviewControl .ControlRow .Tabs li:not(.Active):hover, .OverviewControl .ControlRow .Tabs li:not(.Active) a:hover,
-.Content.Overview .ControlRow .Tabs li:not(.Active):hover,
-.Content.Overview .ControlRow .Tabs li:not(.Active) a:hover {
+.OverviewControl .ControlRow .Tabs li:not(.Active):hover,
+.Content.Overview .ControlRow .Tabs li:not(.Active):hover {
   background-color: transparent;
+}
+.OverviewControl .ControlRow .Tabs li:not(.Active):hover a,
+.Content.Overview .ControlRow .Tabs li:not(.Active):hover a {
+  background-color: #24408c;
 }
 .OverviewControl .ControlRow .Tabs li a span::before,
 .Content.Overview .ControlRow .Tabs li a span::before {
@@ -3502,39 +3651,37 @@ input#Subject {
 }
 .OverviewControl .ActionRow ul.Actions li#BulkAction,
 .Content.Overview .ActionRow ul.Actions li#BulkAction {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
   float: left;
   font-size: smaller;
   height: auto;
   padding: 0;
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
   overflow: hidden;
 }
-.OverviewControl .ActionRow ul.Actions li#BulkAction > a,
-.Content.Overview .ActionRow ul.Actions li#BulkAction > a {
-  border-bottom: none;
+.OverviewControl .ActionRow ul.Actions li#BulkAction > a, .OverviewControl .ActionRow ul.Actions li#BulkAction > span.ClusterLink,
+.Content.Overview .ActionRow ul.Actions li#BulkAction > a,
+.Content.Overview .ActionRow ul.Actions li#BulkAction > span.ClusterLink {
+  background: #f8f8f8;
   color: #444;
   display: inline-block;
   padding: 5px 10px;
   vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
 }
-.OverviewControl .ActionRow ul.Actions li#BulkAction > a:hover,
-.Content.Overview .ActionRow ul.Actions li#BulkAction > a:hover {
-  color: #444;
-  text-decoration: underline;
-  text-decoration-color: #f15a22;
-  background: #fff;
+.OverviewControl .ActionRow ul.Actions li#BulkAction:hover > a, .OverviewControl .ActionRow ul.Actions li#BulkAction:hover > span.ClusterLink,
+.Content.Overview .ActionRow ul.Actions li#BulkAction:hover > a,
+.Content.Overview .ActionRow ul.Actions li#BulkAction:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
 }
 .OverviewControl .ActionRow ul.Actions li#BulkAction.Inactive a,
 .Content.Overview .ActionRow ul.Actions li#BulkAction.Inactive a {
-  background-color: rgba(120, 120, 120, 0.3);
-  opacity: 0.5;
+  background-color: rgba(120, 120, 120, 0.4);
+  opacity: 0.6;
+  border: solid 1px #999;
 }
 .OverviewControl .ActionRow ul.Actions li#BulkAction.Inactive a:hover,
 .Content.Overview .ActionRow ul.Actions li#BulkAction.Inactive a:hover {
@@ -3546,42 +3693,44 @@ input#Subject {
 }
 .OverviewControl .ActionRow ul.Actions li.SortBy,
 .Content.Overview .ActionRow ul.Actions li.SortBy {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
   float: left;
   font-size: smaller;
   height: auto;
   padding: 0;
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
   overflow: hidden;
+  border: solid 1px #ccc;
+  border-radius: 4px;
 }
-.OverviewControl .ActionRow ul.Actions li.SortBy > a,
-.Content.Overview .ActionRow ul.Actions li.SortBy > a {
-  border-bottom: none;
+.OverviewControl .ActionRow ul.Actions li.SortBy > a, .OverviewControl .ActionRow ul.Actions li.SortBy > span.ClusterLink,
+.Content.Overview .ActionRow ul.Actions li.SortBy > a,
+.Content.Overview .ActionRow ul.Actions li.SortBy > span.ClusterLink {
+  background: #f8f8f8;
   color: #444;
   display: inline-block;
   padding: 5px 10px;
   vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
 }
-.OverviewControl .ActionRow ul.Actions li.SortBy > a:hover,
-.Content.Overview .ActionRow ul.Actions li.SortBy > a:hover {
-  color: #444;
-  text-decoration: underline;
-  text-decoration-color: #f15a22;
-  background: #fff;
+.OverviewControl .ActionRow ul.Actions li.SortBy:hover > a, .OverviewControl .ActionRow ul.Actions li.SortBy:hover > span.ClusterLink,
+.Content.Overview .ActionRow ul.Actions li.SortBy:hover > a,
+.Content.Overview .ActionRow ul.Actions li.SortBy:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
 }
 .OverviewControl .ActionRow ul.Actions li.SortBy select,
 .Content.Overview .ActionRow ul.Actions li.SortBy select {
-  border-left: solid 10px transparent;
-  border-right: solid 10px transparent;
+  border-left: solid 8px transparent;
+  border-right: solid 8px transparent;
   font-size: inherit;
   margin-top: 0;
   padding: 5px 0;
+  background: #f8f8f8;
+  box-shadow: none;
+  border-spacing: 10px;
 }
 
 .Overview.TicketList table.TableSmall thead tr th.Checkbox,
@@ -3837,22 +3986,30 @@ div.Headline .Flag + h1 {
   margin-left: 0.5em;
 }
 
-.ActionRow .Actions li#nav-Back {
+.ActionRow .Actions {
+  box-shadow: none;
+}
+.ActionRow .Actions li#nav-Back a {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
+  border-bottom: solid 1px #ccc;
+  border-right: solid 1px #ccc;
+}
+.ActionRow .Actions li#nav-Back:hover a {
+  border-right: solid 1px #24408c !important;
 }
 .ActionRow .Actions li#nav-Back a::before {
   content: "\f004d";
   font-family: "Material Design Icons";
   margin-right: 0.25em;
 }
-.ActionRow .Actions li#nav-Back + li {
+.ActionRow .Actions li#nav-Back + li > a {
   border-left: solid 1px #ccc;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   margin-left: 0.5em;
 }
-.ActionRow .Actions li form input {
+.ActionRow .Actions > li form input {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
   border-bottom: solid 2px #fff;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
@@ -3961,7 +4118,76 @@ div.Headline .Flag + h1 {
 }
 #ArticleItems .ArticleMailContent .ItemActions {
   padding-left: 0;
-  margin-bottom: 6px;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
+  font-size: initial;
+  margin-bottom: 8px;
+  padding-left: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li {
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: none;
+  border-radius: 0;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li > span.ClusterLink {
+  background: #f8f8f8;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li:hover > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li:hover > span.ClusterLink {
+  background: #24408c;
+  border: solid 1px #2e53b5 !important;
+  color: white;
+  text-decoration: none;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li > span.ClusterLink {
+  border-radius: 0;
+  box-shadow: none;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li:first-child > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li:first-child > span.ClusterLink {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  padding-left: 10px;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li:not(:last-child) > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li:not(:last-child) > span.ClusterLink {
+  border-right: none;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li:not(:last-child):hover > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li:not(:last-child):hover > span.ClusterLink {
+  border-right: none !important;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li:last-child > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li:last-child > span.ClusterLink, #ArticleItems .ArticleMailContent .ItemActions .Actions > li.cmt-item-action-link-last > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li.cmt-item-action-link-last > span.ClusterLink {
+  border-bottom-right-radius: 4px;
+  border-right: solid 1px #ccc;
+  border-top-right-radius: 4px;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li:last-child:hover > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li:last-child:hover > span.ClusterLink, #ArticleItems .ArticleMailContent .ItemActions .Actions > li.cmt-item-action-link-last:hover > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li.cmt-item-action-link-last:hover > span.ClusterLink {
+  border-right: solid 1px #2e53b5 !important;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li.Selected a,
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li a.Active {
+  color: white;
+  background-color: #24408c;
+  border-color: #2e53b5;
+  border-right-color: #2e53b5;
+  font-weight: normal;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li::after {
+  content: none;
 }
 #ArticleItems .Incoming .Avatar {
   margin-left: 1em;
