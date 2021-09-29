@@ -19,7 +19,11 @@
   float: left;
 
   a.Active {
-    background-color: #fff;
+    background-color: $secondary-action-color;
+    border-color: lighten($secondary-action-color, 10%);
+    border-right: solid 1px lighten($secondary-action-color, 10%);
+    color: white;
+    font-weight: initial;
   }
 }
 
@@ -29,7 +33,7 @@
 
   .ControlRow {
     background-color: #eee;
-    border-bottom: solid 1px #ddd;
+    //border-bottom: solid 1px #ddd;
     padding: 10px;
   
     .Tabs {
@@ -40,17 +44,26 @@
 
       li {
         &.Active {
-          background-color: #fff;
-          font-weight: bold;
+          background-color: transparent;
+
+          & > a {
+            background-color: $secondary-action-color;
+            border-color: lighten($secondary-action-color, 10%);
+            border-right-color: lighten($secondary-action-color, 10%);
+            color: white;
+          }
         }
 
         & > a {
           font-size: inherit;
         }
 
-        &:not(.Active):hover,
-        &:not(.Active) a:hover {
+        &:not(.Active):hover {
           background-color: transparent;
+          
+          a {
+            background-color: $secondary-action-color;
+          }
         }
 
         a span {
@@ -98,8 +111,10 @@
         @include minor-button();
 
         &.Inactive a {
-          background-color: rgba(120, 120, 120, 0.3);
-          opacity: 0.5;
+          // TODO: Use common styles for inactive buttons
+          background-color: rgba(120, 120, 120, 0.4);
+          opacity: 0.6;
+          border: solid 1px #999;
 
           &:hover {
             text-decoration: none;
@@ -114,14 +129,22 @@
       li.SortBy {
         @include minor-button();
 
+        border: solid 1px #ccc;
+        border-radius: 4px;
+
         select {
           // Using transparent border instead of padding, so that the caret
           // at the right edge is not placed too close to the border
-          border-left: solid 10px transparent;
-          border-right: solid 10px transparent;
+          border-left: solid 8px transparent;
+          border-right: solid 8px transparent;
           font-size: inherit;
           margin-top: 0;
           padding: 5px 0;
+
+          background: #f8f8f8;
+          box-shadow: none;
+
+          border-spacing: 10px;
 
           // FIXME: The options dropdown is off by 1px in FF, this fixes it,
           // but it is then off in Chrome

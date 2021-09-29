@@ -141,81 +141,101 @@
 }
 
 @mixin minor-button {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0,0,0, 0.2), 0px 1px 0px rgba(0,0,0, 0.2);  
   float: left;
   font-size: smaller;
   height: auto;
   padding: 0;
 
-  // Style like action buttons
-  border: solid 1px #d8d8d8;
-  background: #f8f8f8;
-  box-shadow: 0px 1px 0px #aaa, 0px 1px 10px #eee;
-  border-bottom-color: #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
-
   overflow: hidden;
 
-  & > a {
-    border-bottom: none;
+  & > a,
+  & > span.ClusterLink {
+    //border-bottom: none;
+    background: #f8f8f8;
     color: #444;
     display: inline-block;
     padding: 5px 10px;
     vertical-align: middle;
 
-    &:hover {
-      color: #444;
-      text-decoration: underline;
-      text-decoration-color: #f15a22;
-
-      background: #fff;
-    }
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 1px 10px #e4e4e4;
+  }
+  
+  &:hover > a,
+  &:hover > span.ClusterLink {
+    background: $secondary-action-color;
+    border: solid 1px lighten($secondary-action-color, 10%) !important;
+    color: white;
+    text-decoration: none;
   }
 }
 
 @mixin button-group($item: "li") {
   border-radius: 4px;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
   margin-bottom: 8px;
   padding-left: 0;
 
-  #{$item} {
+  & > #{$item} {
     @include minor-button();
 
-    border-radius: 0;
     box-shadow: none;
+    border-radius: 0;
+    
+    & > a,
+    & > span.ClusterLink {
+      border-radius: 0;
+      box-shadow: none;
+    }
 
-    &:first-child {
+    &:first-child > a,
+    &:first-child > span.ClusterLink {
       border-bottom-left-radius: 4px;
       border-top-left-radius: 4px;
 
-      a {
-        padding-left: 10px;
-      }
+      padding-left: 10px;
     }
 
-    &:not(:last-child) {
+    &:not(:last-child) > a,
+    &:not(:last-child) > span.ClusterLink {
       border-right: none;
     }
 
-    &:last-child {
-      border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px;
+    &:not(:last-child):hover > a,
+    &:not(:last-child):hover > span.ClusterLink {
+      border-right: none !important;
+    }
+
+    &:last-child,
+    &.cmt-item-action-link-last {
+      & > a,
+      & > span.ClusterLink {
+        border-bottom-right-radius: 4px;
+        border-right: solid 1px #ccc;
+        border-top-right-radius: 4px;
+      }
+
+      &:hover > a,
+      &:hover > span.ClusterLink {
+        border-right: solid 1px lighten($secondary-action-color, 10%) !important;
+      }
     }
   
-    &.Selected a {
-      background-color: #fff;
+    &.Selected a,
+    a.Active {
+      color: white;
+      background-color: $secondary-action-color;
+      border-color: lighten($secondary-action-color, 10%);
+      border-right-color: lighten($secondary-action-color, 10%);
+      font-weight: normal;
     }
 
     &::after {
       content: none;
-    }
-
-    &.Last {
-      background-color: #f8f8f8;
     }
   }
 }
@@ -453,8 +473,11 @@ ul.Tablelike li.Header {
   }
 
   .Actions {
-    display: flex;
+    @include button-group();
 
+    display: flex;
+    margin-bottom: 0;
+    
     li {
       font-size: inherit;
 
@@ -485,11 +508,11 @@ ul.Tablelike li.Header {
       }
 
       &[id^="nav-"] {
-        @include minor-button();
+        //@include minor-button();
 
         border-radius: 0;
         // Override box shadow to not include the outer blurred part
-        box-shadow: 0px 1px 0px #c8c8c8;
+        // box-shadow: 0px 1px 0px #c8c8c8;
         overflow: visible;
         
         &:first-child {
@@ -517,10 +540,9 @@ ul.Tablelike li.Header {
       // an ID of "nav-*", but it's probably not possible in CSS (no "followed
       // by" selector). Maybe set a class in JS?
 
-      a,
       span.ClusterLink {
+        color: #444;
         padding: 5px 10px;
-        border-bottom: none;
       }
     }
   }
@@ -528,12 +550,18 @@ ul.Tablelike li.Header {
 
 body .Cluster ul ul {
   border-radius: 0 0 4px 4px;
+  box-shadow: $elevated-2-box-shadow;
   left: 0;
   margin-top: 2px;
   top: 100%;
 
   li {
     line-height: initial;
+
+    a:hover {
+      background-color: $secondary-action-color;
+      color: white;
+    }
   }
 }
 
@@ -555,11 +583,6 @@ body .Cluster ul ul {
       float: left;
       line-height: initial;
       margin: 0;
-
-      border: solid 1px #ccc;
-      box-shadow:
-        0px 1px 0px rgba(0, 0, 0, 0.2),
-        0px 1px 0px rgba(0, 0, 0, 0.2);
 
       &:first-child {
         border-bottom-left-radius: 4px;
@@ -593,7 +616,7 @@ body .Cluster ul ul {
         }
       }
 
-      &.cmt-item-action-link-last {
+      &.cmt-item-action-link-last a {
         border-bottom-right-radius: 4px;
         border-top-right-radius: 4px;
       }
