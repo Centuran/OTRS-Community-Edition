@@ -257,6 +257,7 @@ ul.Tablelike li.Header {
 }
 .WidgetSimple .Header .WidgetAction a i.fa {
   font-size: initial;
+  margin: 0;
   padding: 0.2em;
 }
 .WidgetSimple .Header .WidgetAction a i.fa::before {
@@ -2269,6 +2270,7 @@ ul.Tablelike li.Header {
 }
 .WidgetSimple .Header .WidgetAction a i.fa {
   font-size: initial;
+  margin: 0;
   padding: 0.2em;
 }
 .WidgetSimple .Header .WidgetAction a i.fa::before {
@@ -4015,6 +4017,52 @@ div.Headline .Flag + h1 {
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
 }
 
+.WidgetAction {
+  width: auto;
+  height: auto;
+}
+.WidgetAction.Toggle {
+  height: auto;
+  margin: 0;
+  width: auto;
+}
+.WidgetAction.Toggle::before {
+  font-family: "Material Design Icons";
+  font-size: 120%;
+  line-height: 120%;
+}
+.WidgetAction.Toggle a {
+  height: 100%;
+  width: 100%;
+}
+.WidgetAction.Toggle a:hover i.fa {
+  background: none;
+}
+.WidgetAction a {
+  font-size: initial;
+  height: auto;
+  display: inline-block;
+}
+.WidgetAction a i.fa {
+  font-size: initial;
+  padding: 0.2em;
+}
+.WidgetAction a i.fa::before {
+  font-family: "Material Design Icons";
+  font-size: 110%;
+}
+.WidgetAction a i.fa.fa-cog::before {
+  content: "\f01d9";
+}
+.WidgetAction a i.fa.fa-times::before {
+  content: "\f1398";
+}
+.WidgetAction a:hover i.fa {
+  color: #24408c;
+  background: #ddd;
+  border-radius: 50px;
+}
+
 #ArticleTableBody .Scroller {
   border-radius: 4px;
   height: 10em;
@@ -4112,6 +4160,9 @@ div.Headline .Flag + h1 {
   display: none;
 }
 
+#ArticleItems .ActionMenu .WidgetAction.Expand i.fa.fa-info::before {
+  content: "\f037b";
+}
 #ArticleItems .ArticleMailContent {
   padding-left: 0;
   padding-right: 0;
