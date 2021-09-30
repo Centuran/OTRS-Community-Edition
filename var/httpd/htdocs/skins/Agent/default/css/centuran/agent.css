@@ -1441,8 +1441,9 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   height: 0;
   margin-left: -0.4em;
   opacity: 1;
-  position: static;
+  position: relative;
   width: 0;
+  z-index: 1000;
 }
 .DataTable thead th.DashboardHeader a.ColumnSettingsTrigger::after, .DataTable thead th.OverviewHeader a.ColumnSettingsTrigger::after,
 .Sortable.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger::after,
@@ -1487,6 +1488,23 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .TableSmall thead th.SortDescendingLarge a.ColumnSettingsTrigger::after {
   content: "\f0232";
 }
+.DataTable thead th.OverviewHeader a.ColumnSettingsTrigger:hover,
+.DataTable thead th.OverviewHeader a.ColumnSettingsTrigger.Active, .DataTable thead th.OverviewHeader.FilterActive a.ColumnSettingsTrigger, .DataTable thead th.DashboardHeader a.ColumnSettingsTrigger:hover,
+.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger.Active, .DataTable thead th.DashboardHeader.FilterActive a.ColumnSettingsTrigger,
+.Sortable.DataTable thead th.OverviewHeader a.ColumnSettingsTrigger:hover,
+.Sortable.DataTable thead th.OverviewHeader a.ColumnSettingsTrigger.Active,
+.Sortable.DataTable thead th.OverviewHeader.FilterActive a.ColumnSettingsTrigger,
+.Sortable.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger:hover,
+.Sortable.DataTable thead th.DashboardHeader a.ColumnSettingsTrigger.Active,
+.Sortable.DataTable thead th.DashboardHeader.FilterActive a.ColumnSettingsTrigger,
+.TableSmall thead th.OverviewHeader a.ColumnSettingsTrigger:hover,
+.TableSmall thead th.OverviewHeader a.ColumnSettingsTrigger.Active,
+.TableSmall thead th.OverviewHeader.FilterActive a.ColumnSettingsTrigger,
+.TableSmall thead th.DashboardHeader a.ColumnSettingsTrigger:hover,
+.TableSmall thead th.DashboardHeader a.ColumnSettingsTrigger.Active,
+.TableSmall thead th.DashboardHeader.FilterActive a.ColumnSettingsTrigger {
+  box-shadow: none;
+}
 .DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after, .DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after, .DataTable thead th.FilterActive a.ColumnSettingsTrigger::after,
 .Sortable.DataTable thead th.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
 .Sortable.DataTable thead th.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
@@ -1496,6 +1514,65 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .TableSmall thead th.FilterActive a.ColumnSettingsTrigger::after {
   background-color: #24408c;
   color: white;
+}
+.DataTable thead th.OverviewHeader .ColumnSettingsContainer, .DataTable thead th.DashboardHeader .ColumnSettingsContainer,
+.Sortable.DataTable thead th.OverviewHeader .ColumnSettingsContainer,
+.Sortable.DataTable thead th.DashboardHeader .ColumnSettingsContainer,
+.TableSmall thead th.OverviewHeader .ColumnSettingsContainer,
+.TableSmall thead th.DashboardHeader .ColumnSettingsContainer {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0px;
+  vertical-align: bottom;
+  z-index: 999;
+}
+.DataTable thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox, .DataTable thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox,
+.Sortable.DataTable thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox,
+.Sortable.DataTable thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox,
+.TableSmall thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox,
+.TableSmall thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox {
+  top: calc(100% + 14px) !important;
+  right: -19px;
+  z-index: 1000;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.DataTable thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox::before, .DataTable thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox::before,
+.Sortable.DataTable thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox::before,
+.Sortable.DataTable thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox::before,
+.TableSmall thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox::before,
+.TableSmall thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox::before {
+  color: #fff;
+  content: "\f0360";
+  font-family: "Material Design Icons";
+  font-size: 32px;
+  height: 28px;
+  line-height: 50px;
+  position: absolute;
+  right: 3px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.65);
+  top: 0;
+  transform: translateY(-100%);
+  width: 30px;
+  /* z-index: auto; */
+  text-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.DataTable thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox::after, .DataTable thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox::after,
+.Sortable.DataTable thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox::after,
+.Sortable.DataTable thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox::after,
+.TableSmall thead th.OverviewHeader .ColumnSettingsContainer .ColumnSettingsBox::after,
+.TableSmall thead th.DashboardHeader .ColumnSettingsContainer .ColumnSettingsBox::after {
+  background-color: white;
+  border-top-right-radius: 4px;
+  content: "";
+  height: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
 }
 .DataTable thead th a,
 .Sortable.DataTable thead th a,
@@ -1540,6 +1617,10 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .Sortable.DataTable tr.MasterAction:hover span.UnreadArticles.Remarkable::before,
 .TableSmall tr.MasterAction:hover span.UnreadArticles.Remarkable::before {
   text-shadow: -1px 0px 0px rgba(0, 0, 0, 0.35), 0px -1px 0px rgba(0, 0, 0, 0.35), 1px 0px 0px rgba(0, 0, 0, 0.35), 0px 1px 0px rgba(0, 0, 0, 0.35);
+}
+
+.TableSmall .ColumnFilter {
+  font-size: 13.3px;
 }
 
 .Tab.Actions {
@@ -2981,6 +3062,12 @@ hr.cmt-flex-break {
 .fc-view table thead.fc-head th.fc-widget-header {
   font-size: 13.3px;
   font-weight: bold;
+}
+.fc-view table thead.fc-head td.fc-time-area.fc-widget-header {
+  border-width: 0 0 1px 0;
+}
+.fc-view table tbody.fc-body {
+  font-size: 13.3px;
 }
 
 .AppointmentTooltip {
