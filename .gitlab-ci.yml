@@ -24,9 +24,9 @@ build-otrs-db-image:
     - apk add --no-cache ca-certificates git
     - update-ca-certificates
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
-    - git clone https://gitlab+deploy-token-27:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.sidnet.info/centuran/otrs-ce-development /tmp/otrs-ce-development
+    - git clone https://centuran-repository-token:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.dev.sidnet.info/centuran/otrs-ce-dev-env /tmp/otrs-ce-dev-env
   script:
-    - cd /tmp/otrs-ce-development/setup/otrs-db
+    - cd /tmp/otrs-ce-dev-env/setup/otrs-db
     - cp "${CI_PROJECT_DIR}/scripts/database/"*.mysql.sql .
     - docker pull "${REGISTRY_PATH}/otrs-db:latest" || true
     - docker build --cache-from "${REGISTRY_PATH}/otrs-db:latest" -t "${REGISTRY_PATH}/otrs-db:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs-db:latest" .
@@ -39,7 +39,7 @@ build-otrs-image:
     - docker:18.09-dind
   before_script: *before-build
   script:
-    - cd /tmp/otrs-ce-development/setup/otrs
+    - cd /tmp/otrs-ce-dev-env/setup/otrs
     - cp -r "${CI_PROJECT_DIR}" otrs-ce
     - docker pull "${REGISTRY_PATH}/otrs:latest" || true
     - docker build --build-arg OTRS_CE_DIR=./otrs-ce --cache-from "${REGISTRY_PATH}/otrs:latest" -t "${REGISTRY_PATH}/otrs:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs:latest" .
@@ -53,14 +53,14 @@ build-selenium-images:
   before_script: *before-build
   script:
     # Build Chrome image
-    - cd /tmp/otrs-ce-development/setup/selenium/chrome
+    - cd /tmp/otrs-ce-dev-env/setup/selenium/chrome
     - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
     - docker pull "${REGISTRY_PATH}/selenium-chrome:latest" || true
     - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${REGISTRY_PATH}/selenium-chrome:latest" -t "${REGISTRY_PATH}/selenium-chrome:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/selenium-chrome:latest" .
     - docker push "${REGISTRY_PATH}/selenium-chrome:latest"
 
     # Build Firefox image
-    - cd /tmp/otrs-ce-development/setup/selenium/ff
+    - cd /tmp/otrs-ce-dev-env/setup/selenium/ff
     - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
     - docker pull "${REGISTRY_PATH}/selenium-ff:latest" || true
     - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${REGISTRY_PATH}/selenium-ff:latest" -t "${REGISTRY_PATH}/selenium-ff:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/selenium-ff:latest" .
@@ -101,15 +101,15 @@ apply-images:
     - chmod +x kompose
     - mv ./kompose /usr/local/bin/kompose
 
-    # Clone OTRS CE Development repository and create .env file
-    - git clone https://gitlab+deploy-token-27:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.sidnet.info/centuran/otrs-ce-development /tmp/otrs-ce-development
-    - cd /tmp/otrs-ce-development
+    # Clone OTRS CE Development Environment repository and create .env file
+    - git clone https://centuran-repository-token:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.dev.sidnet.info/centuran/otrs-ce-dev-env /tmp/otrs-ce-dev-env
+    - cd /tmp/otrs-ce-dev-env
     - touch .env
     - cd -
 
     # Convert Docker Compose configuration to Kubernetes using Kompose
     - mkdir /tmp/kubernetes
-    - kompose -f /tmp/otrs-ce-development/docker-compose.yml -f /tmp/otrs-ce-development/docker-compose-selenium.yml convert -o /tmp/kubernetes/
+    - kompose -f /tmp/otrs-ce-dev-env/docker-compose.yml -f /tmp/otrs-ce-dev-env/docker-compose-selenium.yml convert -o /tmp/kubernetes/
 
     # Create secret configuration file for registry access
     - kubectl delete --kubeconfig "${KUBECONFIG}" secret gitlab-registry-secret --ignore-not-found
