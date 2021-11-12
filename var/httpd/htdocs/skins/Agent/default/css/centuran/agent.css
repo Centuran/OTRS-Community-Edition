@@ -267,6 +267,9 @@ ul.Tablelike li.Header {
 .WidgetSimple .Header .WidgetAction a i.fa.fa-cog::before {
   content: "\f01d9";
 }
+.WidgetSimple .Header .WidgetAction a i.fa.fa-refresh::before {
+  content: "\f0450";
+}
 .WidgetSimple .Header .WidgetAction a i.fa.fa-times::before {
   content: "\f1398";
 }
@@ -778,6 +781,11 @@ a.CallForAction span i.fa.fa-plus-square::before, .ProcessManagementEditScreen #
 .v-application a.CallForAction span i.fa.fa-plus-square::before,
 button.CallForAction span i.fa.fa-plus-square::before {
   content: "\f0415";
+}
+a.CallForAction span i.fa.fa-refresh::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-refresh::before,
+.v-application a.CallForAction span i.fa.fa-refresh::before,
+button.CallForAction span i.fa.fa-refresh::before {
+  content: "\f0450";
 }
 a.CallForAction span i.fa.fa-reply::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-reply::before,
 .v-application a.CallForAction span i.fa.fa-reply::before,
@@ -1859,6 +1867,9 @@ p.FieldExplanation {
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-plus-square::before {
   content: "\f0415";
 }
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-refresh::before {
+  content: "\f0450";
+}
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-reply::before {
   content: "\f045a";
 }
@@ -2360,6 +2371,9 @@ ul.Tablelike li.Header {
 }
 .WidgetSimple .Header .WidgetAction a i.fa.fa-cog::before {
   content: "\f01d9";
+}
+.WidgetSimple .Header .WidgetAction a i.fa.fa-refresh::before {
+  content: "\f0450";
 }
 .WidgetSimple .Header .WidgetAction a i.fa.fa-times::before {
   content: "\f1398";
@@ -2872,6 +2886,11 @@ a.CallForAction span i.fa.fa-plus-square::before, .ProcessManagementEditScreen #
 .v-application a.CallForAction span i.fa.fa-plus-square::before,
 button.CallForAction span i.fa.fa-plus-square::before {
   content: "\f0415";
+}
+a.CallForAction span i.fa.fa-refresh::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-refresh::before,
+.v-application a.CallForAction span i.fa.fa-refresh::before,
+button.CallForAction span i.fa.fa-refresh::before {
+  content: "\f0450";
 }
 a.CallForAction span i.fa.fa-reply::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-reply::before,
 .v-application a.CallForAction span i.fa.fa-reply::before,
