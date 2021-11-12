@@ -74,7 +74,7 @@ apply-images:
   stage: apply
   # Using this image based on Alpine Linux (rather than bitnami/kubectl used
   # later in test stage) to be able to install tools with apk
-  image: roffe/kubectl
+  image: atlassian/pipelines-kubectl
   environment:
     name: test/${CI_COMMIT_REF_NAME}
     on_stop: cleanup-environment
@@ -92,7 +92,7 @@ apply-images:
 
     # Install Docker and do "docker login"
     - apk update
-    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.10/community ca-certificates curl docker=18.09.8-r0 git
+    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.13/community ca-certificates curl docker=18.09.8-r0 git
     - update-ca-certificates
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
 
