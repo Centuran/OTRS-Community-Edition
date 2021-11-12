@@ -81,6 +81,14 @@
         font-size: $secondary-font-size;
         font-weight: bold;
       }
+
+      td.fc-time-area.fc-widget-header {
+        border-width: 0 0 1px 0;
+      }
+    }
+
+    tbody.fc-body {
+      font-size: $secondary-font-size;
     }
   }
 }
