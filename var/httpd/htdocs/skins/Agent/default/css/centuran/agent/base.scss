@@ -433,6 +433,11 @@ ul.Tablelike li.Header {
           &.fa-cog::before {
             content: mdi("dots-vertical");
           }
+
+          // Refresh widget
+          &.fa-refresh::before {
+            content: mdi("refresh");
+          }
     
           // Close widget
           &.fa-times::before {
