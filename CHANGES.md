@@ -1,3 +1,6 @@
+# 6.0.33 2021-11-19 - Security release
+ - Updated CKEditor to version 4.17.1
+   (there were several XSS vulnerabilities in versions prior to 4.17)
 # 6.0.32 2021-05-24 - Security release
  - Fixed an issue with unauthorized access to calendar appointments  
    (discovered during internal security audit)
