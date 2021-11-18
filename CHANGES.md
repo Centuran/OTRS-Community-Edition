@@ -1,3 +1,7 @@
+# 6.0.33 2021-11-19 - Security release
+ - Fixed a Denial of Service issue in PostMaster filters
+   (thanks to OTRS AG and Alberto Molina -- security advisory: https://otrs.com/release-notes/otrs-security-advisory-2021-16/)
+
 # 6.0.32 2021-05-24 - Security release
  - Fixed an issue with unauthorized access to calendar appointments  
    (discovered during internal security audit)
