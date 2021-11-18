@@ -1,6 +1,9 @@
 # 6.0.33 2021-11-19 - Security release
  - Updated CKEditor to version 4.17.1
    (there were several XSS vulnerabilities in versions prior to 4.17)
+ - Updated jQuery UI to version 1.13.0
+   (there were several XSS vulnerabilities in versions prior to 1.13.0 -- security advisories: https://github.com/jquery/jquery-ui/security/advisories/GHSA-gpqq-952q-5327, https://github.com/jquery/jquery-ui/security/advisories/GHSA-j7qv-pgf6-hvh4, https://github.com/jquery/jquery-ui/security/advisories/GHSA-9gj3-hwp5-pmwc)
+
 # 6.0.32 2021-05-24 - Security release
  - Fixed an issue with unauthorized access to calendar appointments  
    (discovered during internal security audit)
