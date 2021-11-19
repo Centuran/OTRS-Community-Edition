@@ -8,7 +8,7 @@ variables:
   OTRS_CE_DEV_DEPLOY_TOKEN: ""
   DOCKER_HOST: "tcp://localhost:2375"
   DOCKER_DRIVER: "overlay2"
-  REGISTRY_PATH: "${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_NAME}"
+  REGISTRY_PATH: "${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}"
 
 #
 # Build Docker container images
