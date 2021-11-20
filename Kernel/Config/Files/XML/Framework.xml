@@ -406,7 +406,7 @@
         <Description Translatable="1">Defines the URL rich text editor path.</Description>
         <Navigation>Frontend::Base</Navigation>
         <Value>
-            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.16.0/</Item>
+            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.17.1/</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::RichTextWidth" Required="1" Valid="1">
@@ -4210,7 +4210,7 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="JavaScript">
                     <Array>
-                        <Item>thirdparty/momentjs-2.18.1/moment.min.js</Item>
+                        <Item>thirdparty/momentjs-2.29.1/moment.min.js</Item>
                         <Item>thirdparty/fullcalendar-3.10.2/fullcalendar.min.js</Item>
                         <Item>thirdparty/d3-3.5.6/d3.min.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/nvd3.min.js</Item>
@@ -7787,12 +7787,12 @@ via the Preferences button after logging in.
             <Array>
                 <Item>thirdparty/jquery-3.5.1/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
-                <Item>thirdparty/jquery-ui-1.12.1/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.0/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.js</Item>
                 <Item>thirdparty/jquery-validate-1.19.3/jquery.validate.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
                 <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.0.1/nunjucks.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.JavaScriptEnhancements.js</Item>
                 <Item>Core.Debug.js</Item>
@@ -7848,7 +7848,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.16.0/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.17.1/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>
@@ -7889,10 +7889,10 @@ via the Preferences button after logging in.
                 <Item>thirdparty/jquery-3.5.1/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
                 <Item>thirdparty/jquery-validate-1.19.3/jquery.validate.js</Item>
-                <Item>thirdparty/jquery-ui-1.12.1/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.0/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
                 <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.0.1/nunjucks.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.Debug.js</Item>
                 <Item>Core.Exception.js</Item>
@@ -7937,7 +7937,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.16.0/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.17.1/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>

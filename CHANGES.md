@@ -1,6 +1,14 @@
-# 6.0.33 2021-11-19 - Security release
+# 6.0.33 2021-11-20 - Security release
  - Fixed a Denial of Service issue in PostMaster filters
    (thanks to OTRS AG and Alberto Molina -- security advisory: https://otrs.com/release-notes/otrs-security-advisory-2021-16/)
+ - Updated CKEditor to version 4.17.1  
+   (several XSS vulnerabilities were present in versions prior to 4.17 -- release information: [CKEditor 4.17](https://github.com/ckeditor/ckeditor4/blob/master/CHANGES.md#ckeditor-417))
+ - Updated jQuery UI to version 1.13.0  
+   (several XSS vulnerabilities were present in versions prior to 1.13.0 -- security advisories: [GHSA-gpqq-952q-5327](https://github.com/jquery/jquery-ui/security/advisories/GHSA-gpqq-952q-5327), [GHSA-j7qv-pgf6-hvh4](https://github.com/jquery/jquery-ui/security/advisories/GHSA-j7qv-pgf6-hvh4), [GHSA-9gj3-hwp5-pmwc](https://github.com/jquery/jquery-ui/security/advisories/GHSA-9gj3-hwp5-pmwc))
+ - Updated Moment.js to version 2.29.1  
+   (a ReDoS vulnerability was present in versions prior to 2.19.3 -- release information: [moment 2.19.3 changelog](https://gist.github.com/marwahaha/3654006bc0c2e522451c08d12c0bfabf))
+ - Updated Nunjucks to version 3.2.3  
+   (a prototype pollution vulnerability was present in versions prior to 3.2.3 -- issue description: [#1331](https://github.com/mozilla/nunjucks/issues/1331))
 
 # 6.0.32 2021-05-24 - Security release
  - Fixed an issue with unauthorized access to calendar appointments  
