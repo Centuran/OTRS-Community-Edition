@@ -210,6 +210,27 @@ sub Run {
     # security check Action Param (replace non word chars)
     $Param{Action} =~ s/\W//g;
 
+    if (-e ($ConfigObject->Get('Home') . '/var/tmp/.UPDATING')) {
+        if ($Param{Action} ne 'AdminUpdate') {
+            my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+        
+            my $Output = $LayoutObject->Header();
+    
+            $Output .= $LayoutObject->Output(
+                TemplateFile => 'SystemUpdate',
+                Data         => {
+                }
+            );
+
+            $Output .= $LayoutObject->Footer();
+
+            $LayoutObject->Print(
+                Output => \$Output
+            );
+            return;
+        }
+    }
+
     my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
     my $UserObject    = $Kernel::OM->Get('Kernel::System::User');
 
