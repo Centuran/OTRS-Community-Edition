@@ -10407,7 +10407,7 @@
             </Item>
         </Value>
     </Setting>
-        <Setting Name="Ticket::EventModulePost###9700-GenericAgent" Required="0" Valid="1">
+    <Setting Name="Ticket::EventModulePost###9700-GenericAgent" Required="0" Valid="1">
         <Description Translatable="1">Event module registration. For more performance you can define a trigger event (e. g. Event =&gt; TicketCreate).</Description>
         <Navigation>Core::Event::Ticket</Navigation>
         <Value>
