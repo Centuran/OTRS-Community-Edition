@@ -1,0 +1,445 @@
+# --
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+<div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst">
+    <h1 class="InvisibleText">[% Translate("System Update") | html %]</h1>
+
+    [% BreadcrumbPath = [
+            {
+                Name => Translate('System Update'),
+            },
+        ]
+    %]
+
+    [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
+
+    <div class="SidebarColumn">
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("Hint") | html %]</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="ContentColumn">
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("System Update") | html %]</h2>
+            </div>
+            <div class="Content">
+                
+                [% IF Data.Step == 'Upload' %]
+
+                <form action="[% Env("CGIHandle") %]" method="post"
+                        enctype="multipart/form-data"
+                        class="Validate PreventMultipleSubmits">
+                    <input type="hidden" name="Action" value="[% Env("Action") %]"/>
+                    <input type="hidden" name="Subaction" value="Upload"/>
+                    <fieldset class="TableLike">
+                        <label class="Mandatory" for="DistFile"><span class="Marker">*</span> [% Translate("Distribution package") | html %]:</label>
+                        <div class="Field">
+                            <input name="DistFile" id="DistFile" type="file" class="W50pc [% Data.ValidateContent | html %] [% Data.DistFileInvalid | html %]"/>
+                            <div id="DistFileError" class="TooltipErrorMessage">
+                                <p>[% Translate("This field is required.") | html %]</p>
+                            </div>
+                            <div id="DistFileServerError" class="TooltipErrorMessage">
+                                <p>[% Translate("This field is required.") | html %]</p>
+                            </div>
+                        </div>
+                        <div class="Clear"></div>
+
+                        <div class="Field SpacingTop">
+                            <button class="Primary CallForAction" type="submit" id="UpdateUpload" value="[% Translate("Upload") | html %]"><span>[% Translate("Upload") | html %]</span></button>
+                        </div>
+                        <div class="Clear"></div>
+                    </fieldset>
+                </form>
+
+                [% ELSIF Data.Step == 'Check' %]
+
+                <p>
+                    Performing system checks...
+                </p>
+
+                <ul id="Status">
+                    <li id="StatusItemTemplate" style="display: none;">
+                        <span class="message">
+                        </span>
+                        <span class="result">
+                            <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="StatusMessage pass">
+                    <p>
+                        [% Translate('System checks passed. Your system is ready to be updated.') | html %]
+                    </p>
+                </div>
+
+                <div class="StatusMessage warn">
+                    <p>
+                        [% Translate('Some system checks passed with warnings. Please review the warnings before proceeding with system update.') | html %]
+                    </p>
+                </div>
+
+                <div class="StatusMessage fail">
+                    <p>
+                        [% Translate('System checks failed. Your system can not be automatically updated while the reported problems persist.') | html %]
+                    </p>
+                </div>
+
+                <form action="[% Env("CGIHandle") %]" method="post"
+                        enctype="multipart/form-data"
+                        class="Validate PreventMultipleSubmits">
+                    <input type="hidden" name="Action" value="[% Env("Action") %]" />
+                    <input type="hidden" name="Subaction" value="Update" />
+                    <fieldset>
+                        <div class="Field Center">
+                            <button disabled class="Primary CallForAction Disabled" type="submit" id="Update" value="[% Translate("Update System") | html %]"><span>[% Translate("Update System") | html %]</span></button>
+                        </div>
+                        <div class="Clear"></div>
+                    </fieldset>
+                </form>
+
+                [% ELSIF Data.Step == 'Update' %]
+
+                <p>
+                    System update started...
+                </p>
+
+                <ul id="Status">
+                    <li id="StatusItemTemplate" style="display: none;">
+                        <span class="message">
+                        </span>
+                        <span class="result">
+                            <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="StatusMessage pass">
+                    <p>
+                        [% Translate('System updated successfully. Use the button below to log out and log in again.') | html %]
+                    </p>
+                </div>
+
+                <div class="StatusMessage warn">
+                    <p>
+                        [% Translate('System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.') | html %]
+                    </p>
+                </div>
+
+                <div class="StatusMessage fail">
+                    <p>
+                        [% Translate('System update failed. Please review any errors or warnings above.') | html %]
+                    </p>
+                </div>
+
+                <form id="LogoutForm" action="[% Env("CGIHandle") %]" method="post"
+                        enctype="multipart/form-data"
+                        class="Validate PreventMultipleSubmits">
+                    <input type="hidden" name="Action" value="[% Env("Action") %]" />
+                    <input type="hidden" name="Subaction" value="Logout" />
+                    <fieldset>
+                        <div class="Field Center">
+                            <button disabled class="Primary CallForAction Disabled" type="submit" id="UpdateLogout" value="[% Translate("Update System") | html %]"><span>[% Translate("Logout") | html %]</span></button>
+                        </div>
+                        <div class="Clear"></div>
+                    </fieldset>
+                </form>
+
+                [% END %]
+
+            </div>
+        </div>
+    </div>
+    <div class="Clear"></div>
+</div>
+
+<!-- TODO: Move to external stylesheet -->
+<style type="text/css">
+    /* https://github.com/FortAwesome/Font-Awesome/issues/671#issuecomment-644075767 */
+    .fa-spin {
+        text-indent: -0.000001em;
+        line-height: 0.6em;
+        line-height: 0.9em;
+    }
+    .fa-spin.fa-lg {
+        line-height: 0.7em;
+    }
+    .fa-spin.fa-2x {
+        line-height: 0.8em;
+    }
+    .fa-spin.fa-3x,
+    .fa-spin.fa-4x,
+    .fa-spin.fa-5x {
+        line-height: 1em;
+    }
+
+    #Status {
+        margin-top: 1em;
+        width: 100%;
+    }
+
+    #Status li {
+        line-height: 200%;
+        min-height: 2em;
+    }
+
+    #Status .message {
+        display: inline-block;
+        padding-left: 1em;
+        width: calc(40% - 1em);
+    }
+
+    #Status .result {
+        display: block;
+        float: right;
+        width: 60%;
+    }
+
+    #Status .result i {
+        color: #888;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        padding: 0.2em;
+        border-radius: 50px;
+        text-align: center;
+    }
+
+    #Status .result.check-pass {
+        color: green;
+    }
+    #Status .result.check-pass i {
+        background-color: green;
+        color: white;
+    }
+
+    #Status .result.check-warn {
+        color: #d78e20;
+    }
+    #Status .result.check-warn i {
+        background-color: #f7ae40;
+        color: white;
+    }
+
+    #Status .result.check-fail {
+        color: #b8384e;
+    }
+    #Status .result.check-fail i {
+        background-color: #b8384e;
+        color: white;
+    }
+
+    #Status .result a.details {
+        margin-left: 2em;
+    }
+
+    .StatusMessage {
+        display: none;
+        font-weight: bold;
+        padding: 1em 0;
+        text-align: center;
+    }
+
+    .StatusMessage.pass {
+        color: green;
+    }
+    .StatusMessage.warn {
+        color: #d78e20;
+    }
+    .StatusMessage.fail {
+        color: #b8384e;
+    }
+
+    .AdminUpdateCheckDetails ul {
+        list-style-type: disc;
+        margin: 0.6em 0;
+        margin-left: 1.6em;
+    }
+
+    #LogoutForm {
+        display: none;
+    }
+</style>
+
+[% WRAPPER JSOnDocumentComplete %]
+<script type="text/javascript">
+function poll(type) {
+    Core.AJAX.FunctionCall(
+        Core.Config.Get('CGIHandle'),
+        {
+            'Action':    'AdminUpdate',
+            'Subaction': 'AJAX' + type + 'Poll',
+        },
+        function (Response) {
+            $.each(Response, function (index, message) {
+                if (message.trim() == '')
+                    return true;
+                
+                var data = JSON.parse(message.trim());
+
+                var listItem =
+                    document.querySelector('#Status li[data-item="' +
+                        data.ID + '"]');
+                
+                if (!listItem) {
+                    listItem =
+                        document.querySelector('#StatusItemTemplate')
+                            .cloneNode(true);
+                    listItem.removeAttribute('id');
+                    listItem.style.display = '';
+                    listItem.dataset.item = data.ID;
+                    document.querySelector('#Status').appendChild(listItem);
+                }
+                
+                if (data.Message)
+                    listItem.querySelector('.message').textContent = data.Message;
+
+                var result = listItem.querySelector('.result');
+
+                if (data.Result) {
+                    result.innerHTML = '';
+                    result.textContent = data.Result;
+                }
+
+                if (data.Status) {
+                    result.classList.add('check-' + data.Status);
+
+                    var iconClass = 'fa-check';
+
+                    if (data.Status == 'warn')
+                        iconClass = 'fa-exclamation';
+                    else if (data.Status == 'fail')
+                        iconClass = 'fa-times';
+
+                    result.innerHTML += ' <i class="fa ' + iconClass + '"></i>';
+                    
+                    if (data.Details) {
+                        var input = $('<input type="hidden"/>');
+                        input.val(JSON.stringify(data));
+                        $(result).append(input);
+                        result.innerHTML += ' <a href="#" class="details">' +
+                            Core.Language.Translate('See details') + '</a>';
+
+                        result.querySelector('a.details')
+                            .addEventListener('click', showCheckDetails);
+                    }
+                }
+            });
+        }
+    );
+}
+
+function showCheckDetails(event) {
+    var a = event.currentTarget;
+    var input = a.previousElementSibling;
+
+    Core.AJAX.FunctionCall(
+        Core.Config.Get('CGIHandle'),
+        {
+            'Action':    'AdminUpdate',
+            'Subaction': 'ShowCheckDetails',
+            'Data':      input.value
+        },
+        function (Response) {
+            Core.UI.Dialog.ShowContentDialog(
+                Response,
+                Core.Language.Translate('System Check Details'),
+                '10px',
+                'Center',
+                true,
+                [
+                    {
+                        Label: Core.Language.Translate('Close'),
+                        Class: 'Primary',
+                        Function: function () {
+                            Core.UI.Dialog.CloseDialog($('.Dialog'));
+                        }
+                    },
+                ]
+            );
+        },
+        'html'
+    );
+
+    event.preventDefault();
+    return false;
+}
+
+$(function () {
+    if ('[% Data.Step %]' != 'Check')
+        return;
+
+    Core.AJAX.FunctionCall(
+        Core.Config.Get('CGIHandle'),
+        {
+            'Action':    'AdminUpdate',
+            'Subaction': 'AJAXCheck'
+        },
+        function (Response) {
+            clearInterval(timer);
+            poll('Check');
+
+            console.log(Response);
+            console.log(Response.Status);
+
+            var StatusMessage =
+                document.querySelector('.StatusMessage.' + Response.Status);
+
+            if (StatusMessage)            
+                StatusMessage.style.display = 'block';
+
+            if (Response.Status == 'pass' || Response.Status == 'warn') {
+                document.querySelector('#Update').removeAttribute('disabled');
+                document.querySelector('#Update').classList.remove('Disabled');
+            }
+        }
+    );
+
+    var timer = setInterval(function () {
+        poll('Check');
+    }, 1000);
+});
+
+$(function () {
+    if ('[% Data.Step %]' != 'Update')
+        return;
+
+    Core.AJAX.FunctionCall(
+        Core.Config.Get('CGIHandle'),
+        {
+            'Action':    'AdminUpdate',
+            'Subaction': 'AJAXUpdate'
+        },
+        function (Response) {
+            clearInterval(timer);
+            poll('Update');
+
+            var StatusMessage =
+                document.querySelector('.StatusMessage.' + Response.Status);
+
+            if (StatusMessage)            
+                StatusMessage.style.display = 'block';
+
+            if (Response.Status == 'pass' || Response.Status == 'warn') {
+                document.querySelector('#LogoutForm').style.display = 'block';
+                document.querySelector('#UpdateLogout').removeAttribute('disabled');
+                document.querySelector('#UpdateLogout').classList.remove('Disabled');
+            }
+        }
+    );
+
+    var timer = setInterval(function () {
+        poll('Update');
+    }, 1000);
+});
+</script>
+[% END %]
