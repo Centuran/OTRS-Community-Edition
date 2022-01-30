@@ -153,6 +153,16 @@
                         </div>
                         <div class="Clear"></div>
 
+                        <label for="Color" class="Mandatory">
+                            <span class="Marker">*</span>
+                            [% Translate("Color") | html %]:
+                        </label>
+                        <div class="Field">
+                            <input type="text" id="Color" name="Color" value="[% Data.Color | html %]" class="Validate_Required W50pc" />
+                            <div id="ColorError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                        </div>
+                        <div class="Clear"></div>
+
                         <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
                         <div class="Field">
                             [% Data.ValidOptionStrg %]
