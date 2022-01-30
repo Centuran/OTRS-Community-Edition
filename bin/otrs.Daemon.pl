@@ -254,6 +254,17 @@ sub Start {
             next LOOP;
         }
 
+        # Check if the system is being updated
+        if (-e $ConfigObject->Get('Home') . '/var/tmp/.UPDATING') {
+            if ($Debug) {
+                print STDOUT "\nExiting daemon while system update is in progress\n\n"
+            }
+
+            # Exit the loop so that the parent daemon process finishes
+            # (it should get automatically restarted with cron)
+            last LOOP;
+        }
+
         MODULE:
         for my $Module ( sort keys %DaemonModules ) {
 
