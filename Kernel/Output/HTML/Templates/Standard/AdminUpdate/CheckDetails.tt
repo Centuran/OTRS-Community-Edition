@@ -1,0 +1,71 @@
+# --
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+<div class="InnerContent AdminUpdateCheckDetails">
+    [% IF Data.ID.match('disk-space/(app|temp)') %]
+        <p>[%
+            Translate("At least %s of free disk space is required in %s, while %s is available.",
+                Data.Details.SpaceRequired, Data.Details.Location, Data.Details.SpaceAvailable)
+                | html
+        %]</p>
+    [% ELSIF Data.ID == 'otrs/installed-packages' %]
+        <p>
+            [% Translate("The following packages are installed") | html %]:
+        </p>
+
+        <ul>
+        [% FOR File IN Data.Details.InstalledPackages.first(10).grep('\S') %]
+            <li>
+                [% File %]
+            </li>
+        [% END %]
+        </ul>
+
+        [% IF Data.Details.InstalledPackages.size > 10 %]
+            <p>
+                [% Translate("(and %s more)", Data.Details.InstalledPackages.size - 10) | html %]
+            </p>
+        [% END %]
+    [% ELSIF Data.ID == 'otrs/file-modifications' %]
+        <p>
+            [% Translate("The following files have been modified") | html %]:
+        </p>
+
+        <ul>
+        [% FOR File IN Data.Details.ModifiedFiles.first(10).grep('\S') %]
+            <li>
+                [% File %]
+            </li>
+        [% END %]
+        </ul>
+
+        [% IF Data.Details.ModifiedFiles.size > 10 %]
+            <p>
+                [% Translate("(and %s more)", Data.Details.ModifiedFiles.size - 10) | html %]
+            </p>
+        [% END %]
+    [% ELSIF Data.ID == 'otrs/custom-files' %]
+        <p>
+            [% Translate("The following custom files have been found") | html %]:
+        </p>
+
+        <ul>
+        [% FOR File IN Data.Details.CustomFiles.first(10).grep('\S') %]
+            <li>
+                [% File %]
+            </li>
+        [% END %]
+        </ul>
+
+        [% IF Data.Details.CustomFiles.size > 10 %]
+            <p>
+                [% Translate("(and %s more)", Data.Details.CustomFiles.size - 10) | html %]
+            </p>
+        [% END %]
+    [% END %]
+</div>
