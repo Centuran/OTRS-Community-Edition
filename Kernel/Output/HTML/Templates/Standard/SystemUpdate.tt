@@ -1,0 +1,18 @@
+# --
+# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+<div class="MainBox ARIARoleMain">
+    <div class="Center" style="padding: 3em 0;">
+        <i class="fa fa-refresh fa-3x fa-spin"></i>
+        <br>
+        <br>
+
+        [% Translate("%s is being updated", Config("Product")) | html %]
+        <br>
+    </div>
+</div>
