@@ -270,33 +270,34 @@
   }
 }
 
-/* Modernized select boxes */
+// NOTE: Moved to common styles
+// /* Modernized select boxes */
 
-.jstree-InputField {
-  font-size: 85%;
+// .jstree-InputField {
+//   font-size: 85%;
 
-  .jstree-wholerow-ul {
-    .jstree-wholerow {
-      height: auto;
-      line-height: initial;
+//   .jstree-wholerow-ul {
+//     .jstree-wholerow {
+//       height: auto;
+//       line-height: initial;
 
-      &:hover,
-      &.jstree-wholerow-hovered,
-      &.jstree-wholerow-clicked:hover {
-        background-color: #f15a22;
-      }
-    }
+//       &:hover,
+//       &.jstree-wholerow-hovered,
+//       &.jstree-wholerow-clicked:hover {
+//         background-color: #f15a22;
+//       }
+//     }
   
-    .jstree-anchor {
-      height: auto;
-      line-height: initial;
-    }
+//     .jstree-anchor {
+//       height: auto;
+//       line-height: initial;
+//     }
 
-    .jstree-hovered {
-      background-color: #f15a22;
-    }
-  }
-}
+//     .jstree-hovered {
+//       background-color: #f15a22;
+//     }
+//   }
+// }
 
 .MessageBox.Error {
   @include msg-box("error");

@@ -47,13 +47,15 @@ $mdi_codes: (
   "paperclip":            "\0F03E2",
   "playlist-check":       "\0F05C7",
   "plus":                 "\0F0415",
+  "power":                "\0F0425",
   "progress-wrench":      "\0F0CBD",
   "refresh":              "\0F0450",
   "reply":                "\0F045A",
   "robot":                "\0F06A9",
   "sort-ascending":       "\0F04BC",
   "tag-multiple":         "\0F04FB",
-  "timeline-text":        "\0F0BD3"
+  "timeline-text":        "\0F0BD3",
+  "tune":                 "\0F062E"
 );
 
 @function mdi($name) {

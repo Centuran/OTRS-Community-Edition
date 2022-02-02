@@ -1,0 +1,24 @@
+#MainBox.TicketView {
+  border-radius: 4px;
+}
+
+#MainBox .Placeholder {
+  text-align: center;
+
+  h2 {
+    border-bottom: none;
+    display: block;
+    text-align: center;
+  }
+
+  h2 + p {
+    font-size: initial;
+    max-width: initial;
+    padding: 1em 0;
+    text-align: center;
+  }
+
+  a.Button {
+    @include primary-button();
+  }
+}

@@ -1,0 +1,142 @@
+@import 'variables';
+@import 'icons';
+
+@mixin button {
+  border-radius: 4px;
+}
+
+input[type="text"] {
+  border: solid 1px rgba(0,0,0,.38);
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(0,0,0,.87);
+  height: 32px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: $form-field-padding;
+}
+
+div.InputField_InputContainer {
+  align-items: center;
+  display: flex;
+  height: 32px;
+
+  .InputField_Search {
+    position: relative;
+  }
+
+  .InputField_More {
+    top: auto;
+  }
+}
+
+div.InputField_Selection {
+  align-items: center;
+  background: #e0e0e0;
+  border-radius: 50px;
+  display: inline-block;
+  height: auto;
+  line-height: 20px;
+  padding: 2px 8px;
+  position: absolute;
+  top: auto;
+  vertical-align: middle;
+  z-index: 1;
+
+  div.Remove {
+    background: none;
+    font-family: "Material Design Icons";
+    font-size: inherit;
+    height: auto;
+    line-height: inherit;
+    overflow: hidden;
+    padding-left: 0;
+    //position: absolute;
+    //right: -26px;
+    vertical-align: middle;
+    overflow: visible;
+    
+    a {
+      position: relative;
+      //width: 0;
+      //color: #e0e0e0;
+      padding: 0;
+      line-height: inherit;
+      font-size: 0;
+      left: 4px;
+
+      &::before {
+        //background: #e0e0e0;
+        //border-radius: 0 50px 50px 0;
+        color: #888;
+        content: "\0F1398"; // close-thick
+        font-size: initial;
+        height: 100%;
+        left: 0;
+        line-height: inherit;
+        padding: 0;
+        padding-right: 0;
+        padding-left: 0;
+        position: static;
+        top: 0;
+        vertical-align: middle;
+        width: auto;
+      }
+    }
+  }
+}
+
+div.InputField_Selection div.Text {
+  background: #e0e0e0;
+  border-radius: 50px;
+  color: rgba(0,0,0,.87);
+  font-size: inherit;
+  height: 22px;
+  line-height: 20px;
+
+  height: auto;
+  line-height: auto;
+
+  padding: 0 !important;
+  
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  border-radius: 0;
+  line-height: inherit;
+  height: 100%;
+}
+
+/* Modernized select boxes */
+
+.jstree-InputField {
+  font-size: 85%;
+
+  .jstree-wholerow-ul {
+    .jstree-wholerow {
+      height: auto;
+      line-height: initial;
+
+      &:hover,
+      &.jstree-wholerow-hovered,
+      &.jstree-wholerow-clicked:hover {
+        background-color: #f15a22;
+      }
+    }
+  
+    .jstree-anchor {
+      height: auto;
+      line-height: initial;
+    }
+
+    .jstree-hovered {
+      background-color: #f15a22;
+    }
+  }
+}
+
+.FieldExplanation,
+.AsteriskExplanation {
+  font-size: 87.5%;
+}
