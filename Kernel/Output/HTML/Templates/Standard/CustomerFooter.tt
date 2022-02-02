@@ -33,9 +33,95 @@
     </a>
     <div class="Clear"></div>
 [% END %]
+
+    <iframe id="_ui-switch"
+        src="[% Config("Frontend::WebPath") %]ui-switch.html"></iframe>
 </div>
 
+<!-- </v-app></div> -->
+<script type="application/javascript">
+if (window.localStorage.getItem('__use_new_customer_ui') === 'true')
+    document.write('</v-app></div>');
+</script>
+
 [% InsertTemplate("CustomerFooterJS.tt") %]
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+
+# TODO: Probably should use WebPack rather than this
+<script src="https://unpkg.com/http-vue-loader"></script>
+
+#<script src="[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.js"></script>
+<script>
+(function () {
+
+if (window.localStorage.getItem('__use_new_customer_ui') === null)
+    window.localStorage.setItem('__use_new_customer_ui', true);
+
+if (window.localStorage.getItem('__use_new_customer_ui') !== 'true')
+    return;
+
+new Vue({
+    el: '#vue-app',
+    vuetify: new Vuetify({
+        theme: { disable: true }
+    }),
+    components: {
+        'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue'),
+        'toggleswitch':   httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/toggleswitch.vue')
+    },
+    data() {
+        return {
+            document: document,
+            console: console,
+            jQuery: window.jQuery
+        };
+    }
+});
+
+// FIXME: This is an ugly-ish workaround for an issue when unset select fields
+// suddenly have the first option pre-selected after Vue initialization above
+// (i.e. $('#some-select').val() returns null just before Vue initialization,
+// and some value right after). Resetting the inner HTML of the element seems
+// to fix this.
+jQuery('select').each(function () {
+    jQuery(this).html(jQuery(this).html());
+});
+
+new MutationObserver(function (mutations, observer) {
+    var newDialogs =
+        document.querySelectorAll('body > .Dialog:not(.__vue_processed)');
+
+    newDialogs.forEach(function (dialog) {
+        var fields = dialog.querySelectorAll('.Field.__vue_datetimepicker');
+
+        fields.forEach(function (field) {
+            new Vue({
+                el: field,
+                vuetify: new Vuetify({ theme: { disable: true } }),
+                components: {
+                    'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue')
+                }
+            });
+
+            dialog.classList.add('__vue_processed');
+        });
+    });
+}).observe(document.body,
+    { attributes: false, childList: true, subtree: false });
+
+})();
+
+// Add custom class to action list items that should be followed by free space
+// (i.e. those which are the last in a group)
+$(function () {
+    $('.ActionRow .Actions li, .ItemActions .Actions li').each(function () {
+        if ($(this).next('li').find('> a, > span.ClusterLink').length == 0)
+            this.classList.add('cmt-item-action-link-last');
+    });
+});
+</script>
 
 </body>
 </html>

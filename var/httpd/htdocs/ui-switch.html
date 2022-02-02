@@ -29,10 +29,10 @@
             <v-col>
               <div style="float:right;">
                 <v-switch
-                  v-model="window.__use_new_agent_ui"
+                  v-model="window[flagName]"
                   label="Enable new style"
                   color="#24408c"
-                  @change="window.localStorage.setItem('__use_new_agent_ui', window.__use_new_agent_ui); window.parent.location.reload(true);">
+                  @change="window.localStorage.setItem(flagName, window[flagName]); window.parent.location.reload(true);">
                 </v-switch>
               </div>
             </v-col>
@@ -45,9 +45,12 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script>
+    var flagName =
+      window.parent.location.pathname.match(/^\/otrs\/customer\.pl/) ?
+      '__use_new_customer_ui' : '__use_new_agent_ui';
     var useNewUI =
-      window.parent.__use_new_agent_ui =
-      window.parent.localStorage.getItem('__use_new_agent_ui') === 'true';
+      window.parent[flagName] =
+      window.parent.localStorage.getItem(flagName) === 'true';
     
     var enableDarkTheme = useNewUI &&
       window.parent.document.body.classList.contains('LoginScreen');
@@ -61,6 +64,7 @@
       }),
       data: function () {
         return {
+          flagName: flagName,
           window: window.parent
         };
       }

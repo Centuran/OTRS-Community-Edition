@@ -14,6 +14,12 @@
 [% InsertTemplate("CustomerHTMLHead.tt") %]
 <body class="NoJavaScript [% Data.BodyClass | html %]">
 <!-- start CI layout -->
+    <!-- <div id="vue-app"><v-app> -->
+    <script type="text/javascript">
+    if (window.localStorage.getItem('__use_new_customer_ui') === 'true')
+        document.write('<div id="vue-app"><v-app>');
+    </script>
+
     <div id="Header">
 [% RenderBlockStart("HeaderLogo") %]
         <div id="Logo"></div>
