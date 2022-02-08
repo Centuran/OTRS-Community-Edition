@@ -2,8 +2,6 @@
 
 @import 'variables';
 
-@import 'icons';
-
 // TODO: Remove in favor of @function mdi()
 @mixin mdi($codepoint) {
   content: $codepoint;
