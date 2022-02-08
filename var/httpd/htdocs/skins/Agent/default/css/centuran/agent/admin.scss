@@ -3,7 +3,7 @@
 .ItemListGrid {
   display: grid;
   gap: 10px 10px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   padding-top: 0;
 
   & > li {
@@ -138,7 +138,7 @@
 
     span.Title,
     span.Description {
-      margin-left: 17%;
+      margin-left: 34pt;
     }
   }
 }
