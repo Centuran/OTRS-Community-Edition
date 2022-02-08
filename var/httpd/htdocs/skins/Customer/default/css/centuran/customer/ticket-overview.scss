@@ -1,5 +1,41 @@
 #MainBox.TicketView {
   border-radius: 4px;
+
+  .ActionRow {
+    .Tabs {
+      @include button-group();
+
+      li {
+        a {
+          &.Selected {
+            background-color: $secondary-action-color;
+            color: white;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+
+    .Filter {
+      a {
+        text-shadow: none;
+
+        &:after {
+          content: none; // Override the "|" pseudo-element content
+        }
+      }
+    }
+  }
+}
+
+#MainBox.TicketView table.Overview {
+  .Title div {
+    height: auto;
+
+    h2 {
+      font-size: initial;
+    }
+  }
 }
 
 #MainBox .Placeholder {
