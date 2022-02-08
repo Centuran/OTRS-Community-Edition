@@ -1,0 +1,23 @@
+.Box {
+  fieldset > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0;
+
+    label {
+      width: auto;
+    }
+
+    input[type="password"] {
+      width: 60%;
+    }
+
+    div.xClearLeft {
+      display: none;
+    }
+  }
+
+  fieldset button[type="submit"] {
+    margin: 0.5em auto;
+    text-align: center;
+  }
+}
