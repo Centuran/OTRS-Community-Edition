@@ -7,7 +7,7 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-<div id="Footer" class="ARIARoleContentinfo">
+<div id="Footer" class="ARIARoleContentinfo cmt-layout-wrapped">
 
 [% IF(Data.FooterLinks) %]
     <ul class="FooterLinks">

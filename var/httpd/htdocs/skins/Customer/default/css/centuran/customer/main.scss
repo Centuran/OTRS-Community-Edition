@@ -1,3 +1,66 @@
+.v-application--wrap {
+  .cmt-layout-wrapped,
+  #Header.cmt-layout-wrapped {  
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .cmt-layout-wrapped #MainBox .Content {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+  }
+}
+
+@media (min-width: 960px) {
+  .v-application--wrap {
+    .cmt-layout-wrapped,
+    #Header.cmt-layout-wrapped {
+      padding-left: calc((100% - 900px) / 2);
+      padding-right: calc((100% - 900px) / 2);
+    }
+
+    #MainBox {
+      margin-left: calc((100% - 900px) / 2);
+      margin-right: calc((100% - 900px) / 2);
+
+      .Content {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 1264px) {
+  .v-application--wrap {
+    .cmt-layout-wrapped,
+    #Header.cmt-layout-wrapped {
+      padding-left: calc((100% - 1185px) / 2);
+      padding-right: calc((100% - 1185px) / 2);
+    }
+
+    #MainBox {
+      margin-left: calc((100% - 1185px) / 2);
+      margin-right: calc((100% - 1185px) / 2);
+    }
+  }
+}
+
+@media (min-width: 1904px) {
+  .v-application--wrap {
+    .cmt-layout-wrapped,
+    #Header.cmt-layout-wrapped {
+      padding-left: calc((100% - 1785px) / 2);
+      padding-right: calc((100% - 1785px) / 2);
+    }
+
+    #MainBox {
+      margin-left: calc((100% - 1785px) / 2);
+      margin-right: calc((100% - 1785px) / 2);
+    }
+  }
+}
+
 #Navigation {
   height: auto;
   

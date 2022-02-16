@@ -20,7 +20,7 @@
         document.write('<div id="vue-app"><v-app>');
     </script>
 
-    <div id="Header">
+    <div id="Header" class="cmt-layout-wrapped">
 [% RenderBlockStart("HeaderLogo") %]
         <div id="Logo"></div>
 [% RenderBlockEnd("HeaderLogo") %]

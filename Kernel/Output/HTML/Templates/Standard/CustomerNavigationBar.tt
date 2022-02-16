@@ -11,7 +11,7 @@
 [% Data.Notification %]
 <!-- end Notifications -->
 <!-- start NavigationBar -->
-<div id="Navigation">
+<div id="Navigation" class="cmt-layout-wrapped">
     <ul>
 [% RenderBlockStart("Item") %]
         <li class="[% Data.Class | html %]">
