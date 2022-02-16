@@ -158,5 +158,9 @@
         color: #ddd;
       }
     }
+  
+    li.Selected a::before {
+      color: #ddd;
+    }
   }
 }
