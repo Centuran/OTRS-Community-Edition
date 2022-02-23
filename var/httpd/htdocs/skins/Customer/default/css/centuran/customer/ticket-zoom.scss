@@ -1,0 +1,64 @@
+.TicketZoom {
+  ul#Messages {
+    border-radius: 4px;
+    overflow: hidden;
+    padding-left: 0;
+
+    .Details {
+      font-size: 85%;
+      line-height: 150%;
+
+      .Label {
+        font-weight: bold;
+        width: 10%;
+      }
+    }
+
+    .MessageContent {
+      width: initial;
+    }
+  }
+
+  #FollowUp {
+    background: none;
+    border: none;
+    margin: 0;
+    width: 80%;
+
+    a#ReplyButton {
+      @include primary-button;
+      border-radius: 4px;
+      bottom: initial;
+      height: auto;
+      margin: 0.5em 0;
+      position: initial;
+    }
+
+    &.Visible #ReplyButton {
+      display: none;
+    }
+
+    #Messenger {
+      background: #eee;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+      margin-top: 0.5em;
+
+      fieldset {
+        background: none;
+        border: none;
+        margin: 0;
+      }
+
+      .ActionRow {
+        background: none;
+        border: none;
+      }
+    }
+  }
+}
+
+.JavaScriptAvailable #ReplyButton {
+  display: inline-block;
+}
