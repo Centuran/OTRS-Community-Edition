@@ -20,7 +20,11 @@
         document.write('<div id="vue-app"><v-app>');
     </script>
 
+[% IF Env("Action") == 'CustomerLogin' %]
+    <div id="Header" class="cmt-login-screen cmt-layout-wrapped">
+[% ELSE %]
     <div id="Header" class="cmt-layout-wrapped">
+[% END %]
 [% RenderBlockStart("HeaderLogo") %]
         <div id="Logo"></div>
 [% RenderBlockEnd("HeaderLogo") %]
