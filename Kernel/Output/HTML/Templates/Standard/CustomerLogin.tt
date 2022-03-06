@@ -64,11 +64,6 @@
                     <div>
                         <label for="Password">[% Translate("Password") | html %]</label>
                         <input title="[% Translate("Your password") | html %]" type="password" name="Password" id="Password" autocomplete="[% Data.PasswordAutocomplete %]" />
-[% RenderBlockStart("LostPasswordLink") %]
-                        <div class="Option">
-                            <a href="#Reset" id="ForgotPassword">[% Translate("Forgot password?") | html %]</a>
-                        </div>
-[% RenderBlockEnd("LostPasswordLink") %]
                     </div>
 
 [% RenderBlockStart("AuthTwoFactor") %]
@@ -83,6 +78,13 @@
                     </div>
                     <div class="Clear"></div>
                 </form>
+
+[% RenderBlockStart("LostPasswordLink") %]
+                <p>
+                    <a href="#Reset" id="ForgotPassword">[% Translate("Forgot password?") | html %]</a>
+                </p>
+[% RenderBlockEnd("LostPasswordLink") %]
+
 [% RenderBlockStart("CreateAccountLink") %]
                 <p>[% Translate("Not yet registered?") | html %] <a href="#Signup">[% Translate("Sign up now") | html %]</a>.</p>
 [% RenderBlockEnd("CreateAccountLink") %]
