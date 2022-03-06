@@ -1,0 +1,1081 @@
+input[type=email],
+input[type=password],
+input[type=text] {
+  border: solid 1px rgba(0, 0, 0, 0.38);
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.87);
+  height: 32px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 5px;
+}
+
+textarea {
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: "Roboto Mono", monospace, fixed;
+  font-size: 90%;
+  padding: 5px;
+}
+
+div.InputField_InputContainer {
+  align-items: center;
+  display: flex;
+  height: 32px;
+}
+div.InputField_InputContainer .InputField_Search {
+  position: relative;
+}
+div.InputField_InputContainer .InputField_More {
+  top: auto;
+}
+
+div.InputField_Selection {
+  align-items: center;
+  background: #e0e0e0;
+  border-radius: 50px;
+  display: inline-block;
+  height: auto;
+  line-height: 20px;
+  padding: 2px 8px;
+  position: absolute;
+  top: auto;
+  vertical-align: middle;
+  z-index: 1;
+}
+div.InputField_Selection div.Remove {
+  background: none;
+  font-family: "Material Design Icons";
+  font-size: inherit;
+  height: auto;
+  line-height: inherit;
+  overflow: hidden;
+  padding-left: 0;
+  vertical-align: middle;
+  overflow: visible;
+}
+div.InputField_Selection div.Remove a {
+  position: relative;
+  padding: 0;
+  line-height: inherit;
+  font-size: 0;
+  left: 4px;
+}
+div.InputField_Selection div.Remove a::before {
+  color: #888;
+  content: "\f1398";
+  font-size: initial;
+  height: 100%;
+  left: 0;
+  line-height: inherit;
+  padding: 0;
+  padding-right: 0;
+  padding-left: 0;
+  position: static;
+  top: 0;
+  vertical-align: middle;
+  width: auto;
+}
+
+div.InputField_Selection div.Text {
+  background: #e0e0e0;
+  border-radius: 50px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: inherit;
+  height: 22px;
+  line-height: 20px;
+  height: auto;
+  line-height: auto;
+  padding: 0 !important;
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  border-radius: 0;
+  line-height: inherit;
+  height: 100%;
+}
+
+/* Modernized select boxes */
+.jstree-InputField {
+  font-size: 85%;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
+  height: auto;
+  line-height: initial;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-clicked:hover {
+  background-color: #f15a22;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-anchor {
+  height: auto;
+  line-height: initial;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-hovered {
+  background-color: #f15a22;
+}
+
+.FieldExplanation,
+.AsteriskExplanation {
+  font-size: 87.5%;
+}
+
+.Field.cmt-otrs-datetime-hidden::first-line {
+  font-size: 0;
+}
+.Field.cmt-otrs-datetime-hidden select[name$=Day], .Field.cmt-otrs-datetime-hidden select[name$=Month], .Field.cmt-otrs-datetime-hidden select[name$=Year],
+.Field.cmt-otrs-datetime-hidden div.TooltipErrorMessage,
+.Field.cmt-otrs-datetime-hidden a.DatepickerIcon,
+.Field.cmt-otrs-datetime-hidden select[name$=Hour], .Field.cmt-otrs-datetime-hidden select[name$=Minute] {
+  display: none;
+}
+
+.Field.__vue_datetimepicker.cmt-otrs-datetime-hidden > input[type=checkbox] {
+  margin-right: 0.5em;
+}
+.Field.__vue_datetimepicker.cmt-otrs-datetime-hidden > div:last-child {
+  display: inline-block;
+}
+
+.v-picker--date button {
+  background: none;
+  border: none;
+}
+
+.v-picker--date .v-date-picker-table--date .v-btn--active {
+  background-color: #3949ab !important;
+  border-color: #3949ab !important;
+}
+.v-picker--date .v-date-picker-table--date .v-date-picker-table__current {
+  font-weight: bold;
+}
+.v-picker--date .v-date-picker-table--date .v-date-picker-table__current:not(.v-btn--active) {
+  caret-color: #3949ab !important;
+  color: #3949ab !important;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 100%;
+}
+
+a:link, a[href] {
+  color: #3949ab;
+}
+
+a.Button,
+button {
+  border-radius: 4px;
+  font-size: initial;
+  font-weight: 500;
+}
+
+fieldset label {
+  background: none;
+  font-size: initial;
+  width: 25%;
+}
+fieldset label.Mandatory span.Marker {
+  top: initial;
+}
+
+.jstree-InputField {
+  font-size: 85% !important;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
+  line-height: 19px;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered {
+  background-color: #3949ab !important;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-anchor {
+  line-height: 19px;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-anchor.jstree-hovered {
+  color: #fff;
+}
+
+p.AsteriskExplanation {
+  margin: 5px 0;
+}
+
+#Header.cmt-login-screen {
+  text-align: center;
+}
+
+#MainBox.Login #Slider {
+  height: initial;
+  overflow: visible;
+  width: initial;
+}
+#MainBox.Login #Login,
+#MainBox.Login #Reset,
+#MainBox.Login #Signup {
+  background-color: #eceff1;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  height: auto;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 0;
+  width: 350px;
+}
+#MainBox.Login #Login h2,
+#MainBox.Login #Reset h2,
+#MainBox.Login #Signup h2 {
+  background-color: #3949ab;
+  border-bottom: solid 1px #ddd;
+  border-top: none;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0px 1px 0px ghostwhite;
+  color: #fff;
+  font-size: initial;
+  margin-bottom: 0;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: -20px;
+  padding: 20px;
+}
+#MainBox.Login #Login h2 + p,
+#MainBox.Login #Reset h2 + p,
+#MainBox.Login #Signup h2 + p {
+  margin-bottom: 0;
+}
+#MainBox.Login #Login form,
+#MainBox.Login #Reset form,
+#MainBox.Login #Signup form {
+  padding-top: 20px;
+}
+#MainBox.Login #Login form div,
+#MainBox.Login #Reset form div,
+#MainBox.Login #Signup form div {
+  float: none;
+  margin: 0;
+  margin-bottom: 20px;
+}
+#MainBox.Login #Login form div input,
+#MainBox.Login #Reset form div input,
+#MainBox.Login #Signup form div input {
+  background: #fff;
+  font-size: initial;
+  width: 100%;
+}
+#MainBox.Login #Login form div input[value=""], #MainBox.Login #Login form div input:not([value]),
+#MainBox.Login #Reset form div input[value=""],
+#MainBox.Login #Reset form div input:not([value]),
+#MainBox.Login #Signup form div input[value=""],
+#MainBox.Login #Signup form div input:not([value]) {
+  z-index: 0;
+}
+#MainBox.Login #Login form div input:-webkit-autofill,
+#MainBox.Login #Reset form div input:-webkit-autofill,
+#MainBox.Login #Signup form div input:-webkit-autofill {
+  z-index: 10;
+}
+#MainBox.Login #Login form div label,
+#MainBox.Login #Reset form div label,
+#MainBox.Login #Signup form div label {
+  font-size: initial;
+  line-height: initial;
+  z-index: 11;
+}
+#MainBox.Login #Login form div label .Marker,
+#MainBox.Login #Reset form div label .Marker,
+#MainBox.Login #Signup form div label .Marker {
+  font-size: inherit;
+  line-height: inherit;
+  position: static;
+  top: 0;
+}
+#MainBox.Login #Login form div button[type=submit],
+#MainBox.Login #Reset form div button[type=submit],
+#MainBox.Login #Signup form div button[type=submit] {
+  background-color: #3949ab;
+  border: none;
+  box-shadow: 0px 1px 0px #99a;
+  color: #fff;
+  line-height: 1.9em;
+  padding: 0.3em 1.2em;
+  display: block;
+  margin: auto;
+}
+#MainBox.Login #Login p,
+#MainBox.Login #Reset p,
+#MainBox.Login #Signup p {
+  text-align: center;
+}
+#MainBox.Login #Login > a.InlineNavigation:first-child,
+#MainBox.Login #Reset > a.InlineNavigation:first-child,
+#MainBox.Login #Signup > a.InlineNavigation:first-child {
+  left: 0;
+  top: -40px;
+}
+#MainBox.Login #Login > a.InlineNavigation:first-child::before,
+#MainBox.Login #Reset > a.InlineNavigation:first-child::before,
+#MainBox.Login #Signup > a.InlineNavigation:first-child::before {
+  content: "\f004d  ";
+  font-family: "Material Design Icons";
+}
+#MainBox.Login #Login > a.InlineNavigation:first-child::first-letter,
+#MainBox.Login #Reset > a.InlineNavigation:first-child::first-letter,
+#MainBox.Login #Signup > a.InlineNavigation:first-child::first-letter {
+  display: none;
+}
+#MainBox.Login #Reset,
+#MainBox.Login #Signup {
+  margin-top: 40px;
+}
+#MainBox.Login .ErrorBox ~ #Slider #Reset,
+#MainBox.Login .ErrorBox ~ #Slider #Signup,
+#MainBox.Login .MessageBox ~ #Slider #Reset,
+#MainBox.Login .MessageBox ~ #Slider #Signup {
+  margin-top: 76px;
+}
+#MainBox.Login #Signup .NewLine:nth-last-child(2),
+#MainBox.Login #Signup .Clear:last-child {
+  margin-bottom: 0;
+}
+#MainBox.Login #Login:not(:target),
+#MainBox.Login #Reset:not(:target),
+#MainBox.Login #Signup:not(:target) {
+  display: none;
+}
+#MainBox.Login .ErrorBox {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #ff5252ff;
+  margin-top: 10px;
+}
+#MainBox.Login .ErrorBox .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+#MainBox.Login .ErrorBox .Icon::before {
+  content: "\f0ce6";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+#MainBox.Login .ErrorBox p {
+  border: thin solid;
+  border-color: #ff5252ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #ff525234;
+  caret-color: #ff5252ff;
+  color: #ff5252ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+#MainBox.Login .ErrorBox p::after {
+  background-color: #ff5252ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+#MainBox.Login .ErrorBox p a {
+  color: #333;
+  transition: color ease 0.2s;
+}
+#MainBox.Login .ErrorBox p a:hover {
+  color: currentColor;
+}
+#MainBox.Login .SuccessBox {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #4caf50ff;
+  margin-top: 10px;
+}
+#MainBox.Login .SuccessBox .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+#MainBox.Login .SuccessBox .Icon::before {
+  content: "\f05e1";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+#MainBox.Login .SuccessBox p {
+  border: thin solid;
+  border-color: #4caf50ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #4caf5034;
+  caret-color: #4caf50ff;
+  color: #4caf50ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+#MainBox.Login .SuccessBox p::after {
+  background-color: #4caf50ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+#MainBox.Login .SuccessBox p a {
+  color: #333;
+  transition: color ease 0.2s;
+}
+#MainBox.Login .SuccessBox p a:hover {
+  color: currentColor;
+}
+#MainBox.Login .ErrorBox,
+#MainBox.Login .SuccessBox {
+  margin: auto;
+  margin-bottom: 40px;
+  padding: 0;
+  position: relative;
+  width: 350px;
+}
+#MainBox.Login .ErrorBox p,
+#MainBox.Login .SuccessBox p {
+  margin: 0;
+}
+
+.v-application--wrap .cmt-layout-wrapped,
+.v-application--wrap #Header.cmt-layout-wrapped {
+  margin: 0 auto;
+  width: 100%;
+}
+.v-application--wrap .cmt-layout-wrapped #MainBox .Content {
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+
+@media (min-width: 960px) {
+  .v-application--wrap .cmt-layout-wrapped,
+.v-application--wrap #Header.cmt-layout-wrapped {
+    padding-left: calc((100% - 900px) / 2);
+    padding-right: calc((100% - 900px) / 2);
+  }
+  .v-application--wrap #MainBox {
+    margin-left: calc((100% - 900px) / 2);
+    margin-right: calc((100% - 900px) / 2);
+  }
+  .v-application--wrap #MainBox .Content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 1264px) {
+  .v-application--wrap .cmt-layout-wrapped,
+.v-application--wrap #Header.cmt-layout-wrapped {
+    padding-left: calc((100% - 1185px) / 2);
+    padding-right: calc((100% - 1185px) / 2);
+  }
+  .v-application--wrap #MainBox {
+    margin-left: calc((100% - 1185px) / 2);
+    margin-right: calc((100% - 1185px) / 2);
+  }
+}
+@media (min-width: 1904px) {
+  .v-application--wrap .cmt-layout-wrapped,
+.v-application--wrap #Header.cmt-layout-wrapped {
+    padding-left: calc((100% - 1785px) / 2);
+    padding-right: calc((100% - 1785px) / 2);
+  }
+  .v-application--wrap #MainBox {
+    margin-left: calc((100% - 1785px) / 2);
+    margin-right: calc((100% - 1785px) / 2);
+  }
+}
+#Header {
+  background-color: #fff;
+}
+#Header #ResponsiveNavigationHandle {
+  left: 0;
+  line-height: initial;
+  position: relative;
+  top: -125%;
+}
+#Header #ResponsiveNavigationHandle i.fa-bars {
+  font-family: "Material Design Icons";
+}
+#Header #ResponsiveNavigationHandle i.fa-bars::before {
+  content: "\f035c";
+}
+
+#Navigation {
+  background-color: #cfd8dc;
+  height: auto;
+}
+#Navigation ul {
+  padding-left: 0;
+}
+#Navigation ul li::after {
+  content: "";
+  float: none;
+  background: transparent;
+  height: 2px;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+}
+#Navigation li.Selected,
+#Navigation li.Selected:hover {
+  background: #3949ab;
+}
+#Navigation > ul {
+  height: 100%;
+}
+#Navigation > ul > li {
+  height: 100%;
+}
+#Navigation > ul > li > ul {
+  top: initial;
+}
+#Navigation > ul > li > a {
+  font-size: initial;
+}
+#Navigation ul > li > ul {
+  background-color: #cfd8dc;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  font-size: 87.5%;
+  left: 0;
+  margin-top: 2px;
+  overflow: hidden;
+  top: 100%;
+}
+#Navigation ul > li > ul > li {
+  border-bottom: solid 1px #ddd;
+  line-height: 130%;
+}
+#Navigation ul > li > ul > li:last-child {
+  border-bottom: none;
+  border-radius: 0 0 4px 4px;
+}
+#Navigation ul > li > ul > li a {
+  background-color: #cfd8dc;
+  border-top: none;
+  font-size: inherit;
+}
+#Navigation ul > li > ul > li a:hover {
+  background-color: #3949ab;
+  color: white;
+}
+#Navigation ul.Individual a[href$="Action=CustomerPreferences"]::before {
+  color: #777;
+  content: "\f062e";
+  font-family: "Material Design Icons";
+  margin-right: 0.25em;
+}
+#Navigation ul.Individual a[href$="Action=CustomerPreferences"]:hover::before {
+  color: #ddd;
+}
+#Navigation ul.Individual a[href$="Action=Logout"]::before {
+  color: #777;
+  content: "\f0425";
+  font-family: "Material Design Icons";
+  margin-right: 0.25em;
+}
+#Navigation ul.Individual a[href$="Action=Logout"]:hover::before {
+  color: #ddd;
+}
+#Navigation ul.Individual li.Selected a::before {
+  color: #ddd;
+}
+
+#Footer {
+  border-top: 1px solid #eee;
+  padding-top: 0.5em;
+}
+
+form#NewCustomerTicket {
+  background: #eceff1;
+  border-radius: 4px;
+}
+form#NewCustomerTicket fieldset {
+  background: none;
+  border: none;
+  padding: 0 0.5em;
+}
+form#NewCustomerTicket #BottomActionRow {
+  background: none;
+  padding: 1em 0;
+  text-align: center;
+}
+form#NewCustomerTicket #BottomActionRow button[type=submit] {
+  background-color: #3949ab;
+  border: none;
+  box-shadow: 0px 1px 0px #99a;
+  color: #fff;
+  line-height: 1.9em;
+  padding: 0.3em 1.2em;
+  padding: 0.3em 1.2em !important;
+}
+
+.Box fieldset {
+  background: #eceff1;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+}
+.Box fieldset h2 {
+  border-bottom: solid 1px #ddd;
+  border-top: none;
+  box-shadow: 0px 1px 0px ghostwhite;
+  font-size: initial;
+}
+.Box fieldset p.Description {
+  font-size: 87.5%;
+}
+.Box fieldset > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0;
+}
+.Box fieldset > div label {
+  width: auto;
+}
+.Box fieldset > div input[type=password] {
+  width: 60%;
+}
+.Box fieldset > div div.xClearLeft {
+  display: none;
+}
+.Box fieldset button[type=submit] {
+  margin: 0.5em auto;
+  text-align: center;
+}
+
+#MainBox.TicketView {
+  border-radius: 4px;
+  overflow: hidden;
+}
+#MainBox.TicketView .ActionRow {
+  background-color: #eceff1;
+  padding: 10px;
+}
+#MainBox.TicketView .ActionRow .Tabs {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
+  font-size: initial;
+  margin-bottom: 8px;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+#MainBox.TicketView .ActionRow .Tabs > li {
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: none;
+  border-radius: 0;
+}
+#MainBox.TicketView .ActionRow .Tabs > li > a, #MainBox.TicketView .ActionRow .Tabs > li > span.ClusterLink {
+  background: #f8f8f8;
+  color: #444;
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
+}
+#MainBox.TicketView .ActionRow .Tabs > li:hover > a, #MainBox.TicketView .ActionRow .Tabs > li:hover > span.ClusterLink {
+  background: #3949ab;
+  border: solid 1px #5262c5 !important;
+  color: white;
+  text-decoration: none;
+}
+#MainBox.TicketView .ActionRow .Tabs > li > a, #MainBox.TicketView .ActionRow .Tabs > li > span.ClusterLink {
+  border-radius: 0;
+  box-shadow: none;
+}
+#MainBox.TicketView .ActionRow .Tabs > li:first-child > a, #MainBox.TicketView .ActionRow .Tabs > li:first-child > span.ClusterLink {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  padding-left: 10px;
+}
+#MainBox.TicketView .ActionRow .Tabs > li:not(:last-child) > a, #MainBox.TicketView .ActionRow .Tabs > li:not(:last-child) > span.ClusterLink {
+  border-right: none;
+}
+#MainBox.TicketView .ActionRow .Tabs > li:not(:last-child):hover > a, #MainBox.TicketView .ActionRow .Tabs > li:not(:last-child):hover > span.ClusterLink {
+  border-right: none !important;
+}
+#MainBox.TicketView .ActionRow .Tabs > li:last-child > a, #MainBox.TicketView .ActionRow .Tabs > li:last-child > span.ClusterLink, #MainBox.TicketView .ActionRow .Tabs > li.cmt-item-action-link-last > a, #MainBox.TicketView .ActionRow .Tabs > li.cmt-item-action-link-last > span.ClusterLink {
+  border-bottom-right-radius: 4px;
+  border-right: solid 1px #ccc;
+  border-top-right-radius: 4px;
+}
+#MainBox.TicketView .ActionRow .Tabs > li:last-child:hover > a, #MainBox.TicketView .ActionRow .Tabs > li:last-child:hover > span.ClusterLink, #MainBox.TicketView .ActionRow .Tabs > li.cmt-item-action-link-last:hover > a, #MainBox.TicketView .ActionRow .Tabs > li.cmt-item-action-link-last:hover > span.ClusterLink {
+  border-right: solid 1px #5262c5 !important;
+}
+#MainBox.TicketView .ActionRow .Tabs > li.Selected a,
+#MainBox.TicketView .ActionRow .Tabs > li a.Active {
+  color: white;
+  background-color: #3949ab;
+  border-color: #5262c5;
+  border-right-color: #5262c5;
+  font-weight: normal;
+}
+#MainBox.TicketView .ActionRow .Tabs > li::after {
+  content: none;
+}
+#MainBox.TicketView .ActionRow .Tabs li a.Selected {
+  background-color: #3949ab;
+  border-color: #3949ab;
+  color: white;
+  font-weight: normal;
+}
+#MainBox.TicketView .ActionRow .Filter a {
+  text-shadow: none;
+}
+#MainBox.TicketView .ActionRow .Filter a:after {
+  content: none;
+}
+
+#MainBox.TicketView table.Overview .Title div {
+  height: auto;
+}
+#MainBox.TicketView table.Overview .Title div h2 {
+  font-size: initial;
+}
+#MainBox.TicketView table.Overview tr:hover td {
+  background-color: #c5cae9;
+  color: #444;
+  text-shadow: 0 1px 0 #c5cae9;
+}
+#MainBox.TicketView table.Overview tr:hover td.Title div,
+#MainBox.TicketView table.Overview tr:hover td a {
+  color: #444;
+  text-shadow: 0 1px 0 #c5cae9;
+}
+
+#MainBox .Placeholder {
+  text-align: center;
+}
+#MainBox .Placeholder h2 {
+  border-bottom: none;
+  display: block;
+  text-align: center;
+}
+#MainBox .Placeholder h2 + p {
+  font-size: initial;
+  max-width: initial;
+  padding: 1em 0;
+  text-align: center;
+}
+#MainBox .Placeholder a.Button {
+  background-color: #3949ab;
+  border: none;
+  box-shadow: 0px 1px 0px #99a;
+  color: #fff;
+  line-height: 1.9em;
+  padding: 0.3em 1.2em;
+}
+
+.TicketProcess fieldset {
+  background: #eceff1;
+  border-radius: 4px;
+}
+.TicketProcess #NewProcessTicket fieldset {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+}
+.TicketProcess #NewProcessTicket label[for=ProcessEntityID] span.Marker::after {
+  content: " ";
+}
+.TicketProcess #ActivityDialogContent fieldset.TableLike {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+}
+.TicketProcess #ActivityDialogContent fieldset.TableLike h2 {
+  border-bottom: solid 1px #ddd;
+  border-top: none;
+  box-shadow: 0px 1px 0px ghostwhite;
+  font-size: initial;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding: 0 10px 10px 10px;
+}
+.TicketProcess #ActivityDialogContent fieldset.TableLike h2 + p.Description {
+  font-size: 87.5%;
+  padding: 10px 0;
+}
+.TicketProcess #ActivityDialogContent .PopupFooter {
+  background: #eceff1;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+}
+.TicketProcess #ActivityDialogContent .PopupFooter button.Primary {
+  background-color: #3949ab;
+  border: none;
+  box-shadow: 0px 1px 0px #99a;
+  color: #fff;
+  line-height: 1.9em;
+  padding: 0.3em 1.2em;
+}
+.TicketProcess #ProcessEntityID_Search {
+  width: 24em !important;
+}
+
+.TicketZoom .TicketHeader {
+  width: calc(100% - 18em - 1em);
+}
+.TicketZoom .TicketHeader #TicketOptions a i.fa {
+  font-size: initial;
+  padding: 0.2em;
+}
+.TicketZoom .TicketHeader #TicketOptions a i.fa::before {
+  font-family: "Material Design Icons";
+  font-size: 110%;
+}
+.TicketZoom .TicketHeader #TicketOptions a i.fa.fa-print::before {
+  content: "\f042a";
+}
+.TicketZoom .TicketHeader #TicketOptions a i.fa.fa-bars::before {
+  content: "\f0ab4";
+}
+.TicketZoom .TicketHeader #TicketOptions a i.fa.fa-minus::before {
+  content: "\f0aa6";
+}
+.TicketZoom .TicketHeader #TicketOptions a:hover i.fa {
+  color: #3949ab;
+  background: #ddd;
+  border-radius: 50px;
+}
+.TicketZoom ul#Messages {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  padding-left: 0;
+  width: calc(100% - 18em - 1em);
+}
+.TicketZoom ul#Messages li .MessageHeader {
+  align-items: flex-end;
+  display: flex;
+  padding: 10px;
+}
+.TicketZoom ul#Messages li .MessageHeader h3 {
+  flex: 9;
+  line-height: initial;
+  width: auto;
+}
+.TicketZoom ul#Messages li .MessageHeader span.Age {
+  flex: 1;
+  line-height: initial;
+  position: initial;
+  right: 0;
+  top: 0;
+}
+.TicketZoom ul#Messages h3 a {
+  color: inherit;
+}
+.TicketZoom ul#Messages .Details {
+  font-size: 87.5%;
+  line-height: 150%;
+}
+.TicketZoom ul#Messages .Details .Label {
+  font-weight: bold;
+  width: 10%;
+}
+.TicketZoom ul#Messages .MessageContent {
+  width: initial;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser {
+  background: none;
+  border-radius: 4px;
+  caret-color: #fb8c00;
+  color: #2196f3ff;
+  margin-top: 10px;
+  border: none;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser .Icon {
+  display: inline;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser .Icon::before {
+  content: "\f02fd";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser p {
+  border: thin solid;
+  border-color: #2196f3ff;
+  border-radius: 4px;
+  border-width: 1px 1px 1px 8px;
+  box-shadow: 0px 1px 0px #2196f334;
+  caret-color: #2196f3ff;
+  color: #2196f3ff;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.75em;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser p::after {
+  background-color: #2196f3ff;
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  margin: inherit;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser p a {
+  color: #333;
+  transition: color ease 0.2s;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser p a:hover {
+  color: currentColor;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser p {
+  background: transparent;
+  color: #333;
+  font-size: smaller;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.5em 0.75em;
+  padding-right: 1.5em;
+  text-align: left;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser p::before {
+  content: "\f02fd";
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+  color: #2196f3ff;
+  float: left;
+  margin-right: 0.35em;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser a.Close {
+  height: auto;
+  right: 0.125em;
+  text-align: center;
+  top: 0.35em;
+  width: 1em;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser a.Close::before {
+  color: #2196f3ff;
+  content: "\f0156";
+  font-family: "Material Design Icons";
+  margin-left: -0.5em;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser a.Close i.fa {
+  display: none;
+}
+.TicketZoom #FollowUp {
+  background: none;
+  border: none;
+  margin: 0;
+  width: calc(100% - 18em - 1em);
+}
+.TicketZoom #FollowUp a#ReplyButton {
+  background-color: #3949ab;
+  border: none;
+  box-shadow: 0px 1px 0px #99a;
+  color: #fff;
+  line-height: 1.9em;
+  padding: 0.3em 1.2em;
+  border-radius: 4px;
+  bottom: initial;
+  height: auto;
+  margin: 0.5em 0;
+  position: initial;
+}
+.TicketZoom #FollowUp.Visible #ReplyButton {
+  display: none;
+}
+.TicketZoom #FollowUp #Messenger {
+  background: #eceff1;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  margin-top: 0.5em;
+  padding: 10px;
+}
+.TicketZoom #FollowUp #Messenger fieldset {
+  background: none;
+  border: none;
+  margin: 0;
+}
+.TicketZoom #FollowUp #Messenger .ActionRow {
+  background: none;
+  border: none;
+  font-size: initial;
+  padding: 3px 0;
+  padding-top: 13px;
+  text-align: center;
+}
+.TicketZoom #FollowUp #Messenger .ActionRow button[type=submit] {
+  background-color: #3949ab;
+  border: none;
+  box-shadow: 0px 1px 0px #99a;
+  color: #fff;
+  line-height: 1.9em;
+  padding: 0.3em 1.2em;
+}
+.TicketZoom #ZoomSidebar {
+  width: 18em;
+}
+.TicketZoom #ZoomSidebar #Metadata {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+}
+.TicketZoom #ZoomSidebar #Metadata li {
+  margin-bottom: 0.2em;
+}
+.TicketZoom #ZoomSidebar #Metadata li.Header div.MessageHeader {
+  padding: 10px;
+}
+.TicketZoom #ZoomSidebar #Metadata li.Header div.MessageHeader h3 {
+  line-height: initial;
+}
+
+.JavaScriptAvailable #FollowUp:not(.Visible) #Messenger {
+  padding: 0;
+}
+.JavaScriptAvailable #ReplyButton {
+  display: inline-block;
+}
+
+/*# sourceMappingURL=customer.css.map */
