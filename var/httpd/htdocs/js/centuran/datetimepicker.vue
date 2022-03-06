@@ -1,7 +1,8 @@
 <!-- TODO: make colors styleable with theme CSS -->
 <template>
   <div>
-    <v-menu ref="menuDate" eager bottom offset-overflow offset-y
+    <v-menu v-if="showDate"
+        ref="menuDate" eager bottom offset-overflow offset-y
         :content-class="`menu-pointing ${menuClasses.menuDate}`"
         @input="updateClasses('menuDate')">
       <template v-slot:activator="{ on, attrs }">
@@ -17,7 +18,7 @@
       ></v-date-picker>
       <!-- TODO: Add "Today" button in default slot -->
     </v-menu>
-    <v-menu v-if="mode.match(/time$/)"
+    <v-menu v-if="showTime"
         ref="menuTime"
         v-model="timeMenuIsOpen"
         eager bottom offset-overflow offset-y
@@ -73,6 +74,8 @@ module.exports = {
         hour:   null,
         minute: null
       },
+      showDate: !!this.mode.match(/^date\//),
+      showTime: !!this.mode.match(/\/time$/),
       // https://github.com/vuetifyjs/vuetify/issues/4502#issuecomment-403077205
       timeMenuIsOpen: false
     };
@@ -151,6 +154,9 @@ module.exports = {
         this.time.value.m = parseInt(this.selects.minute.value);
 
       this.time.picked = this.formatTime(this.time.value);
+
+      if (!this.selects.hour && !this.selects.minute)
+        this.showTime = false;
     },
     updateClasses: function (ref) {
       setTimeout((function () {
