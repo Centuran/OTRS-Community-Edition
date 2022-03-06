@@ -1,3 +1,161 @@
+input[type=email],
+input[type=password],
+input[type=text] {
+  border: solid 1px rgba(0, 0, 0, 0.38);
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.87);
+  height: 32px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 5px;
+}
+
+textarea {
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: "Roboto Mono", monospace, fixed;
+  font-size: 90%;
+  padding: 5px;
+}
+
+div.InputField_InputContainer {
+  align-items: center;
+  display: flex;
+  height: 32px;
+}
+div.InputField_InputContainer .InputField_Search {
+  position: relative;
+}
+div.InputField_InputContainer .InputField_More {
+  top: auto;
+}
+
+div.InputField_Selection {
+  align-items: center;
+  background: #e0e0e0;
+  border-radius: 50px;
+  display: inline-block;
+  height: auto;
+  line-height: 20px;
+  padding: 2px 8px;
+  position: absolute;
+  top: auto;
+  vertical-align: middle;
+  z-index: 1;
+}
+div.InputField_Selection div.Remove {
+  background: none;
+  font-family: "Material Design Icons";
+  font-size: inherit;
+  height: auto;
+  line-height: inherit;
+  overflow: hidden;
+  padding-left: 0;
+  vertical-align: middle;
+  overflow: visible;
+}
+div.InputField_Selection div.Remove a {
+  position: relative;
+  padding: 0;
+  line-height: inherit;
+  font-size: 0;
+  left: 4px;
+}
+div.InputField_Selection div.Remove a::before {
+  color: #888;
+  content: "\f1398";
+  font-size: initial;
+  height: 100%;
+  left: 0;
+  line-height: inherit;
+  padding: 0;
+  padding-right: 0;
+  padding-left: 0;
+  position: static;
+  top: 0;
+  vertical-align: middle;
+  width: auto;
+}
+
+div.InputField_Selection div.Text {
+  background: #e0e0e0;
+  border-radius: 50px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: inherit;
+  height: 22px;
+  line-height: 20px;
+  height: auto;
+  line-height: auto;
+  padding: 0 !important;
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  border-radius: 0;
+  line-height: inherit;
+  height: 100%;
+}
+
+/* Modernized select boxes */
+.jstree-InputField {
+  font-size: 85%;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
+  height: auto;
+  line-height: initial;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-clicked:hover {
+  background-color: #f15a22;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-anchor {
+  height: auto;
+  line-height: initial;
+}
+.jstree-InputField .jstree-wholerow-ul .jstree-hovered {
+  background-color: #f15a22;
+}
+
+.FieldExplanation,
+.AsteriskExplanation {
+  font-size: 87.5%;
+}
+
+.Field.cmt-otrs-datetime-hidden::first-line {
+  font-size: 0;
+}
+.Field.cmt-otrs-datetime-hidden select[name$=Day], .Field.cmt-otrs-datetime-hidden select[name$=Month], .Field.cmt-otrs-datetime-hidden select[name$=Year],
+.Field.cmt-otrs-datetime-hidden div.TooltipErrorMessage,
+.Field.cmt-otrs-datetime-hidden a.DatepickerIcon,
+.Field.cmt-otrs-datetime-hidden select[name$=Hour], .Field.cmt-otrs-datetime-hidden select[name$=Minute] {
+  display: none;
+}
+
+.Field.__vue_datetimepicker.cmt-otrs-datetime-hidden > input[type=checkbox] {
+  margin-right: 0.5em;
+}
+.Field.__vue_datetimepicker.cmt-otrs-datetime-hidden > div:last-child {
+  display: inline-block;
+}
+
+.v-picker--date button {
+  background: none;
+  border: none;
+}
+
+.v-picker--date .v-date-picker-table--date .v-btn--active {
+  background-color: #f15a22 !important;
+  border-color: #f15a22 !important;
+}
+.v-picker--date .v-date-picker-table--date .v-date-picker-table__current {
+  font-weight: bold;
+}
+.v-picker--date .v-date-picker-table--date .v-date-picker-table__current:not(.v-btn--active) {
+  caret-color: #f15a22 !important;
+  color: #f15a22 !important;
+}
+
 .Flag.Small {
   height: auto;
   width: auto;
@@ -26,25 +184,6 @@
 
 .Flag span.PriorityID-5 {
   background-color: #ff0000;
-}
-
-/* Modernized select boxes */
-.jstree-InputField {
-  font-size: 85%;
-}
-.jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
-  height: auto;
-  line-height: initial;
-}
-.jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-clicked:hover {
-  background-color: #f15a22;
-}
-.jstree-InputField .jstree-wholerow-ul .jstree-anchor {
-  height: auto;
-  line-height: initial;
-}
-.jstree-InputField .jstree-wholerow-ul .jstree-hovered {
-  background-color: #f15a22;
 }
 
 .MessageBox.Error {
@@ -166,15 +305,6 @@ code,
   font-size: 90%;
   padding: 0.1em 0.2em;
   background-color: rgba(119, 136, 153, 0.15);
-}
-
-textarea {
-  border: solid 1px #d2d2d2;
-  border-radius: 4px;
-  box-shadow: none;
-  font-family: "Roboto Mono", monospace, fixed;
-  font-size: 90%;
-  padding: 5px;
 }
 
 dl dt {
@@ -904,8 +1034,8 @@ hr.cmt-flex-break {
 }
 
 body {
-  /* font-family: Roboto, sans-serif; */
-  font-family: Heebo, sans-serif;
+  font-family: Roboto, sans-serif;
+  /* font-family: Heebo, sans-serif; */
   font-size: 100%;
 }
 
@@ -1058,18 +1188,6 @@ form label.Mandatory span.Marker {
   margin-left: 286px;
 }
 
-input[type=text] {
-  border: solid 1px rgba(0, 0, 0, 0.38);
-  border: solid 1px #d2d2d2;
-  border-radius: 4px;
-  box-shadow: none;
-  color: rgba(0, 0, 0, 0.87);
-  height: 32px;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 5px;
-}
-
 .SearchBox input[type=text] {
   border: solid 1px #d2d2d2;
   border-right: solid 1px rgba(0, 0, 0, 0.38);
@@ -1108,85 +1226,8 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-div.InputField_InputContainer {
-  align-items: center;
-  display: flex;
-  height: 32px;
-}
-div.InputField_InputContainer .InputField_Search {
-  position: relative;
-}
-div.InputField_InputContainer .InputField_More {
-  top: auto;
-}
-
 div.InputField_ListContainer {
   z-index: 9999;
-}
-
-div.InputField_Selection {
-  align-items: center;
-  background: #e0e0e0;
-  border-radius: 50px;
-  display: inline-block;
-  height: auto;
-  line-height: 20px;
-  padding: 2px 8px;
-  position: absolute;
-  top: auto;
-  vertical-align: middle;
-  z-index: 1;
-}
-div.InputField_Selection div.Remove {
-  background: none;
-  font-family: "Material Design Icons";
-  font-size: inherit;
-  height: auto;
-  line-height: inherit;
-  overflow: hidden;
-  padding-left: 0;
-  vertical-align: middle;
-  overflow: visible;
-}
-div.InputField_Selection div.Remove a {
-  position: relative;
-  padding: 0;
-  line-height: inherit;
-  font-size: 0;
-  left: 4px;
-}
-div.InputField_Selection div.Remove a::before {
-  color: #888;
-  content: "\f1398";
-  font-size: initial;
-  height: 100%;
-  left: 0;
-  line-height: inherit;
-  padding: 0;
-  padding-right: 0;
-  padding-left: 0;
-  position: static;
-  top: 0;
-  vertical-align: middle;
-  width: auto;
-}
-
-div.InputField_Selection div.Text {
-  background: #e0e0e0;
-  border-radius: 50px;
-  color: rgba(0, 0, 0, 0.87);
-  font-size: inherit;
-  height: 22px;
-  line-height: 20px;
-  height: auto;
-  line-height: auto;
-  padding: 0 !important;
-  display: inline-block;
-  vertical-align: middle;
-  background: none;
-  border-radius: 0;
-  line-height: inherit;
-  height: 100%;
 }
 
 .DataTable {
@@ -1700,11 +1741,6 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   content: none;
 }
 
-.FieldExplanation,
-.AsteriskExplanation {
-  font-size: 14px;
-}
-
 p.FieldExplanation {
   margin: 5px 0;
 }
@@ -1722,16 +1758,6 @@ p.FieldExplanation {
 .CustomerContainer .CustomerTicketText.MainCustomer {
   background-color: #b3e5fc;
   border: none;
-}
-
-.Field.cmt-otrs-datetime-hidden::first-line {
-  font-size: 0;
-}
-.Field.cmt-otrs-datetime-hidden select[name$=Day], .Field.cmt-otrs-datetime-hidden select[name$=Month], .Field.cmt-otrs-datetime-hidden select[name$=Year],
-.Field.cmt-otrs-datetime-hidden div.TooltipErrorMessage,
-.Field.cmt-otrs-datetime-hidden a.DatepickerIcon,
-.Field.cmt-otrs-datetime-hidden select[name$=Hour], .Field.cmt-otrs-datetime-hidden select[name$=Minute] {
-  display: none;
 }
 
 /* Ticket status view */
@@ -1755,7 +1781,7 @@ p.FieldExplanation {
 .ItemListGrid {
   display: grid;
   gap: 10px 10px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   padding-top: 0;
 }
 .ItemListGrid > li {
@@ -1902,7 +1928,7 @@ p.FieldExplanation {
 }
 .ItemListGrid.WithIcons > li span.Title,
 .ItemListGrid.WithIcons > li span.Description {
-  margin-left: 17%;
+  margin-left: 34pt;
 }
 
 .ItemListGrid.WithIcons > li > a {
@@ -2133,25 +2159,6 @@ p.FieldExplanation {
   background-color: #ff0000;
 }
 
-/* Modernized select boxes */
-.jstree-InputField {
-  font-size: 85%;
-}
-.jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
-  height: auto;
-  line-height: initial;
-}
-.jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-clicked:hover {
-  background-color: #f15a22;
-}
-.jstree-InputField .jstree-wholerow-ul .jstree-anchor {
-  height: auto;
-  line-height: initial;
-}
-.jstree-InputField .jstree-wholerow-ul .jstree-hovered {
-  background-color: #f15a22;
-}
-
 .MessageBox.Error {
   background: none;
   border-radius: 4px;
@@ -2271,15 +2278,6 @@ code,
   font-size: 90%;
   padding: 0.1em 0.2em;
   background-color: rgba(119, 136, 153, 0.15);
-}
-
-textarea {
-  border: solid 1px #d2d2d2;
-  border-radius: 4px;
-  box-shadow: none;
-  font-family: "Roboto Mono", monospace, fixed;
-  font-size: 90%;
-  padding: 5px;
 }
 
 dl dt {
@@ -3303,6 +3301,12 @@ hr.cmt-flex-break {
 .LoginScreen .ErrorBox span::after {
   background-color: #ff5252ff;
 }
+.LoginScreen .WidgetSimple > .Content {
+  border-top: none;
+}
+.LoginScreen #LoginButton {
+  line-height: 1.9em;
+}
 
 .CustomerContainer {
   font-size: 13pt;
@@ -4257,9 +4261,9 @@ div.Headline .Flag + h1 {
   color: #2196f3ff;
 }
 .MessageBrowser a.Close::before {
+  color: #2196f3ff;
   content: "\f0156";
   font-family: "Material Design Icons";
-  color: #2196f3ff;
   margin-left: -0.5em;
 }
 .MessageBrowser a.Close i.fa {
