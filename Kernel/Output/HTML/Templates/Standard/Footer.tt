@@ -80,7 +80,8 @@ jQuery('select').each(function () {
 
 new MutationObserver(function (mutations, observer) {
     var newDialogs =
-        document.querySelectorAll('body > .Dialog:not(.__vue_processed)');
+        document.querySelectorAll('body > .Dialog:not(.__vue_processed), ' +
+            'body .LayoutPopup:not(.__vue_processed)');
 
     newDialogs.forEach(function (dialog) {
         var fields = dialog.querySelectorAll('.Field.__vue_datetimepicker');
