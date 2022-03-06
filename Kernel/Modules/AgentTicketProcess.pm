@@ -2520,6 +2520,7 @@ sub _RenderDynamicField {
 
     my %Data = (
         Name    => $DynamicFieldConfig->{Name},
+        Type    => $DynamicFieldConfig->{FieldType},
         Label   => $DynamicFieldHTML->{Label},
         Content => $DynamicFieldHTML->{Field},
     );
