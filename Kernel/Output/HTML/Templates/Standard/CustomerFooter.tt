@@ -62,6 +62,11 @@ if (window.localStorage.getItem('__use_new_customer_ui') === null)
 if (window.localStorage.getItem('__use_new_customer_ui') !== 'true')
     return;
 
+// Login screen requires the URL fragment to be set, so if it's not, we need
+// to set it to the default (#Login) 
+if (document.querySelector('#MainBox.Login') && !window.location.hash)
+    history.replaceState(null, '', window.location.pathname + '#Login');
+
 new Vue({
     el: '#vue-app',
     vuetify: new Vuetify({
