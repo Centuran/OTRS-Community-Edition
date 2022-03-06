@@ -16,8 +16,15 @@
     </span>
 [% RenderBlockEnd("rw:DynamicField:DescriptionLong") %]
     [% Data.Label %]
+[% IF Data.Type == 'Date' %]
+    <div class="Field __vue_datetimepicker">
+[% ELSE %]
     <div class="Field">
+[% END %]
         [% Data.Content %]
+[% IF Data.Type == 'Date' %]    
+        <datetimepicker></datetimepicker>
+[% END %]
 [% RenderBlockStart("rw:DynamicField:DescriptionShort") %]
         <div class="FieldExplanation">[% Translate(Data.DescriptionShort) | html %]</div>
 [% RenderBlockEnd("rw:DynamicField:DescriptionShort") %]
