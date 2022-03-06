@@ -10,7 +10,7 @@
       </template>
       <v-date-picker
         v-model="date.picked"
-        color="#f15a22"
+        :color="color"
         :no-title="true"
         @click.native.stop
         @input="$refs.menuDate.isActive = false"
@@ -32,7 +32,7 @@
       <v-time-picker
         v-if="timeMenuIsOpen"
         v-model="time.picked"
-        color="#f15a22"
+        :color="color"
         :no-title="true"
         @click.native.stop
         @click:minute="$refs.menuTime.isActive = false"
@@ -44,6 +44,9 @@
 <script>
 module.exports = {
   props: {
+    color: {
+      default: '#f15a22'
+    },
     mode: {
       default: 'date/time',
     }
