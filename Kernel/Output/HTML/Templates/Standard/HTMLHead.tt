@@ -50,6 +50,13 @@
 
     <!-- <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/default/css/centuran/agent.css" /> -->
     <script type="text/javascript">
+    if (window.localStorage.getItem('__use_new_agent_ui') === null)
+        window.localStorage.setItem('__use_new_agent_ui',
+            '[% Config("Centuran::UseNewUI") %]' === '1');
+
+    window.__use_new_agent_ui =
+        window.localStorage.getItem('__use_new_agent_ui');
+
     if (window.localStorage.getItem('__use_new_agent_ui') === 'true')
         document.write('<link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/default/css/centuran/agent.css" />');
     </script>
