@@ -475,6 +475,7 @@ div.AllocationListContainer {
     position: relative;
 
     ul.Tablelike {
+      background-color: transparent;
       border: none;
 
       li.Header {
@@ -510,6 +511,7 @@ div.AllocationListContainer {
       height: 155px;
       max-height: 155px;
       min-height: 155px;
+      overflow-y: auto;
       padding: 4px;
 
       li {
