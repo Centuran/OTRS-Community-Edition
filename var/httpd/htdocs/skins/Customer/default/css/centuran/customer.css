@@ -66,6 +66,7 @@ input[type=radio]:focus {
 /* --- */
 input[type=radio] {
   color: rgba(0, 0, 0, 0.54);
+  cursor: pointer;
   display: inline-grid;
   margin-right: 0.25em;
 }
@@ -78,6 +79,20 @@ input[type=radio]:checked {
   color: #3949ab;
 }
 
+input[type=radio]:hover {
+  align-items: center;
+  justify-items: center;
+}
+input[type=radio]:hover::after {
+  background: #000;
+  border-radius: 50%;
+  content: "";
+  height: 2em;
+  opacity: 0.1;
+  position: absolute;
+  width: 2em;
+}
+
 input[type=radio]:focus {
   outline: none;
 }
@@ -88,10 +103,13 @@ select {
   border-radius: 4px;
   box-shadow: none;
   color: rgba(0, 0, 0, 0.87);
-  height: 32px;
   font-family: inherit;
   font-size: inherit;
+  height: 32px;
   padding: 5px;
+}
+select option:hover {
+  background-color: green;
 }
 
 div.InputField_InputContainer {
@@ -106,7 +124,8 @@ div.InputField_InputContainer .InputField_More {
   top: auto;
 }
 
-div.InputField_Selection {
+div.InputField_Selection,
+fieldset.Columns .Column div.InputField_Selection {
   align-items: center;
   background: #e0e0e0;
   border-radius: 50px;
@@ -119,7 +138,8 @@ div.InputField_Selection {
   vertical-align: middle;
   z-index: 1;
 }
-div.InputField_Selection div.Remove {
+div.InputField_Selection div.Remove,
+fieldset.Columns .Column div.InputField_Selection div.Remove {
   background: none;
   font-family: "Material Design Icons";
   font-size: inherit;
@@ -130,14 +150,16 @@ div.InputField_Selection div.Remove {
   vertical-align: middle;
   overflow: visible;
 }
-div.InputField_Selection div.Remove a {
+div.InputField_Selection div.Remove a,
+fieldset.Columns .Column div.InputField_Selection div.Remove a {
   position: relative;
   padding: 0;
   line-height: inherit;
   font-size: 0;
   left: 4px;
 }
-div.InputField_Selection div.Remove a::before {
+div.InputField_Selection div.Remove a::before,
+fieldset.Columns .Column div.InputField_Selection div.Remove a::before {
   color: #888;
   content: "\f1398";
   font-size: initial;
@@ -173,7 +195,7 @@ div.InputField_Selection div.Text {
 
 /* Modernized select boxes */
 .jstree-InputField {
-  font-size: 85%;
+  font-size: 87.5%;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
   height: auto;
@@ -188,6 +210,13 @@ div.InputField_Selection div.Text {
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-hovered {
   background-color: #f15a22;
+}
+
+div.InputField_ToolbarContainer {
+  font-size: 87.5%;
+}
+div.InputField_ToolbarContainer ul li a {
+  font-size: inherit;
 }
 
 .FieldExplanation,
@@ -248,7 +277,12 @@ a:link, a[href] {
 
 a.Button,
 button {
+  background: transparent;
   border-radius: 4px;
+  color: #3949ab;
+  padding: 0.3em 1.2em;
+  border: solid 1px #3949ab;
+  box-shadow: 0px 1px 0px #99a;
   font-size: initial;
   font-weight: 500;
 }
@@ -263,7 +297,7 @@ fieldset label.Mandatory span.Marker {
 }
 
 .jstree-InputField {
-  font-size: 85% !important;
+  font-size: 87.5% !important;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
   line-height: 19px;
@@ -360,6 +394,7 @@ p.AsteriskExplanation {
 #MainBox.Login #Signup form div label {
   font-size: initial;
   line-height: initial;
+  margin-top: 3px;
   z-index: 11;
 }
 #MainBox.Login #Login form div label .Marker,
@@ -595,6 +630,16 @@ p.AsteriskExplanation {
     margin-right: calc((100% - 1785px) / 2);
   }
 }
+button,
+button[type=submit] {
+  background: transparent;
+  border-radius: 4px;
+  color: #3949ab;
+  padding: 0.3em 1.2em;
+  border: solid 1px #3949ab;
+  box-shadow: 0px 1px 0px #99a;
+}
+
 #Header {
   background-color: #fff;
 }
@@ -617,6 +662,9 @@ p.AsteriskExplanation {
 }
 #Navigation ul {
   padding-left: 0;
+}
+#Navigation ul > li:hover {
+  background-color: #3949ab;
 }
 #Navigation ul li::after {
   content: "";
@@ -655,7 +703,7 @@ p.AsteriskExplanation {
 }
 #Navigation ul > li > ul > li {
   border-bottom: solid 1px #ddd;
-  line-height: 130%;
+  line-height: 145%;
 }
 #Navigation ul > li > ul > li:last-child {
   border-bottom: none;
@@ -722,34 +770,48 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   padding: 0.3em 1.2em !important;
 }
 
-.Box fieldset {
+.Preferences .Content {
+  display: grid;
+  gap: 20px 20px;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  padding: 20px 0;
+}
+.Preferences .Box {
+  float: none;
+  width: auto;
+}
+.Preferences .Box form {
+  padding: 0;
+}
+.Preferences .Box fieldset {
   background: #eceff1;
   border-radius: 4px;
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  margin: 0;
 }
-.Box fieldset h2 {
+.Preferences .Box fieldset h2 {
   border-bottom: solid 1px #ddd;
   border-top: none;
   box-shadow: 0px 1px 0px ghostwhite;
   font-size: initial;
 }
-.Box fieldset p.Description {
+.Preferences .Box fieldset p.Description {
   font-size: 87.5%;
 }
-.Box fieldset > div {
+.Preferences .Box fieldset > div {
   display: grid;
   grid-template-columns: 1fr 1fr 0;
 }
-.Box fieldset > div label {
+.Preferences .Box fieldset > div label {
   width: auto;
 }
-.Box fieldset > div input[type=password] {
+.Preferences .Box fieldset > div input[type=password] {
   width: 60%;
 }
-.Box fieldset > div div.xClearLeft {
+.Preferences .Box fieldset > div div.xClearLeft {
   display: none;
 }
-.Box fieldset button[type=submit] {
+.Preferences .Box fieldset button[type=submit] {
   margin: 0.5em auto;
   text-align: center;
 }
@@ -780,6 +842,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   overflow: hidden;
   box-shadow: none;
   border-radius: 0;
+  line-height: 1.5;
 }
 #MainBox.TicketView .ActionRow .Tabs > li > a, #MainBox.TicketView .ActionRow .Tabs > li > span.ClusterLink {
   background: #f8f8f8;
@@ -955,6 +1018,19 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 .Search fieldset.Columns h2 + div {
   padding-top: 0;
 }
+.Search fieldset.Columns h2 + div .InputField_Container {
+  min-width: 10em;
+  width: 75%;
+}
+.Search fieldset.Columns h2 + div .InputField_Container input {
+  flex: 1;
+}
+.Search fieldset .InputField_InputContainer .InputField_Search {
+  min-width: 4em;
+}
+.Search fieldset .InputField_InputContainer .InputField_Search#Profile_Search {
+  min-width: 10em;
+}
 .Search fieldset h2 + div {
   border-top: none;
 }
@@ -1016,6 +1092,33 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 }
 .TicketZoom .TicketHeader {
   width: calc(100% - 18em - 1em);
+}
+.TicketZoom .TicketHeader h2 {
+  align-items: center;
+  display: flex;
+  padding-left: 0;
+}
+.TicketZoom .TicketHeader h2 .Flag {
+  height: initial;
+  left: initial;
+  position: static;
+  text-indent: initial;
+  top: initial;
+  width: initial;
+  margin-right: 0.5em;
+}
+.TicketZoom .TicketHeader h2 .Flag span {
+  border-radius: 0.2em;
+  font-size: initial;
+  height: auto;
+  text-indent: -9999px;
+  width: 1.8em;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+}
+.TicketZoom .TicketHeader h2 .Flag span {
+  line-height: 1.5;
+  vertical-align: middle;
 }
 .TicketZoom .TicketHeader #TicketOptions a i.fa {
   font-size: initial;

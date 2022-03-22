@@ -21,6 +21,97 @@ textarea {
   padding: 5px;
 }
 
+/* From https://moderncss.dev/pure-css-custom-styled-radio-buttons/ */
+input[type=radio] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  font: inherit;
+  color: currentColor;
+  height: 1.15em;
+  transform: translateY(-0.075em);
+  width: 1.15em;
+  display: grid;
+  place-content: center;
+}
+
+input[type=radio]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type=radio]:checked::before {
+  transform: scale(1);
+}
+
+input[type=radio]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+/* --- */
+input[type=radio] {
+  color: rgba(0, 0, 0, 0.54);
+  cursor: pointer;
+  display: inline-grid;
+  margin-right: 0.25em;
+}
+
+input[type=radio]::before {
+  box-shadow: inset 1em 1em #f15a22;
+}
+
+input[type=radio]:checked {
+  color: #f15a22;
+}
+
+input[type=radio]:hover {
+  align-items: center;
+  justify-items: center;
+}
+input[type=radio]:hover::after {
+  background: #000;
+  border-radius: 50%;
+  content: "";
+  height: 2em;
+  opacity: 0.1;
+  position: absolute;
+  width: 2em;
+}
+
+input[type=radio]:focus {
+  outline: none;
+}
+
+select {
+  background: #fff;
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: inherit;
+  font-size: inherit;
+  height: 32px;
+  padding: 5px;
+}
+select option:hover {
+  background-color: green;
+}
+
 div.InputField_InputContainer {
   align-items: center;
   display: flex;
@@ -33,7 +124,8 @@ div.InputField_InputContainer .InputField_More {
   top: auto;
 }
 
-div.InputField_Selection {
+div.InputField_Selection,
+fieldset.Columns .Column div.InputField_Selection {
   align-items: center;
   background: #e0e0e0;
   border-radius: 50px;
@@ -46,7 +138,8 @@ div.InputField_Selection {
   vertical-align: middle;
   z-index: 1;
 }
-div.InputField_Selection div.Remove {
+div.InputField_Selection div.Remove,
+fieldset.Columns .Column div.InputField_Selection div.Remove {
   background: none;
   font-family: "Material Design Icons";
   font-size: inherit;
@@ -57,14 +150,16 @@ div.InputField_Selection div.Remove {
   vertical-align: middle;
   overflow: visible;
 }
-div.InputField_Selection div.Remove a {
+div.InputField_Selection div.Remove a,
+fieldset.Columns .Column div.InputField_Selection div.Remove a {
   position: relative;
   padding: 0;
   line-height: inherit;
   font-size: 0;
   left: 4px;
 }
-div.InputField_Selection div.Remove a::before {
+div.InputField_Selection div.Remove a::before,
+fieldset.Columns .Column div.InputField_Selection div.Remove a::before {
   color: #888;
   content: "\f1398";
   font-size: initial;
@@ -100,7 +195,7 @@ div.InputField_Selection div.Text {
 
 /* Modernized select boxes */
 .jstree-InputField {
-  font-size: 85%;
+  font-size: 87.5%;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-wholerow {
   height: auto;
@@ -117,18 +212,33 @@ div.InputField_Selection div.Text {
   background-color: #f15a22;
 }
 
+div.InputField_ToolbarContainer {
+  font-size: 87.5%;
+}
+div.InputField_ToolbarContainer ul li a {
+  font-size: inherit;
+}
+
 .FieldExplanation,
 .AsteriskExplanation {
   font-size: 87.5%;
 }
 
-.Field.cmt-otrs-datetime-hidden::first-line {
+.Field.cmt-otrs-datetime-hidden::first-line,
+fieldset .cmt-otrs-datetime-hidden::first-line {
   font-size: 0;
 }
 .Field.cmt-otrs-datetime-hidden select[name$=Day], .Field.cmt-otrs-datetime-hidden select[name$=Month], .Field.cmt-otrs-datetime-hidden select[name$=Year],
 .Field.cmt-otrs-datetime-hidden div.TooltipErrorMessage,
 .Field.cmt-otrs-datetime-hidden a.DatepickerIcon,
-.Field.cmt-otrs-datetime-hidden select[name$=Hour], .Field.cmt-otrs-datetime-hidden select[name$=Minute] {
+.Field.cmt-otrs-datetime-hidden select[name$=Hour], .Field.cmt-otrs-datetime-hidden select[name$=Minute],
+fieldset .cmt-otrs-datetime-hidden select[name$=Day],
+fieldset .cmt-otrs-datetime-hidden select[name$=Month],
+fieldset .cmt-otrs-datetime-hidden select[name$=Year],
+fieldset .cmt-otrs-datetime-hidden div.TooltipErrorMessage,
+fieldset .cmt-otrs-datetime-hidden a.DatepickerIcon,
+fieldset .cmt-otrs-datetime-hidden select[name$=Hour],
+fieldset .cmt-otrs-datetime-hidden select[name$=Minute] {
   display: none;
 }
 
@@ -184,6 +294,14 @@ div.InputField_Selection div.Text {
 
 .Flag span.PriorityID-5 {
   background-color: #ff0000;
+}
+
+input[type=radio]::before {
+  box-shadow: inset 1em 1em #24408c;
+}
+
+input[type=radio]:checked {
+  color: #24408c;
 }
 
 .MessageBox.Error {
@@ -441,6 +559,7 @@ ul.Tablelike li.Header {
   overflow: hidden;
   box-shadow: none;
   border-radius: 0;
+  line-height: 1.5;
 }
 .ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
   background: #f8f8f8;
@@ -508,7 +627,6 @@ ul.Tablelike li.Header {
   align-self: center;
   float: left;
   font-size: 85%;
-  line-height: initial;
   margin: 0;
 }
 .ActionRow .Actions > li:first-child {
@@ -767,6 +885,7 @@ a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
 .v-application a.CallForAction,
 button.CallForAction {
   background: transparent;
+  border-radius: 4px;
   color: rgba(20, 36, 79, 0.8);
   padding: 0.3em 1.2em;
   border: solid 1px rgba(36, 64, 140, 0.4);
@@ -897,6 +1016,11 @@ a.CallForAction span i.fa.fa-calendar::before, .ProcessManagementEditScreen #Pro
 button.CallForAction span i.fa.fa-calendar::before {
   content: "\f00ed";
 }
+a.CallForAction span i.fa.fa-check::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-check::before,
+.v-application a.CallForAction span i.fa.fa-check::before,
+button.CallForAction span i.fa.fa-check::before {
+  content: "\f012c";
+}
 a.CallForAction span i.fa.fa-filter::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-filter::before,
 .v-application a.CallForAction span i.fa.fa-filter::before,
 button.CallForAction span i.fa.fa-filter::before {
@@ -962,6 +1086,42 @@ ul.Tablelike li.Header {
   border-bottom: thin solid rgba(0, 0, 0, 0.12);
   font-size: inherit;
   font-weight: bold;
+}
+
+.WidgetSimple.Setting .SettingWrapper fieldset {
+  border-right: solid 1px #ccc;
+  float: left;
+  width: calc(70% - 6em);
+}
+.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox {
+  background-color: transparent;
+  border-left: solid 1px #ccc;
+  padding: 0;
+  text-align: center;
+  width: 6em;
+  top: 0;
+  margin-top: 10px;
+  height: calc(100% - 20px);
+}
+.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
+  margin: 0;
+}
+.WidgetSimple.Setting .SettingWrapper > .SettingDescription {
+  border: none;
+  display: block;
+  float: left;
+  font-size: 87.5%;
+  padding: 0 1em;
+  width: 30%;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
+  width: 6em;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
+  margin: 0;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
+  padding-right: 1em;
 }
 
 /* Popup windows */
@@ -1125,6 +1285,7 @@ ul.BreadCrumb {
   background: #eee;
   border-radius: 4px;
   box-shadow: none;
+  margin-right: 0;
   padding-bottom: 0.35em;
   padding-left: 0;
   padding-top: 0.35em;
@@ -1689,6 +1850,7 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   overflow: hidden;
   box-shadow: none;
   border-radius: 0;
+  line-height: 1.5;
 }
 .Tab.Actions > li > a, .Tab.Actions > li > span.ClusterLink {
   background: #f8f8f8;
@@ -1884,6 +2046,9 @@ p.FieldExplanation {
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-calendar::before {
   content: "\f00ed";
 }
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-check::before {
+  content: "\f012c";
+}
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-filter::before {
   content: "\f0232";
 }
@@ -1990,11 +2155,20 @@ p.FieldExplanation {
 .ItemListGrid.WithIcons li[data-module=AdminACL] span.Icons i.fa::before {
   content: "\f05c7";
 }
+.ItemListGrid.WithIcons li[data-module=AdminAppointmentNotificationEvent] span.Icons i.fa::before {
+  content: "\f0a31";
+}
 .ItemListGrid.WithIcons li[data-module=AdminAttachment] span.Icons i.fa::before {
   content: "\f03e2";
 }
 .ItemListGrid.WithIcons li[data-module=AdminAutoResponse] span.Icons i.fa::before {
   content: "\f045a";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCalendarManage] span.Icons i.fa::before {
+  content: "\f00ed";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCommunicationLog] span.Icons i.fa::before {
+  content: "\f0961";
 }
 .ItemListGrid.WithIcons li[data-module=AdminCustomerCompany] span.Icons i.fa::before {
   content: "\f0991";
@@ -2029,6 +2203,15 @@ p.FieldExplanation {
 .ItemListGrid.WithIcons li[data-module=AdminCustomerUserGroup] span.Icons i.fa.Icon2::before {
   content: "\f0849";
 }
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserService] span.Icons i.fa::before {
+  content: "\f0013";
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserService] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminCustomerUserService] span.Icons i.fa.Icon2::before {
+  content: "\f08d6";
+}
 .ItemListGrid.WithIcons li[data-module=AdminDynamicField] span.Icons i.fa::before {
   content: "\f1400";
 }
@@ -2044,8 +2227,26 @@ p.FieldExplanation {
 .ItemListGrid.WithIcons li[data-module=AdminGroup] span.Icons i.fa::before {
   content: "\f0849";
 }
+.ItemListGrid.WithIcons li[data-module=AdminLog] span.Icons i.fa::before {
+  content: "\f0279";
+}
+.ItemListGrid.WithIcons li[data-module=AdminMailAccount] span.Icons i.fa::before {
+  content: "\f0ee7";
+}
+.ItemListGrid.WithIcons li[data-module=AdminNotificationEvent] span.Icons i.fa::before {
+  content: "\f0026";
+}
+.ItemListGrid.WithIcons li[data-module=AdminPackageManager] span.Icons i.fa::before {
+  content: "\f03d3";
+}
+.ItemListGrid.WithIcons li[data-module=AdminPerformanceLog] span.Icons i.fa::before {
+  content: "\f0128";
+}
 .ItemListGrid.WithIcons li[data-module=AdminPGP] span.Icons i.fa::before {
   content: "\f1184";
+}
+.ItemListGrid.WithIcons li[data-module=AdminPostMasterFilter] span.Icons i.fa::before {
+  content: "\f0232";
 }
 .ItemListGrid.WithIcons li[data-module=AdminPriority] span.Icons i.fa {
   transform: rotate(180deg) scaleX(-1);
@@ -2060,13 +2261,13 @@ p.FieldExplanation {
   content: "\f0c82";
 }
 .ItemListGrid.WithIcons li[data-module=AdminQueueAutoResponse] span.Icons i.fa::before {
-  content: "\f045a";
+  content: "\f0c82";
 }
 .ItemListGrid.WithIcons li[data-module=AdminQueueAutoResponse] span.Icons {
   line-height: 2.4em;
 }
 .ItemListGrid.WithIcons li[data-module=AdminQueueAutoResponse] span.Icons i.fa.Icon2::before {
-  content: "\f0c82";
+  content: "\f045a";
 }
 .ItemListGrid.WithIcons li[data-module=AdminQueueTemplates] span.Icons i.fa::before {
   content: "\f0219";
@@ -2078,10 +2279,10 @@ p.FieldExplanation {
   content: "\f0c82";
 }
 .ItemListGrid.WithIcons li[data-module=AdminRole] span.Icons i.fa::before {
-  content: "\f0934";
+  content: "\f0006";
 }
 .ItemListGrid.WithIcons li[data-module=AdminRoleGroup] span.Icons i.fa::before {
-  content: "\f0934";
+  content: "\f0006";
 }
 .ItemListGrid.WithIcons li[data-module=AdminRoleGroup] span.Icons {
   line-height: 2.4em;
@@ -2096,13 +2297,22 @@ p.FieldExplanation {
   line-height: 2.4em;
 }
 .ItemListGrid.WithIcons li[data-module=AdminRoleUser] span.Icons i.fa.Icon2::before {
-  content: "\f0934";
+  content: "\f0006";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSalutation] span.Icons i.fa::before {
+  content: "\f0369";
 }
 .ItemListGrid.WithIcons li[data-module=AdminSelectBox] span.Icons i.fa::before {
   content: "\f0866";
 }
+.ItemListGrid.WithIcons li[data-module=AdminService] span.Icons i.fa::before {
+  content: "\f08d6";
+}
 .ItemListGrid.WithIcons li[data-module=AdminSession] span.Icons i.fa::before {
   content: "\f0b56";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSignature] span.Icons i.fa::before {
+  content: "\f03ea";
 }
 .ItemListGrid.WithIcons li[data-module=AdminSLA] span.Icons i.fa::before {
   content: "\f1186";
@@ -2110,8 +2320,17 @@ p.FieldExplanation {
 .ItemListGrid.WithIcons li[data-module=AdminSMIME] span.Icons i.fa::before {
   content: "\f0124";
 }
+.ItemListGrid.WithIcons li[data-module=AdminState] span.Icons i.fa::before {
+  content: "\f0756";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSupportDataCollector] span.Icons i.fa::before {
+  content: "\f014e";
+}
 .ItemListGrid.WithIcons li[data-module=AdminSystemAddress] span.Icons i.fa::before {
-  content: "\f01ee";
+  content: "\f0065";
+}
+.ItemListGrid.WithIcons li[data-module=AdminSystemConfiguration] span.Icons i.fa::before {
+  content: "\f05b7";
 }
 .ItemListGrid.WithIcons li[data-module=AdminSystemMaintenance] span.Icons i.fa::before {
   content: "\f0cbd";
@@ -2120,13 +2339,28 @@ p.FieldExplanation {
   content: "\f0219";
 }
 .ItemListGrid.WithIcons li[data-module=AdminTemplateAttachment] span.Icons i.fa::before {
-  content: "\f03e2";
+  content: "\f0219";
 }
 .ItemListGrid.WithIcons li[data-module=AdminTemplateAttachment] span.Icons {
   line-height: 2.4em;
 }
 .ItemListGrid.WithIcons li[data-module=AdminTemplateAttachment] span.Icons i.fa.Icon2::before {
-  content: "\f0219";
+  content: "\f03e2";
+}
+.ItemListGrid.WithIcons li[data-module=AdminType] span.Icons i.fa::before {
+  content: "\f0315";
+}
+.ItemListGrid.WithIcons li[data-module=AdminUser] span.Icons i.fa::before {
+  content: "\f0004";
+}
+.ItemListGrid.WithIcons li[data-module=AdminUserGroup] span.Icons i.fa::before {
+  content: "\f0004";
+}
+.ItemListGrid.WithIcons li[data-module=AdminUserGroup] span.Icons {
+  line-height: 2.4em;
+}
+.ItemListGrid.WithIcons li[data-module=AdminUserGroup] span.Icons i.fa.Icon2::before {
+  content: "\f0849";
 }
 
 .Flag.Small {
@@ -2157,6 +2391,14 @@ p.FieldExplanation {
 
 .Flag span.PriorityID-5 {
   background-color: #ff0000;
+}
+
+input[type=radio]::before {
+  box-shadow: inset 1em 1em #24408c;
+}
+
+input[type=radio]:checked {
+  color: #24408c;
 }
 
 .MessageBox.Error {
@@ -2414,6 +2656,7 @@ ul.Tablelike li.Header {
   overflow: hidden;
   box-shadow: none;
   border-radius: 0;
+  line-height: 1.5;
 }
 .ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
   background: #f8f8f8;
@@ -2481,7 +2724,6 @@ ul.Tablelike li.Header {
   align-self: center;
   float: left;
   font-size: 85%;
-  line-height: initial;
   margin: 0;
 }
 .ActionRow .Actions > li:first-child {
@@ -2740,6 +2982,7 @@ a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
 .v-application a.CallForAction,
 button.CallForAction {
   background: transparent;
+  border-radius: 4px;
   color: rgba(20, 36, 79, 0.8);
   padding: 0.3em 1.2em;
   border: solid 1px rgba(36, 64, 140, 0.4);
@@ -2870,6 +3113,11 @@ a.CallForAction span i.fa.fa-calendar::before, .ProcessManagementEditScreen #Pro
 button.CallForAction span i.fa.fa-calendar::before {
   content: "\f00ed";
 }
+a.CallForAction span i.fa.fa-check::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-check::before,
+.v-application a.CallForAction span i.fa.fa-check::before,
+button.CallForAction span i.fa.fa-check::before {
+  content: "\f012c";
+}
 a.CallForAction span i.fa.fa-filter::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-filter::before,
 .v-application a.CallForAction span i.fa.fa-filter::before,
 button.CallForAction span i.fa.fa-filter::before {
@@ -2937,6 +3185,42 @@ ul.Tablelike li.Header {
   font-weight: bold;
 }
 
+.WidgetSimple.Setting .SettingWrapper fieldset {
+  border-right: solid 1px #ccc;
+  float: left;
+  width: calc(70% - 6em);
+}
+.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox {
+  background-color: transparent;
+  border-left: solid 1px #ccc;
+  padding: 0;
+  text-align: center;
+  width: 6em;
+  top: 0;
+  margin-top: 10px;
+  height: calc(100% - 20px);
+}
+.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
+  margin: 0;
+}
+.WidgetSimple.Setting .SettingWrapper > .SettingDescription {
+  border: none;
+  display: block;
+  float: left;
+  font-size: 87.5%;
+  padding: 0 1em;
+  width: 30%;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
+  width: 6em;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
+  margin: 0;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
+  padding-right: 1em;
+}
+
 /* Popup windows */
 .LayoutPopup > .Footer .CallForAction, .LayoutPopup > .Footer .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements .LayoutPopup > .Footer a.CallForAction {
   padding: 0.8em 1.8em;
@@ -2970,6 +3254,7 @@ hr.cmt-flex-break {
   overflow: hidden;
   box-shadow: none;
   border-radius: 0;
+  line-height: 1.5;
 }
 .fc .fc-button-group > button > a, .fc .fc-button-group > button > span.ClusterLink {
   background: #f8f8f8;
@@ -3539,6 +3824,7 @@ input#Subject {
   overflow: hidden;
   box-shadow: none;
   border-radius: 0;
+  line-height: 1.5;
 }
 .QueueOverviewList > li > a, .QueueOverviewList > li > span.ClusterLink {
   background: #f8f8f8;
@@ -3628,6 +3914,7 @@ input#Subject {
   overflow: hidden;
   box-shadow: none;
   border-radius: 0;
+  line-height: 1.5;
 }
 .OverviewControl .ControlRow .Tabs > li > a, .OverviewControl .ControlRow .Tabs > li > span.ClusterLink,
 .Content.Overview .ControlRow .Tabs > li > a,
@@ -3880,29 +4167,19 @@ input#Subject {
   height: initial;
   left: initial;
   position: static;
+  text-indent: initial;
   top: initial;
   width: initial;
 }
 .Overview.OverviewMedium .Flag span,
 .Overview.OverviewLarge .Flag span {
   border-radius: 0.2em;
+  font-size: initial;
   height: auto;
+  text-indent: -9999px;
   width: 1.8em;
-}
-.Overview.OverviewMedium .Flag span::after,
-.Overview.OverviewLarge .Flag span::after {
-  content: "";
-  border-bottom: solid 2px #000;
-  border-radius: inherit;
-  bottom: 0;
-  display: block;
-  height: inherit;
-  left: 0;
-  opacity: 0.2;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: inherit;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+  display: inline-block;
 }
 .Overview.OverviewMedium div.UnreadArticles,
 .Overview.OverviewLarge div.UnreadArticles {
@@ -4069,27 +4346,18 @@ div.Headline .Flag {
   height: initial;
   left: initial;
   position: static;
+  text-indent: initial;
   top: initial;
   width: initial;
 }
 div.Headline .Flag span {
   border-radius: 0.2em;
+  font-size: initial;
   height: auto;
+  text-indent: -9999px;
   width: 1.8em;
-}
-div.Headline .Flag span::after {
-  content: "";
-  border-bottom: solid 2px #000;
-  border-radius: inherit;
-  bottom: 0;
-  display: block;
-  height: inherit;
-  left: 0;
-  opacity: 0.2;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: inherit;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+  display: inline-block;
 }
 div.Headline h1 {
   font-size: 110%;
@@ -4299,6 +4567,7 @@ div.Headline .Flag + h1 {
   overflow: hidden;
   box-shadow: none;
   border-radius: 0;
+  line-height: 1.5;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li > span.ClusterLink {
   background: #f8f8f8;
