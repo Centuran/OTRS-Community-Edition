@@ -1502,6 +1502,7 @@ div.AllocationListContainer div.Size1of2 {
   position: relative;
 }
 div.AllocationListContainer div.Size1of2 ul.Tablelike {
+  background-color: transparent;
   border: none;
 }
 div.AllocationListContainer div.Size1of2 ul.Tablelike li.Header {
@@ -1533,6 +1534,7 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList {
   height: 155px;
   max-height: 155px;
   min-height: 155px;
+  overflow-y: auto;
   padding: 4px;
 }
 div.AllocationListContainer div.Size1of2 ul.AllocationList li {
