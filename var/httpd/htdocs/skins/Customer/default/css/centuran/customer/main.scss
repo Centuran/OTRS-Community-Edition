@@ -101,7 +101,7 @@
   }
 
   ul > li > ul {
-    background: #ededed;
+    background-color: $navigation-background-color;
     border-radius: 0 0 4px 4px;
     box-shadow: $elevated-2-box-shadow;
     font-size: 85%;
@@ -120,7 +120,7 @@
       }
   
       a {
-        background-color: #ededed;
+        background-color: $navigation-background-color;
         border-top: none;
         font-size: inherit;
 
