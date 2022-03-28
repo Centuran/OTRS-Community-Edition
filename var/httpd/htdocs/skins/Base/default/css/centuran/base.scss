@@ -3,7 +3,16 @@
 @import 'icons';
 
 @mixin button {
+  background: $button-action-background-color;
   border-radius: 4px;
+  color: $button-action-text-color;
+  padding: 0.3em 1.2em;
+
+  // Border and shadow for regular action buttons when displayed on a light
+  // (white) background
+  // TODO: Add variant for dark background (see agent's base.scss) as variable
+  border: solid 1px $button-action-border-color;
+  box-shadow: $button-action-box-shadow;
 }
 
 @mixin minor-button {
