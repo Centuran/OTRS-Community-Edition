@@ -1,11 +1,110 @@
+$sidebar-width: 18em;
+$sidebar-margin: 1em;
+$content-width: calc(100% - $sidebar-width - $sidebar-margin);
+
 .TicketZoom {
+  .ActionRow {
+    background: none;
+    border: none;
+    font-size: initial;
+    margin-top: 10px;
+
+    ul.Tabs {
+      padding: 0;
+
+      a.cmt-back-link::before {
+        content: mdi("arrow-left") + " ";
+        font-family: "Material Design Icons";
+      }
+    }
+  }
+
+  .TicketHeader {
+    width: $content-width;
+
+    h2 {
+      align-items: center;
+      display: flex;
+      padding-left: 0;
+
+      .Flag {
+        @include priority-flag();
+
+        margin-right: 0.5em;
+
+        span {
+          line-height: 1.5;
+          vertical-align: middle;
+        }
+      }
+    }
+  
+    #TicketOptions {
+      a {
+        i.fa {
+          font-size: initial;
+          padding: 0.2em;
+
+          &::before {
+            font-family: "Material Design Icons";
+            font-size: 110%;
+          }
+
+          &.fa-print::before {
+            content: mdi("printer");
+          }
+
+          &.fa-bars::before {
+            content: mdi("expand-all");
+          }
+
+          &.fa-minus::before {
+            content: mdi("collapse-all");
+          }
+        }
+
+        &:hover i.fa {
+          color: $primary-color;
+          background: #ddd;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+
   ul#Messages {
     border-radius: 4px;
+    box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
     overflow: hidden;
     padding-left: 0;
+    width: $content-width;
+
+    li .MessageHeader {
+      align-items: flex-end;
+      display: flex;
+      padding: 10px;
+
+      h3 {
+        flex: 9;
+        line-height: initial;
+        width: auto;
+      }
+
+      span.Age {
+        flex: 1;
+        line-height: initial;
+        position: initial;
+        right: 0;
+        top: 0;
+      }
+    }
+
+    h3 a {
+      color: inherit;
+    }
 
     .Details {
-      font-size: 85%;
+      font-size: 87.5%;
       line-height: 150%;
 
       .Label {
@@ -16,6 +115,48 @@
 
     .MessageContent {
       width: initial;
+
+      .MessageBrowser {
+        @include msg-box("info");
+        border: none;
+
+        p {
+          background: transparent;
+          color: #333;
+          font-size: smaller;
+          margin-left: 0;
+          margin-right: 0;
+          padding: 0.5em 0.75em;
+          padding-right: 1.5em;
+          text-align: left;
+      
+          &::before {
+            @include msg-icon-before("info");
+            color: msg-color("info");
+            float: left;
+            margin-right: 0.35em;
+          }
+        }
+      
+        a.Close {
+          height: auto;
+          right: 0.125em;
+          text-align: center;
+          top: 0.35em;
+          width: 1em;
+
+          &::before {
+            color: msg-color("info");
+            content: mdi("close");
+            font-family: "Material Design Icons";
+            margin-left: -0.5em;
+          }
+      
+          i.fa {
+            display: none;
+          }
+        }
+      }
     }
   }
 
@@ -23,7 +164,7 @@
     background: none;
     border: none;
     margin: 0;
-    width: 80%;
+    width: $content-width;
 
     a#ReplyButton {
       @include primary-button;
@@ -39,11 +180,12 @@
     }
 
     #Messenger {
-      background: #eee;
+      background: $background-color;
       border: none;
       border-radius: 4px;
       box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
       margin-top: 0.5em;
+      padding: 10px;
 
       fieldset {
         background: none;
@@ -54,11 +196,46 @@
       .ActionRow {
         background: none;
         border: none;
+        font-size: initial;
+        padding: 3px 0;
+        padding-top: 13px; // Similar to what the SpacingTop class does
+        text-align: center;
+
+        button[type="submit"] {
+          @include primary-button;
+        }
+      }
+    }
+  }
+
+  #ZoomSidebar {
+    width: $sidebar-width;
+
+    #Metadata {
+      border-radius: 4px;
+      box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+
+      li {
+        margin-bottom: 0.2em;
+      }
+
+      li.Header div.MessageHeader {
+        padding: 10px;
+
+        h3 {
+          line-height: initial;
+        }
       }
     }
   }
 }
 
-.JavaScriptAvailable #ReplyButton {
-  display: inline-block;
+.JavaScriptAvailable {
+  #FollowUp:not(.Visible) #Messenger {
+    padding: 0; // Prevents element from being visible when height is set to 0
+  }
+
+  #ReplyButton {
+    display: inline-block;
+  }
 }
