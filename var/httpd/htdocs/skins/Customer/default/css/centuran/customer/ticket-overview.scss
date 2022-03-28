@@ -1,14 +1,21 @@
 #MainBox.TicketView {
   border-radius: 4px;
+  overflow: hidden;
 
   .ActionRow {
+    background-color: $background-color;
+    padding: 10px;
+
     .Tabs {
       @include button-group();
+      margin-bottom: 0;
 
       li {
         a {
           &.Selected {
             background-color: $secondary-action-color;
+            border-color: lighten($secondary-action-color, 10%);
+            border-right-color: lighten($secondary-action-color, 10%);
             color: white;
             font-weight: normal;
           }
@@ -34,6 +41,21 @@
 
     h2 {
       font-size: initial;
+    }
+  }
+
+  tr:hover {
+    td {
+      background-color: $table-row-hover-color;
+      background-color: #aab8d9cc;
+      color: #444;
+      text-shadow: 0 1px 0 darken($table-row-hover-color, 0.1);
+      
+      &.Title div,
+      a {
+        color: #444;
+        text-shadow: 0 1px 0 darken($table-row-hover-color, 0.1);
+      }
     }
   }
 }
