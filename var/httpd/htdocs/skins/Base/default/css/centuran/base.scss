@@ -357,6 +357,23 @@ input[type="radio"]:hover {
 input[type="radio"]:focus {
   outline: none;
 }
+
+select {
+  background: #fff;
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(0,0,0,.87);
+  font-family: inherit;
+  font-size: inherit;
+  height: 32px;
+  padding: $form-field-padding;
+
+  option:hover {
+    background-color: green;
+  }
+}
+
 div.InputField_InputContainer {
   align-items: center;
   display: flex;
