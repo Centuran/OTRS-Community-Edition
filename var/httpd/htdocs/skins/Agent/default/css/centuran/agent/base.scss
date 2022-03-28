@@ -66,6 +66,14 @@
 //   }
 // }
 
+input[type="radio"]::before {
+  box-shadow: inset 1em 1em $secondary-color;
+}
+
+input[type="radio"]:checked {
+  color: $secondary-color;
+}
+
 .MessageBox.Error {
   @include msg-box("error");
 }
