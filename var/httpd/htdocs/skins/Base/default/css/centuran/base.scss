@@ -388,7 +388,8 @@ div.InputField_InputContainer {
   }
 }
 
-div.InputField_Selection {
+div.InputField_Selection,
+fieldset.Columns .Column div.InputField_Selection {
   align-items: center;
   background: #e0e0e0;
   border-radius: 50px;
