@@ -1846,6 +1846,7 @@ sub MaskForm {
         Translation => 0,
         Name        => 'TicketCreateTimePoint',
         SelectedID  => $Param{TicketCreateTimePoint},
+        Class       => 'Modernize',
     );
     $Param{TicketCreateTimePointStart} = $LayoutObject->BuildSelection(
         Data => {
@@ -1855,6 +1856,7 @@ sub MaskForm {
         Translation => 1,
         Name        => 'TicketCreateTimePointStart',
         SelectedID  => $Param{TicketCreateTimePointStart} || 'Last',
+        Class       => 'Modernize',
     );
     $Param{TicketCreateTimePointFormat} = $LayoutObject->BuildSelection(
         Data => {
@@ -1868,6 +1870,7 @@ sub MaskForm {
         Translation => 1,
         Name        => 'TicketCreateTimePointFormat',
         SelectedID  => $Param{TicketCreateTimePointFormat},
+        Class       => 'Modernize',
     );
     $Param{TicketCreateTimeStart} = $LayoutObject->BuildDateSelection(
         %Param,
