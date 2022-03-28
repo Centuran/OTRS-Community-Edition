@@ -1,23 +1,57 @@
-.Box {
-  fieldset > div {
+.Preferences {
+  .Content {
     display: grid;
-    grid-template-columns: 1fr 1fr 0;
-
-    label {
-      width: auto;
-    }
-
-    input[type="password"] {
-      width: 60%;
-    }
-
-    div.xClearLeft {
-      display: none;
-    }
+    gap: 20px 20px;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    padding: 20px 0;
   }
 
-  fieldset button[type="submit"] {
-    margin: 0.5em auto;
-    text-align: center;
+  .Box {
+    float: none;
+    width: auto;
+
+    form {
+      padding: 0;
+    }
+
+    fieldset {
+      background: $background-color;
+      border-radius: 4px;
+      box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+      margin: 0;
+
+      h2 {
+        border-bottom: solid 1px #ddd;
+        border-top: none;
+        box-shadow: 0px 1px 0px ghostwhite;
+        font-size: initial;
+      }
+
+      p.Description {
+        font-size: 87.5%;
+      }
+    }
+
+    fieldset > div {
+      display: grid;
+      grid-template-columns: 1fr 1fr 0;
+
+      label {
+        width: auto;
+      }
+
+      input[type="password"] {
+        width: 60%;
+      }
+
+      div.xClearLeft {
+        display: none;
+      }
+    }
+
+    fieldset button[type="submit"] {
+      margin: 0.5em auto;
+      text-align: center;
+    }
   }
 }
