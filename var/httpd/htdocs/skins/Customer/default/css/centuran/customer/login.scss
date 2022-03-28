@@ -1,0 +1,155 @@
+#Header.cmt-login-screen {
+  text-align: center;
+}
+
+#MainBox.Login {
+  #Slider {
+    height: initial;
+    overflow: visible;
+    width: initial;
+  }
+
+  #Login,
+  #Reset,
+  #Signup {
+    background-color: $background-color;
+    border-radius: 4px;
+    box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 0;
+    width: 350px;
+
+    h2 {
+      background-color: $primary-color;
+      border-bottom: solid 1px #ddd;
+      border-top: none;
+      border-radius: 4px 4px 0 0;
+      box-shadow: 0px 1px 0px ghostwhite;
+      color: #fff;
+      font-size: initial;
+      margin-bottom: 0;
+      margin-left: -20px;
+      margin-right: -20px;
+      margin-top: -20px;
+      padding: 20px;
+    }
+
+    h2 + p {
+      margin-bottom: 0;
+    }
+
+    form {
+      padding-top: 20px;
+
+      div {
+        float: none;
+        margin: 0;
+        margin-bottom: 20px;
+
+        input {
+          background: #fff;
+          font-size: initial;
+          width: 100%;
+
+          &[value=""], &:not([value]) {
+            z-index: 0;
+          }
+
+          //&:autofill,
+          &:-webkit-autofill {
+            z-index: 10;
+          }
+        }
+
+        label {
+          font-size: initial;
+          line-height: initial;
+          margin-top: 3px;
+          z-index: 11;
+
+          .Marker {
+            font-size: inherit;
+            line-height: inherit;
+            position: static;
+            top: 0;
+          }
+        }
+
+        button[type="submit"] {
+          @include primary-button;
+
+          display: block;
+          margin: auto;
+        }
+      }
+    }
+
+    p {
+      text-align: center;
+    }
+
+    & > a.InlineNavigation:first-child {
+      left: 0;
+      top: -40px;
+
+      &::before {
+        content: mdi("arrow-left") + " ";
+        font-family: "Material Design Icons";
+      }
+
+      &::first-letter {
+        display: none;
+      }
+    }
+  }
+
+  #Reset,
+  #Signup {
+    margin-top: 40px;
+  }
+
+  .ErrorBox ~ #Slider,
+  .MessageBox ~ #Slider,
+  .SuccessBox ~ #Slider {
+    #Reset,
+    #Signup {
+      margin-top: calc(40px + 36px);
+    }
+  }
+
+  #Signup {
+    .NewLine:nth-last-child(2),
+    .Clear:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  #Login:not(:target),
+  #Reset:not(:target),
+  #Signup:not(:target) {
+    display: none;
+  }
+
+  .ErrorBox {
+    @include msg-box("error");
+  }
+
+  .SuccessBox {
+    @include msg-box("success");
+  }
+
+  .ErrorBox,
+  .SuccessBox {
+    margin: auto;
+    margin-bottom: 40px;
+    padding: 0;
+    position: relative;
+    width: 350px;
+
+    p {
+      margin: 0;
+    }
+  }
+}
