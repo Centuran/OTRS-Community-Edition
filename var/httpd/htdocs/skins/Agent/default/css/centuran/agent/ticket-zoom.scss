@@ -33,7 +33,8 @@ div.Headline {
     }
 
     a::before {
-      @include mdi("\0F004D"); // arrow-left
+      content: mdi("arrow-left");
+      font-family: "Material Design Icons";
       margin-right: 0.25em;
     }
 
@@ -155,8 +156,9 @@ div.Headline {
 
   a.Close {
     &::before {
-      @include mdi("\0F0156"); // close
       color: msg-color("info");
+      content: mdi("close");
+      font-family: "Material Design Icons";
       margin-left: -0.5em;
     }
 
