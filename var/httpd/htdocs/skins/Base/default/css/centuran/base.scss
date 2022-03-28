@@ -1,4 +1,5 @@
-@import 'variables';
+@use "sass:string";
+
 @import 'icons';
 
 @mixin button {
