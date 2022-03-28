@@ -74,8 +74,8 @@ module.exports = {
         hour:   null,
         minute: null
       },
-      showDate: !!this.mode.match(/^date\//),
-      showTime: !!this.mode.match(/\/time$/),
+      showDate: !!this.mode.match(/^date/),
+      showTime: !!this.mode.match(/time$/),
       // https://github.com/vuetifyjs/vuetify/issues/4502#issuecomment-403077205
       timeMenuIsOpen: false
     };
