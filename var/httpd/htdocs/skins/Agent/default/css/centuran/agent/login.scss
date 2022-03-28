@@ -56,4 +56,12 @@
       background-color: msg-color("error");
     }
   }
+
+  .WidgetSimple > .Content {
+    border-top: none;
+  }
+
+  #LoginButton {
+    line-height: 1.9em;
+  }
 }
