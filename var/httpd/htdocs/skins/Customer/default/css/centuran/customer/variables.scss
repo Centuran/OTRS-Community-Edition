@@ -1,9 +1,18 @@
 @use 'sass:color';
 
-$primary-color: #3f51b5;
+$primary-color: #3949ab;         // indigo darken-1
+// $table-row-hover-color: #c5cae9; // indigo lighten-4
+$table-row-hover-color: #aab8d9cc;
+
+$button-action-background-color: transparent;
+$button-action-border-color: $primary-color;
+$button-action-box-shadow: 0px 1px 0px #99a;
+$button-action-text-color: $primary-color;
 
 $button-primary-box-shadow: 0px 1px 0px #99a;
 $button-primary-color: $primary-color;
 $button-primary-text-color: #fff;
 
 $secondary-action-color: $primary-color;
+
+$navigation-background-color: #cfd8dc; // blue-grey lighten-4
