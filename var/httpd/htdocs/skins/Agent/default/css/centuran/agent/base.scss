@@ -566,14 +566,7 @@ button.CallForAction {
 a.CallForAction,
 .v-application a.CallForAction,
 button.CallForAction {
-  background: $button-action-background-color;
-  color: $button-action-text-color;
-  padding: 0.3em 1.2em;
-
-  // Border and shadow for regular action buttons when displayed on a light
-  // (white) background
-  border: solid 1px $button-action-border-color;
-  box-shadow: $button-action-box-shadow;
+  @include button;
 
   &:hover {
     //border: solid 1px #ff6a32;
