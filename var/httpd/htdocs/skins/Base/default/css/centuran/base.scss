@@ -494,6 +494,14 @@ div.InputField_Selection div.Text {
   }
 }
 
+div.InputField_ToolbarContainer {
+  font-size: 87.5%;
+
+  ul li a {
+    font-size: inherit;
+  }
+}
+
 .FieldExplanation,
 .AsteriskExplanation {
   font-size: 87.5%;
