@@ -86,10 +86,15 @@ button[type="submit"] {
 }
 
 #Navigation {
+  background-color: $navigation-background-color;
   height: auto;
   
   ul {
     padding-left: 0;
+
+    & > li:hover {
+      background-color: $primary-color;
+    }
 
     // This pseudoelement fills the 2px gap between the contents
     // of the top-level item and the sub-level dropdown list (caused by a 2px
