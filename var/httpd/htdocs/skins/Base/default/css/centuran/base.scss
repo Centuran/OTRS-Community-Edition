@@ -257,6 +257,14 @@ input[type="text"] {
   padding: $form-field-padding;
 }
 
+textarea {
+  border: solid 1px $form-field-border-color;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: 'Roboto Mono', monospace, fixed;
+  font-size: 90%;
+  padding: $form-field-padding;
+}
 div.InputField_InputContainer {
   align-items: center;
   display: flex;

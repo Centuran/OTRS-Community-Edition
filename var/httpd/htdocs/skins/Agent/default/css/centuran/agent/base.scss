@@ -91,15 +91,6 @@ code,
   background-color: rgba(119, 136, 153, 0.15); // RGB values of lightslategray
 }
 
-textarea {
-  border: solid 1px $form-field-border-color;
-  border-radius: 4px;
-  box-shadow: none;
-  font-family: 'Roboto Mono', monospace, fixed;
-  font-size: 90%;
-  padding: $form-field-padding;
-}
-
 dl {
   dt {
     font-size: initial;
