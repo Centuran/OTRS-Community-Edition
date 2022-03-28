@@ -65,6 +65,26 @@ button,
 button[type="submit"] {
   @include button;
 }
+
+#Header {
+  background-color: #fff;
+
+  #ResponsiveNavigationHandle {
+    left: 0;
+    line-height: initial;
+    position: relative;
+    top: -125%;
+
+    i.fa-bars {
+      font-family: "Material Design Icons";
+      
+      &::before {
+        content: mdi("menu");
+      }
+    }
+  }
+}
+
 #Navigation {
   height: auto;
   
