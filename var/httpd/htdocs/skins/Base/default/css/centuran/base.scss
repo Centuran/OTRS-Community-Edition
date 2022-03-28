@@ -240,3 +240,48 @@ div.InputField_Selection div.Text {
 .AsteriskExplanation {
   font-size: 87.5%;
 }
+
+.Field.cmt-otrs-datetime-hidden,
+fieldset .cmt-otrs-datetime-hidden {
+  &::first-line {
+    font-size: 0;
+  }
+
+  select[name$="Day"], select[name$="Month"], select[name$="Year"],
+  div.TooltipErrorMessage,
+  a.DatepickerIcon,
+  select[name$="Hour"], select[name$="Minute"] {
+    display: none;
+  }
+}
+
+.Field.__vue_datetimepicker.cmt-otrs-datetime-hidden {
+  & > input[type="checkbox"] {
+    margin-right: 0.5em;
+  }
+
+  & > div:last-child {
+    display: inline-block;
+  }
+}
+
+.v-picker--date button {
+  background: none;
+  border: none;
+}
+
+.v-picker--date .v-date-picker-table--date {
+  .v-btn--active {
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+  }
+
+  .v-date-picker-table__current {
+    font-weight: bold;
+  }
+  
+  .v-date-picker-table__current:not(.v-btn--active) {
+    caret-color: $primary-color !important;
+    color: $primary-color !important;
+  }
+}

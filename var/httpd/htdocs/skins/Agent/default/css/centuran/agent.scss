@@ -814,19 +814,6 @@ p.FieldExplanation {
   }
 }
 
-.Field.cmt-otrs-datetime-hidden {
-  &::first-line {
-    font-size: 0;
-  }
-
-  select[name$="Day"], select[name$="Month"], select[name$="Year"],
-  div.TooltipErrorMessage,
-  a.DatepickerIcon,
-  select[name$="Hour"], select[name$="Minute"] {
-    display: none;
-  }
-}
-
 /* Ticket status view */
 
 .OverviewBox {
