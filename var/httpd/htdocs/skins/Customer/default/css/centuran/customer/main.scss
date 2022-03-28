@@ -61,6 +61,10 @@
   }
 }
 
+button,
+button[type="submit"] {
+  @include button;
+}
 #Navigation {
   height: auto;
   
