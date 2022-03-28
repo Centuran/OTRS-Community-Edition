@@ -118,7 +118,14 @@ button[type="submit"] {
   }
 
   & > ul {
+    // The icons in .Individual navigation items make them slightly higher,
+    // this (and also setting the li height to 100%) is needed to match
+    // that height inside the main navigation menu
+    height: 100%;
+
     & > li {
+      height: 100%;
+
       & > ul {
         top: initial;
       }
