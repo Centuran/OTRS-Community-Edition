@@ -1202,6 +1202,11 @@ Core.UI.InputFields = (function (TargetNS) {
                 // Get width now, since we will hide the element
                 SelectWidth = $SelectObj.outerWidth();
 
+                if ($('#vue-app').length) {
+                    // New style select values need more space
+                    SelectWidth += Config.InputFieldPadding * 4;
+                }
+
                 // Hide original field
                 $SelectObj.hide();
 
