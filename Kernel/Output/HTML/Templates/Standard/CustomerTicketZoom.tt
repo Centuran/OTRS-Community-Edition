@@ -10,7 +10,7 @@
 [% RenderBlockStart("Back") %]
     <div class="ActionRow">
         <ul class="Tabs">
-            <li><a href="[% Env("Baselink") %][% Env("LastScreenOverview") %]">&larr; [% Translate("Back") | html %]</a></li>
+            <li><a class="cmt-back-link" href="[% Env("Baselink") %][% Env("LastScreenOverview") %]">[% Translate("Back") | html %]</a></li>
         </ul>
         <div class="Clear"></div>
     </div>
