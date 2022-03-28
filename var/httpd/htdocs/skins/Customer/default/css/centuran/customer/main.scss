@@ -104,7 +104,7 @@
     background-color: $navigation-background-color;
     border-radius: 0 0 4px 4px;
     box-shadow: $elevated-2-box-shadow;
-    font-size: 85%;
+    font-size: 87.5%;
     left: 0;
     margin-top: 2px;
     overflow: hidden;
@@ -112,7 +112,7 @@
   
     & > li {
       border-bottom: solid 1px #ddd;
-      line-height: initial;
+      line-height: 145%;
 
       &:last-child {
         border-bottom: none;
