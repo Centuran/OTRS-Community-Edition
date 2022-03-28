@@ -115,7 +115,15 @@
                 <div>
                     <input title="[% Translate("Date range") | html %]" type="radio" id="DateRange" name="TimeSearchType" value="TimeSlot" [% Data.item("TimeSearchType::TimeSlot") %] />
                     <label for="DateRange">[% Translate("Only tickets created between") | html %]</label>
-                    [% Data.TicketCreateTimeStart %] [% Translate("and") | html %] [% Data.TicketCreateTimeStop %]
+                    <div class="cmt-date-time-picker-container">
+                        [% Data.TicketCreateTimeStart %]
+                        <datetimepicker></datetimepicker>
+                    </div>
+                    [% Translate("and") | html %]
+                    <div class="cmt-date-time-picker-container">
+                        [% Data.TicketCreateTimeStop %]
+                        <datetimepicker></datetimepicker>
+                    </div>
                 </div>
             </fieldset>
 [% RenderBlockStart("SearchInArchive") %]
