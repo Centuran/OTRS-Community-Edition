@@ -199,6 +199,17 @@ my @NeededModules = (
         },
     },
     {
+        Module    => 'CSS::Minifier::XS',
+        Required  => 0,
+        Comment   => 'CSS::Minifier::XS - XS based CSS minifier, faster than pure Perl CSS::Minifier',
+        InstTypes => {
+            aptget => 'libcss-minifier-xs-perl',
+            emerge => 'dev-perl/CSS-Minifier-XS',
+            zypper => 'perl-CSS-Minifier-XS',
+            ports  => 'converters/p5-CSS-Minifier-XS',
+        },
+    },
+    {
         Module    => 'Date::Format',
         Required  => 1,
         InstTypes => {

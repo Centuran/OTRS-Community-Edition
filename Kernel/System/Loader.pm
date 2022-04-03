@@ -318,6 +318,26 @@ sub GetMinifiedFile {
     return $Result;
 }
 
+=head2 CSSMinifier()
+
+returns the name of the available CSS Minifier package.
+
+CSS::Minifier::XS is selected if it's present, otherwise CSS::Minifier.
+
+=cut
+
+sub CSSMinifier {
+    my ( $Self ) = @_;
+
+    $Self->{CSSMinifier} //= eval {
+        require CSS::Minifier::XS;
+        CSS::Minifier::XS->import();
+        'CSS::Minifier::XS';
+    } || 'CSS::Minifier';
+
+    return $Self->{CSSMinifier};
+}
+
 =head2 MinifyCSS()
 
 returns a minified version of the given CSS Code
@@ -341,9 +361,21 @@ sub MinifyCSS {
         return;
     }
 
-    my $Result = CSS::Minifier::minify( input => $Param{Code} );
+    my $Result;
 
-    # a few optimizations can be made for the minified CSS that CSS::Minifier doesn't yet do
+    if ( $Self->CSSMinifier eq 'CSS::Minifier::XS' ) {
+        # Strip the initial copyright comment as CSS::Minifier::XS
+        # will unnecessarily preserve it
+        $Param{Code} =~ s{^ /\* .*? [Cc]opyright .+? \n \*/ \n }{}sx;
+
+        $Result = CSS::Minifier::XS::minify( $Param{Code} );
+    }
+    else {
+        $Result = CSS::Minifier::minify( input => $Param{Code} );
+        
+        # a few optimizations can be made for the minified CSS
+        # that CSS::Minifier doesn't yet do
+    }
 
     # remove remaining linebreaks
     $Result =~ s/\r?\n\s*//smxg;

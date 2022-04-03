@@ -35,8 +35,13 @@ my $Home = $ConfigObject->Get('Home');
 
     $CSS = ${$CSS};
 
+    my $MinifiedCSSFile = 'OTRS.Reset.min.CSS-Minifier.css';
+    if ( $LoaderObject->CSSMinifier eq 'CSS::Minifier::XS' ) {
+        $MinifiedCSSFile = 'OTRS.Reset.min.CSS-Minifier-XS.css';
+    }
+
     my $ExpectedCSS = $MainObject->FileRead(
-        Location => $Home . '/scripts/test/sample/Loader/OTRS.Reset.min.css',
+        Location => $Home . '/scripts/test/sample/Loader/' . $MinifiedCSSFile,
     );
 
     $ExpectedCSS = ${$ExpectedCSS};
