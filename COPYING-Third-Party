@@ -159,14 +159,6 @@ o Name:    CPAN CSS::Minifier
   License: GNU v2 - http://www.gnu.org/licenses/gpl.html
   Note:    Copyright (C) 2007 by Peter Michaux
 
-o Name:    CPAN CSS::Minifier::XS
-  Web:     n/a
-  License: GNU v1 - http://dev.perl.org/licenses/gpl1.html
-           Artistic v1 - http://dev.perl.org/licenses/artistic.html
-  Note:    Copyright (C) 2007 by Graham TerMarsch
-           This is free software; you can redistribute it and/or modify it under
-           the same license as Perl itself.
-
 o Name:    CPAN JavaScript::Minifier
   Web:     n/a
   License: GNU v2 - http://www.gnu.org/licenses/gpl.html
