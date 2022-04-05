@@ -27,7 +27,7 @@ our @ObjectDependencies = (
     'Kernel::System::User',
 );
 
-use Kernel::System::VariableCheck qw(IsHashRefWithData);
+use Kernel::System::VariableCheck qw(:all);
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -885,18 +885,59 @@ sub _PDFOutputCustomerInfos {
         }
     }
 
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
+    my $DynamicFieldObject        = $Kernel::OM->Get('Kernel::System::DynamicField');
+    my $LayoutObject              = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
+    FIELD:
     for my $Field ( @{$Map} ) {
-        if ( ${$Field}[3] && $CustomerData{ ${$Field}[0] } ) {
-            $TableParam{CellData}[$Row][0]{Content} = $LayoutObject->{LanguageObject}->Translate( ${$Field}[1] ) . ':';
-            $TableParam{CellData}[$Row][0]{Font}    = 'ProportionalBold';
-            $TableParam{CellData}[$Row][1]{Content} = $CustomerData{ ${$Field}[0] };
+        next FIELD if !defined $CustomerData{$Field->[0]};
+        next FIELD if !length $CustomerData{$Field->[0]};
+        next FIELD if !$Field->[3]; # Field is not visible
 
-            $Row++;
-            $Output = 1;
+        my $Label = $LayoutObject->{LanguageObject}->Translate( $Field->[1] ) . ':';
+        my $Value = $CustomerData{$Field->[0]};
+
+        if ( $Field->[5] eq 'dynamic_field' ) {
+            next FIELD if $Field->[0] !~ m/^ DynamicField_ (.*) $/x;
+
+            my $DFName   = $1;
+            my $DFConfig = $DynamicFieldObject->DynamicFieldGet(
+                Name => $DFName,
+            );
+            next FIELD if !IsHashRefWithData($DFConfig);
+            
+            my $Values = IsArrayRefWithData($Value) ? $Value : [ $Value ];
+
+            my @RenderedValues;
+            
+            VALUE:
+            for my $Value ( @$Values ) {
+                my $RenderedValue = $DynamicFieldBackendObject->DisplayValueRender(
+                    DynamicFieldConfig => $DFConfig,
+                    Value              => $_,
+                    HTMLOutput         => 0,
+                    LayoutObject       => $LayoutObject,
+                );
+
+                next VALUE if !IsHashRefWithData($RenderedValue);
+                next VALUE if !defined $RenderedValue->{Value};
+
+                push @RenderedValues, $RenderedValue->{Value};
+            }
+
+            $Value = join ', ', @RenderedValues;
+            $Label = $DFConfig->{Label};
         }
+
+        $TableParam{CellData}[$Row][0]{Font}    = 'ProportionalBold';
+        $TableParam{CellData}[$Row][0]{Content} = $Label;
+        $TableParam{CellData}[$Row][1]{Content} = $Value;
+
+        $Row++;
+        $Output = 1;
     }
+
     $TableParam{ColumnData}[0]{Width} = 80;
     $TableParam{ColumnData}[1]{Width} = 431;
 
