@@ -270,6 +270,13 @@ sub GetUploadAll {
     $NewFileName =~ s/.:\\(.*)/$1/g;
     $NewFileName =~ s/.*\\(.+?)/$1/g;
 
+    # Strip leading and trailing spaces from the file name
+    $Kernel::OM->Get('Kernel::System::CheckItem')->StringClean(
+        StringRef => \$NewFileName,
+        TrimLeft  => 1,
+        TrimRight => 1,
+    );
+
     # return a string
     my $Content = '';
     while (<$Upload>) {
