@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.373458904109589;
+    $Self->{Completeness}        = 0.37324426173347;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -4390,9 +4390,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => 'Inga %s!',
-        'No such user!' => 'Okänd användare!',
         'Invalid calendar!' => 'Ogiltig kalender!',
-        'Invalid URL!' => 'Ogiltig URL!',
         'There was an error exporting the calendar!' => 'Kalendern kunde inte exporteras!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm

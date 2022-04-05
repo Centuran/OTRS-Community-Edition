@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.7625;
+    $Self->{Completeness}        = 0.762418636519356;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -4396,9 +4396,7 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '%sがありません！',
-        'No such user!' => 'そのようなユーザーはありません！',
         'Invalid calendar!' => '無効なカレンダー',
-        'Invalid URL!' => '無効なURL',
         'There was an error exporting the calendar!' => 'カレンダーのエクスポート中にエラーが発生しました。',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm

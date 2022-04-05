@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.999486301369863;
+    $Self->{Completeness}        = 0.999486125385406;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -4393,9 +4393,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => 'Nincs %s!',
-        'No such user!' => 'Nincs ilyen felhasználó!',
         'Invalid calendar!' => 'Érvénytelen naptár!',
-        'Invalid URL!' => 'Érvénytelen URL!',
         'There was an error exporting the calendar!' => 'Hiba történt a naptár exportálásakor!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm

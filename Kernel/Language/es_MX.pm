@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.803424657534247;
+    $Self->{Completeness}        = 0.803357314148681;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -4389,9 +4389,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => 'No se tiene %s!',
-        'No such user!' => 'No existe el usuario!',
         'Invalid calendar!' => 'Calendario inválido',
-        'Invalid URL!' => 'URL inválido!',
         'There was an error exporting the calendar!' => 'Se produjo un error al exportar el calendario!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -5831,7 +5829,7 @@ Thanks for your help!
 ' => '
 Estimado Cliente,
 
-Desafortunadamente no hemos podido detectar un número de ticket válido en su consulta,
+Desafortunadamente no hemos podido detectar un número de ticket válido en su consulta, 
 por lo que este email no puede ser procesado.
 
 Por favor creé un nuevo ticket a través del panel de cliente.

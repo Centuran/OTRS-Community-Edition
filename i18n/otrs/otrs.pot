@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-03-24 20:44+0000\n"
+"POT-Creation-Date: 2022-04-05 04:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12671,15 +12671,7 @@ msgid "No %s!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/PublicCalendar.pm
-msgid "No such user!"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/PublicCalendar.pm
 msgid "Invalid calendar!"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/PublicCalendar.pm
-msgid "Invalid URL!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/PublicCalendar.pm
