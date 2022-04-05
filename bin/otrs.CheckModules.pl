@@ -355,6 +355,17 @@ my @NeededModules = (
         },
     },
     {
+        Module    => 'JavaScript::Minifier::XS',
+        Required  => 0,
+        Comment   => 'JavaScript::Minifier::XS - XS based JavaScript minifier, faster than pure Perl JavaScript::Minifier',
+        InstTypes => {
+            aptget => 'libjavascript-minifier-xs-perl',
+            emerge => 'dev-perl/JavaScript-Minifier-XS',
+            zypper => 'perl-JavaScript-Minifier-XS',
+            ports  => 'converters/p5-JavaScript-Minifier-XS',
+        },
+    },
+    {
         Module   => 'List::Util::XS',
         Required => 1,
         Comment =>
