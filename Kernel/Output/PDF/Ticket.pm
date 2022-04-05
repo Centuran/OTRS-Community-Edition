@@ -21,11 +21,10 @@ our @ObjectDependencies = (
     'Kernel::System::DynamicField::Backend',
     'Kernel::System::LinkObject',
     'Kernel::System::Log',
-    'Kernel::System::JSON',
     'Kernel::System::PDF',
-    'Kernel::System::User',
     'Kernel::System::Ticket',
     'Kernel::System::Ticket::Article',
+    'Kernel::System::User',
 );
 
 use Kernel::System::VariableCheck qw(IsHashRefWithData);
