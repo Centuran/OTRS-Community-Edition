@@ -1,3 +1,10 @@
+# 6.0.35 YYYY-MM-DD
+ - Implemented bug fixes and changes present in Znuny version 6.0.33  
+   (thanks to Znuny GmbH and contributors)
+
+# 6.0.34 YYYY-MM-DD - Security release
+...
+
 # 6.0.33 2021-11-20 - Security release
  - Fixed a Denial of Service issue in PostMaster filters
    (thanks to OTRS AG and Alberto Molina -- security advisory: [OSA-2021-16](https://otrs.com/release-notes/otrs-security-advisory-2021-16/))
