@@ -363,8 +363,8 @@ sub Check {
 
                 my @Email = ();
                 my @Lines = split( /\n/, $SignCheck{Content} );
-                for (@Lines) {
-                    push( @Email, $_ . "\n" );
+                for my $Line (@Lines) {
+                    push( @Email, $Line . "\n" );
                 }
                 my $ParserObject = Kernel::System::EmailParser->new(
                     Email => \@Email,

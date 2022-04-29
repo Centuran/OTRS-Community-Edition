@@ -2080,23 +2080,23 @@ sub _TimeOutput {
             $TimeConfig{ $Element . 'StopMinute' }  = 59;
             $TimeConfig{ $Element . 'StopSecond' }  = 59;
 
-            for (qw(Start Stop)) {
-                $TimeConfig{Prefix} = $Element . $_;
+            for my $Type (qw(Start Stop)) {
+                $TimeConfig{Prefix} = $Element . $Type;
 
                 # time setting if available
                 if (
-                    $Param{ 'Time' . $_ }
-                    && $Param{ 'Time' . $_ } =~ m{^(\d\d\d\d)-(\d\d)-(\d\d)\s(\d\d):(\d\d):(\d\d)$}xi
+                    $Param{ 'Time' . $Type }
+                    && $Param{ 'Time' . $Type } =~ m{^(\d\d\d\d)-(\d\d)-(\d\d)\s(\d\d):(\d\d):(\d\d)$}xi
                     )
                 {
-                    $TimeConfig{ $Element . $_ . 'Year' }   = $1;
-                    $TimeConfig{ $Element . $_ . 'Month' }  = $2;
-                    $TimeConfig{ $Element . $_ . 'Day' }    = $3;
-                    $TimeConfig{ $Element . $_ . 'Hour' }   = $4;
-                    $TimeConfig{ $Element . $_ . 'Minute' } = $5;
-                    $TimeConfig{ $Element . $_ . 'Second' } = $6;
+                    $TimeConfig{ $Element . $Type . 'Year' }   = $1;
+                    $TimeConfig{ $Element . $Type . 'Month' }  = $2;
+                    $TimeConfig{ $Element . $Type . 'Day' }    = $3;
+                    $TimeConfig{ $Element . $Type . 'Hour' }   = $4;
+                    $TimeConfig{ $Element . $Type . 'Minute' } = $5;
+                    $TimeConfig{ $Element . $Type . 'Second' } = $6;
                 }
-                $TimeOutput{ 'Time' . $_ } = $LayoutObject->BuildDateSelection(%TimeConfig);
+                $TimeOutput{ 'Time' . $Type } = $LayoutObject->BuildDateSelection(%TimeConfig);
             }
         }
 
@@ -2402,10 +2402,10 @@ sub _GetSelectedXAxisTimeScaleValue {
 
     my $SelectedXAxisTimeScaleValue;
 
-    for ( @{ $Param{Stat}->{UseAsXvalue} } ) {
+    for my $Item ( @{ $Param{Stat}->{UseAsXvalue} } ) {
 
-        if ( $_->{Selected} && $_->{Block} eq 'Time' ) {
-            $SelectedXAxisTimeScaleValue = $_->{SelectedValues}[0];
+        if ( $Item->{Selected} && $Item->{Block} eq 'Time' ) {
+            $SelectedXAxisTimeScaleValue = $Item->{SelectedValues}[0];
         }
     }
 

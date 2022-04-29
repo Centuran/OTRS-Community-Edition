@@ -159,14 +159,14 @@ sub Run {
     my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
 
     my %GetParam;
-    for (
+    for my $Name (
         qw(
         From To Cc Bcc Subject Body InReplyTo References ArticleID
         IsVisibleForCustomerPresent IsVisibleForCustomer TimeUnits FormID
         )
         )
     {
-        $GetParam{$_} = $ParamObject->GetParam( Param => $_ );
+        $GetParam{$Name} = $ParamObject->GetParam( Param => $Name );
     }
 
     if ( !$GetParam{ArticleID} ) {

@@ -70,11 +70,11 @@ sub StateAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name ValidID TypeID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name ValidID TypeID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -248,11 +248,11 @@ sub StateUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ID Name ValidID TypeID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(ID Name ValidID TypeID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

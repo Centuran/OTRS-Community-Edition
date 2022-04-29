@@ -604,11 +604,11 @@ sub _CreateTimeSettings {
         # do nothing on time stuff
     }
     elsif ( $GetParam{ChangeTimeSearchType} eq 'TimeSlot' ) {
-        for (qw(Month Day)) {
-            $GetParam{"TicketChangeTimeStart$_"} = sprintf( "%02d", $GetParam{"TicketChangeTimeStart$_"} );
+        for my $Item (qw(Month Day)) {
+            $GetParam{"TicketChangeTimeStart$Item"} = sprintf( "%02d", $GetParam{"TicketChangeTimeStart$Item"} );
         }
-        for (qw(Month Day)) {
-            $GetParam{"TicketChangeTimeStop$_"} = sprintf( "%02d", $GetParam{"TicketChangeTimeStop$_"} );
+        for my $Item (qw(Month Day)) {
+            $GetParam{"TicketChangeTimeStop$Item"} = sprintf( "%02d", $GetParam{"TicketChangeTimeStop$Item"} );
         }
         if (
             $GetParam{TicketChangeTimeStartDay}
@@ -674,11 +674,11 @@ sub _CreateTimeSettings {
         # do nothing on time stuff
     }
     elsif ( $GetParam{LastChangeTimeSearchType} eq 'TimeSlot' ) {
-        for (qw(Month Day)) {
-            $GetParam{"TicketLastChangeTimeStart$_"} = sprintf( "%02d", $GetParam{"TicketLastChangeTimeStart$_"} );
+        for my $Item (qw(Month Day)) {
+            $GetParam{"TicketLastChangeTimeStart$Item"} = sprintf( "%02d", $GetParam{"TicketLastChangeTimeStart$Item"} );
         }
-        for (qw(Month Day)) {
-            $GetParam{"TicketLastChangeTimeStop$_"} = sprintf( "%02d", $GetParam{"TicketLastChangeTimeStop$_"} );
+        for my $Item (qw(Month Day)) {
+            $GetParam{"TicketLastChangeTimeStop$Item"} = sprintf( "%02d", $GetParam{"TicketLastChangeTimeStop$Item"} );
         }
         if (
             $GetParam{TicketLastChangeTimeStartDay}
@@ -744,11 +744,11 @@ sub _CreateTimeSettings {
         # do nothing on time stuff
     }
     elsif ( $GetParam{CloseTimeSearchType} eq 'TimeSlot' ) {
-        for (qw(Month Day)) {
-            $GetParam{"TicketCloseTimeStart$_"} = sprintf( "%02d", $GetParam{"TicketCloseTimeStart$_"} );
+        for my $Item (qw(Month Day)) {
+            $GetParam{"TicketCloseTimeStart$Item"} = sprintf( "%02d", $GetParam{"TicketCloseTimeStart$Item"} );
         }
-        for (qw(Month Day)) {
-            $GetParam{"TicketCloseTimeStop$_"} = sprintf( "%02d", $GetParam{"TicketCloseTimeStop$_"} );
+        for my $Item (qw(Month Day)) {
+            $GetParam{"TicketCloseTimeStop$Item"} = sprintf( "%02d", $GetParam{"TicketCloseTimeStop$Item"} );
         }
         if (
             $GetParam{TicketCloseTimeStartDay}
@@ -811,8 +811,8 @@ sub _CreateTimeSettings {
     # prepare full text search
     if ( $GetParam{Fulltext} ) {
         $GetParam{ContentSearch} = 'OR';
-        for (qw(From To Cc Subject Body)) {
-            $GetParam{$_} = $GetParam{Fulltext};
+        for my $Field (qw(From To Cc Subject Body)) {
+            $GetParam{$Field} = $GetParam{Fulltext};
         }
     }
 

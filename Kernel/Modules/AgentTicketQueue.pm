@@ -589,12 +589,12 @@ sub _MaskQueueView {
 
         # move to short queue names
         my $QueueName = '';
-        for ( 0 .. $#Queue ) {
+        for my $Index ( 0 .. $#Queue ) {
             if ( !$QueueName ) {
-                $QueueName .= $Queue[$_];
+                $QueueName .= $Queue[$Index];
             }
             else {
-                $QueueName .= '::' . $Queue[$_];
+                $QueueName .= '::' . $Queue[$Index];
             }
             if ( !exists $Counter{$QueueName} ) {
                 $Counter{$QueueName} = 0;    # init
@@ -616,9 +616,9 @@ sub _MaskQueueView {
                 $Hash{Queue} = $QueueName;
                 $Hash{Count} = $Counter{$QueueName};
                 $Hash{Total} = $Total;
-                for ( sort keys %AllQueues ) {
-                    if ( $AllQueues{$_} eq $QueueName ) {
-                        $Hash{QueueID} = $_;
+                for my $QueueID ( sort keys %AllQueues ) {
+                    if ( $AllQueues{$QueueID} eq $QueueName ) {
+                        $Hash{QueueID} = $QueueID;
                     }
                 }
                 $Hash{MaxAge} = 0;

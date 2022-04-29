@@ -157,9 +157,9 @@ sub new {
 
         return $Text if !@Parameters;
 
-        for ( 0 .. $#Parameters ) {
-            return $Text if !defined $Parameters[$_];
-            $Text =~ s/%(s|d)/$Parameters[$_]/;
+        for my $Number ( 0 .. $#Parameters ) {
+            return $Text if !defined $Parameters[$Number];
+            $Text =~ s/%(s|d)/$Parameters[$Number]/;
         }
 
         return $Text;

@@ -688,7 +688,7 @@ sub AgentPreferencesForm {
         if ( $Data{ $Preferences{$Group}->{Prio} } ) {
 
             COUNT:
-            for ( 1 .. 151 ) {
+            for my $Value ( 1 .. 151 ) {
 
                 $Preferences{$Group}->{Prio}++;
 

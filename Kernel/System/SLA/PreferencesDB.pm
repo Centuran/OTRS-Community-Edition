@@ -49,11 +49,11 @@ sub SLAPreferencesSet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(SLAID Key Value)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(SLAID Key Value)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -89,11 +89,11 @@ sub SLAPreferencesGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(SLAID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(SLAID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

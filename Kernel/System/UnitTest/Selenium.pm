@@ -375,11 +375,11 @@ sub Login {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Type User Password)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Type User Password)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }

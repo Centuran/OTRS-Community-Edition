@@ -2061,9 +2061,9 @@ sub Get {
 sub Set {
     my ( $Self, %Param ) = @_;
 
-    for (qw(Key)) {
-        if ( !defined $Param{$_} ) {
-            $Param{$_} = '';
+    for my $Name (qw(Key)) {
+        if ( !defined $Param{$Name} ) {
+            $Param{$Name} = '';
         }
     }
 

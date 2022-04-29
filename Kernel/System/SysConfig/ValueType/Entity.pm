@@ -85,11 +85,11 @@ Result:
 sub SettingEffectiveValueCheck {
     my ( $Self, %Param ) = @_;
 
-    for (qw(XMLContentParsed)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(XMLContentParsed)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

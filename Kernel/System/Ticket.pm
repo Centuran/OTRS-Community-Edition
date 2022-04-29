@@ -332,7 +332,7 @@ sub TicketCheckNumber {
     my $Limit = 10;
     my $Count = 1;
     MERGELOOP:
-    for ( 1 .. $Limit ) {
+    for my $Level ( 1 .. $Limit ) {
         my %Ticket = $Self->TicketGet(
             TicketID      => $TicketID,
             DynamicFields => 0,

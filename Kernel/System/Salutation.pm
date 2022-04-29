@@ -69,11 +69,11 @@ sub SalutationAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name Text ValidID UserID ContentType)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name Text ValidID UserID ContentType)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -208,11 +208,11 @@ sub SalutationUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ID Name Text ContentType ValidID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(ID Name Text ContentType ValidID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }

@@ -47,14 +47,14 @@ sub Run {
             Counter => 2,
         },
     );
-    for ( 1 .. 2 ) {
+    for my $Counter ( 1 .. 2 ) {
 
         # fist block
         $LayoutObject->Block(
             Name => 'System',
             Data => {
                 Type    => 'System',
-                Counter => $_,
+                Counter => $Counter,
             },
         );
 
@@ -63,7 +63,7 @@ sub Run {
             Name => 'User',
             Data => {
                 Type    => 'User',
-                Counter => $_,
+                Counter => $Counter,
             },
         );
 
@@ -72,28 +72,28 @@ sub Run {
             Name => 'UserID',
             Data => {
                 Type    => 'UserID',
-                Counter => $_,
+                Counter => $Counter,
             },
         );
 
-        # just if $_ > 1
-        if ( $_ > 1 ) {
+        # just if $Counter > 1
+        if ( $Counter > 1 ) {
             $LayoutObject->Block(
                 Name => 'UserID',
                 Data => {
                     Type    => 'UserID',
-                    Counter => $_,
+                    Counter => $Counter,
                 },
             );
         }
 
         # add this block 3 times
-        for ( 4 .. 6 ) {
+        for my $SubCounter ( 4 .. 6 ) {
             $LayoutObject->Block(
                 Name => 'UserIDA',
                 Data => {
                     Type    => 'UserIDA',
-                    Counter => $_,
+                    Counter => $SubCounter,
                 },
             );
         }

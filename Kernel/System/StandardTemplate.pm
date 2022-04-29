@@ -66,11 +66,11 @@ sub StandardTemplateAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name ValidID Template ContentType UserID TemplateType)) {
-        if ( !defined( $Param{$_} ) ) {
+    for my $Name (qw(Name ValidID Template ContentType UserID TemplateType)) {
+        if ( !defined( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -260,11 +260,11 @@ sub StandardTemplateUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ID Name ValidID TemplateType ContentType UserID TemplateType)) {
-        if ( !defined( $Param{$_} ) ) {
+    for my $Name (qw(ID Name ValidID TemplateType ContentType UserID TemplateType)) {
+        if ( !defined( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

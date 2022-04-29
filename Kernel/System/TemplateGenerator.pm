@@ -89,11 +89,11 @@ sub Salutation {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TicketID Data UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TicketID Data UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -186,11 +186,11 @@ sub Signature {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Data UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Data UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -291,11 +291,11 @@ sub Sender {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw( UserID QueueID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw( UserID QueueID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -375,11 +375,11 @@ sub Template {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TemplateID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TemplateID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -504,11 +504,11 @@ sub GenericAgentArticle {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TicketID Notification UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TicketID Notification UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -609,11 +609,11 @@ sub Attributes {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TicketID Data UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TicketID Data UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -678,11 +678,11 @@ sub AutoResponse {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TicketID AutoResponseType OrigHeader UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TicketID AutoResponseType OrigHeader UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -724,11 +724,11 @@ sub AutoResponse {
     if (@ArticleList) {
         my %Article = $ArticleObject->BackendForArticle( %{ $ArticleList[0] } )->ArticleGet( %{ $ArticleList[0] } );
 
-        for (qw(From To Cc Subject Body)) {
-            if ( !$Param{OrigHeader}->{$_} ) {
-                $Param{OrigHeader}->{$_} = $Article{$_} || '';
+        for my $Field (qw(From To Cc Subject Body)) {
+            if ( !$Param{OrigHeader}->{$Field} ) {
+                $Param{OrigHeader}->{$Field} = $Article{$Field} || '';
             }
-            chomp $Param{OrigHeader}->{$_};
+            chomp $Param{OrigHeader}->{$Field};
         }
     }
 
@@ -753,9 +753,9 @@ sub AutoResponse {
     }
 
     # fill up required attributes
-    for (qw(Subject Body)) {
-        if ( !$Param{OrigHeader}->{$_} ) {
-            $Param{OrigHeader}->{$_} = "No $_";
+    for my $Field (qw(Subject Body)) {
+        if ( !$Param{OrigHeader}->{$Field} ) {
+            $Param{OrigHeader}->{$Field} = "No $Field";
         }
     }
 
@@ -1166,11 +1166,11 @@ sub _Replace {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Text RichText Data UserID)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Text RichText Data UserID)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -1822,7 +1822,7 @@ sub _Replace {
                 if ( $Param{RichText} && $NewOldBody ) {
 
                     # remove trailing new lines
-                    for ( 1 .. 10 ) {
+                    for my $Iteration ( 1 .. 10 ) {
                         $NewOldBody =~ s/(<br\/>)\s{0,20}$//gs;
                     }
 

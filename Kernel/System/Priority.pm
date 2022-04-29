@@ -130,11 +130,11 @@ sub PriorityGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(PriorityID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(PriorityID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -196,11 +196,11 @@ sub PriorityAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name ValidID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name ValidID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -257,11 +257,11 @@ sub PriorityUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(PriorityID Name ValidID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(PriorityID Name ValidID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

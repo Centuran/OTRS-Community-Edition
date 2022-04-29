@@ -201,19 +201,19 @@ sub Send {
     );
 
     # check needed stuff
-    for (qw(Header Body ToArray)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Header Body ToArray)) {
+        if ( !$Param{$Name} ) {
 
             $Param{CommunicationLogObject}->ObjectLog(
                 ObjectLogType => 'Message',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::Email::SMTP',
-                Value         => "Need $_!",
+                Value         => "Need $Name!",
             );
 
             return $Self->_SendError(
                 %Param,
-                ErrorMessage => "Need $_!",
+                ErrorMessage => "Need $Name!",
             );
         }
     }
@@ -386,11 +386,11 @@ sub _Connect {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(MailHost FQDN)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(MailHost FQDN)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }

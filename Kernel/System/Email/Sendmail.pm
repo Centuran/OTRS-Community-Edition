@@ -45,9 +45,9 @@ sub Send {
     );
 
     # check needed stuff
-    for (qw(Header Body ToArray)) {
-        if ( !$Param{$_} ) {
-            my $ErrorMsg = "Need $_!";
+    for my $Name (qw(Header Body ToArray)) {
+        if ( !$Param{$Name} ) {
+            my $ErrorMsg = "Need $Name!";
 
             $Param{CommunicationLogObject}->ObjectLog(
                 ObjectLogType => 'Message',

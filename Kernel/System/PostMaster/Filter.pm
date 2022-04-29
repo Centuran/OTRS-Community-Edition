@@ -107,11 +107,11 @@ sub FilterAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name StopAfterMatch Match Set)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Name StopAfterMatch Match Set)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -157,11 +157,11 @@ sub FilterDelete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Name)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -192,11 +192,11 @@ sub FilterGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Name)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

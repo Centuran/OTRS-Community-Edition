@@ -98,9 +98,9 @@ sub Run {
     # find viewer for ContentType
     my $Viewer = '';
     if ( $Viewers && $ConfigObject->Get('MIME-Viewer') ) {
-        for ( sort keys %{ $ConfigObject->Get('MIME-Viewer') } ) {
-            if ( $Data{ContentType} =~ /^$_/i ) {
-                $Viewer = $ConfigObject->Get('MIME-Viewer')->{$_};
+        for my $Type ( sort keys %{ $ConfigObject->Get('MIME-Viewer') } ) {
+            if ( $Data{ContentType} =~ /^$Type/i ) {
+                $Viewer = $ConfigObject->Get('MIME-Viewer')->{$Type};
                 $Viewer =~ s/\<OTRS_CONFIG_(.+?)\>/$ConfigObject->{$1}/g;
             }
         }

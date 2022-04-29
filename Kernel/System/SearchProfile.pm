@@ -73,11 +73,11 @@ sub SearchProfileAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Base Name Key UserLogin)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Base Name Key UserLogin)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -146,11 +146,11 @@ sub SearchProfileGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Base Name UserLogin)) {
-        if ( !defined( $Param{$_} ) ) {
+    for my $Name (qw(Base Name UserLogin)) {
+        if ( !defined( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -216,11 +216,11 @@ sub SearchProfileDelete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Base Name UserLogin)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Base Name UserLogin)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -272,11 +272,11 @@ sub SearchProfileList {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Base UserLogin)) {
-        if ( !defined( $Param{$_} ) ) {
+    for my $Name (qw(Base UserLogin)) {
+        if ( !defined( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -336,11 +336,11 @@ sub SearchProfileUpdateUserLogin {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Base UserLogin NewUserLogin)) {
-        if ( !defined( $Param{$_} ) ) {
+    for my $Name (qw(Base UserLogin NewUserLogin)) {
+        if ( !defined( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }

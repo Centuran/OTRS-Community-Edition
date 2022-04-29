@@ -32,11 +32,11 @@ sub Run {
     return if !$ConfigObject->Get('Ticket::Responsible');
 
     # check needed stuff
-    for (qw(Config)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Config)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

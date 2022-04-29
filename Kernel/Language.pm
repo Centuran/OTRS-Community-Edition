@@ -267,9 +267,9 @@ sub Translate {
 
     return $Text if !@Parameters;
 
-    for ( 0 .. $#Parameters ) {
-        return $Text if !defined $Parameters[$_];
-        $Text =~ s/\%(s|d)/$Parameters[$_]/;
+    for my $Index ( 0 .. $#Parameters ) {
+        return $Text if !defined $Parameters[$Index];
+        $Text =~ s/\%(s|d)/$Parameters[$Index]/;
     }
 
     return $Text;
@@ -461,11 +461,11 @@ sub Time {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Action Format)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Action Format)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }

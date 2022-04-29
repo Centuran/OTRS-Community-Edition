@@ -192,12 +192,12 @@ sub Run {
 
         # if there are any queues, they are shown
         if (%QueueData) {
-            for ( sort { $QueueData{$a} cmp $QueueData{$b} } keys %QueueData ) {
+            for my $QueueID ( sort { $QueueData{$a} cmp $QueueData{$b} } keys %QueueData ) {
                 $LayoutObject->Block(
                     Name => 'Item',
                     Data => {
-                        Queue   => $QueueData{$_},
-                        QueueID => $_,
+                        Queue   => $QueueData{$QueueID},
+                        QueueID => $QueueID,
                         %QueueData,
                         %Param,
                     },

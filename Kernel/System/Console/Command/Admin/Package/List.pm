@@ -309,9 +309,9 @@ sub _PackageContentGet {
                 %List,
                 $Kernel::OM->Get('Kernel::System::Package')->PackageOnlineRepositories()
             );
-            for ( sort keys %List ) {
-                if ( $List{$_} =~ /^\[-Master-\]/ ) {
-                    $URL = $_;
+            for my $Repository ( sort keys %List ) {
+                if ( $List{$Repository} =~ /^\[-Master-\]/ ) {
+                    $URL = $Repository;
                 }
             }
         }

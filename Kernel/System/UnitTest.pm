@@ -156,7 +156,7 @@ sub Run {
             $File = $CustomFile;
         }
 
-        for ( 1 .. $NumberOfTestRuns ) {
+        for my $TestRun ( 1 .. $NumberOfTestRuns ) {
             $Self->_HandleFile(
                 PostTestScripts => $Param{PostTestScripts},
                 File            => $File,

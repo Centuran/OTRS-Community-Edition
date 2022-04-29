@@ -49,11 +49,11 @@ sub ServicePreferencesSet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ServiceID Key Value)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(ServiceID Key Value)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -89,11 +89,11 @@ sub ServicePreferencesGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ServiceID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(ServiceID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

@@ -26,11 +26,11 @@ sub Connect {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Login Password Host Timeout Debug)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Login Password Host Timeout Debug)) {
+        if ( !defined $Param{$Name} ) {
             return (
                 Successful => 0,
-                Message    => "Need $_!",
+                Message    => "Need $Name!",
             );
         }
     }

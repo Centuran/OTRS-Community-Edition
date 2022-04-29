@@ -43,13 +43,13 @@ sub Run {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TicketID InmailUserID GetParam Tn AutoResponseType)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TicketID InmailUserID GetParam Tn AutoResponseType)) {
+        if ( !$Param{$Name} ) {
             $Self->{CommunicationLogObject}->ObjectLog(
                 ObjectLogType => 'Message',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::PostMaster::FollowUp',
-                Value         => "Need $_!",
+                Value         => "Need $Name!",
             );
             return;
         }

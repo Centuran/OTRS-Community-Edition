@@ -303,7 +303,7 @@ if ( defined $Opts{r} ) {
         $SystemDTObject->Add( Hours => 2 );
     }
 
-    for ( 0 .. $Opts{r} ) {
+    for my $Number ( 0 .. $Opts{r} ) {
 
         # legacy, old directories could be in the format 2013-4-8
         my @LegacyDirFormats = (
