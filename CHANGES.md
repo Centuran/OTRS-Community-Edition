@@ -1,6 +1,8 @@
 # 6.0.35 YYYY-MM-DD
  - Implemented bug fixes and changes present in Znuny version 6.0.33  
    (thanks to Znuny GmbH and contributors)
+ - Implemented bug fixes and changes present in Znuny version 6.0.34
+   (thanks to Znuny GmbH and contributors)
 
 # 6.0.34 YYYY-MM-DD - Security release
 ...
