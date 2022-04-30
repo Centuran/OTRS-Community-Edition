@@ -1676,13 +1676,7 @@ sub _TicketUpdate {
         my $StateObject = $Kernel::OM->Get('Kernel::System::State');
 
         if ( $Ticket->{StateID} ) {
-            $StateID = $Ticket->{StateID};
-        }
-        else {
-            $StateID = $StateObject->StateLookup(
-                State => $Ticket->{State},
-            );
-        }
+            $StateID = $Ticket->{StateID};ContentTy
 
         %StateData = $StateObject->StateGet(
             ID => $StateID,
@@ -2092,7 +2086,11 @@ sub _TicketUpdate {
 
         # Convert article body to plain text, if HTML content was supplied. This is necessary since auto response code
         #   expects plain text content. Please see bug#13397 for more information.
-        if ( $Article->{ContentType} =~ /text\/html/i || $Article->{MimeType} =~ /text\/html/i ) {
+        if (
+            ($Article->{ContentType} && $Article->{ContentType} =~ /text\/html/i)
+            || ($Article->{MimeType} && $Article->{MimeType} =~ /text\/html/i)
+            )
+        {
             $PlainBody = $Kernel::OM->Get('Kernel::System::HTMLUtils')->ToAscii(
                 String => $Article->{Body},
             );
