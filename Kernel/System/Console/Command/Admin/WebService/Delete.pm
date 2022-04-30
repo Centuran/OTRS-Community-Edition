@@ -36,7 +36,7 @@ sub Configure {
 sub PreRun {
     my ( $Self, %Param ) = @_;
 
-    my $WebServiceList = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceList();
+    my $WebServiceList = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceList( Valid => 0 );
 
     my $WebServiceID = $Self->GetOption('webservice-id');
     if ( !$WebServiceList->{$WebServiceID} ) {
@@ -54,10 +54,9 @@ sub Run {
     # get current web service
     my $WebServiceID = $Self->GetOption('webservice-id');
 
-    my $WebService =
-        $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceGet(
+    my $WebService = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceGet(
         ID => $WebServiceID,
-        );
+    );
 
     if ( !$WebService ) {
         $Self->PrintError("Could not get a web service with the ID $WebServiceID from the database!");
