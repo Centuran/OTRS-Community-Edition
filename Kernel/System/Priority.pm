@@ -55,11 +55,21 @@ sub new {
 
 =head2 PriorityList()
 
-return a priority list as hash
+get a hash of existing priorities, mapping IDs to names
 
-    my %List = $PriorityObject->PriorityList(
-        Valid => 0,
+    my %Priorities = $PriorityObject->PriorityList(
+        Valid => 0, # optional 1|0, defaults to 1
     );
+
+returns:
+
+    %Priorities = (
+        1 => '1 very low',
+        2 => '2 low',
+        3 => '3 normal',
+        4 => '4 high',
+        5 => '5 very high'
+    )
 
 =cut
 
@@ -117,12 +127,24 @@ sub PriorityList {
 
 =head2 PriorityGet()
 
-get a priority
+get the attributes of a priority
 
-    my %List = $PriorityObject->PriorityGet(
-        PriorityID => 123,
+    my %Priority = $PriorityObject->PriorityGet(
+        PriorityID => 2,
         UserID     => 1,
     );
+
+returns:
+
+    %Priority = (
+        ID          => '2',
+        Name        => '2 low',
+        ValidID     => '1',
+        CreateTime  => '2022-02-01 12:34:56',
+        CreateBy    => '12',
+        ChangeTime  => '2022-03-01 23:45:01',
+        ChangeBy    => '34',
+    )
 
 =cut
 
