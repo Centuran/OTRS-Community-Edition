@@ -219,6 +219,10 @@ sub _TasksGet {
             Module  => 'DatabaseBackupCheck',
         },
         {
+            Message => 'Disable GenericAgent system command jobs',
+            Module  => 'DisableGenericAgentSystemCommandJobs',
+        },
+        {
             Message => 'Upgrade database structure',
             Module  => 'UpgradeDatabaseStructure',
         },
