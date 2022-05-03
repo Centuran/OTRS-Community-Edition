@@ -3,6 +3,8 @@
    (thanks to Rayhan Ahmed, Maxime Brigaudeau, OTRS AG and Znuny GmbH)
  - Fixed the security issue described in Znuny security advisory [ZSA-2021-08](https://www.znuny.org/en/advisories/zsa-2021-08)  
    (thanks to Julian Droste and Znuny GmbH)
+ - Fixed the security issue described in Znuny security advisory [ZSA-2021-11](https://www.znuny.org/en/advisories/zsa-2021-08)  
+   (thanks to Stefan Härter and Znuny GmbH)
 
 # 6.0.33 2021-11-20 - Security release
  - Fixed a Denial of Service issue in PostMaster filters
