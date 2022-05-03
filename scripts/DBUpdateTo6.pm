@@ -219,6 +219,10 @@ sub _TasksGet {
             Module  => 'DatabaseBackupCheck',
         },
         {
+            Message => 'Disable PostMaster pre-filters that run system commands',
+            Module  => 'DisableSystemCommandPostMasterPreFilters',
+        },
+        {
             Message => 'Disable GenericAgent system command jobs',
             Module  => 'DisableGenericAgentSystemCommandJobs',
         },
