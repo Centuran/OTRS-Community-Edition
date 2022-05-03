@@ -223,6 +223,10 @@ sub _TasksGet {
             Module  => 'DisableGenericAgentSystemCommandJobs',
         },
         {
+            Message => 'Disable dashboard widgets that run system commands',
+            Module  => 'DisableSystemCommandDashboardWidgets',
+        },
+        {
             Message => 'Upgrade database structure',
             Module  => 'UpgradeDatabaseStructure',
         },
