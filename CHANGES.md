@@ -1,4 +1,4 @@
-# 6.0.34 YYYY-MM-DD - Security release
+# 6.0.34 2022-05-05 - Security release
  - Fixed the security issue described in OTRS AG security advisory [OSA-2022-03](https://otrs.com/release-notes/otrs-security-advisory-2022-03/) and Znuny security advisory [ZSA-2022-02](https://www.znuny.org/en/advisories/zsa-2022-02)  
    (thanks to Rayhan Ahmed, Maxime Brigaudeau, OTRS AG and Znuny GmbH)
  - Fixed the security issue described in Znuny security advisory [ZSA-2021-08](https://www.znuny.org/en/advisories/zsa-2021-08)  
@@ -7,6 +7,8 @@
    (thanks to Stefan Härter and Znuny GmbH)
  - Fixed the security issue described in Znuny security advisory [ZSA-2022-03](https://www.znuny.org/en/advisories/zsa-2022-03)  
    (thanks to Znuny GmbH)
+ - Fixed the security issue described in Znuny security advisory [ZSA-2022-04](https://www.znuny.org/en/advisories/zsa-2022-04)  
+   (thanks to Sven Oesterling and Znuny GmbH)
 
 # 6.0.33 2021-11-20 - Security release
  - Fixed a Denial of Service issue in PostMaster filters
