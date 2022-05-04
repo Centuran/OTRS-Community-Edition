@@ -239,6 +239,19 @@ $Selenium->RunTest(
 
         $ClickAction->("//button[\@value='Continue'][\@type='submit']");
 
+        $Self->Is(
+            scalar(@{$Selenium->find_elements('.IntroInstall script', 'css')}),
+            0,
+            'No unsafe <script> element is found'
+        );
+
+        $Self->True(
+            $Selenium->execute_script('return window.__xss === undefined;'),
+            'No unsafe JavaScript code was executed'
+        );
+
+        $ClickAction->("//button[\@value='Continue'][\@type='submit']");
+
         my $PackageCheck = $PackageObject->PackageIsInstalled(
             Name => 'Test',
         );
