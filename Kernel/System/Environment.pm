@@ -100,6 +100,18 @@ sub OSInfoGet {
 
             $MainObject->Require('Linux::Distribution');
 
+            # Workaround for distributions missing from Linux::Distribution
+            %Linux::Distribution::release_files = (
+                %Linux::Distribution::release_files,
+                'almalinux-release' => 'almalinux',
+                'rocky-release'     => 'rocky',
+            );
+            %Linux::Distribution::version_match = (
+                %Linux::Distribution::version_match,
+                'almalinux' => 'AlmaLinux release (.+) \(',
+                'rocky'     => 'Rocky Linux release (.+) \(',
+            );
+
             my $DistributionName = Linux::Distribution::distribution_name();
 
             $Distribution = $DistributionName || 'unknown';

@@ -9,6 +9,7 @@
    (thanks to Znuny GmbH)
  - Fixed the security issue described in Znuny security advisory [ZSA-2022-04](https://www.znuny.org/en/advisories/zsa-2022-04)  
    (thanks to Sven Oesterling and Znuny GmbH)
+ - Fixed Linux distribution detection in Support Data Collector to correctly recognize AlmaLinux and Rocky Linux
 
 # 6.0.33 2021-11-20 - Security release
  - Fixed a Denial of Service issue in PostMaster filters
