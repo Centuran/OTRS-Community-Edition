@@ -21,20 +21,62 @@ my $Helper          = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 my $ConfigObject    = $Kernel::OM->Get('Kernel::Config');
 my $SysConfigObject = $Kernel::OM->Get('Kernel::System::SysConfig');
 
-# Save original filter settings so that they can be restored when we're done
-my $OriginalConfig = $ConfigObject->Get('PostMaster::PreFilterModule');
-my $OriginalSettings = [
-    map {
-        {
-            Name           => $_->{Name},
-            IsValid        => $_->{IsValid},
-            EffectiveValue => $_->{EffectiveValue}
-        }
-    } map {
-        { $SysConfigObject->SettingGet( Name => "PostMaster::PreFilterModule###$_" ) }
-    } qw( 4-CMD 000-MatchDBSource )
-];
+# Add the PostMaster::PreFilterModule###4-CMD setting (which is no longer
+# present by default)
 
+my %SettingAttributes = (
+    Description    => 'Meh.',
+    Navigation     => 'Core::Email::PostMaster',
+    IsInvisible    => 0,
+    IsReadonly     => 0,
+    IsRequired     => 0,
+    IsValid        => 1,
+    HasConfigLevel => 0,
+    XMLFilename    => 'UnitTest.xml',   
+);
+
+my $SysConfigXMLObject = $Kernel::OM->Get('Kernel::System::SysConfig::XML');
+
+my @Settings = $SysConfigXMLObject->SettingListParse(
+    %SettingAttributes,
+    XMLInput => <<END
+<?xml version="1.0" encoding="utf-8"?>
+<otrs_config version="2.0" init="Application">
+    <Setting Name="PostMaster::PreFilterModule###4-CMD" Required="0" Valid="1">
+        <Description Translatable="1">Meh.</Description>
+        <Navigation>Core::Email::PostMaster</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::System::PostMaster::Filter::CMD</Item>
+                <Item Key="CMD">/usr/bin/some.bin</Item>
+                <Item Key="Set">
+                    <Hash>
+                        <Item Key="X-OTRS-Ignore">yes</Item>
+                    </Hash>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
+</otrs_config>
+END
+);
+
+for my $Setting (@Settings) {
+    $Setting->{EffectiveValue} = $SysConfigObject->SettingEffectiveValueGet(
+        Value => $Kernel::OM->Get('Kernel::System::Storable')->Clone(
+            Data => $Setting->{XMLContentParsed}{Value}
+        )
+    );
+}
+
+$Kernel::OM->Get('Kernel::System::SysConfig::DB')->DefaultSettingAdd(
+    %SettingAttributes,
+    %{ $Settings[0] },
+    Name   => 'PostMaster::PreFilterModule###4-CMD',
+    UserID => 1
+);
+
+# Make sure the troublesome filter exists in Kernel::Config
 $ConfigObject->Set(
     Key   => 'PostMaster::PreFilterModule',
     Value => {
@@ -44,9 +86,6 @@ $ConfigObject->Set(
             'Set'    => {
                 'X-OTRS-Ignore' => 'yes',
             },
-        },
-        '000-MatchDBSource' => {
-            'Module' => 'Kernel::System::PostMaster::Filter::MatchDBSource',
         },
     }
 );
@@ -99,8 +138,6 @@ $Self->Is(
     'Other pre-filter is initially valid'
 );
 
-#$Kernel::OM->Get('Kernel::System::Cache')->CleanUp();
-
 my $DBUpdateObject = $Kernel::OM->Create('scripts::DBUpdateTo6::DisableSystemCommandPostMasterPreFilters');
 
 $Self->True(
@@ -135,16 +172,6 @@ $Self->Is(
     $FilterSetting{IsValid},
     1,
     'Other pre-filter is still valid'
-);
-
-# Restore initial filter settings
-$SysConfigObject->SettingsSet(
-    UserID   => 1,
-    Settings => $OriginalSettings
-);
-$ConfigObject->Set(
-    Key   => 'PostMaster::PreFilterModule',
-    Value => $OriginalConfig
 );
 
 1;
