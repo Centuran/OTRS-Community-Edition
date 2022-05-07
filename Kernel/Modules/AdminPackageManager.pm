@@ -400,6 +400,11 @@ sub Run {
                         if ( $Hash->{Format} && $Hash->{Format} =~ /plain/i ) {
                             $Hash->{Content} = '<pre class="contentbody">' . $Hash->{Content} . '</pre>';
                         }
+
+                        $Hash->{Content} = $Self->_SanitizeString(
+                            String => $Hash->{Content}
+                        );
+
                         $LayoutObject->Block(
                             Name => "PackageItemIntro",
                             Data => {
@@ -701,6 +706,11 @@ sub Run {
                         if ( $Hash->{Format} && $Hash->{Format} =~ /plain/i ) {
                             $Hash->{Content} = '<pre class="contentbody">' . $Hash->{Content} . '</pre>';
                         }
+
+                        $Hash->{Content} = $Self->_SanitizeString(
+                            String => $Hash->{Content}
+                        );
+
                         $LayoutObject->Block(
                             Name => "PackageItemIntro",
                             Data => {
@@ -1975,6 +1985,10 @@ sub _MessageGet {
         }
     }
     return if !$Description && !$Title;
+
+    $Description = $Self->_SanitizeString( String => $Description );
+    $Title       = $Self->_SanitizeString( String => $Title );
+
     return (
         Description => $Description,
         Title       => $Title,
@@ -2540,6 +2554,24 @@ sub _GetFeatureAddonData {
     );
 
     return $FAOFeed;
+}
+
+sub _SanitizeString {
+    my ( $Self, %Param ) = @_;
+
+    my %SanitizedString = $Kernel::OM->Get('Kernel::System::HTMLUtils')->Safety(
+        String       => $Param{String} // '',
+        NoApplet     => 1,
+        NoEmbed      => 1,
+        NoImg        => 1,
+        NoObject     => 1,
+        NoSVG        => 1,
+        NoIntSrcLoad => 0,
+        NoExtSrcLoad => 1,
+        NoJavaScript => 1,
+    );
+
+    return $SanitizedString{String};
 }
 
 1;

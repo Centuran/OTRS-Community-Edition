@@ -219,6 +219,18 @@ sub _TasksGet {
             Module  => 'DatabaseBackupCheck',
         },
         {
+            Message => 'Disable PostMaster pre-filters that run system commands',
+            Module  => 'DisableSystemCommandPostMasterPreFilters',
+        },
+        {
+            Message => 'Disable GenericAgent system command jobs',
+            Module  => 'DisableGenericAgentSystemCommandJobs',
+        },
+        {
+            Message => 'Disable dashboard widgets that run system commands',
+            Module  => 'DisableSystemCommandDashboardWidgets',
+        },
+        {
             Message => 'Upgrade database structure',
             Module  => 'UpgradeDatabaseStructure',
         },
