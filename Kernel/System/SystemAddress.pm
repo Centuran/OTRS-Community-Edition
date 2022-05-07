@@ -564,9 +564,9 @@ sub SystemAddressLookup {
 
 return 1 if another system address with this name already exists
 
-    $Exist = $SystemAddressObject->NameExistsCheck(
+    my $Exists = $SystemAddressObject->NameExistsCheck(
         Name => 'Some Address',
-        ID => 1, # optional
+        ID   => 1,              # optional
     );
 
 =cut
@@ -600,7 +600,7 @@ sub NameExistsCheck {
 
 Return 1 if system address is used in one of the queue's or auto response's.
 
-    $SytemAddressIsUsed = $SystemAddressObject->SystemAddressIsUsed(
+    my $SytemAddressIsUsed = $SystemAddressObject->SystemAddressIsUsed(
         SystemAddressID => 1,
     );
 
