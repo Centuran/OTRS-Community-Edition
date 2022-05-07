@@ -324,6 +324,64 @@ $Self->False(
         because it is used in one or more queue(s) or auto response(s)",
 );
 
+# SystemAddressLookup
+@Tests = (
+    {
+        Name => 'Lookup system address by ID (ID)',
+        Data => {
+            ID => $SystemAddressID
+        },
+        ExpectedResult => '2' . $SystemAddressEmail,
+    },
+    {
+        Name => 'Lookup system address by ID (SystemAddressID)',
+        Data => {
+            SystemAddressID => $SystemAddressID
+        },
+        ExpectedResult => '2' . $SystemAddressEmail,
+    },
+    {
+        Name => 'Lookup system address by name (Name)',
+        Data => {
+            Name => '2' . $SystemAddressEmail,
+        },
+        ExpectedResult => $SystemAddressID,
+    },
+    {
+        Name => 'Lookup system address by name (SystemAddress)',
+        Data => {
+            SystemAddress => '2' . $SystemAddressEmail,
+        },
+        ExpectedResult => $SystemAddressID,
+    },
+    {
+        Name => 'Lookup a nonexistent system address by ID',
+        Data => {
+            ID => 99999999,
+        },
+        ExpectedResult => undef,
+    },
+    {
+        Name => 'Lookup a nonexistent system address by name',
+        Data => {
+            Name => 'Nonexistent system address',
+        },
+        ExpectedResult => undef,
+    },
+);
+
+for my $Test (@Tests) {
+    my $Result = $SystemAddressObject->SystemAddressLookup(
+        %{ $Test->{Data} },
+    );
+
+    $Self->Is(
+        $Result,
+        $Test->{ExpectedResult},
+        "SystemAddressLookup - $Test->{Name}",
+    );
+}
+
 # Cleanup is done by RestoreDatabase.
 
 1;

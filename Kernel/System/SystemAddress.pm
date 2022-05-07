@@ -499,6 +499,67 @@ sub SystemAddressQueueList {
 
 }
 
+=head2 SystemAddressLookup()
+
+returns the ID or name of a system address
+
+    my $SystemAddressID = $SystemAddressObject->SystemAddressLookup(
+        Name          => 'admin@example.com',
+        # or
+        SystemAddress => 'admin@example.com',
+    );
+
+    my $Name = $SystemAddressObject->SystemAddressLookup(
+        ID              => 12,
+        # or
+        SystemAddressID => 12,
+    );
+
+=cut
+
+sub SystemAddressLookup {
+    my ( $Self, %Param ) = @_;
+
+    if ( ! grep { $Param{$_} } qw( Name SystemAddress ID SystemAddressID ) ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => 'Either the Name, SystemAddress, SystemAddressID, or ID parameter is required!',
+        );
+        return;
+    }
+
+    my %SystemAddresses = $Self->SystemAddressList(
+        Valid => 0,
+    );
+
+    if ( my $ID = $Param{SystemAddressID} || $Param{ID} ) {
+        if ( exists $SystemAddresses{$ID} ) {
+            return $SystemAddresses{$ID};
+        }
+        else {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "No system address found for $ID!",
+            );
+            return;
+        }
+    }
+    elsif ( my $Name = $Param{SystemAddress} || $Param{Name} ) {
+        %SystemAddresses = reverse %SystemAddresses;
+
+        if ( exists $SystemAddresses{$Name} ) {
+            return $SystemAddresses{$Name};
+        }
+        else {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "No system address ID found for $Name!",
+            );
+            return;
+        }
+    }
+}
+
 =head2 NameExistsCheck()
 
 return 1 if another system address with this name already exists
