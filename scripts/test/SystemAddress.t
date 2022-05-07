@@ -205,6 +205,64 @@ for my $Test (@Tests) {
     );
 }
 
+# NameExistsCheck
+@Tests = (
+    {
+        Name => 'Check for a matching name',
+        Data => {
+            Name => $SystemAddressEmail,
+        },
+        ExpectedResult => 1,
+    },
+    {
+        Name => 'Check for a matching name in uppercase',
+        Data => {
+            Name => uc($SystemAddressEmail),
+        },
+        ExpectedResult => 1,
+    },
+    {
+        Name => 'Check for a matching name in lowercase',
+        Data => {
+            Name => lc($SystemAddressEmail),
+        },
+        ExpectedResult => 1,
+    },
+    {
+        Name => 'Check for a non-matching name',
+        Data => {
+            Name => $SystemAddressEmail . 'foobar',
+        },
+        ExpectedResult => 0,
+    },
+    {
+        Name => 'Check for a non-matching name with space',
+        Data => {
+            Name => ', ' . $SystemAddressEmail,
+        },
+        ExpectedResult => 0,
+    },
+    {
+        Name => 'Check for a non-matching name with brackets',
+        Data => {
+            Name => '(' . $SystemAddressEmail . ')',
+        },
+        ExpectedResult => 0,
+    },
+);
+
+for my $Test (@Tests) {
+    my $NameExists = $SystemAddressObject->NameExistsCheck(
+        %{ $Test->{Data} },
+    );
+
+    $Self->Is(
+        $NameExists,
+        $Test->{ExpectedResult},
+        "NameExistsCheck - $Test->{Name}",
+    );
+}
+
 my %SystemAddressDataUpdate = (
     Name     => '2' . $SystemAddressEmail,
     Realname => '2' . $SystemAddressRealname,
