@@ -743,11 +743,6 @@ Core.Agent.Admin.ACL = (function (TargetNS) {
 
                 if (Value) {
 
-                    // avoid wrong behavior when Value is already present
-                    if ($(this).next('span').length) {
-                        return false;
-                    }
-
                     if ($(this).hasClass('Big')) {
 
                         $(this)
