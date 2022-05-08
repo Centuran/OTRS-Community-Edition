@@ -7,7 +7,7 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-package scripts::DBUpdateTo6::UninstallMergedFeatureAddOns;    ## no critic
+package scripts::DBUpdateTo6::UninstallMergedPackages;    ## no critic
 
 use strict;
 use warnings;
@@ -21,7 +21,7 @@ our @ObjectDependencies = (
 
 =head1 NAME
 
-scripts::DBUpdateTo6::UninstallMergedFeatureAddOns - Uninstall merged features.
+scripts::DBUpdateTo6::UninstallMergedPackages - Uninstalls packages that have been merged into the base system.
 
 =head1 PUBLIC INTERFACE
 
@@ -44,20 +44,22 @@ sub Run {
         Type => 'XMLParse',
     );
 
-    # Uninstall feature add-ons that were merged, keeping the DB structures intact.
+    # Uninstall packages that were merged, keeping the DB structures intact.
     for my $PackageName (
-        qw( OTRSAppointmentCalendar
+        qw(
+        OTRSAppointmentCalendar
         OTRSTicketNumberCounterDatabase
         OTRSAdvancedTicketSplit
         OTRSGenericInterfaceInvokerEventFilter
-        OTRSPostMasterKeepState )
+        OTRSPostMasterKeepState
+        )
         )
     {
-        my $Success = $PackageObject->_PackageUninstallMerged(
+        my $Uninstalled = $PackageObject->_PackageUninstallMerged(
             Name => $PackageName,
         );
-        if ( !$Success ) {
-            print "\n    Error:There was an error uninstalling package $PackageName\n\n";
+        if ( !$Uninstalled ) {
+            print "\n    Error uninstalling package $PackageName\n\n";
             return;
         }
     }
