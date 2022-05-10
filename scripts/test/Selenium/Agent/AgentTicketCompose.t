@@ -722,6 +722,104 @@ $Selenium->RunTest(
             "Reply for internal article typo found."
         );
 
+        # Simulate an isolated AJAX request with the "CheckSubject" subaction
+        my $AJAXResponse = $Selenium->execute_async_script(qq<
+            var callback = arguments[1];
+            Core.AJAX.FunctionCall(
+                Core.Config.Get('CGIHandle'),
+                {
+                    Action:    'AgentTicketCompose',
+                    Subaction: 'CheckSubject',
+                    TicketID:  '$TicketID',
+                    Subject:   ''
+                },
+                function (Response) {
+                    callback(Response);
+                },
+                'json'
+            );
+        >, q<
+            return arguments[0];
+        >);
+
+        $Self->True(
+            $AJAXResponse->{SubjectEmpty},
+            'CheckSubject - Empty subject is detected correctly'
+        );
+
+        $Self->True(
+            length $AJAXResponse->{Message},
+            'CheckSubject - A message is returned'
+        );
+
+        # Repeat test with a subject containing ticket hook and ticket number
+        my $Subject = $Kernel::OM->Get('Kernel::Config')->Get('Ticket::Hook') .
+            $Kernel::OM->Get('Kernel::Config')->Get('Ticket::HookDivider') .
+            $TicketNumber;
+
+        $AJAXResponse = $Selenium->execute_async_script(qq<
+            var callback = arguments[1];
+            Core.AJAX.FunctionCall(
+                Core.Config.Get('CGIHandle'),
+                {
+                    Action:    'AgentTicketCompose',
+                    Subaction: 'CheckSubject',
+                    TicketID:  '$TicketID',
+                    Subject:   '$Subject'
+                },
+                function (Response) {
+                    callback(Response);
+                },
+                'json'
+            );
+        >, q<
+            return arguments[0];
+        >);
+
+        $Self->True(
+            $AJAXResponse->{SubjectEmpty},
+            'CheckSubject - Subject with ticket hook and number is considered empty'
+        );
+
+        $Self->True(
+            length $AJAXResponse->{Message},
+            'CheckSubject - A message is returned'
+        );
+
+        # Test with a non-empty subject
+        $Subject = $Kernel::OM->Get('Kernel::Config')->Get('Ticket::Hook') .
+            $Kernel::OM->Get('Kernel::Config')->Get('Ticket::HookDivider') .
+            $TicketNumber . ' Test Subject';
+
+        $AJAXResponse = $Selenium->execute_async_script(qq<
+            var callback = arguments[1];
+            Core.AJAX.FunctionCall(
+                Core.Config.Get('CGIHandle'),
+                {
+                    Action:    'AgentTicketCompose',
+                    Subaction: 'CheckSubject',
+                    TicketID:  '$TicketID',
+                    Subject:   '$Subject'
+                },
+                function (Response) {
+                    callback(Response);
+                },
+                'json'
+            );
+        >, q<
+            return arguments[0];
+        >);
+
+        $Self->False(
+            $AJAXResponse->{SubjectEmpty},
+            'CheckSubject - Subject is not considered empty'
+        );
+
+        $Self->True(
+            length $AJAXResponse->{Message},
+            'CheckSubject - A message is returned'
+        );
+
         # Delete test ticket.
         $Success = $TicketObject->TicketDelete(
             TicketID => $TicketID,

@@ -1295,18 +1295,35 @@ sub Run {
             NoCache     => 1,
         );
     }
+    elsif ( $Self->{Subaction} eq 'CheckSubject' ) {
+
+        my $CleanSubject = $TicketObject->TicketSubjectClean(
+            TicketNumber => $Ticket{TicketNumber},
+            Subject      => $ParamObject->GetParam( Param => 'Subject' ),
+        );
+
+        my $JSONContent = $LayoutObject->JSONEncode(
+            Data => {
+                SubjectEmpty => length $CleanSubject == 0 ? 1 : 0,
+                Message      => $LayoutObject->{LanguageObject}->Translate(
+                    'Article subject will be empty if the subject contains ' .
+                        'only the ticket hook!'
+                ),
+            }
+        );
+
+        return $LayoutObject->Attachment(
+            ContentType => 'application/json; charset=' . $LayoutObject->{Charset},
+            Content     => $JSONContent,
+            Type        => 'inline',
+            NoCache     => 1,
+        );
+    }
     else {
         my $Output = $LayoutObject->Header(
             Value     => $Ticket{TicketNumber},
             Type      => 'Small',
             BodyClass => 'Popup',
-        );
-
-        # Inform a user that article subject will be empty if contains only the ticket hook (if nothing is modified).
-        $Output .= $LayoutObject->Notify(
-            Data => $LayoutObject->{LanguageObject}->Translate(
-                'Article subject will be empty if the subject contains only the ticket hook!'
-            ),
         );
 
         # get std attachment object

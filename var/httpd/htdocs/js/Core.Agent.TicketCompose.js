@@ -45,6 +45,10 @@ Core.Agent.TicketCompose = (function (TargetNS) {
             Core.AJAX.FormUpdate($('#ComposeTicket'), 'AJAXUpdate', 'StateID', Core.Config.Get('DynamicFieldNames'));
         });
 
+        // check for empty subject
+        CheckSubject();
+        $('#Subject').on('change', CheckSubject);
+
         // add 'To' customer users
         if (typeof EmailAddressesTo !== 'undefined') {
             EmailAddressesTo.forEach(function(ToCustomer) {
@@ -68,6 +72,30 @@ Core.Agent.TicketCompose = (function (TargetNS) {
             });
         }
     };
+
+    function CheckSubject() {
+        var Subject = $('#Subject').val();
+
+        $('#SubjectWarning').remove();
+
+        Core.AJAX.FunctionCall(
+            Core.Config.Get('CGIHandle'),
+            {
+                Action:    Core.Config.Get('Action'),
+                Subaction: 'CheckSubject',
+                Subject:   Subject,
+                TicketID:  $('input[name="TicketID"]').val(),
+            },
+            function (Response) {
+                if (Response.SubjectEmpty)
+                    $('<div id="SubjectWarning">')
+                        .attr('class', 'MessageBox Notice')
+                        .append($('<p/>').text(Response.Message))
+                        .prependTo('#AppWrapper');
+            },
+            'json'
+        );
+    }
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 
