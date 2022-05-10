@@ -5473,13 +5473,6 @@ sub _BuildSelectionDataRefCreate {
             push @SortKeys, sort { lc $a cmp lc $b } ( values %List );
         }
 
-        # translate value
-        if ( $OptionRef->{Translation} ) {
-            for my $Row ( sort keys %{$DataLocal} ) {
-                $DataLocal->{$Row} = $Self->{LanguageObject}->Translate( $DataLocal->{$Row} );
-            }
-        }
-
         # sort hash (after the translation)
         if ( $OptionRef->{Sort} eq 'NumericKey' ) {
             @SortKeys = sort { $a <=> $b } ( keys %{$DataLocal} );
@@ -5837,6 +5830,13 @@ sub _BuildSelectionDataRefCreate {
                     }
                 }
             }
+        }
+    }
+
+    # translate value
+    if ( $OptionRef->{Translation} ) {
+        for my $Row ( @{$DataRef} ) {
+            $Row->{Value} = $Self->{LanguageObject}->Translate( $Row->{Value} );
         }
     }
 
