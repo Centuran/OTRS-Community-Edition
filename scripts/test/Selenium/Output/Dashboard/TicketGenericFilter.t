@@ -251,7 +251,7 @@ $Selenium->RunTest(
         }
 
         # Update configuration.
-        $Config                                     = $ConfigObject->Get('DashboardBackend')->{'0120-TicketNew'};
+        $Config = $ConfigObject->Get('DashboardBackend')->{'0120-TicketNew'};
         $Config->{DefaultColumns}->{CustomerUserID} = '0';
         $Config->{DefaultColumns}->{CustomerID}     = '2';
         $Helper->ConfigSettingChange(
