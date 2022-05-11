@@ -172,6 +172,8 @@ sub Auth {
     }
 
     if ( !$User ) {
+        return if !defined $Param{User} || !length $Param{User};
+
         my %CustomerUserData = $CustomerUserObject->CustomerUserDataGet(
             User => $Param{User}
         );
@@ -195,7 +197,7 @@ sub Auth {
         my $MaxLoginAttempts;
 
         if (
-            $Prefs
+            IsHashRefWithData($Prefs)
             && $Prefs->{Password}
             && $Prefs->{Password}{PasswordMaxLoginFailed}
             )
@@ -256,6 +258,9 @@ sub Auth {
     my %CustomerUserData = $CustomerUserObject->CustomerUserDataGet(
         User => $User
     );
+
+    return $User if !%CustomerUserData;
+
     if (
         defined $CustomerUserData{ValidID}
         && $CustomerUserData{ValidID} != 1
@@ -268,8 +273,6 @@ sub Auth {
         return;
     }
 
-    return $User if !%CustomerUserData;
-
     # reset failed logins
     $CustomerUserObject->SetPreferences(
         Key    => 'UserLoginFailed',
@@ -277,13 +280,10 @@ sub Auth {
         UserID => $CustomerUserData{UserLogin},
     );
 
-    # on system maintenance customers
-    # shouldn't be allowed get into the system
+    # During system maintenance customer users can't access the system
     my $ActiveMaintenance = $Kernel::OM->Get('Kernel::System::SystemMaintenance')->SystemMaintenanceIsActive();
 
-    # check if system maintenance is active
     if ($ActiveMaintenance) {
-
         $Self->{LastErrorMessage} =
             $ConfigObject->Get('SystemMaintenance::IsActiveDefaultLoginErrorMessage')
             || Translatable("It is currently not possible to login due to a scheduled system maintenance.");
