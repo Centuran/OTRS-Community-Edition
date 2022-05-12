@@ -21,6 +21,8 @@
    - Customer user accounts can now be temporarily disabled after too many failed log in attempts
    - Date/time calculation now attempts to automatically correct dates that are invalid due to DST
    - Removed a redundant Support Data Collector MySQL Performance plugin 
+ - Implemented bug fixes and changes present in Znuny version 6.0.38:
+   - Fixed a problem with saving random state when sending messages signed with S/MIME
 
 # 6.0.34 2022-05-06 - Security release
  - Fixed the security issue described in OTRS AG security advisory [OSA-2022-03](https://otrs.com/release-notes/otrs-security-advisory-2022-03/) and Znuny security advisory [ZSA-2022-02](https://www.znuny.org/en/advisories/zsa-2022-02)  
