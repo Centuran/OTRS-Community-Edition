@@ -747,13 +747,18 @@ sub PartsAttachments {
     elsif ( $PartData{ContentType} eq 'message/rfc822' ) {
 
         my ($SubjectString) = $Part->as_string() =~ m/^Subject: ([^\n]*(\n[ \t][^\n]*)*)/m;
-        my $Subject = $Self->_DecodeString( String => $SubjectString ) . '.eml';
+        my $Subject = '';
+        if ( length $SubjectString ) {
+            $Subject = $Self->_DecodeString( String => $SubjectString ) . '.eml';
+        }
 
-        # cleanup filename
-        $Subject = $Kernel::OM->Get('Kernel::System::Main')->FilenameCleanUp(
-            Filename => $Subject,
-            Type     => 'Local',
-        );
+        if ( length $Subject ) {
+            # cleanup filename
+            $Subject = $Kernel::OM->Get('Kernel::System::Main')->FilenameCleanUp(
+                Filename => $Subject,
+                Type     => 'Local',
+            );
+        }
 
         if ( $Subject eq '' ) {
             $Self->{NoFilenamePartCounter}++;
