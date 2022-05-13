@@ -74,9 +74,13 @@ Core.Agent.TicketCompose = (function (TargetNS) {
     };
 
     function CheckSubject() {
-        var Subject = $('#Subject').val();
+        var Subject  = $('#Subject').val();
+        var TicketID = $('input[name="TicketID"]').val();
 
         $('#SubjectWarning').remove();
+
+        if (!TicketID)
+            return;
 
         Core.AJAX.FunctionCall(
             Core.Config.Get('CGIHandle'),
@@ -84,7 +88,7 @@ Core.Agent.TicketCompose = (function (TargetNS) {
                 Action:    Core.Config.Get('Action'),
                 Subaction: 'CheckSubject',
                 Subject:   Subject,
-                TicketID:  $('input[name="TicketID"]').val(),
+                TicketID:  TicketID,
             },
             function (Response) {
                 if (Response.SubjectEmpty)
