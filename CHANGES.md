@@ -27,6 +27,7 @@
  - Implemented bug fixes and changes present in Znuny version 6.0.39:
    - Fixed the Dev::Code::CPANUpdate console command to work in FreeBSD
    - Added a configuration setting for attributes ignored in ticket notification events
+   - Fixed a problem with broken links in customer ticket view screen
 
 # 6.0.34 2022-05-06 - Security release
  - Fixed the security issue described in OTRS AG security advisory [OSA-2022-03](https://otrs.com/release-notes/otrs-security-advisory-2022-03/) and Znuny security advisory [ZSA-2022-02](https://www.znuny.org/en/advisories/zsa-2022-02)  
