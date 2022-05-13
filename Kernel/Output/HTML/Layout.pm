@@ -5720,12 +5720,12 @@ sub _BuildSelectionDataRefCreate {
 
     # SelectedID and SelectedValue option
     if ( defined $OptionRef->{SelectedID} || $OptionRef->{SelectedValue} ) {
-        my $Value = $Row->{Value};
-        if ( $OptionRef->{Translation} ) {
-            $Value = $Self->{LanguageObject}->Translate( $Row->{Value} );
-        }
-        
         for my $Row ( @{$DataRef} ) {
+            my $Value = $Row->{Value};
+            if ( $OptionRef->{Translation} ) {
+                $Value = $Self->{LanguageObject}->Translate( $Row->{Value} );
+            }
+            
             if (
                 (
                     (
