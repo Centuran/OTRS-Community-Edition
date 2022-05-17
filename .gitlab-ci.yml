@@ -99,7 +99,7 @@ apply-images:
 
     # Install Docker and do "docker login"
     - apk update
-    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.15/community ca-certificates curl docker=20.10.14-r2 git
+    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.15/community ca-certificates curl docker=20.10.16-r2 git
     - update-ca-certificates
     - echo "Waiting for Docker to start"
     - until docker info; do sleep 1; done
