@@ -30,6 +30,7 @@
    - Fixed a problem with broken links in customer ticket view screen
    - Fixed handling of empty subjects when parsing e-mail messages
    - Added a setting to select if parent/child processes should be displayed as a list or as a tree
+   - Improved handling of translation of process and activity names
 
 # 6.0.34 2022-05-06 - Security release
  - Fixed the security issue described in OTRS AG security advisory [OSA-2022-03](https://otrs.com/release-notes/otrs-security-advisory-2022-03/) and Znuny security advisory [ZSA-2022-02](https://www.znuny.org/en/advisories/zsa-2022-02)  
