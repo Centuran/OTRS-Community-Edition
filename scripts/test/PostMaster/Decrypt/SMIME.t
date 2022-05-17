@@ -165,21 +165,21 @@ if ( !$SMIMEObject ) {
 #
 
 # OpenSSL 0.9.x hashes
-my $Check1Hash       = '980a83c7';
-my $Check2Hash       = '999bcb2f';
-my $OTRSRootCAHash   = '1a01713f';
-my $OTRSRDCAHash     = '7807c24e';
-my $OTRSLabCAHash    = '2fc24258';
-my $OTRSUserCertHash = 'eab039b6';
+my $Check1Hash     = '980a83c7';
+my $Check2Hash     = '999bcb2f';
+my $OTRSRootCAHash = '1a01713f';
+my $OTRSInt1CAHash = '7807c24e';
+my $OTRSInt2CAHash = '2fc24258';
+my $OTRSUserHash   = 'eab039b6';
 
 # OpenSSL 1.0.0 hashes
 if ($UseNewHashes) {
-    $Check1Hash       = 'f62a2257';
-    $Check2Hash       = '35c7d865';
-    $OTRSRootCAHash   = '7835cf94';
-    $OTRSRDCAHash     = 'b5d19fb9';
-    $OTRSLabCAHash    = '19545811';
-    $OTRSUserCertHash = '4d400195';
+    $Check1Hash     = '5efb3de7';
+    $Check2Hash     = 'd562d84d';
+    $OTRSRootCAHash = '8a68405f';
+    $OTRSInt1CAHash = '1cfe78a7';
+    $OTRSInt2CAHash = '402013e3';
+    $OTRSUserHash   = 'ea80eed7';
 }
 
 # certificates
@@ -187,9 +187,9 @@ my @Certificates = (
     {
         CertificateName       => 'Check1',
         CertificateHash       => $Check1Hash,
-        CertificateFileName   => 'SMIMECertificate-1.asc',
-        PrivateKeyFileName    => 'SMIMEPrivateKey-1.asc',
-        PrivateSecretFileName => 'SMIMEPrivateKeyPass-1.asc',
+        CertificateFileName   => 'SMIME-certificate-OTRSCE-User-2.crt',
+        PrivateKeyFileName    => 'SMIME-private-key-OTRSCE-User-2.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
 );
 
