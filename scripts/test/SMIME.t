@@ -2393,8 +2393,14 @@ HZ4=
 
                     # deep compare wrong relations
                     $Self->IsDeeply(
-                        \@RelationsData,
-                        $Test->{WrongCAs}->{$CertName}->{WrongRelations},
+                        [
+                            sort { $a->{CAHash} cmp $b->{CAHash} }
+                                @RelationsData
+                        ],
+                        [
+                            sort { $a->{CAHash} cmp $b->{CAHash} }
+                                @{ $Test->{WrongCAs}{$CertName}{WrongRelations} }
+                        ],
                         "Re-Hash $Test->{Name}: Manual certificate relations for"
                             . " Certificate $CertificateHash data (before re-hash)",
                     );
@@ -2466,8 +2472,14 @@ HZ4=
 
                     # deep compare wrong relations
                     $Self->IsDeeply(
-                        \@RelationsData,
-                        $CorrectCAs{$CertName}->{CorrectRelations},
+                        [
+                            sort { $a->{CAHash} cmp $b->{CAHash} }
+                                @RelationsData
+                        ],
+                        [
+                            sort { $a->{CAHash} cmp $b->{CAHash} }
+                                @{ $CorrectCAs{$CertName}->{CorrectRelations} }
+                        ],
                         "Re-Hash $Test->{Name}: Manual certificate relations for"
                             . " Certificate $CertificateHash data (after re-hash)",
                     );
