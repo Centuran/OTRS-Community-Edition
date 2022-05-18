@@ -899,6 +899,9 @@ sub LinkQuote {
         my $Link     = $3;
         my $End      = $4 || '';
 
+        $Link =~ s/(?<dots>\.*)$//;
+        $End .= $+{dots};
+
         # there may different links for href and link body
         my $HrefLink;
         my $DisplayLink;

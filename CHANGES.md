@@ -35,6 +35,7 @@
    - Fixed wrong backup file name in log message
    - Fixed a problem with full text search being interrupted by automatic refresh
    - Fixed an issue with agent's e-mail update when editing
+   - Fixed link detection so that trailing dots are not included in the link
  - Fixed a problem with diagnostics information being displayed in rich text editor popups
 
 # 6.0.34 2022-05-06 - Security release
