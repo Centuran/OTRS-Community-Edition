@@ -2417,6 +2417,7 @@ sub NoPermission {
     # create output
     my $Output;
     $Output = $Self->Header( Title => 'Insufficient Rights' ) if ( $WithHeader eq 'yes' );
+    $Output .= $Self->NavigationBar() if ( $WithHeader eq 'yes' );
     $Output .= $Self->Output(
         TemplateFile => 'NoPermission',
         Data         => \%Param
@@ -5735,13 +5736,13 @@ sub _BuildSelectionDataRefCreate {
                     ||
                     (
                         defined $Row->{Value}
-                        && $OptionRef->{SelectedValue}->{ $Value }
+                        && $OptionRef->{SelectedValue}->{$Value}
                     )
                 )
                 &&
                 (
                     defined $Row->{Value}
-                    && !$DisabledElements{ $Value }
+                    && !$DisabledElements{$Value}
                 )
                 )
             {

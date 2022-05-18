@@ -37,6 +37,7 @@
    - Fixed an issue with agent's e-mail update when editing
    - Fixed link detection so that trailing dots are not included in the link
    - Fixed a problem with dashboard ticket queue overview not always refreshing
+   - Top navigation bar is now displayed on error screens
  - Fixed a problem with diagnostics information being displayed in rich text editor popups
  - Updated jQuery UI to version 1.13.1
 
