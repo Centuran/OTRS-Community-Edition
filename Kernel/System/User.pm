@@ -1242,6 +1242,8 @@ sub SetPreferences {
 
     return 0 if $Blacklisted{ $Param{Key} };
 
+    $Self->_UserCacheClear( UserID => $Param{UserID} );
+
     # get current setting
     my %User = $Self->GetUserData(
         UserID        => $Param{UserID},
@@ -1253,8 +1255,6 @@ sub SetPreferences {
         if defined $User{ $Param{Key} }
         && defined $Param{Value}
         && $User{ $Param{Key} } eq $Param{Value};
-
-    $Self->_UserCacheClear( UserID => $Param{UserID} );
 
     # get user preferences config
     my $GeneratorModule = $Kernel::OM->Get('Kernel::Config')->Get('User::PreferencesModule')
