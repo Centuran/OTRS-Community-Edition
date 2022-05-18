@@ -33,6 +33,7 @@
    - Improved handling of translation of process and activity names
  - Implemented bug fixes and changes present in Znuny version 6.0.40:
    - Fixed wrong backup file name in log message
+   - Fixed a problem with full text search being interrupted by automatic refresh
  - Fixed a problem with diagnostics information being displayed in rich text editor popups
 
 # 6.0.34 2022-05-06 - Security release

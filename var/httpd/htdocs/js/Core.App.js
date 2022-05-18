@@ -544,6 +544,12 @@ Core.App = (function (TargetNS) {
                 if (Core && Core.UI && Core.UI.Popup && Core.UI.Popup.HasOpenPopups()) {
                     return;
                 }
+
+                // Don't reload if there is anything entered in full text search
+                // field
+                if ($('#Fulltext').length && $('#Fulltext').val().length)
+                    return;
+
                 // Now we can reload
                 window.location.reload();
             }, RefreshSeconds * 1000);
