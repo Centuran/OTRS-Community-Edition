@@ -591,7 +591,7 @@ sub UserUpdate {
         next USERPREFERENCE if $UserPreference eq 'UserEmail' && !$Param{UserEmail};
 
         # Set user preferences.
-        # Native user data will not be overwriten (handeled by SetPreferences()).
+        # Native user data will not be overwriten (handled by SetPreferences()).
         $Self->SetPreferences(
             UserID => $Param{UserID},
             Key    => $UserPreference,
