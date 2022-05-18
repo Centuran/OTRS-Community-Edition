@@ -1005,6 +1005,15 @@ sub Run {
             }
             if ( !$Param{AccessRo} && !$Param{AccessRw} || !$Param{AccessRo} && $Param{AccessRw} ) {
 
+                # Include %Param and %UserData in LayoutObject attributes
+                $Kernel::OM->ObjectParamAdd(
+                    'Kernel::Output::HTML::Layout' => {
+                        %Param,
+                        %UserData,
+                        ModuleReg => $ModuleReg,
+                    },
+                );
+
                 print $Kernel::OM->Get('Kernel::Output::HTML::Layout')->NoPermission(
                     Message => Translatable('No Permission to use this frontend module!')
                 );
