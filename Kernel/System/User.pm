@@ -610,8 +610,6 @@ sub UserUpdate {
 
     $Self->_UserCacheClear( UserID => $Param{UserID} );
 
-    # TODO Not needed to delete the cache if ValidID or Name was not changed
-
     my $CacheObject            = $Kernel::OM->Get('Kernel::System::Cache');
     my $SystemPermissionConfig = $Kernel::OM->Get('Kernel::Config')->Get('System::Permission') || [];
 
