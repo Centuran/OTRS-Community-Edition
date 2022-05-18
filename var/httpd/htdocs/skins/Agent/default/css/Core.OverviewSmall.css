@@ -19,8 +19,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 #OverviewBody {
     margin: 10px 16px 8px 8px;
-    border-left: 1px solid #DDD;
-    border-right: 1px solid #DDD;
 }
 
 .RTL #OverviewBody {

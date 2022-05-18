@@ -588,10 +588,13 @@ thead .headerSortDown a {
 }
 
 #OverviewBody.Overview.TicketList {
+    min-height: 70px;
     overflow-x: auto;
 }
 
 #OverviewBody.Overview.TicketList table.TableSmall.NoCellspacing {
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
     overflow: visible;
 }
 
