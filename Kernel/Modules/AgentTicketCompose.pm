@@ -1306,8 +1306,7 @@ sub Run {
             Data => {
                 SubjectEmpty => length $CleanSubject == 0 ? 1 : 0,
                 Message      => $LayoutObject->{LanguageObject}->Translate(
-                    'Article subject will be empty if the subject contains ' .
-                        'only the ticket hook!'
+                    'Article subject will be empty if the subject contains only the ticket hook!'
                 ),
             }
         );

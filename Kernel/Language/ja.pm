@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.762508567511994;
+    $Self->{Completeness}        = 0.762281003091721;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -727,9 +727,6 @@ sub Data {
         'Time units' => '時間の単位',
         'Execute Ticket Commands' => 'チケットコマンドを実行',
         'Send agent/customer notifications on changes' => '変更を担当者／顧客に通知する',
-        'CMD' => 'コマンド',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'このコマンドが実行されます。チケット番号は ARG[0] 、チケットIDは ARG[1] です。',
         'Delete tickets' => 'チケット削除',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             '警告: 影響を受ける全てのチケットがデータベースから削除されます。復元することはできません。',
@@ -4950,11 +4947,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             '',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => 'クエリキャッシュサイズ',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            'query_cache_size の設定を行ってください (設定値は10MB以上512MB以下に設定する必要があります)',
-
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => 'デフォルトのストレージエンジン',
         'Table Storage Engine' => 'ストレージエンジン',
@@ -6008,8 +6000,6 @@ Thanks for your help!
             '',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             '',
-        'Allows generic agent to execute custom command line scripts.' =>
-            '',
         'Allows generic agent to execute custom modules.' => '',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             '中程度のフォーマットでのチケット一覧の表示を許可します（CustomerInfo => 1 - 顧客情報も表示します)。',
@@ -6087,8 +6077,6 @@ Thanks for your help!
         'Bounced to "%s".' => 'Bounced to "%s".',
         'Bulgarian' => 'ブルガリア語',
         'Bulk Action' => '一括処理',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'CMD例のセットアップです。外部CMDがSTDOUTにおいてアウトプットを戻してくる場合にEメールを無視します（Eメールは、STDIN of some.binへとパイプされます）。',
         'CSV Separator' => 'CSV区切り文字',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             '',
@@ -6909,8 +6897,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Defines the number of hours a successful communication will be stored.' =>
             '',
         'Defines the parameters for the customer preferences table.' => '顧客プレファレンス・テーブルのためのパラメータを定義してください。',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7426,8 +7412,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             'Customer::AuthModuleに関して“Radius”が選択されていた場合、radiusホストを特定する必要があります。',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Customer::AuthModuleに関して“Radius”が選択されていた場合、例えばサーバー接続がネットワークの問題で確立できない際に、アプリケーションを停止させるかどうかを設定できます。',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            '"Sendmail"がSendmailモジュールとして選択された場合、sendmailバイナリおよび必要オプションのロケーションが特定されている必要があります。',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'もしログ・モジュールに関して"SysLog"が選択されていた場合、特別なログ・ファシリティが特定されます。',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7492,6 +7476,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '外出予定がある場合、外出日を設定して他のユーザーに知らせることができます。',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             '',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => '予約画面をインポート',
         'Include tickets of subqueues per default when selecting a queue.' =>
             '',
@@ -7956,7 +7941,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'SMS' => 'SMS',
         'SMS (Short Message Service)' => 'SMS (Short Message Service)',
         'Salutations' => '挨拶文',
-        'Sample command output' => '',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             '',
         'Schedule a maintenance period.' => 'メンテナンス期間をスケジュール',
@@ -7982,6 +7966,8 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '自分のタイムゾーンを選択して下さい。全ての時間は、このタイムゾーンで表示されます。',
         'Select your preferred layout for the software.' => 'ソフトウェアに適したレイアウトを選択して下さい。',
         'Select your preferred theme for OTRS.' => '',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => '使用するキャッシュバックエンドを選択してください。',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             'ウェブ・インタフェースを通じてアップロードを取り扱うための、モジュールを選択します。"DB"は全てのアップロードをデータベースに格納し、"FS"はファイル・システムを使用します。',
@@ -8237,7 +8223,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '担当者インタフェースにおいて、電話およびEメールのチケットにおける責任者のセレクションを表示します。',
         'Show article as rich text even if rich text writing is disabled.' =>
             'リッチ・テキストのライティングが無効にされている場合でも、項目をリッチ・テキストで表示します。',
-        'Show command line output.' => '',
         'Show queues even when only locked tickets are in.' => '',
         'Show the current owner in the customer interface.' => '',
         'Show the current queue in the customer interface.' => '',
@@ -8430,10 +8415,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             '',
         'Spam' => 'スパム',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'スパム・アサシンのセットアップ例です。スパム・アサシンによってマークされたEメールを無視します。',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            'SpamAssassinのセットアップ例です。マークされたメールを、スパム・キューへ移動します。',
         'Spanish' => 'スペイン語',
         'Spanish (Colombia)' => 'スペイン語(コロンビア)',
         'Spanish (Mexico)' => 'スペイン語(メキシコ)',
@@ -8461,14 +8442,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             'ページ・ヘッダーにおいて、ロゴのためのファイルへのパスを特定します(gif|jpg|png, 700 x 100 pixel)。',
         'Specifies the path of the file for the performance log.' => 'パフォーマンス・ログのためのファイルのパスを特定します。',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'ウェブ・インタフェースにて、Microsoft Excelファイルを見られるようにするコンバータへのパスを特定します。',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'ウェブ・インタフェースにて、Microsoft Wordファイルを見られるようにするコンバータへのパスを特定します。',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'ウェブ・インタフェースにて、PDFドキュメントを見られるようにするコンバータへのパスを特定します。',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'ウェブ・インタフェースにて、XMLファイルを見られるようにするコンバータへのパスを特定します。',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'ログ・ファイルの中でCGIスクリプト・エントリーを意味するテキストを規定します。',
         'Specifies user id of the postmaster data base.' => 'ポストマスター・データベースのユーザIDを特定します。',
