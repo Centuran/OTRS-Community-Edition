@@ -33,4 +33,3 @@ L<JSON::PP> for more info about this class.
 This idea is from L<JSON::XS::Boolean> written by Marc Lehmann <schmorp[at]schmorp.de>
 
 =cut
-

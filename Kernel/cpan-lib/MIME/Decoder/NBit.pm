@@ -156,5 +156,3 @@ sub encode_it {
 }
 
 1;
-
-

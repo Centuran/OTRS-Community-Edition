@@ -73,4 +73,3 @@ Copyright (C) 2016-2018 azumakuniyuki, All rights reserved.
 This software is distributed under The BSD 2-Clause License.
 
 =cut
-

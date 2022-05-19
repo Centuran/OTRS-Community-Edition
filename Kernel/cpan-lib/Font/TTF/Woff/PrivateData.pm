@@ -29,4 +29,3 @@ This module is released under the terms of the Artistic License 2.0.
 For details, see the full text of the license in the file LICENSE.
 
 =cut
-
