@@ -29,7 +29,7 @@
    - Fixed an issue with form submission when editing the "admin" group
    - Customer user accounts can now be temporarily disabled after too many failed log in attempts
    - Date/time calculation now attempts to automatically correct dates that are invalid due to DST
-   - Removed a redundant Support Data Collector MySQL Performance plugin 
+   - Removed a redundant Support Data Collector MySQL Performance plugin
  - Implemented bug fixes and changes present in Znuny version 6.0.38:
    - Fixed a problem with saving random state when sending messages signed with S/MIME
  - Implemented bug fixes and changes present in Znuny version 6.0.39:
