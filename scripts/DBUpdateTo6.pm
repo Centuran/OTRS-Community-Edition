@@ -339,6 +339,10 @@ sub _TasksGet {
             Module  => 'MigrateChatData',
         },
         {
+            Message => 'Add history types',
+            Module  => 'AddHistoryTypes',
+        },
+        {
             Message => 'Initialize default cron jobs',
             Module  => 'InitializeDefaultCronjobs',
         },

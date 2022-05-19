@@ -68,6 +68,29 @@ sub Run {
                 return $LayoutObject->NoPermission( WithHeader => 'yes' );
             }
 
+            # Reset ticket owner back to the previous one
+            my @HistoryItems = $TicketObject->HistoryGet(
+                TicketID => $TicketID,
+                UserID   => $Self->{UserID},
+            );
+
+            my @BulkActionHistoryItems = grep {
+                $_->{HistoryType} eq 'Bulk'
+                && $_->{Name} eq 'Ticket bulk action.'
+                && $_->{CreateBy} == $Self->{UserID}
+            } @HistoryItems;
+
+            if ( @BulkActionHistoryItems ) {
+                # Get previous owner from most recent history item
+                my $PreviousOwnerID = $BulkActionHistoryItems[-1]->{OwnerID};
+
+                $TicketObject->TicketOwnerSet(
+                    TicketID  => $TicketID,
+                    NewUserID => $PreviousOwnerID,
+                    UserID    => $Self->{UserID},
+                );
+            }
+
             # set unlock
             my $Lock = $TicketObject->TicketLockSet(
                 TicketID => $TicketID,
@@ -739,6 +762,13 @@ sub Run {
                         TicketID => $TicketID,
                         Lock     => 'lock',
                         UserID   => $Self->{UserID},
+                    );
+
+                    $TicketObject->HistoryAdd(
+                        TicketID     => $TicketID,
+                        HistoryType  => 'Bulk',
+                        Name         => 'Ticket bulk action.',
+                        CreateUserID => $Self->{UserID},
                     );
 
                     # set user id
