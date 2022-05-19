@@ -1,5 +1,5 @@
 # 6.0.35 YYYY-MM-DD
- - Implemented bug fixes and changes present in Znuny version 6.0.33  
+ - Implemented bug fixes and changes present in Znuny version 6.0.33
    - Fixed an user cache deletion issue
    - Fixed user search display format
    - Added automatic utilization of CSS::Minifier::XS, if it's available
