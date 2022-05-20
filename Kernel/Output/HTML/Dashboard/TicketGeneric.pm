@@ -2194,7 +2194,7 @@ sub _ColumnFilterJSON {
         # Set possible values.
         for my $ValueKey ( sort { lc $Values{$a} cmp lc $Values{$b} } keys %Values ) {
             push @{$Data}, {
-                Key   => $Encoding ? $LayoutObject->LinkEncode($ValueKey) : $ValueKey,
+                Key   => $ValueKey,
                 Value => $Values{$ValueKey}
             };
         }

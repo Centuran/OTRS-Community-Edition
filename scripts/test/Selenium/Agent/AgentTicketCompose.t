@@ -409,6 +409,14 @@ $Selenium->RunTest(
 
         $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && $("#ToCustomer").length;' );
 
+        # Clear article subject for the warning message to appear
+        $Selenium->execute_script("\$('#Subject').val('').trigger('change');");
+
+        $Selenium->WaitFor(
+            JavaScript =>
+                'return typeof($) === "function" && $(".MessageBox.Notice").length;'
+        );
+
         my $Message = 'Article subject will be empty if the subject contains only the ticket hook!';
 
         $Self->True(

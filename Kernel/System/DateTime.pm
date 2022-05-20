@@ -1065,7 +1065,17 @@ sub ToTimeZone {
         $Self->{CPANDateTimeObject}->set_time_zone( $Param{TimeZone} );
     };
 
-    return if $@;
+    return 1 if !$@;
+
+    # An exception might mean that the designated time does not exist
+    # in this time zone because of DST -- try to make an automatic correction.
+    my $SanitizedCPANDateTimeObject = $Self->_SanitizeDateTimeForDST(
+        CPANDateTimeObject => $Self->{CPANDateTimeObject},
+        TimeZone           => $Param{TimeZone},
+    );
+    return if !$SanitizedCPANDateTimeObject;
+
+    $Self->{CPANDateTimeObject} = $SanitizedCPANDateTimeObject;
 
     return 1;
 }
@@ -1888,6 +1898,30 @@ sub _CPANDateTimeObjectCreate {
             );
         };
 
+        # Check if correction may be needed due to the date/time falling
+        # in the DST switch window
+        if (
+            ref $CPANDateTimeObject ne 'DateTime'
+            && $TimeZone ne 'UTC'
+            && $TimeZone ne 'floating'
+            )
+        {
+            my $CPANFloatingDateTimeObject = eval {
+                DateTime->new(
+                    %{ $DateTimeParams },
+                    time_zone => 'floating',
+                    locale    => $Self->{Locale}
+                );
+            };
+
+            return if ref $CPANFloatingDateTimeObject ne 'DateTime';
+
+            $CPANDateTimeObject = $Self->_SanitizeDateTimeForDST(
+                CPANDateTimeObject => $CPANFloatingDateTimeObject,
+                TimeZone           => $TimeZone,
+            );
+        }
+
         return $CPANDateTimeObject;
     }
 
@@ -1900,6 +1934,47 @@ sub _CPANDateTimeObjectCreate {
     };
 
     return $CPANDateTimeObject;
+}
+
+=head2 _SanitizeDateTimeForDST()
+
+Due to Daylight Saving Time, a give date/time might not exist in a given time
+zone (e.g. 2:30 on the last Sunday in March in European time zones). This method
+tries to produce a valid date/time object through the addition of up to 3 hours.
+The provided CPANDateTimeObject must be in the "floating" time zone.
+
+    my $SanitizedCPANDateTimeObject = $Self->_SanitizeDateTimeForDST(
+        CPANDateTimeObject => $CPANDateTimeObject,
+        TimeZone           => 'Europe/Warsaw',
+    );
+
+Returns a CPAN DateTime object with the corrected date/time, or undefined
+if correction did not succeed.
+
+=cut
+
+sub _SanitizeDateTimeForDST {
+    my ( $Self, %Param ) = @_;
+
+    # Create a clone of the original object to operate on
+    my $CPANDateTimeObject = $Param{CPANDateTimeObject}->clone();
+
+    # In the first run (attempt 0) we just try to set the time zone
+    # with no added hours (since in the best case scenario no correction
+    # will be required).
+    for my $Attempt ( 0 .. 3 ) {
+        eval {
+            $CPANDateTimeObject->set_time_zone( $Param{TimeZone} );
+        };
+
+        return $CPANDateTimeObject if !$@;
+
+        # Exception occurred -- try adding one hour
+        $CPANDateTimeObject->add( hours => 1 );
+    }
+
+    # If we exited the loop, then correction failed
+    return;
 }
 
 =head2 _OpIsNewerThan()

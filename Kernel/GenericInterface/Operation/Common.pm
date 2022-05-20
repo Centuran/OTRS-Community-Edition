@@ -39,8 +39,8 @@ performs user or customer user authorization
     returns
 
     (
-        1,                                              # the UserID from login or session data
-        'Agent',                                        # || 'Customer', the UserType.
+        1,          # the UserID from login or session data
+        'User',     # 'User' or 'Customer', the UserType.
     );
 
 =cut

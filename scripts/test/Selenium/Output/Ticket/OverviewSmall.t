@@ -127,24 +127,27 @@ $Selenium->RunTest(
             push @TicketNumbers, $TicketNumber;
         }
 
-        # Reverse sort test ticket numbers for test purposes.
-        my @SortTicketNumbers = reverse sort @TicketNumbers;
-
         # Define every possible dynamic field value to at least one ticket.
         my @Tests = (
             {
-                Key      => 'Key1&1',
-                TicketID => $TicketIDs[0],
+                Key          => 'Key1&1',
+                TicketID     => $TicketIDs[0],
+                TicketNumber => $TicketNumbers[0],
             },
             {
-                Key      => 'Key2;2',
-                TicketID => $TicketIDs[1],
+                Key          => 'Key2;2',
+                TicketID     => $TicketIDs[1],
+                TicketNumber => $TicketNumbers[1],
             },
             {
-                Key      => 'Key3?3',
-                TicketID => $TicketIDs[2],
+                Key          => 'Key3?3',
+                TicketID     => $TicketIDs[2],
+                TicketNumber => $TicketNumbers[2],
             },
         );
+
+        # Reverse sort test ticket numbers for test purposes.
+        my @SortTicketNumbers = reverse sort @TicketNumbers;
 
         # Add dropdown dynamic field where keys have special characters like '&', ';' and '?'.
         my $DFName         = 'DF' . $RandomID;
@@ -228,45 +231,61 @@ $Selenium->RunTest(
 
         my $ScriptAlias = $Kernel::OM->Get('Kernel::Config')->Get('ScriptAlias');
 
-        # Check on AgentDashboard screen if the filter has correct keys from test dynamic field (see bug#14497).
-        $Selenium->find_element("//a[contains(\@title, \'$DFName, filter not active\' )]")->click();
-
-        for my $Test (@Tests) {
-            my $LinkEncodedKey = $LayoutObject->LinkEncode( $Test->{Key} );
-
-            $Selenium->WaitFor(
-                JavaScript =>
-                    "return typeof(\$) === 'function' && \$('#ColumnFilterDynamicField_${DFName}0120-TicketNew option[value=\"$LinkEncodedKey\"]').length;"
-            );
-
-            $Self->True(
-                $Selenium->execute_script(
-                    "return \$('#ColumnFilterDynamicField_${DFName}0120-TicketNew option[value=\"$LinkEncodedKey\"]').length;"
-                ),
-                "Key '$Test->{Key}' is found as correctly encoded - '$LinkEncodedKey'"
-            );
-        }
-
         # Go to status open view, overview small, default sort is Age, default order is Down.
-        $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=AgentTicketStatusView");
+        $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=AgentTicketStatusView;DeleteFilters=1");
+        $Selenium->VerifiedRefresh();
 
-        # Check on AgentTicketStatusView screen if the filter has correct keys from test dynamic field (see bug#14497).
-        $Selenium->find_element("//a[contains(\@title, \'$DFName, filter not active\' )]")->click();
+        my $FilterElementID = "ColumnFilterDynamicField_$DFName";
 
         for my $Test (@Tests) {
-            my $LinkEncodedKey = $LayoutObject->LinkEncode( $Test->{Key} );
+            # Click on filter selection
+            $Selenium->find_element("//a[contains(\@title, \'$DFName, filter not active\' )]")->click();
 
             $Selenium->WaitFor(
-                JavaScript =>
-                    "return typeof(\$) === 'function' && \$('#ColumnFilterDynamicField_$DFName option[value=\"$LinkEncodedKey\"]').length;"
+                JavaScript => qq{
+                    return typeof(\$) === 'function' &&
+                        \$('#$FilterElementID option[value=\"$Test->{Key}\"]').length
+                }
             );
 
-            $Self->True(
-                $Selenium->execute_script(
-                    "return \$('#ColumnFilterDynamicField_$DFName option[value=\"$LinkEncodedKey\"]').length;"
-                ),
-                "Key '$Test->{Key}' is found as correctly encoded - '$LinkEncodedKey'"
+            $Selenium->InputFieldValueSet(
+                Element => "#$FilterElementID",
+                Value   => $Test->{Key},
             );
+
+            # Wait for the remove filters option to be shown
+            $Selenium->WaitFor(
+                JavaScript => qq{
+                    return typeof(\$) === 'function' && 
+                        \$('ul.ContextFunctions > li.RemoveFilters').length
+                }
+            );
+
+            # Check if the test ticket is found using a dynamic field filter
+            $Self->True(
+                $Selenium->find_element("//td/a[text()='$Test->{TicketNumber}']"),
+                "Ticket $Test->{TicketNumber} is found when filtering with " .
+                    "dynamic field key $Test->{Key}"
+            );
+
+            # Check if other tickets aren't found
+            my @OtherTicketNumbers =
+                grep { $_ ne $Test->{TicketNumber} }
+                map { $_->{TicketNumber} } @Tests;
+
+            for my $TicketNumber (@OtherTicketNumbers) {
+                my @FoundElements =
+                    $Selenium->find_elements("//td/a[text()='$TicketNumber']");
+                $Self->True(
+                    scalar @FoundElements == 0,
+                    "Ticket $TicketNumber is not found when filtering with " .
+                        "dynamic field key $Test->{Key}"
+                );
+            }
+
+            # Reset view
+            $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=AgentTicketStatusView;DeleteFilters=1");
+            $Selenium->VerifiedRefresh();
         }
 
         # Set filter to test queue.
