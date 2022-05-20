@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.7625;
+    $Self->{Completeness}        = 0.762508567511994;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -4396,9 +4396,7 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '%sがありません！',
-        'No such user!' => 'そのようなユーザーはありません！',
         'Invalid calendar!' => '無効なカレンダー',
-        'Invalid URL!' => '無効なURL',
         'There was an error exporting the calendar!' => 'カレンダーのエクスポート中にエラーが発生しました。',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -7731,7 +7729,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '担当者インタフェースの検索結果の各ページで、表示されるチケットの数です。',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '顧客インタフェースの検索結果の各ページで表示される、チケット数です。',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRSは、フルテキスト検索や統計生成などの高価な操作に、1つまたは複数の読み取り専用ミラーデータベースを使用できます。 ここでは、最初のミラーデータベースのDSNを指定できます。',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -8347,8 +8344,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             'チケット一覧のプレビューを表示します(CustomerInfo => 1 - 顧客情報も表示しますCustomerInfoMaxSize max ? 顧客情報の文字サイズです)。',
         'Shows all both ro and rw queues in the queue view.' => 'キュー・ビューで、roとrwの両方全てのキューを表示します。',
         'Shows all both ro and rw tickets in the service view.' => 'サービス・ビュー内の読み取り専用と読み書き可能なチケットの両方を全て表示する。',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            '担当者インタフェースのエスカレーション・ビューにある、全てのオープン・チケット（たとえロックされていたとしても）を表示します。',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>

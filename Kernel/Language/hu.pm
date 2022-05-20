@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.999486301369863;
+    $Self->{Completeness}        = 0.999485949280329;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -4393,9 +4393,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => 'Nincs %s!',
-        'No such user!' => 'Nincs ilyen felhasználó!',
         'Invalid calendar!' => 'Érvénytelen naptár!',
-        'Invalid URL!' => 'Érvénytelen URL!',
         'There was an error exporting the calendar!' => 'Hiba történt a naptár exportálásakor!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -7720,7 +7718,6 @@ Az Ön segélyszolgálat csapata
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyintézői felületen.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyfélfelületen.',
-        'Number of tickets to be displayed in each page.' => 'Az egyes oldalakon megjelenített jegyek száma.',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'Az OTRS képes egy vagy több csak olvasható tükör adatbázist használni az olyan költséges műveleteknél, mint például a szabad-szavas keresés vagy a statisztikák előállítása. Itt adhatja meg a DNS-t az első tükör adatbázishoz.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -8336,8 +8333,6 @@ Az Ön segélyszolgálat csapata
             'Megjeleníti a jegyáttekintő előnézetét (CustomerInfo => 1 – az ügyfél-információt is megjeleníti, a CustomerInfoMaxSize az ügyfél-információ legnagyobb mérete karakterben).',
         'Shows all both ro and rw queues in the queue view.' => 'Megjeleníti a csak olvasható és az írható, olvasható várólistákat is a várólista nézetben.',
         'Shows all both ro and rw tickets in the service view.' => 'Megjeleníti a csak olvasható és az írható, olvasható jegyeket is a szolgáltatás nézetben.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'Megjelenít minden nyitott jegyet (akkor is, ha zárolt) az ügyintézői felület eszkalációs nézetében.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             'Megjeleníti a jegy összes bejegyzését (kinyitva) az ügyintézői nagyítás nézetben.',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>

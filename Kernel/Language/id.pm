@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.678424657534247;
+    $Self->{Completeness}        = 0.67871830020562;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -4391,9 +4391,7 @@ bin/otrs.Daemon.pl status\').',
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '',
-        'No such user!' => '',
         'Invalid calendar!' => '',
-        'Invalid URL!' => '',
         'There was an error exporting the calendar!' => '',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -7719,7 +7717,6 @@ Helpdesk Team Anda
             'Jumlah tiket yang akan ditampilkan di setiap halaman hasil pencarian di antarmuka agen.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Jumlah tiket yang akan ditampilkan di setiap halaman hasil pencarian di antarmuka pelanggan.',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS dapat menggunakan satu atau lebih database cermin dibaca untuk operasi mahal seperti penuh pencarian teks atau statistik generasi. Di sini Anda dapat menentukan DSN untuk database cermin pertama.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -8335,8 +8332,6 @@ Helpdesk Team Anda
             'Menunjukkan preview dari gambaran tiket (CustomerInfo => 1 - menunjukkan juga pelanggan-Info, CustomerInfo Max Ukuran max ukuran dalam karakter Pelanggan-Info.).',
         'Shows all both ro and rw queues in the queue view.' => 'Menunjukkan semua baik antrian ro dan rw dalam tampilan antrian.',
         'Shows all both ro and rw tickets in the service view.' => 'Menunjukkan semua baik tiket ro dan rw dalam tampilan layanan.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'Menunjukkan semua tiket terbuka (bahkan jika mereka terkunci) dalam tampilan eskalasi antarmuka agen.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>

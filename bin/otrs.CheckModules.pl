@@ -199,6 +199,17 @@ my @NeededModules = (
         },
     },
     {
+        Module    => 'CSS::Minifier::XS',
+        Required  => 0,
+        Comment   => 'CSS::Minifier::XS - XS based CSS minifier, faster than pure Perl CSS::Minifier',
+        InstTypes => {
+            aptget => 'libcss-minifier-xs-perl',
+            emerge => 'dev-perl/CSS-Minifier-XS',
+            zypper => 'perl-CSS-Minifier-XS',
+            ports  => 'converters/p5-CSS-Minifier-XS',
+        },
+    },
+    {
         Module    => 'Date::Format',
         Required  => 1,
         InstTypes => {
@@ -341,6 +352,17 @@ my @NeededModules = (
             emerge => 'dev-perl/JSON-XS',
             zypper => 'perl-JSON-XS',
             ports  => 'converters/p5-JSON-XS',
+        },
+    },
+    {
+        Module    => 'JavaScript::Minifier::XS',
+        Required  => 0,
+        Comment   => 'JavaScript::Minifier::XS - XS based JavaScript minifier, faster than pure Perl JavaScript::Minifier',
+        InstTypes => {
+            aptget => 'libjavascript-minifier-xs-perl',
+            emerge => 'dev-perl/JavaScript-Minifier-XS',
+            zypper => 'perl-JavaScript-Minifier-XS',
+            ports  => 'converters/p5-JavaScript-Minifier-XS',
         },
     },
     {

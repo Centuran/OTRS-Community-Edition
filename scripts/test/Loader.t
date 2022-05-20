@@ -35,8 +35,13 @@ my $Home = $ConfigObject->Get('Home');
 
     $CSS = ${$CSS};
 
+    my $MinifiedCSSFile = 'OTRS.Reset.min.CSS-Minifier.css';
+    if ( $LoaderObject->CSSMinifier eq 'CSS::Minifier::XS' ) {
+        $MinifiedCSSFile = 'OTRS.Reset.min.CSS-Minifier-XS.css';
+    }
+
     my $ExpectedCSS = $MainObject->FileRead(
-        Location => $Home . '/scripts/test/sample/Loader/OTRS.Reset.min.css',
+        Location => $Home . '/scripts/test/sample/Loader/' . $MinifiedCSSFile,
     );
 
     $ExpectedCSS = ${$ExpectedCSS};
@@ -87,10 +92,15 @@ my $Home = $ConfigObject->Get('Home');
     # make sure line endings are standardized
     $JavaScript =~ s{\r\n}{\n}xmsg;
 
+    my $MinifiedJSFile = 'OTRS.Agent.App.Login.min.JavaScript-Minifier.js';
+    if ( $LoaderObject->JavaScriptMinifier eq 'JavaScript::Minifier::XS' ) {
+        $MinifiedJSFile = 'OTRS.Agent.App.Login.min.JavaScript-Minifier-XS.js';
+    }
+
     my $MinifiedJS = $LoaderObject->MinifyJavaScript( Code => $JavaScript );
 
     my $ExpectedJS = $MainObject->FileRead(
-        Location => $Home . '/scripts/test/sample/Loader/OTRS.Agent.App.Login.min.js',
+        Location => $Home . '/scripts/test/sample/Loader/' . $MinifiedJSFile,
     );
     $ExpectedJS = ${$ExpectedJS};
     $ExpectedJS =~ s{\r\n}{\n}xmsg;
@@ -146,8 +156,13 @@ my $Home = $ConfigObject->Get('Home');
     $MinifiedJS =~ s{\r\n}{\n}xmsg;
     chomp $MinifiedJS;
 
+    my $MinifiedJSFile = 'CombinedJavaScript.min.JavaScript-Minifier.js';
+    if ( $LoaderObject->JavaScriptMinifier eq 'JavaScript::Minifier::XS' ) {
+        $MinifiedJSFile = 'CombinedJavaScript.min.JavaScript-Minifier-XS.js';
+    }
+
     my $Expected = $MainObject->FileRead(
-        Location => $Home . '/scripts/test/sample/Loader/CombinedJavaScript.min.js',
+        Location => $Home . '/scripts/test/sample/Loader/' . $MinifiedJSFile,
     );
     $Expected = ${$Expected};
     $Expected =~ s{\r\n}{\n}xmsg;
