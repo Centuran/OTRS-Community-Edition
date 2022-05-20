@@ -48,6 +48,22 @@ sub Run {
         next PARAMNAME if $Key eq 'Action';
 
         $GetParam{$Key} = $ParamObject->GetParam( Param => $Key );
+
+        # False/undefined values should be preserved without safety processing
+        next PARAMNAME if !$GetParam{$Key};
+        
+        my %SafeParam = $Kernel::OM->Get('Kernel::System::HTMLUtils')->Safety(
+            String       => $GetParam{$Key},
+            NoApplet     => 1,
+            NoObject     => 1,
+            NoEmbed      => 1,
+            NoSVG        => 1,
+            NoImg        => 1,
+            NoIntSrcLoad => 1,
+            NoExtSrcLoad => 1,
+            NoJavaScript => 1,
+        );
+        $GetParam{$Key} = $SafeParam{String};
     }
 
     # Filter out parameters which should not be set in the request

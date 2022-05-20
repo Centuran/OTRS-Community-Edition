@@ -2023,24 +2023,12 @@ sub _Mask {
         $Param{OptionCustomerUserAddressBook} = 1;
     }
 
-    # build text template string
-    my %StandardTemplates = $Kernel::OM->Get('Kernel::System::StandardTemplate')->StandardTemplateList(
-        Valid => 1,
-        Type  => 'Email',
-    );
-
     my $QueueStandardTemplates = $Self->_GetStandardTemplates(
         %Param,
         TicketID => $Self->{TicketID} || '',
     );
 
-    if (
-        IsHashRefWithData(
-            $QueueStandardTemplates
-                || ( $Param{Queue} && IsHashRefWithData( \%StandardTemplates ) )
-        )
-        )
-    {
+    if ( IsHashRefWithData($QueueStandardTemplates) ) {
         $Param{StandardTemplateStrg} = $LayoutObject->BuildSelection(
             Data         => $QueueStandardTemplates || {},
             Name         => 'StandardTemplateID',
@@ -2421,11 +2409,15 @@ sub _GetExtendedParams {
 sub _GetStandardTemplates {
     my ( $Self, %Param ) = @_;
 
-    # get create templates
-    my %Templates;
-
-    # check needed
-    return \%Templates if !$Param{QueueID} && !$Param{TicketID};
+    for my $Name (qw(QueueID TicketID)) {
+        if (!defined $Param{$Name}) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Need $Name!",
+            );
+            return {};
+        }
+    }
 
     my $QueueID = $Param{QueueID} || '';
     if ( !$Param{QueueID} && $Param{TicketID} ) {
@@ -2445,8 +2437,8 @@ sub _GetStandardTemplates {
         TemplateTypes => 1,
     );
 
-    # return empty hash if there are no templates for this screen
-    return \%Templates if !IsHashRefWithData( $StandardTemplates{Email} );
+    # return empty hash reference if there are no templates for this screen
+    return {} if !IsHashRefWithData( $StandardTemplates{Email} );
 
     # return just the templates for this screen
     return $StandardTemplates{Email};
