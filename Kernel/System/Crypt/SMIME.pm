@@ -272,11 +272,11 @@ sub Decrypt {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Message)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Message)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -380,11 +380,11 @@ sub Sign {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Message)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Message)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

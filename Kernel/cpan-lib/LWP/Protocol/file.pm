@@ -1,10 +1,10 @@
 package LWP::Protocol::file;
 
-use base qw(LWP::Protocol);
+use parent qw(LWP::Protocol);
 
 use strict;
 
-our $VERSION = '6.54';
+our $VERSION = '6.64';
 
 require LWP::MediaTypes;
 require HTTP::Request;

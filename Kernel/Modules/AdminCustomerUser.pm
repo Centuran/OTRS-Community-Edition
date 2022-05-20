@@ -1346,7 +1346,7 @@ sub _Edit {
             if ( $Data{ $PreferencesGroup->{Prio} } ) {
 
                 COUNT:
-                for ( 1 .. 151 ) {
+                for my $Value ( 1 .. 151 ) {
 
                     $PreferencesGroup->{Prio}++;
 

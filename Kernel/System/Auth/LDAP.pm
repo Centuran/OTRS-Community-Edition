@@ -119,11 +119,11 @@ sub Auth {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(User Pw)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(User Pw)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

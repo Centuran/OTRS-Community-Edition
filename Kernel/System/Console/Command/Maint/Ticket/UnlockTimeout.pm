@@ -58,8 +58,8 @@ sub Run {
     }
 
     TICKET:
-    for (@Tickets) {
-        my @Row = @{$_};
+    for my $TicketRow (@Tickets) {
+        my @Row = @{$TicketRow};
 
         # get used calendar
         my $Calendar = $Kernel::OM->Get('Kernel::System::Ticket')->TicketCalendarGet(

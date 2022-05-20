@@ -152,11 +152,11 @@ sub EventHandler {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Data Event UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Data Event UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

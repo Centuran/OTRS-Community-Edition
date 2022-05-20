@@ -94,11 +94,11 @@ sub Read {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Filename Mode)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Filename Mode)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -178,11 +178,11 @@ sub Write {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Filename Content Mode)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Filename Content Mode)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -260,11 +260,11 @@ sub Delete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Filename)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Filename)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

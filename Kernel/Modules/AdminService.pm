@@ -61,8 +61,8 @@ sub Run {
 
         # get params
         my %GetParam;
-        for (qw(ServiceID ParentID Name ValidID Comment)) {
-            $GetParam{$_} = $ParamObject->GetParam( Param => $_ ) || '';
+        for my $Name (qw(ServiceID ParentID Name ValidID Comment)) {
+            $GetParam{$Name} = $ParamObject->GetParam( Param => $Name ) || '';
         }
 
         my %Error;

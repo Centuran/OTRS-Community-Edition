@@ -143,7 +143,7 @@ sub Run {
         }
 
         # Check if name is duplicated.
-        my %WebserviceList = %{ $WebserviceObject->WebserviceList() };
+        my %WebserviceList = %{ $WebserviceObject->WebserviceList( Valid => 0 ) };
 
         %WebserviceList = reverse %WebserviceList;
 
@@ -260,7 +260,7 @@ sub Run {
         }
 
         # Check if name is duplicated.
-        my %WebserviceList = %{ $WebserviceObject->WebserviceList() };
+        my %WebserviceList = %{ $WebserviceObject->WebserviceList( Valid => 0 ) };
 
         %WebserviceList = reverse %WebserviceList;
 
@@ -436,7 +436,7 @@ sub Run {
         $WebserviceData->{Name} = $CloneName;
 
         # Check if name is duplicated.
-        my %WebserviceList = %{ $WebserviceObject->WebserviceList() };
+        my %WebserviceList = %{ $WebserviceObject->WebserviceList( Valid => 0 ) };
 
         %WebserviceList = reverse %WebserviceList;
 
@@ -632,7 +632,7 @@ sub Run {
         $WebserviceData->{ValidID} = 1;
 
         # Check if name is duplicated.
-        my %WebserviceList = %{ $WebserviceObject->WebserviceList() };
+        my %WebserviceList = %{ $WebserviceObject->WebserviceList( Valid => 0 ) };
 
         %WebserviceList = reverse %WebserviceList;
 

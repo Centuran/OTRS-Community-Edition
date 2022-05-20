@@ -50,7 +50,7 @@ sub PreRun {
         die "Source file $SourcePath does not exist / is not readable.\n";
     }
 
-    my $WebServiceList = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceList();
+    my $WebServiceList = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceList( Valid => 0 );
 
     my $WebServiceID = $Self->GetOption('webservice-id');
     if ( !$WebServiceList->{$WebServiceID} ) {

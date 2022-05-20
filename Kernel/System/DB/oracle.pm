@@ -314,12 +314,12 @@ EOF
         $SQL .= "    CONSTRAINT $Unique UNIQUE (";
         my @Array = @{ $Uniq{$Name} };
         my $Name  = '';
-        for ( 0 .. $#Array ) {
-            if ( $_ > 0 ) {
+        for my $Index ( 0 .. $#Array ) {
+            if ( $Index > 0 ) {
                 $SQL .= ', ';
             }
-            $SQL  .= $Array[$_]->{Name};
-            $Name .= '_' . $Array[$_]->{Name};
+            $SQL  .= $Array[$Index]->{Name};
+            $Name .= '_' . $Array[$Index]->{Name};
         }
         $SQL .= ')';
     }
@@ -328,13 +328,13 @@ EOF
     # add foreign keys
     for my $ForeignKey ( sort keys %Foreign ) {
         my @Array = @{ $Foreign{$ForeignKey} };
-        for ( 0 .. $#Array ) {
+        for my $Index ( 0 .. $#Array ) {
             push @{ $Self->{Post} },
                 $Self->ForeignKeyCreate(
                 LocalTableName   => $TableName,
-                Local            => $Array[$_]->{Local},
+                Local            => $Array[$Index]->{Local},
                 ForeignTableName => $ForeignKey,
-                Foreign          => $Array[$_]->{Foreign},
+                Foreign          => $Array[$Index]->{Foreign},
                 );
         }
     }
@@ -718,11 +718,11 @@ sub IndexCreate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TableName Name Data)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TableName Name Data)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -732,11 +732,11 @@ sub IndexCreate {
     );
     my $CreateIndexSQL = "CREATE INDEX $Index ON $Param{TableName} (";
     my @Array          = @{ $Param{Data} };
-    for ( 0 .. $#Array ) {
-        if ( $_ > 0 ) {
+    for my $Index ( 0 .. $#Array ) {
+        if ( $Index > 0 ) {
             $CreateIndexSQL .= ', ';
         }
-        $CreateIndexSQL .= $Array[$_]->{Name};
+        $CreateIndexSQL .= $Array[$Index]->{Name};
     }
     $CreateIndexSQL .= ')';
 
@@ -763,11 +763,11 @@ sub IndexDrop {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TableName Name)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TableName Name)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -802,11 +802,11 @@ sub ForeignKeyCreate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(LocalTableName Local ForeignTableName Foreign)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(LocalTableName Local ForeignTableName Foreign)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -856,11 +856,11 @@ sub ForeignKeyDrop {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(LocalTableName Local ForeignTableName Foreign)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(LocalTableName Local ForeignTableName Foreign)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -908,11 +908,11 @@ sub UniqueCreate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TableName Name Data)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TableName Name Data)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -925,12 +925,12 @@ sub UniqueCreate {
     my $CreateUniqueSQL = "ALTER TABLE $Param{TableName} ADD CONSTRAINT $Unique UNIQUE (";
     my @Array           = @{ $Param{Data} };
     my $Name            = '';
-    for ( 0 .. $#Array ) {
-        if ( $_ > 0 ) {
+    for my $Index ( 0 .. $#Array ) {
+        if ( $Index > 0 ) {
             $CreateUniqueSQL .= ', ';
         }
-        $CreateUniqueSQL .= $Array[$_]->{Name};
-        $Name            .= '_' . $Array[$_]->{Name};
+        $CreateUniqueSQL .= $Array[$Index]->{Name};
+        $Name            .= '_' . $Array[$Index]->{Name};
     }
     $CreateUniqueSQL .= ')';
 
@@ -957,11 +957,11 @@ sub UniqueDrop {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TableName Name)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TableName Name)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -1047,11 +1047,12 @@ sub Insert {
         }
     }
     my $Key = '';
-    for (@Keys) {
+    # FIXME: Isn't this a reinvented join()?
+    for my $Field (@Keys) {
         if ( $Key ne '' ) {
             $Key .= ', ';
         }
-        $Key .= $_;
+        $Key .= $Field;
     }
     my $Value = '';
     for my $Tmp (@Values) {

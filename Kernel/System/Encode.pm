@@ -103,9 +103,9 @@ sub Convert {
     return '' if $Param{Text} eq '';
 
     # check needed stuff
-    for (qw(From To)) {
-        if ( !defined $Param{$_} ) {
-            print STDERR "Need $_!\n";
+    for my $Name (qw(From To)) {
+        if ( !defined $Param{$Name} ) {
+            print STDERR "Need $Name!\n";
             return;
         }
     }

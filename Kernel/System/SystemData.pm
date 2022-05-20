@@ -79,11 +79,11 @@ sub SystemDataAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Key UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Key UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -283,11 +283,11 @@ sub SystemDataUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Key UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Key UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -349,11 +349,11 @@ sub SystemDataDelete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Key UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Key UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

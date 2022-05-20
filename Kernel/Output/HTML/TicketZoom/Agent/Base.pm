@@ -290,8 +290,8 @@ sub _ArticleModuleMeta {
                     }
 
                     my %Parts;
-                    for ( 1 .. $Elements ) {
-                        $Parts{$_} = $MatchData[ $Counter + $_ ];
+                    for my $Part ( 1 .. $Elements ) {
+                        $Parts{$Part} = $MatchData[ $Counter + $Part ];
                     }
                     $Counter += $Elements + 1;
 

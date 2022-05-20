@@ -86,9 +86,9 @@ sub Output {
         %{ $Self->{EnvRef} } = %ENV;
 
         # all $Self->{*}
-        for ( sort keys %{$Self} ) {
-            if ( defined $Self->{$_} && !ref $Self->{$_} ) {
-                $Self->{EnvRef}->{$_} = $Self->{$_};
+        for my $Name ( sort keys %{$Self} ) {
+            if ( defined $Self->{$Name} && !ref $Self->{$Name} ) {
+                $Self->{EnvRef}->{$Name} = $Self->{$Name};
             }
         }
     }
@@ -121,8 +121,8 @@ sub Output {
 
     # take templates from string/array
     elsif ( defined $Param{Template} && ref $Param{Template} eq 'ARRAY' ) {
-        for ( @{ $Param{Template} } ) {
-            $TemplateString .= $_;
+        for my $String ( @{ $Param{Template} } ) {
+            $TemplateString .= $String;
         }
     }
     elsif ( defined $Param{Template} ) {

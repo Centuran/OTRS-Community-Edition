@@ -341,11 +341,11 @@ sub Date2SystemTime {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Year Month Day Hour Minute Second)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Year Month Day Hour Minute Second)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -439,11 +439,11 @@ sub WorkingTime {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(StartTime StopTime)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(StartTime StopTime)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -520,11 +520,11 @@ sub DestinationTime {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw( StartTime Time )) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw( StartTime Time )) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -578,11 +578,11 @@ sub VacationCheck {
     my ( $Self, %Param ) = @_;
 
     # check required params
-    for (qw(Year Month Day)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Year Month Day)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "VacationCheck: Need $_!",
+                Message  => "VacationCheck: Need $Name!",
             );
             return;
         }

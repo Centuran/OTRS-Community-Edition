@@ -431,9 +431,8 @@ sub _DatabaseRead {
         Result   => 'ARRAY',    # optional - SCALAR|ARRAY
     );
     if ($ArrayRef) {
-        for ( @{$ArrayRef} ) {
-            my $Line = $_;
-            my @Row  = split( /::/, $Line );
+        for my $Line ( @{$ArrayRef} ) {
+            my @Row = split( /::/, $Line );
             push( @Data, \@Row );
         }
     }

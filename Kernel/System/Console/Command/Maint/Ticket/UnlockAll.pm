@@ -46,8 +46,8 @@ sub Run {
     while ( my @Row = $Kernel::OM->Get('Kernel::System::DB')->FetchrowArray() ) {
         push @Tickets, \@Row;
     }
-    for (@Tickets) {
-        my @Row = @{$_};
+    for my $TicketRow (@Tickets) {
+        my @Row = @{$TicketRow};
         $Self->Print(" Unlocking ticket id $Row[0]... ");
         my $Unlock = $Kernel::OM->Get('Kernel::System::Ticket')->LockSet(
             TicketID => $Row[1],

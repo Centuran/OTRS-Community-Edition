@@ -55,11 +55,11 @@ sub SetPreferences {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID Key)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserID Key)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -100,11 +100,11 @@ sub GetPreferences {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

@@ -1064,7 +1064,7 @@ sub GenerateRandomString {
     # generate the string
     my $String;
 
-    for ( 1 .. $Length ) {
+    for my $Index ( 1 .. $Length ) {
 
         my $Key = int Math::Random::Secure::rand $DictionaryLength;
 

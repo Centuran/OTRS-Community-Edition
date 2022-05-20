@@ -2065,8 +2065,8 @@ sub Run {
                 my %AllStdAttachments = $StdAttachmentObject->StdAttachmentStandardTemplateMemberList(
                     StandardTemplateID => $GetParam{StandardTemplateID},
                 );
-                for ( sort keys %AllStdAttachments ) {
-                    my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $_ );
+                for my $AttachmentID ( sort keys %AllStdAttachments ) {
+                    my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $AttachmentID );
                     $UploadCacheObject->FormIDAddFile(
                         FormID      => $Self->{FormID},
                         Disposition => 'attachment',

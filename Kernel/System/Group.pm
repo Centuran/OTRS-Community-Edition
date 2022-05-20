@@ -676,11 +676,11 @@ sub RoleUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ID Name ValidID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(ID Name ValidID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -941,11 +941,11 @@ sub PermissionCheck {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID GroupName Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserID GroupName Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -970,11 +970,11 @@ sub PermissionUserInvolvedGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserID Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1016,11 +1016,11 @@ sub PermissionUserGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserID Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1091,11 +1091,11 @@ sub PermissionGroupGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(GroupID Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(GroupID Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1176,11 +1176,11 @@ sub PermissionGroupUserAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UID GID UserID Permission)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UID GID UserID Permission)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1306,11 +1306,11 @@ sub PermissionGroupUserGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(GroupID Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(GroupID Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1389,11 +1389,11 @@ sub PermissionUserGroupGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserID Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1475,11 +1475,11 @@ sub PermissionGroupRoleAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(RID GID UserID Permission)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(RID GID UserID Permission)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1608,11 +1608,11 @@ sub PermissionGroupRoleGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(GroupID Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(GroupID Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1689,11 +1689,11 @@ sub PermissionRoleGroupGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(RoleID Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(RoleID Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1766,11 +1766,11 @@ sub PermissionRoleUserAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UID RID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UID RID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -1968,11 +1968,11 @@ sub GroupMemberList {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Result Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Result Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -2059,11 +2059,11 @@ sub GroupGroupMemberList {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Result Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Result Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -2165,11 +2165,11 @@ sub GroupRoleMemberList {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Result Type)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Result Type)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }

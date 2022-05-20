@@ -190,7 +190,7 @@ sub Run {
 
     # get params
     my %GetParam;
-    for (
+    for my $Name (
         qw(
         To Cc Bcc Subject Body InReplyTo References ResponseID ReplyArticleID StateID ArticleID
         IsVisibleForCustomerPresent IsVisibleForCustomer TimeUnits Year Month Day Hour Minute FormID ReplyAll
@@ -198,7 +198,7 @@ sub Run {
         )
         )
     {
-        $GetParam{$_} = $ParamObject->GetParam( Param => $_ );
+        $GetParam{$Name} = $ParamObject->GetParam( Param => $Name );
     }
 
     # Make sure sender is correct one. See bug#14872 ( https://bugs.otrs.org/show_bug.cgi?id=14872 ).
@@ -1317,8 +1317,8 @@ sub Run {
             my %AllStdAttachments = $StdAttachmentObject->StdAttachmentStandardTemplateMemberList(
                 StandardTemplateID => $GetParam{ResponseID},
             );
-            for ( sort keys %AllStdAttachments ) {
-                my %Data = $StdAttachmentObject->StdAttachmentGet( ID => $_ );
+            for my $AttachmentID ( sort keys %AllStdAttachments ) {
+                my %Data = $StdAttachmentObject->StdAttachmentGet( ID => $AttachmentID );
                 $UploadCacheObject->FormIDAddFile(
                     FormID      => $Self->{FormID},
                     Disposition => 'attachment',
@@ -1510,10 +1510,10 @@ sub Run {
                             ": $Data{CreateTime}<br/>" . $Data{Body};
                     }
 
-                    for (qw(Subject ReplyTo Reply-To Cc To From)) {
-                        if ( $Data{$_} ) {
-                            $Data{Body} = $LayoutObject->{LanguageObject}->Translate($_) .
-                                ": $Data{$_}<br/>" . $Data{Body};
+                    for my $Field (qw(Subject ReplyTo Reply-To Cc To From)) {
+                        if ( $Data{$Field} ) {
+                            $Data{Body} = $LayoutObject->{LanguageObject}->Translate($Field) .
+                                ": $Data{$Field}<br/>" . $Data{Body};
                         }
                     }
 
@@ -1547,10 +1547,10 @@ sub Run {
                             ": $Data{CreateTime}\n" . $Data{Body};
                     }
 
-                    for (qw(Subject ReplyTo Reply-To Cc To From)) {
-                        if ( $Data{$_} ) {
-                            $Data{Body} = $LayoutObject->{LanguageObject}->Translate($_) .
-                                ": $Data{$_}\n" . $Data{Body};
+                    for my $Field (qw(Subject ReplyTo Reply-To Cc To From)) {
+                        if ( $Data{$Field} ) {
+                            $Data{Body} = $LayoutObject->{LanguageObject}->Translate($Field) .
+                                ": $Data{$Field}\n" . $Data{Body};
                         }
                     }
 

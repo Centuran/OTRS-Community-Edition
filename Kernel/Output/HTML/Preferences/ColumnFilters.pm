@@ -28,8 +28,8 @@ sub new {
     my $Self = {%Param};
     bless( $Self, $Type );
 
-    for (qw(UserID ConfigItem)) {
-        die "Got no $_!" if ( !$Self->{$_} );
+    for my $Name (qw(UserID ConfigItem)) {
+        die "Got no $Name!" if ( !$Self->{$Name} );
     }
 
     return $Self;

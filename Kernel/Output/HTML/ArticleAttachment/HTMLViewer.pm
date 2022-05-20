@@ -39,8 +39,8 @@ sub Run {
 
     # check if config exists
     if ( $ConfigObject->Get('MIME-Viewer') ) {
-        for ( sort keys %{ $ConfigObject->Get('MIME-Viewer') } ) {
-            if ( $Param{File}->{ContentType} =~ /^$_/i ) {
+        for my $Type ( sort keys %{ $ConfigObject->Get('MIME-Viewer') } ) {
+            if ( $Param{File}->{ContentType} =~ /^$Type/i ) {
                 return (
                     %{ $Param{File} },
                     Action => 'Viewer',

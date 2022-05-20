@@ -41,14 +41,14 @@ sub new {
 
     my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
 
-    for (
+    for my $Name (
         qw(To Cc Bcc Subject Body InReplyTo References ComposeStateID IsVisibleForCustomerPresent
         IsVisibleForCustomer ArticleID TimeUnits Year Month Day Hour Minute FormID FormDraftID Title)
         )
     {
-        my $Value = $ParamObject->GetParam( Param => $_ );
+        my $Value = $ParamObject->GetParam( Param => $Name );
         if ( defined $Value ) {
-            $Self->{GetParam}->{$_} = $Value;
+            $Self->{GetParam}->{$Name} = $Value;
         }
     }
 
@@ -458,10 +458,10 @@ sub Form {
             $Data{Body}       = $LayoutObject->{LanguageObject}->Translate('Date') .
                 ": $Data{CreateTime}\n" . $Data{Body};
         }
-        for (qw(Subject ReplyTo Reply-To Cc To From Sender)) {
-            if ( $Data{$_} ) {
-                $Data{Body} = $LayoutObject->{LanguageObject}->Translate($_) .
-                    ": $Data{$_}\n" . $Data{Body};
+        for my $Field (qw(Subject ReplyTo Reply-To Cc To From Sender)) {
+            if ( $Data{$Field} ) {
+                $Data{Body} = $LayoutObject->{LanguageObject}->Translate($Field) .
+                    ": $Data{$Field}\n" . $Data{Body};
             }
         }
 
@@ -487,8 +487,8 @@ sub Form {
         my %AllStdAttachments = $StdAttachmentObject->StdAttachmentStandardTemplateMemberList(
             StandardTemplateID => $GetParam{ForwardTemplateID},
         );
-        for ( sort keys %AllStdAttachments ) {
-            my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $_ );
+        for my $AttachmentID ( sort keys %AllStdAttachments ) {
+            my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $AttachmentID );
             $UploadCacheObject->FormIDAddFile(
                 FormID      => $GetParam{FormID},
                 Disposition => 'attachment',
@@ -503,9 +503,9 @@ sub Form {
     );
 
     # check some values
-    for (qw(To Cc Bcc)) {
-        if ( $Data{$_} ) {
-            delete $Data{$_};
+    for my $Field (qw(To Cc Bcc)) {
+        if ( $Data{$Field} ) {
+            delete $Data{$Field};
         }
     }
 

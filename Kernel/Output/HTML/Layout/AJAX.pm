@@ -62,11 +62,11 @@ sub BuildSelectionJSON {
         my $LogObject = $Kernel::OM->Get('Kernel::System::Log');
 
         # check needed stuff
-        for (qw(Name)) {
-            if ( !defined $Param{$_} ) {
+        for my $Name (qw(Name)) {
+            if ( !defined $Param{$Name} ) {
                 $LogObject->Log(
                     Priority => 'error',
-                    Message  => "Need $_!"
+                    Message  => "Need $Name!"
                 );
                 return;
             }

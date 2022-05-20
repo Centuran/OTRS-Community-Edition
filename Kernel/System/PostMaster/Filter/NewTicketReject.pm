@@ -38,13 +38,13 @@ sub Run {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(JobConfig GetParam)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(JobConfig GetParam)) {
+        if ( !$Param{$Name} ) {
             $Self->{CommunicationLogObject}->ObjectLog(
                 ObjectLogType => 'Message',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::PostMaster::Filter::NewTicketReject',
-                Value         => "Need $_!",
+                Value         => "Need $Name!",
             );
             return;
         }

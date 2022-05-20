@@ -48,8 +48,8 @@ sub Run {
     my $Output;
 
     if ( ref($Value) eq 'ARRAY' ) {
-        for ( @{$Value} ) {
-            $Output .= "$_;";
+        for my $Item ( @{$Value} ) {
+            $Output .= "$Item;";
         }
         $Output .= "\n";
     }

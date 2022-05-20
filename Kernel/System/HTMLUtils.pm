@@ -65,11 +65,11 @@ sub ToAscii {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -599,11 +599,11 @@ sub ToHTML {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -637,11 +637,11 @@ sub DocumentComplete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String Charset)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String Charset)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -678,11 +678,11 @@ sub DocumentStrip {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -720,11 +720,11 @@ sub DocumentCleanup {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -756,7 +756,7 @@ sub DocumentCleanup {
     # "<div style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt" type="cite">"
     # because of cross mail client and browser compatability
     my $Style = "border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt";
-    for ( 1 .. 10 ) {
+    for my $Number ( 1 .. 10 ) {
         $Param{String} =~ s{
             <blockquote(.*?)>(.+?)</blockquote>
         }
@@ -981,11 +981,11 @@ sub Safety {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

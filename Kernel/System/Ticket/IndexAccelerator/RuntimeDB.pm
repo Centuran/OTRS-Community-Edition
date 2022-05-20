@@ -51,11 +51,11 @@ sub TicketAcceleratorIndex {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID QueueID ShownQueueIDs)) {
-        if ( !exists( $Param{$_} ) ) {
+    for my $Name (qw(UserID QueueID ShownQueueIDs)) {
+        if ( !exists( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -65,8 +65,8 @@ sub TicketAcceleratorIndex {
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     # db quote
-    for (qw(UserID)) {
-        $Param{$_} = $DBObject->Quote( $Param{$_}, 'Integer' );
+    for my $Name (qw(UserID)) {
+        $Param{$Name} = $DBObject->Quote( $Param{$Name}, 'Integer' );
     }
 
     # get user groups
@@ -115,13 +115,13 @@ sub TicketAcceleratorIndex {
                 AND st.archive_flag = 0
                 AND st.queue_id IN (";
 
-        for ( 0 .. $#QueueIDs ) {
+        for my $Index ( 0 .. $#QueueIDs ) {
 
-            if ( $_ > 0 ) {
+            if ( $Index > 0 ) {
                 $SQL .= ",";
             }
 
-            $SQL .= $DBObject->Quote( $QueueIDs[$_], 'Integer' );
+            $SQL .= $DBObject->Quote( $QueueIDs[$Index], 'Integer' );
         }
         $SQL .= " )";
 

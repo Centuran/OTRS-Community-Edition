@@ -160,7 +160,7 @@ sub GeneratePDF {
     );
 
     COUNT:
-    for ( 2 .. $MaxPages ) {
+    for my $Number ( 2 .. $MaxPages ) {
 
         # output table (or a fragment of it)
         %TableParam = $PDFObject->Table( %TableParam, );
@@ -170,7 +170,7 @@ sub GeneratePDF {
 
         $PDFObject->PageNew(
             %PageParam,
-            FooterRight => $Page . ' ' . $_,
+            FooterRight => $Page . ' ' . $Number,
         );
     }
 

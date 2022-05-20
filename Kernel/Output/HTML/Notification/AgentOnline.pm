@@ -31,9 +31,9 @@ sub Run {
     my %Online   = ();
     my @Sessions = $SessionObject->GetAllSessionIDs();
 
-    for (@Sessions) {
+    for my $SessionID (@Sessions) {
         my %Data = $SessionObject->GetSessionIDData(
-            SessionID => $_,
+            SessionID => $SessionID,
         );
         if (
             $Self->{UserID} ne $Data{UserID}
@@ -51,11 +51,11 @@ sub Run {
             }
         }
     }
-    for ( sort { $Online{$a} cmp $Online{$b} } keys %Online ) {
+    for my $UserID ( sort { $Online{$a} cmp $Online{$b} } keys %Online ) {
         if ( $Param{Message} ) {
             $Param{Message} .= ', ';
         }
-        $Param{Message} .= "$Online{$_}";
+        $Param{Message} .= "$Online{$UserID}";
     }
     if ( $Param{Message} ) {
 

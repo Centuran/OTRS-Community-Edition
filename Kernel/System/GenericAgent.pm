@@ -179,11 +179,11 @@ sub JobRun {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Job UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Job UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -333,17 +333,17 @@ sub JobRun {
             UserID     => $Param{UserID} || 1,
         );
 
-        for (@Tickets) {
+        for my $TicketID (@Tickets) {
             if ( !$Job{Queue} ) {
-                $Tickets{$_} = $TicketObject->TicketNumberLookup( TicketID => $_ );
+                $Tickets{$TicketID} = $TicketObject->TicketNumberLookup( TicketID => $TicketID );
             }
             else {
                 my %Ticket = $TicketObject->TicketGet(
-                    TicketID      => $_,
+                    TicketID      => $TicketID,
                     DynamicFields => 0,
                 );
                 if ( $Ticket{Queue} eq $Job{Queue} ) {
-                    $Tickets{$_} = $Ticket{TicketNumber};
+                    $Tickets{$TicketID} = $Ticket{TicketNumber};
                 }
             }
         }
@@ -372,16 +372,16 @@ sub JobRun {
             );
         }
         elsif ( ref $Job{Queue} eq 'ARRAY' ) {
-            for ( @{ $Job{Queue} } ) {
+            for my $Queue ( @{ $Job{Queue} } ) {
                 if ( $Self->{NoticeSTDOUT} ) {
-                    print " For Queue: $_\n";
+                    print " For Queue: $Queue\n";
                 }
                 %Tickets = (
                     $TicketObject->TicketSearch(
                         %Job,
                         %DynamicFieldSearchParameters,
                         ConditionInline => 1,
-                        Queues          => [$_],
+                        Queues          => [$Queue],
                         StateType       => $Type,
                         Limit           => $Param{Limit} || $RunLimit,
                         UserID          => $Param{UserID},
@@ -404,13 +404,13 @@ sub JobRun {
                 %Tickets
             );
         }
-        for ( sort keys %Tickets ) {
+        for my $TicketID ( sort keys %Tickets ) {
             my %Ticket = $TicketObject->TicketGet(
-                TicketID      => $_,
+                TicketID      => $TicketID,
                 DynamicFields => 0,
             );
             if ( $Ticket{UntilTime} > 1 ) {
-                delete $Tickets{$_};
+                delete $Tickets{$TicketID};
             }
         }
     }
@@ -421,8 +421,8 @@ sub JobRun {
 
             # check min. one search arg
             my $Count = 0;
-            for ( sort keys %Job ) {
-                if ( $_ !~ /^(New|Name|Valid|Schedule|Event)/ && $Job{$_} ) {
+            for my $Option ( sort keys %Job ) {
+                if ( $Option !~ /^(New|Name|Valid|Schedule|Event)/ && $Job{$Option} ) {
                     $Count++;
                 }
             }
@@ -456,16 +456,16 @@ sub JobRun {
             );
         }
         elsif ( ref $Job{Queue} eq 'ARRAY' ) {
-            for ( @{ $Job{Queue} } ) {
+            for my $Queue ( @{ $Job{Queue} } ) {
                 if ( $Self->{NoticeSTDOUT} ) {
-                    print " For Queue: $_\n";
+                    print " For Queue: $Queue\n";
                 }
                 %Tickets = (
                     $TicketObject->TicketSearch(
                         %Job,
                         %DynamicFieldSearchParameters,
                         ConditionInline => 1,
-                        Queues          => [$_],
+                        Queues          => [$Queue],
                         Limit           => $Param{Limit} || $RunLimit,
                         UserID          => $Param{UserID},
                     ),
@@ -561,11 +561,11 @@ sub JobGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -626,22 +626,22 @@ sub JobGet {
         if ( !$Data{$SearchType} || $Data{$SearchType} eq 'None' ) {
 
             # do nothing on time stuff
-            for (
+            for my $Item (
                 qw(TimeStartMonth TimeStopMonth TimeStopDay
                 TimeStartDay TimeStopYear TimePoint
                 TimeStartYear TimePointFormat TimePointStart)
                 )
             {
-                delete $Data{ $Type . $_ };
+                delete $Data{ $Type . $Item };
             }
         }
         elsif ( $Data{$SearchType} && $Data{$SearchType} eq 'TimeSlot' ) {
-            for (qw(TimePoint TimePointFormat TimePointStart)) {
-                delete $Data{ $Type . $_ };
+            for my $Item (qw(TimePoint TimePointFormat TimePointStart)) {
+                delete $Data{ $Type . $Item };
             }
-            for (qw(Month Day)) {
-                $Data{ $Type . "TimeStart$_" } = sprintf( '%02d', $Data{ $Type . "TimeStart$_" } );
-                $Data{ $Type . "TimeStop$_" }  = sprintf( '%02d', $Data{ $Type . "TimeStop$_" } );
+            for my $Item (qw(Month Day)) {
+                $Data{ $Type . "TimeStart$Item" } = sprintf( '%02d', $Data{ $Type . "TimeStart$Item" } );
+                $Data{ $Type . "TimeStop$Item" }  = sprintf( '%02d', $Data{ $Type . "TimeStop$Item" } );
             }
             if (
                 $Data{ $Type . 'TimeStartDay' }
@@ -667,12 +667,12 @@ sub JobGet {
             }
         }
         elsif ( $Data{$SearchType} && $Data{$SearchType} eq 'TimePoint' ) {
-            for (
+            for my $Item (
                 qw(TimeStartMonth TimeStopMonth TimeStopDay
                 TimeStartDay TimeStopYear TimeStartYear)
                 )
             {
-                delete $Data{ $Type . $_ };
+                delete $Data{ $Type . $Item };
             }
             if (
                 $Data{ $Type . 'TimePoint' }
@@ -758,11 +758,11 @@ sub JobAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name Data UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name Data UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -836,11 +836,11 @@ sub JobDelete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -928,11 +928,11 @@ sub _JobRunTicket {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(TicketID TicketNumber Config UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(TicketID TicketNumber Config UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -1475,11 +1475,11 @@ sub _JobUpdateRunTime {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

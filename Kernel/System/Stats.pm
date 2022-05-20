@@ -370,14 +370,14 @@ sub StatsGet {
                     if ( $Attribute->{Block} eq 'Time' ) {
 
                         # settings for working with time elements
-                        for (
+                        for my $Setting (
                             qw(TimeStop TimeStart TimeRelativeUnit
                             TimeRelativeCount TimeRelativeUpcomingCount TimeScaleCount
                             )
                             )
                         {
-                            if ( defined $Ref->{$_} && ( !$Attribute->{$_} || $Ref->{Fixed} ) ) {
-                                $Attribute->{$_} = $Ref->{$_};
+                            if ( defined $Ref->{$Setting} && ( !$Attribute->{$Setting} || $Ref->{Fixed} ) ) {
+                                $Attribute->{$Setting} = $Ref->{$Setting};
                             }
                         }
 
@@ -461,9 +461,9 @@ sub StatsUpdate {
 
     # a delete function can be the better solution
     for my $Key (qw(UseAsXvalue UseAsValueSeries UseAsRestriction)) {
-        for ( @{ $StatOld->{$Key} } ) {
-            if ( !$_->{Selected} ) {
-                $_ = undef;
+        for my $Data ( @{ $StatOld->{$Key} } ) {
+            if ( !$Data->{Selected} ) {
+                $Data = undef;
             }
         }
     }
@@ -494,11 +494,11 @@ sub StatsUpdate {
                     $StatXML{$Key}->[$Index]->{SelectedValues}->[$SubIndex]->{Content} = $Value;
                 }
 
-                # stetting for working with time elements
-                for (qw(TimeStop TimeStart TimeRelativeUnit TimeRelativeCount TimeRelativeUpcomingCount TimeScaleCount))
+                # settings for working with time elements
+                for my $Setting (qw(TimeStop TimeStart TimeRelativeUnit TimeRelativeCount TimeRelativeUpcomingCount TimeScaleCount))
                 {
-                    if ( defined $Ref->{$_} ) {
-                        $StatXML{$Key}->[$Index]->{$_} = $Ref->{$_};
+                    if ( defined $Ref->{$Setting} ) {
+                        $StatXML{$Key}->[$Index]->{$Setting} = $Ref->{$Setting};
                     }
                 }
             }
@@ -920,11 +920,11 @@ sub GetStatsObjectAttributes {
     my ( $Self, %Param ) = @_;
 
     # check needed params
-    for (qw(ObjectModule Use)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(ObjectModule Use)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -2966,13 +2966,15 @@ sub _GenerateDynamicStats {
         }
         elsif ( $Ref1->{SelectedValues}[0] eq 'Minute' ) {
             if ( $Count == 1 ) {
-                for ( 0 .. 59 ) {
-                    my $Time = 'sec ' . $_;
+                for my $Second ( 0 .. 59 ) {
+                    my $Time = 'sec ' . $Second;
                     push @HeaderLine, $Time;
                 }
             }
             else {
                 for ( my $Second = 0; $Second < 60; $Second += $Count ) {
+                    # FIXME: Inconsistency? In the minute part above there are
+                    # additional spaces (' - ')
                     my $Time = 'sec ' . $Second . '-' . ( $Second + $Count );
                     push @HeaderLine, $Time;
                 }
@@ -3709,9 +3711,9 @@ sub _CreateStaticResultCacheFilename {
     my $GetParamRef = $Param{GetParam};
 
     # format month and day params
-    for (qw(Month Day)) {
-        if ( $GetParamRef->{$_} ) {
-            $GetParamRef->{$_} = sprintf( "%02d", $GetParamRef->{$_} );
+    for my $Name (qw(Month Day)) {
+        if ( $GetParamRef->{$Name} ) {
+            $GetParamRef->{$Name} = sprintf( "%02d", $GetParamRef->{$Name} );
         }
     }
 

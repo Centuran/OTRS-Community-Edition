@@ -57,13 +57,13 @@ sub Run {
 
     for my $Key ( sort keys %{ $Param{GetParam} } ) {
         my @Array = @{ $Param{GetParam}->{$Key} };
-        for (@Array) {
+        for my $Value (@Array) {
 
             # pref update db
             $Kernel::OM->Get('Kernel::System::Queue')->QueuePreferencesSet(
                 QueueID => $Param{QueueData}->{QueueID},
                 Key     => $Key,
-                Value   => $_,
+                Value   => $Value,
             );
         }
     }

@@ -76,9 +76,9 @@ sub Run {
 
     # Find recipient list.
     my $Recipient = '';
-    for (qw(To Cc Bcc)) {
-        if ( $Param{$_} ) {
-            $Recipient .= ', ' . $Param{$_};
+    for my $Field (qw(To Cc Bcc)) {
+        if ( $Param{$Field} ) {
+            $Recipient .= ', ' . $Param{$Field};
         }
     }
     my @SearchAddress = ();
@@ -201,9 +201,9 @@ sub Data {
 
     # Find recipient list.
     my $Recipient = '';
-    for (qw(To Cc Bcc)) {
-        if ( $Param{$_} ) {
-            $Recipient .= ', ' . $Param{$_};
+    for my $Field (qw(To Cc Bcc)) {
+        if ( $Param{$Field} ) {
+            $Recipient .= ', ' . $Param{$Field};
         }
     }
 

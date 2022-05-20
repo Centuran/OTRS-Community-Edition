@@ -71,11 +71,11 @@ sub Array2CSV {
     my ( $Self, %Param ) = @_;
 
     # check required params
-    for (qw(Data)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Data)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Got no $_ param!"
+                Message  => "Got no $Name param!"
             );
             return;
         }

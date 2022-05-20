@@ -1451,8 +1451,8 @@ sub Run {
                 my %AllStdAttachments = $StdAttachmentObject->StdAttachmentStandardTemplateMemberList(
                     StandardTemplateID => $GetParam{StandardTemplateID},
                 );
-                for ( sort keys %AllStdAttachments ) {
-                    my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $_ );
+                for my $AttachmentID ( sort keys %AllStdAttachments ) {
+                    my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $AttachmentID );
                     $UploadCacheObject->FormIDAddFile(
                         FormID      => $Self->{FormID},
                         Disposition => 'attachment',
@@ -2983,10 +2983,10 @@ sub _GetQuotedReplyBody {
                         ": $Param{CreateTime}<br/>" . $Param{Body};
                 }
 
-                for (qw(Subject ReplyTo Reply-To Cc To From)) {
-                    if ( $Param{$_} ) {
-                        $Param{Body} = $LayoutObject->{LanguageObject}->Translate($_) .
-                            ": $Param{$_}<br/>" . $Param{Body};
+                for my $Field (qw(Subject ReplyTo Reply-To Cc To From)) {
+                    if ( $Param{$Field} ) {
+                        $Param{Body} = $LayoutObject->{LanguageObject}->Translate($Field) .
+                            ": $Param{$Field}<br/>" . $Param{Body};
                     }
                 }
 
@@ -3028,10 +3028,10 @@ sub _GetQuotedReplyBody {
                         ": $Param{CreateTime}\n" . $Param{Body};
                 }
 
-                for (qw(Subject ReplyTo Reply-To Cc To From)) {
-                    if ( $Param{$_} ) {
-                        $Param{Body} = $LayoutObject->{LanguageObject}->Translate($_) .
-                            ": $Param{$_}\n" . $Param{Body};
+                for my $Field (qw(Subject ReplyTo Reply-To Cc To From)) {
+                    if ( $Param{$Field} ) {
+                        $Param{Body} = $LayoutObject->{LanguageObject}->Translate($Field) .
+                            ": $Param{$Field}\n" . $Param{Body};
                     }
                 }
 

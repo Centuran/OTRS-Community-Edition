@@ -31,7 +31,7 @@ sub Run {
 
     $Self->Print("<yellow>Listing all web services...</yellow>\n");
 
-    my $List = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceList();
+    my $List = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceList( Valid => 0 );
     for my $ID ( sort keys %{$List} ) {
         print "  $List->{$ID} ($ID)\n";
     }

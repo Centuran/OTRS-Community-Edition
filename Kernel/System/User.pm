@@ -213,8 +213,8 @@ sub GetUserData {
 
         my $Hit = 0;
 
-        for ( $Kernel::OM->Get('Kernel::System::Valid')->ValidIDsGet() ) {
-            if ( $_ eq $Data{ValidID} ) {
+        for my $ValidID ( $Kernel::OM->Get('Kernel::System::Valid')->ValidIDsGet() ) {
+            if ( $ValidID eq $Data{ValidID} ) {
                 $Hit = 1;
             }
         }
@@ -372,11 +372,11 @@ sub UserAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserFirstname UserLastname UserLogin UserEmail ValidID ChangeUserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserFirstname UserLastname UserLogin UserEmail ValidID ChangeUserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -517,11 +517,11 @@ sub UserUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID UserFirstname UserLastname UserLogin ValidID ChangeUserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserID UserFirstname UserLastname UserLogin ValidID ChangeUserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -710,9 +710,9 @@ sub UserSearch {
             Value => $Param{PostMasterSearch},
         );
 
-        for ( sort keys %UserID ) {
+        for my $UserID ( sort keys %UserID ) {
             my %User = $Self->GetUserData(
-                UserID => $_,
+                UserID => $UserID,
                 Valid  => $Param{Valid},
             );
             if (%User) {
@@ -1218,11 +1218,11 @@ sub SetPreferences {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Key UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Key UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
