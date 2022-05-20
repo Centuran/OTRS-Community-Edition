@@ -1715,10 +1715,15 @@ sub _Replace {
                 OnlyLast   => 1,
             );
 
-            my %AgentArticle = $ArticleObject->BackendForArticle( %{ $AgentArticles[0] } )->ArticleGet(
-                %{ $AgentArticles[0] },
-                DynamicFields => 0,
-            );
+            if ( @AgentArticles && IsHashRefWithData( $AgentArticles[0] ) ) {
+                my %AgentArticle = $ArticleObject->BackendForArticle( %{ $AgentArticles[0] } )->ArticleGet(
+                    %{ $AgentArticles[0] },
+                    DynamicFields => 0,
+                );
+
+                $Param{DataAgent}->{Subject} = $AgentArticle{Subject};
+                $Param{DataAgent}->{Body}    = $AgentArticle{Body};
+            }
 
             # Get last article from customer.
             my @CustomerArticles = $ArticleObject->ArticleList(
@@ -1727,15 +1732,15 @@ sub _Replace {
                 OnlyLast   => 1,
             );
 
-            my %CustomerArticle = $ArticleObject->BackendForArticle( %{ $CustomerArticles[0] } )->ArticleGet(
-                %{ $CustomerArticles[0] },
-                DynamicFields => 0,
-            );
+            if ( @CustomerArticles && IsHashRefWithData( $CustomerArticles[0] ) ) {
+                my %CustomerArticle = $ArticleObject->BackendForArticle( %{ $CustomerArticles[0] } )->ArticleGet(
+                    %{ $CustomerArticles[0] },
+                    DynamicFields => 0,
+                );
 
-            $Param{DataAgent}->{Subject} = $AgentArticle{Subject};
-            $Param{DataAgent}->{Body}    = $AgentArticle{Body};
-            $Param{Data}->{Subject}      = $CustomerArticle{Subject};
-            $Param{Data}->{Body}         = $CustomerArticle{Body};
+                $Param{Data}->{Subject} = $CustomerArticle{Subject};
+                $Param{Data}->{Body}    = $CustomerArticle{Body};
+            }
         }
         elsif ( $Param{Template} eq 'Answer' || $Param{Template} eq 'Forward' ) {
 
