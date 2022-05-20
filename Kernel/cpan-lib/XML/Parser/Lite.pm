@@ -376,7 +376,3 @@ Martin Kutter (martin.kutter@fen-net.de)
 Additional handlers supplied by Adam Leggett.
 
 =cut
-
-
-
-

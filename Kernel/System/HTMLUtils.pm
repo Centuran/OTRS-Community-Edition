@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -898,6 +898,9 @@ sub LinkQuote {
         my $Protocol = $2;
         my $Link     = $3;
         my $End      = $4 || '';
+
+        $Link =~ s/(?<dots>\.*)$//;
+        $End .= $+{dots};
 
         # there may different links for href and link body
         my $HrefLink;

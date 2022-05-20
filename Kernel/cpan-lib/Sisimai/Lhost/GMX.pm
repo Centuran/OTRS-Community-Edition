@@ -157,4 +157,3 @@ Copyright (C) 2014-2020 azumakuniyuki, All rights reserved.
 This software is distributed under The BSD 2-Clause License.
 
 =cut
-

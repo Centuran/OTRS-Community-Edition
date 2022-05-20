@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -591,7 +591,7 @@ sub UserUpdate {
         next USERPREFERENCE if $UserPreference eq 'UserEmail' && !$Param{UserEmail};
 
         # Set user preferences.
-        # Native user data will not be overwriten (handeled by SetPreferences()).
+        # Native user data will not be overwriten (handled by SetPreferences()).
         $Self->SetPreferences(
             UserID => $Param{UserID},
             Key    => $UserPreference,
@@ -609,8 +609,6 @@ sub UserUpdate {
     }
 
     $Self->_UserCacheClear( UserID => $Param{UserID} );
-
-    # TODO Not needed to delete the cache if ValidID or Name was not changed
 
     my $CacheObject            = $Kernel::OM->Get('Kernel::System::Cache');
     my $SystemPermissionConfig = $Kernel::OM->Get('Kernel::Config')->Get('System::Permission') || [];
@@ -1244,6 +1242,8 @@ sub SetPreferences {
 
     return 0 if $Blacklisted{ $Param{Key} };
 
+    $Self->_UserCacheClear( UserID => $Param{UserID} );
+
     # get current setting
     my %User = $Self->GetUserData(
         UserID        => $Param{UserID},
@@ -1255,8 +1255,6 @@ sub SetPreferences {
         if defined $User{ $Param{Key} }
         && defined $Param{Value}
         && $User{ $Param{Key} } eq $Param{Value};
-
-    $Self->_UserCacheClear( UserID => $Param{UserID} );
 
     # get user preferences config
     my $GeneratorModule = $Kernel::OM->Get('Kernel::Config')->Get('User::PreferencesModule')

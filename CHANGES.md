@@ -1,8 +1,17 @@
 # 6.0.35 YYYY-MM-DD
- - Implemented bug fixes and changes present in Znuny version 6.0.33  
-   (thanks to Znuny GmbH and contributors)
+ - Implemented bug fixes and changes present in Znuny version 6.0.33
+   - Fixed an user cache deletion issue
+   - Fixed user search display format
+   - Added automatic utilization of CSS::Minifier::XS, if it's available
+   - Removed unused configuration options
+   - Fixed output of customer user dynamic fields in PDF files
+   - Whitespace in uploaded file names is now getting trimmed
+   - Fixed ticket article limit in generic interface operation TicketGet
  - Implemented bug fixes and changes present in Znuny version 6.0.34
-   (thanks to Znuny GmbH and contributors)
+   - Fixed navigation groups in configuration
+   - Fixed article content type checks in generic interface operation TicketCreate
+   - Invalid web services are now included when checking for existing web service names
+   - Article communication channel is now an optional parameter in generic interface operations
  - Implemented bug fixes and changes present in Znuny version 6.0.35:
    - Multiple values are now handled properly when replacing OTRS_TICKET_* tags
    - A faster method of detecting PGP data in messages is used
@@ -20,10 +29,9 @@
    - Fixed an issue with form submission when editing the "admin" group
    - Customer user accounts can now be temporarily disabled after too many failed log in attempts
    - Date/time calculation now attempts to automatically correct dates that are invalid due to DST
-   - Removed a redundant Support Data Collector MySQL Performance plugin 
+   - Removed a redundant Support Data Collector MySQL Performance plugin
  - Implemented bug fixes and changes present in Znuny version 6.0.38:
    - Fixed a problem with saving random state when sending messages signed with S/MIME
-   - Updated the bundled Mozilla::CA module to most recent version
  - Implemented bug fixes and changes present in Znuny version 6.0.39:
    - Fixed the Dev::Code::CPANUpdate console command to work in FreeBSD
    - Added a configuration setting for attributes ignored in ticket notification events
@@ -31,6 +39,42 @@
    - Fixed handling of empty subjects when parsing e-mail messages
    - Added a setting to select if parent/child processes should be displayed as a list or as a tree
    - Improved handling of translation of process and activity names
+ - Implemented bug fixes and changes present in Znuny version 6.0.40:
+   - Fixed wrong backup file name in log message
+   - Fixed a problem with full text search being interrupted by automatic refresh
+   - Fixed an issue with agent's e-mail update when editing
+   - Fixed link detection so that trailing dots are not included in the link
+   - Fixed a problem with dashboard ticket queue overview not always refreshing
+   - Top navigation bar is now displayed on error screens
+   - Fixed a problem with icons in calendar appointment tooltips
+   - Improved parsing of e-mail message subjects
+   - Ticket owners are now unchanged when a bulk ticket action gets cancelled
+ - Fixed a problem with diagnostics information being displayed in rich text editor popups
+ - Updated JavaScript::Minifier to version 1.16
+ - Updated jQuery UI to version 1.13.1
+ - Updated the bundled Mozilla::CA module to most recent version
+ - Updated LWP to version 6.64 and LWP::Protocol::https to version 6.10
+ - Updated Sisimai to version 4.25.12
+ - Thanks to Znuny GmbH and contributors:
+   - arndkeyz
+   - Bernhard Schmalhofer
+   - Fedor A. Fetisov
+   - Johannes Nickel
+   - Kai Herlemann
+   - maxence
+   - meisterheister
+   - Nicola Cordioli
+   - papeng
+   - paulfolkers
+   - Paweł Bogusławski
+   - Reedu
+   - Renée Bäcker
+   - SectorNord AG
+   - Thijs Kinkhorst
+   - Tim Püttmanns
+   - Tronsy
+   - Yuri Myasoedov
+   - zoffixznet
 
 # 6.0.34 2022-05-06 - Security release
  - Fixed the security issue described in OTRS AG security advisory [OSA-2022-03](https://otrs.com/release-notes/otrs-security-advisory-2022-03/) and Znuny security advisory [ZSA-2022-02](https://www.znuny.org/en/advisories/zsa-2022-02)  

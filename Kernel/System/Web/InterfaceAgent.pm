@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -1004,6 +1004,15 @@ sub Run {
                 }
             }
             if ( !$Param{AccessRo} && !$Param{AccessRw} || !$Param{AccessRo} && $Param{AccessRw} ) {
+
+                # Include %Param and %UserData in LayoutObject attributes
+                $Kernel::OM->ObjectParamAdd(
+                    'Kernel::Output::HTML::Layout' => {
+                        %Param,
+                        %UserData,
+                        ModuleReg => $ModuleReg,
+                    },
+                );
 
                 print $Kernel::OM->Get('Kernel::Output::HTML::Layout')->NoPermission(
                     Message => Translatable('No Permission to use this frontend module!')

@@ -625,7 +625,7 @@
                 <Item ValueType="Option" Value="0" Translatable="1">List view</Item>
             </Item>
         </Value>
-    </Setting>    
+    </Setting>
     <Setting Name="Ticket::Frontend::AgentTicketProcess::CustomerIDReadOnly" Required="1" Valid="1">
         <Description Translatable="1">Controls if CustomerID is read-only in the agent interface.</Description>
         <Navigation>Frontend::Agent::View::TicketProcess</Navigation>

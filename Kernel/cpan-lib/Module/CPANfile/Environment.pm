@@ -170,4 +170,3 @@ sub author_requires {
 }
 
 1;
-

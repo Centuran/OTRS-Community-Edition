@@ -41,4 +41,3 @@ sub asString {
 }
 
 1;
-

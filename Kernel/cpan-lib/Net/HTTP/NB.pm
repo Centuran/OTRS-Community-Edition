@@ -118,4 +118,3 @@ the same terms as the Perl 5 programming language system itself.
 __END__
 
 #ABSTRACT: Non-blocking HTTP client
-

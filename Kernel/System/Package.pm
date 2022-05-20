@@ -1,5 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -4221,8 +4222,9 @@ sub _FileRemove {
             Mode     => 'binmode',
         );
         if ( $Content && ${$Content} ne $Param{File}->{Content} ) {
-            print STDERR "Notice: Backup for changed file: $RealFile.backup\n";
-            copy( $RealFile, "$RealFile.custom_backup" );
+            my $BackupFilePath = "$RealFile.custom_backup";
+            print STDERR "Notice: Backup for changed file: $BackupFilePath\n";
+            copy( $RealFile, "$BackupFilePath" );
         }
     }
 

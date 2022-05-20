@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -2417,6 +2417,7 @@ sub NoPermission {
     # create output
     my $Output;
     $Output = $Self->Header( Title => 'Insufficient Rights' ) if ( $WithHeader eq 'yes' );
+    $Output .= $Self->NavigationBar() if ( $WithHeader eq 'yes' && $Self->{UserID} );
     $Output .= $Self->Output(
         TemplateFile => 'NoPermission',
         Data         => \%Param
@@ -3254,7 +3255,7 @@ sub NavigationBar {
             next OUTPUTMODULE if !$Object;
 
             # run module
-            $Output .= $Object->Run( %Param, Config => $Jobs{$Job} );
+            $Output .= $Object->Run( %Param, Config => $Jobs{$Job} ) || '';
         }
     }
 
@@ -5735,13 +5736,13 @@ sub _BuildSelectionDataRefCreate {
                     ||
                     (
                         defined $Row->{Value}
-                        && $OptionRef->{SelectedValue}->{ $Value }
+                        && $OptionRef->{SelectedValue}->{$Value}
                     )
                 )
                 &&
                 (
                     defined $Row->{Value}
-                    && !$DisabledElements{ $Value }
+                    && !$DisabledElements{$Value}
                 )
                 )
             {
