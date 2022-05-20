@@ -205,6 +205,64 @@ for my $Test (@Tests) {
     );
 }
 
+# NameExistsCheck
+@Tests = (
+    {
+        Name => 'Check for a matching name',
+        Data => {
+            Name => $SystemAddressEmail,
+        },
+        ExpectedResult => 1,
+    },
+    {
+        Name => 'Check for a matching name in uppercase',
+        Data => {
+            Name => uc($SystemAddressEmail),
+        },
+        ExpectedResult => 1,
+    },
+    {
+        Name => 'Check for a matching name in lowercase',
+        Data => {
+            Name => lc($SystemAddressEmail),
+        },
+        ExpectedResult => 1,
+    },
+    {
+        Name => 'Check for a non-matching name',
+        Data => {
+            Name => $SystemAddressEmail . 'foobar',
+        },
+        ExpectedResult => 0,
+    },
+    {
+        Name => 'Check for a non-matching name with space',
+        Data => {
+            Name => ', ' . $SystemAddressEmail,
+        },
+        ExpectedResult => 0,
+    },
+    {
+        Name => 'Check for a non-matching name with brackets',
+        Data => {
+            Name => '(' . $SystemAddressEmail . ')',
+        },
+        ExpectedResult => 0,
+    },
+);
+
+for my $Test (@Tests) {
+    my $NameExists = $SystemAddressObject->NameExistsCheck(
+        %{ $Test->{Data} },
+    );
+
+    $Self->Is(
+        $NameExists,
+        $Test->{ExpectedResult},
+        "NameExistsCheck - $Test->{Name}",
+    );
+}
+
 my %SystemAddressDataUpdate = (
     Name     => '2' . $SystemAddressEmail,
     Realname => '2' . $SystemAddressRealname,
@@ -323,6 +381,64 @@ $Self->False(
         This system address $SystemAddressID2 cannot be set to invalid,
         because it is used in one or more queue(s) or auto response(s)",
 );
+
+# SystemAddressLookup
+@Tests = (
+    {
+        Name => 'Lookup system address by ID (ID)',
+        Data => {
+            ID => $SystemAddressID
+        },
+        ExpectedResult => '2' . $SystemAddressEmail,
+    },
+    {
+        Name => 'Lookup system address by ID (SystemAddressID)',
+        Data => {
+            SystemAddressID => $SystemAddressID
+        },
+        ExpectedResult => '2' . $SystemAddressEmail,
+    },
+    {
+        Name => 'Lookup system address by name (Name)',
+        Data => {
+            Name => '2' . $SystemAddressEmail,
+        },
+        ExpectedResult => $SystemAddressID,
+    },
+    {
+        Name => 'Lookup system address by name (SystemAddress)',
+        Data => {
+            SystemAddress => '2' . $SystemAddressEmail,
+        },
+        ExpectedResult => $SystemAddressID,
+    },
+    {
+        Name => 'Lookup a nonexistent system address by ID',
+        Data => {
+            ID => 99999999,
+        },
+        ExpectedResult => undef,
+    },
+    {
+        Name => 'Lookup a nonexistent system address by name',
+        Data => {
+            Name => 'Nonexistent system address',
+        },
+        ExpectedResult => undef,
+    },
+);
+
+for my $Test (@Tests) {
+    my $Result = $SystemAddressObject->SystemAddressLookup(
+        %{ $Test->{Data} },
+    );
+
+    $Self->Is(
+        $Result,
+        $Test->{ExpectedResult},
+        "SystemAddressLookup - $Test->{Name}",
+    );
+}
 
 # Cleanup is done by RestoreDatabase.
 

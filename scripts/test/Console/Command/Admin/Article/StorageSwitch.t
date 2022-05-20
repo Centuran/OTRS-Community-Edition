@@ -118,6 +118,20 @@ for my $Backend (qw(FS DB)) {
         0,
         "$Backend with option: --target ArticleStorage$Backend --tickets-closed-before-date 2000-10-21 00:00:00",
     );
+
+    # Provide both "target" and "source" options
+    my $SourceBackend = ({ FS => 'DB', DB => 'FS' })->{$Backend};
+    $ExitCode = $CommandObject->Execute(
+        '--source',
+        'ArticleStorage' . $SourceBackend,
+        '--target',
+        'ArticleStorage' . $Backend
+    );
+    $Self->Is(
+        $ExitCode,
+        0,
+        "$Backend with options: --source ArticleStorage$SourceBackend --target ArticleStorage$Backend",
+    );
 }
 
 # delete test ticket

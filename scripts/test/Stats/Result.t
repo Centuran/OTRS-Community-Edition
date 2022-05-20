@@ -3862,6 +3862,223 @@ my @Tests = (
             ],
         ],
     },
+
+    # Test with SumRow/SumCol and a different language.
+    # Fixed TimeStamp: '2015-12-31 20:00:00'
+    # TimeZone: -
+    # X-Axis: 'StateIDs' with 'new' and 'open'.
+    # Y-Axis: 'QueueIDs' to select only the created tickets for the test.
+    # Language: pl
+    {
+        Description => 'Test with SumRow/SumCol and a different language',
+        TimeStamp   => '2015-12-31 20:00:00',
+        Language    => 'pl',
+        StatsUpdate => {
+            StatID => $DynamicMatrixStatID,
+            Hash   => {
+                SumRow       => 1,
+                SumCol       => 1,
+                ExchangeAxis => 1,
+                UseAsXvalue  => [
+                    {
+                        'Element'        => 'StateIDs',
+                        'Block'          => 'MultiSelectField',
+                        'Selected'       => 1,
+                        'Fixed'          => 1,
+                        'SelectedValues' => [
+                            $LookupStateList{'new'},
+                            $LookupStateList{'open'},
+                        ],
+                    },
+                ],
+                UseAsValueSeries => [
+                    {
+                        'Element'        => 'QueueIDs',
+                        'Block'          => 'MultiSelectField',
+                        'Selected'       => 1,
+                        'Fixed'          => 1,
+                        'SelectedValues' => \@QueueIDs,
+                    },
+                ],
+                UseAsRestriction => [],
+            },
+            UserID => 1,
+        },
+        ReferenceResultData => [
+            [
+                'Title for result tests',
+            ],
+            [
+                '',
+                $QueueNames[0],
+                $QueueNames[1],
+                $QueueNames[2],
+                'Sum',
+            ],
+            [
+                'nowe',
+                5,
+                2,
+                1,
+                8,
+            ],
+            [
+                'otwarte',
+                1,
+                0,
+                1,
+                2,
+            ],
+            [
+                'Suma',
+                6,
+                2,
+                2,
+                10
+            ],
+        ],
+    },
+
+    # Test with SumRow and a different language
+    # Fixed TimeStamp: '2015-12-31 20:00:00'
+    # TimeZone: -
+    # X-Axis: 'StateIDs' with 'new' and 'open'.
+    # Y-Axis: 'QueueIDs' to select only the created tickets for the test.
+    # Language: pl
+    {
+        Description => 'Test with SumRow and a different language',
+        TimeStamp   => '2015-12-31 20:00:00',
+        Language    => 'pl',
+        StatsUpdate => {
+            StatID => $DynamicMatrixStatID,
+            Hash   => {
+                SumRow       => 1,
+                SumCol       => 0,
+                ExchangeAxis => 1,
+                UseAsXvalue  => [
+                    {
+                        'Element'        => 'StateIDs',
+                        'Block'          => 'MultiSelectField',
+                        'Selected'       => 1,
+                        'Fixed'          => 1,
+                        'SelectedValues' => [
+                            $LookupStateList{'new'},
+                            $LookupStateList{'open'},
+                        ],
+                    },
+                ],
+                UseAsValueSeries => [
+                    {
+                        'Element'        => 'QueueIDs',
+                        'Block'          => 'MultiSelectField',
+                        'Selected'       => 1,
+                        'Fixed'          => 1,
+                        'SelectedValues' => \@QueueIDs,
+                    },
+                ],
+                UseAsRestriction => [],
+            },
+            UserID => 1,
+        },
+        ReferenceResultData => [
+            [
+                'Title for result tests',
+            ],
+            [
+                '',
+                $QueueNames[0],
+                $QueueNames[1],
+                $QueueNames[2],
+                'Sum',
+            ],
+            [
+                'nowe',
+                5,
+                2,
+                1,
+                8,
+            ],
+            [
+                'otwarte',
+                1,
+                0,
+                1,
+                2,
+            ],
+        ],
+    },
+
+    # Test with SumCol and a different language
+    # Fixed TimeStamp: '2015-12-31 20:00:00'
+    # TimeZone: -
+    # X-Axis: 'StateIDs' with 'new' and 'open'.
+    # Y-Axis: 'QueueIDs' to select only the created tickets for the test.
+    # Language: pl
+    {
+        Description => 'Test with SumCol and a different language',
+        TimeStamp   => '2015-12-31 20:00:00',
+        Language    => 'pl',
+        StatsUpdate => {
+            StatID => $DynamicMatrixStatID,
+            Hash   => {
+                SumRow       => 0,
+                SumCol       => 1,
+                ExchangeAxis => 1,
+                UseAsXvalue  => [
+                    {
+                        'Element'        => 'StateIDs',
+                        'Block'          => 'MultiSelectField',
+                        'Selected'       => 1,
+                        'Fixed'          => 1,
+                        'SelectedValues' => [
+                            $LookupStateList{'new'},
+                            $LookupStateList{'open'},
+                        ],
+                    },
+                ],
+                UseAsValueSeries => [
+                    {
+                        'Element'        => 'QueueIDs',
+                        'Block'          => 'MultiSelectField',
+                        'Selected'       => 1,
+                        'Fixed'          => 1,
+                        'SelectedValues' => \@QueueIDs,
+                    },
+                ],
+                UseAsRestriction => [],
+            },
+            UserID => 1,
+        },
+        ReferenceResultData => [
+            [
+                'Title for result tests',
+            ],
+            [
+                '',
+                $QueueNames[0],
+                $QueueNames[1],
+                $QueueNames[2],
+            ],
+            [
+                'Suma',
+                6,
+                2,
+                2,
+            ],
+            [
+                'nowe',
+                5,
+                2,
+                1,
+            ],
+            [
+                'otwarte',
+                1,
+                0,
+                1,
+            ],
+        ],
+    },
 );
 
 # ------------------------------------------------------------ #

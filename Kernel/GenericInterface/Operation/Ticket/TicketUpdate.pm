@@ -1668,7 +1668,13 @@ sub _TicketUpdate {
         my $StateObject = $Kernel::OM->Get('Kernel::System::State');
 
         if ( $Ticket->{StateID} ) {
-            $StateID = $Ticket->{StateID};ContentTy
+            $StateID = $Ticket->{StateID};
+        }
+        else {
+            $StateID = $StateObject->StateLookup(
+                State => $Ticket->{State},
+            );
+        }
 
         %StateData = $StateObject->StateGet(
             ID => $StateID,
