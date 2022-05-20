@@ -158,21 +158,21 @@ if ( !$SMIMEObject ) {
 #
 
 # OpenSSL 0.9.x hashes
-my $Check1Hash       = '980a83c7';
-my $Check2Hash       = '999bcb2f';
-my $OTRSRootCAHash   = '1a01713f';
-my $OTRSRDCAHash     = '7807c24e';
-my $OTRSLabCAHash    = '2fc24258';
-my $OTRSUserCertHash = 'eab039b6';
+my $Check1Hash     = '980a83c7';
+my $Check2Hash     = '999bcb2f';
+my $OTRSRootCAHash = '1a01713f';
+my $OTRSInt2CAHash = '7807c24e';
+my $OTRSInt1CAHash = '2fc24258';
+my $OTRSUserHash   = 'eab039b6';
 
 # OpenSSL 1.0.0 hashes
 if ($UseNewHashes) {
-    $Check1Hash       = 'f62a2257';
-    $Check2Hash       = '35c7d865';
-    $OTRSRootCAHash   = '7835cf94';
-    $OTRSRDCAHash     = 'b5d19fb9';
-    $OTRSLabCAHash    = '19545811';
-    $OTRSUserCertHash = '4d400195';
+    $Check1Hash     = '5efb3de7';
+    $Check2Hash     = 'd562d84d';
+    $OTRSRootCAHash = '8a68405f';
+    $OTRSInt1CAHash = '1cfe78a7';
+    $OTRSInt2CAHash = '402013e3';
+    $OTRSUserHash   = 'ea80eed7';
 }
 
 # certificates
@@ -180,44 +180,44 @@ my @Certificates = (
     {
         CertificateName       => 'Check1',
         CertificateHash       => $Check1Hash,
-        CertificateFileName   => 'SMIMECertificate-1.asc',
-        PrivateKeyFileName    => 'SMIMEPrivateKey-1.asc',
-        PrivateSecretFileName => 'SMIMEPrivateKeyPass-1.asc',
+        CertificateFileName   => 'SMIME-certificate-OTRSCE-User-2.crt',
+        PrivateKeyFileName    => 'SMIME-private-key-OTRSCE-User-2.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
         CertificateName       => 'Check2',
         CertificateHash       => $Check2Hash,
-        CertificateFileName   => 'SMIMECertificate-2.asc',
-        PrivateKeyFileName    => 'SMIMEPrivateKey-2.asc',
-        PrivateSecretFileName => 'SMIMEPrivateKeyPass-2.asc',
+        CertificateFileName   => 'SMIME-certificate-OTRSCE-User-3.crt',
+        PrivateKeyFileName    => 'SMIME-private-key-OTRSCE-User-3.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
-        CertificateName       => 'OTRSUserCert',
-        CertificateHash       => $OTRSUserCertHash,
-        CertificateFileName   => 'SMIMECertificate-smimeuser1.crt',
-        PrivateKeyFileName    => 'SMIMEPrivateKey-smimeuser1.pem',
-        PrivateSecretFileName => 'SMIMEPrivateKeyPass-smimeuser1.crt',
+        CertificateName       => 'OTRSCEUserCert',
+        CertificateHash       => $OTRSUserHash,
+        CertificateFileName   => 'SMIME-certificate-OTRSCE-User-1.crt',
+        PrivateKeyFileName    => 'SMIME-private-key-OTRSCE-User-1.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
-        CertificateName       => 'OTRSLabCA',
-        CertificateHash       => $OTRSLabCAHash,
-        CertificateFileName   => 'SMIMECACertificate-OTRSLab.crt',
-        PrivateKeyFileName    => 'SMIMECAPrivateKey-OTRSLab.pem',
-        PrivateSecretFileName => 'SMIMECAPrivateKeyPass-OTRSLab.crt',
+        CertificateName       => 'OTRSCEIntermediateCA2',
+        CertificateHash       => $OTRSInt2CAHash,
+        CertificateFileName   => 'SMIME-CA-certificate-OTRSCE-CA-Intermediate-2.crt',
+        PrivateKeyFileName    => 'SMIME-CA-private-key-OTRSCE-CA-Intermediate-2.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
-        CertificateName       => 'OTRSRDCA',
-        CertificateHash       => $OTRSRDCAHash,
-        CertificateFileName   => 'SMIMECACertificate-OTRSRD.crt',
-        PrivateKeyFileName    => 'SMIMECAPrivateKey-OTRSRD.pem',
-        PrivateSecretFileName => 'SMIMECAPrivateKeyPass-OTRSRD.crt',
+        CertificateName       => 'OTRSCEIntermediateCA1',
+        CertificateHash       => $OTRSInt1CAHash,
+        CertificateFileName   => 'SMIME-CA-certificate-OTRSCE-CA-Intermediate-1.crt',
+        PrivateKeyFileName    => 'SMIME-CA-private-key-OTRSCE-CA-Intermediate-1.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
-        CertificateName       => 'OTRSRootCA',
+        CertificateName       => 'OTRSCERootCA',
         CertificateHash       => $OTRSRootCAHash,
-        CertificateFileName   => 'SMIMECACertificate-OTRSRoot.crt',
-        PrivateKeyFileName    => 'SMIMECAPrivateKey-OTRSRoot.pem',
-        PrivateSecretFileName => 'SMIMECAPrivateKeyPass-OTRSRoot.crt',
+        CertificateFileName   => 'SMIME-CA-certificate-OTRSCE-CA-Root.crt',
+        PrivateKeyFileName    => 'SMIME-CA-private-key-OTRSCE-CA-Root.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
 );
 
@@ -375,8 +375,8 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " (old API) sign only",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From => 'unittest@example.org',
-            To   => 'unittest@example.org',
+            From => 'test-2@otrscommunityedition.com',
+            To   => 'test-2@otrscommunityedition.com',
             Sign => {
                 Type    => 'SMIME',
                 SubType => 'Detached',
@@ -392,8 +392,8 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " (old API) crypt only",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From  => 'unittest@example.org',
-            To    => 'unittest@example.org',
+            From  => 'test-2@otrscommunityedition.com',
+            To    => 'test-2@otrscommunityedition.com',
             Crypt => {
                 Type => 'SMIME',
                 Key  => $Check1Hash . '.0',
@@ -408,8 +408,8 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " (old API) sign and crypt",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From => 'unittest@example.org',
-            To   => 'unittest@example.org',
+            From => 'test-2@otrscommunityedition.com',
+            To   => 'test-2@otrscommunityedition.com',
             Sign => {
                 Type    => 'SMIME',
                 SubType => 'Detached',
@@ -429,12 +429,12 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " (old API) chain CA cert sign only",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From => 'smimeuser1@test.com',
-            To   => 'smimeuser1@test.com',
+            From => 'test-1@otrscommunityedition.com',
+            To   => 'test-1@otrscommunityedition.com',
             Sign => {
                 Type    => 'SMIME',
                 SubType => 'Detached',
-                Key     => $OTRSUserCertHash . '.0',
+                Key     => $OTRSUserHash . '.0',
             },
         },
         VerifySignature  => 1,
@@ -446,11 +446,11 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " (old API) chain CA cert crypt only",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From  => 'smimeuser1@test.com',
-            To    => 'smimeuser1@test.com',
+            From  => 'test-1@otrscommunityedition.com',
+            To    => 'test-1@otrscommunityedition.com',
             Crypt => {
                 Type => 'SMIME',
-                Key  => $OTRSUserCertHash . '.0',
+                Key  => $OTRSUserHash . '.0',
             },
         },
         VerifySignature  => 0,
@@ -462,16 +462,16 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " (old API) chain CA cert sign and crypt",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From => 'smimeuser1@test.com',
-            To   => 'smimeuser1@test.com',
+            From => 'test-1@otrscommunityedition.com',
+            To   => 'test-1@otrscommunityedition.com',
             Sign => {
                 Type    => 'SMIME',
                 SubType => 'Detached',
-                Key     => $OTRSUserCertHash . '.0',
+                Key     => $OTRSUserHash . '.0',
             },
             Crypt => {
                 Type => 'SMIME',
-                Key  => $OTRSUserCertHash . '.0',
+                Key  => $OTRSUserHash . '.0',
             },
         },
         VerifySignature  => 1,
@@ -485,8 +485,8 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " sign only",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From          => 'unittest@example.org',
-            To            => 'unittest@example.org',
+            From          => 'test-2@otrscommunityedition.com',
+            To            => 'test-2@otrscommunityedition.com',
             EmailSecurity => {
                 Backend => 'SMIME',
                 Method  => 'Detached',
@@ -502,12 +502,12 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " crypt only",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From          => 'unittest@example.org',
-            To            => 'unittest@example.org',
+            From          => 'test-2@otrscommunityedition.com',
+            To            => 'test-2@otrscommunityedition.com',
             EmailSecurity => {
                 Backend     => 'SMIME',
                 Method      => 'Detached',
-                EncryptKeys => [ $Check1Hash . '.0', $OTRSUserCertHash . '.0' ],
+                EncryptKeys => [ $Check1Hash . '.0', $OTRSUserHash . '.0' ],
             },
         },
         VerifySignature  => 0,
@@ -519,8 +519,8 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " crypt only (multiple recipients)",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From          => 'unittest@example.org',
-            To            => 'unittest@example.org, smimeuser1@test.com',
+            From          => 'test-2@otrscommunityedition.com',
+            To            => 'test-2@otrscommunityedition.com, test-1@otrscommunityedition.com',
             EmailSecurity => {
                 Backend     => 'SMIME',
                 Method      => 'Detached',
@@ -536,8 +536,8 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " sign and crypt",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From          => 'unittest@example.org',
-            To            => 'unittest@example.org',
+            From          => 'test-2@otrscommunityedition.com',
+            To            => 'test-2@otrscommunityedition.com',
             EmailSecurity => {
                 Backend     => 'SMIME',
                 SubType     => 'Detached',
@@ -554,12 +554,12 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " chain CA cert sign only",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From          => 'smimeuser1@test.com',
-            To            => 'smimeuser1@test.com',
+            From          => 'test-1@otrscommunityedition.com',
+            To            => 'test-1@otrscommunityedition.com',
             EmailSecurity => {
                 Backend => 'SMIME',
                 SubType => 'Detached',
-                SignKey => $OTRSUserCertHash . '.0',
+                SignKey => $OTRSUserHash . '.0',
             },
         },
         VerifySignature  => 1,
@@ -571,11 +571,11 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " chain CA cert crypt only",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From          => 'smimeuser1@test.com',
-            To            => 'smimeuser1@test.com',
+            From          => 'test-1@otrscommunityedition.com',
+            To            => 'test-1@otrscommunityedition.com',
             EmailSecurity => {
                 Backend     => 'SMIME',
-                EncryptKeys => [ $OTRSUserCertHash . '.0' ],
+                EncryptKeys => [ $OTRSUserHash . '.0' ],
             },
         },
         VerifySignature  => 0,
@@ -587,13 +587,13 @@ for my $Test (@Tests) {
         Name        => $Test->{Name} . " chain CA cert sign and crypt",
         ArticleData => {
             %{ $Test->{ArticleData} },
-            From          => 'smimeuser1@test.com',
-            To            => 'smimeuser1@test.com',
+            From          => 'test-1@otrscommunityedition.com',
+            To            => 'test-1@otrscommunityedition.com',
             EmailSecurity => {
                 Backend     => 'SMIME',
                 SubType     => 'Detached',
-                SignKey     => $OTRSUserCertHash . '.0',
-                EncryptKeys => [ $OTRSUserCertHash . '.0' ],
+                SignKey     => $OTRSUserHash . '.0',
+                EncryptKeys => [ $OTRSUserHash . '.0' ],
             },
         },
         VerifySignature  => 1,

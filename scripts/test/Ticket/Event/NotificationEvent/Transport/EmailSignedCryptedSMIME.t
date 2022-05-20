@@ -179,7 +179,7 @@ $Self->IsDeeply(
 
 $ConfigObject->Set(
     Key   => 'NotificationSenderEmail',
-    Value => 'unittest@example.org',
+    Value => 'test-2@otrscommunityedition.com',
 );
 
 # create crypt object
@@ -244,23 +244,23 @@ if ( !$SMIMEObject ) {
 #
 
 # OpenSSL 0.9.x hashes
-my $Check1Hash       = '980a83c7';
-my $Check2Hash       = '999bcb2f';
-my $Check3Hash       = 'c3857c0d';
-my $OTRSRootCAHash   = '1a01713f';
-my $OTRSRDCAHash     = '7807c24e';
-my $OTRSLabCAHash    = '2fc24258';
-my $OTRSUserCertHash = 'eab039b6';
+my $Check1Hash     = '980a83c7';
+my $Check2Hash     = '999bcb2f';
+my $Check3Hash     = 'c3857c0d';
+my $OTRSRootCAHash = '1a01713f';
+my $OTRSInt1CAHash = '7807c24e';
+my $OTRSInt2CAHash = '2fc24258';
+my $OTRSUserHash   = 'eab039b6';
 
 # OpenSSL 1.0.0 hashes
 if ($UseNewHashes) {
-    $Check1Hash       = 'f62a2257';
-    $Check2Hash       = '35c7d865';
-    $Check3Hash       = 'a2ba8622';
-    $OTRSRootCAHash   = '7835cf94';
-    $OTRSRDCAHash     = 'b5d19fb9';
-    $OTRSLabCAHash    = '19545811';
-    $OTRSUserCertHash = '4d400195';
+    $Check1Hash     = '5efb3de7';
+    $Check2Hash     = 'd562d84d';
+    $Check3Hash     = 'e8d88685';
+    $OTRSRootCAHash = '8a68405f';
+    $OTRSInt1CAHash = '1cfe78a7';
+    $OTRSInt2CAHash = '402013e3';
+    $OTRSUserHash   = 'ea80eed7';
 }
 
 # certificates
@@ -268,51 +268,51 @@ my @Certificates = (
     {
         CertificateName       => 'Check1',
         CertificateHash       => $Check1Hash,
-        CertificateFileName   => 'SMIMECertificate-1.asc',
-        PrivateKeyFileName    => 'SMIMEPrivateKey-1.asc',
-        PrivateSecretFileName => 'SMIMEPrivateKeyPass-1.asc',
+        CertificateFileName   => 'SMIME-certificate-OTRSCE-User-2.crt',
+        PrivateKeyFileName    => 'SMIME-private-key-OTRSCE-User-2.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
         CertificateName       => 'Check2',
         CertificateHash       => $Check2Hash,
-        CertificateFileName   => 'SMIMECertificate-2.asc',
-        PrivateKeyFileName    => 'SMIMEPrivateKey-2.asc',
-        PrivateSecretFileName => 'SMIMEPrivateKeyPass-2.asc',
+        CertificateFileName   => 'SMIME-certificate-OTRSCE-User-3.crt',
+        PrivateKeyFileName    => 'SMIME-private-key-OTRSCE-User-3.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
         CertificateName       => 'Check3',
         CertificateHash       => $Check3Hash,
-        CertificateFileName   => 'SMIMECertificate-3.asc',
-        PrivateKeyFileName    => 'SMIMEPrivateKey-3.asc',
-        PrivateSecretFileName => 'SMIMEPrivateKeyPass-3.asc',
+        CertificateFileName   => 'SMIME-certificate-OTRSCE-User-4.crt',
+        PrivateKeyFileName    => 'SMIME-private-key-OTRSCE-User-4.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
-        CertificateName       => 'OTRSUserCert',
-        CertificateHash       => $OTRSUserCertHash,
-        CertificateFileName   => 'SMIMECertificate-smimeuser1.crt',
-        PrivateKeyFileName    => 'SMIMEPrivateKey-smimeuser1.pem',
-        PrivateSecretFileName => 'SMIMEPrivateKeyPass-smimeuser1.crt',
+        CertificateName       => 'OTRSCEUserCert',
+        CertificateHash       => $OTRSUserHash,
+        CertificateFileName   => 'SMIME-certificate-OTRSCE-User-1.crt',
+        PrivateKeyFileName    => 'SMIME-private-key-OTRSCE-User-1.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
-        CertificateName       => 'OTRSLabCA',
-        CertificateHash       => $OTRSLabCAHash,
-        CertificateFileName   => 'SMIMECACertificate-OTRSLab.crt',
-        PrivateKeyFileName    => 'SMIMECAPrivateKey-OTRSLab.pem',
-        PrivateSecretFileName => 'SMIMECAPrivateKeyPass-OTRSLab.crt',
+        CertificateName       => 'OTRSCEIntermediateCA2',
+        CertificateHash       => $OTRSInt2CAHash,
+        CertificateFileName   => 'SMIME-CA-certificate-OTRSCE-CA-Intermediate-2.crt',
+        PrivateKeyFileName    => 'SMIME-CA-private-key-OTRSCE-CA-Intermediate-2.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
-        CertificateName       => 'OTRSRDCA',
-        CertificateHash       => $OTRSRDCAHash,
-        CertificateFileName   => 'SMIMECACertificate-OTRSRD.crt',
-        PrivateKeyFileName    => 'SMIMECAPrivateKey-OTRSRD.pem',
-        PrivateSecretFileName => 'SMIMECAPrivateKeyPass-OTRSRD.crt',
+        CertificateName       => 'OTRSCEIntermediateCA1',
+        CertificateHash       => $OTRSInt1CAHash,
+        CertificateFileName   => 'SMIME-CA-certificate-OTRSCE-CA-Intermediate-1.crt',
+        PrivateKeyFileName    => 'SMIME-CA-private-key-OTRSCE-CA-Intermediate-1.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
     {
-        CertificateName       => 'OTRSRootCA',
+        CertificateName       => 'OTRSCERootCA',
         CertificateHash       => $OTRSRootCAHash,
-        CertificateFileName   => 'SMIMECACertificate-OTRSRoot.crt',
-        PrivateKeyFileName    => 'SMIMECAPrivateKey-OTRSRoot.pem',
-        PrivateSecretFileName => 'SMIMECAPrivateKeyPass-OTRSRoot.crt',
+        CertificateFileName   => 'SMIME-CA-certificate-OTRSCE-CA-Root.crt',
+        PrivateKeyFileName    => 'SMIME-CA-private-key-OTRSCE-CA-Root.pem',
+        PrivateSecretFileName => 'SMIME-password.txt',
     },
 );
 
@@ -351,7 +351,8 @@ for my $Certificate (@Certificates) {
 
 # add system address
 my $SystemAddressID = $Kernel::OM->Get('Kernel::System::SystemAddress')->SystemAddressAdd(
-    Name     => 'unittest3@example.org',
+    #Name     => 'unittest3@example.org',
+    Name     => 'development@otrscommunityedition.com',
     Realname => 'unit test',
     ValidID  => 1,
     QueueID  => 1,
@@ -448,7 +449,7 @@ my @Tests = (
         Name => 'SMIME - No security settings',
         Data => {
             Events         => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail => ['unittest@example.com'],
+            RecipientEmail => ['test-3@otrscommunityedition.com'],
         },
         Success => 1,
     },
@@ -456,7 +457,7 @@ my @Tests = (
         Name => 'SMIME - not signing method',
         Data => {
             Events                => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail        => ['unittest@example.com'],
+            RecipientEmail        => ['test-3@otrscommunityedition.com'],
             EmailSecuritySettings => ['1'],
             EmailSigningCrypting  => [],
         },
@@ -467,7 +468,7 @@ my @Tests = (
         Name => 'SMIME - send unsigned',
         Data => {
             Events                  => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail          => ['unittest2@example.com'],
+            RecipientEmail          => ['test-4@otrscommunityedition.com'],
             EmailSecuritySettings   => ['1'],
             EmailSigningCrypting    => ['SMIMESign'],
             EmailMissingSigningKeys => ['Send unsigned'],
@@ -480,7 +481,7 @@ my @Tests = (
         Name => 'SMIME - send unsigned',
         Data => {
             Events                  => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail          => ['unittest2@example.com'],
+            RecipientEmail          => ['test-4@otrscommunityedition.com'],
             EmailSecuritySettings   => ['1'],
             EmailSigningCrypting    => ['SMIMESign'],
             EmailMissingSigningKeys => ['Send unsigned'],
@@ -493,7 +494,7 @@ my @Tests = (
         Name => 'SMIME - send signed',
         Data => {
             Events                => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail        => [ 'unittest@example.com', 'unittest2@example.com' ],
+            RecipientEmail        => [ 'test-3@otrscommunityedition.com', 'test-4@otrscommunityedition.com' ],
             EmailSecuritySettings => ['1'],
             EmailSigningCrypting  => ['SMIMESign'],
         },
@@ -504,7 +505,7 @@ my @Tests = (
         Name => 'SMIME - send crypted',
         Data => {
             Events                => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail        => ['unittest@example.org'],
+            RecipientEmail        => ['test-2@otrscommunityedition.com'],
             EmailSecuritySettings => ['1'],
             EmailSigningCrypting  => ['SMIMECrypt'],
         },
@@ -515,7 +516,7 @@ my @Tests = (
         Name => 'SMIME - send uncrypted',
         Data => {
             Events                   => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail           => ['unittest2@example.com'],
+            RecipientEmail           => ['test-4@otrscommunityedition.com'],
             EmailSecuritySettings    => ['1'],
             EmailSigningCrypting     => ['SMIMECrypt'],
             EmailMissingCryptingKeys => ['Send'],
@@ -527,7 +528,7 @@ my @Tests = (
         Name => 'SMIME - skip delivery',
         Data => {
             Events                   => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail           => ['unittes2@example.com'],
+            RecipientEmail           => ['test-invalid@otrscommunityedition.com'],
             EmailSecuritySettings    => ['1'],
             EmailSigningCrypting     => ['SMIMESignCrypt'],
             EmailMissingCryptingKeys => ['Skip'],
@@ -541,7 +542,7 @@ my @Tests = (
         FixedTimeSet => 1,
         Data         => {
             Events                   => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail           => ['unittest@example.org'],
+            RecipientEmail           => ['test-4@otrscommunityedition.com'],
             EmailSecuritySettings    => ['1'],
             EmailSigningCrypting     => ['SMIMECrypt'],
             EmailMissingCryptingKeys => ['Skip'],
@@ -554,7 +555,7 @@ my @Tests = (
         FixedTimeSet => 1,
         Data         => {
             Events                   => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail           => ['unittest@example.org'],
+            RecipientEmail           => ['test-4@otrscommunityedition.com'],
             EmailSecuritySettings    => ['1'],
             EmailSigningCrypting     => ['SMIMECrypt'],
             EmailMissingCryptingKeys => ['Send'],
@@ -567,7 +568,7 @@ my @Tests = (
         FixedTimeSet => 1,
         Data         => {
             Events                   => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail           => ['unittest@example.org'],
+            RecipientEmail           => ['test-4@otrscommunityedition.com'],
             EmailSecuritySettings    => ['1'],
             EmailSigningCrypting     => ['SMIMESignCrypt'],
             EmailMissingCryptingKeys => ['Skip'],
@@ -580,7 +581,7 @@ my @Tests = (
         FixedTimeSet => 1,
         Data         => {
             Events                   => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            RecipientEmail           => ['unittest@example.org'],
+            RecipientEmail           => ['test-4@otrscommunityedition.com'],
             EmailSecuritySettings    => ['1'],
             EmailSigningCrypting     => ['SMIMESignCrypt'],
             EmailMissingCryptingKeys => ['Send'],

@@ -1718,13 +1718,7 @@ sub _SanitizeConfig {
         }
     }
 
-    if ( !IsHashRefWithData( $Param{Config} ) ) {
-        $Kernel::OM->Get('Kernel::System::Log')->Log(
-            Priority => 'error',
-            Message  => "Parameter 'Config' must be a hash ref with data!"
-        );
-        return;
-    }
+    return if !IsHashRefWithData( $Param{Config} );
 
     return 1 if !exists $Param{Config}->{RegExList};
     return 1 if !IsArrayRefWithData( $Param{Config}->{RegExList} );
