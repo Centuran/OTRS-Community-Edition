@@ -915,7 +915,7 @@ sub _PDFOutputCustomerInfos {
             for my $Value ( @$Values ) {
                 my $RenderedValue = $DynamicFieldBackendObject->DisplayValueRender(
                     DynamicFieldConfig => $DFConfig,
-                    Value              => $_,
+                    Value              => $Value,
                     HTMLOutput         => 0,
                     LayoutObject       => $LayoutObject,
                 );
