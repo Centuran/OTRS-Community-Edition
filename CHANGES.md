@@ -1,4 +1,4 @@
-# 6.0.35 YYYY-MM-DD
+# 6.0.35 2022-05-27
  - Implemented bug fixes and changes present in Znuny version 6.0.33
    - Fixed an user cache deletion issue
    - Fixed user search display format
