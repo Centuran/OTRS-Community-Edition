@@ -354,4 +354,3 @@ modify it under the same terms as Perl itself. See L<perlartistic>.
 =cut
 
 1;
-

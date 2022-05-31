@@ -1,0 +1,130 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 76 (0x4c)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=PL, ST=Woj. Mazowieckie, O=((OTRS)) Community Edition, OU=Development, CN=Test CA Intermediate 2/emailAddress=development@otrscommunityedition.com
+        Validity
+            Not Before: May 15 15:18:46 2022 GMT
+            Not After : May 12 15:18:46 2032 GMT
+        Subject: C=PL, ST=Woj. Mazowieckie, O=((OTRS)) Community Edition, OU=Development, CN=User 2/emailAddress=test-2@otrscommunityedition.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (4096 bit)
+                Modulus:
+                    00:c1:f6:fe:c4:fc:24:35:24:5a:80:67:18:1d:a9:
+                    b7:1b:87:d2:3c:ff:e8:25:71:ef:d8:79:03:a2:df:
+                    ca:7e:2a:b7:24:4b:5a:db:c4:a3:cb:5c:06:39:8a:
+                    8d:e1:a6:23:29:50:2e:a3:b2:99:2c:b0:0f:c4:06:
+                    16:01:9c:7e:d8:be:33:3d:e7:39:59:34:e0:0f:bb:
+                    2a:fd:a5:11:78:ba:41:ac:6f:7f:de:82:2a:d0:73:
+                    6a:80:48:ea:20:4d:15:90:71:6d:11:a3:4b:59:da:
+                    c5:56:6a:fd:44:d6:75:a8:93:f1:af:2f:1e:27:0e:
+                    7f:2b:41:a6:17:99:16:82:06:2a:7d:23:ac:70:1c:
+                    85:5d:35:c1:f6:a1:5d:f8:04:fb:3f:b3:7f:ff:15:
+                    09:68:e8:7d:ef:d9:f2:d7:a9:ac:38:88:fc:c9:a8:
+                    c9:65:00:d2:f3:8d:76:f2:c0:22:40:39:0c:40:8a:
+                    35:4d:7f:68:b2:c4:7d:5c:00:cf:3e:9c:9e:a6:c5:
+                    38:0e:4e:f1:49:eb:16:93:f5:52:b8:d2:e8:f3:ae:
+                    27:cf:7a:56:1e:8d:cf:69:5c:9a:91:dc:07:3a:aa:
+                    18:1c:a3:dc:a2:22:23:6b:f0:b6:6b:d7:c9:32:cd:
+                    fe:95:3b:66:de:ef:ed:7b:8a:c5:bf:ec:04:ab:8e:
+                    29:19:f1:f5:03:b8:8d:ee:af:6c:e7:ff:1c:e1:f3:
+                    88:30:a6:78:c3:a3:35:32:a6:0c:75:7a:a8:6f:65:
+                    5c:47:ac:b2:a5:01:0b:e1:8f:0a:f1:b3:3a:4a:09:
+                    0a:71:08:ae:74:ee:68:e5:c0:90:71:ce:6b:e5:bd:
+                    ba:d6:f9:fd:e6:d1:71:46:7d:f8:2a:88:45:00:5d:
+                    0b:e9:da:e7:b6:69:b7:7c:e6:01:c5:ca:47:cc:d6:
+                    9a:cc:54:e2:8e:fb:c4:b2:9e:cb:e5:8e:f2:e8:92:
+                    7f:c3:85:f2:63:95:b1:d2:3e:7c:5b:97:80:e6:24:
+                    21:d8:7a:b7:de:66:7a:c5:3b:16:2a:78:21:23:87:
+                    bc:f8:bd:66:ca:5d:a8:a8:96:e9:a4:9a:77:6f:97:
+                    58:c6:e6:6f:67:f0:d2:55:30:56:ec:36:90:8b:ca:
+                    f9:54:36:03:85:3e:e6:cb:61:12:63:32:4e:2f:22:
+                    62:3f:d0:9b:35:07:76:4a:95:2c:9c:d5:1b:8a:c0:
+                    67:cf:70:06:f1:d6:47:39:f3:d4:8c:79:44:26:3b:
+                    99:ef:40:6f:15:b6:50:c9:43:be:52:a9:3e:d0:89:
+                    2c:62:ef:eb:8d:6b:da:f0:75:00:96:64:1c:4a:7f:
+                    f5:2d:cf:f0:8a:bf:39:da:6d:ce:1a:7d:98:c6:4b:
+                    89:be:97
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+            X509v3 Subject Key Identifier: 
+                74:0D:1F:2F:88:D4:24:3D:6D:71:BC:3B:98:D8:AE:F2:61:35:F9:C8
+            X509v3 Authority Key Identifier: 
+                keyid:88:1B:16:D2:11:42:5F:A1:9B:3A:C7:36:3C:14:81:10:0D:DE:83:99
+                DirName:/C=PL/ST=Woj. Mazowieckie/O=((OTRS)) Community Edition/OU=Development/CN=Test CA Intermediate 1/emailAddress=development@otrscommunityedition.com
+                serial:1E
+
+    Signature Algorithm: sha256WithRSAEncryption
+         8a:66:99:bc:7c:62:e3:73:4b:b2:a5:e8:f3:0e:4d:a2:39:db:
+         16:fc:a7:13:d9:7b:96:e4:f1:d6:f4:a9:0d:23:b9:62:4e:76:
+         07:8b:6d:30:f6:07:a2:d6:42:82:10:e4:18:02:2f:10:e6:fe:
+         37:67:0e:79:c1:c9:80:43:0e:8a:8f:c7:2b:58:80:8b:8f:82:
+         08:91:57:89:81:ea:8a:44:98:b4:2e:1b:ec:b9:f1:a1:de:df:
+         4c:65:52:17:6a:99:3e:25:be:df:88:c5:b3:35:4c:56:c6:6b:
+         f0:e1:9e:ac:21:f0:61:41:da:81:be:7d:bf:94:48:6e:e6:dc:
+         d2:22:1d:5f:76:54:cd:f5:4e:e4:7e:15:ad:5e:0f:fd:12:09:
+         19:fb:39:c9:6c:ca:67:a0:e2:71:b7:ef:7c:ec:d9:15:1f:cc:
+         e9:5e:bb:5a:29:5a:bd:13:e7:47:84:55:b3:39:95:5a:18:71:
+         3e:bc:92:f1:87:bc:55:c5:5d:32:d0:96:28:c2:c3:61:22:de:
+         38:8f:38:79:30:df:56:a7:d9:e0:ef:ec:9b:e1:1c:ee:1d:01:
+         50:a3:99:a3:dd:47:60:9f:a4:01:6b:3b:8d:75:89:f6:6c:c4:
+         5e:d1:39:c8:67:e8:cd:f5:9b:89:0f:96:5a:0a:b3:e5:59:dc:
+         8e:1f:9f:8d:c9:4e:ca:f7:d0:4c:12:b5:e7:d0:e1:7a:a9:14:
+         86:a8:8e:c1:a6:52:37:ab:7d:fe:50:12:96:94:9d:96:3f:90:
+         d2:62:60:58:ca:84:2b:ce:05:15:48:c8:e6:3c:60:11:fa:fc:
+         f9:37:36:55:f3:eb:d9:88:7f:6f:36:25:bd:18:18:7a:83:f7:
+         57:df:98:df:7b:a6:38:d9:8b:49:e7:94:e0:bd:65:67:15:0e:
+         38:6d:e0:5d:f1:72:03:94:27:f8:a2:f1:33:31:76:73:6e:73:
+         84:5f:8b:7a:34:ea:53:f7:1a:e1:c7:f9:57:11:5b:89:cf:83:
+         9b:a5:30:0a:a9:0e:26:6a:db:c2:37:1c:6c:0a:ab:0f:f2:ce:
+         ce:86:da:7b:ae:fa:a8:2d:a9:b0:df:3f:2b:a9:52:b8:12:a6:
+         7f:45:cb:b1:2d:f9:2d:a7:47:52:44:67:43:f0:13:42:ab:cd:
+         14:4a:b9:06:2b:64:53:70:ef:9d:b4:e8:ae:94:16:a3:8d:4e:
+         26:e9:80:22:8c:33:00:bc:b6:c0:f6:99:c2:ad:8b:ab:9d:b3:
+         ad:c1:c0:f9:94:84:2e:42:6a:31:90:20:02:c2:e4:bc:e8:41:
+         a2:28:a6:c7:75:04:06:70:d1:2f:88:e4:35:84:68:22:d1:ac:
+         8b:5c:48:93:ef:df:39:dc
+-----BEGIN CERTIFICATE-----
+MIIG+TCCBOGgAwIBAgIBTDANBgkqhkiG9w0BAQsFADCBuTELMAkGA1UEBhMCUEwx
+GTAXBgNVBAgMEFdvai4gTWF6b3dpZWNraWUxIzAhBgNVBAoMGigoT1RSUykpIENv
+bW11bml0eSBFZGl0aW9uMRQwEgYDVQQLDAtEZXZlbG9wbWVudDEfMB0GA1UEAwwW
+VGVzdCBDQSBJbnRlcm1lZGlhdGUgMjEzMDEGCSqGSIb3DQEJARYkZGV2ZWxvcG1l
+bnRAb3Ryc2NvbW11bml0eWVkaXRpb24uY29tMB4XDTIyMDUxNTE1MTg0NloXDTMy
+MDUxMjE1MTg0NlowgaQxCzAJBgNVBAYTAlBMMRkwFwYDVQQIDBBXb2ouIE1hem93
+aWVja2llMSMwIQYDVQQKDBooKE9UUlMpKSBDb21tdW5pdHkgRWRpdGlvbjEUMBIG
+A1UECwwLRGV2ZWxvcG1lbnQxDzANBgNVBAMMBlVzZXIgMjEuMCwGCSqGSIb3DQEJ
+ARYfdGVzdC0yQG90cnNjb21tdW5pdHllZGl0aW9uLmNvbTCCAiIwDQYJKoZIhvcN
+AQEBBQADggIPADCCAgoCggIBAMH2/sT8JDUkWoBnGB2ptxuH0jz/6CVx79h5A6Lf
+yn4qtyRLWtvEo8tcBjmKjeGmIylQLqOymSywD8QGFgGcfti+Mz3nOVk04A+7Kv2l
+EXi6Qaxvf96CKtBzaoBI6iBNFZBxbRGjS1naxVZq/UTWdaiT8a8vHicOfytBpheZ
+FoIGKn0jrHAchV01wfahXfgE+z+zf/8VCWjofe/Z8teprDiI/MmoyWUA0vONdvLA
+IkA5DECKNU1/aLLEfVwAzz6cnqbFOA5O8UnrFpP1UrjS6POuJ896Vh6Nz2lcmpHc
+BzqqGByj3KIiI2vwtmvXyTLN/pU7Zt7v7XuKxb/sBKuOKRnx9QO4je6vbOf/HOHz
+iDCmeMOjNTKmDHV6qG9lXEessqUBC+GPCvGzOkoJCnEIrnTuaOXAkHHOa+W9utb5
+/ebRcUZ9+CqIRQBdC+na57Zpt3zmAcXKR8zWmsxU4o77xLKey+WO8uiSf8OF8mOV
+sdI+fFuXgOYkIdh6t95mesU7Fip4ISOHvPi9ZspdqKiW6aSad2+XWMbmb2fw0lUw
+Vuw2kIvK+VQ2A4U+5sthEmMyTi8iYj/QmzUHdkqVLJzVG4rAZ89wBvHWRznz1Ix5
+RCY7me9AbxW2UMlDvlKpPtCJLGLv641r2vB1AJZkHEp/9S3P8Iq/Odptzhp9mMZL
+ib6XAgMBAAGjggEdMIIBGTAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR0DR8v
+iNQkPW1xvDuY2K7yYTX5yDCB5gYDVR0jBIHeMIHbgBSIGxbSEUJfoZs6xzY8FIEQ
+Dd6DmaGBv6SBvDCBuTELMAkGA1UEBhMCUEwxGTAXBgNVBAgMEFdvai4gTWF6b3dp
+ZWNraWUxIzAhBgNVBAoMGigoT1RSUykpIENvbW11bml0eSBFZGl0aW9uMRQwEgYD
+VQQLDAtEZXZlbG9wbWVudDEfMB0GA1UEAwwWVGVzdCBDQSBJbnRlcm1lZGlhdGUg
+MTEzMDEGCSqGSIb3DQEJARYkZGV2ZWxvcG1lbnRAb3Ryc2NvbW11bml0eWVkaXRp
+b24uY29tggEeMA0GCSqGSIb3DQEBCwUAA4ICAQCKZpm8fGLjc0uypejzDk2iOdsW
+/KcT2XuW5PHW9KkNI7liTnYHi20w9gei1kKCEOQYAi8Q5v43Zw55wcmAQw6Kj8cr
+WICLj4IIkVeJgeqKRJi0LhvsufGh3t9MZVIXapk+Jb7fiMWzNUxWxmvw4Z6sIfBh
+QdqBvn2/lEhu5tzSIh1fdlTN9U7kfhWtXg/9EgkZ+znJbMpnoOJxt+987NkVH8zp
+XrtaKVq9E+dHhFWzOZVaGHE+vJLxh7xVxV0y0JYowsNhIt44jzh5MN9Wp9ng7+yb
+4RzuHQFQo5mj3Udgn6QBazuNdYn2bMRe0TnIZ+jN9ZuJD5ZaCrPlWdyOH5+NyU7K
+99BMErXn0OF6qRSGqI7BplI3q33+UBKWlJ2WP5DSYmBYyoQrzgUVSMjmPGAR+vz5
+NzZV8+vZiH9vNiW9GBh6g/dX35jfe6Y42YtJ55TgvWVnFQ44beBd8XIDlCf4ovEz
+MXZzbnOEX4t6NOpT9xrhx/lXEVuJz4ObpTAKqQ4matvCNxxsCqsP8s7Ohtp7rvqo
+Lamw3z8rqVK4EqZ/RcuxLfktp0dSRGdD8BNCq80USrkGK2RTcO+dtOiulBajjU4m
+6YAijDMAvLbA9pnCrYurnbOtwcD5lIQuQmoxkCACwuS86EGiKKbHdQQGcNEviOQ1
+hGgi0ayLXEiT79853A==
+-----END CERTIFICATE-----

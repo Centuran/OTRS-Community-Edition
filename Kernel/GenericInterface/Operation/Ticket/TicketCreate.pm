@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -112,8 +112,8 @@ perform TicketCreate Operation. This will return the created ticket number.
                 #},
             },
             Article => {
-                CommunicationChannel            => 'Email',                    # CommunicationChannel or CommunicationChannelID must be provided.
-                CommunicationChannelID          => 1,
+                CommunicationChannel            => 'Email',                    # optional
+                CommunicationChannelID          => 1,                          # optional
                 IsVisibleForCustomer            => 1,                          # optional
                 SenderTypeID                    => 123,                        # optional
                 SenderType                      => 'some sender type name',    # optional
@@ -280,7 +280,7 @@ perform TicketCreate Operation. This will return the created ticket number.
 
                             Attachment => [
                                 {
-                                    Content            => "xxxx",     # actual attachment contents, base64 enconded
+                                    Content            => "xxxx",     # actual attachment contents, base64 encoded
                                     ContentAlternative => "",
                                     ContentID          => "",
                                     ContentType        => "application/pdf",
@@ -789,7 +789,7 @@ checks if the given article parameter is valid.
     returns:
 
     $ArticleCheck = {
-        Success => 1,                               # if everething is OK
+        Success => 1,                               # if everything is OK
     }
 
     $ArticleCheck = {
@@ -831,14 +831,6 @@ sub _CheckArticle {
     }
 
     # check Article->CommunicationChannel
-    if ( !$Article->{CommunicationChannel} && !$Article->{CommunicationChannelID} ) {
-
-        # return internal server error
-        return {
-            ErrorMessage => "TicketCreate: Article->CommunicationChannelID or Article->CommunicationChannel parameter"
-                . " is required and Sysconfig CommunicationChannelID setting could not be read!"
-        };
-    }
     if ( !$Self->ValidateArticleCommunicationChannel( %{$Article} ) ) {
         return {
             ErrorCode    => 'TicketCreate.InvalidParameter',
@@ -1066,7 +1058,7 @@ checks if the given dynamic field parameter is valid.
     returns:
 
     $DynamicFieldCheck = {
-        Success => 1,                               # if everething is OK
+        Success => 1,                               # if everything is OK
     }
 
     $DynamicFieldCheck = {
@@ -1128,7 +1120,7 @@ checks if the given attachment parameter is valid.
     returns:
 
     $AttachmentCheck = {
-        Success => 1,                               # if everething is OK
+        Success => 1,                               # if everything is OK
     }
 
     $AttachmentCheck = {
@@ -1462,7 +1454,12 @@ sub _TicketCreate {
 
     # Convert article body to plain text, if HTML content was supplied. This is necessary since auto response code
     #   expects plain text content. Please see bug#13397 for more information.
-    if ( $Article->{ContentType} =~ /text\/html/i || $Article->{MimeType} =~ /text\/html/i ) {
+    if (
+        $Article->{ContentType}
+        && $Article->{ContentType} =~ /text\/html/i
+        || $Article->{MimeType} =~ /text\/html/i
+        )
+    {
         $PlainBody = $Kernel::OM->Get('Kernel::System::HTMLUtils')->ToAscii(
             String => $Article->{Body},
         );

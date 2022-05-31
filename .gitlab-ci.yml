@@ -6,9 +6,12 @@ stages:
 
 variables:
   OTRS_CE_DEV_DEPLOY_TOKEN: ""
-  DOCKER_HOST: "tcp://localhost:2375"
+  DOCKER_HOST: "tcp://docker:2376"
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "${DOCKER_TLS_CERTDIR}/client"
   DOCKER_DRIVER: "overlay2"
-  REGISTRY_PATH: "${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_NAME}"
+  REGISTRY_PATH: "${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}"
 
 #
 # Build Docker container images
@@ -16,30 +19,31 @@ variables:
 
 build-otrs-db-image:
   stage: build
-  image: docker:18.09
+  image: docker:20.10
   services:
-    - docker:18.09-dind
+    - docker:20.10-dind
   before_script: &before-build    # Add an anchor to reuse in other build jobs
     - apk update
     - apk add --no-cache ca-certificates git
     - update-ca-certificates
+    - docker info
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
-    - git clone https://gitlab+deploy-token-27:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.sidnet.info/centuran/otrs-ce-development /tmp/otrs-ce-development
+    - git clone https://centuran-repository-token:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.dev.sidnet.info/centuran/otrs-ce-dev-env /tmp/otrs-ce-dev-env
   script:
-    - cd /tmp/otrs-ce-development/setup/otrs-db
+    - cd /tmp/otrs-ce-dev-env/setup/otrs-db
     - cp "${CI_PROJECT_DIR}/scripts/database/"*.mysql.sql .
-    - docker pull "${REGISTRY_PATH}/otrs-db:latest" || true
+    - docker -D pull "${REGISTRY_PATH}/otrs-db:latest" || true
     - docker build --cache-from "${REGISTRY_PATH}/otrs-db:latest" -t "${REGISTRY_PATH}/otrs-db:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs-db:latest" .
     - docker push "${REGISTRY_PATH}/otrs-db:latest"
 
 build-otrs-image:
   stage: build
-  image: docker:18.09
+  image: docker:20.10
   services:
-    - docker:18.09-dind
+    - docker:20.10-dind
   before_script: *before-build
   script:
-    - cd /tmp/otrs-ce-development/setup/otrs
+    - cd /tmp/otrs-ce-dev-env/setup/otrs
     - cp -r "${CI_PROJECT_DIR}" otrs-ce
     - docker pull "${REGISTRY_PATH}/otrs:latest" || true
     - docker build --build-arg OTRS_CE_DIR=./otrs-ce --cache-from "${REGISTRY_PATH}/otrs:latest" -t "${REGISTRY_PATH}/otrs:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs:latest" .
@@ -47,20 +51,20 @@ build-otrs-image:
 
 build-selenium-images:
   stage: build
-  image: docker:18.09
+  image: docker:20.10
   services:
-    - docker:18.09-dind
+    - docker:20.10-dind
   before_script: *before-build
   script:
     # Build Chrome image
-    - cd /tmp/otrs-ce-development/setup/selenium/chrome
+    - cd /tmp/otrs-ce-dev-env/setup/selenium/chrome
     - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
     - docker pull "${REGISTRY_PATH}/selenium-chrome:latest" || true
     - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${REGISTRY_PATH}/selenium-chrome:latest" -t "${REGISTRY_PATH}/selenium-chrome:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/selenium-chrome:latest" .
     - docker push "${REGISTRY_PATH}/selenium-chrome:latest"
 
     # Build Firefox image
-    - cd /tmp/otrs-ce-development/setup/selenium/ff
+    - cd /tmp/otrs-ce-dev-env/setup/selenium/ff
     - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
     - docker pull "${REGISTRY_PATH}/selenium-ff:latest" || true
     - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${REGISTRY_PATH}/selenium-ff:latest" -t "${REGISTRY_PATH}/selenium-ff:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/selenium-ff:latest" .
@@ -74,7 +78,9 @@ apply-images:
   stage: apply
   # Using this image based on Alpine Linux (rather than bitnami/kubectl used
   # later in test stage) to be able to install tools with apk
-  image: roffe/kubectl
+  image: docker:20.10-dind
+  services:
+    - docker:20.10-dind
   environment:
     name: test/${CI_COMMIT_REF_NAME}
     on_stop: cleanup-environment
@@ -83,6 +89,21 @@ apply-images:
     GITLAB_REGISTRY_USER: ""
     GITLAB_REGISTRY_PASSWORD: ""
     GIT_STRATEGY: none     # Don't check out the code
+  before_script:
+    # Install Kubectl (based on atlassian/pipelines-kubectl image)
+    - apk add --update --no-cache ca-certificates bash
+    - apk add --update --no-cache -t deps curl
+    - curl -L https://dl.k8s.io/release/v1.22.3/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl
+    - chmod +x /usr/local/bin/kubectl
+    - apk del --purge deps
+
+    # Install Docker and do "docker login"
+    - apk update
+    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.15/community ca-certificates curl docker=20.10.16-r0 git
+    - update-ca-certificates
+    - echo "Waiting for Docker to start"
+    - until docker info; do sleep 1; done
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
   script:
     # Set variables used in docker-compose.yml
     - export OTRS_IMAGE="${REGISTRY_PATH}/otrs:latest"
@@ -90,26 +111,20 @@ apply-images:
     - export SELENIUM_CHROME_IMAGE="${REGISTRY_PATH}/selenium-chrome:latest"
     - export SELENIUM_FF_IMAGE="${REGISTRY_PATH}/selenium-ff:latest"
 
-    # Install Docker and do "docker login"
-    - apk update
-    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.10/community ca-certificates curl docker=18.09.8-r0 git
-    - update-ca-certificates
-    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
-
     # Install Kompose (https://kompose.io/installation/)
     - curl -L https://github.com/kubernetes/kompose/releases/download/v1.22.0/kompose-linux-amd64 -o kompose
     - chmod +x kompose
     - mv ./kompose /usr/local/bin/kompose
 
-    # Clone OTRS CE Development repository and create .env file
-    - git clone https://gitlab+deploy-token-27:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.sidnet.info/centuran/otrs-ce-development /tmp/otrs-ce-development
-    - cd /tmp/otrs-ce-development
+    # Clone OTRS CE Development Environment repository and create .env file
+    - git clone https://centuran-repository-token:${OTRS_CE_DEV_DEPLOY_TOKEN}@gitlab.dev.sidnet.info/centuran/otrs-ce-dev-env /tmp/otrs-ce-dev-env
+    - cd /tmp/otrs-ce-dev-env
     - touch .env
     - cd -
 
     # Convert Docker Compose configuration to Kubernetes using Kompose
     - mkdir /tmp/kubernetes
-    - kompose -f /tmp/otrs-ce-development/docker-compose.yml -f /tmp/otrs-ce-development/docker-compose-selenium.yml convert -o /tmp/kubernetes/
+    - kompose -f /tmp/otrs-ce-dev-env/docker-compose.yml -f /tmp/otrs-ce-dev-env/docker-compose-selenium.yml convert -o /tmp/kubernetes/
 
     # Create secret configuration file for registry access
     - kubectl delete --kubeconfig "${KUBECONFIG}" secret gitlab-registry-secret --ignore-not-found
@@ -126,7 +141,9 @@ apply-images:
 run-non-selenium-tests:
   stage: test
   timeout: 2h
-  image: alpine
+  image: docker:20.10
+  services:
+    - docker:20.10-dind
   environment:
     name: test/${CI_COMMIT_REF_NAME}
     # Action "prepare" denotes that this job only prepares the environment
@@ -138,7 +155,7 @@ run-non-selenium-tests:
   before_script: &before-test    # Add an anchor to reuse in other test jobs
     # Install Docker and do "docker login"
     - apk update
-    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.10/community ca-certificates curl docker=18.09.8-r0 git
+    - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.13/community ca-certificates curl docker=20.10.3-r1 git
     - update-ca-certificates
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
     # Install Kubectl
@@ -158,7 +175,9 @@ run-non-selenium-tests:
 run-selenium-tests:
   stage: test
   timeout: 2h
-  image: alpine
+  image: docker:20.10
+  services:
+    - docker:20.10-dind
   environment:
     name: test/${CI_COMMIT_REF_NAME}
     action: prepare

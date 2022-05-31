@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -992,11 +992,11 @@ sub CustomerUserServiceMemberList {
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     # db quote
-    for ( sort keys %Param ) {
-        $Param{$_} = $DBObject->Quote( $Param{$_} );
+    for my $Name ( sort keys %Param ) {
+        $Param{$Name} = $DBObject->Quote( $Param{$Name} );
     }
-    for (qw(ServiceID)) {
-        $Param{$_} = $DBObject->Quote( $Param{$_}, 'Integer' );
+    for my $Name (qw(ServiceID)) {
+        $Param{$Name} = $DBObject->Quote( $Param{$Name}, 'Integer' );
     }
 
     # sql

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -75,20 +75,20 @@ sub MailAccountAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Login Password Host ValidID Trusted DispatchingBy QueueID UserID)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Login Password Host ValidID Trusted DispatchingBy QueueID UserID)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "$_ not defined!"
+                Message  => "$Name not defined!"
             );
             return;
         }
     }
-    for (qw(Login Password Host Type ValidID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Login Password Host Type ValidID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -346,11 +346,11 @@ sub MailAccountUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ID Login Password Host Type ValidID Trusted DispatchingBy QueueID UserID)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(ID Login Password Host Type ValidID Trusted DispatchingBy QueueID UserID)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -543,11 +543,11 @@ sub MailAccountFetch {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Login Password Host Type Trusted DispatchingBy QueueID UserID)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Login Password Host Type Trusted DispatchingBy QueueID UserID)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -586,11 +586,11 @@ sub MailAccountCheck {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Login Password Host Type Timeout Debug)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Login Password Host Type Timeout Debug)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

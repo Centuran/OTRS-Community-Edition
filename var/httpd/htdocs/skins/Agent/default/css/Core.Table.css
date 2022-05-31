@@ -1,5 +1,6 @@
 /*
 Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
 the enclosed file COPYING for license information (GPL). If you
@@ -588,10 +589,13 @@ thead .headerSortDown a {
 }
 
 #OverviewBody.Overview.TicketList {
+    min-height: 70px;
     overflow-x: auto;
 }
 
 #OverviewBody.Overview.TicketList table.TableSmall.NoCellspacing {
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
     overflow: visible;
 }
 

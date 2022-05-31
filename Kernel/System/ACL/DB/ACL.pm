@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -519,7 +519,7 @@ sub ACLUpdate {
     my $CurrentConfigChange;
     while ( my @Data = $DBObject->FetchrowArray() ) {
         $CurrentName           = $Data[0];
-        $CurrentComment        = $Data[1];
+        $CurrentComment        = $Data[1] || '';
         $CurrentDescription    = $Data[2] || '';
         $CurrentStopAfterMatch = $Data[3] || 0;
         $CurrentValidID        = $Data[4];

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -99,6 +99,18 @@ sub OSInfoGet {
         if ( $^O eq 'linux' ) {
 
             $MainObject->Require('Linux::Distribution');
+
+            # Workaround for distributions missing from Linux::Distribution
+            %Linux::Distribution::release_files = (
+                %Linux::Distribution::release_files,
+                'almalinux-release' => 'almalinux',
+                'rocky-release'     => 'rocky',
+            );
+            %Linux::Distribution::version_match = (
+                %Linux::Distribution::version_match,
+                'almalinux' => 'AlmaLinux release (.+) \(',
+                'rocky'     => 'Rocky Linux release (.+) \(',
+            );
 
             my $DistributionName = Linux::Distribution::distribution_name();
 
@@ -273,6 +285,7 @@ sub PerlInfoGet {
             Net::HTTP
             Net::SSLGlue
             PDF::API2
+            Sisimai
             SOAP::Lite
             Sys::Hostname::Long
             Text::CSV

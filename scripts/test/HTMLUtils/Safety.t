@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -41,6 +41,16 @@ my @Tests = (
             Replace => 1,
         },
         Name => 'Safety - simple'
+    },
+    {
+        Name => 'Safety - JavaScript with whitespace',
+        Input  => '<a href = " javascript : alert(
+            1
+        )" >Some Text</a>',
+        Result => {
+            Output  => '<a href = "" >Some Text</a>',
+            Replace => 1,
+        },
     },
     {
         Input =>
@@ -167,6 +177,20 @@ You should be able to continue reading these lessons, however.
             Replace => 1,
         },
         Name => 'Safety - img tag'
+    },
+    {
+        Name => 'Safety - img tag containing JavaScript with whitespace',
+        Input => '<center>
+<IMG SRC="javascript: alert(
+    \'XSS\'
+);" >
+</center>',
+        Result => {
+            Output => '<center>
+<IMG SRC="" >
+</center>',
+            Replace => 1,
+        },
     },
     {
         Input => '<center>
@@ -311,6 +335,20 @@ You should be able to continue reading these lessons, however.
         Name => 'Safety - background'
     },
     {
+        Name => 'Safety - background attribute containing JavaScript with whitespace',
+        Input => '<center>
+<TABLE BACKGROUND=" javascript: alert(
+    \'XSS\'
+) " >
+</center>',
+        Result => {
+            Output => '<center>
+<TABLE BACKGROUND="" >
+</center>',
+            Replace => 1,
+        },
+    },
+    {
         Input => '<center>
 <SCRIPT a=">" SRC="http://ha.ckers.org/xss.js"></SCRIPT>
 </center>',
@@ -374,6 +412,20 @@ PT
             Replace => 1,
         },
         Name => 'Safety - script'
+    },
+    {
+        Name => 'Safety - script with whitespace',
+        Input => '<center>
+<A
+ HREF=" javascript: document.location = \'http://www.example.com/\'">XSS</A>
+</center>',
+        Result => {
+            Output => '<center>
+<A
+ HREF="">XSS</A>
+</center>',
+            Replace => 1,
+        },
     },
     {
         Input => '<center>
@@ -546,7 +598,9 @@ EOF
     {
         Input => <<EOF,
 <img src="/img1.png"/>
-<iframe src='  javascript:alert("XSS Exploit");'></iframe>
+<iframe src='  javascript:alert(
+    "XSS Exploit"
+);'></iframe>
 <img src="/img2.png"/>
 EOF
         Result => {

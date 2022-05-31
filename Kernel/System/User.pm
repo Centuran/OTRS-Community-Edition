@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -213,8 +213,8 @@ sub GetUserData {
 
         my $Hit = 0;
 
-        for ( $Kernel::OM->Get('Kernel::System::Valid')->ValidIDsGet() ) {
-            if ( $_ eq $Data{ValidID} ) {
+        for my $ValidID ( $Kernel::OM->Get('Kernel::System::Valid')->ValidIDsGet() ) {
+            if ( $ValidID eq $Data{ValidID} ) {
                 $Hit = 1;
             }
         }
@@ -372,11 +372,11 @@ sub UserAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserFirstname UserLastname UserLogin UserEmail ValidID ChangeUserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserFirstname UserLastname UserLogin UserEmail ValidID ChangeUserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -517,11 +517,11 @@ sub UserUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(UserID UserFirstname UserLastname UserLogin ValidID ChangeUserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(UserID UserFirstname UserLastname UserLogin ValidID ChangeUserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -591,7 +591,7 @@ sub UserUpdate {
         next USERPREFERENCE if $UserPreference eq 'UserEmail' && !$Param{UserEmail};
 
         # Set user preferences.
-        # Native user data will not be overwriten (handeled by SetPreferences()).
+        # Native user data will not be overwriten (handled by SetPreferences()).
         $Self->SetPreferences(
             UserID => $Param{UserID},
             Key    => $UserPreference,
@@ -609,8 +609,6 @@ sub UserUpdate {
     }
 
     $Self->_UserCacheClear( UserID => $Param{UserID} );
-
-    # TODO Not needed to delete the cache if ValidID or Name was not changed
 
     my $CacheObject            = $Kernel::OM->Get('Kernel::System::Cache');
     my $SystemPermissionConfig = $Kernel::OM->Get('Kernel::Config')->Get('System::Permission') || [];
@@ -710,9 +708,9 @@ sub UserSearch {
             Value => $Param{PostMasterSearch},
         );
 
-        for ( sort keys %UserID ) {
+        for my $UserID ( sort keys %UserID ) {
             my %User = $Self->GetUserData(
-                UserID => $_,
+                UserID => $UserID,
                 Valid  => $Param{Valid},
             );
             if (%User) {
@@ -1218,11 +1216,11 @@ sub SetPreferences {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Key UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Key UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -1244,6 +1242,8 @@ sub SetPreferences {
 
     return 0 if $Blacklisted{ $Param{Key} };
 
+    $Self->_UserCacheClear( UserID => $Param{UserID} );
+
     # get current setting
     my %User = $Self->GetUserData(
         UserID        => $Param{UserID},
@@ -1255,8 +1255,6 @@ sub SetPreferences {
         if defined $User{ $Param{Key} }
         && defined $Param{Value}
         && $User{ $Param{Key} } eq $Param{Value};
-
-    $Self->_UserCacheClear( UserID => $Param{UserID} );
 
     # get user preferences config
     my $GeneratorModule = $Kernel::OM->Get('Kernel::Config')->Get('User::PreferencesModule')
@@ -1285,7 +1283,7 @@ sub _UserCacheClear {
     my @CacheKeys;
 
     # Delete cache for all possible FirstnameLastNameOrder settings as this might be overridden by users.
-    for my $FirstnameLastNameOrder ( 0 .. 8 ) {
+    for my $FirstnameLastNameOrder ( 0 .. 9 ) {
         for my $ActiveLevel1 ( 0 .. 1 ) {
             for my $ActiveLevel2 ( 0 .. 1 ) {
                 push @CacheKeys, (

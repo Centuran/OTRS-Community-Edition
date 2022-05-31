@@ -1128,4 +1128,3 @@ __END__
 
 
 #ABSTRACT: HTTP style message (base class)
-

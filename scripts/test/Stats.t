@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -16,6 +16,11 @@ use vars (qw($Self));
 # get needed objects
 my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 my $StatsObject  = $Kernel::OM->Get('Kernel::System::Stats');
+
+$ConfigObject->Set(
+    Key   => 'OTRSTimeZone',
+    Value => 'Europe/Warsaw'
+);
 
 # get helper object
 $Kernel::OM->ObjectParamAdd(
@@ -56,14 +61,14 @@ my $StatID2 = $StatsObject->StatsAdd(
 
 # test 1
 $Self->True(
-    $StatID1 > 0,
-    'StatsAdd() first StatID > 0',
+    scalar $StatID1,
+    'StatsAdd() first stat has been added',
 );
 
 # test 2
 $Self->True(
-    $StatID2 > 0,
-    'StatsAdd() second StatID > 0',
+    scalar $StatID2,
+    'StatsAdd() second stat has been added',
 );
 
 # test 3
@@ -203,9 +208,14 @@ my $ArrayRef = $StatsObject->GetStatsList(
     UserID    => 1,
 );
 
+$Self->True(
+    $ArrayRef,
+    'GetStatsList() check return value'
+);
+
 my $Counter = 0;
-for ( @{$ArrayRef} ) {
-    if ( $_ eq $StatID1 || $_ eq $StatID2 ) {
+for my $StatID ( @{$ArrayRef} ) {
+    if ( $StatID eq $StatID1 || $StatID eq $StatID2 ) {
         $Counter++;
     }
 }
@@ -290,7 +300,7 @@ my $ExportFile = $StatsObject->Export(
 );
 $Self->True(
     $ExportFile->{Content},
-    'Export() check if Exportfile has a content',
+    'Export() check if export file has content',
 );
 
 # import the exported stat
@@ -312,29 +322,54 @@ $Self->Is(
 );
 
 # check delete stat function
+my $Deleted = $StatsObject->StatsDelete(
+    StatID => $StatID1,
+    UserID => 1,
+);
 $Self->True(
-    $StatsObject->StatsDelete(
-        StatID => $StatID1,
-        UserID => 1,
-    ),
+    scalar $Deleted,
     'StatsDelete() delete StatID1',
 );
-$Self->True(
-    $StatsObject->StatsDelete(
-        StatID => $StatID2,
-        UserID => 1,
-    ),
-    'StatsDelete() delete StatID2',
+
+$Deleted = $StatsObject->StatsDelete(
+    StatID => $StatID2,
+    UserID => 1,
 );
 $Self->True(
-    $StatsObject->StatsDelete(
-        StatID => $StatID3,
-        UserID => 1,
-    ),
+    scalar $Deleted,
+    'StatsDelete() delete StatID2',
+);
+
+$Deleted = $StatsObject->StatsDelete(
+    StatID => $StatID3,
+    UserID => 1,
+);
+$Self->True(
+    scalar $Deleted,
     'StatsDelete() delete StatID3',
 );
 
 # verify stat is deleted
+my $Stat1 = $StatsObject->StatsGet(
+    StatID => $StatID1,
+    UserID => 1,
+);
+$Self->Is(
+    $Stat1->{Title},
+    undef,
+    'StatsGet() check deleted stat 1',
+);
+
+my $Stat2 = $StatsObject->StatsGet(
+    StatID => $StatID2,
+    UserID => 1,
+);
+$Self->Is(
+    $Stat2->{Title},
+    undef,
+    'StatsGet() check deleted stat 2',
+);
+
 $Stat3 = $StatsObject->StatsGet(
     StatID => $StatID3,
     UserID => 1,
@@ -342,7 +377,7 @@ $Stat3 = $StatsObject->StatsGet(
 $Self->Is(
     $Stat3->{Title},
     undef,
-    'StatsGet() check deleted stat',
+    'StatsGet() check deleted stat 3',
 );
 
 # check StatsList
@@ -353,8 +388,8 @@ $ArrayRef = $StatsObject->GetStatsList(
 );
 
 $Counter = 0;
-for ( @{$ArrayRef} ) {
-    if ( $_ eq $StatID1 || $_ eq $StatID2 ) {
+for my $StatID ( @{$ArrayRef} ) {
+    if ( $StatID eq $StatID1 || $StatID eq $StatID2 ) {
         $Counter++;
     }
 }
@@ -362,23 +397,23 @@ for ( @{$ArrayRef} ) {
 $Self->Is(
     $Counter,
     0,
-    'GetStatsList() check if StatID1 and StatID2 removed from in the statslist',
+    'GetStatsList() check if StatID1 and StatID2 are removed from the stats list',
 );
 
 $StatsHash = $StatsObject->StatsListGet(
     UserID => 1,
 );
 $Self->False(
-    exists $StatsHash->{$StatID1},
+    $StatsHash->{$StatID1},
     'StatsListGet() contains Stat1',
 );
 $Self->False(
-    exists $StatsHash->{$StatID2},
+    $StatsHash->{$StatID2},
     'StatsListGet() contains Stat2',
 );
 $Self->False(
-    exists $StatsHash->{$StatID3},
-    'StatsListGet() contains Stat2',
+    $StatsHash->{$StatID3},
+    'StatsListGet() contains Stat3',
 );
 
 # import a Stat and export it - then check if it is the same string
@@ -595,8 +630,17 @@ $Result = $StatsObject->StatsCleanUp(
     CheckAllObjects => 1,
 );
 $Self->True(
-    $Result,
+    scalar $Result,
     'StatsCleanUp() - clean up stats',
+);
+
+$Deleted = $StatsObject->StatsDelete(
+    StatID => $StatCleanupID1,
+    UserID => 1,
+);
+$Self->True(
+    scalar $Deleted,
+    'StatsDelete() delete StatCleanupID1',
 );
 
 # Check _ToOTRSTimeZone for invalid date (Daylight Saving Time).
@@ -606,9 +650,10 @@ my $String = $StatsObject->_ToOTRSTimeZone(
     TimeZone => 'Europe/Berlin',
 );
 
-$Self->False(
-    $String,
-    '_ToOTRSTimeZone() - invalid date',
+$Self->Is(
+    scalar $String,
+    '2019-03-31 03:30:00',
+    '_ToOTRSTimeZone() - invalid date (DST) corrected to a valid one',
 );
 
 # Check _ToOTRSTimeZone for valid date.
@@ -617,8 +662,9 @@ $String = $StatsObject->_ToOTRSTimeZone(
     TimeZone => 'Europe/Berlin',
 );
 
-$Self->True(
-    $String,
+$Self->Is(
+    scalar $String,
+    '2019-03-31 12:30:00',
     '_ToOTRSTimeZone() - valid date',
 );
 

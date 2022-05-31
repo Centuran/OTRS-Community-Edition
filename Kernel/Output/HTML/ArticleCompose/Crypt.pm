@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -76,9 +76,9 @@ sub Run {
 
     # Find recipient list.
     my $Recipient = '';
-    for (qw(To Cc Bcc)) {
-        if ( $Param{$_} ) {
-            $Recipient .= ', ' . $Param{$_};
+    for my $Field (qw(To Cc Bcc)) {
+        if ( $Param{$Field} ) {
+            $Recipient .= ', ' . $Param{$Field};
         }
     }
     my @SearchAddress = ();
@@ -201,9 +201,9 @@ sub Data {
 
     # Find recipient list.
     my $Recipient = '';
-    for (qw(To Cc Bcc)) {
-        if ( $Param{$_} ) {
-            $Recipient .= ', ' . $Param{$_};
+    for my $Field (qw(To Cc Bcc)) {
+        if ( $Param{$Field} ) {
+            $Recipient .= ', ' . $Param{$Field};
         }
     }
 

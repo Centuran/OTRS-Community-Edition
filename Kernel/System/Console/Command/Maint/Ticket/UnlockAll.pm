@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -46,8 +46,8 @@ sub Run {
     while ( my @Row = $Kernel::OM->Get('Kernel::System::DB')->FetchrowArray() ) {
         push @Tickets, \@Row;
     }
-    for (@Tickets) {
-        my @Row = @{$_};
+    for my $TicketRow (@Tickets) {
+        my @Row = @{$TicketRow};
         $Self->Print(" Unlocking ticket id $Row[0]... ");
         my $Unlock = $Kernel::OM->Get('Kernel::System::Ticket')->LockSet(
             TicketID => $Row[1],

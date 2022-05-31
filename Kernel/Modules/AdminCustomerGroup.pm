@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -614,7 +614,9 @@ sub _Overview {
 
     $LayoutObject->Block(
         Name => 'Overview',
-        Data => {},
+        Data => {
+            OverviewLink => $Self->{Action} . ';CustomerSearch=' . $Param{CustomerSearch},
+        },
     );
 
     $LayoutObject->Block( Name => 'ActionList' );
@@ -744,7 +746,9 @@ sub _Disabled {
 
     $LayoutObject->Block(
         Name => 'Overview',
-        Data => {},
+        Data => {
+            OverviewLink => $Self->{Action},
+        },
     );
 
     $LayoutObject->Block( Name => 'Disabled' );

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -156,7 +156,7 @@ sub Run {
             $File = $CustomFile;
         }
 
-        for ( 1 .. $NumberOfTestRuns ) {
+        for my $TestRun ( 1 .. $NumberOfTestRuns ) {
             $Self->_HandleFile(
                 PostTestScripts => $Param{PostTestScripts},
                 File            => $File,

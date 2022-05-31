@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -194,6 +194,36 @@ my @Tests = (
             Test => $TestPackage,
         },
     },
+    {
+        Name          => 'Sensitive files',
+        RequiredFiles => [
+            "$Home/Kernel/Config.pm",
+        ],
+        ModifyFiles => [
+            "$Home/Custom/TestSensitive",
+        ],
+        ProhibitFiles => [
+            "$Home/Custom/TestSensitive",
+        ],
+    }
+);
+
+# Save current SMIME::* configuration, if any
+my @SMIMEConfig = map {
+    {
+        Key   => $_,
+        Value => $ConfigObject->Get($_),
+    }
+} qw( SMIME::CertPath SMIME::PrivatePath );
+
+# Set sensitive file paths
+$ConfigObject->Set(
+    Key   => 'SMIME::CertPath',
+    Value => "$Home/Custom"
+);
+$ConfigObject->Set(
+    Key   => 'SMIME::PrivatePath',
+    Value => "$Home/Custom"
 );
 
 my @FilesToDelete;
@@ -314,6 +344,14 @@ for my $Test (@Tests) {
             }
         }
     }
+}
+
+# Remove sensitive path test file
+unlink "$Home/Custom/TestSensitive";
+
+# Restore original SMIME::* configuration
+for my $Setting (@SMIMEConfig) {
+    $ConfigObject->Set(%$Setting);
 }
 
 # tests for GeneratePackageList

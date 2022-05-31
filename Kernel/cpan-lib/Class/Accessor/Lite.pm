@@ -243,4 +243,3 @@ Copyright (C) 2008 - 2010 Kazuho Oku
 This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself, either Perl version 5.8.6 or, at your option, any later version of Perl 5 you may have available.
 
 =cut
-

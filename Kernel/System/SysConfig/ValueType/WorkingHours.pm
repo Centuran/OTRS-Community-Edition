@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -229,18 +229,13 @@ sub ModifiedValueGet {
     # Update Content
     DAY:
     for my $Day (@Days) {
-        if ( !$Param{EffectiveValue}->{$Day} ) {
-            $Kernel::OM->Get('Kernel::System::Log')->Log(
-                Priority => 'error',
-                Message  => "Missing value for $Day!"
-            );
-            next DAY;
-        }
+        # Ignore this day if no value is defined (e.g. a weekend day)
+        next DAY if !defined $Param{EffectiveValue}->{$Day};
 
         if ( ref $Param{EffectiveValue}->{$Day} ne 'ARRAY' ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "EffectiveValue must be HoA!"
+                Message  => "EffectiveValue->{$Day} must be an array!"
             );
             next DAY;
         }

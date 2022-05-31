@@ -12,6 +12,12 @@
     <ModuleRequired Version="1.112">Encode</ModuleRequired>
     <BuildDate>2005-11-10 21:17:16</BuildDate>
     <BuildHost>yourhost.example.com</BuildHost>
+    <IntroInstall Type="pre" Lang="en" Title="Installation"><![CDATA[
+        <script>window.__xss = 1;</script>
+    ]]></IntroInstall>
+    <IntroInstall Type="pre" Lang="de" Title="Installation"><![CDATA[
+        <script>window.__xss = 1;</script>
+    ]]></IntroInstall>
     <CodeInstall>
         # just a test &lt;some&gt; plus some &amp; text
     </CodeInstall>

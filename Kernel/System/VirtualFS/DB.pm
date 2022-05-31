@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -38,11 +38,11 @@ sub Read {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(BackendKey Mode)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(BackendKey Mode)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -103,11 +103,11 @@ sub Write {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Content Filename Mode)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Content Filename Mode)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -169,11 +169,11 @@ sub Delete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(BackendKey)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(BackendKey)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -223,11 +223,11 @@ sub _BackendKeyParse {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(BackendKey)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(BackendKey)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

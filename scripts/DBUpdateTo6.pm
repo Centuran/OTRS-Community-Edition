@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -219,6 +219,18 @@ sub _TasksGet {
             Module  => 'DatabaseBackupCheck',
         },
         {
+            Message => 'Disable PostMaster pre-filters that run system commands',
+            Module  => 'DisableSystemCommandPostMasterPreFilters',
+        },
+        {
+            Message => 'Disable GenericAgent system command jobs',
+            Module  => 'DisableGenericAgentSystemCommandJobs',
+        },
+        {
+            Message => 'Disable dashboard widgets that run system commands',
+            Module  => 'DisableSystemCommandDashboardWidgets',
+        },
+        {
             Message => 'Upgrade database structure',
             Module  => 'UpgradeDatabaseStructure',
         },
@@ -327,6 +339,10 @@ sub _TasksGet {
             Module  => 'MigrateChatData',
         },
         {
+            Message => 'Add history types',
+            Module  => 'AddHistoryTypes',
+        },
+        {
             Message => 'Initialize default cron jobs',
             Module  => 'InitializeDefaultCronjobs',
         },
@@ -346,8 +362,8 @@ sub _TasksGet {
         # ...
 
         {
-            Message => 'Uninstall Merged Feature Add-Ons',
-            Module  => 'UninstallMergedFeatureAddOns',
+            Message => 'Uninstall merged packages',
+            Module  => 'UninstallMergedPackages',
         },
         {
             Message => 'Clean up the cache',

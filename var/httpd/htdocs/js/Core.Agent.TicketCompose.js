@@ -1,6 +1,6 @@
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-// Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+// Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 // --
 // This software comes with ABSOLUTELY NO WARRANTY. For details, see
 // the enclosed file COPYING for license information (GPL). If you
@@ -45,6 +45,10 @@ Core.Agent.TicketCompose = (function (TargetNS) {
             Core.AJAX.FormUpdate($('#ComposeTicket'), 'AJAXUpdate', 'StateID', Core.Config.Get('DynamicFieldNames'));
         });
 
+        // check for empty subject
+        CheckSubject();
+        $('#Subject').on('change', CheckSubject);
+
         // add 'To' customer users
         if (typeof EmailAddressesTo !== 'undefined') {
             EmailAddressesTo.forEach(function(ToCustomer) {
@@ -68,6 +72,34 @@ Core.Agent.TicketCompose = (function (TargetNS) {
             });
         }
     };
+
+    function CheckSubject() {
+        var Subject  = $('#Subject').val();
+        var TicketID = $('input[name="TicketID"]').val();
+
+        $('#SubjectWarning').remove();
+
+        if (!TicketID)
+            return;
+
+        Core.AJAX.FunctionCall(
+            Core.Config.Get('CGIHandle'),
+            {
+                Action:    Core.Config.Get('Action'),
+                Subaction: 'CheckSubject',
+                Subject:   Subject,
+                TicketID:  TicketID,
+            },
+            function (Response) {
+                if (Response.SubjectEmpty)
+                    $('<div id="SubjectWarning">')
+                        .attr('class', 'MessageBox Notice')
+                        .append($('<p/>').text(Response.Message))
+                        .prependTo('#AppWrapper');
+            },
+            'json'
+        );
+    }
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -244,7 +244,7 @@ if ( $DB =~ m/mysql/i ) {
     }
     if (
         !system(
-            "( $DBDump -u $DatabaseUser $DatabasePw -h $DatabaseHost $Database || touch $ErrorIndicationFileName ) | $CompressCMD > $Directory/DatabaseBackup.sql.$CompressEXT"
+            "( $DBDump -u $DatabaseUser $DatabasePw -h $DatabaseHost --no-tablespaces $Database || touch $ErrorIndicationFileName ) | $CompressCMD > $Directory/DatabaseBackup.sql.$CompressEXT"
         )
         && !-f $ErrorIndicationFileName
         )
@@ -303,7 +303,7 @@ if ( defined $Opts{r} ) {
         $SystemDTObject->Add( Hours => 2 );
     }
 
-    for ( 0 .. $Opts{r} ) {
+    for my $Number ( 0 .. $Opts{r} ) {
 
         # legacy, old directories could be in the format 2013-4-8
         my @LegacyDirFormats = (

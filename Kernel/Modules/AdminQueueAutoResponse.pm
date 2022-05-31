@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -192,12 +192,12 @@ sub Run {
 
         # if there are any queues, they are shown
         if (%QueueData) {
-            for ( sort { $QueueData{$a} cmp $QueueData{$b} } keys %QueueData ) {
+            for my $QueueID ( sort { $QueueData{$a} cmp $QueueData{$b} } keys %QueueData ) {
                 $LayoutObject->Block(
                     Name => 'Item',
                     Data => {
-                        Queue   => $QueueData{$_},
-                        QueueID => $_,
+                        Queue   => $QueueData{$QueueID},
+                        QueueID => $QueueID,
                         %QueueData,
                         %Param,
                     },

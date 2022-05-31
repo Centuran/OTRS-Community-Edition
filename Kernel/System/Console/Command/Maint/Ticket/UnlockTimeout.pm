@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -58,8 +58,8 @@ sub Run {
     }
 
     TICKET:
-    for (@Tickets) {
-        my @Row = @{$_};
+    for my $TicketRow (@Tickets) {
+        my @Row = @{$TicketRow};
 
         # get used calendar
         my $Calendar = $Kernel::OM->Get('Kernel::System::Ticket')->TicketCalendarGet(

@@ -572,4 +572,3 @@ John McNamara jmcnamara@cpan.org
 Copyright MM-MMXVI, John McNamara.
 
 All Rights Reserved. This module is free software. It may be used, redistributed and/or modified under the same terms as Perl itself.
-

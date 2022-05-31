@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -66,6 +66,29 @@ sub Run {
             # error screen, don't show ticket
             if ( !$Access ) {
                 return $LayoutObject->NoPermission( WithHeader => 'yes' );
+            }
+
+            # Reset ticket owner back to the previous one
+            my @HistoryItems = $TicketObject->HistoryGet(
+                TicketID => $TicketID,
+                UserID   => $Self->{UserID},
+            );
+
+            my @BulkActionHistoryItems = grep {
+                $_->{HistoryType} eq 'Bulk'
+                && $_->{Name} eq 'Ticket bulk action.'
+                && $_->{CreateBy} == $Self->{UserID}
+            } @HistoryItems;
+
+            if ( @BulkActionHistoryItems ) {
+                # Get previous owner from most recent history item
+                my $PreviousOwnerID = $BulkActionHistoryItems[-1]->{OwnerID};
+
+                $TicketObject->TicketOwnerSet(
+                    TicketID  => $TicketID,
+                    NewUserID => $PreviousOwnerID,
+                    UserID    => $Self->{UserID},
+                );
             }
 
             # set unlock
@@ -739,6 +762,13 @@ sub Run {
                         TicketID => $TicketID,
                         Lock     => 'lock',
                         UserID   => $Self->{UserID},
+                    );
+
+                    $TicketObject->HistoryAdd(
+                        TicketID     => $TicketID,
+                        HistoryType  => 'Bulk',
+                        Name         => 'Ticket bulk action.',
+                        CreateUserID => $Self->{UserID},
                     );
 
                     # set user id

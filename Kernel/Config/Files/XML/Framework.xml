@@ -406,7 +406,7 @@
         <Description Translatable="1">Defines the URL rich text editor path.</Description>
         <Navigation>Frontend::Base</Navigation>
         <Value>
-            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.16.0/</Item>
+            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.17.1/</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::RichTextWidth" Required="1" Valid="1">
@@ -665,13 +665,6 @@
         <Navigation>Core::Email</Navigation>
         <Value>
             <Item ValueType="PerlModule" ValueFilter="Kernel/System/Email/*.pm">Kernel::System::Email::Sendmail</Item>
-        </Value>
-    </Setting>
-    <Setting Name="SendmailModule::CMD" Required="1" Valid="1" ConfigLevel="200">
-        <Description Translatable="1">If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.</Description>
-        <Navigation>Core::Email</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">/usr/sbin/sendmail -i -f</Item>
         </Value>
     </Setting>
     <Setting Name="SendmailModule::Host" Required="1" Valid="1" ConfigLevel="200">
@@ -2618,34 +2611,6 @@
             <Item ValueType="String" ValueRegex="">admin</Item>
         </Value>
     </Setting>
-    <Setting Name="MIME-Viewer###application/excel" Required="0" Valid="0">
-        <Description Translatable="1">Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.</Description>
-        <Navigation>Frontend::Agent::MIMEViewer</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">xlhtml</Item>
-        </Value>
-    </Setting>
-    <Setting Name="MIME-Viewer###application/msword" Required="0" Valid="0">
-        <Description Translatable="1">Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.</Description>
-        <Navigation>Frontend::Agent::MIMEViewer</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">wvWare</Item>
-        </Value>
-    </Setting>
-    <Setting Name="MIME-Viewer###application/pdf" Required="0" Valid="0">
-        <Description Translatable="1">Specifies the path to the converter that allows the view of PDF documents, in the web interface.</Description>
-        <Navigation>Frontend::Agent::MIMEViewer</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">pdftohtml -stdout -i</Item>
-        </Value>
-    </Setting>
-    <Setting Name="MIME-Viewer###text/xml" Required="0" Valid="0">
-        <Description Translatable="1">Specifies the path to the converter that allows the view of XML files, in the web interface.</Description>
-        <Navigation>Frontend::Agent::MIMEViewer</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Home&gt;/scripts/tools/xml2html.pl</Item>
-        </Value>
-    </Setting>
     <Setting Name="WebUserAgent::Timeout" Required="1" Valid="1" ConfigLevel="200">
         <Description Translatable="1">Sets the timeout (in seconds) for http/ftp downloads.</Description>
         <Navigation>Core::WebUserAgent</Navigation>
@@ -4001,6 +3966,7 @@ via the Preferences button after logging in.
                 <Item Key="PasswordMin2Lower2UpperCharacters">0</Item>
                 <Item Key="PasswordMin2Characters">0</Item>
                 <Item Key="PasswordNeedDigit">0</Item>
+                <Item Key="PasswordMaxLoginFailed">0</Item>
                 <Item Key="Active">1</Item>
             </Hash>
         </Value>
@@ -4210,7 +4176,7 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="JavaScript">
                     <Array>
-                        <Item>thirdparty/momentjs-2.18.1/moment.min.js</Item>
+                        <Item>thirdparty/momentjs-2.29.1/moment.min.js</Item>
                         <Item>thirdparty/fullcalendar-3.10.2/fullcalendar.min.js</Item>
                         <Item>thirdparty/d3-3.5.6/d3.min.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/nvd3.min.js</Item>
@@ -4973,7 +4939,7 @@ via the Preferences button after logging in.
     </Setting>
     <Setting Name="Frontend::NavBarModule###2-AdminFavourites" Required="0" Valid="1">
         <Description Translatable="1">Frontend module registration (show personal favorites as sub navigation items of 'Admin').</Description>
-        <Navigation>Frontend::Agent::ModuleRegistration</Navigation>
+        <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::NavBar::AdminFavourites</Item>
@@ -7430,24 +7396,7 @@ via the Preferences button after logging in.
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="DashboardBackend###0420-CmdOutput" Required="0" Valid="0">
-        <Description Translatable="1">Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.</Description>
-        <Navigation>Frontend::Agent::View::Dashboard</Navigation>
-        <Value>
-            <Hash>
-                <Item Key="Module">Kernel::Output::HTML::Dashboard::CmdOutput</Item>
-                <Item Key="Title" Translatable="1">Sample command output</Item>
-                <Item Key="Description" Translatable="1">Show command line output.</Item>
-                <Item Key="Block">ContentSmall</Item>
-                <Item Key="Group"></Item>
-                <Item Key="Default">0</Item>
-                <Item Key="CacheTTL">60</Item>
-                <Item Key="Cmd">/bin/echo Configure me please.</Item>
-                <Item Key="Mandatory">0</Item>
-            </Hash>
-        </Value>
-    </Setting>
-    <Setting Name="DashboardBackend###0200-Image" Required="0" Valid="0">
+    <Setting Name="DashboardBackend###0200-Image" Required="0" Valid="1">
         <Description Translatable="1">Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.</Description>
         <Navigation>Frontend::Agent::View::Dashboard</Navigation>
         <Value>
@@ -7467,7 +7416,7 @@ via the Preferences button after logging in.
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="DashboardBackend###0210-MOTD" Required="0" Valid="0">
+    <Setting Name="DashboardBackend###0210-MOTD" Required="0" Valid="1">
         <Description Translatable="1">Shows the message of the day (MOTD) in the agent dashboard. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "Mandatory" determines if the plugin is always shown and can not be removed by agents.</Description>
         <Navigation>Frontend::Agent::View::Dashboard</Navigation>
         <Value>
@@ -7788,12 +7737,12 @@ via the Preferences button after logging in.
             <Array>
                 <Item>thirdparty/jquery-3.5.1/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
-                <Item>thirdparty/jquery-ui-1.12.1/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.1/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.js</Item>
                 <Item>thirdparty/jquery-validate-1.19.3/jquery.validate.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
                 <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.0.1/nunjucks.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.JavaScriptEnhancements.js</Item>
                 <Item>Core.Debug.js</Item>
@@ -7849,7 +7798,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.16.0/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.17.1/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>
@@ -7890,10 +7839,10 @@ via the Preferences button after logging in.
                 <Item>thirdparty/jquery-3.5.1/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
                 <Item>thirdparty/jquery-validate-1.19.3/jquery.validate.js</Item>
-                <Item>thirdparty/jquery-ui-1.12.1/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.1/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
                 <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.0.1/nunjucks.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.Debug.js</Item>
                 <Item>Core.Exception.js</Item>
@@ -7938,7 +7887,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.16.0/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.17.1/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>
