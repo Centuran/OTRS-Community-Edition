@@ -76,6 +76,7 @@ sub Auth {
         );
         return;
     }
+    
 
     # get config object
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');

@@ -91,10 +91,11 @@ $Self->Is(
     $UserRand,
     "First authentication ok",
 );
+my $MaxLoginAttempts = 2;
+$ConfigObject->Get('PreferencesGroups')->{Password}->{PasswordMaxLoginFailed} = $MaxLoginAttempts;
 
-$ConfigObject->Get('PreferencesGroups')->{Password}->{PasswordMaxLoginFailed} = 2;
-
-for ( 1 .. 2 ) {
+# I bet this loop iterates this many times as many failed login attempts we want - why wouldnt we use a variable for it and use it above?
+for ( 1 .. $MaxLoginAttempts ) {
     $AuthResult = $AuthObject->Auth(
         User => $UserRand,
         Pw   => 'wrong',
@@ -123,6 +124,49 @@ my %User = $UserObject->GetUserData(
 );
 delete $User{UserPw};    # Don't update/break password.
 
+# Now, let's update user to be invalid
+my $UpdateResult;
+
+$UpdateResult = $UserObject->UserUpdate(
+    %User,
+    ValidID       => 2,
+    ChangeUserID  => 1,
+);
+
+$Self->Is(
+    $UpdateResult,
+    1,
+    "User successfully invalidated",
+);
+
+# This is duplicated with the logic above, we should probably make a function out of it, but for now this will do
+for ( 1 .. $MaxLoginAttempts ) {
+    $AuthResult = $AuthObject->Auth(
+        User => $UserRand,
+        Pw   => 'wrong',
+    );
+
+    $Self->Is(
+        $AuthResult,
+        undef,
+        "Wrong authentication",
+    );
+}
+
+$AuthResult = $AuthObject->Auth(
+    User => $UserRand,
+    Pw   => '123',
+);
+
+# Now, let's assert if the user has become invalidated temporarily or is still invalid permanently
+$Self->True(
+   grep { $_ eq 'invalid' } $Kernel::OM->Get('Kernel::System::Valid')->ValidList(),
+   "User is still invalid permanently",
+);
+
+# Let's get back the user to valid state, however I am not sure if this test makes sense to update the user
+# directly from invalid to valid, because the invalid state should be permanent
+
 my $Update = $UserObject->UserUpdate(
     %User,
     ValidID      => 1,
@@ -131,7 +175,7 @@ my $Update = $UserObject->UserUpdate(
 
 $Self->True(
     $Update,
-    "User revalidated"
+    "User revalidated",
 );
 
 $AuthResult = $AuthObject->Auth(

@@ -235,7 +235,7 @@ for my $CryptType (qw(plain crypt apr1 md5 sha1 sha2 sha512 bcrypt)) {
         # Tests for failed logins limit
         #
 
-        # Reset failed login attempts counter by loggin in successfully
+        # Reset failed login attempts counter by logging in successfully
         $CustomerAuthResult = $CustomerAuthObject->Auth(
             User => $UserRand,
             Pw   => $Test->{Password},
