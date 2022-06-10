@@ -50,6 +50,7 @@ my $UserRand = 'example-user' . $Helper->GetRandomID();
 
 # get user object
 my $UserObject = $Kernel::OM->Get('Kernel::System::User');
+my $ValidObject = $Kernel::OM->Get('Kernel::System::Valid');
 
 # add test user
 $TestUserID = $UserObject->UserAdd(
@@ -308,6 +309,71 @@ $Self->True(
     $Result,
     "System crypt type - $Tests[1]->{CryptType}, crypt type for user password - $Tests[0]->{CryptType}, user password '$Tests[0]->{Password}'",
 );
+
+# Now, let's update user to be invalid
+my $UpdateResult;
+
+my $InvalidValidID = $ValidObject->ValidLookup(
+    Valid => 'invalid',
+);
+
+my %User = $UserObject->GetUserData(
+    UserID => $TestUserID,
+);
+
+$UpdateResult = $UserObject->UserUpdate(
+    %User,
+    ValidID       => $InvalidValidID,
+    ChangeUserID  => 1,
+);
+
+$Self->Is(
+    $UpdateResult,
+    1,
+    "User invalidation",
+);
+
+my $MaxLoginAttempts = 2;
+
+my $AuthResult;
+
+for ( 1 .. $MaxLoginAttempts ) {
+    $AuthResult = $AuthObject->Auth(
+        User => $UserRand,
+        Pw   => 'wrong',
+    );
+
+    $Self->Is(
+        $AuthResult,
+        undef,
+        "Wrong authentication",
+    );
+}
+
+$AuthResult = $AuthObject->Auth(
+    User => $UserRand,
+    Pw   => '123',
+);
+
+$Self->Is(
+    $AuthResult,
+    undef,
+    "Should be undefined after second lockout"
+);
+
+%User = $UserObject->GetUserData(
+    User => $UserRand,
+);
+delete $User{UserPw}; # don't update/break password
+
+my $CurrentValidID = $User{ValidID};
+
+$Self->Is(
+    $CurrentValidID,
+    $InvalidValidID,
+    "Check if ValidID is 'invalid'",
+);
+
 
 # cleanup is done by RestoreDatabase
 

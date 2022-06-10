@@ -50,7 +50,6 @@ my $UserRand = 'example-user' . $Helper->GetRandomID();
 
 # get user object
 my $UserObject = $Kernel::OM->Get('Kernel::System::User');
-my $ValidObject = $Kernel::OM->Get('Kernel::System::Valid');
 # add test user
 $TestUserID = $UserObject->UserAdd(
     UserFirstname => 'Firstname Test1',
@@ -123,66 +122,6 @@ my %User = $UserObject->GetUserData(
     UserID => $TestUserID,
 );
 delete $User{UserPw};    # Don't update/break password.
-
-# Now, let's update user to be invalid
-my $UpdateResult;
-
-my $InvalidValidID = $ValidObject->ValidLookup(
-    Valid => 'invalid',
-);
-
-$UpdateResult = $UserObject->UserUpdate(
-    %User,
-    ValidID       => $InvalidValidID,
-    ChangeUserID  => 1,
-);
-
-$Self->Is(
-    $UpdateResult,
-    1,
-    "User forceful invalidation",
-);
-
-# This is duplicated with the logic above, we should probably make a function out of it, but for now this will do
-for ( 1 .. $MaxLoginAttempts ) {
-    $AuthResult = $AuthObject->Auth(
-        User => $UserRand,
-        Pw   => 'wrong',
-    );
-
-    $Self->Is(
-        $AuthResult,
-        undef,
-        "Wrong authentication",
-    );
-}
-
-$AuthResult = $AuthObject->Auth(
-    User => $UserRand,
-    Pw   => '123',
-);
-
-$Self->Is(
-    $AuthResult,
-    undef,
-    "Should be undefined after second lockout"
-);
-
-%User = $UserObject->GetUserData(
-    User => $UserRand,
-);
-delete $User{UserPw}; # don't update/break password
-
-my $CurrentValidID = $User{ValidID};
-
-$Self->Is(
-    $CurrentValidID,
-    $InvalidValidID,
-    "Check if ValidID is 'invalid'",
-);
-
-# Let's get back the user to valid state, however I am not sure if this test makes sense to update the user
-# directly from invalid to valid, because the invalid state should be permanent
 
 my $Update = $UserObject->UserUpdate(
     %User,
