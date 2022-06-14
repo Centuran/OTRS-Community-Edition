@@ -177,6 +177,7 @@ sub Auth {
         my %CustomerUserData = $CustomerUserObject->CustomerUserDataGet(
             User => $Param{User}
         );
+
         return if !%CustomerUserData;
 
         my $Count = $CustomerUserData{UserLoginFailed} || 0;
@@ -211,8 +212,16 @@ sub Auth {
         # Do nothing if failed logins limit hasn't been reached yet
         return if $Count < $MaxLoginAttempts;
 
-        # Failed logins limit exceeded
+        # Let's check if the user is not actually invalid
+        # TODO: We should think about moving it higher up, so this method will exit as early as it appears that the Customer User is invalid
+        my $InvalidValidID = $ValidObject->ValidLookup(
+            Valid => 'invalid',
+        );
 
+        return if $CustomerUserData{ValidID} eq $InvalidValidID;
+
+        # Failed logins limit exceeded
+        
         my $TemporarilyInvalidID = $ValidObject->ValidLookup(
             Valid => 'invalid-temporarily'
         );

@@ -10,6 +10,7 @@
 use strict;
 use warnings;
 use utf8;
+use Data::Dumper;
 
 use vars (qw($Self));
 
@@ -371,5 +372,78 @@ $Self->True(
     $Result,
     "System crypt type - $Tests[1]->{CryptType}, crypt type for customer password - $Tests[0]->{CryptType}, customer password '$Tests[0]->{Password}'",
 );
+
+# Now, let's update user to be invalid
+my $UpdateResult;
+
+my $CustomerAuthObject = $Kernel::OM->Get('Kernel::System::CustomerAuth');
+
+my $InvalidValidID = $ValidObject->ValidLookup(
+    Valid => 'invalid',
+);
+
+print Dumper($UserRand);
+
+my %CustomerUserData = $GlobalUserObject->CustomerUserDataGet(
+    User => $UserRand,
+);
+
+$UpdateResult = $GlobalUserObject->CustomerUserUpdate(
+    ID             => $TestUserID,
+    UserFirstname  => $CustomerUserData{UserFirstname},
+    UserLastname   => $CustomerUserData{UserLastname},
+    UserCustomerID => $CustomerUserData{UserCustomerID},
+    UserLogin      => $UserRand,
+    UserEmail      => $UserRand . '@example.com',
+    ValidID        => $InvalidValidID,
+    UserID         => 1,
+);
+
+$Self->Is(
+    $UpdateResult,
+    1,
+    "User invalidation",
+);
+
+
+my $AuthResult;
+
+for ( 1 .. $MaxLoginAttempts ) {
+    $AuthResult = $CustomerAuthObject->Auth(
+        User => $UserRand,
+        Pw   => 'wrong',
+    );
+
+    $Self->Is(
+        $AuthResult,
+        undef,
+        "Wrong authentication",
+    );
+}
+
+$AuthResult = $CustomerAuthObject->Auth(
+    User => $UserRand,
+    Pw   => '123',
+);
+
+$Self->Is(
+    $AuthResult,
+    undef,
+    "Should be undefined after second lockout"
+);
+
+%CustomerUserData = $GlobalUserObject->CustomerUserDataGet(
+    User => $UserRand,
+);
+delete $CustomerUserData{UserPw}; # don't update/break password
+
+my $CurrentValidID = $CustomerUserData{ValidID};
+
+$Self->Is(
+    $CurrentValidID,
+    $InvalidValidID,
+    "Check if ValidID is 'invalid'",
+);
+
 
 1;
