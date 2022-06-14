@@ -10,7 +10,6 @@
 use strict;
 use warnings;
 use utf8;
-use Data::Dumper;
 
 use vars (qw($Self));
 
@@ -39,7 +38,7 @@ $ConfigObject->Set(
     Value => 0,
 );
 
-my $Prefs = $ConfigObject->Get('CustomerPreferencesGroups');
+my $Prefs            = $ConfigObject->Get('CustomerPreferencesGroups');
 my $MaxLoginAttempts = 3;
 $Prefs->{Password}{PasswordMaxLoginFailed} = $MaxLoginAttempts;
 
@@ -382,8 +381,6 @@ my $InvalidValidID = $ValidObject->ValidLookup(
     Valid => 'invalid',
 );
 
-print Dumper($UserRand);
-
 my %CustomerUserData = $GlobalUserObject->CustomerUserDataGet(
     User => $UserRand,
 );
@@ -399,25 +396,25 @@ $UpdateResult = $GlobalUserObject->CustomerUserUpdate(
     UserID         => 1,
 );
 
-$Self->Is(
+$Self->True(
     $UpdateResult,
-    1,
     "User invalidation",
 );
 
-
 my $AuthResult;
+my $WrongPass         = 'wrong';
+my $WrongAuthTestName = 'Wrong authentication';
 
 for ( 1 .. $MaxLoginAttempts ) {
     $AuthResult = $CustomerAuthObject->Auth(
         User => $UserRand,
-        Pw   => 'wrong',
+        Pw   => $WrongPass,
     );
 
     $Self->Is(
         $AuthResult,
         undef,
-        "Wrong authentication",
+        $WrongAuthTestName,
     );
 }
 
@@ -435,7 +432,6 @@ $Self->Is(
 %CustomerUserData = $GlobalUserObject->CustomerUserDataGet(
     User => $UserRand,
 );
-delete $CustomerUserData{UserPw}; # don't update/break password
 
 my $CurrentValidID = $CustomerUserData{ValidID};
 
@@ -444,6 +440,5 @@ $Self->Is(
     $InvalidValidID,
     "Check if ValidID is 'invalid'",
 );
-
 
 1;

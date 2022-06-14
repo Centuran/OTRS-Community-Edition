@@ -49,7 +49,7 @@ my $TestUserID;
 my $UserRand = 'example-user' . $Helper->GetRandomID();
 
 # get user object
-my $UserObject = $Kernel::OM->Get('Kernel::System::User');
+my $UserObject  = $Kernel::OM->Get('Kernel::System::User');
 my $ValidObject = $Kernel::OM->Get('Kernel::System::Valid');
 
 # add test user
@@ -323,8 +323,8 @@ my %User = $UserObject->GetUserData(
 
 $UpdateResult = $UserObject->UserUpdate(
     %User,
-    ValidID       => $InvalidValidID,
-    ChangeUserID  => 1,
+    ValidID      => $InvalidValidID,
+    ChangeUserID => 1,
 );
 
 $Self->Is(
@@ -364,7 +364,7 @@ $Self->Is(
 %User = $UserObject->GetUserData(
     User => $UserRand,
 );
-delete $User{UserPw}; # don't update/break password
+delete $User{UserPw};    # don't update/break password
 
 my $CurrentValidID = $User{ValidID};
 
@@ -373,7 +373,6 @@ $Self->Is(
     $InvalidValidID,
     "Check if ValidID is 'invalid'",
 );
-
 
 # cleanup is done by RestoreDatabase
 
