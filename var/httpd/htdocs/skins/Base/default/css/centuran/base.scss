@@ -299,6 +299,7 @@ input[type="radio"] {
 
   display: grid;
   place-content: center;
+  vertical-align: middle;
 }
 
 input[type="radio"]::before {
@@ -357,6 +358,10 @@ input[type="radio"]:hover {
 
 input[type="radio"]:focus {
   outline: none;
+}
+
+input[type="radio"] + label {
+  vertical-align: middle;
 }
 
 select {
