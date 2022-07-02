@@ -177,6 +177,7 @@ sub Auth {
         my %CustomerUserData = $CustomerUserObject->CustomerUserDataGet(
             User => $Param{User}
         );
+
         return if !%CustomerUserData;
 
         my $Count = $CustomerUserData{UserLoginFailed} || 0;
@@ -189,7 +190,7 @@ sub Auth {
         );
 
         my $AuthBackendConfig = $ConfigObject->Get( $CustomerUserData{Source} );
-        
+
         return if !IsHashRefWithData($AuthBackendConfig);
         return if $AuthBackendConfig->{ReadOnly};
 
@@ -211,6 +212,14 @@ sub Auth {
         # Do nothing if failed logins limit hasn't been reached yet
         return if $Count < $MaxLoginAttempts;
 
+# Let's check if the user is not actually invalid
+# TODO: We should think about moving it higher up, so this method will exit as early as it appears that the Customer User is invalid
+        my $InvalidValidID = $ValidObject->ValidLookup(
+            Valid => 'invalid',
+        );
+
+        return if $CustomerUserData{ValidID} eq $InvalidValidID;
+
         # Failed logins limit exceeded
 
         my $TemporarilyInvalidID = $ValidObject->ValidLookup(
@@ -219,7 +228,7 @@ sub Auth {
         return if !$TemporarilyInvalidID;
 
         return if !defined $CustomerUserData{ValidID};
-        
+
         # Do nothing if customer user is already temporarily invalid
         return if $CustomerUserData{ValidID} == $TemporarilyInvalidID;
 
@@ -232,8 +241,8 @@ sub Auth {
             ValidID => $TemporarilyInvalidID,
             UserID  => 1
         );
-        
-        if ( $Updated ) {
+
+        if ($Updated) {
             $LogObject->Log(
                 Priority => 'notice',
                 Message  => "Customer user $CustomerUserData{UserLogin} "
@@ -322,13 +331,3 @@ sub GetLastErrorMessage {
 }
 
 1;
-
-=head1 TERMS AND CONDITIONS
-
-This software is part of the OTRS project (L<https://otrs.org/>).
-
-This software comes with ABSOLUTELY NO WARRANTY. For details, see
-the enclosed file COPYING for license information (GPL). If you
-did not receive this file, see L<https://www.gnu.org/licenses/gpl-3.0.txt>.
-
-=cut

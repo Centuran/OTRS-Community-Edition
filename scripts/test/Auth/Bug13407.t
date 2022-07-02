@@ -50,7 +50,6 @@ my $UserRand = 'example-user' . $Helper->GetRandomID();
 
 # get user object
 my $UserObject = $Kernel::OM->Get('Kernel::System::User');
-
 # add test user
 $TestUserID = $UserObject->UserAdd(
     UserFirstname => 'Firstname Test1',
@@ -91,10 +90,11 @@ $Self->Is(
     $UserRand,
     "First authentication ok",
 );
+my $MaxLoginAttempts = 2;
+$ConfigObject->Get('PreferencesGroups')->{Password}->{PasswordMaxLoginFailed} = $MaxLoginAttempts;
 
-$ConfigObject->Get('PreferencesGroups')->{Password}->{PasswordMaxLoginFailed} = 2;
-
-for ( 1 .. 2 ) {
+# I bet this loop iterates this many times as many failed login attempts we want - why wouldnt we use a variable for it and use it above?
+for ( 1 .. $MaxLoginAttempts ) {
     $AuthResult = $AuthObject->Auth(
         User => $UserRand,
         Pw   => 'wrong',
@@ -131,7 +131,7 @@ my $Update = $UserObject->UserUpdate(
 
 $Self->True(
     $Update,
-    "User revalidated"
+    "User revalidated",
 );
 
 $AuthResult = $AuthObject->Auth(
