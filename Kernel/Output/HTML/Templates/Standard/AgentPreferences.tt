@@ -88,7 +88,11 @@
         <ul class="SettingsList Preferences">
         [% RenderBlockStart("Item") %]
             [% SET global.ClassicPreferenceCounter = 1 %]
+            [% IF Data.Group == 'SkinOptions' && Env('UserSkin') != 'default' %]
+            <li style="display: none;">
+            [% ELSE %]
             <li>
+            [% END %]
                 <form action="[% Env("CGIHandle") %]" enctype="multipart/form-data" method="post" class="Validate">
                     <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                     <input type="hidden" name="Subaction" value="UpdateAJAXComplex"/>
@@ -187,6 +191,49 @@
                                         <div class="Clear"></div>
                                     </div>
     [% RenderBlockEnd("OutOfOffice") %]
+    [% RenderBlockStart("SkinOptions") %]
+                                    <div class="Row SkinOptions">
+                                        <input type="hidden" name="Skin" value="default">
+                                        <p class="FieldExplanation">[% Translate(Data.Key) | html %]</p>
+                                        <label>[% Translate("Use modern variant") | html %]:</label>
+                                        <div class="Field">
+                                            <label for="UseModern">
+                                                <input type="checkbox" name="UseModern" id="UseModern" value="1" [% Data.UseModern %] [% Data.Readonly %]/>
+                                                [% Translate(Data.Title) | html %]
+                                            </label>
+                                            <toggleswitch></toggleswitch>
+                                        </div>
+                                        <div class="Clear"></div>
+                                        <label>[% Translate("Text size") | html %]:</label>
+                                        <div class="Field">
+                                            [% IF Data.UseModern %]
+                                            <div style="float: right;">
+                                                <span style="margin-left: 20pt; font-size: var(--base-font-size--s);">
+                                                    [% Translate("Example of small text") %]
+                                                </span>
+                                                <br>
+                                                <span style="margin-left: 20pt; font-size: var(--base-font-size--m);">
+                                                    [% Translate("Example of medium text") %]
+                                                </span>
+                                                <br>
+                                                <span style="margin-left: 20pt; font-size: var(--base-font-size--l);">
+                                                    [% Translate("Example of large text") %]
+                                                </span>
+                                            </div>
+                                            [% END %]
+
+                                            <input type="radio" name="TextSize" id="TextSizeSmall" value="small" [% Data.TextSize.TextSizeSmall %] />
+                                            <label for="TextSizeSmall">[% Translate("Small") | html %]</label>
+                                            <br>
+                                            <input type="radio" name="TextSize" id="TextSizeMedium" value="medium" [% Data.TextSize.TextSizeMedium %] />
+                                            <label for="TextSizeMedium">[% Translate("Medium") | html %]</label>
+                                            <br>
+                                            <input type="radio" name="TextSize" id="TextSizeLarge" value="large" [% Data.TextSize.TextSizeLarge %] />
+                                            <label for="TextSizeLarge">[% Translate("Large") | html %]</label>
+                                        </div>
+                                        <div class="Clear"></div>
+                                    </div>
+    [% RenderBlockEnd("SkinOptions") %]
     [% RenderBlockStart("RawHTML") %]
                                     <div class="Field NoMargin">
                                         [% Data.HTML %]

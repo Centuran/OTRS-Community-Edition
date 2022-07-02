@@ -82,6 +82,17 @@ Core.Agent.Preferences = (function (TargetNS) {
             }
         });
 
+        $('#UserSkin').on('change', function() {
+            console.log($('#UserSkin').val());
+            var Skin = $('#UserSkin').val();
+            var $OptionsItem = $('.SkinOptions').parents('li').first();
+
+            if (Skin == 'default')
+                $OptionsItem.filter(':not(:visible)').show();
+            else
+                $OptionsItem.filter(':visible').hide();
+        });
+
         $('#SaveAll').on('click', function() {
             $('button.Update:visible').trigger('click');
             return false;
