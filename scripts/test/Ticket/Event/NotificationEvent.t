@@ -156,7 +156,7 @@ my $SetInvalid = $UserObject->UserUpdate(
 
 # create a new customer user for current test
 my $CustomerUserLogin = $Helper->TestCustomerUserCreate();
-my $InvalidUserLogin = $Helper->TestCustomerUserCreate();
+my $InvalidUserLogin  = $Helper->TestCustomerUserCreate();
 
 my %InvalidCustomerUser = $CustomerUserObject->CustomerUserDataGet(
     User => $InvalidUserLogin
