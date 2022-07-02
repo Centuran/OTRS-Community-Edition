@@ -308,12 +308,11 @@ sub Run {
                     next BUNDLE if !$Bundle->{Recipient}->{UserID};
                 }
                 
-                  if (
+                if (
                     $Bundle->{Recipient}->{Source}
                     && $Bundle->{Recipient}->{Source} eq 'CustomerUser'
                     && $Bundle->{Recipient}->{ValidID}
                     && !grep { $Bundle->{Recipient}->{ValidID} eq $_ } @ValidIDs
-
                     )
                 {
                     next BUNDLE;
