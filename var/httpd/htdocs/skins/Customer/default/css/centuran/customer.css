@@ -1,3 +1,217 @@
+/*
+ * Roboto
+ */
+/* roboto-100 - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-100italic - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 100;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100italic.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100italic.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100italic.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100italic.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-100italic.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-300 - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-300italic - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 300;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300italic.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300italic.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300italic.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300italic.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-300italic.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-regular - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-italic - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-italic.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-italic.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-italic.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-italic.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-italic.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-500 - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-500italic - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 500;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500italic.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500italic.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500italic.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500italic.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-500italic.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-700 - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-700italic - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 700;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700italic.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700italic.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700italic.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700italic.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700italic.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-900 - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/* roboto-900italic - vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 900;
+  src: url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900italic.eot?#iefix") format("embedded-opentype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900italic.woff2") format("woff2"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900italic.woff") format("woff"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900italic.ttf") format("truetype"), url("/otrs-web/common/fonts/Roboto/roboto-v30-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-900italic.svg#Roboto") format("svg"); /* Legacy iOS */
+}
+/*
+ * Roboto Mono
+ */
+/* roboto-mono-100 - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-200 - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-300 - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-regular - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-500 - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-600 - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-700 - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-100italic - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 100;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100italic.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100italic.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100italic.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-100italic.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-200italic - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 200;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200italic.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200italic.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200italic.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-200italic.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-300italic - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300italic.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300italic.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300italic.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-300italic.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-italic - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-italic.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-italic.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-italic.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-italic.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-500italic - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 500;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500italic.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500italic.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500italic.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-500italic.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-600italic - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600italic.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600italic.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600italic.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-600italic.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
+/* roboto-mono-700italic - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700italic.eot"); /* IE9 Compat Modes */
+  src: local(""), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700italic.woff2") format("woff2"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700italic.woff") format("woff"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700italic.ttf") format("truetype"), url("../fonts/roboto-mono-v21-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-700italic.svg#RobotoMono") format("svg"); /* Legacy iOS */
+}
 input[type=email],
 input[type=password],
 input[type=text] {
@@ -40,6 +254,7 @@ input[type=radio] {
   width: 1.15em;
   display: grid;
   place-content: center;
+  vertical-align: middle;
 }
 
 input[type=radio]::before {
@@ -95,6 +310,10 @@ input[type=radio]:hover::after {
 
 input[type=radio]:focus {
   outline: none;
+}
+
+input[type=radio] + label {
+  vertical-align: middle;
 }
 
 select {
@@ -463,7 +682,7 @@ p.AsteriskExplanation {
 #MainBox.Login .ErrorBox {
   background: none;
   border-radius: 4px;
-  caret-color: #fb8c00;
+  caret-color: rgb(251, 140, 0);
   color: #ff5252ff;
   margin-top: 10px;
 }
@@ -518,7 +737,7 @@ p.AsteriskExplanation {
 #MainBox.Login .SuccessBox {
   background: none;
   border-radius: 4px;
-  caret-color: #fb8c00;
+  caret-color: rgb(251, 140, 0);
   color: #4caf50ff;
   margin-top: 10px;
 }
@@ -915,8 +1134,8 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   font-size: initial;
 }
 #MainBox.TicketView table.Overview tr:hover td {
-  background-color: #aab8d9cc;
-  background-color: #aab8d9cc;
+  background-color: rgba(170, 184, 217, 0.8);
+  background-color: rgba(170, 184, 217, 0.8);
   color: #444;
   text-shadow: 0 1px 0 rgba(170, 184, 217, 0.8);
 }
@@ -1183,7 +1402,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 .TicketZoom ul#Messages .MessageContent .MessageBrowser {
   background: none;
   border-radius: 4px;
-  caret-color: #fb8c00;
+  caret-color: rgb(251, 140, 0);
   color: #2196f3ff;
   margin-top: 10px;
   border: none;
