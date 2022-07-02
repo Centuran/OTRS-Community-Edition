@@ -416,19 +416,19 @@ $Self->True(
 );
 
 my $CustomerArticleID1InvalidCustomer = $ArticleBackendObject->ArticleCreate(
-    TicketID             => $InvalidCustomerUserTicketID,
-    IsVisibleForCustomer => 1,
+    TicketID             => $CustomerTicketID,
     SenderType           => 'customer',
-    Subject              => 'Article 1',
-    Body                 => 'This is the first article',
+    IsVisibleForCustomer => 1,
+    Subject              => 'Test Article',
+    Body                 => 'Test article body',
     Charset              => 'ISO-8859-15',
     MimeType             => 'text/plain',
     HistoryType          => 'EmailCustomer',
-    HistoryComment       => 'Some free text!',
+    HistoryComment       => 'History comment',
+    From                 => "Customer$InvalidCustomerUserLogin\@localunittest.com",
+    To                   => 'test1@example.com',
+    Cc                   => 'test2@example.com',
     UserID               => 1,
-    From                 => "Customer$InvalidUserLogin\@localunittest.com",
-    To                   => 'test1@otrsexample.com',
-    Cc                   => 'test2@otrsexample.com',
 );
 
 $Self->True(
