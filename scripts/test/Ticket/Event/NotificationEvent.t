@@ -1419,10 +1419,10 @@ my @Tests = (
         Success => 1,
     },
     {
-        Name => 'CustomerUser Invalid',
+        Name => 'CustomerUser invalid',
         Data => {
             Events     => [ 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update' ],
-            Recipients => ['Customer'],
+            Recipients => [ 'Customer' ],
         },
         Config => {
             Event => 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update',
