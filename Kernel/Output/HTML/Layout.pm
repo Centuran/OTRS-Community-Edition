@@ -1362,6 +1362,12 @@ sub Header {
         }
     }
 
+    if ($Self->{SkinSelected} && $Self->{SkinSelected} eq 'default' &&
+        $Self->{'UserSkinOptions-default-UseModern'})
+    {
+        $Param{UseModern} = 1;
+    }
+
     my $MainObject = $Kernel::OM->Get('Kernel::System::Main');
 
     # run header meta modules
@@ -1564,6 +1570,12 @@ sub Footer {
     $Self->LoaderCreateAgentJSCalls();
     $Self->LoaderCreateJavaScriptTranslationData();
     $Self->LoaderCreateJavaScriptTemplateData();
+
+    if ($Self->{SkinSelected} && $Self->{SkinSelected} eq 'default' &&
+        $Self->{'UserSkinOptions-default-UseModern'})
+    {
+        $Param{UseModern} = 1;
+    }
 
     # get datepicker data, if needed in module
     if ($HasDatepicker) {
