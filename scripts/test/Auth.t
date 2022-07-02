@@ -330,7 +330,7 @@ $UpdateResult = $UserObject->UserUpdate(
 $Self->Is(
     $UpdateResult,
     1,
-    "User invalidation",
+    "User gets invalidated",
 );
 
 my $MaxLoginAttempts = 2;
@@ -346,7 +346,7 @@ for ( 1 .. $MaxLoginAttempts ) {
     $Self->Is(
         $AuthResult,
         undef,
-        "Wrong authentication",
+        "Authentication with a wrong password fails",
     );
 }
 
@@ -371,7 +371,7 @@ my $CurrentValidID = $User{ValidID};
 $Self->Is(
     $CurrentValidID,
     $InvalidValidID,
-    "Check if ValidID is 'invalid'",
+    "User is flagged as invalid",
 );
 
 # cleanup is done by RestoreDatabase
