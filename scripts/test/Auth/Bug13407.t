@@ -91,10 +91,11 @@ $Self->Is(
     $UserRand,
     "First authentication ok",
 );
-my $MaxLoginAttempts = 2;
-$ConfigObject->Get('PreferencesGroups')->{Password}->{PasswordMaxLoginFailed} = $MaxLoginAttempts;
 
-# I bet this loop iterates this many times as many failed login attempts we want - why wouldnt we use a variable for it and use it above?
+my $MaxLoginAttempts = 2;
+$ConfigObject->Get('PreferencesGroups')->{Password}{PasswordMaxLoginFailed} =
+    $MaxLoginAttempts;
+
 for ( 1 .. $MaxLoginAttempts ) {
     $AuthResult = $AuthObject->Auth(
         User => $UserRand,
