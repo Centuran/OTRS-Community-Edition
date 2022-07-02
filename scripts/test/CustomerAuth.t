@@ -402,8 +402,7 @@ $Self->True(
 );
 
 my $AuthResult;
-my $WrongPass         = 'wrong';
-my $WrongAuthTestName = 'Wrong authentication';
+my $WrongPass = 'wrong';
 
 for ( 1 .. $MaxLoginAttempts ) {
     $AuthResult = $CustomerAuthObject->Auth(
@@ -414,7 +413,7 @@ for ( 1 .. $MaxLoginAttempts ) {
     $Self->Is(
         $AuthResult,
         undef,
-        $WrongAuthTestName,
+        'Authentication with a wrong password fails',
     );
 }
 
