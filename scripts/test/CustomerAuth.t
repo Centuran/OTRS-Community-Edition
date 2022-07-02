@@ -377,7 +377,7 @@ my $UpdateResult;
 
 my $CustomerAuthObject = $Kernel::OM->Get('Kernel::System::CustomerAuth');
 
-my $InvalidValidID = $ValidObject->ValidLookup(
+my $InvalidID = $ValidObject->ValidLookup(
     Valid => 'invalid',
 );
 
@@ -392,7 +392,7 @@ $UpdateResult = $GlobalUserObject->CustomerUserUpdate(
     UserCustomerID => $CustomerUserData{UserCustomerID},
     UserLogin      => $UserRand,
     UserEmail      => $UserRand . '@example.com',
-    ValidID        => $InvalidValidID,
+    ValidID        => $InvalidID,
     UserID         => 1,
 );
 
@@ -437,7 +437,7 @@ my $CurrentValidID = $CustomerUserData{ValidID};
 
 $Self->Is(
     $CurrentValidID,
-    $InvalidValidID,
+    $InvalidID,
     "Check if ValidID is 'invalid'",
 );
 
