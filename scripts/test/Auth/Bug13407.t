@@ -50,6 +50,7 @@ my $UserRand = 'example-user' . $Helper->GetRandomID();
 
 # get user object
 my $UserObject = $Kernel::OM->Get('Kernel::System::User');
+
 # add test user
 $TestUserID = $UserObject->UserAdd(
     UserFirstname => 'Firstname Test1',
