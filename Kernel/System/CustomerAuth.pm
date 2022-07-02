@@ -212,8 +212,9 @@ sub Auth {
         # Do nothing if failed logins limit hasn't been reached yet
         return if $Count < $MaxLoginAttempts;
 
-# Let's check if the user is not actually invalid
-# TODO: We should think about moving it higher up, so this method will exit as early as it appears that the Customer User is invalid
+        # Check if the user account is flagged as invalid
+        # TODO: We should think about moving it higher up, so this method will
+        # exit as early as it appears that the Customer User is invalid
         my $InvalidValidID = $ValidObject->ValidLookup(
             Valid => 'invalid',
         );
