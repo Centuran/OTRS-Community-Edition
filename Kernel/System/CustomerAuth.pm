@@ -215,11 +215,11 @@ sub Auth {
         # Check if the user account is flagged as invalid
         # TODO: We should think about moving it higher up, so this method will
         # exit as early as it appears that the Customer User is invalid
-        my $InvalidValidID = $ValidObject->ValidLookup(
+        my $InvalidID = $ValidObject->ValidLookup(
             Valid => 'invalid',
         );
 
-        return if $CustomerUserData{ValidID} eq $InvalidValidID;
+        return if $CustomerUserData{ValidID} eq $InvalidID;
 
         # Failed logins limit exceeded
 
