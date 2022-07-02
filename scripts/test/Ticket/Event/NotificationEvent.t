@@ -310,7 +310,7 @@ my $InvalidCustomerUserTicketID = $TicketObject->TicketCreate(
     Priority      => '3 normal',
     State         => 'new',
     CustomerID    => 'example.com',
-    CustomerUser  => $InvalidUserLogin,
+    CustomerUser  => $InvalidCustomerUserLogin,
     OwnerID       => $UserID,
     ResponsibleID => $UserID,
     UserID        => $UserID,
@@ -426,7 +426,7 @@ my $CustomerArticleID1InvalidCustomer = $ArticleBackendObject->ArticleCreate(
     HistoryType          => 'EmailCustomer',
     HistoryComment       => 'Some free text!',
     UserID               => 1,
-    From                 => "$InvalidUserLogin\@localunittest.com",
+    From                 => "Customer$InvalidUserLogin\@localunittest.com",
     To                   => 'test1@otrsexample.com',
     Cc                   => 'test2@otrsexample.com',
 );
