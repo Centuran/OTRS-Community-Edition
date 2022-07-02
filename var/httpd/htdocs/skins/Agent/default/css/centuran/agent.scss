@@ -6,10 +6,16 @@
 @import 'agent/base';
 @import 'agent/toolbar';
 
+:root {
+  --base-font-size--s: 85%;
+  --base-font-size--m: 100%;
+  --base-font-size--l: 120%;
+}
+
 body {
   font-family: Roboto, sans-serif;
   /* font-family: Heebo, sans-serif; */
-  font-size: 100%;
+  font-size: var(--base-font-size);
 }
 
 a,
@@ -834,6 +840,13 @@ p.FieldExplanation {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+/* Agent preferences view */
+
+label + .v-input--switch {
+  margin-top: 0;
+}
+
 
 @import 'agent/admin';
 @import 'agent/calendar';
