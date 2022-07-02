@@ -398,7 +398,7 @@ $UpdateResult = $GlobalUserObject->CustomerUserUpdate(
 
 $Self->True(
     $UpdateResult,
-    "User invalidation",
+    "User is flagged as invalid",
 );
 
 my $AuthResult;
