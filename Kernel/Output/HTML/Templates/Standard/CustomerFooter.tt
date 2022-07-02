@@ -33,9 +33,6 @@
     </a>
     <div class="Clear"></div>
 [% END %]
-
-    <iframe id="_ui-switch"
-        src="[% Config("Frontend::WebPath") %]ui-switch.html"></iframe>
 </div>
 
 <!-- </v-app></div> -->

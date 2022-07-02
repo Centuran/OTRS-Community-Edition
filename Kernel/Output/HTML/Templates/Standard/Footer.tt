@@ -20,9 +20,6 @@
             alt="Centuran Consulting" title="Centuran Consulting" />
     </a>
 [% END %]
-
-    <iframe id="_ui-switch"
-        src="[% Config("Frontend::WebPath") %]ui-switch.html"></iframe>
 </div>
 
 <!-- </v-app></div> -->

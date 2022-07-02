@@ -72,14 +72,6 @@
         #Footer {
             position: relative;
         }
-
-        #_ui-switch {
-            height: 5em;
-            position: absolute;
-            right: 10px;
-            top: 0;
-            z-index: 1000;
-        }    
     </style>
 
     <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Customer/default/css/thirdparty/ui-theme/jquery-ui.css" />

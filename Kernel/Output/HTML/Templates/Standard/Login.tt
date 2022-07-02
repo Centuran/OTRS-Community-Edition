@@ -31,15 +31,6 @@ X-OTRS-Login: [% Env("Baselink") %]
     if (window.localStorage.getItem('__use_new_agent_ui') === 'true')
         document.write('<link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/default/css/centuran/agent.css" />');
     </script>
-    <style type="text/css">
-        #_ui-switch {
-            height: 5em;
-            position: absolute;
-            right: 10px;
-            top: 0;
-            z-index: 10001;
-        }    
-    </style>
 
     <link rel="stylesheet" href="[% Config("Frontend::WebPath") %]skins/Agent/default/css/thirdparty/ui-theme/jquery-ui.css" />
 
