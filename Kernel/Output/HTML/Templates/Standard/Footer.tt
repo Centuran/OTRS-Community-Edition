@@ -22,27 +22,18 @@
 [% END %]
 </div>
 
-<!-- </v-app></div> -->
-<script type="application/javascript">
-if (window.localStorage.getItem('__use_new_agent_ui') === 'true')
-    document.write('</v-app></div>');
-</script>
+[% IF Data.UseModern %]
+</v-app></div>
+[% END %]
 
 [% InsertTemplate("FooterJS.tt") %]
 
     </div><!-- end AppWrapper -->
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-
-# TODO: Probably should use WebPack rather than this
-<script src="https://unpkg.com/http-vue-loader"></script>
-
-#<script src="[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.js"></script>
 <script>
 (function () {
 
-if (window.localStorage.getItem('__use_new_agent_ui') !== 'true')
+if (!window.__use_new_agent_ui)
     return;
 
 new Vue({

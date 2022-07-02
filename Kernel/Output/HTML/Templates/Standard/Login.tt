@@ -26,12 +26,6 @@ X-OTRS-Login: [% Env("Baselink") %]
     <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/[% Data.Skin | uri %]/[% Data.CSSDirectory %]/[% Data.Filename %]" />
 [% RenderBlockEnd("CommonCSS") %]
 
-    <!-- <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/default/css/centuran/agent.css" /> -->
-    <script type="text/javascript">
-    if (window.localStorage.getItem('__use_new_agent_ui') === 'true')
-        document.write('<link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/default/css/centuran/agent.css" />');
-    </script>
-
     <link rel="stylesheet" href="[% Config("Frontend::WebPath") %]skins/Agent/default/css/thirdparty/ui-theme/jquery-ui.css" />
 
 [% RenderBlockStart("HeaderLogoCSS") %]
