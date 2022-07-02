@@ -155,11 +155,11 @@ my $SetInvalid = $UserObject->UserUpdate(
 );
 
 # create a new customer user for current test
-my $CustomerUserLogin = $HelperObject->TestCustomerUserCreate();
-my $InvalidUserLogin  = $HelperObject->TestCustomerUserCreate();
+my $CustomerUserLogin        = $HelperObject->TestCustomerUserCreate();
+my $InvalidCustomerUserLogin = $HelperObject->TestCustomerUserCreate();
 
 my %InvalidCustomerUser = $CustomerUserObject->CustomerUserDataGet(
-    User => $InvalidUserLogin
+    User => $InvalidCustomerUserLogin
 );
 
 # get a random id
@@ -303,8 +303,8 @@ $Self->True(
     "TicketCreate() successful for Ticket ID $TicketID",
 );
 
-my $CustomerTicketIDInvalidCustomer = $TicketObject->TicketCreate(
-    Title         => 'Customer Ticket Invalid Test',
+my $InvalidCustomerUserTicketID = $TicketObject->TicketCreate(
+    Title         => 'Ticket Two Title',
     QueueID       => 1,
     Lock          => 'unlock',
     Priority      => '3 normal',
@@ -317,8 +317,8 @@ my $CustomerTicketIDInvalidCustomer = $TicketObject->TicketCreate(
 );
 
 $Self->True(
-    $CustomerTicketIDInvalidCustomer,
-    "TicketCreate() successful for Ticket ID $CustomerTicketIDInvalidCustomer",
+    $InvalidCustomerUserTicketID,
+    "TicketCreate() successful for Ticket ID $InvalidCustomerUserTicketID",
 );
 
 $CustomerUserObject->CustomerUserUpdate(
@@ -416,7 +416,7 @@ $Self->True(
 );
 
 my $CustomerArticleID1InvalidCustomer = $ArticleBackendObject->ArticleCreate(
-    TicketID             => $CustomerTicketIDInvalidCustomer,
+    TicketID             => $InvalidCustomerUserTicketID,
     IsVisibleForCustomer => 1,
     SenderType           => 'customer',
     Subject              => 'Article 1',
@@ -1427,7 +1427,7 @@ my @Tests = (
         Config => {
             Event => 'TicketDynamicFieldUpdate_DFT1' . $RandomID . 'Update',
             Data  => {
-                TicketID => $CustomerTicketIDInvalidCustomer,
+                TicketID => $InvalidCustomerUserTicketID,
             },
             Config => {},
             UserID => 1,
