@@ -13,9 +13,6 @@
 <script>
 module.exports = {
   props: {
-    mode: {
-      default: 'date/time',
-    }
   },
   data: function () {
     return {
