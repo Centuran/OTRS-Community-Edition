@@ -6,7 +6,7 @@
     inset
     hide-details
     color="#24408c"
-    @change="checkbox.checked = checked">
+    @change="checkbox ? checkbox.checked = checked : undefined">
   </v-switch>
 </template>
 
