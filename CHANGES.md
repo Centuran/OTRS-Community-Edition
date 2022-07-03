@@ -2,7 +2,10 @@
  - Implemented bug fixes and changes present in Znuny version 6.0.41
    - Notifications are no longer sent to customer user accounts which are flagged as invalid
    - Fixed checking of pending time in TicketPendingTimeReset event module
+ - Implemented bug fixes and changes present in Znuny version 6.0.43
+   - Fixed migration module DisableGenericAgentSystemCommandJobs
  - Updated the CodeMirror plugin for CKEditor to version 1.18.5
+ - Thanks to Znuny GmbH and contributors
 
 # 6.0.35 2022-05-27
  - Implemented bug fixes and changes present in Znuny version 6.0.33

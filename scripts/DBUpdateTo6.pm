@@ -223,10 +223,6 @@ sub _TasksGet {
             Module  => 'DisableSystemCommandPostMasterPreFilters',
         },
         {
-            Message => 'Disable GenericAgent system command jobs',
-            Module  => 'DisableGenericAgentSystemCommandJobs',
-        },
-        {
             Message => 'Disable dashboard widgets that run system commands',
             Module  => 'DisableSystemCommandDashboardWidgets',
         },
@@ -361,6 +357,10 @@ sub _TasksGet {
 
         # ...
 
+        {
+            Message => 'Disable GenericAgent system command jobs',
+            Module  => 'DisableGenericAgentSystemCommandJobs',
+        },
         {
             Message => 'Uninstall merged packages',
             Module  => 'UninstallMergedPackages',

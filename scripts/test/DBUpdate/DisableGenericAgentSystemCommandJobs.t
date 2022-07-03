@@ -81,6 +81,16 @@ $Self->True(
     'Database update object has been created'
 );
 
+my $JobsFromDB = $DBUpdateObject->_GetSystemCommandJobsFromDB();
+
+$Self->IsDeeply(
+    $JobsFromDB,
+    {
+        "Job-system-command-$RandomID" => '/path/script.sh',
+    },
+    'The expected jobs are returned by _GetSystemCommandJobsFromDB'
+);
+
 my $UpdateSuccess = $DBUpdateObject->Run();
 
 $Self->True(

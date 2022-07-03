@@ -20,6 +20,7 @@ use version;
 use Kernel::System::VariableCheck qw(:all);
 
 our @ObjectDependencies = (
+    'Kernel::System::DB',
     'Kernel::System::GenericAgent',
 );
 
@@ -63,15 +64,12 @@ sub Run {
 sub CheckPreviousRequirement {
     my ( $Self, %Param ) = @_;
 
-    my $SystemCommandJobs = $Self->_GetSystemCommandJobs();
+    my $SystemCommandJobs = $Self->_GetSystemCommandJobsFromDB();
     return 1 if !IsHashRefWitData($SystemCommandJobs);
 
     print "\n        Warning: the Generic Agent jobs listed below can execute system commands.\n";
     print "        This is unsafe and not supported anymore. These jobs will be disabled\n";
-    print "        and their names will be prefixed with \"[DISABLED DURING MIGRATION]\".\n";
-    print "\n        If you need to execute system commands in Generic Agent jobs, you can\n";
-    print "        do that by creating a custom module. Please refer to the example located at\n";
-    print "        Kernel/System/GenericAgent/ExecuteSystemCommand.pm.example.\n\n";
+    print "        and their names will be prefixed with \"[DISABLED DURING MIGRA>n";
 
     for my $JobName ( sort keys %{$SystemCommandJobs} ) {
         print "         - $JobName\n";
@@ -112,6 +110,34 @@ sub _GetSystemCommandJobs {
         if ( IsStringWithData($Job{'NewCMD'}) ) {
             $Jobs{$JobName} = { %Job };
         }
+    }
+
+    return \%Jobs;
+}
+
+# Get system command jobs by direct database query rather than relying
+# on Kernel::System::GenericAgent, because it might not be ready to be used
+# at this point (due to missing ZZZ config files).
+sub _GetSystemCommandJobsFromDB {
+    my ( $Self, %Param ) = @_;
+
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+    return if !$DBObject->Prepare(
+        SQL => 'SELECT job_name, job_value FROM generic_agent_jobs ' .
+            'WHERE job_key = ?',
+        Bind => [ \'NewCMD' ],
+    );
+
+    my %Jobs;
+
+    ROW:
+    while ( my @Row = $DBObject->FetchrowArray() ) {
+        my ($JobName, $Command) = ($Row[0], $Row[1]);
+        
+        next ROW if !IsStringWithData($Command);
+
+        $Jobs{$JobName} = $Command;
     }
 
     return \%Jobs;
