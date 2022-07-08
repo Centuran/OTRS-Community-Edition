@@ -116,12 +116,17 @@ fieldset.TableLike.FixedLabelSmall > .Row > .Value {
 
 fieldset.TableLike {
   .Field, .RichTextField {
-    padding-left: 14px; // Increased from original 10px
+    padding-left: 0;
   }
 
   & > label,
   & > .Row > label {
     color: #666;
+
+    & + .Field,
+    & + .RichTextField {
+      padding-left: var(--pad-x);
+    }
   }
 
   p.Value {
@@ -147,8 +152,20 @@ ul.Tablelike li.Header {
 
 .WidgetSimple {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: var(--gap-120);
+
+  & > .Header h2 {
+    color: #333;
+    font-size: inherit;
+    font-weight: bolder;
+    padding: 0;
+    text-shadow: none;
+  }
 
   .Header {
+    line-height: 1;
+    padding: var(--pad-y) var(--pad-x);
+
     .ActionMenu {
       margin-right: 10px;
       position: absolute;
@@ -233,8 +250,84 @@ ul.Tablelike li.Header {
     }
   }
 
+  &.Collapsed.AnimationRunning .Header,
+  &.Expanded.AnimationRunning .Header {
+    line-height: 1;
+    padding: var(--gap);
+  }
+
   & > .Content {
     border-top: solid 1px ghostwhite;
+    padding: var(--pad-y) var(--pad-x);
+  }
+}
+
+.WidgetSimple.Setting {
+  @at-root {
+    body & .Header h2 {
+      padding-left: 0;
+    }
+  }
+
+  .SettingWrapper {
+    fieldset {
+      border-right: solid 1px #ccc;
+      float: left;
+      width: calc(70% - 6em);
+
+      .SettingUpdateBox {
+        background-color: transparent;
+        border-left: solid 1px #ccc;
+        padding: 0;
+        text-align: center;
+        width: 6em;
+        top: 0;
+        margin-top: 10px; // Same as .Content's padding
+        height: calc(100% - 2 * 10px);
+
+        button {
+          margin: 0;
+        }
+      }
+    }
+
+    & > .SettingDescription {
+      border: none;
+      display: block;
+      float: left;
+      font-size: 87.5%;
+      padding: 0 1em;
+      width: 30%;
+    }
+  }
+
+  // Some properties seem to be overridden on the user preferences screen
+  @at-root {
+    .Preferences &.IsLockedByMe .SettingWrapper {
+      fieldset > .SettingUpdateBox {
+        width: 6em;
+
+        button {
+          margin: 0;
+        }
+      }
+
+      & > .SettingDescription {
+        padding-right: 1em;
+      }
+    }
+  }
+}
+
+.MainBox {
+  @at-root {
+    body & {
+      padding: var(--pad-y) var(--pad-x);
+
+      & > h1 {
+        padding-left: 0;
+      }
+    }
   }
 }
 
@@ -708,57 +801,6 @@ ul.Tablelike {
       border-bottom: thin solid rgba(0, 0, 0, 0.12);
       font-size: inherit;
       font-weight: bold;
-    }
-  }
-}
-
-.WidgetSimple.Setting {
-  .SettingWrapper {
-    fieldset {
-      border-right: solid 1px #ccc;
-      float: left;
-      width: calc(70% - 6em);
-
-      .SettingUpdateBox {
-        background-color: transparent;
-        border-left: solid 1px #ccc;
-        padding: 0;
-        text-align: center;
-        width: 6em;
-        top: 0;
-        margin-top: 10px; // Same as .Content's padding
-        height: calc(100% - 2 * 10px);
-
-        button {
-          margin: 0;
-        }
-      }
-    }
-
-    & > .SettingDescription {
-      border: none;
-      display: block;
-      float: left;
-      font-size: 87.5%;
-      padding: 0 1em;
-      width: 30%;
-    }
-  }
-
-  // Some properties seem to be overridden on the user preferences screen
-  @at-root {
-    .Preferences &.IsLockedByMe .SettingWrapper {
-      fieldset > .SettingUpdateBox {
-        width: 6em;
-
-        button {
-          margin: 0;
-        }
-      }
-
-      & > .SettingDescription {
-        padding-right: 1em;
-      }
     }
   }
 }

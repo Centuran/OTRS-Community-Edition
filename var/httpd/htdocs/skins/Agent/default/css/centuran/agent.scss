@@ -7,15 +7,20 @@
 @import 'agent/toolbar';
 
 :root {
-  --base-font-size--s: 85%;
-  --base-font-size--m: 100%;
-  --base-font-size--l: 120%;
+  --scale-s: 0.85;
+  --scale-m: 1;
+  --scale-l: 1.2;
+
+  --gap: calc(var(--scale) * 5/8 * 1.2em);
+  --gap-120: calc(var(--gap) * 1.2);
+  --pad-x: var(--gap-120);
+  --pad-y: var(--gap);
 }
 
 body {
   font-family: Roboto, sans-serif;
-  /* font-family: Heebo, sans-serif; */
-  font-size: var(--base-font-size);
+  // font-family: Heebo, sans-serif;
+  font-size: calc(var(--scale) * 1em);
 }
 
 a,
@@ -54,6 +59,7 @@ select {
   background: #04050e;
   box-sizing: content-box;
   height: 86px;
+  padding: var(--pad-y) var(--pad-x);
 }
 
 #ToolBar {
@@ -157,26 +163,11 @@ ul.BreadCrumb li > a, .BreadCrumb li > span {
   margin-right: 0;
 }
 
-.WidgetSimple .Header,
-.WidgetSimple.Collapsed.AnimationRunning .Header,
-.WidgetSimple.Expanded.AnimationRunning .Header {
-  line-height: 1;
-  padding: 10px;
-}
-
 .Expanded.AnimationRunning > .Header > .WidgetAction.Toggle {
   height: auto;
   float: left;
   margin: 0;
   width: auto;
-}
-
-.WidgetSimple > .Header h2,
-.WidgetSimple > .Header h3 {
-  color: #333;
-  font-size: inherit;
-  font-weight: bolder;
-  text-shadow: none;
 }
 
 .WidgetSimple .Content {
@@ -233,6 +224,10 @@ form {
   right: 0;
   top: 0;
   width: 32px;
+}
+
+.LayoutFixedSidebar.SidebarFirst > .SidebarColumn {
+  margin-right: var(--pad-x);
 }
 
 .LayoutFixedSidebar.SidebarLast > .SidebarColumn {

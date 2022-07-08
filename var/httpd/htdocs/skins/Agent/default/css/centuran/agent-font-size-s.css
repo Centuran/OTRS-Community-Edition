@@ -1,3 +1,3 @@
 :root {
-  --base-font-size: var(--base-font-size--s);
+  --scale: var(--scale-s);
 }

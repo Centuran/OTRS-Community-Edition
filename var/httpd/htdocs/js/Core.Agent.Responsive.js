@@ -195,7 +195,7 @@ Core.Agent.Responsive = (function (TargetNS) {
         $('#OptionCustomer').closest('.Field').show().prev('label').show();
 
         // reset navigation container position
-        $('#NavigationContainer').css('left', '10px');
+        $('#NavigationContainer').css('left', 'var(--pad-x)');
 
         // re-add toolbar to header
         $('#ToolBar').detach().prependTo('#Header');

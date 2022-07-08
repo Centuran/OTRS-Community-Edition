@@ -53,7 +53,7 @@
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
 
   & > #{$item} {
@@ -166,7 +166,7 @@
   border-radius: 4px;
   caret-color:rgb(251, 140, 0);
   color: msg-color($type);
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
 
   .Icon {
     display: inline;
@@ -189,8 +189,8 @@
     caret-color: msg-color($type);
     color: msg-color($type);
     margin-bottom: 0;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: var(--pad-x, 10px);
+    margin-right: var(--pad-x, 10px);
     padding: 0.75em;
 
     &::after {
