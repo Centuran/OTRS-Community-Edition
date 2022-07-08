@@ -684,7 +684,7 @@ p.AsteriskExplanation {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #ff5252ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
 }
 #MainBox.Login .ErrorBox .Icon {
   display: inline;
@@ -710,8 +710,8 @@ p.AsteriskExplanation {
   caret-color: #ff5252ff;
   color: #ff5252ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 #MainBox.Login .ErrorBox p::after {
@@ -739,7 +739,7 @@ p.AsteriskExplanation {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #4caf50ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
 }
 #MainBox.Login .SuccessBox .Icon {
   display: inline;
@@ -765,8 +765,8 @@ p.AsteriskExplanation {
   caret-color: #4caf50ff;
   color: #4caf50ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 #MainBox.Login .SuccessBox p::after {
@@ -1049,7 +1049,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
   margin-bottom: 0;
 }
@@ -1404,7 +1404,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #2196f3ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
   border: none;
 }
 .TicketZoom ul#Messages .MessageContent .MessageBrowser .Icon {
@@ -1431,8 +1431,8 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   caret-color: #2196f3ff;
   color: #2196f3ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 .TicketZoom ul#Messages .MessageContent .MessageBrowser p::after {

@@ -528,7 +528,7 @@ input[type=radio]:checked {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #ff5252ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
 }
 .MessageBox.Error .Icon {
   display: inline;
@@ -554,8 +554,8 @@ input[type=radio]:checked {
   caret-color: #ff5252ff;
   color: #ff5252ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 .MessageBox.Error p::after {
@@ -584,7 +584,7 @@ input[type=radio]:checked {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #fb8c00ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
 }
 .MessageBox.Notice .Icon {
   display: inline;
@@ -610,8 +610,8 @@ input[type=radio]:checked {
   caret-color: #fb8c00ff;
   color: #fb8c00ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 .MessageBox.Notice p::after {
@@ -665,10 +665,13 @@ fieldset.TableLike.FixedLabelSmall > .Row > .Value {
 }
 
 fieldset.TableLike .Field, fieldset.TableLike .RichTextField {
-  padding-left: 14px;
+  padding-left: 0;
 }
 fieldset.TableLike > label, fieldset.TableLike > .Row > label {
   color: #666;
+}
+fieldset.TableLike > label + .Field, fieldset.TableLike > label + .RichTextField, fieldset.TableLike > .Row > label + .Field, fieldset.TableLike > .Row > label + .RichTextField {
+  padding-left: var(--pad-x);
 }
 fieldset.TableLike p.Value {
   margin-bottom: 0;
@@ -689,6 +692,18 @@ ul.Tablelike li.Header {
 
 .WidgetSimple {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: var(--gap-120);
+}
+.WidgetSimple > .Header h2 {
+  color: #333;
+  font-size: inherit;
+  font-weight: bolder;
+  padding: 0;
+  text-shadow: none;
+}
+.WidgetSimple .Header {
+  line-height: 1;
+  padding: var(--pad-y) var(--pad-x);
 }
 .WidgetSimple .Header .ActionMenu {
   margin-right: 10px;
@@ -751,8 +766,60 @@ ul.Tablelike li.Header {
 .WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
   content: "\f0143";
 }
+.WidgetSimple.Collapsed.AnimationRunning .Header, .WidgetSimple.Expanded.AnimationRunning .Header {
+  line-height: 1;
+  padding: var(--gap);
+}
 .WidgetSimple > .Content {
   border-top: solid 1px ghostwhite;
+  padding: var(--pad-y) var(--pad-x);
+}
+
+body .WidgetSimple.Setting .Header h2 {
+  padding-left: 0;
+}
+
+.WidgetSimple.Setting .SettingWrapper fieldset {
+  border-right: solid 1px #ccc;
+  float: left;
+  width: calc(70% - 6em);
+}
+.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox {
+  background-color: transparent;
+  border-left: solid 1px #ccc;
+  padding: 0;
+  text-align: center;
+  width: 6em;
+  top: 0;
+  margin-top: 10px;
+  height: calc(100% - 20px);
+}
+.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
+  margin: 0;
+}
+.WidgetSimple.Setting .SettingWrapper > .SettingDescription {
+  border: none;
+  display: block;
+  float: left;
+  font-size: 87.5%;
+  padding: 0 1em;
+  width: 30%;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
+  width: 6em;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
+  margin: 0;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
+  padding-right: 1em;
+}
+
+body .MainBox {
+  padding: var(--pad-y) var(--pad-x);
+}
+body .MainBox > h1 {
+  padding-left: 0;
 }
 
 /* Action Row */
@@ -765,7 +832,7 @@ ul.Tablelike li.Header {
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
   display: flex;
   margin-bottom: 0;
@@ -1307,42 +1374,6 @@ ul.Tablelike li.Header {
   font-weight: bold;
 }
 
-.WidgetSimple.Setting .SettingWrapper fieldset {
-  border-right: solid 1px #ccc;
-  float: left;
-  width: calc(70% - 6em);
-}
-.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox {
-  background-color: transparent;
-  border-left: solid 1px #ccc;
-  padding: 0;
-  text-align: center;
-  width: 6em;
-  top: 0;
-  margin-top: 10px;
-  height: calc(100% - 20px);
-}
-.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
-  margin: 0;
-}
-.WidgetSimple.Setting .SettingWrapper > .SettingDescription {
-  border: none;
-  display: block;
-  float: left;
-  font-size: 87.5%;
-  padding: 0 1em;
-  width: 30%;
-}
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
-  width: 6em;
-}
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
-  margin: 0;
-}
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
-  padding-right: 1em;
-}
-
 /* Popup windows */
 .LayoutPopup > .Footer .CallForAction, .LayoutPopup > .Footer .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements .LayoutPopup > .Footer a.CallForAction {
   padding: 0.8em 1.8em;
@@ -1413,15 +1444,18 @@ hr.cmt-flex-break {
 }
 
 :root {
-  --base-font-size--s: 85%;
-  --base-font-size--m: 100%;
-  --base-font-size--l: 120%;
+  --scale-s: 0.85;
+  --scale-m: 1;
+  --scale-l: 1.2;
+  --gap: calc(var(--scale) * 5/8 * 1.2em);
+  --gap-120: calc(var(--gap) * 1.2);
+  --pad-x: var(--gap-120);
+  --pad-y: var(--gap);
 }
 
 body {
   font-family: Roboto, sans-serif;
-  /* font-family: Heebo, sans-serif; */
-  font-size: var(--base-font-size);
+  font-size: calc(var(--scale) * 1em);
 }
 
 a,
@@ -1446,6 +1480,7 @@ select.Modernize {
   background: #04050e;
   box-sizing: content-box;
   height: 86px;
+  padding: var(--pad-y) var(--pad-x);
 }
 
 #ToolBar {
@@ -1536,26 +1571,11 @@ ul.BreadCrumb li > a, .BreadCrumb li > span {
   margin-right: 0;
 }
 
-.WidgetSimple .Header,
-.WidgetSimple.Collapsed.AnimationRunning .Header,
-.WidgetSimple.Expanded.AnimationRunning .Header {
-  line-height: 1;
-  padding: 10px;
-}
-
 .Expanded.AnimationRunning > .Header > .WidgetAction.Toggle {
   height: auto;
   float: left;
   margin: 0;
   width: auto;
-}
-
-.WidgetSimple > .Header h2,
-.WidgetSimple > .Header h3 {
-  color: #333;
-  font-size: inherit;
-  font-weight: bolder;
-  text-shadow: none;
 }
 
 .WidgetSimple .Content {
@@ -1596,6 +1616,10 @@ form label.Mandatory span.Marker {
   right: 0;
   top: 0;
   width: 32px;
+}
+
+.LayoutFixedSidebar.SidebarFirst > .SidebarColumn {
+  margin-right: var(--pad-x);
 }
 
 .LayoutFixedSidebar.SidebarLast > .SidebarColumn {
@@ -2066,7 +2090,7 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
 }
 .Tab.Actions > li {
@@ -2638,7 +2662,7 @@ input[type=radio]:checked {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #ff5252ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
 }
 .MessageBox.Error .Icon {
   display: inline;
@@ -2664,8 +2688,8 @@ input[type=radio]:checked {
   caret-color: #ff5252ff;
   color: #ff5252ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 .MessageBox.Error p::after {
@@ -2694,7 +2718,7 @@ input[type=radio]:checked {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #fb8c00ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
 }
 .MessageBox.Notice .Icon {
   display: inline;
@@ -2720,8 +2744,8 @@ input[type=radio]:checked {
   caret-color: #fb8c00ff;
   color: #fb8c00ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 .MessageBox.Notice p::after {
@@ -2775,10 +2799,13 @@ fieldset.TableLike.FixedLabelSmall > .Row > .Value {
 }
 
 fieldset.TableLike .Field, fieldset.TableLike .RichTextField {
-  padding-left: 14px;
+  padding-left: 0;
 }
 fieldset.TableLike > label, fieldset.TableLike > .Row > label {
   color: #666;
+}
+fieldset.TableLike > label + .Field, fieldset.TableLike > label + .RichTextField, fieldset.TableLike > .Row > label + .Field, fieldset.TableLike > .Row > label + .RichTextField {
+  padding-left: var(--pad-x);
 }
 fieldset.TableLike p.Value {
   margin-bottom: 0;
@@ -2799,6 +2826,18 @@ ul.Tablelike li.Header {
 
 .WidgetSimple {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: var(--gap-120);
+}
+.WidgetSimple > .Header h2 {
+  color: #333;
+  font-size: inherit;
+  font-weight: bolder;
+  padding: 0;
+  text-shadow: none;
+}
+.WidgetSimple .Header {
+  line-height: 1;
+  padding: var(--pad-y) var(--pad-x);
 }
 .WidgetSimple .Header .ActionMenu {
   margin-right: 10px;
@@ -2861,8 +2900,60 @@ ul.Tablelike li.Header {
 .WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
   content: "\f0143";
 }
+.WidgetSimple.Collapsed.AnimationRunning .Header, .WidgetSimple.Expanded.AnimationRunning .Header {
+  line-height: 1;
+  padding: var(--gap);
+}
 .WidgetSimple > .Content {
   border-top: solid 1px ghostwhite;
+  padding: var(--pad-y) var(--pad-x);
+}
+
+body .WidgetSimple.Setting .Header h2 {
+  padding-left: 0;
+}
+
+.WidgetSimple.Setting .SettingWrapper fieldset {
+  border-right: solid 1px #ccc;
+  float: left;
+  width: calc(70% - 6em);
+}
+.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox {
+  background-color: transparent;
+  border-left: solid 1px #ccc;
+  padding: 0;
+  text-align: center;
+  width: 6em;
+  top: 0;
+  margin-top: 10px;
+  height: calc(100% - 20px);
+}
+.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
+  margin: 0;
+}
+.WidgetSimple.Setting .SettingWrapper > .SettingDescription {
+  border: none;
+  display: block;
+  float: left;
+  font-size: 87.5%;
+  padding: 0 1em;
+  width: 30%;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
+  width: 6em;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
+  margin: 0;
+}
+.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
+  padding-right: 1em;
+}
+
+body .MainBox {
+  padding: var(--pad-y) var(--pad-x);
+}
+body .MainBox > h1 {
+  padding-left: 0;
 }
 
 /* Action Row */
@@ -2875,7 +2966,7 @@ ul.Tablelike li.Header {
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
   display: flex;
   margin-bottom: 0;
@@ -3417,42 +3508,6 @@ ul.Tablelike li.Header {
   font-weight: bold;
 }
 
-.WidgetSimple.Setting .SettingWrapper fieldset {
-  border-right: solid 1px #ccc;
-  float: left;
-  width: calc(70% - 6em);
-}
-.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox {
-  background-color: transparent;
-  border-left: solid 1px #ccc;
-  padding: 0;
-  text-align: center;
-  width: 6em;
-  top: 0;
-  margin-top: 10px;
-  height: calc(100% - 20px);
-}
-.WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
-  margin: 0;
-}
-.WidgetSimple.Setting .SettingWrapper > .SettingDescription {
-  border: none;
-  display: block;
-  float: left;
-  font-size: 87.5%;
-  padding: 0 1em;
-  width: 30%;
-}
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
-  width: 6em;
-}
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
-  margin: 0;
-}
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
-  padding-right: 1em;
-}
-
 /* Popup windows */
 .LayoutPopup > .Footer .CallForAction, .LayoutPopup > .Footer .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements .LayoutPopup > .Footer a.CallForAction {
   padding: 0.8em 1.8em;
@@ -3475,7 +3530,7 @@ hr.cmt-flex-break {
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
 }
 .fc .fc-button-group > button {
@@ -3689,7 +3744,7 @@ hr.cmt-flex-break {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #4caf50ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
   border-color: #4caf50ff;
 }
 .LoginScreen .SuccessBox .Icon {
@@ -3716,8 +3771,8 @@ hr.cmt-flex-break {
   caret-color: #4caf50ff;
   color: #4caf50ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 .LoginScreen .SuccessBox p::after {
@@ -3756,7 +3811,7 @@ hr.cmt-flex-break {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #ff5252ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
   border-color: #ff5252ff;
 }
 .LoginScreen .ErrorBox .Icon {
@@ -3783,8 +3838,8 @@ hr.cmt-flex-break {
   caret-color: #ff5252ff;
   color: #ff5252ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 .LoginScreen .ErrorBox p::after {
@@ -4044,7 +4099,7 @@ input#Subject {
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
   float: left;
 }
@@ -4132,7 +4187,7 @@ input#Subject {
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
   float: left;
   margin-bottom: 0;
@@ -4692,7 +4747,7 @@ div.Headline .Flag + h1 {
   border-radius: 4px;
   caret-color: rgb(251, 140, 0);
   color: #2196f3ff;
-  margin-top: 10px;
+  margin-top: var(--pad-y, 10px);
 }
 .MessageBrowser .Icon {
   display: inline;
@@ -4718,8 +4773,8 @@ div.Headline .Flag + h1 {
   caret-color: #2196f3ff;
   color: #2196f3ff;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: var(--pad-x, 10px);
+  margin-right: var(--pad-x, 10px);
   padding: 0.75em;
 }
 .MessageBrowser p::after {
@@ -4786,7 +4841,7 @@ div.Headline .Flag + h1 {
   box-shadow: 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e4e4e4;
   font-size: initial;
-  margin-bottom: 8px;
+  margin-bottom: var(--gap, 8px);
   padding-left: 0;
   box-shadow: none;
   margin-bottom: 0;
