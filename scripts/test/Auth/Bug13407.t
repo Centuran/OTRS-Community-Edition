@@ -92,9 +92,11 @@ $Self->Is(
     "First authentication ok",
 );
 
-$ConfigObject->Get('PreferencesGroups')->{Password}->{PasswordMaxLoginFailed} = 2;
+my $MaxLoginAttempts = 2;
+$ConfigObject->Get('PreferencesGroups')->{Password}{PasswordMaxLoginFailed} =
+    $MaxLoginAttempts;
 
-for ( 1 .. 2 ) {
+for ( 1 .. $MaxLoginAttempts ) {
     $AuthResult = $AuthObject->Auth(
         User => $UserRand,
         Pw   => 'wrong',
@@ -131,7 +133,7 @@ my $Update = $UserObject->UserUpdate(
 
 $Self->True(
     $Update,
-    "User revalidated"
+    "User revalidated",
 );
 
 $AuthResult = $AuthObject->Auth(

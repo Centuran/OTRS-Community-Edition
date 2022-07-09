@@ -38,7 +38,7 @@ $ConfigObject->Set(
     Value => 0,
 );
 
-my $Prefs = $ConfigObject->Get('CustomerPreferencesGroups');
+my $Prefs            = $ConfigObject->Get('CustomerPreferencesGroups');
 my $MaxLoginAttempts = 3;
 $Prefs->{Password}{PasswordMaxLoginFailed} = $MaxLoginAttempts;
 
@@ -235,7 +235,7 @@ for my $CryptType (qw(plain crypt apr1 md5 sha1 sha2 sha512 bcrypt)) {
         # Tests for failed logins limit
         #
 
-        # Reset failed login attempts counter by loggin in successfully
+        # Reset failed login attempts counter by logging in successfully
         $CustomerAuthResult = $CustomerAuthObject->Auth(
             User => $UserRand,
             Pw   => $Test->{Password},
@@ -370,6 +370,74 @@ my $Result = $CustomerUserAuthObject->Auth(
 $Self->True(
     $Result,
     "System crypt type - $Tests[1]->{CryptType}, crypt type for customer password - $Tests[0]->{CryptType}, customer password '$Tests[0]->{Password}'",
+);
+
+# Now, let's update user to be invalid
+my $UpdateResult;
+
+my $CustomerAuthObject = $Kernel::OM->Get('Kernel::System::CustomerAuth');
+
+my $InvalidID = $ValidObject->ValidLookup(
+    Valid => 'invalid',
+);
+
+my %CustomerUserData = $GlobalUserObject->CustomerUserDataGet(
+    User => $UserRand,
+);
+
+$UpdateResult = $GlobalUserObject->CustomerUserUpdate(
+    ID             => $TestUserID,
+    UserFirstname  => $CustomerUserData{UserFirstname},
+    UserLastname   => $CustomerUserData{UserLastname},
+    UserCustomerID => $CustomerUserData{UserCustomerID},
+    UserLogin      => $UserRand,
+    UserEmail      => $UserRand . '@example.com',
+    ValidID        => $InvalidID,
+    UserID         => 1,
+);
+
+$Self->True(
+    $UpdateResult,
+    "User is flagged as invalid",
+);
+
+my $AuthResult;
+my $WrongPass = 'wrong';
+
+for ( 1 .. $MaxLoginAttempts ) {
+    $AuthResult = $CustomerAuthObject->Auth(
+        User => $UserRand,
+        Pw   => $WrongPass,
+    );
+
+    $Self->Is(
+        $AuthResult,
+        undef,
+        'Authentication with a wrong password fails',
+    );
+}
+
+$AuthResult = $CustomerAuthObject->Auth(
+    User => $UserRand,
+    Pw   => '123',
+);
+
+$Self->Is(
+    $AuthResult,
+    undef,
+    "Should be undefined after second lockout"
+);
+
+%CustomerUserData = $GlobalUserObject->CustomerUserDataGet(
+    User => $UserRand,
+);
+
+my $CurrentValidID = $CustomerUserData{ValidID};
+
+$Self->Is(
+    $CurrentValidID,
+    $InvalidID,
+    "Check if ValidID is 'invalid'",
 );
 
 1;

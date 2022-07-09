@@ -38,6 +38,7 @@ our @ObjectDependencies = (
     'Kernel::System::DateTime',
     'Kernel::System::User',
     'Kernel::System::CheckItem',
+    'Kernel::System::Valid',
 );
 
 sub new {
@@ -294,6 +295,8 @@ sub Run {
                     next BUNDLE;
                 }
 
+                my @ValidIDs = $Kernel::OM->Get('Kernel::System::Valid')->ValidIDsGet();
+
                 # Check if notification should not send to the customer.
                 if (
                     $Bundle->{Recipient}->{Type} eq 'Customer'
@@ -303,6 +306,16 @@ sub Run {
 
                     # No UserID means it's not a mapped customer.
                     next BUNDLE if !$Bundle->{Recipient}->{UserID};
+                }
+                
+                if (
+                    $Bundle->{Recipient}->{Source}
+                    && $Bundle->{Recipient}->{Source} eq 'CustomerUser'
+                    && $Bundle->{Recipient}->{ValidID}
+                    && !grep { $Bundle->{Recipient}->{ValidID} eq $_ } @ValidIDs
+                    )
+                {
+                    next BUNDLE;
                 }
 
                 my $Success = $Self->_SendRecipientNotification(
