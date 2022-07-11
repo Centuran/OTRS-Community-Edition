@@ -46,7 +46,8 @@
 module.exports = {
   props: {
     color: {
-      default: '#f15a22'
+      // default: '#f15a22',
+      default: '#24408c'
     },
     mode: {
       default: 'date/time',
