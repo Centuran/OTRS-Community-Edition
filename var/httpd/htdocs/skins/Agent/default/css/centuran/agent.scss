@@ -11,6 +11,7 @@
   --scale-m: 1;
   --scale-l: 1.2;
 
+  --font-size-base: calc(var(--scale) * 16px);
   --gap: calc(var(--scale) * 5/8 * 1.2em);
   --gap-120: calc(var(--gap) * 1.2);
   --pad-x: var(--gap-120);
@@ -20,7 +21,7 @@
 body {
   font-family: Roboto, sans-serif;
   // font-family: Heebo, sans-serif;
-  font-size: calc(var(--scale) * 1em);
+  font-size: var(--font-size-base);
 }
 
 a,
