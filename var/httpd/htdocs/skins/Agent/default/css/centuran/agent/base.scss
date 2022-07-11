@@ -185,7 +185,7 @@ ul.Tablelike li.Header {
         &::before {
           font-family: "Material Design Icons";
           font-size: 120%;
-          line-height: 120%;
+          line-height: calc(0.8 * 1.2);
         }
 
         a {
@@ -253,7 +253,7 @@ ul.Tablelike li.Header {
   &.Collapsed.AnimationRunning .Header,
   &.Expanded.AnimationRunning .Header {
     line-height: 1;
-    padding: var(--gap);
+    padding: var(--gap) var(--gap-120);
   }
 
   & > .Content {
