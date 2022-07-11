@@ -544,8 +544,8 @@ fieldset .cmt-otrs-datetime-hidden {
 
 .v-picker--date .v-date-picker-table--date {
   .v-btn--active {
-    background-color: $primary-color !important;
-    border-color: $primary-color !important;
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
   }
 
   .v-date-picker-table__current {
@@ -553,7 +553,8 @@ fieldset .cmt-otrs-datetime-hidden {
   }
   
   .v-date-picker-table__current:not(.v-btn--active) {
-    caret-color: $primary-color !important;
-    color: $primary-color !important;
+    background-color: transparentize($secondary-color, 0.9);
+    caret-color: $secondary-color !important;
+    color: $secondary-color !important;
   }
 }
