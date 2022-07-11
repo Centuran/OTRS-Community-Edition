@@ -11,6 +11,7 @@
     padding-top: 0;
 
     & > form > ul {
+      font-size: var(--font-size-base);
       padding-bottom: 0.4em;
       padding-left: 0;
 
@@ -26,6 +27,10 @@
             color: inherit;
             padding: unset;
           }
+
+          &.Checked {
+            color: rgba(0, 0, 0, 0.6);
+          }
         }
   
         input[type="checkbox"] {
@@ -33,7 +38,8 @@
         }
   
         .v-input--switch {
-          margin-top: 0.4em;
+          font-size: inherit;
+          margin-top: calc(0.4 * var(--font-size-base));
         }
 
         .v-input__slot {
@@ -46,10 +52,17 @@
         }
   
         .v-label {
+          font-size: var(--font-size-base);
           line-height: 120%;
           margin-bottom: 0;
         }
       }
+    }
+
+    .Buttons {
+      margin: 0;
+      padding-bottom: 0;
+      padding-top: var(--pad-y);
     }
   }
 }
