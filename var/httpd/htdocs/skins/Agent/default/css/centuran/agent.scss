@@ -835,6 +835,21 @@ label + .v-input--switch {
   margin-top: 0;
 }
 
+.ItemListGrid.WithIcons > li {
+  a[href*="?Action=AgentPreferences"] {
+    &[href*="Group=NotificationSettings"] {
+      .Icons i.fa::before {
+        content: mdi("alert");
+      }
+    }
+
+    &[href*="Group=Miscellaneous"] {
+      .Icons i.fa::before {
+        content: mdi("tune");
+      }
+    }
+  }
+}
 
 @import 'agent/admin';
 @import 'agent/calendar';
