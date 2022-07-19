@@ -63,14 +63,6 @@ select {
   padding: var(--pad-y) var(--pad-x);
 }
 
-#ToolBar {
-  padding-left: 0;
-
-  li.UserAvatar div {
-    border-radius: 4px;
-  }
-}
-
 #NavigationContainer {
   top: 69px;
 }

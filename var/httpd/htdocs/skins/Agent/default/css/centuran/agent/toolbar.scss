@@ -1,4 +1,6 @@
 #ToolBar {
+  padding-left: 0;
+
   li {
     height: 2em;
     line-height: 2em;
@@ -33,6 +35,17 @@
 
   li.UserAvatar {
     margin-left: 0;
+
+    div {
+      border-radius: 4px;
+      left: 0;
+      margin-top: 0;
+      top: 60px;
+
+      &::after {
+        left: 4.5%;
+      }
+    }
 
     a {
       height: 42px;
