@@ -291,13 +291,17 @@ ul.Tablelike li.Header {
       }
     }
 
-    & > .SettingDescription {
-      border: none;
-      display: block;
-      float: left;
-      font-size: 87.5%;
-      padding: 0 1em;
-      width: 30%;
+    @at-root {
+      body & > .SettingDescription {
+        border: none;
+        border-left: solid 1px #ccc;
+        display: block;
+        float: left;
+        font-size: 87.5%;
+        margin-left: -1px; // To merge the longer and shorter border
+        padding: 0 1em;
+        width: 30%;
+      }
     }
   }
 
