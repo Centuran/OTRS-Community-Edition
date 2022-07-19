@@ -6,63 +6,69 @@
   }
 }
 
-.SidebarColumn .SettingsWidget {
-  .Content {
-    padding-top: 0;
+.SidebarColumn {
+  .SettingsWidget {
+    .Content {
+      padding-top: 0;
 
-    & > form > ul {
-      font-size: var(--font-size-base);
-      padding-bottom: 0.4em;
-      padding-left: 0;
-
-      li {
+      & > form > ul {
+        font-size: var(--font-size-base);
+        padding-bottom: 0.4em;
         padding-left: 0;
 
-        label {
-          padding: 0;
-  
-          &:hover {
-            background-color: inherit;
-            border: none;
-            color: inherit;
-            padding: unset;
+        li {
+          padding-left: 0;
+
+          label {
+            padding: 0;
+    
+            &:hover {
+              background-color: inherit;
+              border: none;
+              color: inherit;
+              padding: unset;
+            }
+
+            &.Checked {
+              color: rgba(0, 0, 0, 0.6);
+            }
+          }
+    
+          input[type="checkbox"] {
+            display: none;
+          }
+    
+          .v-input--switch {
+            font-size: inherit;
+            margin-top: calc(0.4 * var(--font-size-base));
           }
 
-          &.Checked {
-            color: rgba(0, 0, 0, 0.6);
+          .v-input__slot {
+            align-items: normal;
+    
+            .v-input--selection-controls__input {
+              transform: scale(0.75);
+              margin-right: 0.2em;
+            }
           }
-        }
-  
-        input[type="checkbox"] {
-          display: none;
-        }
-  
-        .v-input--switch {
-          font-size: inherit;
-          margin-top: calc(0.4 * var(--font-size-base));
-        }
-
-        .v-input__slot {
-          align-items: normal;
-  
-          .v-input--selection-controls__input {
-            transform: scale(0.75);
-            margin-right: 0.2em;
+    
+          .v-label {
+            font-size: var(--font-size-base);
+            line-height: 120%;
+            margin-bottom: 0;
           }
-        }
-  
-        .v-label {
-          font-size: var(--font-size-base);
-          line-height: 120%;
-          margin-bottom: 0;
         }
       }
-    }
 
-    .Buttons {
-      margin: 0;
-      padding-bottom: 0;
-      padding-top: var(--pad-y);
+      .Buttons {
+        margin: 0;
+        padding-bottom: 0;
+        padding-top: var(--pad-y);
+      }
     }
+  }
+
+  a.CallForAction + .DashboardActions {
+    margin-top: var(--pad-y);
   }
 }
