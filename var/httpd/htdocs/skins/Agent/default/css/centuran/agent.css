@@ -474,15 +474,16 @@ fieldset .cmt-otrs-datetime-hidden select[name$=Minute] {
 }
 
 .v-picker--date .v-date-picker-table--date .v-btn--active {
-  background-color: #f15a22 !important;
-  border-color: #f15a22 !important;
+  background-color: #24408c !important;
+  border-color: #24408c !important;
 }
 .v-picker--date .v-date-picker-table--date .v-date-picker-table__current {
   font-weight: bold;
 }
 .v-picker--date .v-date-picker-table--date .v-date-picker-table__current:not(.v-btn--active) {
-  caret-color: #f15a22 !important;
-  color: #f15a22 !important;
+  background-color: rgba(36, 64, 140, 0.1);
+  caret-color: #24408c !important;
+  color: #24408c !important;
 }
 
 .Flag.Small {
@@ -723,7 +724,7 @@ ul.Tablelike li.Header {
 .WidgetSimple .Header .WidgetAction.Toggle::before {
   font-family: "Material Design Icons";
   font-size: 120%;
-  line-height: 120%;
+  line-height: 0.96;
 }
 .WidgetSimple .Header .WidgetAction.Toggle a {
   height: 100%;
@@ -768,7 +769,7 @@ ul.Tablelike li.Header {
 }
 .WidgetSimple.Collapsed.AnimationRunning .Header, .WidgetSimple.Expanded.AnimationRunning .Header {
   line-height: 1;
-  padding: var(--gap);
+  padding: var(--gap) var(--gap-120);
 }
 .WidgetSimple > .Content {
   border-top: solid 1px ghostwhite;
@@ -797,14 +798,17 @@ body .WidgetSimple.Setting .Header h2 {
 .WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
   margin: 0;
 }
-.WidgetSimple.Setting .SettingWrapper > .SettingDescription {
+body .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
   border: none;
+  border-left: solid 1px #ccc;
   display: block;
   float: left;
   font-size: 87.5%;
+  margin-left: -1px;
   padding: 0 1em;
   width: 30%;
 }
+
 .Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
   width: 6em;
 }
@@ -1390,6 +1394,9 @@ hr.cmt-flex-break {
   width: 100%;
 }
 
+#ToolBar {
+  padding-left: 0;
+}
 #ToolBar li {
   height: 2em;
   line-height: 2em;
@@ -1420,6 +1427,15 @@ hr.cmt-flex-break {
 #ToolBar li.UserAvatar {
   margin-left: 0;
 }
+#ToolBar li.UserAvatar div {
+  border-radius: 4px;
+  left: 0;
+  margin-top: 0;
+  top: 60px;
+}
+#ToolBar li.UserAvatar div::after {
+  left: 4.5%;
+}
 #ToolBar li.UserAvatar a {
   height: 42px;
   width: 42px;
@@ -1447,6 +1463,7 @@ hr.cmt-flex-break {
   --scale-s: 0.85;
   --scale-m: 1;
   --scale-l: 1.2;
+  --font-size-base: calc(var(--scale) * 16px);
   --gap: calc(var(--scale) * 5/8 * 1.2em);
   --gap-120: calc(var(--gap) * 1.2);
   --pad-x: var(--gap-120);
@@ -1455,7 +1472,7 @@ hr.cmt-flex-break {
 
 body {
   font-family: Roboto, sans-serif;
-  font-size: calc(var(--scale) * 1em);
+  font-size: var(--font-size-base);
 }
 
 a,
@@ -1481,13 +1498,6 @@ select.Modernize {
   box-sizing: content-box;
   height: 86px;
   padding: var(--pad-y) var(--pad-x);
-}
-
-#ToolBar {
-  padding-left: 0;
-}
-#ToolBar li.UserAvatar div {
-  border-radius: 4px;
 }
 
 #NavigationContainer {
@@ -2196,6 +2206,13 @@ label + .v-input--switch {
   margin-top: 0;
 }
 
+.ItemListGrid.WithIcons > li a[href*="?Action=AgentPreferences"][href*="Group=NotificationSettings"] .Icons i.fa::before {
+  content: "\f0026";
+}
+.ItemListGrid.WithIcons > li a[href*="?Action=AgentPreferences"][href*="Group=Miscellaneous"] .Icons i.fa::before {
+  content: "\f062e";
+}
+
 .ItemListGrid {
   display: grid;
   gap: 10px 10px;
@@ -2857,7 +2874,7 @@ ul.Tablelike li.Header {
 .WidgetSimple .Header .WidgetAction.Toggle::before {
   font-family: "Material Design Icons";
   font-size: 120%;
-  line-height: 120%;
+  line-height: 0.96;
 }
 .WidgetSimple .Header .WidgetAction.Toggle a {
   height: 100%;
@@ -2902,7 +2919,7 @@ ul.Tablelike li.Header {
 }
 .WidgetSimple.Collapsed.AnimationRunning .Header, .WidgetSimple.Expanded.AnimationRunning .Header {
   line-height: 1;
-  padding: var(--gap);
+  padding: var(--gap) var(--gap-120);
 }
 .WidgetSimple > .Content {
   border-top: solid 1px ghostwhite;
@@ -2931,14 +2948,17 @@ body .WidgetSimple.Setting .Header h2 {
 .WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
   margin: 0;
 }
-.WidgetSimple.Setting .SettingWrapper > .SettingDescription {
+body .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
   border: none;
+  border-left: solid 1px #ccc;
   display: block;
   float: left;
   font-size: 87.5%;
+  margin-left: -1px;
   padding: 0 1em;
   width: 30%;
 }
+
 .Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
   width: 6em;
 }
@@ -3675,6 +3695,7 @@ hr.cmt-flex-break {
   padding-top: 0;
 }
 .SidebarColumn .SettingsWidget .Content > form > ul {
+  font-size: var(--font-size-base);
   padding-bottom: 0.4em;
   padding-left: 0;
 }
@@ -3690,11 +3711,15 @@ hr.cmt-flex-break {
   color: inherit;
   padding: unset;
 }
+.SidebarColumn .SettingsWidget .Content > form > ul li label.Checked {
+  color: rgba(0, 0, 0, 0.6);
+}
 .SidebarColumn .SettingsWidget .Content > form > ul li input[type=checkbox] {
   display: none;
 }
 .SidebarColumn .SettingsWidget .Content > form > ul li .v-input--switch {
-  margin-top: 0.4em;
+  font-size: inherit;
+  margin-top: calc(0.4 * var(--font-size-base));
 }
 .SidebarColumn .SettingsWidget .Content > form > ul li .v-input__slot {
   align-items: normal;
@@ -3704,8 +3729,17 @@ hr.cmt-flex-break {
   margin-right: 0.2em;
 }
 .SidebarColumn .SettingsWidget .Content > form > ul li .v-label {
+  font-size: var(--font-size-base);
   line-height: 120%;
   margin-bottom: 0;
+}
+.SidebarColumn .SettingsWidget .Content .Buttons {
+  margin: 0;
+  padding-bottom: 0;
+  padding-top: var(--pad-y);
+}
+.SidebarColumn a.CallForAction + .DashboardActions, .SidebarColumn .ProcessManagementEditScreen #ProcessElements a.CallForAction + .DashboardActions, .ProcessManagementEditScreen #ProcessElements .SidebarColumn a.CallForAction + .DashboardActions {
+  margin-top: var(--pad-y);
 }
 
 .LoginScreen .SuccessBox,

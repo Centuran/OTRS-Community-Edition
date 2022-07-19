@@ -474,15 +474,16 @@ fieldset .cmt-otrs-datetime-hidden select[name$=Minute] {
 }
 
 .v-picker--date .v-date-picker-table--date .v-btn--active {
-  background-color: #3949ab !important;
-  border-color: #3949ab !important;
+  background-color: #24408c !important;
+  border-color: #24408c !important;
 }
 .v-picker--date .v-date-picker-table--date .v-date-picker-table__current {
   font-weight: bold;
 }
 .v-picker--date .v-date-picker-table--date .v-date-picker-table__current:not(.v-btn--active) {
-  caret-color: #3949ab !important;
-  color: #3949ab !important;
+  background-color: rgba(36, 64, 140, 0.1);
+  caret-color: #24408c !important;
+  color: #24408c !important;
 }
 
 body {
