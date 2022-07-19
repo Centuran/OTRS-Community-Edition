@@ -208,15 +208,15 @@
                                         <div class="Field">
                                             [% IF Data.UseModern %]
                                             <div style="float: right;">
-                                                <span style="margin-left: 20pt; font-size: var(--base-font-size--s);">
+                                                <span style="margin-left: 20pt; font-size: calc(var(--scale-s) * 16px);">
                                                     [% Translate("Example of small text") %]
                                                 </span>
                                                 <br>
-                                                <span style="margin-left: 20pt; font-size: var(--base-font-size--m);">
+                                                <span style="margin-left: 20pt; font-size: calc(var(--scale-m) * 16px);">
                                                     [% Translate("Example of medium text") %]
                                                 </span>
                                                 <br>
-                                                <span style="margin-left: 20pt; font-size: var(--base-font-size--l);">
+                                                <span style="margin-left: 20pt; font-size: calc(var(--scale-l) * 16px);">
                                                     [% Translate("Example of large text") %]
                                                 </span>
                                             </div>
