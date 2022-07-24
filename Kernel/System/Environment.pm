@@ -104,15 +104,26 @@ sub OSInfoGet {
             %Linux::Distribution::release_files = (
                 %Linux::Distribution::release_files,
                 'almalinux-release' => 'almalinux',
+                'fedora-release'    => 'fedora',
                 'rocky-release'     => 'rocky',
             );
             %Linux::Distribution::version_match = (
                 %Linux::Distribution::version_match,
                 'almalinux' => 'AlmaLinux release (.+) \(',
+                'centos'    => '^CentOS(?: Linux| Stream)? release (\S+)/',
+                'fedora'    => 'Fedora release (.+) \(',
                 'rocky'     => 'Rocky Linux release (.+) \(',
             );
 
             my $DistributionName = Linux::Distribution::distribution_name();
+
+            if (defined $DistributionName && $DistributionName eq 'centos') {
+                my $Linux = Linux::Distribution->new;
+                my $PrettyName = $Linux->_get_lsb_info('PRETTY_NAME');
+                if ($PrettyName =~ / Stream /) {
+                    $DistributionName = 'centos stream';
+                }
+            }
 
             $Distribution = $DistributionName || 'unknown';
 
@@ -121,6 +132,41 @@ sub OSInfoGet {
                 my $DistributionVersion = Linux::Distribution::distribution_version() || '';
 
                 $OSName = $DistributionName . ' ' . $DistributionVersion;
+            }
+            elsif (-r '/etc/os-release') {
+                # Try to read the /etc/os-release file as a fallback
+                my %OSRelease;
+
+                open my $f, '<', '/etc/os-release';
+                my @Lines = <$f>;
+                close $f;
+
+                # Transform KEY=value lines into a hash
+                %OSRelease = map {
+                    $_->[0] => $_->[1]
+                } map { [
+                    map { s/^"|"?\n$//g; $_ } ( split(/=/, $_) )
+                ] } @Lines;
+
+                my $DistributionVersion;
+
+                if (%OSRelease) {
+                    if (exists $OSRelease{ID}) {
+                        $DistributionName = $OSRelease{ID};
+                    }
+
+                    if (exists $OSRelease{VERSION_ID}) {
+                        $DistributionVersion = $OSRelease{VERSION_ID};
+                    }
+                }
+
+                if ($DistributionName) {
+                    $Distribution = $DistributionName;
+
+                    if ($DistributionVersion) {
+                        $OSName = "$DistributionName $DistributionVersion";
+                    }
+                }
             }
         }
         elsif ( -e "/etc/issue" ) {
