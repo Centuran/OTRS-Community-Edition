@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -52,6 +52,7 @@
 [% RenderBlockEnd("InlineActionRowItemHTML") %]
             </ul>
 [% RenderBlockEnd("InlineActionRow") %]
+            <div class="cmt-ticket-overview-ml-flags">
 [% RenderBlockStart("Bulk") %]
             <div class="Checkbox">
                 <input class="Checkbox" type="checkbox" name="TicketID" title="[% Translate("Select this ticket") | html %]" value="[% Data.TicketID | html %]" autocomplete="off" />
@@ -68,6 +69,7 @@
             </div>
 [% RenderBlockEnd("MetaIcon") %]
 [% RenderBlockEnd("Meta") %]
+            </div>
             <h2>
                 <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %]" class="MasterActionLink">[% Config("Ticket::Hook") %][% Config("Ticket::HookDivider") %][% Data.TicketNumber %] &ndash; [% Data.Title | html %]</a>
             </h2>
@@ -142,6 +144,12 @@
 #[% RenderBlockEnd("DynamicField_Field2Plain") %]
 #                        </td>
 #[% RenderBlockEnd("DynamicField_Field2") %]
+
+# Empty element to account for unset dynamic field block (and have the same
+# number of columns in every row)
+                        <td>
+                        </td>
+
                         <td>
                             <label>[% Translate("Update Time") | html %]</label>
 [% RenderBlockStart("UpdateTime") %]

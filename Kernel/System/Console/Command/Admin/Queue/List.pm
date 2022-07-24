@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -51,10 +51,10 @@ sub Run {
     my %Queues = $QueueObject->QueueList( Valid => $Valid );
 
     if ( $Self->GetOption('verbose') ) {
-        for ( sort keys %Queues ) {
-            my %Queue = $QueueObject->QueueGet( ID => $_ );
+        for my $QueueID ( sort keys %Queues ) {
+            my %Queue = $QueueObject->QueueGet( ID => $QueueID );
 
-            $Self->Print( sprintf( "%6s", $_ ) . " $Queue{'Name'} " );
+            $Self->Print( sprintf( "%6s", $QueueID ) . " $Queue{'Name'} " );
             if ( $Queue{'ValidID'} == 1 ) {
                 $Self->Print("<green>$ValidList{$Queue{'ValidID'}}</green>\n");
             }
@@ -64,8 +64,8 @@ sub Run {
         }
     }
     else {
-        for ( sort keys %Queues ) {
-            $Self->Print("  $Queues{$_}\n");
+        for my $QueueID ( sort keys %Queues ) {
+            $Self->Print("  $Queues{$QueueID}\n");
         }
     }
 

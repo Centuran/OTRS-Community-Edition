@@ -1,0 +1,207 @@
+.v-application--wrap {
+  .cmt-layout-wrapped,
+  #Header.cmt-layout-wrapped {  
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .cmt-layout-wrapped #MainBox .Content {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+  }
+}
+
+@media (min-width: 960px) {
+  .v-application--wrap {
+    .cmt-layout-wrapped,
+    #Header.cmt-layout-wrapped {
+      padding-left: calc((100% - 900px) / 2);
+      padding-right: calc((100% - 900px) / 2);
+    }
+
+    #MainBox {
+      margin-left: calc((100% - 900px) / 2);
+      margin-right: calc((100% - 900px) / 2);
+
+      .Content {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 1264px) {
+  .v-application--wrap {
+    .cmt-layout-wrapped,
+    #Header.cmt-layout-wrapped {
+      padding-left: calc((100% - 1185px) / 2);
+      padding-right: calc((100% - 1185px) / 2);
+    }
+
+    #MainBox {
+      margin-left: calc((100% - 1185px) / 2);
+      margin-right: calc((100% - 1185px) / 2);
+    }
+  }
+}
+
+@media (min-width: 1904px) {
+  .v-application--wrap {
+    .cmt-layout-wrapped,
+    #Header.cmt-layout-wrapped {
+      padding-left: calc((100% - 1785px) / 2);
+      padding-right: calc((100% - 1785px) / 2);
+    }
+
+    #MainBox {
+      margin-left: calc((100% - 1785px) / 2);
+      margin-right: calc((100% - 1785px) / 2);
+    }
+  }
+}
+
+button,
+button[type="submit"] {
+  @include button;
+}
+
+#Header {
+  background-color: #fff;
+
+  #ResponsiveNavigationHandle {
+    left: 0;
+    line-height: initial;
+    position: relative;
+    top: -125%;
+
+    i.fa-bars {
+      font-family: "Material Design Icons";
+      
+      &::before {
+        content: mdi("menu");
+      }
+    }
+  }
+}
+
+#Navigation {
+  background-color: $navigation-background-color;
+  height: auto;
+  
+  ul {
+    padding-left: 0;
+
+    & > li:hover {
+      background-color: $primary-color;
+    }
+
+    // This pseudoelement fills the 2px gap between the contents
+    // of the top-level item and the sub-level dropdown list (caused by a 2px
+    // margin-top above the list), eliminating the problem that the list
+    // disappeared when the pointer was placed inside the gap.
+    // TODO: Copy-pasted from agent styles, could use some DRY
+    li::after {
+      content: "";
+      float: none;
+      background: transparent;
+      height: 2px;
+      margin: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  li.Selected,
+  li.Selected:hover {
+    background: $primary-color;
+  }
+
+  & > ul {
+    // The icons in .Individual navigation items make them slightly higher,
+    // this (and also setting the li height to 100%) is needed to match
+    // that height inside the main navigation menu
+    height: 100%;
+
+    & > li {
+      height: 100%;
+
+      & > ul {
+        top: initial;
+      }
+
+      & > a {
+        font-size: initial;
+      }
+    }
+  }
+
+  ul > li > ul {
+    background-color: $navigation-background-color;
+    border-radius: 0 0 4px 4px;
+    box-shadow: $elevated-2-box-shadow;
+    font-size: 87.5%;
+    left: 0;
+    margin-top: 2px;
+    overflow: hidden;
+    top: 100%;
+  
+    & > li {
+      border-bottom: solid 1px #ddd;
+      line-height: 145%;
+
+      &:last-child {
+        border-bottom: none;
+        border-radius: 0 0 4px 4px;
+      }
+  
+      a {
+        background-color: $navigation-background-color;
+        border-top: none;
+        font-size: inherit;
+
+        &:hover {
+          background-color: $primary-color;
+          color: white;
+        }
+      }
+    }  
+  }
+
+  ul.Individual {
+    a[href$="Action=CustomerPreferences"] {
+      &::before {
+        color: #777;
+        content: mdi("tune");
+        font-family: "Material Design Icons";
+        margin-right: 0.25em;
+      }
+
+      &:hover::before {
+        color: #ddd;
+      }
+    }
+
+    a[href$="Action=Logout"] {
+      &::before {
+        color: #777;
+        content: mdi("power");
+        font-family: "Material Design Icons";
+        margin-right: 0.25em;
+      }
+
+      &:hover::before {
+        color: #ddd;
+      }
+    }
+  
+    li.Selected a::before {
+      color: #ddd;
+    }
+  }
+}
+
+#Footer {
+  border-top: 1px solid #eee;
+  padding-top: 0.5em;
+}

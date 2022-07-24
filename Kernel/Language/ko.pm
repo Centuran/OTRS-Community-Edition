@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.968493150684931;
+    $Self->{Completeness}        = 0.968223978014428;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -724,9 +724,6 @@ sub Data {
         'Time units' => '시간 단위',
         'Execute Ticket Commands' => '티켓 명령 실행',
         'Send agent/customer notifications on changes' => '변경 사항에 대한 상담원 / 고객 알림 보내기',
-        'CMD' => 'CMD',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            '이 명령이 실행됩니다. ARG [0]이 티켓 번호입니다. ARG [1] 티켓 ID.',
         'Delete tickets' => '티켓 삭제',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             '경고 : 영향을받는 모든 티켓이 데이터베이스에서 제거되어 복원 할 수 없습니다!',
@@ -4389,9 +4386,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '아니 %s!',
-        'No such user!' => '그런 사용자가 없습니다!',
         'Invalid calendar!' => '캘린더가 잘못되었습니다.',
-        'Invalid URL!' => '잘못된 URL!',
         'There was an error exporting the calendar!' => '캘린더를 내보내는 중에 오류가 발생했습니다!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4944,11 +4939,6 @@ sub Data {
         'Maximum Query Size' => '최대 쿼리 크기',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             '\'max_allowed_packet\'설정은 64MB보다 커야합니다.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => '쿼리 캐시 크기',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            '\'query_cache_size\'설정을 사용해야합니다 (10MB 이상 512MB 이하).',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => '기본 저장소 엔진',
@@ -6005,8 +5995,6 @@ Thanks for your help!
             '고객 인터페이스의 티켓 검색에서 확장 된 검색 조건을 허용합니다. 이 기능을 사용하면 e. 지. "(* key1 * && * key2 *)"또는 "(* key1 * || * key2 *)"와 같은 조건의 티켓 제목을 사용하십시오.',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             '일반 에이전트 인터페이스의 티켓 검색에서 확장 된 검색 조건을 허용합니다. 이 기능을 사용하면 e. 지. "(* key1 * && * key2 *)"또는 "(* key1 * || * key2 *)"와 같은 조건의 티켓 제목을 사용하십시오.',
-        'Allows generic agent to execute custom command line scripts.' =>
-            '',
         'Allows generic agent to execute custom modules.' => '',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             '중간 형식 티켓 개요 (CustomerInfo => 1 - 고객 정보도 표시)를 허용합니다.',
@@ -6084,8 +6072,6 @@ Thanks for your help!
         'Bounced to "%s".' => 'Bounced to "%s".',
         'Bulgarian' => '불가리아 사람',
         'Bulk Action' => '일괄 작업',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'CMD 예제 설정. 외부 CMD가 STDOUT에서 일부 출력을 반환하는 전자 메일을 무시합니다 (전자 메일은 some.bin의 STDIN으로 파이프됩니다).',
         'CSV Separator' => 'CSV 구분 기호',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             'GenericInterface에서 에이전트 인증을위한 캐시 시간.',
@@ -6897,8 +6883,6 @@ Thanks for your help!
         'Defines the number of hours a successful communication will be stored.' =>
             '성공적인 통신을 저장할 시간을 정의합니다.',
         'Defines the parameters for the customer preferences table.' => '고객 환경 설정 테이블의 매개 변수를 정의합니다.',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '대시 보드 백엔드의 매개 변수를 정의합니다. "Cmd"는 매개 변수가있는 명령을 지정하는 데 사용됩니다. "그룹"은 플러그인 (예 : 그룹 : 관리자, 그룹 1, 그룹 2)에 대한 액세스를 제한하는 데 사용됩니다. "기본값"은 플러그인이 기본적으로 활성화되어 있는지 또는 사용자가 수동으로 활성화해야하는지 여부를 나타냅니다. "CacheTTL"은 플러그인의 캐시 만기 기간을 나타냅니다. "필수"는 플러그인이 항상 표시되는지 여부를 결정하며 에이전트가 플러그인을 제거 할 수 없습니다.',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '대시 보드 백엔드의 매개 변수를 정의합니다. "그룹"은 플러그인 (예 : 그룹 : 관리자, 그룹 1, 그룹 2)에 대한 액세스를 제한하는 데 사용됩니다. "기본값"은 플러그인이 기본적으로 활성화되어 있는지 또는 사용자가 수동으로 활성화해야하는지 여부를 나타냅니다. "CacheTTL"은 플러그인의 캐시 만기 기간을 나타냅니다. "필수"는 플러그인이 항상 표시되는지 여부를 결정하며 에이전트가 플러그인을 제거 할 수 없습니다.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7414,8 +7398,6 @@ Thanks for your help!
             'Customer :: AuthModule에서 "반경"을 선택한 경우 반지름 호스트를 지정해야합니다.',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Customer :: AuthModule에 대해 "반경"을 선택한 경우 e. 지. 네트워크 문제로 인해 서버에 연결할 수 없습니다.',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            '"Sendmail"이 SendmailModule로 선택된 경우 sendmail 바이너리의 위치와 필요한 옵션을 지정해야합니다.',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'LogModule에 대해 "SysLog"가 선택되면 특수 로그 기능을 지정할 수 있습니다.',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7480,6 +7462,7 @@ Thanks for your help!
             '부재중이라면 부재자의 정확한 날짜를 설정하여 다른 사용자에게 알릴 수 있습니다.',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             'AgentTicketZoom에서 시스템 발신자 기사 유형 (예 : 자동 응답 또는 이메일 알림)을 \'읽지 않은 기사\'로 표시하거나 큰보기 화면에서 자동으로 확장하도록 무시합니다.',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => '약속 가져오기 화면.',
         'Include tickets of subqueues per default when selecting a queue.' =>
             '큐를 선택할 때 기본값 당 서브 큐 티켓을 포함하십시오.',
@@ -7716,7 +7699,6 @@ Thanks for your help!
             '에이전트 인터페이스에서 검색 결과의 각 페이지에 표시할 티넷 수입니다.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '고객 인터페이스에서 검색 결과의 각 페이지에 표시할 티켓 수입니다.',
-        'Number of tickets to be displayed in each page.' => '각 페이지에 표시할 티켓 수입니다.',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS는 전체 텍스트 검색이나 통계 생성과 같은 값 비싼 작업에 대해 하나 이상의 읽기 전용 미러 데이터베이스를 사용할 수 있습니다. 여기서 첫 번째 미러 데이터베이스에 대해 DSN을 지정할 수 있습니다.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7944,7 +7926,6 @@ Thanks for your help!
         'SMS' => 'SMS',
         'SMS (Short Message Service)' => 'SMS (단문 메시지 서비스)',
         'Salutations' => '인사말',
-        'Sample command output' => '샘플 명령 출력',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             '기사의 첨부 파일을 저장합니다. "DB"는 모든 데이터를 데이터베이스에 저장합니다 (큰 첨부 파일 저장에는 권장되지 않음). "FS"는 데이터를 파일 시스템에 저장합니다. 이것은 더 빠르지 만 웹 서버는 OTRS 사용자 하에서 실행되어야합니다. 데이터 손실없이 이미 생산중인 시스템에서도 모듈 간을 전환 할 수 있습니다. 참고 : "FS"를 사용하면 첨부 파일 이름을 검색 할 수 없습니다.',
         'Schedule a maintenance period.' => '유지 보수 기간을 예약하십시오.',
@@ -7970,6 +7951,8 @@ Thanks for your help!
             '개인 시간대를 선택하십시오. 모든 시간은이 시간대를 기준으로 표시됩니다.',
         'Select your preferred layout for the software.' => '소프트웨어의 기본 레이아웃을 선택하십시오.',
         'Select your preferred theme for OTRS.' => 'OTRS에 대한 선호 테마를 선택하십시오.',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => '사용할 캐시 백엔드를 선택합니다.',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             '웹 인터페이스를 통해 업로드를 처리 할 모듈을 선택합니다. "DB"는 모든 업로드를 데이터베이스에 저장하고 "FS"는 파일 시스템을 사용합니다.',
@@ -8225,7 +8208,6 @@ Thanks for your help!
             '상담원 인터페이스에서 전화 및 전자 메일 티켓에 책임감 있는 선택을 표시합니다.',
         'Show article as rich text even if rich text writing is disabled.' =>
             '리치 텍스트 쓰기가 비활성화된 경우에도 기사를 리치 텍스트로 표시하십시오.',
-        'Show command line output.' => '명령 행 출력보기.',
         'Show queues even when only locked tickets are in.' => '잠긴 티켓만 있는 경우에도 대기열을 표시하십시오.',
         'Show the current owner in the customer interface.' => '고객 인터페이스에 현재 소유자를 표시하십시오.',
         'Show the current queue in the customer interface.' => '고객 인터페이스에 현재 대기열을 표시하십시오.',
@@ -8332,8 +8314,6 @@ Thanks for your help!
             '티켓 개요의 미리보기를 표시합니다 (CustomerInfo => 1 - Customer-Info, CustomerInfoMaxSize 최대 크기는 Customer-Info의 문자로 표시).',
         'Shows all both ro and rw queues in the queue view.' => '대기열보기에서 ro 및 rw 대기열을 모두 표시합니다.',
         'Shows all both ro and rw tickets in the service view.' => '서비스보기에서 ro와 rw 티켓을 모두 표시합니다.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            '에이전트 인터페이스의 에스컬레이션 보기에서 열려있는 모든 티켓(잠긴 경우에도 있음)을 표시합니다.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '에이전트 확대 / 축소보기에서 티켓의 모든 항목을 표시합니다(확장된).',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8420,10 +8400,6 @@ Thanks for your help!
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             '서비스보기에서 하나의 대기열을 선택한 경우와 티켓을 우선 순위별로 정렬 한 후에 티켓을 정렬합니다 (오름차순 또는 내림차순). 값 : 0 = 오름차순 (가장 오래된 것, 기본값), 1 = 내림차순 (맨 위에 가장 어린 것). 키에는 ServiceID를 사용하고 값에는 0 또는 1을 사용하십시오.',
         'Spam' => '스팸',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            '스팸 어쌔신 예제 설정. SpamAssassin으로 표시된 이메일을 무시합니다.',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            '스팸 어쌔신 예제 설정. 표시된 메일을 스팸 대기열로 이동합니다.',
         'Spanish' => '스페인 사람',
         'Spanish (Colombia)' => '스페인어(콜롬비아)',
         'Spanish (Mexico)' => '스페인어(멕시코)',
@@ -8451,14 +8427,6 @@ Thanks for your help!
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             '페이지 머리글에 로고 파일 경로를 지정합니다 (gif | jpg | png, 700 x 100 픽셀).',
         'Specifies the path of the file for the performance log.' => '성능 로그 파일의 경로를 지정합니다.',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            '웹 인터페이스에서 Microsoft Excel 파일보기를 허용하는 변환기의 경로를 지정합니다.',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            '웹 인터페이스에서 Microsoft Word 파일보기를 허용하는 변환기의 경로를 지정합니다.',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            '웹 인터페이스에서 PDF 문서의보기를 허용하는 변환기의 경로를 지정합니다.',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            '웹 인터페이스에서 XML 파일보기를 허용하는 변환기의 경로를 지정합니다.',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             '로그 파일에 표시 할 텍스트를 지정하여 CGI 스크립트 항목을 나타냅니다.',
         'Specifies user id of the postmaster data base.' => '전자 메일 관리자 데이터베이스의 사용자 ID를 지정합니다.',

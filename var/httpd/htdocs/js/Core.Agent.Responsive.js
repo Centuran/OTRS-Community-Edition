@@ -1,6 +1,6 @@
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-// Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+// Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 // --
 // This software comes with ABSOLUTELY NO WARRANTY. For details, see
 // the enclosed file COPYING for license information (GPL). If you
@@ -195,7 +195,7 @@ Core.Agent.Responsive = (function (TargetNS) {
         $('#OptionCustomer').closest('.Field').show().prev('label').show();
 
         // reset navigation container position
-        $('#NavigationContainer').css('left', '10px');
+        $('#NavigationContainer').css('left', 'var(--pad-x)');
 
         // re-add toolbar to header
         $('#ToolBar').detach().prependTo('#Header');

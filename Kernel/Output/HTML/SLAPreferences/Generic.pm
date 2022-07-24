@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -27,8 +27,8 @@ sub new {
     bless( $Self, $Type );
 
     # get env
-    for ( sort keys %Param ) {
-        $Self->{$_} = $Param{$_};
+    for my $Name ( sort keys %Param ) {
+        $Self->{$Name} = $Param{$Name};
     }
 
     return $Self;
@@ -62,13 +62,13 @@ sub Run {
 
     for my $Key ( sort keys %{ $Param{GetParam} } ) {
         my @Array = @{ $Param{GetParam}->{$Key} };
-        for (@Array) {
+        for my $Value (@Array) {
 
             # pref update db
             $Kernel::OM->Get('Kernel::System::SLA')->SLAPreferencesSet(
                 SLAID => $Param{SLAData}->{SLAID},
                 Key   => $Key,
-                Value => $_,
+                Value => $Value,
             );
         }
     }

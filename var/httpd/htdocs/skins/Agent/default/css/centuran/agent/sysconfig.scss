@@ -1,0 +1,87 @@
+#UserWidgetState_SystemConfiguration_Sticky {
+  .CallForAction {
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+  }
+}
+
+#ConfigTree {
+  font-size: 90%;
+
+  li.jstree-node {
+    background-image: none;
+
+    // Expand/collapse icon before item names
+    &::before {
+      content: mdi("menu-right");
+      display: inline-block;
+      font-family: 'Material Design Icons';
+      font-size: 150%;
+      transition: all ease 0.2s;
+      // Hidden by default, so that it's not shown for non-expandable items,
+      // but still takes space (so that expandable and non-expandable items
+      // are aligned)
+      visibility: hidden;
+    }
+
+    &.jstree-closed,
+    &.jstree-open {
+      &::before {
+        visibility: visible;
+      }
+    }
+
+    &.jstree-open::before {
+      transform: rotate(90deg);
+    }
+
+    // Place original expand/collapse icon over our replacement
+    // (and make it transparent)
+    .jstree-icon {
+      margin-left: -20px;
+      opacity: 0;
+      position: absolute;
+    }
+  }
+
+  & > ul > .jstree-node {
+    margin-left: 0;
+  }
+
+  .jstree-node {
+    margin-left: 14px;
+  }
+}
+
+.WidgetSimple.Setting {
+  font-size: inherit;
+
+  .SettingContent {
+    font-size: initial;
+
+    .AlreadyDisabled {
+      div.InputField_Selection {
+        background-color: #d0d0d0;
+  
+        div.Text {
+          background-color: transparent;
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+.Array button.AddArrayItem,
+.Hash button.AddHashKey {
+  width: 100%;
+  position: static;
+  span.InvisibleText {
+    width: auto;
+    height: auto;
+    text-indent: initial;
+    position: static !important;
+    left: auto;
+    top: auto;
+  }
+}

@@ -22,7 +22,7 @@ sub dump {
     };
     if( $@ ) {
         # Try to load YAML::Syck
-        eval { 
+        eval {
             require YAML::Syck;
             $modulename = 'YAML::Syck';
         };
@@ -32,20 +32,20 @@ sub dump {
     $damneddata = $argvs->damn;
     if( $modulename eq 'YAML' ) {
         # Use YAML module
-        $YAML::SortKeys       = 1;
-        $YAML::Stringify      = 0;
-        $YAML::UseHeader      = 1;
-        $YAML::UseBlock       = 0;
-        $YAML::CompressSeries = 0;
+        local $YAML::SortKeys       = 1;
+        local $YAML::Stringify      = 0;
+        local $YAML::UseHeader      = 1;
+        local $YAML::UseBlock       = 0;
+        local $YAML::CompressSeries = 0;
         $yamlstring = YAML::Dump($damneddata);
 
     } elsif( $modulename eq 'YAML::Syck' ) {
         # Use YAML::Syck module instead of YAML module.
-        $YAML::Syck::ImplicitTyping  = 1;
-        $YAML::Syck::Headless        = 0;
-        $YAML::Syck::ImplicitUnicode = 1;
-        $YAML::Syck::SingleQuote     = 0;
-        $YAML::Syck::SortKeys        = 1;
+        local $YAML::Syck::ImplicitTyping  = 1;
+        local $YAML::Syck::Headless        = 0;
+        local $YAML::Syck::ImplicitUnicode = 1;
+        local $YAML::Syck::SingleQuote     = 0;
+        local $YAML::Syck::SortKeys        = 1;
         $yamlstring = YAML::Syck::Dump($damneddata);
     }
 
@@ -71,7 +71,7 @@ Sisimai::Data::YAML - Dumps parsed data object as a YAML format
 
 =head1 DESCRIPTION
 
-Sisimai::Data::YAML dumps parsed data object as a YAML format. This class and 
+Sisimai::Data::YAML dumps parsed data object as a YAML format. This class and
 method should be called from the parent object "Sisimai::Data".
 
 =head1 CLASS METHODS
@@ -95,7 +95,7 @@ azumakuniyuki
 
 =head1 COPYRIGHT
 
-Copyright (C) 2014-2016,2018 azumakuniyuki, All rights reserved.
+Copyright (C) 2014-2016,2018,2021 azumakuniyuki, All rights reserved.
 
 =head1 LICENSE
 

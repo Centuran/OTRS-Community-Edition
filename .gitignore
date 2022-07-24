@@ -26,6 +26,7 @@ Kernel/Config.pm
 Kernel/Language/*.old
 bin/cgi-bin/.htaccess
 scripts/apache2-perl-startup2.pl
+scripts/test/sample/SMIME/openssl-ca/*
 var/virtualfs
 var/run
 var/log/*.log

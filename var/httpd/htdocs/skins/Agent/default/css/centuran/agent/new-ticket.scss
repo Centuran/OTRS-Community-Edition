@@ -1,0 +1,153 @@
+.CustomerContainer {
+  font-size: 13pt;
+  padding: 0 0.8em;
+  width: 75%;
+
+  .CustomerTicketText {
+    padding-left: 0.25em;
+
+    &.Radio,
+    &.MainCustomer {
+      background-color: transparent;
+      text-overflow: ellipsis;
+      width: 90%;
+    }
+
+    &.MainCustomer {
+      font-weight: bold;
+    }
+  }
+
+  .CustomerTicketRemove {
+    color: #888;
+    float: right;
+
+    &::after {
+      content: mdi("close-thick");
+      font-family: "Material Design Icons";
+    }
+
+    i.fa {
+      display: none;
+    }
+  }
+}
+
+button#SelectionCustomerID {
+  top: initial;
+}
+
+a#OwnerSelectionGetAll {
+  &::after {
+    content: mdi("refresh");
+    font-family: "Material Design Icons";
+    font-size: 22px;
+    vertical-align: middle;
+  }
+
+  i.fa {
+    display: none;
+  }
+}
+
+input#Subject {
+  font-size: initial;
+  font-weight: 500;
+}
+
+#OptionCustomer {
+  background: #eee;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0,0,0,0.2),0px 1px 0px rgba(0,0,0,0.2);
+  color: #444;
+  font-size: 14px;
+  padding: 0.1em 0.5em; 
+
+  &::before {
+    content: mdi("account-outline");
+    font-family: "Material Design Icons";
+    margin-right: 0.2em;
+  }
+}
+
+#RichTextField {
+  #cke_RichText {
+    border-radius: 4px !important;
+
+    .cke_inner {
+      background: none;
+
+      .cke_top {
+        border-radius: 4px 4px 0 0;
+      }
+
+      .cke_bottom {
+        border-radius: 0 0 4px 4px;
+      }
+    }
+  }
+}
+
+.DnDUpload {
+  border-radius: 4px;
+
+  i.fa.fa-download::before {
+    content: mdi("download");
+    font-family: "Material Design Icons";  
+  }
+
+  .ReadyForUpload {
+    font-size: 14px;
+  }
+}
+
+.Field.SpacingTop:last-child {
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+#CustomerInfo {
+  fieldset {
+    &.TableLike.FixedLabelSmall {
+      label {
+        width: 6em;
+      }
+
+      p.Value {
+        margin-left: 6em;
+        width: auto;
+      }
+    }
+
+    i.NoOpenTicket,
+    a.NoOpenTicket {
+      margin-top: 1em;
+    }
+
+    i.NoOpenTicket::before {
+      color: rgb(25, 118, 210);
+      content: mdi("tag-multiple");
+      font-family: "Material Design Icons";  
+    }
+
+    a.NoOpenTicket {
+      text-decoration: none;
+    }
+  }
+}
+
+/* Rules specific to process tickets */
+
+.FormScreen .cmt-form-wrapper .WidgetSimple > .Content:first-child {
+  // A .WidgetSimple container with no .Header is used to display dynamic
+  // process ticket content, so we need to remove the border that is there
+  // to separate .Header from .Content
+  border-top: none;
+}
+
+#ActivityDialogContent .LayoutPopup > .Content {
+  background-color: inherit;
+}

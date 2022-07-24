@@ -655,4 +655,3 @@ __END__
 
 
 #ABSTRACT: HTTP style response message
-

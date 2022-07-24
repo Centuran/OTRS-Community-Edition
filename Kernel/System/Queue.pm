@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -776,7 +776,7 @@ sub QueueAdd {
 
     # check if this request is from web and not from command line
     if ( !$Param{NoDefaultValues} ) {
-        for (
+        for my $Name (
             qw(UnlockTimeout FirstResponseTime FirstResponseNotify UpdateTime UpdateNotify SolutionTime SolutionNotify
             FollowUpLock SystemAddressID SalutationID SignatureID
             FollowUpID FollowUpLock DefaultSignKey Calendar)
@@ -784,17 +784,17 @@ sub QueueAdd {
         {
 
             # I added default values in the Load Routine
-            if ( !$Param{$_} ) {
-                $Param{$_} = $Self->{QueueDefaults}->{$_} || 0;
+            if ( !$Param{$Name} ) {
+                $Param{$Name} = $Self->{QueueDefaults}->{$Name} || 0;
             }
         }
     }
 
-    for (qw(Name GroupID SystemAddressID SalutationID SignatureID ValidID UserID FollowUpID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name GroupID SystemAddressID SalutationID SignatureID ValidID UserID FollowUpID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -1095,14 +1095,14 @@ sub QueueUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (
+    for my $Name (
         qw(QueueID Name ValidID GroupID SystemAddressID SalutationID SignatureID UserID FollowUpID)
         )
     {
-        if ( !$Param{$_} ) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

@@ -1,0 +1,81 @@
+#ToolBar {
+  padding-left: 0;
+
+  li {
+    height: 2em;
+    line-height: 2em;
+    width: 2em;
+
+    i.fa {
+      display: none !important;
+    }
+
+    a {
+      span.Counter {
+        background-color: $link-color;
+        border-radius: 50px;
+        bottom: 25%;
+        box-sizing: border-box;
+        color: #ffffff;
+        display: block;
+        left: 115%;
+        line-height: 22px;
+        min-width: 22px;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 0 3px;
+        position: absolute;
+        text-align: center;
+        text-indent: 0 !important;
+        width: auto;
+        z-index: 1000;
+      }
+    }
+  }
+
+  li.UserAvatar {
+    margin-left: 0;
+
+    div {
+      border-radius: 4px;
+      left: 0;
+      margin-top: 0;
+      top: 60px;
+
+      &::after {
+        left: 4.5%;
+      }
+    }
+
+    a {
+      height: 42px;
+      width: 42px;
+
+      img {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+
+  li.Locked {
+    &.New {
+      i.icon-small.icon-show-new {
+        display: none !important;
+      }
+
+      a::after {
+        content: "\0F08EE"; // lock-alert
+      }
+    }
+
+    a::after {
+      color: #f15a22;
+      content: "\0F033E"; // lock
+      font-family: "Material Design Icons";
+      font-size: 225%;
+      left: 9999px; // Due to negative text-indent of <a>
+      position: absolute;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@use 'sass:color';
+
+$primary-color: #f15a22;
+$secondary-color: #24408c;
+$link-color: darken($primary-color, 10%);
+$link-color: lighten($secondary-color, 10%);
+$primary-action-color: $primary-color;
+$secondary-action-color: lighten($secondary-color, 10%);
+$secondary-action-color: $secondary-color;
+
+$base-font-size: 16px;
+$secondary-font-size: 13.3px;
+$heading-font-size: $base-font-size;
+
+$table-cell-padding: 6px 10px;
+$table-head-background: #fdfdfd;
+
+$form-field-border-color: #d2d2d2;
+$form-field-padding: 5px;
+
+$button-action-background-color: transparent;
+$button-action-border-color: transparentize($secondary-color, 0.6);
+$button-action-box-shadow: 0px 1px 0px #99a;
+$button-action-text-color: transparentize(darken($secondary-color, 15%), 0.2);
+$button-action-icon-color: $button-action-text-color;
+
+$button-action-hover-text-color: white;
+$button-action-hover-background-color: $secondary-color;
+$button-action-hover-icon-color: white;
+$button-action-hover-border-color: darken($secondary-color, 20%);
+
+$button-action-primary-background-color: $primary-color;
+$button-action-primary-box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
+$button-action-primary-text-color: white;
+
+$button-action-primary-hover-background-color: saturate(darken($button-action-primary-background-color, 10%), 10%);
+$button-action-primary-hover-text-color: white;
+
+$button-action-cancel-hover-text-color: lighten($button-action-text-color, 10%);;
+$button-action-cancel-hover-background-color: transparentize($secondary-color, 0.9);
+$button-action-cancel-hover-border-color: darken($secondary-color, 20%);
+
+$button-action-disabled-text-color: #888;
+$button-action-disabled-box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee;
+$button-action-disabled-hover-text-color: $button-action-disabled-text-color;

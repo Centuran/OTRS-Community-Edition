@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.694178082191781;
+    $Self->{Completeness}        = 0.693919615252491;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -728,9 +728,6 @@ sub Data {
         'Time units' => 'واحد زمان',
         'Execute Ticket Commands' => 'اجرای دستورات درخواست ',
         'Send agent/customer notifications on changes' => 'آگاه کردن کارشناس/مشتری به هنگام ایجاد تغییرات',
-        'CMD' => 'CMD',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'این دستور اجرا خواهد شد. ARG[0] شماره درخواست و ARG[1] id آن خواهد بود.',
         'Delete tickets' => 'حذف درخواست‌ها',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'اخطار: تمامی درخواست‌های تاثیر یافته از پایگاه داده حذف خواهد شد و قابل بازیابی نخواهد بود!',
@@ -4393,9 +4390,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '',
-        'No such user!' => '',
         'Invalid calendar!' => '',
-        'Invalid URL!' => '',
         'There was an error exporting the calendar!' => '',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4948,11 +4943,6 @@ sub Data {
         'Maximum Query Size' => 'حداکثر اندازه پرس و جو',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => 'جستجوهای کش اندازه',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            'تنظیمات \'query_cache_size باید استفاده شود (بالاتر از 10 مگابایت اما نه بیش از 512 مگابایت).',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => 'موتور ذخیره سازی پیش فرض',
@@ -6009,8 +5999,6 @@ Thanks for your help!
             '',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             'اجازه می دهد تا شرایط جستجو شده در جستجوی بلیط از رابط عامل عمومی است. با این ویژگی شما می توانید به عنوان مثال عنوان بلیط با این نوع از شرایط مانند \ جستجو "(* key1 * && * key2 *) " یا \ "(* key1 * || * key2 *) ".',
-        'Allows generic agent to execute custom command line scripts.' =>
-            '',
         'Allows generic agent to execute custom modules.' => '',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             'اجازه می دهد تا داشتن یک دید کلی قطع متوسط ​​بلیط (CustomerInfo => 1 - نشان می دهد نیز اطلاعات مربوط به مشتری).',
@@ -6088,8 +6076,6 @@ Thanks for your help!
         'Bounced to "%s".' => 'لینک ثابت به : "%s"',
         'Bulgarian' => 'بلغاری',
         'Bulk Action' => 'اعمال کلی',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'به عنوان مثال راه اندازی CMD. نادیده ایمیل که در آن خارجی CMD باز می گردد برخی از خروجی در STDOUT (ایمیل خواهد شد را به STDIN از some.bin لوله کشی).',
         'CSV Separator' => 'جداکننده CSV',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             'زمان کش در ثانیه را برای احراز هویت عامل در GenericInterface.',
@@ -6901,8 +6887,6 @@ Thanks for your help!
         'Defines the number of hours a successful communication will be stored.' =>
             '',
         'Defines the parameters for the customer preferences table.' => 'تعریف می کند که پارامترهای جدول ترجیحات مشتری.',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7418,8 +7402,6 @@ Thanks for your help!
             'اگر \ "شعاع " برای مشتریان :: AuthModule انتخاب شد، میزبان شعاع باید مشخص شود.',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'اگر \ "شعاع " برای مشتریان :: AuthModule انتخاب شد، شما می توانید مشخص کنید اگر برنامه های کاربردی متوقف خواهد شد اگر به عنوان مثال یک اتصال به یک سرور می تواند به دلیل مشکلات شبکه ایجاد شود.',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            'اگر \ "Sendmail باشد " به عنوان SendmailModule انتخاب شد، محل باینری از sendmail و گزینه های مورد نیاز باید مشخص شود.',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'اگر \ "syslog را " برای LogModule انتخاب شد، یک مرکز ورود به سیستم خاص می تواند مشخص شود.',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7484,6 +7466,7 @@ Thanks for your help!
             '',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             '',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => '',
         'Include tickets of subqueues per default when selecting a queue.' =>
             'شامل بلیط از subqueues در به طور پیش فرض در هنگام انتخاب یک صف.',
@@ -7720,7 +7703,6 @@ Thanks for your help!
             'تعداد بلیط در هر صفحه از یک نتیجه جستجو در رابط عامل نمایش داده شود.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'تعداد بلیط در هر صفحه از یک نتیجه جستجو در رابط مشتری نمایش داده می شود.',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS می توانید یک یا چند پایگاه داده آینه فقط خواندنی برای عملیات گران قیمت مانند جستجو و یا آمار نسل متن استفاده کنید. در اینجا شما می توانید DSN برای پایگاه داده آینه اول را مشخص کنید.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7948,7 +7930,6 @@ Thanks for your help!
         'SMS' => 'پیامک',
         'SMS (Short Message Service)' => 'اس ام اس (خدمات پیام کوتاه)',
         'Salutations' => 'عنوان',
-        'Sample command output' => 'خروجی دستور نمونه',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             'موجب صرفه جویی در فایل پیوست مقالات. \ "DB " فروشگاه تمام اطلاعات در پایگاه داده (برای ذخیره سازی فایل پیوست بزرگ توصیه نمی شود). \ "FS " ذخیره اطلاعات در فایل سیستم. این است سریع تر اما وب سرور باید تحت کاربر OTRS اجرا کنید. شما می توانید بین ماژول حتی در یک سیستم است که در حال حاضر در تولید بدون از دست دادن داده ها تغییر دهید. توجه داشته باشید: جستجو برای نام دلبستگی پشتیبانی نمی که \ "FS " استفاده شده است.',
         'Schedule a maintenance period.' => 'برنامه ریزی یک دوره تعمیر و نگهداری.',
@@ -7974,6 +7955,8 @@ Thanks for your help!
             '',
         'Select your preferred layout for the software.' => '',
         'Select your preferred theme for OTRS.' => '',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => 'باطن کش استفاده انتخاب می کند.',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             'ماژول که مسئولیت رسیدگی به ارسال از طریق رابط وب انتخاب می کند. \ "DB " فروشگاه های ارسال همه در پایگاه داده، \ "FS " با استفاده از سیستم فایل.',
@@ -8229,7 +8212,6 @@ Thanks for your help!
             'نمایش یک انتخاب مسئول در تلفن و ایمیل بلیط در رابط عامل.',
         'Show article as rich text even if rich text writing is disabled.' =>
             'مشاهده مقاله به عنوان متن غنی حتی اگر نوشتن متن غنی غیر فعال است.',
-        'Show command line output.' => '',
         'Show queues even when only locked tickets are in.' => 'نمایش صف حتی زمانی که بلیط تنها قفل شده در هستند.',
         'Show the current owner in the customer interface.' => 'نمایش مالک فعلی در رابط مشتری.',
         'Show the current queue in the customer interface.' => 'نمایش صف فعلی در رابط مشتری.',
@@ -8336,8 +8318,6 @@ Thanks for your help!
             'یک پیش نمایش کلی بلیط (- نشان می دهد نیز مشتری اطلاعات، CustomerInfoMaxSize حداکثر اندازه در شخصیت مشتری اطلاعات. CustomerInfo => 1) نشان می دهد.',
         'Shows all both ro and rw queues in the queue view.' => 'همه هر دو صف RO و RW در نظر صف نشان می دهد.',
         'Shows all both ro and rw tickets in the service view.' => 'همه هر دو بلیط RO و RW در نظر خدمات.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'نشان می دهد تمام بلیط باز (حتی اگر آنها قفل شده است) در نظر تشدید رابط عامل.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8424,10 +8404,6 @@ Thanks for your help!
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             'انواع بلیط (ascendingly یا descendingly) که یک صف واحد در نمایش خدمات انتخاب و پس از بلیط ها با اولویت طبقه بندی شده اند. ارزش: 0 = صعودی (قدیمی ترین در بالا، به طور پیش فرض)، 1 = نزولی (جوانترین در بالا). استفاده از ServiceID برای کلید و 0 یا 1 برای ارزش.',
         'Spam' => 'هرزنامه ها',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'Spam Assassin به عنوان مثال راه اندازی. نادیده ایمیلی که با از SpamAssassin مشخص شده اند.',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            ' Spam Assassinبه عنوان مثال راه اندازی. حرکت ایمیل به صف هرزنامه شناخته شد.',
         'Spanish' => 'اسپانیایی',
         'Spanish (Colombia)' => 'اسپانیایی (کلمبیا)',
         'Spanish (Mexico)' => 'اسپانیایی (مکزیک)',
@@ -8455,14 +8431,6 @@ Thanks for your help!
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             '(| JPG | PNG، 700 × 100 پیکسل GIF) مسیر فایل  را برای آرم در هدر صفحه مشخص می کند.',
         'Specifies the path of the file for the performance log.' => 'مسیر فایل را برای ورود به سیستم عملکرد مشخص می کند.',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'مسیر را به مبدل است که اجازه می دهد تا از نظر فایل های مایکروسافت اکسل، در رابط وب مشخص می کند.',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'مسیر را به مبدل است که اجازه می دهد تا از نظر فایل های مایکروسافت ورد، در رابط وب مشخص می کند.',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'مسیر را به مبدل است که اجازه می دهد تا از نظر اسناد PDF، در رابط وب مشخص می کند.',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'مسیر را به مبدل است که اجازه می دهد تا از نظر فایل های XML، در رابط وب مشخص می کند.',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'متنی که باید در پرونده ثبت نظر برسد به معنی ورود اسکریپت CGI مشخص .',
         'Specifies user id of the postmaster data base.' => ' شناسه کاربر از پایگاه داده رئيس پست را مشخص میکند.',

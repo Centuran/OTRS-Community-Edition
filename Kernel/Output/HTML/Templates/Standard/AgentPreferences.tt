@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -88,7 +88,11 @@
         <ul class="SettingsList Preferences">
         [% RenderBlockStart("Item") %]
             [% SET global.ClassicPreferenceCounter = 1 %]
+            [% IF Data.Group == 'SkinOptions' && Env('UserSkin') != 'default' %]
+            <li style="display: none;">
+            [% ELSE %]
             <li>
+            [% END %]
                 <form action="[% Env("CGIHandle") %]" enctype="multipart/form-data" method="post" class="Validate">
                     <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                     <input type="hidden" name="Subaction" value="UpdateAJAXComplex"/>
@@ -176,15 +180,60 @@
                                         <label>[% Translate("Start") | html %]:</label>
                                         <div class="Field">
                                             [% Data.OptionStart %]
+                                            <datetimepicker mode="date"></datetimepicker>
                                         </div>
                                         <div class="Clear"></div>
                                         <label>[% Translate("End") | html %]:</label>
                                         <div class="Field">
                                             [% Data.OptionEnd %]
+                                            <datetimepicker mode="date"></datetimepicker>
                                         </div>
                                         <div class="Clear"></div>
                                     </div>
     [% RenderBlockEnd("OutOfOffice") %]
+    [% RenderBlockStart("SkinOptions") %]
+                                    <div class="Row SkinOptions">
+                                        <input type="hidden" name="Skin" value="default">
+                                        <p class="FieldExplanation">[% Translate(Data.Key) | html %]</p>
+                                        <label>[% Translate("Use modern variant") | html %]:</label>
+                                        <div class="Field">
+                                            <label for="UseModern">
+                                                <input type="checkbox" name="UseModern" id="UseModern" value="1" [% Data.UseModern %] [% Data.Readonly %]/>
+                                                [% Translate(Data.Title) | html %]
+                                            </label>
+                                            <toggleswitch></toggleswitch>
+                                        </div>
+                                        <div class="Clear"></div>
+                                        <label>[% Translate("Text size") | html %]:</label>
+                                        <div class="Field">
+                                            [% IF Data.UseModern %]
+                                            <div style="float: right;">
+                                                <span style="margin-left: 20pt; font-size: calc(var(--scale-s) * 16px);">
+                                                    [% Translate("Example of small text") %]
+                                                </span>
+                                                <br>
+                                                <span style="margin-left: 20pt; font-size: calc(var(--scale-m) * 16px);">
+                                                    [% Translate("Example of medium text") %]
+                                                </span>
+                                                <br>
+                                                <span style="margin-left: 20pt; font-size: calc(var(--scale-l) * 16px);">
+                                                    [% Translate("Example of large text") %]
+                                                </span>
+                                            </div>
+                                            [% END %]
+
+                                            <input type="radio" name="TextSize" id="TextSizeSmall" value="small" [% Data.TextSize.TextSizeSmall %] />
+                                            <label for="TextSizeSmall">[% Translate("Small") | html %]</label>
+                                            <br>
+                                            <input type="radio" name="TextSize" id="TextSizeMedium" value="medium" [% Data.TextSize.TextSizeMedium %] />
+                                            <label for="TextSizeMedium">[% Translate("Medium") | html %]</label>
+                                            <br>
+                                            <input type="radio" name="TextSize" id="TextSizeLarge" value="large" [% Data.TextSize.TextSizeLarge %] />
+                                            <label for="TextSizeLarge">[% Translate("Large") | html %]</label>
+                                        </div>
+                                        <div class="Clear"></div>
+                                    </div>
+    [% RenderBlockEnd("SkinOptions") %]
     [% RenderBlockStart("RawHTML") %]
                                     <div class="Field NoMargin">
                                         [% Data.HTML %]
@@ -209,9 +258,9 @@
 
                                 <div class="SettingDescription">
                                     [% Translate(Data.Desc) | html %]
-                                [% IF Data.Label == 'Language' %]
-                                    [% Translate("Did you know? You can help translating OTRS at %s.") | html | ReplacePlaceholders('<a href="https://translate.otrs.com" target="_blank">translate.otrs.com</a>') %]
-                                [% END %]
+#                                [% IF Data.Label == 'Language' %]
+#                                    [% Translate("Did you know? You can help translating OTRS at %s.") | html | ReplacePlaceholders('<a href="https://translate.otrs.com" target="_blank">translate.otrs.com</a>') %]
+#                                [% END %]
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,67 @@
+.LoginScreen {
+  .SuccessBox,
+  .ErrorBox {
+    background: none;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px 1px 1px 8px;
+    margin-bottom: 1em;
+    padding-left: calc(25px - 8px); // 25px as in form below, minus left border
+    position: relative;
+
+    span {
+      display: flex;
+    }
+
+    span::before {
+      margin-right: 0.2em;  
+    }
+
+    span::after {
+      border-radius: inherit;
+      bottom: 0;
+      content: "";
+      left: 0;
+      opacity: .12;
+      position: absolute;
+      pointer-events: none;
+      right: 0;
+      top: 0;
+      margin: inherit;
+    }
+  }
+
+  .SuccessBox {
+    @include msg-box("success");
+    border-color: msg-color("success");
+
+    span::before {
+      @include msg-icon-before("success");
+    }
+
+    span::after {
+      background-color: msg-color("success");
+    }
+  }
+
+  .ErrorBox {
+    @include msg-box("error");
+    border-color: msg-color("error");
+
+    span::before {
+      @include msg-icon-before("error");
+    }
+
+    span::after {
+      background-color: msg-color("error");
+    }
+  }
+
+  .WidgetSimple > .Content {
+    border-top: none;
+  }
+
+  #LoginButton {
+    line-height: 1.9em;
+  }
+}

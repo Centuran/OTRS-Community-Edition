@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -182,11 +182,11 @@ The returned hash %Result has the following keys:
 sub Decrypt {
     my ( $Self, %Param ) = @_;
 
-    for (qw(Message)) {
-        if ( !defined( $Param{$_} ) ) {
+    for my $Name (qw(Message)) {
+        if ( !defined( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -235,11 +235,11 @@ sign a message
 sub Sign {
     my ( $Self, %Param ) = @_;
 
-    for (qw(Message Key)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Message Key)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -999,11 +999,11 @@ sub _Init {
 sub _DecryptPart {
     my ( $Self, %Param ) = @_;
 
-    for (qw(Key Password Filename)) {
-        if ( !defined( $Param{$_} ) ) {
+    for my $Name (qw(Key Password Filename)) {
+        if ( !defined( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -1076,11 +1076,11 @@ Clean and build the log
 sub _HandleLog {
     my ( $Self, %Param ) = @_;
 
-    for (qw(LogString)) {
-        if ( !defined( $Param{$_} ) ) {
+    for my $Name (qw(LogString)) {
+        if ( !defined( $Param{$Name} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }

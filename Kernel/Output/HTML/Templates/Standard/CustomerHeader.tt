@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -14,7 +14,17 @@
 [% InsertTemplate("CustomerHTMLHead.tt") %]
 <body class="NoJavaScript [% Data.BodyClass | html %]">
 <!-- start CI layout -->
-    <div id="Header">
+    <!-- <div id="vue-app"><v-app> -->
+    <script type="text/javascript">
+    if (window.localStorage.getItem('__use_new_customer_ui') === 'true')
+        document.write('<div id="vue-app"><v-app>');
+    </script>
+
+[% IF Env("Action") == 'CustomerLogin' %]
+    <div id="Header" class="cmt-login-screen cmt-layout-wrapped">
+[% ELSE %]
+    <div id="Header" class="cmt-layout-wrapped">
+[% END %]
 [% RenderBlockStart("HeaderLogo") %]
         <div id="Logo"></div>
 [% RenderBlockEnd("HeaderLogo") %]

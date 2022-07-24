@@ -1,0 +1,384 @@
+.OverviewBox {
+  h1 {
+    font-size: 110%;
+    padding-left: 0;
+  }
+
+  iframe#AttachmentWindow {
+    // position: absolute; // TODO: see https://gitlab.dev.sidnet.info/centuran/otrs-community-edition/-/issues/6
+  }
+}
+
+.QueueOverview {
+  margin-left: 0;
+}
+
+.QueueOverviewList {
+  @include button-group();
+
+  float: left;
+
+  a.Active {
+    background-color: $secondary-action-color;
+    border-color: lighten($secondary-action-color, 10%);
+    border-right: solid 1px lighten($secondary-action-color, 10%);
+    color: white;
+    font-weight: initial;
+  }
+}
+
+.OverviewControl,
+.Content.Overview {
+  font-size: initial;
+
+  .ControlRow {
+    background-color: #eee;
+    //border-bottom: solid 1px #ddd;
+    padding: 10px;
+  
+    .Tabs {
+      @include button-group();
+
+      float: left;
+      margin-bottom: 0;
+
+      li {
+        &.Active {
+          background-color: transparent;
+
+          & > a {
+            background-color: $secondary-action-color;
+            border-color: lighten($secondary-action-color, 10%);
+            border-right-color: lighten($secondary-action-color, 10%);
+            color: white;
+          }
+        }
+
+        & > a {
+          font-size: inherit;
+        }
+
+        &:not(.Active):hover {
+          background-color: transparent;
+          
+          a {
+            background-color: $secondary-action-color;
+          }
+        }
+
+        a span {
+          &::before {
+            content: "(";
+          }
+          &::after {
+            content: ")";
+          }
+        }
+      }
+    }
+  }
+
+  .ActionRow {
+    border-top: solid 1px ghostwhite;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    ul.Actions {
+      li.AlwaysPresent {
+        margin-left: 10px;
+
+        span {
+          font-size: initial;
+          text-align: center;
+          width: 2.4em;
+
+          input#SelectAllTickets {
+            margin: 0;
+          }
+        }
+
+        // First item, containing the bulk action checkbox
+        &:first-child {
+          margin-left: 6px;
+
+          span {
+            padding: 0;
+          }
+        }
+      }
+
+      li#BulkAction {
+        @include minor-button();
+
+        &.Inactive a {
+          // TODO: Use common styles for inactive buttons
+          background-color: rgba(120, 120, 120, 0.4);
+          opacity: 0.6;
+          border: solid 1px #999;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      li#BulkAction {
+        margin-left: 10px;
+      }
+
+      li.SortBy {
+        @include minor-button();
+
+        border: solid 1px #ccc;
+        border-radius: 4px;
+
+        select {
+          // Using transparent border instead of padding, so that the caret
+          // at the right edge is not placed too close to the border
+          border-left: solid 8px transparent;
+          border-right: solid 8px transparent;
+          font-size: inherit;
+          margin-top: 0;
+          padding: 5px 0;
+
+          background: #f8f8f8;
+          box-shadow: none;
+
+          border-spacing: 10px;
+
+          // FIXME: The options dropdown is off by 1px in FF, this fixes it,
+          // but it is then off in Chrome
+          // position: relative
+          // left: -1px;
+        }
+      }
+    }
+  }
+}
+
+.Overview.TicketList {
+  table.TableSmall {
+    thead,
+    tbody {
+      tr th.Checkbox,
+      tr td.Checkbox {
+        text-align: center;
+
+        .Checkbox {
+          margin-left: 0;
+        }
+      }
+
+      td:first-child {
+        padding-top: 6px;
+      }
+    }
+
+    tbody td.Flags {
+      line-height: 18px;    // Set the same line-height as for other td elements
+      padding: 6px 10px;    // Set the same padding as for other td elements
+      text-align: center;
+
+      .Flag span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.Overview.OverviewMedium,
+.Overview.OverviewLarge {
+  .Checkbox {
+    position: initial;
+  }
+
+  .Flag {
+    @include priority-flag();
+  }
+
+  div.UnreadArticles {
+    position: initial;
+
+    span.UnreadArticles {
+      position: initial;
+
+      i.fa {
+        position: initial;
+      }
+    }
+  }
+}
+
+.Overview.OverviewMedium,
+.Overview.OverviewLarge {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  & > li {
+    border: solid 1px #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &:not(:last-child) {
+      margin-bottom: 0.4em;
+    }
+  }
+
+  // Slide-out action menu
+  .Actions.InlineActions {
+    border-bottom-left-radius: 4px;
+    height: auto;
+    padding-left: 0.8em;
+    top: 0;
+    transform: translate(0, -90%);
+    z-index: 9999;
+
+    &.cmt-inline-actions-shown {
+      transform: translate(0, 0);
+    }
+
+    li:last-child {
+      // It appears there's an invisible divider element after the last item,
+      // which looks like additional padding -- fix below
+      &:after {
+        content: "";
+        margin: 0;
+      }
+
+      form {
+        padding: 0.8em;
+      }
+    }
+  }
+
+  // Additional container that allows us to use flex rather than absolute
+  // positioning of elements at the left side of the ticket container
+  .cmt-ticket-overview-ml-flags {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    //float: left;
+    position: absolute;
+    width: 2.4em;
+
+    div.Checkbox {
+      height: auto;
+      line-height: 1.6em;
+      margin-bottom: 0.4em;
+      width: auto;
+
+      input.Checkbox {
+        margin: 0;
+        vertical-align: text-top;
+      }
+    }
+
+    div.Flag {
+      border: none;
+      line-height: 2em;
+      margin-bottom: 0.4em;
+
+      span {
+        height: 1em;
+        position: relative;
+        width: 1em;
+      }
+    }
+
+    div.UnreadArticles {
+      height: auto;
+      line-height: 2em;
+      margin-bottom: 0.4em;
+      width: auto;
+    }
+  }
+
+  .Content {
+    h2 {
+      font-size: initial;
+      height: auto;
+      margin-bottom: 10px;
+      margin-left: calc(2.4em + 10px);
+    }
+
+    .Infos {
+      color: #333;
+      margin-left: calc(2.4em + 10px);
+
+      td {
+        padding-bottom: 1em;
+
+        label {
+          font-size: 90%;
+          font-weight: 500;
+          margin-bottom: 0.4em;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.Overview.OverviewMedium {
+  li.MasterAction {
+    .Content {
+      .cmt-ticket-overview-ml-flags {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.Overview.OverviewLarge {
+  li.MasterAction {
+    & > .Content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 12px 0;
+
+      .Infos {
+        flex: 0.4;
+        float: none;
+        margin-left: calc(2.4em + 10px);
+        margin-top: 0;
+
+        h2, table {
+          margin-left: 0px;
+        }
+
+        h2 {
+          height: auto;
+        }
+
+        table {
+          margin-top: 2px;
+        }
+      }
+
+      .Preview {
+        flex: 0.6;
+        float: none;
+
+        ul {
+          border-radius: 4px;
+          overflow: hidden;
+
+          h3 {
+            font-size: inherit;
+            padding: 0.2em 0.1em;
+
+            a {
+              height: auto;
+              line-height: 1.25;
+            }
+          }
+
+          .ItemActions {
+            padding: 8px;
+          }
+        }
+      }
+    }
+  }
+}

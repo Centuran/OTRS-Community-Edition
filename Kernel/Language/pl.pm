@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.668664383561644;
+    $Self->{Completeness}        = 0.66832703538303;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -727,9 +727,6 @@ sub Data {
         'Time units' => 'Zaraportowany czas obsługi',
         'Execute Ticket Commands' => 'Wykonaj polecenia zgłoszeń',
         'Send agent/customer notifications on changes' => 'Wyślij powidomienia agentowi/klientowi przy zmianie ',
-        'CMD' => 'linia poleceń',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'Komenda zostanie wykonana. ARG[0] to numer zgłoszenia. ARG[1] to id zgłoszenia.',
         'Delete tickets' => 'Usuń zgłoszenia',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'Uwaga: wszystkie wybrane zgłoszenia będą usunięte z bazy danych i nie będzie można ich przywrócić!',
@@ -4392,9 +4389,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => 'Brak %s!',
-        'No such user!' => 'Nie ma takiego użytkownika!',
         'Invalid calendar!' => 'Niewłaściwy kalendarz!',
-        'Invalid URL!' => 'Niewłaściwy URL!',
         'There was an error exporting the calendar!' => 'Błąd podczas eksportowania kalendarza!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4947,11 +4942,6 @@ sub Data {
         'Maximum Query Size' => 'Maksymalny rozmiar zapytania',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             'Wartość \'max_allowed_packet\' powinna być większa niż 64MB',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => 'Rozmiar pamięci podręcznej zapytania',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            'Parametr "query_cache_size" powinień być ustawiony (więcej niż 10 MB, ale nie więcej niż 512 MB).',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => 'Domyślny magazyn danych',
@@ -5997,8 +5987,6 @@ Thanks for your help!
             '',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             '',
-        'Allows generic agent to execute custom command line scripts.' =>
-            '',
         'Allows generic agent to execute custom modules.' => '',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             '',
@@ -6076,8 +6064,6 @@ Thanks for your help!
         'Bounced to "%s".' => 'Przekazano do "%s".',
         'Bulgarian' => '',
         'Bulk Action' => 'Zbiorcze działanie',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            '',
         'CSV Separator' => 'Separator CSV',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             'Okres utrzymywania cache w sekundach dla autentyfikacji agentów w GenericInterface',
@@ -6889,8 +6875,6 @@ Thanks for your help!
         'Defines the number of hours a successful communication will be stored.' =>
             '',
         'Defines the parameters for the customer preferences table.' => 'Definiuje parametry dla tabeli preferencji klienta.',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7406,8 +7390,6 @@ Thanks for your help!
             'Jesli wybrano "Radius" dla Customer::AuthModule wówczas serwer radius musi zostać wybrany.',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             '',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            '',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'Jeśli wybrano "SysLog" dla LogModule wówczas specjalna funkcja logowania może zostać wybrana.',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7472,6 +7454,7 @@ Thanks for your help!
             'Jeśli będziesz nieobecny, możesz poinformować innych użytkowników o dokładnych datach swojej nieobecności.',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             '',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => 'Ekran importu wydarzeń.',
         'Include tickets of subqueues per default when selecting a queue.' =>
             '',
@@ -7708,7 +7691,6 @@ Thanks for your help!
             '',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7936,7 +7918,6 @@ Thanks for your help!
         'SMS' => '',
         'SMS (Short Message Service)' => '',
         'Salutations' => 'Powitania',
-        'Sample command output' => '',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             '',
         'Schedule a maintenance period.' => 'Zaplanuj konserwację',
@@ -7962,6 +7943,8 @@ Thanks for your help!
             '',
         'Select your preferred layout for the software.' => '',
         'Select your preferred theme for OTRS.' => '',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => 'Wybiera program cache do użycia',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             '',
@@ -8217,7 +8200,6 @@ Thanks for your help!
             'Pokazuje wybór odpowiedzialnego w zgloszeniach telefonicznych oraz e-mail interfejsu agenta.',
         'Show article as rich text even if rich text writing is disabled.' =>
             '',
-        'Show command line output.' => 'Pokaż komunikaty wyjściowe linii komend.',
         'Show queues even when only locked tickets are in.' => '',
         'Show the current owner in the customer interface.' => 'Pokazuje obecnego właściciela w interfejsie klienta.',
         'Show the current queue in the customer interface.' => 'Pokazuje obecną kolejkę w interfejsie klienta.',
@@ -8324,8 +8306,6 @@ Thanks for your help!
             '',
         'Shows all both ro and rw queues in the queue view.' => 'Pokazuje kolejki ro i rw w widoku kolejek.',
         'Shows all both ro and rw tickets in the service view.' => '',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'Pokazuje wszystkie otwarte zgłoszenia (nawet jeśli sa zablokowane) w widoku eskalacji interfejsu agenta.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8412,10 +8392,6 @@ Thanks for your help!
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             '',
         'Spam' => '',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'Przykładowa konfiguracja SpamAssasina. Ignoruje e-maile oznaczone wraz z SpamAssasin',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            'Przykładowa konfiguracja SpamAssasina. Przenosi wszystkie e-maile do kolejki spam.',
         'Spanish' => 'Hiszpański',
         'Spanish (Colombia)' => 'Hiszpański (Kolumbia)',
         'Spanish (Mexico)' => 'Hiszpański (Meksyk)',
@@ -8443,14 +8419,6 @@ Thanks for your help!
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             'Wskazuje ścieżkę do pliku dla logo w nagłówku strony (gif|jpg|png, 700 x 100 pixel).',
         'Specifies the path of the file for the performance log.' => 'skazuje ścieżkę do pliku z logiem wydajności.',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'Wskazuje ścieżkę do konwerrtera, który pozwala na otworzenie plików Microsoft Excel w interfejsie webowym.',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'Wskazuje ścieżkę do konwerrtera, który pozwala na otworzenie plików Microsoft Word w interfejsie webowym.',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'Wskazuje ścieżkę do konwerrtera, który pozwala na otworzenie plików PDF w interfejsie webowym.',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'Wskazuje ścieżkę do konwerrtera, który pozwala na otworzenie plików XML w interfejsie webowym.',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'Wskazuje tekst który powinien zostac wyświetlony w pliku log by oznaczyć wystąpienie skryptu CGI.',
         'Specifies user id of the postmaster data base.' => 'Wskazuje id uzytkownika w pocztowej bazie danych.',

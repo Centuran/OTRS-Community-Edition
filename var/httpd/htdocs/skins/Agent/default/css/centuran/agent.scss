@@ -1,0 +1,863 @@
+@import '../../../../Base/default/css/centuran/variables';
+@import 'agent/variables';
+
+@import '../../../../Base/default/css/centuran/base';
+
+@import 'agent/base';
+@import 'agent/toolbar';
+
+:root {
+  --scale-s: 0.85;
+  --scale-m: 1;
+  --scale-l: 1.2;
+
+  --font-size-base: calc(var(--scale) * 16px);
+  --gap: calc(var(--scale) * 5/8 * 1.2em);
+  --gap-120: calc(var(--gap) * 1.2);
+  --pad-x: var(--gap-120);
+  --pad-y: var(--gap);
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  // font-family: Heebo, sans-serif;
+  font-size: var(--font-size-base);
+}
+
+a,
+.v-application a {
+  color: $link-color;
+}
+
+select {
+  // This overrides Vuetify's "-*-appearance: none" which caused a page freeze
+  // in both Chrome and Firefox. Probably related to a similar problem
+  // with "div.InputField_Selection div.Text" and its padding.
+  //
+  // Upon further investigation, the problem was an endless JS loop
+  // in Core.UI.InputFields.js which happened when the script tried to shorten
+  // the displayed text of the selection (in the "modernized" input field)
+  // by replacing part of the text with an ellipsis ("..."), but even with
+  // the shortest possible text (just the ellipsis itself) it was still over
+  // the maximum width. Since the maximum width was calculated based on
+  // the width of the original <select>, adding some breathing space
+  // (i.e. padding -- added below to &.Modernize) to the select seems to fix
+  // the problem.
+  -moz-appearance: auto !important;
+  -webkit-appearance: auto !important;
+
+  &.Modernize {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.v-application {
+  font-family: inherit;
+}
+
+#Header {
+  background: #04050e;
+  box-sizing: content-box;
+  height: 86px;
+  padding: var(--pad-y) var(--pad-x);
+}
+
+#NavigationContainer {
+  top: 69px;
+}
+
+#Navigation {
+  box-sizing: content-box;
+  font-family: Roboto, sans-serif;
+  padding-left: 0;
+
+  & > li > a {
+    font-size: 14px;
+    font-size: inherit;
+    padding: 8px 14px 4px 14px;  
+
+    &::after {
+      background-color: #f15a22;
+    }
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    &::before {
+      background-color: #fff;
+      border-radius: inherit;
+      bottom: 0;
+      color: inherit;
+      content: "";
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: opacity .2s cubic-bezier(.4,0,.6,1);
+    }
+
+    &.Selected::before {
+      opacity: 0.18;
+    }
+  }
+
+  & > .Active > ul > li {
+    font-size: inherit;
+
+    &:hover {
+      background-color: #f15a22;
+      
+      & > a {
+        color: #000;
+      }
+    }
+
+    & > a {
+      //font-size: 120%;
+      font-size: 90%;
+      padding: 10px 14px;
+    }
+  }
+}
+
+ul.BreadCrumb {
+  background: #eee;
+  border-radius: 4px;
+  box-shadow: none;
+  margin-right: 0;
+  padding-bottom: 0.35em;
+  padding-left: 0;
+  padding-top: 0.35em;
+}
+
+ul.BreadCrumb li:before, ul.BreadCrumb li:after {
+  margin-top: -22px;
+}
+
+ul.BreadCrumb li::before {
+  border-left-color: #eee;
+}
+
+ul.BreadCrumb li > a, .BreadCrumb li > span {
+  color: #333;
+  line-height: normal;
+  padding: 0 2px;
+}
+
+.WidgetSimple {
+  background: #eee;
+  border-radius: 4px;
+  margin-right: 0;
+}
+
+.Expanded.AnimationRunning > .Header > .WidgetAction.Toggle {
+  height: auto;
+  float: left;
+  margin: 0;
+  width: auto;
+}
+
+.WidgetSimple .Content {
+  color: #333;
+  padding: 10px;
+
+  ul.ActionList {
+    padding-left: 0;
+  }
+}
+
+form {
+  label.Mandatory span.Marker {
+    top: initial;
+  }
+}
+
+.FormScreen .cmt-form-wrapper {
+  margin-left: calc(270px + 16px);
+}
+
+// NOTE: Moved to common styles
+// input[type="text"] {
+//   border: solid 1px rgba(0,0,0,.38);
+//   border: solid 1px #d2d2d2;
+//   border-radius: 4px;
+//   box-shadow: none;
+//   color: rgba(0,0,0,.87);
+//   height: 32px;
+//   font-family: inherit;
+//   font-size: inherit;
+//   padding: $form-field-padding;
+// }
+
+.SearchBox input[type="text"] {
+  border: solid 1px #d2d2d2;
+  border-right: solid 1px rgba(0,0,0,.38);
+  border-right: solid 1px $form-field-border-color;
+  box-sizing: border-box;
+  font-family: Heebo, sans-serif;
+  font-size: inherit;
+  height: auto;
+  height: 32px;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.SearchBox button[type="submit"] {
+  background: none;
+  border: none;
+  font: inherit;
+  height: 32px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+}
+
+.LayoutFixedSidebar.SidebarFirst > .SidebarColumn {
+  margin-right: var(--pad-x);
+}
+
+.LayoutFixedSidebar.SidebarLast > .SidebarColumn {
+  width: 20em;
+}
+
+.SidebarColumn .WidgetSimple .InputField_Container,
+.SidebarColumn .WidgetSimple .InputField_InputContainer,
+.SidebarColumn .WidgetSimple .InputField_Search {
+  width: 100% !important;
+}
+
+.SidebarColumn .WidgetSimple .InputField_Search {
+  box-sizing: border-box;
+}
+
+// NOTE: Moved to common styles
+// div.InputField_InputContainer {
+//   align-items: center;
+//   display: flex;
+//   height: 32px;
+
+//   .InputField_Search {
+//     position: relative;
+//   }
+
+//   .InputField_More {
+//     top: auto;
+//   }
+// }
+
+div.InputField_ListContainer {
+  z-index: 9999;
+}
+
+// NOTE: Moved to common styles
+// div.InputField_Selection {
+//   align-items: center;
+//   background: #e0e0e0;
+//   border-radius: 50px;
+//   display: inline-block;
+//   height: auto;
+//   line-height: 20px;
+//   padding: 2px 8px;
+//   position: absolute;
+//   top: auto;
+//   vertical-align: middle;
+//   z-index: 1;
+
+//   div.Remove {
+//     background: none;
+//     font-family: "Material Design Icons";
+//     font-size: inherit;
+//     height: auto;
+//     line-height: inherit;
+//     overflow: hidden;
+//     padding-left: 0;
+//     //position: absolute;
+//     //right: -26px;
+//     vertical-align: middle;
+//     overflow: visible;
+    
+//     a {
+//       position: relative;
+//       //width: 0;
+//       //color: #e0e0e0;
+//       padding: 0;
+//       line-height: inherit;
+//       font-size: 0;
+//       left: 4px;
+
+//       &::before {
+//         //background: #e0e0e0;
+//         //border-radius: 0 50px 50px 0;
+//         color: #888;
+//         content: "\0F1398"; // close-thick
+//         font-size: initial;
+//         height: 100%;
+//         left: 0;
+//         line-height: inherit;
+//         padding: 0;
+//         padding-right: 0;
+//         padding-left: 0;
+//         position: static;
+//         top: 0;
+//         vertical-align: middle;
+//         width: auto;
+//       }
+//     }
+//   }
+// }
+
+// NOTE: Moved to common styles
+// div.InputField_Selection div.Text {
+//   background: #e0e0e0;
+//   border-radius: 50px;
+//   color: rgba(0,0,0,.87);
+//   font-size: inherit;
+//   height: 22px;
+//   line-height: 20px;
+
+//   height: auto;
+//   line-height: auto;
+
+//   padding: 0 !important;
+  
+//   display: inline-block;
+//   vertical-align: middle;
+//   background: none;
+//   border-radius: 0;
+//   line-height: inherit;
+//   height: 100%;
+// }
+
+.DataTable {
+  border-radius: 4px;
+  border-spacing: 0;
+}
+
+.DataTable thead {
+  background: none;
+}
+
+.DataTable thead th {
+  background: none;
+  border: none;
+  border-bottom: thin solid rgba(0,0,0,.12);
+  font-size: inherit;
+  font-weight: 500;
+  text-transform: none;
+  padding: 10px 10px;
+}
+
+.DataTable p.TableEmpty {
+  color: #666;
+  padding: 2.6em 0;
+  text-align: center;
+}
+
+#Footer a {
+  display: initial;
+}
+
+#Footer img {
+  display: inline-block;
+  filter: grayscale(1);
+  margin: auto;
+  margin-top: 1.4em;
+  opacity: 0.5;
+  width: 110px;
+}
+
+#Footer a:hover img {
+  filter: none;
+  opacity: 0.8;
+}
+
+/* Login */
+
+@mixin error-msg-icon {
+  content: "\0F0CE6";
+  font-family: "Material Design Icons";
+  font-size: 120%;
+  margin: 0;
+  opacity: 1;
+  position: static;
+  vertical-align: middle; 
+}
+
+.LoginScreen {
+  height: 100vh;
+  padding-top: 0;
+
+  #AppWrapper {
+    border-top: solid 80px #000;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px - 40px);
+    padding-top: 40px;
+  }
+
+  #LoginLogo {
+    margin-bottom: 40px;
+  }
+
+  #Footer {
+    background-color: #000;
+    margin-top: auto;
+
+    a {
+      color: #999;
+      text-shadow: none;
+    }
+
+    img {
+      display: inline-block;
+      filter: grayscale(1) invert(100%);
+      margin: auto;
+      margin-top: 1.4em;
+      opacity: 0.5;
+      width: 110px;
+    }
+    
+    a:hover img {
+      filter: none;
+      opacity: 0.8;
+    }
+  }
+}
+
+.LoginScreen #LoginBox {
+  fieldset div {
+    input {
+      border: solid 1px rgba(0,0,0,.38);
+      border-radius: 4px;
+      box-shadow: none;
+      box-sizing: border-box;
+      color: rgba(0,0,0,.87);
+      font-family: Heebo, sans-serif;
+      font-size: inherit;
+      height: 42px;
+      margin-top: 15px;
+      padding: 0 12px;
+      width: 100%;
+    }
+
+    &:first-child input {
+      margin-top: 0;
+    }
+  }
+
+  .TooltipErrorMessage {
+    margin-bottom: 15px;
+  }
+
+  button[type="submit"] {
+    margin-top: 25px;
+  }
+}
+
+/* Dashboard */
+
+div.AllocationListContainer {
+  margin-left: calc(10em + 10px);
+  padding: 10px;
+
+  div.Size1of2 {
+    position: relative;
+
+    ul.Tablelike {
+      background-color: transparent;
+      border: none;
+
+      li.Header {
+        background: transparent;
+        border: none;
+        border-bottom: solid 1px #bbb;
+        font-size: inherit;
+        line-height: 1.9em;
+        margin-bottom: 10px;
+        padding-bottom: 0.3em;
+        padding-top: calc(0.3em - 10px);
+      }
+    }
+
+    div.FilterInputContainer {
+      background: none;
+      border: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+
+      input {
+        margin: 0;
+      }
+    }
+
+    ul.AllocationList {
+      background: #fff;
+      border: solid 1px #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      height: 155px;
+      max-height: 155px;
+      min-height: 155px;
+      overflow-y: auto;
+      padding: 4px;
+
+      li {
+        background: #eee;
+        border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+        color: #555;
+        font-size: 90%;
+        margin-bottom: 4px;
+        padding-left: 10px;
+
+        &.ui-sortable-helper {
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+            3px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+  }
+}
+
+.WidgetSimple .Buttons {
+  font-size: inherit;
+
+  button {
+    padding: 6px 16px;
+  }
+}
+
+.DataTable,
+.Sortable.DataTable,
+.TableSmall {
+  border-radius: 4px;
+  border-spacing: 0;
+  font-size: inherit;
+
+  thead tr {
+    background: none;
+  }
+
+  thead th {
+    background: none;
+    border: none;
+    border-bottom: thin solid rgba(0, 0, 0, .12);
+    font-size: inherit;
+    font-weight: 500;
+    font-weight: bolder;
+    padding: 10px 10px;
+    text-transform: none;
+      
+    &.SortAscending,
+    &.SortDescending,
+    &.DashboardHeader,
+    &.DashboardHeader.SortAscendingLarge,
+    &.DashboardHeader.SortDescendingLarge,
+    &.OverviewHeader,
+    &.OverviewHeader.SortAscendingLarge,
+    &.OverviewHeader.SortDescendingLarge {
+      border-bottom-color: rgba(0, 0, 0, .12);
+      padding: 10px 20px 10px 1px;
+      padding-left: 1px;
+      white-space: nowrap;
+    }
+
+    a,
+    span {
+      background: none;
+      display: inline;
+      font-size: inherit;
+      font-weight: inherit;
+      padding-left: 0;
+      text-transform: none;
+    }
+
+    a.ColumnSettingsTrigger::after,
+    &.SortAscending a::after,
+    &.SortDescending a::after,
+    &.SortAscendingLarge a::after,
+    &.SortDescendingLarge a::after {
+      background: #ddd;
+      border-radius: 50%;  
+      display: inline-block;
+      font-family: "Material Design Icons";
+      font-size: 110%;
+      height: 1.5em;
+      left: initial;
+      line-height: 150%;
+      margin-left: 0.4em;
+      position: static;
+      text-align: center;
+      text-shadow: none;
+      vertical-align: middle;
+      width: 1.5em;
+    }
+
+    &.DashboardHeader a.ColumnSettingsTrigger,
+    &.OverviewHeader a.ColumnSettingsTrigger {
+      display: initial;
+      float: none;
+      font-size: 100%;
+      height: 0;
+      margin-left: -0.4em;
+      opacity: 1;
+      position: relative;
+      width: 0;
+      z-index: 1000;
+
+      &::after {
+        content: "\0F0232"; // filter
+      }
+      
+      i.fa {
+        display: none;
+      }
+    }
+
+    &.SortAscending a::after,
+    &.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after {
+      content: "\0F0143";
+    }
+
+    &.SortDescending a::after,
+    &.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after {
+      content: "\0F0140";
+    }
+
+    &.SortAscendingLarge a,
+    &.SortDescendingLarge a {
+      &:not(.ColumnSettingsTrigger)::after {
+        position: static;
+        text-shadow: none;
+      }
+
+      &.ColumnSettingsTrigger::after {
+        content: "\0F0232";
+      }
+    }
+
+    &.OverviewHeader,
+    &.DashboardHeader {
+      a.ColumnSettingsTrigger:hover,
+      a.ColumnSettingsTrigger.Active,
+      &.FilterActive a.ColumnSettingsTrigger {
+        box-shadow: none;
+      }
+    }
+
+    &.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+    &.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+    &.FilterActive a.ColumnSettingsTrigger::after {
+      background-color: $secondary-action-color;
+      color: white;
+    }
+
+    &.OverviewHeader,
+    &.DashboardHeader {
+      //position: relative;
+      
+      .ColumnSettingsContainer {
+        position: relative;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 0px;
+        vertical-align: bottom;
+        z-index: 999; // Needs to be lower than .ColumnSettingsTrigger's
+
+        .ColumnSettingsBox {
+          top: calc(100% + 14px) !important;
+          right: -19px;
+          z-index: 1000;
+          background-color: white;
+          border-radius: 4px;
+          box-shadow: $elevated-2-box-shadow;
+
+          // Triangular pointer at the top of the popup box
+          &::before {
+            color: #fff;
+            content: "\0F0360";
+            font-family: 'Material Design Icons';
+            font-size: 32px;
+            height: 28px;
+            line-height: 50px;
+            position: absolute;
+            right: 3px;
+            text-shadow: 0px 0px 10px rgb(0 0 0 / 65%);
+            top: 0;
+            transform: translateY(-100%);
+            width: 30px;
+            /* z-index: auto; */
+            text-shadow: $elevated-2-box-shadow;
+          }
+
+          // Pseudo-element to cover the bottom text-shadow of the pointer
+          // which undesirably goes inside the popup box
+          &::after {
+            background-color: white;
+            border-top-right-radius: 4px;
+            content: "";
+            height: 10px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50px;
+          }
+        }
+      }
+    }
+
+    a {
+      font-size: inherit;
+    }
+
+    // First element with column name
+    // (FIXME: This probably only works in the dashboard at this moment, since
+    // the order of elements has been changed accordingly in AgentDashboardTicketGeneric.tt)
+    &.DashboardHeader > a,
+    &.DashboardHeader > span,
+    &.OverviewHeader > a,
+    &.OverviewHeader > span {
+      float: none;
+      height: initial;
+      line-height: 150%;
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        td {
+          background-color: #fb8c00;
+        }
+      }
+
+      td {
+        border-right: solid 1px #ddd;
+        padding: $table-cell-padding;
+      }
+
+      td:last-child {
+        border-right: none;
+      }
+
+      &.Row td.QueueOverviewTotals {
+        border-top: solid 2px #ddd;
+      }
+    }
+  }
+
+  tr.MasterAction {
+    &:hover {
+      span.UnreadArticles.Remarkable::before {
+        // Outline to make the star stand out on similar background
+        text-shadow:
+          -1px  0px 0px rgba(0, 0, 0, 0.35),
+           0px -1px 0px rgba(0, 0, 0, 0.35),
+           1px  0px 0px rgba(0, 0, 0, 0.35),
+           0px  1px 0px rgba(0, 0, 0, 0.35);
+      }
+    }
+  }
+}
+
+.TableSmall {
+  .ColumnFilter {
+    font-size: $secondary-font-size;
+  }
+}
+
+.Tab.Actions {
+  @include button-group();
+}
+
+// NOTE: Moved to common styles
+// .FieldExplanation,
+// .AsteriskExplanation {
+//   font-size: 14px;
+// }
+
+p.FieldExplanation {
+  margin: 5px 0;
+}
+
+/* New Ticket */
+
+.CustomerContainer {
+  box-shadow: none;
+  border-radius: 4px;
+
+  .CustomerTicketText {
+    border: none;
+    font-size: 85%;
+    padding-left: 10px;
+
+    &.MainCustomer {
+      background-color: #b3e5fc;
+      border: none;
+    }
+  }
+}
+
+/* Ticket status view */
+
+.OverviewBox {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .OverviewControl {    
+    border-radius: 4px;
+    overflow: hidden;
+
+    & > div {
+      padding: 0;
+    }
+  }
+}
+
+.OverviewLarge {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Agent preferences view */
+
+label + .v-input--switch {
+  margin-top: 0;
+}
+
+.ItemListGrid.WithIcons > li {
+  a[href*="?Action=AgentPreferences"] {
+    &[href*="Group=NotificationSettings"] {
+      .Icons i.fa::before {
+        content: mdi("alert");
+      }
+    }
+
+    &[href*="Group=Miscellaneous"] {
+      .Icons i.fa::before {
+        content: mdi("tune");
+      }
+    }
+  }
+}
+
+@import 'agent/admin';
+@import 'agent/calendar';
+@import 'agent/dashboard';
+@import 'agent/login';
+@import 'agent/new-ticket';
+@import 'agent/process-management'; // TODO: Move to agent/admin/process-management?
+@import 'agent/statistics';
+@import 'agent/sysconfig'; // TODO: Move to agent/admin/sysconfig?
+@import 'agent/ticket-overview';
+@import 'agent/ticket-zoom';

@@ -111,4 +111,3 @@ $self->{' type'}='index-'.(
 $opts{-base}=~/RGB/i ? 'rgb' :
 $opts{-base}=~/CMYK/i ? 'cmyk' : 'unknown'
 );
-

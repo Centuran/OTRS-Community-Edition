@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -344,6 +344,8 @@ sub Run {
 
         my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
 
+        my $TicketArticleLimit = $ArticleLimit;
+
         # get the Ticket entry
         my %TicketEntryRaw = $TicketObject->TicketGet(
             TicketID      => $TicketID,
@@ -427,17 +429,17 @@ sub Run {
             );
         }
 
-        # Modify ArticleLimit if it is greater then number of articles (see bug#14585).
+        # Modify ArticleLimit if it is greater than number of articles (see bug#14585).
         if ( $ArticleLimit > scalar @Articles ) {
-            $ArticleLimit = scalar @Articles;
+            $TicketArticleLimit = scalar @Articles;
         }
 
         # Set number of articles by ArticleLimit and ArticleOrder parameters.
-        if ( IsArrayRefWithData( \@Articles ) && $ArticleLimit ) {
+        if ( IsArrayRefWithData( \@Articles ) && $TicketArticleLimit ) {
             if ( $ArticleOrder eq 'DESC' ) {
                 @Articles = reverse @Articles;
             }
-            @Articles = @Articles[ 0 .. ( $ArticleLimit - 1 ) ];
+            @Articles = @Articles[ 0 .. ( $TicketArticleLimit - 1 ) ];
         }
 
         # start article loop

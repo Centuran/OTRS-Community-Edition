@@ -1,6 +1,6 @@
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-// Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+// Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 // --
 // This software comes with ABSOLUTELY NO WARRANTY. For details, see
 // the enclosed file COPYING for license information (GPL). If you
@@ -161,7 +161,7 @@ Core.UI.RichTextEditor = (function (TargetNS) {
             width: Core.Config.Get('RichText.Width', 620),
             resize_minWidth: Core.Config.Get('RichText.Width', 620),
             height: Core.Config.Get('RichText.Height', 320),
-            removePlugins: 'autogrow,bbcode,divarea,embed,flash,mathjax,stylesheetparser' + (CheckFormID($EditorArea).length ? '' : ',image2,uploadimage'),
+            removePlugins: 'resize,autogrow,bbcode,devtools,divarea,embed,flash,mathjax,stylesheetparser' + (CheckFormID($EditorArea).length ? ',image' : ',image,uploadimage'),
             forcePasteAsPlainText: false,
             format_tags: 'p;h1;h2;h3;h4;h5;h6;pre',
             fontSize_sizes: '8px;10px;12px;16px;18px;20px;22px;24px;26px;28px;30px;',
@@ -172,7 +172,7 @@ Core.UI.RichTextEditor = (function (TargetNS) {
             toolbar: CheckFormID($EditorArea).length ? Core.Config.Get('RichText.Toolbar') : Core.Config.Get('RichText.ToolbarWithoutImage'),
             filebrowserBrowseUrl: '',
             filebrowserUploadUrl: UploadURL,
-            extraPlugins: 'splitquote,preventimagepaste,contextmenu_linkopen',
+            extraPlugins: 'splitquote,preventimagepaste,contextmenu_linkopen,image2',
             entities: false,
             skin: 'moono-lisa'
         };

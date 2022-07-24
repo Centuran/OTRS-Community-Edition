@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # Copyright (C) 2010 Milorad Jovanovic <j.milorad at gmail.com>
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
@@ -31,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.995719178082192;
+    $Self->{Completeness}        = 0.995362418412917;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -730,9 +730,6 @@ sub Data {
         'Time units' => 'Vremenske jedinice',
         'Execute Ticket Commands' => 'Izvrši komande tiketa',
         'Send agent/customer notifications on changes' => 'Pošalji obaveštenja operateru/klijentu pri promenama',
-        'CMD' => 'CMD',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'Ova naredba će biti izvršena. ARG[0] je broj tiketa, a ARG[1] ID tiketa.',
         'Delete tickets' => 'Obriši tikete',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'UPOZORENJE: Svi obuhvaćeni tiketi će biti nepovratno uklonjeni iz baze!',
@@ -4395,9 +4392,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => 'Bez %s!',
-        'No such user!' => 'Nepoznat korisnik!',
         'Invalid calendar!' => 'Neispravan kalendar!',
-        'Invalid URL!' => 'Neispravna adresa!',
         'There was an error exporting the calendar!' => 'Greška prilikom eksportovanja kalendara!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4950,11 +4945,6 @@ sub Data {
         'Maximum Query Size' => 'Maksimalna veličina upita',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             'Podešavanje \'max_allowed_packet\' mora biti više od 64 MB.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => 'Veličina keš upita',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            'Podešavanje \'query_cache_size\' mora biti korišćeno (veće od 10 MB, ali ne više od 512 MB)',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => 'Podrazumevani mehanizam za skladištenje',
@@ -6011,8 +6001,6 @@ Vaša tehnička podrška
             'Omogućava napredne uslove pretrage tiketa u interfejsu korisnika. Sa ovom opcijom moćete pretraživati npr. naslov tiketa sa uslovima kao "(*key1*&&*key2*)" ili "(*key1*||*key2*)".',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             'Dozvoljava proširene uslove pretrage u pretrazi tiketa na interfejsu generičkog operatera. Pomoću ove funkcije možete vršiti pretrage npr. naslov tiketa sa vrstom uslova kao što su "(*key1*&&*key2*)" ili "(*key1*||*key2*)".',
-        'Allows generic agent to execute custom command line scripts.' =>
-            'Omogućava generičkom operateru da izvršava komandne skripte.',
         'Allows generic agent to execute custom modules.' => 'Omogućava generičkom operateru da izvršava dodatne module.',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             'Dozvoljava posedovanje srednjeg formata pregleda tiketa ( CustomerInfo => 1 - takođe prikazuje informacije o klijentu).',
@@ -6090,8 +6078,6 @@ Vaša tehnička podrška
         'Bounced to "%s".' => 'Odbijeno na "%s".',
         'Bulgarian' => 'Bugarski',
         'Bulk Action' => 'Masovna akcija',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'Primer podešavanja CMD. Ignoriše imejlove kada eksterni CMD vrati neke izlaze na STDOUT (imejl će biti kanalisan u STDIN od some.bin).',
         'CSV Separator' => 'CSV separator',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             'Vreme keširanja u sekundama za autentifikacije operatera u generičkom interfejsu.',
@@ -6903,8 +6889,6 @@ Vaša tehnička podrška
         'Defines the number of hours a successful communication will be stored.' =>
             'Definiše koliko će dugo u časovima komunikacija biti čuvana.',
         'Defines the parameters for the customer preferences table.' => 'Određuje parametre za tabelu podešavanja klijenata.',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            'Definiše parametre za dodatak komandne table. "Cmd" se koristi za komandne parametre. "Group" se koristi da ograniči pristup dodatku (npr. Group: admin;group1;group2;). "Default" određuje da li je dodatak podrazumevano aktiviran ili da je neophodno da ga korisnik manuelno aktivira. "CacheTTL" je vreme u minutima za keširanje dodatka. "Mandatory" određuje da li je dodatak uvek prikazan i ne može biti isključen od strane operatera.',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Definiše parametre za dodatak kontrolne table. "Group" se koristi da ograniči pristup dodatku (npr. Group: admin;group1;group2;). "Default" određuje da li je dodatak podrazumevano aktiviran ili da je neophodno da ga korisnik manuelno aktivira. "CacheTTL" je vreme u minutima za keširanje dodatka. "Mandatory" određuje da li je dodatak uvek prikazan i ne može biti isključen od strane operatera.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7420,8 +7404,6 @@ Vaša tehnička podrška
             'Ukoliko je podešen „Radius” za „Customer::AuthModule”, adresa „Radius” servera mora biti definisana.',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Ukoliko je podešen „Radius” za „Customer::AuthModule”, možete definisati da li će aplikacija prestati sa radom ukoliko npr. konekcija sa serverom ne može biti ostvarena zbog problema sa mrežom.',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            'Ukoliko je podešen Sendmail za SendmailModule, morate definisati lokaciju aplikacije sendmail i neophodne opcije.',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'Ukoliko je podešen SysLog za LogModule, može biti definisana posebna log sekcija.',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7486,6 +7468,7 @@ Vaša tehnička podrška
             'Ukoliko ćete biti van kancelarije, možda ćete želeti da obavestite druge korisnike postavljanjem tačnih datuma vašeg izostanka.',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             'Ignoriše vrstu pošiljaoca članaka (npr. automatski odgovori ili imejl obaveštenja) prilikom prikaza nepročitanih članaka u detaljnom pregledu tiketa ili automatskog proširivanja u velikom ekranu pregleda.',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => 'Ekran za uvoz termina.',
         'Include tickets of subqueues per default when selecting a queue.' =>
             'Kod izbora reda, podrazumevano uključi i tikete podredova.',
@@ -7722,7 +7705,6 @@ Vaša tehnička podrška
             'Broj tiketa koji će biti prikazani na svakoj strani rezultata pretrage u interfejsu operatera.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Broj tiketa koji će biti prikazani na svakoj strani rezultata pretrage u interfejsu klijenta.',
-        'Number of tickets to be displayed in each page.' => 'Broj tiketa koji će biti prikazani na svakoj strani.',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '„OTRS” može da koristi jednu ili više preslikanih baza podataka za skupe operacije kao što su pretraga teksta ili generisanje statistika. Ovde možete definisati DSN za prvu preslikanu bazu podataka.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7950,7 +7932,6 @@ Vaša tehnička podrška
         'SMS' => 'SMS',
         'SMS (Short Message Service)' => 'SMS (servis kratkih poruka)',
         'Salutations' => 'Pozdravi',
-        'Sample command output' => 'Primer komandnog izlaza',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             'Čuva priloge u člancima. „DB” snima sve priloge u bazi podataka (nije preporučljivo za čuvanje velikih priloga). „FS” snima priloge u sistemu datoteka; ovo je brža opcija, ali veb server mora biti pokrenut pod „OTRS” sistemskim korisnikom. Dozvoljena je promena modula čak i na produkcijskim sistemima bez bilo kakvog gubitka podataka. Napomena: pretraga priloga po nazivu nije moguća kada je „FS” u funkciji.',
         'Schedule a maintenance period.' => 'Planiranje perioda održavanja.',
@@ -7976,6 +7957,8 @@ Vaša tehnička podrška
             'Izaberite vašu ličnu vremensku zonu. Sva vremena će biti prikazana u njoj.',
         'Select your preferred layout for the software.' => 'Izaberite izgled aplikacije po vašoj želji.',
         'Select your preferred theme for OTRS.' => 'Izaberite temu za OTRS po vašoj želji.',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => 'Modul keša koji će koristiti sistem.',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             'Bira modul za rukovanje prenešenim datotekama preko veb interfejsa. "DB" skladišti sve prenešene datoteke u bazu podataka, "FS" koristi sistem datoteka.',
@@ -8231,7 +8214,6 @@ Vaša tehnička podrška
             'Prikaži izbor odgovornog u tiketima poziva i imejl tiketima u interfejsu operatera.',
         'Show article as rich text even if rich text writing is disabled.' =>
             'Prikaži članak kao obogaćeni tekst čak i kad je pisanje obogaćenog teksta deaktivirano.',
-        'Show command line output.' => 'Prikaz komandnog izlaza.',
         'Show queues even when only locked tickets are in.' => 'Prikaži redove čak i kad sadrže samo zaključane tikete.',
         'Show the current owner in the customer interface.' => 'Prikazuje aktuelnog vlasnika u klijentskom interfejsu.',
         'Show the current queue in the customer interface.' => 'Prikazuje aktuelni red u klijentskom interfejsu.',
@@ -8338,8 +8320,6 @@ Vaša tehnička podrška
             'Prikazuje pregleda tiketa (Info klijenta => 1 - pokazuje i podatke o klijentu, Maksimalna veličina prikaza podataka o klijentu u karakterima).',
         'Shows all both ro and rw queues in the queue view.' => 'Prikazuje sve, i ro i rw redove na pregledu redova.',
         'Shows all both ro and rw tickets in the service view.' => 'Prikazuje sve, i ro i rw tikete na pregledu usluga.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'Prikazuje sve otvorene tikete (čak iako su zaključani) na eskalacionom pregledu u interfejsu operatera.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             'Prikazuje sve članke tiketa (detaljno) na detaljnom pregledu.',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8426,10 +8406,6 @@ Vaša tehnička podrška
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             'Sortiranje tiketa (rastuće ili opadajuće) kada se izabere jedan red iz pregleda usluge posle sortiranja tiketa po prioritetu. Vrednosti: 0 = rastuće (najstarije na vrhu, podrazumevano), 1 = opadajuće (najnovije na vrhu). Koristi ID usluge za ključ i 0 ili 1 za vrednost.',
         'Spam' => 'Spam',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'Primer podešavanja za Spam Assassin. Ignoriše imejlove koje je označio Spam Assassin.',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            'Primer podešavanja za Spam Assassin. Premešta označene imejlove u red za nepoželjne.',
         'Spanish' => 'Španski',
         'Spanish (Colombia)' => 'Španski (Kolumbija)',
         'Spanish (Mexico)' => 'Španski (Meksiko)',
@@ -8457,14 +8433,6 @@ Vaša tehnička podrška
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             'Određuje putanju datoteke logoa u zaglavlju strane (gif|jpg|png, 700 x 100 pixel).',
         'Specifies the path of the file for the performance log.' => 'Određuje putanju datoteke za performansu log-a.',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'Određuje putanju konvertora koji dozvoljava pregled Microsoft Excel datoteka u veb interfejsu.',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'Određuje putanju konvertora koji dozvoljava pregled Microsoft Word datoteka u veb interfejsu.',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'Određuje putanju konvertora koji dozvoljava pregled PDF dokumenata u veb interfe',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'Određuje putanju konvertora koji dozvoljava pregled XML datoteka u veb interfe',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'Određuje tekst koji treba da se pojavi u log datoteci da označi ulazak CGI skripte.',
         'Specifies user id of the postmaster data base.' => 'Određuje ID korisnika „postmaster” baze podataka.',

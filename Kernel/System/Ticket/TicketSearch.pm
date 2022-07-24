@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,16 +24,15 @@ Kernel::System::Ticket::TicketSearch - ticket search lib
 
 All ticket search functions.
 
-
 =head2 TicketSearch()
 
 To find tickets in your system.
 
     my @TicketIDs = $TicketObject->TicketSearch(
-        # result (required)
+        # result (optional, defaults to 'HASH')
         Result => 'ARRAY' || 'HASH' || 'COUNT',
 
-        # result limit
+        # limit the number of returned tickets (optional, defaults to 1000)
         Limit => 100,
 
         # Use TicketSearch as a ticket filter on a single ticket,
@@ -42,10 +41,15 @@ To find tickets in your system.
         TicketID     => [1234, 1235],
 
         # ticket number (optional) as STRING or as ARRAYREF
+        # The value(s) will be processed as a SQL query expression.
         TicketNumber => '%123546%',
         TicketNumber => ['%123546%', '%123666%'],
 
         # ticket title (optional) as STRING or as ARRAYREF
+        # The value(s) will be processed as a SQL query expression.
+        # If ConditionInline is set to 1, then phrases separated by whitespace
+        # will form an AND condition, and the settings of ContentSearchPrefix
+        # and ContentSearchSuffix will be used.
         Title => '%SomeText%',
         Title => ['%SomeTest1%', '%SomeTest2%'],
 
@@ -90,21 +94,26 @@ To find tickets in your system.
         WatchUserIDs => [1, 12, 455, 32]
 
         # CustomerID (optional) as STRING or as ARRAYREF
+        # The value(s) will be processed as a SQL query expression.
         CustomerID => '123',
         CustomerID => ['123', 'ABC'],
 
         # CustomerIDRaw (optional) as STRING or as ARRAYREF
-        # CustomerID without QueryCondition checking
-        #The raw value will be used if is set this parameter
+        # CustomerID without QueryCondition checking.
+        # If set, then CustomerID will be ignored.
+        # The raw values will be quoted and used as phrases in an OR condition.
         CustomerIDRaw => '123 + 345',
         CustomerIDRaw => ['123', 'ABC','123 && 456','ABC % efg'],
 
         # CustomerUserLogin (optional) as STRING as ARRAYREF
+        # The value(s) will be processed as a SQL query expression.
         CustomerUserLogin => 'uid123',
         CustomerUserLogin => ['uid123', 'uid777'],
 
         # CustomerUserLoginRaw (optional) as STRING as ARRAYREF
-        #The raw value will be used if is set this parameter
+        # CustomerUserLogin without QueryCondition checking.
+        # If set, then CustomerUserLogin will be ignored.
+        # The raw values will be quoted and used as phrases in an OR condition.
         CustomerUserLoginRaw => 'uid',
         CustomerUserLoginRaw => 'uid + 123',
         CustomerUserLoginRaw => ['uid  -  123', 'uid # 777 + 321'],
@@ -135,7 +144,7 @@ To find tickets in your system.
             SmallerThanEquals => '2002-02-02 02:02:02',
         }
 
-        # User ID for searching tickets by ticket flags (defaults to UserID)
+        # User ID for searching tickets by ticket flags (optional, defaults to UserID)
         TicketFlagUserID => 1,
 
         # search for ticket flags
@@ -149,9 +158,8 @@ To find tickets in your system.
             Seen => 1,
         },
 
-        # User ID for searching tickets by article flags (defaults to UserID)
+        # User ID for searching tickets by article flags (optional, defaults to UserID)
         ArticleFlagUserID => 1,
-
 
         # search for tickets by the presence of flags on articles
         ArticleFlag => {
@@ -168,20 +176,22 @@ To find tickets in your system.
         # attachment stuff (optional, applies only for ArticleStorageDB)
         AttachmentName => '%anyfile.txt%',
 
-        # use full article text index if configured (optional, default off)
+        # use full article text index if configured (optional, defaults to off)
         FullTextIndex => 1,
 
-        # article content search (AND or OR for From, To, Cc, Subject and Body) (optional)
+        # article content search (AND or OR for From, To, Cc, Subject and Body) (optional, defaults to 'AND')
         ContentSearch => 'AND',
 
-        # article content search prefix (for From, To, Cc, Subject and Body) (optional)
+        # article content search prefix (for From, To, Cc, Subject and Body) (optional, defaults to '*')
+        # For ticket Title, defaults to an empty string.
         ContentSearchPrefix => '*',
 
-        # article content search suffix (for From, To, Cc, Subject and Body) (optional)
+        # article content search suffix (for From, To, Cc, Subject and Body) (optional, defaults to '*')
+        # For ticket Title, defaults to an empty string.
         ContentSearchSuffix => '*',
 
-        # content conditions for From,To,Cc,Subject,Body
-        # Title,CustomerID and CustomerUserLogin (all optional)
+        # content conditions for From, To, Cc, Subject, Body, and Title (all optional)
+        # When used with Title, it enables ContentSearchPrefix and ContentSearchSuffix.
         ConditionInline => 1,
 
         # articles created more than 60 minutes ago (article older than 60 minutes) (optional)
@@ -276,8 +286,9 @@ To find tickets in your system.
         # if specified together all tickets are searched
         ArchiveFlags => ['y', 'n'],
 
-        # OrderBy and SortBy (optional)
+        # OrderBy (optional, defaults to 'Down')
         OrderBy => 'Down',  # Down|Up
+        # SortBy (optional, defaults to 'Age')
         SortBy  => 'Age',   # Created|Owner|Responsible|CustomerID|State|TicketNumber|Queue|Priority|Age|Type|Lock
                             # Changed|Title|Service|SLA|PendingTime|EscalationTime
                             # EscalationUpdateTime|EscalationResponseTime|EscalationSolutionTime
@@ -289,13 +300,15 @@ To find tickets in your system.
 
         # user search (UserID is required)
         UserID     => 123,
+        # Required permission (optional, defaults to 'ro')
         Permission => 'ro' || 'rw',
 
         # customer search (CustomerUserID is required)
         CustomerUserID => 123,
+        # Required permission (optional, defaults to 'ro')
         Permission     => 'ro' || 'rw',
 
-        # CacheTTL, cache search result in seconds (optional)
+        # CacheTTL, cache search result in seconds (optional, defaults to 4 minutes)
         CacheTTL => 60 * 15,
     );
 
@@ -322,14 +335,13 @@ Result: 'COUNT'
 sub TicketSearch {
     my ( $Self, %Param ) = @_;
 
+    # Set defaults for unspecified parameters
     my $Result  = $Param{Result}  || 'HASH';
     my $OrderBy = $Param{OrderBy} || 'Down';
     my $SortBy  = $Param{SortBy}  || 'Age';
     my $Limit   = $Param{Limit}   || 10000;
 
-    if ( !$Param{ContentSearch} ) {
-        $Param{ContentSearch} = 'AND';
-    }
+    $Param{ContentSearch} //= 'AND';
 
     my %SortOptions = (
         Owner                  => 'st.user_id',
@@ -1031,7 +1043,7 @@ sub TicketSearch {
 
             # add all unique accessible Group<->Customer combinations to query
             # for performance reasons all groups corresponsing with a unique customer id combination
-            #   will be combined into one part
+            # will be combined into one part
             my %CustomerIDCombinations;
             GROUPID:
             for my $GroupID ( sort keys %ExtraPermissionGroups ) {

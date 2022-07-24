@@ -1,6 +1,6 @@
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-// Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+// Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 // --
 // This software comes with ABSOLUTELY NO WARRANTY. For details, see
 // the enclosed file COPYING for license information (GPL). If you
@@ -80,6 +80,17 @@ Core.Agent.Preferences = (function (TargetNS) {
             else{
                 $TargetObj.val(0);
             }
+        });
+
+        $('#UserSkin').on('change', function() {
+            console.log($('#UserSkin').val());
+            var Skin = $('#UserSkin').val();
+            var $OptionsItem = $('.SkinOptions').parents('li').first();
+
+            if (Skin == 'default')
+                $OptionsItem.filter(':not(:visible)').show();
+            else
+                $OptionsItem.filter(':visible').hide();
         });
 
         $('#SaveAll').on('click', function() {

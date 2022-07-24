@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -39,8 +39,8 @@ sub Run {
 
     # check if config exists
     if ( $ConfigObject->Get('MIME-Viewer') ) {
-        for ( sort keys %{ $ConfigObject->Get('MIME-Viewer') } ) {
-            if ( $Param{File}->{ContentType} =~ /^$_/i ) {
+        for my $Type ( sort keys %{ $ConfigObject->Get('MIME-Viewer') } ) {
+            if ( $Param{File}->{ContentType} =~ /^$Type/i ) {
                 return (
                     %{ $Param{File} },
                     Action => 'Viewer',

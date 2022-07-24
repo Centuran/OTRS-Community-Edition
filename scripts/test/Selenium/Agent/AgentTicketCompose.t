@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -409,6 +409,14 @@ $Selenium->RunTest(
 
         $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && $("#ToCustomer").length;' );
 
+        # Clear article subject for the warning message to appear
+        $Selenium->execute_script("\$('#Subject').val('').trigger('change');");
+
+        $Selenium->WaitFor(
+            JavaScript =>
+                'return typeof($) === "function" && $(".MessageBox.Notice").length;'
+        );
+
         my $Message = 'Article subject will be empty if the subject contains only the ticket hook!';
 
         $Self->True(
@@ -720,6 +728,104 @@ $Selenium->RunTest(
         $Self->True(
             $Selenium->execute_script("return \$('#ResponseID$ArticleID').length;"),
             "Reply for internal article typo found."
+        );
+
+        # Simulate an isolated AJAX request with the "CheckSubject" subaction
+        my $AJAXResponse = $Selenium->execute_async_script(qq<
+            var callback = arguments[1];
+            Core.AJAX.FunctionCall(
+                Core.Config.Get('CGIHandle'),
+                {
+                    Action:    'AgentTicketCompose',
+                    Subaction: 'CheckSubject',
+                    TicketID:  '$TicketID',
+                    Subject:   ''
+                },
+                function (Response) {
+                    callback(Response);
+                },
+                'json'
+            );
+        >, q<
+            return arguments[0];
+        >);
+
+        $Self->True(
+            $AJAXResponse->{SubjectEmpty},
+            'CheckSubject - Empty subject is detected correctly'
+        );
+
+        $Self->True(
+            length $AJAXResponse->{Message},
+            'CheckSubject - A message is returned'
+        );
+
+        # Repeat test with a subject containing ticket hook and ticket number
+        my $Subject = $Kernel::OM->Get('Kernel::Config')->Get('Ticket::Hook') .
+            $Kernel::OM->Get('Kernel::Config')->Get('Ticket::HookDivider') .
+            $TicketNumber;
+
+        $AJAXResponse = $Selenium->execute_async_script(qq<
+            var callback = arguments[1];
+            Core.AJAX.FunctionCall(
+                Core.Config.Get('CGIHandle'),
+                {
+                    Action:    'AgentTicketCompose',
+                    Subaction: 'CheckSubject',
+                    TicketID:  '$TicketID',
+                    Subject:   '$Subject'
+                },
+                function (Response) {
+                    callback(Response);
+                },
+                'json'
+            );
+        >, q<
+            return arguments[0];
+        >);
+
+        $Self->True(
+            $AJAXResponse->{SubjectEmpty},
+            'CheckSubject - Subject with ticket hook and number is considered empty'
+        );
+
+        $Self->True(
+            length $AJAXResponse->{Message},
+            'CheckSubject - A message is returned'
+        );
+
+        # Test with a non-empty subject
+        $Subject = $Kernel::OM->Get('Kernel::Config')->Get('Ticket::Hook') .
+            $Kernel::OM->Get('Kernel::Config')->Get('Ticket::HookDivider') .
+            $TicketNumber . ' Test Subject';
+
+        $AJAXResponse = $Selenium->execute_async_script(qq<
+            var callback = arguments[1];
+            Core.AJAX.FunctionCall(
+                Core.Config.Get('CGIHandle'),
+                {
+                    Action:    'AgentTicketCompose',
+                    Subaction: 'CheckSubject',
+                    TicketID:  '$TicketID',
+                    Subject:   '$Subject'
+                },
+                function (Response) {
+                    callback(Response);
+                },
+                'json'
+            );
+        >, q<
+            return arguments[0];
+        >);
+
+        $Self->False(
+            $AJAXResponse->{SubjectEmpty},
+            'CheckSubject - Subject is not considered empty'
+        );
+
+        $Self->True(
+            length $AJAXResponse->{Message},
+            'CheckSubject - A message is returned'
         );
 
         # Delete test ticket.

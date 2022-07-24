@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.603938356164384;
+    $Self->{Completeness}        = 0.603400893163861;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -723,9 +723,6 @@ sub Data {
         'Time units' => 'masa unit',
         'Execute Ticket Commands' => 'Jalankan Arahan Tiket',
         'Send agent/customer notifications on changes' => 'Hantar ejen / pelanggan pemberitahuan mengenai perubahan',
-        'CMD' => 'CMD',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'Arahan ini akan dilaksanakan. ARG [0] akan menjadi nombor tiket. ARG [1] id tiket.',
         'Delete tickets' => 'Padam tiket',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'Amaran: Semua tiket yang terjejas akan dikeluarkan dari pangkalan data dan tidak boleh dipulihkan.',
@@ -4388,9 +4385,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '',
-        'No such user!' => '',
         'Invalid calendar!' => '',
-        'Invalid URL!' => '',
         'There was an error exporting the calendar!' => '',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4943,11 +4938,6 @@ sub Data {
         'Maximum Query Size' => 'Saiz Query Maksimum',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => 'Saiz Query Cache',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            'Tetapan \'saiz_query_cache\' harus digunakan (tinggi daripada 10 MB tetapi tidak melebihi 512 MB).',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => 'Ejen Simpanan Lalai',
@@ -6006,8 +5996,6 @@ dalaman.',
             '',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             '',
-        'Allows generic agent to execute custom command line scripts.' =>
-            '',
         'Allows generic agent to execute custom modules.' => '',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             'Membolehkan mempunyai format tiket gambaran sederhana (CustomerInfo => 1 - juga menunjukkan maklumat pelanggan).',
@@ -6085,8 +6073,6 @@ dalaman.',
         'Bounced to "%s".' => 'bangkit satu "%s".',
         'Bulgarian' => 'Bulgaria',
         'Bulk Action' => 'Tindakan pukal',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'CMD contoh persediaan. Mengabaikan emel dimana CMD luaran kembali beberapa output dalam STDOUT (emel akan disalurkan kedalam STDIN daripada some.bin).',
         'CSV Separator' => 'Pengasing CSV',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             'Masa Cache dalam saat untuk pengesahan ejen dalam GenericInterface.',
@@ -6899,8 +6885,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Defines the number of hours a successful communication will be stored.' =>
             '',
         'Defines the parameters for the customer preferences table.' => 'Mentakrifkan parameter untuk jadual tetapan pelanggan.',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7416,8 +7400,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Jika "Radius" dipilih untuk Customer::AuthModule, hos radius mesti ditentukan.',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Jika "Radius" dipilih untuk Customer::AuthModule, anda boleh tentukan samada aplikasi akan berhenti jika cth: suatu sambungan kepada server tidak dapat dihubungi disebabkan masalah jaringan.',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            'Jika "Sendmail" dipilih sebagai SendmailModule, lokasi bagi binari sendmail dan pilihan yang diperlukan mesti ditentukan.',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'Jika "SysLog" dipilih untuk LogModule, kemudahan log istimewa boleh ditentukan.',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7482,6 +7464,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             '',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             '',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => '',
         'Include tickets of subqueues per default when selecting a queue.' =>
             'Termasuk tiket daripada sub-barisan secara default apabila memilih barisan.',
@@ -7718,7 +7701,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Jumlah tiket yang akan dipamerkan dalam setiap halaman dari hasil carian dalam paparan ejen.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Jumlah tiket yang akan dipamerkan dalam setiap halaman dari hasil carian dalam paparan pelanggan.',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS boleh menggunakan salah satu atau lebih pangkalan data cermin baca sahaja untuk operasi mahal seperti carian atau statistik teks penuh generasi. Di sini anda boleh menentukan DSN untuk pangkalan data cermin pertama.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7946,7 +7928,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'SMS' => 'SMS',
         'SMS (Short Message Service)' => 'SMS (Servis Pesanan Ringkas)',
         'Salutations' => 'Kata Aluan',
-        'Sample command output' => 'Sampel output arahan',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             'Menyimpan lampiran artikel. "DB" menyimpan semua data dalam pangkalan data (tidak digalakkan untuk menyimpan lampiran besar). "FS" menyimpan data pada sistem fail, ini adalah lebih cepat tetapi server web perlu dijalankan di bawah pengguna OTRS itu. Anda boleh bertukar antara modul walaupun pada satu sistem yang sudah dalam pengeluaran tanpa kehilangan data. Nota: Carian untuk nama lampiran tidak disokong apabila "FS" digunakan.',
         'Schedule a maintenance period.' => 'Menjadualkan satu tempoh penyelenggaraan.',
@@ -7972,6 +7953,8 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             '',
         'Select your preferred layout for the software.' => '',
         'Select your preferred theme for OTRS.' => '',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => 'Pilih bahagian belakang cache untuk digunakan.',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             'Memilih modul untuk mengendalikan Gambar melalui paparan web. "DB" menyimpan semua Gambar dalam pangkalan data, "FS" menggunakan sistem fail.',
@@ -8227,7 +8210,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Menunjukkan pilihan tanggungjawab dalam tiket telefon dan emel dalam paparan ejen.',
         'Show article as rich text even if rich text writing is disabled.' =>
             'Menunjukkan artikel sebagai teks walaupun penulisan teks aneka dimatikan.',
-        'Show command line output.' => '',
         'Show queues even when only locked tickets are in.' => 'Tunjukkan barisan walaupun apabila hanya ada tiket berkunci.',
         'Show the current owner in the customer interface.' => 'Tunjuk pemilik semasa dalam antara muka pelanggan.',
         'Show the current queue in the customer interface.' => 'Tunjuk barisan semasa dalam antara muka pelanggan.',
@@ -8334,8 +8316,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Menunjukkan previu overview tiket (CustomerInfo => 1 - tunjuk juga maklumat pelanggan, CustomerInfoMaxSize saiz maksimum aksara maklumat pelanggan).',
         'Shows all both ro and rw queues in the queue view.' => 'Menunjukkan kesemua aturan kedua-dua ro dan rw dalam paparan aturan.',
         'Shows all both ro and rw tickets in the service view.' => 'Menunjukkan semua kedua-dua tiket ro dan rw dalam pandangan servis.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'Menunjukkan kesemua tiket terbuka (walaupuan jika mereka dikunci) dalam paparan labungan dari paparan ejen.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8422,10 +8402,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             'Susun tiket (menaik atau menurun) apabila atau aturan tunggal dipilh dalam paparan servis dan selepas tiket disusun mengikut keutamaan. Nilai: 0 = menaik (terlama diatas, default), 1 = menurun (terbaru diatas). Menggunakan ServiceID untuk kunci dan 0 atau 1 untuk nilai.',
         'Spam' => '',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'Contoh pemasangan Spam Assassin. Abaikan emel yang ditanda dengan SpamAssassin.',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            'Contoh pemasangan Spam Assassin. Pindah mel ditanda ke aturan spam.',
         'Spanish' => 'Sepanyol',
         'Spanish (Colombia)' => 'Sepanyol (Columbia)',
         'Spanish (Mexico)' => 'Sepanyol (Mexico)',
@@ -8453,14 +8429,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             'Menentukan laluan fail untuk logo dalam header halaman (gif|jpg|png, 700 x 100 piksel).',
         'Specifies the path of the file for the performance log.' => 'Menentukan laluan fail untuk log prestasi.',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'Menentukan laluan kepada penukar yang membenarkan paparan fail Microsoft Excel, dalam paparan web.',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'Menentukan laluan kepada penukar yang membolehkan paparan fail Microsoft Word, dalam paparan web.',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'Menentukan laluan kepada penukar yang membenarkan paparan dokumen PDF, dalam paparan web.',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'Menetukan laluan kepada penukar yang membolehkan paparan fail XML, dalam paparan web.',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'Menentukan teks yang patut muncul dalam fail log untuk menunjukkan kemasukan skrip CGI.',
         'Specifies user id of the postmaster data base.' => 'Menentukan id pengguna pada pangkalan data postmaster.',

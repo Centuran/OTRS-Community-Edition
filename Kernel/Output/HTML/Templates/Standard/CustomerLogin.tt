@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -11,7 +11,7 @@
 <!-- start login -->
 <div id="MainBox" class="Login ARIARoleMain">
 [% RenderBlockStart("Message") %]
-    <div class="[% IF Data.MessageType == 'Success' %]SuccessBox[% ELSE %]ErrorBox[% END %]"><span>[% Translate(Data.Message) | html %]</span></div>
+    <div class="[% IF Data.MessageType == 'Success' %]SuccessBox[% ELSE %]ErrorBox[% END %]"><p>[% Translate(Data.Message) | html %]</p></div>
 [% RenderBlockEnd("Message") %]
     <noscript>
     <div id="NoJavaScript">
@@ -64,11 +64,6 @@
                     <div>
                         <label for="Password">[% Translate("Password") | html %]</label>
                         <input title="[% Translate("Your password") | html %]" type="password" name="Password" id="Password" autocomplete="[% Data.PasswordAutocomplete %]" />
-[% RenderBlockStart("LostPasswordLink") %]
-                        <div class="Option">
-                            <a href="#Reset" id="ForgotPassword">[% Translate("Forgot password?") | html %]</a>
-                        </div>
-[% RenderBlockEnd("LostPasswordLink") %]
                     </div>
 
 [% RenderBlockStart("AuthTwoFactor") %]
@@ -83,6 +78,13 @@
                     </div>
                     <div class="Clear"></div>
                 </form>
+
+[% RenderBlockStart("LostPasswordLink") %]
+                <p>
+                    <a href="#Reset" id="ForgotPassword">[% Translate("Forgot password?") | html %]</a>
+                </p>
+[% RenderBlockEnd("LostPasswordLink") %]
+
 [% RenderBlockStart("CreateAccountLink") %]
                 <p>[% Translate("Not yet registered?") | html %] <a href="#Signup">[% Translate("Sign up now") | html %]</a>.</p>
 [% RenderBlockEnd("CreateAccountLink") %]
@@ -90,7 +92,7 @@
 [% RenderBlockEnd("LoginBox") %]
 [% RenderBlockStart("LostPassword") %]
             <div id="Reset">
-                <a href="#Login" class="InlineNavigation">&larr; [% Translate("Back") | html %]</a>
+                <a href="#Login" class="InlineNavigation">[% Translate("Back") | html %]</a>
                 <h2>[% Translate("Request New Password") | html %]</h2>
                 <form class="Floating" action="[% Env("CGIHandle") %]" method="post" enctype="application/x-www-form-urlencoded">
                     <input type="hidden" name="Action" value="CustomerLostPassword" />
@@ -109,7 +111,7 @@
 [% RenderBlockEnd("LostPassword") %]
 [% RenderBlockStart("CreateAccount") %]
             <div id="Signup">
-                <a href="#Login" class="InlineNavigation">&larr; [% Translate("Back") | html %]</a>
+                <a href="#Login" class="InlineNavigation">[% Translate("Back") | html %]</a>
                 <h2>[% Translate("Create Account") | html %]</h2>
                 <p>[% Translate("Please fill out this form to receive login credentials.") | html %]</p>
                 <form class="Floating Validate" action="[% Env("CGIHandle") %]" method="post" enctype="application/x-www-form-urlencoded">

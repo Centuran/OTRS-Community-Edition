@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -272,11 +272,11 @@ sub Decrypt {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Message)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Message)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -380,11 +380,11 @@ sub Sign {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Message)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Message)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -2324,8 +2324,11 @@ sub _Init {
         $Self->{Cmd} = "LC_MESSAGES=POSIX $Self->{Bin}";
     }
 
+    # Get system user name to include in the generated random state file name
+    my $SystemUserName = $<;
+
     # ensure that there is a random state file that we can write to (otherwise openssl will bail)
-    $ENV{RANDFILE} = $ConfigObject->Get('TempDir') . '/.rnd';    ## no critic
+    $ENV{RANDFILE} = $ConfigObject->Get('TempDir') . "/.rnd_$SystemUserName";    ## no critic
 
     # prepend RANDFILE declaration to openssl cmd
     $Self->{Cmd} = "HOME=" . $ConfigObject->Get('Home') . " RANDFILE=$ENV{RANDFILE} $Self->{Cmd}";

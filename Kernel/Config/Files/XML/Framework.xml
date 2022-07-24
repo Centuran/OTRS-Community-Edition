@@ -427,7 +427,7 @@
         <Description Translatable="1">Defines the default CSS used in rich text editors.</Description>
         <Navigation>Frontend::Base</Navigation>
         <Value>
-            <Item ValueType="String" ValueRegex="">font-family:Geneva,Helvetica,Arial,sans-serif; font-size: 12px;</Item>
+            <Item ValueType="String" ValueRegex="">font-family:Geneva,Helvetica,Arial,sans-serif; font-size: 12pt;</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::RichText::EnhancedMode" Required="1" Valid="1">
@@ -665,13 +665,6 @@
         <Navigation>Core::Email</Navigation>
         <Value>
             <Item ValueType="PerlModule" ValueFilter="Kernel/System/Email/*.pm">Kernel::System::Email::Sendmail</Item>
-        </Value>
-    </Setting>
-    <Setting Name="SendmailModule::CMD" Required="1" Valid="1" ConfigLevel="200">
-        <Description Translatable="1">If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.</Description>
-        <Navigation>Core::Email</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">/usr/sbin/sendmail -i -f</Item>
         </Value>
     </Setting>
     <Setting Name="SendmailModule::Host" Required="1" Valid="1" ConfigLevel="200">
@@ -2618,34 +2611,6 @@
             <Item ValueType="String" ValueRegex="">admin</Item>
         </Value>
     </Setting>
-    <Setting Name="MIME-Viewer###application/excel" Required="0" Valid="0">
-        <Description Translatable="1">Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.</Description>
-        <Navigation>Frontend::Agent::MIMEViewer</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">xlhtml</Item>
-        </Value>
-    </Setting>
-    <Setting Name="MIME-Viewer###application/msword" Required="0" Valid="0">
-        <Description Translatable="1">Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.</Description>
-        <Navigation>Frontend::Agent::MIMEViewer</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">wvWare</Item>
-        </Value>
-    </Setting>
-    <Setting Name="MIME-Viewer###application/pdf" Required="0" Valid="0">
-        <Description Translatable="1">Specifies the path to the converter that allows the view of PDF documents, in the web interface.</Description>
-        <Navigation>Frontend::Agent::MIMEViewer</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">pdftohtml -stdout -i</Item>
-        </Value>
-    </Setting>
-    <Setting Name="MIME-Viewer###text/xml" Required="0" Valid="0">
-        <Description Translatable="1">Specifies the path to the converter that allows the view of XML files, in the web interface.</Description>
-        <Navigation>Frontend::Agent::MIMEViewer</Navigation>
-        <Value>
-            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Home&gt;/scripts/tools/xml2html.pl</Item>
-        </Value>
-    </Setting>
     <Setting Name="WebUserAgent::Timeout" Required="1" Valid="1" ConfigLevel="200">
         <Description Translatable="1">Sets the timeout (in seconds) for http/ftp downloads.</Description>
         <Navigation>Core::WebUserAgent</Navigation>
@@ -3334,6 +3299,23 @@ You can log in via the following URL:
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="PreferencesGroups###SkinOptions" Required="0" Valid="1">
+        <Description Translatable="1">Defines the config parameters of this item, to be shown in the preferences view. Please note: setting 'Active' to 0 will only prevent agents from editing settings of this group in their personal preferences, but will still allow administrators to edit the settings of another user's behalf. Use 'PreferenceGroup' to control in which area these settings should be shown in the user interface.</Description>
+        <Navigation>Frontend::Agent::View::Preferences</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::Preferences::SkinOptions</Item>
+                <Item Key="PreferenceGroup">Miscellaneous</Item>
+                <Item Key="Label" Translatable="1">Skin Options</Item>
+                <Item Key="Desc" Translatable="1">Select configuration options of the selected skin.</Item>
+                <Item Key="Key" Translatable="1"></Item>
+                <Item Key="PrefKey">UserSkinOptions</Item>
+                <Item Key="NeedsReload">1</Item>
+                <Item Key="Prio">100</Item>
+                <Item Key="Active">1</Item>
+            </Hash>
+        </Value>
+    </Setting>
     <Setting Name="PreferencesGroups###Theme" Required="0" Valid="1">
         <Description Translatable="1">Defines the config parameters of this item, to be shown in the preferences view. Please note: setting 'Active' to 0 will only prevent agents from editing settings of this group in their personal preferences, but will still allow administrators to edit the settings of another user's behalf. Use 'PreferenceGroup' to control in which area these settings should be shown in the user interface.</Description>
         <Navigation>Frontend::Agent::View::Preferences</Navigation>
@@ -4001,6 +3983,7 @@ via the Preferences button after logging in.
                 <Item Key="PasswordMin2Lower2UpperCharacters">0</Item>
                 <Item Key="PasswordMin2Characters">0</Item>
                 <Item Key="PasswordNeedDigit">0</Item>
+                <Item Key="PasswordMaxLoginFailed">0</Item>
                 <Item Key="Active">1</Item>
             </Hash>
         </Value>
@@ -4973,7 +4956,7 @@ via the Preferences button after logging in.
     </Setting>
     <Setting Name="Frontend::NavBarModule###2-AdminFavourites" Required="0" Valid="1">
         <Description Translatable="1">Frontend module registration (show personal favorites as sub navigation items of 'Admin').</Description>
-        <Navigation>Frontend::Agent::ModuleRegistration</Navigation>
+        <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::NavBar::AdminFavourites</Item>
@@ -7430,23 +7413,6 @@ via the Preferences button after logging in.
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="DashboardBackend###0420-CmdOutput" Required="0" Valid="0">
-        <Description Translatable="1">Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.</Description>
-        <Navigation>Frontend::Agent::View::Dashboard</Navigation>
-        <Value>
-            <Hash>
-                <Item Key="Module">Kernel::Output::HTML::Dashboard::CmdOutput</Item>
-                <Item Key="Title" Translatable="1">Sample command output</Item>
-                <Item Key="Description" Translatable="1">Show command line output.</Item>
-                <Item Key="Block">ContentSmall</Item>
-                <Item Key="Group"></Item>
-                <Item Key="Default">0</Item>
-                <Item Key="CacheTTL">60</Item>
-                <Item Key="Cmd">/bin/echo Configure me please.</Item>
-                <Item Key="Mandatory">0</Item>
-            </Hash>
-        </Value>
-    </Setting>
     <Setting Name="DashboardBackend###0200-Image" Required="0" Valid="0">
         <Description Translatable="1">Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.</Description>
         <Navigation>Frontend::Agent::View::Dashboard</Navigation>
@@ -7768,6 +7734,7 @@ via the Preferences button after logging in.
                 <Item>Core.InputFields.css</Item>
                 <Item>Core.Print.css</Item>
                 <Item>Core.Animations.css</Item>
+                <!-- <Item>centuran/agent.css</Item> -->
             </Array>
         </Value>
     </Setting>
@@ -7787,7 +7754,7 @@ via the Preferences button after logging in.
             <Array>
                 <Item>thirdparty/jquery-3.5.1/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
-                <Item>thirdparty/jquery-ui-1.13.0/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.1/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.js</Item>
                 <Item>thirdparty/jquery-validate-1.19.3/jquery.validate.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
@@ -7889,7 +7856,7 @@ via the Preferences button after logging in.
                 <Item>thirdparty/jquery-3.5.1/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
                 <Item>thirdparty/jquery-validate-1.19.3/jquery.validate.js</Item>
-                <Item>thirdparty/jquery-ui-1.13.0/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.1/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
                 <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
                 <Item>thirdparty/nunjucks-3.2.3/nunjucks.js</Item>

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -13,6 +13,7 @@ use strict;
 use warnings;
 
 use Kernel::Language qw(Translatable);
+use Kernel::System::VariableCheck qw(:all);
 
 our @ObjectDependencies = (
     'Kernel::Config',
@@ -21,6 +22,7 @@ our @ObjectDependencies = (
     'Kernel::System::Log',
     'Kernel::System::Main',
     'Kernel::System::SystemMaintenance',
+    'Kernel::System::Valid',
 );
 
 =head1 NAME
@@ -117,17 +119,19 @@ sub Auth {
     # get customer user object
     my $ConfigObject       = $Kernel::OM->Get('Kernel::Config');
     my $CustomerUserObject = $Kernel::OM->Get('Kernel::System::CustomerUser');
+    my $LogObject          = $Kernel::OM->Get('Kernel::System::Log');
+    my $ValidObject        = $Kernel::OM->Get('Kernel::System::Valid');
 
     # use all 11 backends and return on first auth
     my $User;
     COUNT:
-    for ( '', 1 .. 10 ) {
+    for my $Number ( '', 1 .. 10 ) {
 
         # next on no config setting
-        next COUNT if !$Self->{"Backend$_"};
+        next COUNT if !$Self->{"Backend$Number"};
 
         # check auth backend
-        $User = $Self->{"Backend$_"}->Auth(%Param);
+        $User = $Self->{"Backend$Number"}->Auth(%Param);
 
         # next on no success
         next COUNT if !$User;
@@ -158,34 +162,120 @@ sub Auth {
         }
 
         # remember auth backend
-        if ($User) {
-            $CustomerUserObject->SetPreferences(
-                Key    => 'UserAuthBackend',
-                Value  => $_,
-                UserID => $User,
-            );
-            last COUNT;
-        }
+        $CustomerUserObject->SetPreferences(
+            Key    => 'UserAuthBackend',
+            Value  => $Number,
+            UserID => $User,
+        );
+
+        last COUNT;
     }
 
-    # check if record exists
     if ( !$User ) {
-        my %CustomerData = $CustomerUserObject->CustomerUserDataGet( User => $Param{User} );
-        if (%CustomerData) {
-            my $Count = $CustomerData{UserLoginFailed} || 0;
-            $Count++;
-            $CustomerUserObject->SetPreferences(
-                Key    => 'UserLoginFailed',
-                Value  => $Count,
-                UserID => $CustomerData{UserLogin},
+        return if !defined $Param{User} || !length $Param{User};
+
+        my %CustomerUserData = $CustomerUserObject->CustomerUserDataGet(
+            User => $Param{User}
+        );
+
+        return if !%CustomerUserData;
+
+        my $Count = $CustomerUserData{UserLoginFailed} || 0;
+        $Count++;
+
+        $CustomerUserObject->SetPreferences(
+            Key    => 'UserLoginFailed',
+            Value  => $Count,
+            UserID => $CustomerUserData{UserLogin},
+        );
+
+        my $AuthBackendConfig = $ConfigObject->Get( $CustomerUserData{Source} );
+
+        return if !IsHashRefWithData($AuthBackendConfig);
+        return if $AuthBackendConfig->{ReadOnly};
+
+        my $Prefs = $ConfigObject->Get('CustomerPreferencesGroups');
+        my $MaxLoginAttempts;
+
+        if (
+            IsHashRefWithData($Prefs)
+            && $Prefs->{Password}
+            && $Prefs->{Password}{PasswordMaxLoginFailed}
+            )
+        {
+            $MaxLoginAttempts = $Prefs->{Password}{PasswordMaxLoginFailed};
+        }
+
+        # If undefined or zero, there's no failed logins limit in place
+        return if !$MaxLoginAttempts;
+
+        # Do nothing if failed logins limit hasn't been reached yet
+        return if $Count < $MaxLoginAttempts;
+
+        # Check if the user account is flagged as invalid
+        # TODO: We should think about moving it higher up, so this method will
+        # exit as early as it appears that the Customer User is invalid
+        my $InvalidID = $ValidObject->ValidLookup(
+            Valid => 'invalid',
+        );
+
+        return if $CustomerUserData{ValidID} eq $InvalidID;
+
+        # Failed logins limit exceeded
+
+        my $TemporarilyInvalidID = $ValidObject->ValidLookup(
+            Valid => 'invalid-temporarily'
+        );
+        return if !$TemporarilyInvalidID;
+
+        return if !defined $CustomerUserData{ValidID};
+
+        # Do nothing if customer user is already temporarily invalid
+        return if $CustomerUserData{ValidID} == $TemporarilyInvalidID;
+
+        # We don't want to overwrite the user's password
+        delete $CustomerUserData{UserPassword};
+
+        my $Updated = $CustomerUserObject->CustomerUserUpdate(
+            %CustomerUserData,
+            ID      => $CustomerUserData{UserLogin},
+            ValidID => $TemporarilyInvalidID,
+            UserID  => 1
+        );
+
+        if ($Updated) {
+            $LogObject->Log(
+                Priority => 'notice',
+                Message  => "Customer user $CustomerUserData{UserLogin} "
+                    . "failed to log in $Count times. Setting the account to "
+                    . '"invalid-temporarily".',
             );
         }
+        else {
+            $LogObject->Log(
+                Priority => 'error',
+                Message  => 'Failed to set customer user '
+                    . "$CustomerUserData{UserLogin} account to "
+                    . "\"invalid-temporarily\" after $Count unsuccessful "
+                    . 'log in attempts.',
+            );
+        }
+
         return;
     }
 
     # check if user is valid
-    my %CustomerData = $CustomerUserObject->CustomerUserDataGet( User => $User );
-    if ( defined $CustomerData{ValidID} && $CustomerData{ValidID} ne 1 ) {
+    my %CustomerUserData = $CustomerUserObject->CustomerUserDataGet(
+        User => $User
+    );
+
+    return $User if !%CustomerUserData;
+
+    if (
+        defined $CustomerUserData{ValidID}
+        && $CustomerUserData{ValidID} != 1
+        )
+    {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'notice',
             Message  => "CustomerUser: '$User' is set to invalid, can't login!",
@@ -193,22 +283,17 @@ sub Auth {
         return;
     }
 
-    return $User if !%CustomerData;
-
     # reset failed logins
     $CustomerUserObject->SetPreferences(
         Key    => 'UserLoginFailed',
         Value  => 0,
-        UserID => $CustomerData{UserLogin},
+        UserID => $CustomerUserData{UserLogin},
     );
 
-    # on system maintenance customers
-    # shouldn't be allowed get into the system
+    # During system maintenance customer users can't access the system
     my $ActiveMaintenance = $Kernel::OM->Get('Kernel::System::SystemMaintenance')->SystemMaintenanceIsActive();
 
-    # check if system maintenance is active
     if ($ActiveMaintenance) {
-
         $Self->{LastErrorMessage} =
             $ConfigObject->Get('SystemMaintenance::IsActiveDefaultLoginErrorMessage')
             || Translatable("It is currently not possible to login due to a scheduled system maintenance.");
@@ -222,7 +307,7 @@ sub Auth {
     $CustomerUserObject->SetPreferences(
         Key    => 'UserLastLogin',
         Value  => $DateTimeObject->ToEpoch(),
-        UserID => $CustomerData{UserLogin},
+        UserID => $CustomerUserData{UserLogin},
     );
 
     return $User;
@@ -247,13 +332,3 @@ sub GetLastErrorMessage {
 }
 
 1;
-
-=head1 TERMS AND CONDITIONS
-
-This software is part of the OTRS project (L<https://otrs.org/>).
-
-This software comes with ABSOLUTELY NO WARRANTY. For details, see
-the enclosed file COPYING for license information (GPL). If you
-did not receive this file, see L<https://www.gnu.org/licenses/gpl-3.0.txt>.
-
-=cut

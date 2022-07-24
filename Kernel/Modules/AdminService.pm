@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -61,8 +61,8 @@ sub Run {
 
         # get params
         my %GetParam;
-        for (qw(ServiceID ParentID Name ValidID Comment)) {
-            $GetParam{$_} = $ParamObject->GetParam( Param => $_ ) || '';
+        for my $Name (qw(ServiceID ParentID Name ValidID Comment)) {
+            $GetParam{$Name} = $ParamObject->GetParam( Param => $Name ) || '';
         }
 
         my %Error;

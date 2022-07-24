@@ -534,4 +534,3 @@ __END__
 
 
 #ABSTRACT: Construct common HTTP::Request objects
-

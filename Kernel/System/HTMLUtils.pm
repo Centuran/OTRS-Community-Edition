@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -65,11 +65,11 @@ sub ToAscii {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -599,11 +599,11 @@ sub ToHTML {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -637,11 +637,11 @@ sub DocumentComplete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String Charset)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String Charset)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -678,11 +678,11 @@ sub DocumentStrip {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -720,11 +720,11 @@ sub DocumentCleanup {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
@@ -756,7 +756,7 @@ sub DocumentCleanup {
     # "<div style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt" type="cite">"
     # because of cross mail client and browser compatability
     my $Style = "border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt";
-    for ( 1 .. 10 ) {
+    for my $Number ( 1 .. 10 ) {
         $Param{String} =~ s{
             <blockquote(.*?)>(.+?)</blockquote>
         }
@@ -899,6 +899,9 @@ sub LinkQuote {
         my $Link     = $3;
         my $End      = $4 || '';
 
+        $Link =~ s/(?<dots>\.*)$//;
+        $End .= $+{dots};
+
         # there may different links for href and link body
         my $HrefLink;
         my $DisplayLink;
@@ -981,17 +984,17 @@ sub Safety {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(String)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return;
         }
     }
 
-    my $String = $Param{String} || '';
+    my $String = $Param{String} // '';
 
     # check ref
     my $StringScalar;
@@ -1136,7 +1139,7 @@ sub Safety {
 
                 # remove javascript in a href links or src links
                 $Replaced += $Tag =~ s{
-                    ((?:\s|;|/)(?:background|url|src|href)=)
+                    ((?:\s|;|/)(?:background|url|src|href)\s*=\s*)
                     ('|"|)                                  # delimiter, can be empty
                     (?:\s* $JavaScriptPrefixRegex .*?)      # javascript, followed by anything but the delimiter
                     \2                                      # delimiter again

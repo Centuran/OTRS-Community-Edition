@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -36,15 +36,15 @@ sub Connect {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Login Password Host Timeout Debug)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Login Password Host Timeout Debug)) {
+        if ( !defined $Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Name!"
             );
             return (
                 Successful => 0,
-                Message    => "Need $_!",
+                Message    => "Need $Name!",
             );
         }
     }
@@ -98,7 +98,7 @@ sub Fetch {
     # fetch again if still messages on the account
     my $CommunicationLogStatus = 'Successful';
     COUNT:
-    for ( 1 .. 200 ) {
+    for my $Number ( 1 .. 200 ) {
         my $Fetch = $Self->_Fetch(
             %Param,
             CommunicationLogObject => $CommunicationLogObject,
@@ -127,13 +127,13 @@ sub _Fetch {
     );
 
     # check needed stuff
-    for (qw(Login Password Host Trusted QueueID)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Login Password Host Trusted QueueID)) {
+        if ( !defined $Param{$Name} ) {
             $CommunicationLogObject->ObjectLog(
                 ObjectLogType => 'Connection',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::MailAccount::IMAP',
-                Value         => "$_ not defined!",
+                Value         => "$Name not defined!",
             );
 
             $CommunicationLogObject->ObjectLogStop(
@@ -144,13 +144,13 @@ sub _Fetch {
             return;
         }
     }
-    for (qw(Login Password Host)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Login Password Host)) {
+        if ( !$Param{$Name} ) {
             $CommunicationLogObject->ObjectLog(
                 ObjectLogType => 'Connection',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::MailAccount::IMAP',
-                Value         => "Need $_!",
+                Value         => "Need $Name!",
             );
 
             $CommunicationLogObject->ObjectLogStop(

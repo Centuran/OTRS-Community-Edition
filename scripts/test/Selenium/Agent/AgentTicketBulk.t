@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -208,6 +208,25 @@ $Selenium->RunTest(
                 "QueueID $QueueID is created",
             );
         }
+        else {
+            # Update queue to make sure it is assigned to the test user
+            my $QueueUpdated = $QueueObject->QueueUpdate(
+                QueueID         => $QueueID,
+                Name            => 'Frontend',
+                ValidID         => 1,
+                GroupID         => $GroupIDs[0],
+                SystemAddressID => 1,
+                SalutationID    => 1,
+                SignatureID     => 1,
+                FollowUpID      => 1,
+                Comment         => 'Comment',
+                UserID          => $TestUserID,
+            );
+            $Self->True(
+                $QueueUpdated,
+                "QueueID $QueueID is updated",
+            );
+        }
         push @QueueIDs, $QueueID;
 
         my $TestCustomerUser      = 'User-' . $RandomNumber;
@@ -241,7 +260,7 @@ $Selenium->RunTest(
                 TicketTitle => 'TestTicket-Two',
                 Lock        => 'unlock',
                 QueueID     => $QueueRawID,
-                OwnerID     => $TestUserID,
+                OwnerID     => $UserIDs[0],
                 UserID      => $TestUserID,
             },
             {
@@ -451,6 +470,17 @@ $Selenium->RunTest(
             1,
             "Ticket remind locked after undo in bulk feature - $Tickets[0]->{TicketNumber}"
         );
+
+        # Check if ticket owner is unchanged
+        (my $OwnerID) = $TicketObject->OwnerCheck(
+            TicketID => $Tickets[1]->{TicketID},
+        );
+        $Self->Is(
+            $OwnerID,
+            $Tickets[1]->{OwnerID},
+            "Ticket owner is reset after undo in bulk feature - $Tickets[1]->{TicketNumber}"
+        );
+
         $Selenium->VerifiedRefresh();
 
         # Select test tickets and click on "bulk".

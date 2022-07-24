@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -656,8 +656,8 @@ sub Run {
                 || 'ERROR: CustomerPanelBodyLostPasswordToken is missing!';
             my $Subject = $ConfigObject->Get('CustomerPanelSubjectLostPasswordToken')
                 || 'ERROR: CustomerPanelSubjectLostPasswordToken is missing!';
-            for ( sort keys %UserData ) {
-                $Body =~ s/<OTRS_$_>/$UserData{$_}/gi;
+            for my $Field ( sort keys %UserData ) {
+                $Body =~ s/<OTRS_$Field>/$UserData{$Field}/gi;
             }
             my $Sent = $EmailObject->Send(
                 To       => $UserData{UserEmail},
@@ -726,8 +726,8 @@ sub Run {
             || 'New Password is: <OTRS_NEWPW>';
         my $Subject = $ConfigObject->Get('CustomerPanelSubjectLostPassword')
             || 'New Password!';
-        for ( sort keys %UserData ) {
-            $Body =~ s/<OTRS_$_>/$UserData{$_}/gi;
+        for my $Field ( sort keys %UserData ) {
+            $Body =~ s/<OTRS_$Field>/$UserData{$Field}/gi;
         }
         my $Sent = $EmailObject->Send(
             To       => $UserData{UserEmail},
@@ -921,8 +921,8 @@ sub Run {
             || 'No Config Option found!';
         my $Subject = $ConfigObject->Get('CustomerPanelSubjectNewAccount')
             || 'New OTRS Account!';
-        for ( sort keys %GetParams ) {
-            $Body =~ s/<OTRS_$_>/$GetParams{$_}/gi;
+        for my $Name ( sort keys %GetParams ) {
+            $Body =~ s/<OTRS_$Name>/$GetParams{$Name}/gi;
         }
 
         # send account info

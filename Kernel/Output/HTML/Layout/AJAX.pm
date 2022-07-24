@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -62,11 +62,11 @@ sub BuildSelectionJSON {
         my $LogObject = $Kernel::OM->Get('Kernel::System::Log');
 
         # check needed stuff
-        for (qw(Name)) {
-            if ( !defined $Param{$_} ) {
+        for my $Name (qw(Name)) {
+            if ( !defined $Param{$Name} ) {
                 $LogObject->Log(
                     Priority => 'error',
-                    Message  => "Need $_!"
+                    Message  => "Need $Name!"
                 );
                 return;
             }

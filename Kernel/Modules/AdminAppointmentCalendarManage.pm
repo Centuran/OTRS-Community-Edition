@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -42,7 +42,8 @@ sub new {
 sub Run {
     my ( $Self, %Param ) = @_;
 
-    my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $HTMLUtilsObject = $Kernel::OM->Get('Kernel::System::HTMLUtils');
+    my $ParamObject     = $Kernel::OM->Get('Kernel::System::Web::Request');
 
     # get names of all parameters
     my @ParamNames = $ParamObject->GetParamNames();
@@ -59,12 +60,49 @@ sub Run {
             || $Key =~ /^SearchParam_[0-9a-f]+_ResponsibleIDs$/
             )
         {
-            my @ParamArray = $ParamObject->GetArray( Param => $Key );
+            my @ParamArray;
+
+            for my $Param ( $ParamObject->GetArray( Param => $Key ) ) {
+                if ( defined $Param ) {
+                    my %SafeParam = $HTMLUtilsObject->Safety(
+                        String       => $Param,
+                        NoApplet     => 1,
+                        NoObject     => 1,
+                        NoEmbed      => 1,
+                        NoSVG        => 1,
+                        NoImg        => 1,
+                        NoIntSrcLoad => 1,
+                        NoExtSrcLoad => 1,
+                        NoJavaScript => 1,
+                    );
+
+                    $Param = $SafeParam{String};
+                }
+
+                push @ParamArray, $Param;
+            }
+
             $GetParam{$Key} = \@ParamArray;
             next PARAMNAME;
         }
 
         $GetParam{$Key} = $ParamObject->GetParam( Param => $Key );
+
+        # False/undefined values should be preserved without safety processing
+        next PARAMNAME if !$GetParam{$Key};
+        
+        my %SafeParam = $HTMLUtilsObject->Safety(
+            String       => $GetParam{$Key},
+            NoApplet     => 1,
+            NoObject     => 1,
+            NoEmbed      => 1,
+            NoSVG        => 1,
+            NoImg        => 1,
+            NoIntSrcLoad => 1,
+            NoExtSrcLoad => 1,
+            NoJavaScript => 1,
+        );
+        $GetParam{$Key} = $SafeParam{String};
     }
 
     my $LayoutObject   = $Kernel::OM->Get('Kernel::Output::HTML::Layout');

@@ -1,0 +1,22 @@
+form#NewCustomerTicket {
+  background: $background-color;
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+
+  fieldset {
+    background: none;
+    border: none;
+    padding: 0 0.5em;
+  }
+
+  #BottomActionRow {
+    background: none;
+    padding: 1em 0;
+    text-align: center;
+
+    button[type="submit"] {
+      @include primary-button;
+      padding: 0.3em 1.2em !important; // Needed to override "!important"
+    }
+  }
+}

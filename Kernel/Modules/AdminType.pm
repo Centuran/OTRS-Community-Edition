@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -66,7 +66,7 @@ sub Run {
         }
         my $Output = $LayoutObject->Header();
         $Output .= $LayoutObject->NavigationBar();
-        $Output .= $TypeNotActive;
+        $Output .= $TypeNotActive // '';
         $Self->_Edit(
             Action => 'Change',
             %Data,
@@ -215,7 +215,7 @@ sub Run {
         # something has gone wrong
         my $Output = $LayoutObject->Header();
         $Output .= $LayoutObject->NavigationBar();
-        $Output .= $TypeNotActive;
+        $Output .= $TypeNotActive // '';
         $Output .= $LayoutObject->Notify( Priority => 'Error' );
         $Self->_Edit(
             Action => 'Change',
@@ -239,7 +239,7 @@ sub Run {
         $GetParam{Name} = $ParamObject->GetParam( Param => 'Name' );
         my $Output = $LayoutObject->Header();
         $Output .= $LayoutObject->NavigationBar();
-        $Output .= $TypeNotActive;
+        $Output .= $TypeNotActive // '';
         $Self->_Edit(
             Action => 'Add',
             %GetParam,
@@ -292,7 +292,7 @@ sub Run {
                 $Self->_Overview();
                 my $Output = $LayoutObject->Header();
                 $Output .= $LayoutObject->NavigationBar();
-                $Output .= $TypeNotActive;
+                $Output .= $TypeNotActive // '';
                 $Output .= $LayoutObject->Notify( Info => Translatable('Type added!') );
                 $Output .= $LayoutObject->Output(
                     TemplateFile => 'AdminType',
@@ -306,7 +306,7 @@ sub Run {
         # something has gone wrong
         my $Output = $LayoutObject->Header();
         $Output .= $LayoutObject->NavigationBar();
-        $Output .= $TypeNotActive;
+        $Output .= $TypeNotActive // '';
         $Output .= $LayoutObject->Notify( Priority => 'Error' );
         $Self->_Edit(
             Action => 'Add',
@@ -328,7 +328,7 @@ sub Run {
 
         my $Output = $LayoutObject->Header();
         $Output .= $LayoutObject->NavigationBar();
-        $Output .= $TypeNotActive;
+        $Output .= $TypeNotActive // '';
 
         $Self->_Overview();
 

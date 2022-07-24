@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -31,7 +31,7 @@ sub Run {
 
     $Self->Print("<yellow>Listing all web services...</yellow>\n");
 
-    my $List = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceList();
+    my $List = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice')->WebserviceList( Valid => 0 );
     for my $ID ( sort keys %{$List} ) {
         print "  $List->{$ID} ($ID)\n";
     }

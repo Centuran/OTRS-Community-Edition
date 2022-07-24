@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -116,6 +116,24 @@ sub LoaderCreateAgentCSSCalls {
             if ( $CustomerUserItemSettings->{$Key}->{CSS} ) {
                 push @FileList, $CustomerUserItemSettings->{$Key}->{CSS};
             }
+        }
+
+        if ($SkinSelected eq 'default' && 
+            $Self->{'UserSkinOptions-default-UseModern'})
+        {
+            push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.css';
+            push @FileList, 'centuran/agent.css';
+        }
+
+        if ($SkinSelected eq 'default') {
+            my $TextSize =
+                $Self->{'UserSkinOptions-default-TextSize'} || 'medium';
+            
+            push @FileList, {
+                'small'  => 'centuran/agent-font-size-s.css',
+                'medium' => 'centuran/agent-font-size-m.css',
+                'large'  => 'centuran/agent-font-size-l.css',
+            }->{$TextSize};
         }
 
         $Self->_HandleCSSList(
@@ -240,6 +258,18 @@ sub LoaderCreateAgentJSCalls {
         for my $Module ( sort keys %{$Setting} ) {
             next MODULE if ref $Setting->{$Module}->{JavaScript} ne 'ARRAY';
             @FileList = ( @FileList, @{ $Setting->{$Module}->{JavaScript} || [] } );
+        }
+
+        my $UserSkin = $Self->{'UserSkin'};
+
+        if ($UserSkin eq 'default' &&
+            $Self->{'UserSkinOptions-default-UseModern'})
+        {
+            push @FileList, 'centuran/_use-new-ui.js';
+            push @FileList, 'thirdparty/vue-2.7.0/vue.min.js';
+            push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.js';
+            push @FileList, 'thirdparty/http-vue-loader-1.4.2/' .
+                'httpVueLoader.min.js';
         }
 
         $Self->_HandleJSList(

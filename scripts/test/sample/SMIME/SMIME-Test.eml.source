@@ -1,0 +1,31 @@
+Content-Type: multipart/related; boundary="----------=_1464075721-973-69"
+
+This is a multi-part message in MIME format...
+------------=_1464075721-973-69
+Content-Type: multipart/alternative; boundary="----------=_1464075721-973-68"
+
+This is a multi-part message in MIME format...
+------------=_1464075721-973-68
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi=
+
+------------=_1464075721-973-68
+Content-Type: text/html; charset="utf-8"
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/></head><body style="font-family:Geneva,Helvetica,Arial,sans-serif; font-size: 12px;">Hi<img alt="" src="cid:inline835421.188799263.1394842906.6253839.53368344@Mandalore.local" style="height:16px; width:16px" /></body></html>
+------------=_1464075721-973-68--
+
+------------=_1464075721-973-69
+Content-Type: image/png; name="ui-toolbar-bookmark.png"
+Content-Disposition: inline; filename="ui-toolbar-bookmark.png"
+Content-Transfer-Encoding: base64
+Content-ID: <inline835421.188799263.1394842906.6253839.53368344@Mandalore.local>
+
+QW55
+
+------------=_1464075721-973-69--

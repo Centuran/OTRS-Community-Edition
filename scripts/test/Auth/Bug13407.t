@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -92,9 +92,11 @@ $Self->Is(
     "First authentication ok",
 );
 
-$ConfigObject->Get('PreferencesGroups')->{Password}->{PasswordMaxLoginFailed} = 2;
+my $MaxLoginAttempts = 2;
+$ConfigObject->Get('PreferencesGroups')->{Password}{PasswordMaxLoginFailed} =
+    $MaxLoginAttempts;
 
-for ( 1 .. 2 ) {
+for ( 1 .. $MaxLoginAttempts ) {
     $AuthResult = $AuthObject->Auth(
         User => $UserRand,
         Pw   => 'wrong',
@@ -131,7 +133,7 @@ my $Update = $UserObject->UserUpdate(
 
 $Self->True(
     $Update,
-    "User revalidated"
+    "User revalidated",
 );
 
 $AuthResult = $AuthObject->Auth(

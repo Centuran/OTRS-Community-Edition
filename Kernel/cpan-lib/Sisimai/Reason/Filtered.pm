@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 sub text  { 'filtered' }
-sub description { 'Email rejected due to a header content after SMTP DATA command' } 
+sub description { 'Email rejected due to a header content after SMTP DATA command' }
 sub match {
     # Try to match that the given text and regular expressions
     # @param    [String] argv1  String to be matched with regular expressions
@@ -13,12 +13,14 @@ sub match {
     # @since v4.0.0
     my $class = shift;
     my $argv1 = shift // return undef;
-    my $index = [
+
+    state $index = [
         'because the recipient is only accepting mail from specific email addresses',   # AOL Phoenix
         'bounced address',  # SendGrid|a message to an address has previously been Bounced.
         'due to extended inactivity new mail is not currently being accepted for this mailbox',
         'has restricted sms e-mail',    # AT&T
         'is not accepting any mail',
+        'message rejected due to user rules',
         'refused due to recipient preferences', # Facebook
         'resolver.rst.notauthorized',   # Microsoft Exchange
         'this account is protected by',
@@ -42,19 +44,23 @@ sub true {
     my $argvs = shift // return undef;
     return 1 if $argvs->reason eq 'filtered';
 
-    require Sisimai::Reason::UserUnknown;
-    my $commandtxt = $argvs->smtpcommand // '';
-    my $diagnostic = lc $argvs->diagnosticcode // '';
-    my $tempreason = Sisimai::SMTP::Status->name($argvs->deliverystatus);
-    my $alterclass = 'Sisimai::Reason::UserUnknown';
-
+    my $tempreason = Sisimai::SMTP::Status->name($argvs->deliverystatus) || '';
     return 0 if $tempreason eq 'suspend';
+
+    require Sisimai::Reason::UserUnknown;
+    my $alterclass = 'Sisimai::Reason::UserUnknown';
+    my $diagnostic = lc $argvs->diagnosticcode // '';
+
     if( $tempreason eq 'filtered' ) {
         # Delivery status code points "filtered".
-        return 1 if( $alterclass->match($diagnostic) || __PACKAGE__->match($diagnostic) );
+        return 1 if $alterclass->match($diagnostic);
+        return 1 if __PACKAGE__->match($diagnostic);
 
-    } elsif( $commandtxt ne 'RCPT' && $commandtxt ne 'MAIL' ) {
-        # Check the value of Diagnostic-Code and the last SMTP command
+    } else {
+        # The value of "reason" isn't "filtered" when the value of "smtpcommand" is an SMTP command
+        # to be sent before the SMTP DATA command because all the MTAs read the headers and the
+        # entire message body after the DATA command.
+        return 0 if $argvs->{'smtpcommand'} =~ /\A(?:CONN|EHLO|HELO|MAIL|RCPT)\z/;
         return 1 if __PACKAGE__->match($diagnostic);
         return 1 if $alterclass->match($diagnostic);
     }
@@ -81,12 +87,12 @@ Sisimai::Reason::Filtered - Bounce reason is C<filtered> or not.
 Sisimai::Reason::Filtered checks the bounce reason is C<filtered> or not. This
 class is called only Sisimai::Reason class.
 
-This is the error that an email has been rejected by a header content after 
-SMTP DATA command. 
+This is the error that an email has been rejected by a header content after
+SMTP DATA command.
 In Japanese cellular phones, the error will incur that a sender's email address
-or a domain is rejected by recipient's email configuration. Sisimai will set 
-C<filtered> to the reason of email bounce if the value of Status: field in a 
-bounce email is C<5.2.0> or C<5.2.1>. 
+or a domain is rejected by recipient's email configuration. Sisimai will set
+C<filtered> to the reason of email bounce if the value of Status: field in a
+bounce email is C<5.2.0> or C<5.2.1>.
 
 This error reason is almost the same as UserUnknown.
 
@@ -120,7 +126,7 @@ azumakuniyuki
 
 =head1 COPYRIGHT
 
-Copyright (C) 2014-2018 azumakuniyuki, All rights reserved.
+Copyright (C) 2014-2018,2021 azumakuniyuki, All rights reserved.
 
 =head1 LICENSE
 

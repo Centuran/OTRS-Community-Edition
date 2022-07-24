@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -275,13 +275,12 @@ sub Auth {
         return if !$PasswordMaxLoginFailed;
         return if $Count < $PasswordMaxLoginFailed;
 
-        my $ValidID = $Kernel::OM->Get('Kernel::System::Valid')->ValidLookup(
-            Valid => 'invalid-temporarily',
-        );
-
         # Make sure not to accidentially overwrite the password.
         delete $User{UserPw};
 
+        my $ValidID = $Kernel::OM->Get('Kernel::System::Valid')->ValidLookup(
+            Valid => 'invalid-temporarily',
+        );
         my $Update = $UserObject->UserUpdate(
             %User,
             ValidID      => $ValidID,

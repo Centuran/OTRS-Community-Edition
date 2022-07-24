@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -326,9 +326,9 @@ sub new {
 
         # get process management configuration
         $Self->{ProcessManagementProcessID}
-            = $Kernel::OM->Get('Kernel::Config')->Get('Process::DynamicFieldProcessManagementProcessID');
+            = $ConfigObject->Get('Process::DynamicFieldProcessManagementProcessID');
         $Self->{ProcessManagementActivityID}
-            = $Kernel::OM->Get('Kernel::Config')->Get('Process::DynamicFieldProcessManagementActivityID');
+            = $ConfigObject->Get('Process::DynamicFieldProcessManagementActivityID');
 
         # get the list of processes in the system
         my $ProcessListHash = $Kernel::OM->Get('Kernel::System::ProcessManagement::Process')->ProcessList(
@@ -2194,7 +2194,7 @@ sub _ColumnFilterJSON {
         # Set possible values.
         for my $ValueKey ( sort { lc $Values{$a} cmp lc $Values{$b} } keys %Values ) {
             push @{$Data}, {
-                Key   => $Encoding ? $LayoutObject->LinkEncode($ValueKey) : $ValueKey,
+                Key   => $ValueKey,
                 Value => $Values{$ValueKey}
             };
         }
