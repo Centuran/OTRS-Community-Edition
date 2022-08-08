@@ -159,6 +159,64 @@ $Self->IsDeeply(
     'List - Compare complete priority list',
 );
 
+my $PriorityID = $PriorityObject->PriorityAdd(
+    Name    => 'Priority without color',
+    ValidID => 1,
+    UserID  => 1,
+);
+
+my %Priority = $PriorityObject->PriorityGet(
+    PriorityID => $PriorityID,
+    UserID     => 1,
+);
+
+$Self->Is(
+    $Priority{Color},
+    '',
+    'Priority color is an empty string if color was not specified'
+);
+
+$PriorityObject->PriorityUpdate(
+    PriorityID => $PriorityID,
+    Name       => 'Priority with color',
+    ValidID    => 1,
+    Color      => '#aabbcc',
+    UserID     => 1,
+);
+
+%Priority = $PriorityObject->PriorityGet(
+    PriorityID => $PriorityID,
+    UserID     => 1,
+);
+
+$Self->Is(
+    $Priority{Color},
+    '#aabbcc',
+    'Priority color is set to the expected value'
+);
+
+my $PriorityColor = $PriorityObject->PriorityColor(
+    Priority => 'Priority with color',
+    UserID   => 1,
+);
+
+$Self->Is(
+    $PriorityColor,
+    '#aabbcc',
+    'PriorityColor returns the expected value when passed priority name'
+);
+
+$PriorityColor = $PriorityObject->PriorityColor(
+    PriorityID => $PriorityID,
+    UserID     => 1,
+);
+
+$Self->Is(
+    $PriorityColor,
+    '#aabbcc',
+    'PriorityColor returns the expected value when passed priority ID'
+);
+
 # cleanup is done by RestoreDatabase
 
 1;

@@ -1,4 +1,5 @@
-# 6.0.36 2022-07-??
+# 6.0.36 2022-08-??
+ - Added configurable ticket priority colors
  - Fixed identification of Linux distributions in Support Data Collector
  - Implemented bug fixes and changes present in Znuny version 6.0.41
    - Notifications are no longer sent to customer user accounts which are flagged as invalid

@@ -1355,8 +1355,14 @@ sub TicketGet {
     my $Delta = $TicketCreatedDTObj->Delta( DateTimeObject => $Kernel::OM->Create('Kernel::System::DateTime') );
     $Ticket{Age} = $Delta->{AbsoluteSeconds};
 
-    $Ticket{Priority} = $Kernel::OM->Get('Kernel::System::Priority')->PriorityLookup(
+    my $PriorityObject = $Kernel::OM->Get('Kernel::System::Priority');
+
+    $Ticket{Priority} = $PriorityObject->PriorityLookup(
         PriorityID => $Ticket{PriorityID},
+    );
+    $Ticket{PriorityColor} = $PriorityObject->PriorityColor(
+        PriorityID => $Ticket{PriorityID},
+        UserID     => 1,
     );
 
     # get user object

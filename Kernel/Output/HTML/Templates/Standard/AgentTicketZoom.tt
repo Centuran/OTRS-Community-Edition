@@ -64,7 +64,12 @@
 <div class="MainBox ARIARoleMain TicketZoom UseArticleColors">
     <div class="ClearLeft"></div>
     <div class="Headline NoMargin">
-        <div class="Flag" title="[% Translate(Data.Priority) | html %]"><span class="PriorityID-[% Data.PriorityID | html %]">[% Translate(Data.Priority) | html %]</span></div>
+        <div class="Flag" title="[% Translate(Data.Priority) | html %]">
+            <span class="PriorityID-[% Data.PriorityID | html %]"
+                [% IF Data.PriorityColor %]
+                    style="background-color: [% Data.PriorityColor | html %];"
+                [% END %]
+                >[% Translate(Data.Priority) | html %]</span></div>
         <h1>
             [% Data.Hook %][% Config('Ticket::HookDivider') %][% Data.TicketNumber %] &mdash; [% Data.Title | html %]
         </h1>

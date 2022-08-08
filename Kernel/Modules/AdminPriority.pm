@@ -77,7 +77,7 @@ sub Run {
         my ( %GetParam, %Errors );
 
         # get params
-        for my $Parameter (qw(PriorityID Name ValidID)) {
+        for my $Parameter (qw(PriorityID Name Color ValidID)) {
             $GetParam{$Parameter} = $ParamObject->GetParam( Param => $Parameter ) || '';
         }
 
@@ -237,7 +237,7 @@ sub Run {
         my ( %GetParam, %Errors );
 
         # get params
-        for my $Parameter (qw(PriorityID Name ValidID)) {
+        for my $Parameter (qw(PriorityID Name Color ValidID)) {
             $GetParam{$Parameter} = $ParamObject->GetParam( Param => $Parameter ) || '';
         }
 

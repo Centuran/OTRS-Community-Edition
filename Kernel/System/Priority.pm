@@ -139,6 +139,7 @@ returns:
     %Priority = (
         ID          => '2',
         Name        => '2 low',
+        Color       => '#83bfc8',
         ValidID     => '1',
         CreateTime  => '2022-02-01 12:34:56',
         CreateBy    => '12',
@@ -173,7 +174,7 @@ sub PriorityGet {
 
     # ask database
     return if !$DBObject->Prepare(
-        SQL => 'SELECT id, name, valid_id, create_time, create_by, change_time, change_by '
+        SQL => 'SELECT id, name, color, valid_id, create_time, create_by, change_time, change_by '
             . 'FROM ticket_priority WHERE id = ?',
         Bind  => [ \$Param{PriorityID} ],
         Limit => 1,
@@ -184,11 +185,12 @@ sub PriorityGet {
     while ( my @Row = $DBObject->FetchrowArray() ) {
         $Data{ID}         = $Row[0];
         $Data{Name}       = $Row[1];
-        $Data{ValidID}    = $Row[2];
-        $Data{CreateTime} = $Row[3];
-        $Data{CreateBy}   = $Row[4];
-        $Data{ChangeTime} = $Row[5];
-        $Data{ChangeBy}   = $Row[6];
+        $Data{Color}      = $Row[2];
+        $Data{ValidID}    = $Row[3];
+        $Data{CreateTime} = $Row[4];
+        $Data{CreateBy}   = $Row[5];
+        $Data{ChangeTime} = $Row[6];
+        $Data{ChangeBy}   = $Row[7];
     }
 
     # set cache
@@ -208,6 +210,7 @@ add a ticket priority
 
     my $True = $PriorityObject->PriorityAdd(
         Name    => 'Prio',
+        Color   => '#ff0000',   # Optional
         ValidID => 1,
         UserID  => 1,
     );
@@ -228,14 +231,19 @@ sub PriorityAdd {
         }
     }
 
+    if ( !$Param{Color} ) {
+        $Param{Color} = '';
+    }
+
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     return if !$DBObject->Do(
-        SQL => 'INSERT INTO ticket_priority (name, valid_id, create_time, create_by, '
-            . 'change_time, change_by) VALUES '
-            . '(?, ?, current_timestamp, ?, current_timestamp, ?)',
+        SQL => 'INSERT INTO ticket_priority (name, valid_id, color, '
+            . 'create_time, create_by, change_time, change_by) VALUES '
+            . '(?, ?, ?, current_timestamp, ?, current_timestamp, ?)',
         Bind => [
-            \$Param{Name}, \$Param{ValidID}, \$Param{UserID}, \$Param{UserID},
+            \$Param{Name}, \$Param{ValidID}, \$Param{Color}, \$Param{UserID},
+            \$Param{UserID},
         ],
     );
 
@@ -269,6 +277,7 @@ update a existing ticket priority
     my $True = $PriorityObject->PriorityUpdate(
         PriorityID     => 123,
         Name           => 'New Prio',
+        Color          => '#00ff00',    # Optional
         ValidID        => 1,
         UserID         => 1,
     );
@@ -289,13 +298,18 @@ sub PriorityUpdate {
         }
     }
 
+    if ( !$Param{Color} ) {
+        $Param{Color} = '';
+    }
+
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     return if !$DBObject->Do(
-        SQL => 'UPDATE ticket_priority SET name = ?, valid_id = ?, '
+        SQL => 'UPDATE ticket_priority SET name = ?, valid_id = ?, color = ?, '
             . 'change_time = current_timestamp, change_by = ? WHERE id = ?',
         Bind => [
-            \$Param{Name}, \$Param{ValidID}, \$Param{UserID}, \$Param{PriorityID},
+            \$Param{Name}, \$Param{ValidID}, \$Param{Color}, \$Param{UserID},
+            \$Param{PriorityID},
         ],
     );
 
@@ -363,6 +377,49 @@ sub PriorityLookup {
     }
 
     return $ReturnData;
+}
+
+sub PriorityColor {
+    my ( $Self, %Param ) = @_;
+
+    if ( !$Param{Priority} && !$Param{PriorityID} ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => 'Need Priority or PriorityID!'
+        );
+        return;
+    }
+
+    for my $Name (qw(UserID)) {
+        if ( !$Param{$Name} ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Need $Name!"
+            );
+            return;
+        }
+    }
+
+    if ( $Param{Priority} ) {
+        $Param{PriorityID} = $Self->PriorityLookup(
+            Priority => $Param{Priority}
+        );
+
+        if ( !$Param{PriorityID} ) {
+            return;
+        }
+    }
+
+    my %Priority = $Self->PriorityGet(
+        PriorityID => $Param{PriorityID},
+        UserID     => $Param{UserID},
+    );
+
+    if ( %Priority ) {
+        return $Priority{Color};
+    }
+
+    return;
 }
 
 1;

@@ -1042,6 +1042,14 @@ sub TicketMetaItems {
     # return attributes
     my @Result;
 
+    my $PriorityObject = $Kernel::OM->Get('Kernel::System::Priority');
+    
+    my $PriorityColor = $PriorityObject->PriorityColor(
+        PriorityID => $Param{Ticket}->{PriorityID},
+        UserID     => $Self->{UserID},
+    );
+    $PriorityColor = $Param{Ticket}->{PriorityColor};
+
     # show priority
     push @Result, {
 
@@ -1049,6 +1057,7 @@ sub TicketMetaItems {
         Title      => $Param{Ticket}->{Priority},
         Class      => 'Flag',
         ClassSpan  => 'PriorityID-' . $Param{Ticket}->{PriorityID},
+        StyleSpan  => $PriorityColor ? "background-color: $PriorityColor;" : '',
         ClassTable => 'Flags',
     };
 

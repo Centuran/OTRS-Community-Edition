@@ -246,7 +246,7 @@
                     <td class="[% Data.ClassTable | html %]" title="[% Translate(Data.Title) | html %]">
 [% RenderBlockStart("ContentLargeTicketGenericRowMetaImage") %]
                         <div class="[% Data.Class | html %] Small" title="[% Translate(Data.Title) | html %]">
-                            <span class="[% Data.ClassSpan | html %]">
+                            <span class="[% Data.ClassSpan | html %]" style="[% Data.StyleSpan | html %]">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <em>[% Translate(Data.Title) | html %]</em>

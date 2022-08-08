@@ -42,6 +42,7 @@ new Vue({
         theme: { disable: true }
     }),
     components: {
+        'colorpicker':    httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/colorpicker.vue'),
         'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue'),
         'toggleswitch':   httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/toggleswitch.vue')
     },

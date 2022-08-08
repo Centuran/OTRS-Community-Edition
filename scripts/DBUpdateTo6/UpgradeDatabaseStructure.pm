@@ -110,6 +110,10 @@ sub Run {
             Message => 'Fix user preference keys',
             Module  => 'FixUserPreferenceKeys',
         },
+        {
+            Message => 'Add color field to ticket_priority table',
+            Module  => 'AddTicketPriorityColors',
+        },
     );
 
     print "\n" if $Verbose;

@@ -321,6 +321,7 @@ CREATE TABLE queue_preferences (
 CREATE TABLE ticket_priority (
     id SMALLINT NOT NULL AUTO_INCREMENT,
     name VARCHAR (200) NOT NULL,
+    color VARCHAR (20) NULL DEFAULT '',
     valid_id SMALLINT NOT NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
