@@ -65,7 +65,7 @@ sub CheckPreviousRequirement {
     my ( $Self, %Param ) = @_;
 
     my $SystemCommandJobs = $Self->_GetSystemCommandJobsFromDB();
-    return 1 if !IsHashRefWitData($SystemCommandJobs);
+    return 1 if !IsHashRefWithData($SystemCommandJobs);
 
     print "\n        Warning: the Generic Agent jobs listed below can execute system commands.\n";
     print "        This is unsafe and not supported anymore. These jobs will be disabled\n";

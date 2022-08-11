@@ -60,7 +60,7 @@ sub Run {
 sub CheckPreviousRequirement {
     my ( $Self, %Param ) = @_;
 
-    my $SystemCommandFilters = $Self->_GetSystemCommandPostMasDisableSystemCommandPostMasterPreFilters();
+    my $SystemCommandFilters = $Self->_GetSystemCommandPostMasterPreFilters();
     return 1 if !IsArrayRefWithData($SystemCommandFilters);
 
     print "\n        Warning: the PostMaster pre-filters listed below can execute system\n";
