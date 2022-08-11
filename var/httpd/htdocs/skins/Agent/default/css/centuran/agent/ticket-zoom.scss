@@ -218,13 +218,16 @@ div.Headline {
 
     .ItemActions {
       padding-left: 0;
-      //margin-bottom: 6px;
+      top: 0;
 
       .Actions {
         @include button-group();
         
         box-shadow: none;
-        margin-bottom: 0;
+
+        form {
+          padding: 0;
+        }
       }
     }
   }
