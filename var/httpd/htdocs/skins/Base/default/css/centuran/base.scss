@@ -558,3 +558,15 @@ fieldset .cmt-otrs-datetime-hidden {
     color: $secondary-color !important;
   }
 }
+
+.Field.cmt-otrs-color-hidden {
+  span.cmt-color-display {
+    border: solid 1px $form-field-border-color;
+  }
+
+  div.sp-replacer,
+  div.TooltipErrorMessage,
+  input[type="text"] {
+    display: none;
+  }
+}
