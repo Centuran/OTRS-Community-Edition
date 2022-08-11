@@ -712,6 +712,17 @@ sub Login {
         );
     }
 
+    my $DefaultSelectedSkin =
+        $ConfigObject->Get('Loader::Agent::DefaultSelectedSkin');
+    my $UseModernByDefault =
+        $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
+
+    if (($DefaultSelectedSkin eq 'default' || $DefaultSelectedSkin eq '') &&
+        $UseModernByDefault)
+    {
+        $Param{UseModern} = 1;       
+    }
+
     # Generate the minified CSS and JavaScript files and the tags referencing them (see LayoutLoader)
     $Self->LoaderCreateAgentCSSCalls();
     $Self->LoaderCreateAgentJSCalls();
@@ -1362,8 +1373,14 @@ sub Header {
         }
     }
 
-    if ($Self->{SkinSelected} && $Self->{SkinSelected} eq 'default' &&
-        $Self->{'UserSkinOptions-default-UseModern'})
+    my $UseModernByDefault =
+        $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
+    my $UseModern =
+        $Self->{'UserSkinOptions-default-UseModern'} || $UseModernByDefault;
+
+    if ($Self->{SkinSelected} &&
+        ($Self->{SkinSelected} eq 'default' || $Self->{SkinSelected} eq '') &&
+        $UseModern)
     {
         $Param{UseModern} = 1;
     }

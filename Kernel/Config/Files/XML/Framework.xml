@@ -8022,6 +8022,13 @@ via the Preferences button after logging in.
             <Item ValueType="String" ValueRegex="">default</Item>
         </Value>
     </Setting>
+    <Setting Name="Loader::Agent::DefaultSkin::UseModern" Required="0" Valid="1">
+        <Description Translatable="1">If the "default" agent skin is in use, enable its modern variant by default.</Description>
+        <Navigation>Frontend::Base::Loader</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">0</Item>
+        </Value>
+    </Setting>
     <Setting Name="Loader::Agent::DefaultSelectedSkin::HostBased" Required="0" Valid="0" ConfigLevel="200">
         <Description Translatable="1">It is possible to configure different skins, for example to distinguish between diferent agents, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.</Description>
         <Navigation>Frontend::Base::Loader</Navigation>

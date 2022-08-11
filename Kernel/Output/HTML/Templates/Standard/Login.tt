@@ -81,6 +81,11 @@ X-OTRS-Login: [% Env("Baselink") %]
 <!-- end header -->
 <body class="[% Data.BodyClass | html %] LoginScreen">
     <div id="AppWrapper">
+
+    [% IF Data.UseModern %]
+    <div id="vue-app"><v-app>
+    [% END %]
+
     <div id="Header" class="ARIARoleBanner">
         <div id="Logo"></div>
     </div>

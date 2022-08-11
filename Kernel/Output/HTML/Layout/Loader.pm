@@ -118,9 +118,12 @@ sub LoaderCreateAgentCSSCalls {
             }
         }
 
-        if ($SkinSelected eq 'default' && 
-            $Self->{'UserSkinOptions-default-UseModern'})
-        {
+        my $UseModernByDefault =
+            $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
+        my $UseModern =
+            $Self->{'UserSkinOptions-default-UseModern'} || $UseModernByDefault;
+
+        if ($SkinSelected eq 'default' && $UseModern) {
             push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.css';
             push @FileList, 'centuran/agent.css';
         }
@@ -260,11 +263,14 @@ sub LoaderCreateAgentJSCalls {
             @FileList = ( @FileList, @{ $Setting->{$Module}->{JavaScript} || [] } );
         }
 
-        my $UserSkin = $Self->{'UserSkin'};
+        my $UserSkin = $Self->{'UserSkin'} // '';
 
-        if ($UserSkin eq 'default' &&
-            $Self->{'UserSkinOptions-default-UseModern'})
-        {
+        my $UseModernByDefault =
+            $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
+        my $UseModern =
+            $Self->{'UserSkinOptions-default-UseModern'} || $UseModernByDefault;
+
+        if (($UserSkin eq 'default' || $UserSkin eq '') && $UseModern) {
             push @FileList, 'centuran/_use-new-ui.js';
             push @FileList, 'thirdparty/vue-2.7.0/vue.min.js';
             push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.js';

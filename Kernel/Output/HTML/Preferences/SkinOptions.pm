@@ -40,7 +40,12 @@ sub Param {
 
     my $UseModern = $Param{UserData}->{'UserSkinOptions-default-UseModern'};
     my $TextSize  = $Param{UserData}->{'UserSkinOptions-default-TextSize'};
-    $UseModern ||= 0;
+
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $UseModernByDefault =
+        $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
+
+    $UseModern ||= $UseModernByDefault;
     $TextSize  ||= 'small';
 
     my %Options = (
