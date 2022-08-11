@@ -132,6 +132,36 @@ div.Headline {
       position: sticky;
       top: 0;
       z-index: 1000;
+
+      i.fa {
+        @each $fa_name, $mdi_name in $fa_to_mdi {
+          &.fa-#{$fa_name} {
+            font-family: "Material Design Icons";
+          }
+  
+          &.fa-#{$fa_name}::before {
+            content: mdi($mdi_name);
+          }
+        }
+      }
+
+      span.UnreadArticles {
+        height: auto;
+        margin-left: 0;
+        position: initial;
+        width: auto;
+
+        i.fa {
+          color: initial;
+          display: initial;
+          font-size: initial;
+          position: initial;
+        }
+
+        i.fa:first-child {
+          display: none;
+        }
+      }
     }
   }
 }
