@@ -352,6 +352,10 @@ div.InputField_ListContainer {
   font-weight: 500;
   text-transform: none;
   padding: 10px 10px;
+
+  &.UnreadArticles {
+    padding: 10px 10px;
+  }
 }
 
 .DataTable p.TableEmpty {
