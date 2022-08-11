@@ -786,6 +786,13 @@ button.CallForAction.Fullsize span {
   }
 }
 
+// Action (mostly submit) buttons in forms
+form fieldset {
+  .CallForAction {
+    margin: auto calc(var(--gap, 12px) / 2);
+  }
+}
+
 /* List displayed as table */
 
 ul.Tablelike {
