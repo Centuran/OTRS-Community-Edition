@@ -9,14 +9,20 @@
   }
 }
 
-.QueueOverview {
-  margin-left: 0;
+body .QueueOverview {
+  margin: var(--gap-y) var(--gap-x);
+  padding: 0;
 }
 
-.QueueOverviewList {
+.WidgetSimple.QueueOverview > .Content {
+  padding-bottom: var(--pad-y);
+}
+
+.QueueOverview .QueueOverviewList {
   @include button-group();
 
   float: left;
+  margin-bottom: 0;
 
   a.Active {
     background-color: $secondary-action-color;
