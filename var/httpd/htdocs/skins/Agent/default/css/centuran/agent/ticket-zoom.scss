@@ -168,6 +168,10 @@ div.Headline {
 
 .MessageBrowser {
   @include msg-box("info");
+  margin-bottom: var(--pad-y, 10px);
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
 
   p {
     background: transparent;
