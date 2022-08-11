@@ -395,11 +395,13 @@ div.InputField_ListContainer {
   padding-top: 0;
 
   #AppWrapper {
-    border-top: solid 80px #000;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 80px - 40px);
-    padding-top: 40px;
+
+    .MainBox {
+      border-top: solid 80px #000;
+      padding-top: 40px;
+    }
   }
 
   #LoginLogo {
