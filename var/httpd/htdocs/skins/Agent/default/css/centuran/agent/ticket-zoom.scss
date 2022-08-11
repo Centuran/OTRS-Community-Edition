@@ -240,6 +240,7 @@ div.Headline {
 
     .ArticleBody,
     .ArticleMailContentHTMLWrapper {
+      display: flex;
       margin-left: 0;
       margin-right: 0;
       order: 3;
