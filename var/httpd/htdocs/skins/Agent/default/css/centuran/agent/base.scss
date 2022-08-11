@@ -277,12 +277,12 @@ ul.Tablelike li.Header {
       .SettingUpdateBox {
         background-color: transparent;
         border-left: solid 1px #ccc;
+        height: calc(100% - 2 * 10px);
+        margin-top: 10px; // Same as .Content's padding
         padding: 0;
         text-align: center;
-        width: 6em;
         top: 0;
-        margin-top: 10px; // Same as .Content's padding
-        height: calc(100% - 2 * 10px);
+        width: 6em;
 
         button {
           margin: 0;
