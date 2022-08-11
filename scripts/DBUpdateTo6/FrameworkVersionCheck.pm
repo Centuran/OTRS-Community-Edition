@@ -74,7 +74,10 @@ sub CheckPreviousRequirement {
         return;
     }
 
-    if ( $ProductName ne 'OTRS' ) {
+    if (
+        $ProductName ne 'OTRS'
+        && $ProductName ne '((OTRS)) Community Edition'
+    ) {
         print "    Error:    No OTRS system found.\n";
         return;
     }
