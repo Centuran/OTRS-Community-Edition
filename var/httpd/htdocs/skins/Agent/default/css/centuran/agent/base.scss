@@ -167,7 +167,7 @@ ul.Tablelike li.Header {
     padding: var(--pad-y) var(--pad-x);
 
     .ActionMenu {
-      margin-right: 10px;
+      margin-right: var(--pad-x);
       position: absolute;
       right: 0;
       top: initial;
@@ -185,7 +185,7 @@ ul.Tablelike li.Header {
         &::before {
           font-family: "Material Design Icons";
           font-size: 120%;
-          line-height: calc(0.8 * 1.2);
+          line-height: calc(1 / 1.2);
         }
 
         a {
