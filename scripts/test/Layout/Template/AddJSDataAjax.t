@@ -21,7 +21,7 @@ my @Tests = (
         Name   => 'Simple Data',
         Input  => { 'Key1' => 'Value1' },
         Result => '
-<script type="text/javascript">//<![CDATA[
+<script type="application/javascript">//<![CDATA[
 "use strict";
 Core.Config.AddConfig({"Key1":"Value1"});
 //]]></script>',
@@ -35,7 +35,7 @@ Core.Config.AddConfig({"Key1":"Value1"});
             }
         },
         Result => '
-<script type="text/javascript">//<![CDATA[
+<script type="application/javascript">//<![CDATA[
 "use strict";
 Core.Config.AddConfig({"Key1":{"1":"2","3":"4"}});
 //]]></script>',
