@@ -652,6 +652,13 @@ sub DocumentComplete {
     my $Css = $Kernel::OM->Get('Kernel::Config')->Get('Frontend::RichText::DefaultCSS')
         || 'font-size: 12px; font-family:Courier,monospace,fixed;';
 
+    # FIXME: This replaces font size in pt units with the same value in px.
+    # The reason is that the default value of DefaultCSS setting now uses pt,
+    # while sizes in px are recommended in HTML emails. The proper solution
+    # would be to add a separate setting for default document styles, and not
+    # rely on rich text editor's CSS for this purpose.
+    $Css =~ s/(font-size:\s*\d+)pt/$1px/;
+
     # escape special characters like double-quotes, e.g. used in font names with spaces
     $Css = $Self->ToHTML( String => $Css );
 
