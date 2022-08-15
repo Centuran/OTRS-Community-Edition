@@ -249,7 +249,7 @@ for my $Test (@Tests) {
     $Self->Is(
         $Body,
         $Test->{Body},
-        "Test->{Name} - body",
+        "$Test->{Name} - body",
     );
 
     # Turn on utf-8 flag for parts that were not converted but are still utf-8 for correct comparison.
