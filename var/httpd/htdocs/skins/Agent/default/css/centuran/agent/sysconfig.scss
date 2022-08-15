@@ -1,3 +1,31 @@
+form.SearchBox {
+  position: relative;
+
+  &#SearchBoxAutoComplete > span {
+    position: static;
+  }
+
+  .GettingStarted + & {
+    input[type="text"] {
+      height: auto;
+      padding: $form-field-padding;
+    }
+
+    button[type="submit"] {
+      padding: 0;
+      right: initial;
+    }
+  }
+
+  button i.fa.fa-search {
+    font-family: "Material Design Icons";
+
+    &::before {
+      content: mdi("magnify");
+    }
+  }
+}
+
 #UserWidgetState_SystemConfiguration_Sticky {
   .CallForAction {
     padding-left: 0.1em;
@@ -53,11 +81,118 @@
   }
 }
 
-.WidgetSimple.Setting {
+.SettingsList .WidgetSimple.Setting {
   font-size: inherit;
+
+  .Header {
+    .Icon {
+      height: auto;
+
+      i.fa {
+        margin-left: 0;
+        margin-right: calc(var(--gap) / 2);
+
+        &.fa-ban::before {
+          content: mdi("cancel");
+          font-family: "Material Design Icons";
+        }
+      }
+    }
+
+    p.HeaderMessage {
+      margin-bottom: 0;
+    }
+  }
+
+  .SettingWrapper {
+    form {
+      padding-right: var(--gap);
+
+      .SettingContainer {
+        padding-right: var(--gap);
+      }
+
+      fieldset.TableLike {
+        border-right: none;
+        float: none;
+        width: auto;
+      }
+    }
+
+    & > .SettingDescription {
+      width: 100%;
+    }
+  }
+
+  &.IsLockedByMe {
+    .SettingDescription {
+      width: calc(100% - 10em/0.875);
+    }
+
+    .Content .SettingUpdateBox {
+      left: calc(100% - 10em/0.875);
+    }
+
+    &.MenuExpanded .Content .SettingUpdateBox {
+      left: 100%;
+      right: 0;
+    }
+  }
+
+  .Setting {
+    .Array, .Hash {
+      border-radius: 4px;
+      margin-left: 0;
+
+      .SettingContent input {
+        box-shadow: none;
+      }
+
+      button.AddArrayItem i.fa,
+      button.AddHashKey i.fa {
+        font-family: "Material Design Icons";
+
+        &::before {
+          content: mdi("plus-box-outline");
+        }
+      }
+
+      button.RemoveButton i.fa {
+        font-family: "Material Design Icons";
+
+        &::before {
+          content: mdi("minus-box-outline");
+        }
+      }
+    }
+
+    .Hash {
+      .HashItem {
+        font-size: initial;
+
+        & > .SettingContent {
+          align-items: center;
+          display: flex;
+
+          &::before {
+            content: mdi("arrow-right");
+            font-family: "Material Design Icons";
+            font-size: initial;
+            margin-left: calc(var(--gap) / 2);
+            margin-right: calc(var(--gap) / 2);
+          }
+        }
+      }
+
+      button.AddHashKey {
+        background: none;
+      }
+    }
+  }
 
   .SettingContent {
     font-size: initial;
+    padding-left: 0;
 
     .AlreadyDisabled {
       div.InputField_Selection {

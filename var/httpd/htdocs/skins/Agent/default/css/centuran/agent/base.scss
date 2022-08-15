@@ -266,6 +266,10 @@ ul.Tablelike li.Header {
     body & .Header h2 {
       padding-left: 0;
     }
+
+    body &.IsLockedByMe .SettingWrapper > .SettingDescription {
+      padding-right: 1em;
+    }
   }
 
   .SettingWrapper {
@@ -277,12 +281,15 @@ ul.Tablelike li.Header {
       .SettingUpdateBox {
         background-color: transparent;
         border-left: solid 1px #ccc;
+        font-size: initial;
         height: calc(100% - 2 * 10px);
         margin-top: 10px; // Same as .Content's padding
+        margin-right: var(--gap);
         padding: 0;
         text-align: center;
         top: 0;
         width: 6em;
+        width: auto;
 
         button {
           margin: 0;
@@ -299,6 +306,10 @@ ul.Tablelike li.Header {
         font-size: 87.5%;
         margin-left: -1px; // To merge the longer and shorter border
         padding: 0 1em;
+      }
+
+      // Different width for the setting description in agent preferences
+      body .Preferences & > .SettingDescription {
         width: 30%;
       }
     }
@@ -306,12 +317,20 @@ ul.Tablelike li.Header {
 
   // Some properties seem to be overridden on the user preferences screen
   @at-root {
-    .Preferences &.IsLockedByMe .SettingWrapper {
+    .SettingsList &.IsLockedByMe .SettingWrapper {
       fieldset > .SettingUpdateBox {
         width: 6em;
+        width: auto;
 
         button {
           margin: 0;
+          margin-left: var(--gap);
+
+          &.Cancel {
+            i.fa::before {
+              content: mdi("cancel");
+            }
+          }
         }
       }
 
