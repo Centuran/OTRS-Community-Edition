@@ -550,13 +550,35 @@ div.UnreadArticles {
   overflow: hidden;
 
   & > .Header {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
     height: auto;
 
     h1 {
+      flex: 1;
       font-size: inherit;
       font-weight: bold;
       margin-bottom: 0;
-      padding: 10px;
+      padding: var(--pad-y) var(--pad-x)
+    }
+
+    .Close {
+      display: inline;
+      flex: 1;
+      height: auto;
+      margin-right: var(--pad-x);
+      right: auto;
+      top: auto;
+      width: auto;
+
+      i.fa {
+        font-family: "Material Design Icons";
+
+        &::before {
+          content: mdi("close");
+        }
+      }
     }
   }
 
