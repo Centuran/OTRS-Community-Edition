@@ -334,7 +334,7 @@ select option:hover {
 div.InputField_InputContainer {
   align-items: center;
   display: flex;
-  height: 32px;
+  height: 33px;
 }
 div.InputField_InputContainer .InputField_Search {
   position: relative;
@@ -484,6 +484,15 @@ fieldset .cmt-otrs-datetime-hidden select[name$=Minute] {
   background-color: rgba(36, 64, 140, 0.1);
   caret-color: #24408c !important;
   color: #24408c !important;
+}
+
+.Field.cmt-otrs-color-hidden span.cmt-color-display {
+  border: solid 1px #d2d2d2;
+}
+.Field.cmt-otrs-color-hidden div.sp-replacer,
+.Field.cmt-otrs-color-hidden div.TooltipErrorMessage,
+.Field.cmt-otrs-color-hidden input[type=text] {
+  display: none;
 }
 
 .Flag.Small {
@@ -707,7 +716,7 @@ ul.Tablelike li.Header {
   padding: var(--pad-y) var(--pad-x);
 }
 .WidgetSimple .Header .ActionMenu {
-  margin-right: 10px;
+  margin-right: var(--pad-x);
   position: absolute;
   right: 0;
   top: initial;
@@ -724,7 +733,7 @@ ul.Tablelike li.Header {
 .WidgetSimple .Header .WidgetAction.Toggle::before {
   font-family: "Material Design Icons";
   font-size: 120%;
-  line-height: 0.96;
+  line-height: 0.8333333333;
 }
 .WidgetSimple .Header .WidgetAction.Toggle a {
   height: 100%;
@@ -741,7 +750,6 @@ ul.Tablelike li.Header {
 .WidgetSimple .Header .WidgetAction a i.fa {
   font-size: initial;
   margin: 0;
-  padding: 0.2em;
 }
 .WidgetSimple .Header .WidgetAction a i.fa::before {
   font-family: "Material Design Icons";
@@ -780,6 +788,10 @@ body .WidgetSimple.Setting .Header h2 {
   padding-left: 0;
 }
 
+body .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
+  padding-right: 1em;
+}
+
 .WidgetSimple.Setting .SettingWrapper fieldset {
   border-right: solid 1px #ccc;
   float: left;
@@ -788,12 +800,15 @@ body .WidgetSimple.Setting .Header h2 {
 .WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox {
   background-color: transparent;
   border-left: solid 1px #ccc;
+  font-size: initial;
+  height: calc(100% - 20px);
+  margin-top: 10px;
+  margin-right: var(--gap);
   padding: 0;
   text-align: center;
-  width: 6em;
   top: 0;
-  margin-top: 10px;
-  height: calc(100% - 20px);
+  width: 6em;
+  width: auto;
 }
 .WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
   margin: 0;
@@ -806,16 +821,24 @@ body .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
   font-size: 87.5%;
   margin-left: -1px;
   padding: 0 1em;
+}
+
+body .Preferences .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
   width: 30%;
 }
 
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
   width: 6em;
+  width: auto;
 }
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
   margin: 0;
+  margin-left: var(--gap);
 }
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button.Cancel i.fa::before {
+  content: "\f073a";
+}
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
   padding-right: 1em;
 }
 
@@ -993,13 +1016,11 @@ body .Cluster ul ul li a:hover {
   box-shadow: none;
   margin-left: 0.5em;
 }
+.ItemActions .Actions > li.cmt-item-action-dropdown label {
+  display: inline-block;
+}
 .ItemActions .Actions > li.cmt-item-action-dropdown label::after {
   content: ":";
-}
-.ItemActions .Actions > li.cmt-item-action-dropdown input {
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
-  border-bottom: solid 2px #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
 }
 .ItemActions .Actions > li.cmt-item-action-link-last a {
   border-bottom-right-radius: 4px;
@@ -1062,6 +1083,7 @@ button.CallForAction {
   border-radius: 4px;
   font-family: inherit;
   font-size: inherit;
+  margin: 0;
   padding: 12px 32px;
   padding: 0.3em 1.2em;
   position: relative;
@@ -1336,6 +1358,16 @@ a.CallForAction span i.fa.fa-reply::before, .ProcessManagementEditScreen #Proces
 button.CallForAction span i.fa.fa-reply::before {
   content: "\f045a";
 }
+a.CallForAction span i.fa.fa-search::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-search::before,
+.v-application a.CallForAction span i.fa.fa-search::before,
+button.CallForAction span i.fa.fa-search::before {
+  content: "\f0349";
+}
+a.CallForAction span i.fa.fa-star::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-star::before,
+.v-application a.CallForAction span i.fa.fa-star::before,
+button.CallForAction span i.fa.fa-star::before {
+  content: "\f04ce";
+}
 a.CallForAction span i.fa.fa-user::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-user::before,
 .v-application a.CallForAction span i.fa.fa-user::before,
 button.CallForAction span i.fa.fa-user::before {
@@ -1359,6 +1391,10 @@ a.CallForAction.Fullsize span i.fa, .ProcessManagementEditScreen #ProcessElement
 button.CallForAction.Fullsize span i.fa {
   color: inherit;
   margin-right: 0.3em;
+}
+
+form fieldset .CallForAction, form fieldset .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements form fieldset a.CallForAction {
+  margin: auto calc(var(--gap, 12px) / 2);
 }
 
 /* List displayed as table */
@@ -1668,6 +1704,9 @@ div.InputField_ListContainer {
   text-transform: none;
   padding: 10px 10px;
 }
+.DataTable thead th.UnreadArticles {
+  padding: 10px 10px;
+}
 
 .DataTable p.TableEmpty {
   color: #666;
@@ -1699,10 +1738,11 @@ div.InputField_ListContainer {
   padding-top: 0;
 }
 .LoginScreen #AppWrapper {
-  border-top: solid 80px #000;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 80px - 40px);
+}
+.LoginScreen #AppWrapper .MainBox {
+  border-top: solid 80px #000;
   padding-top: 40px;
 }
 .LoginScreen #LoginLogo {
@@ -2337,6 +2377,12 @@ label + .v-input--switch {
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-reply::before {
   content: "\f045a";
 }
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-search::before {
+  content: "\f0349";
+}
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-star::before {
+  content: "\f04ce";
+}
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-user::before {
   content: "\f0004";
 }
@@ -2857,7 +2903,7 @@ ul.Tablelike li.Header {
   padding: var(--pad-y) var(--pad-x);
 }
 .WidgetSimple .Header .ActionMenu {
-  margin-right: 10px;
+  margin-right: var(--pad-x);
   position: absolute;
   right: 0;
   top: initial;
@@ -2874,7 +2920,7 @@ ul.Tablelike li.Header {
 .WidgetSimple .Header .WidgetAction.Toggle::before {
   font-family: "Material Design Icons";
   font-size: 120%;
-  line-height: 0.96;
+  line-height: 0.8333333333;
 }
 .WidgetSimple .Header .WidgetAction.Toggle a {
   height: 100%;
@@ -2891,7 +2937,6 @@ ul.Tablelike li.Header {
 .WidgetSimple .Header .WidgetAction a i.fa {
   font-size: initial;
   margin: 0;
-  padding: 0.2em;
 }
 .WidgetSimple .Header .WidgetAction a i.fa::before {
   font-family: "Material Design Icons";
@@ -2930,6 +2975,10 @@ body .WidgetSimple.Setting .Header h2 {
   padding-left: 0;
 }
 
+body .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
+  padding-right: 1em;
+}
+
 .WidgetSimple.Setting .SettingWrapper fieldset {
   border-right: solid 1px #ccc;
   float: left;
@@ -2938,12 +2987,15 @@ body .WidgetSimple.Setting .Header h2 {
 .WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox {
   background-color: transparent;
   border-left: solid 1px #ccc;
+  font-size: initial;
+  height: calc(100% - 20px);
+  margin-top: 10px;
+  margin-right: var(--gap);
   padding: 0;
   text-align: center;
-  width: 6em;
   top: 0;
-  margin-top: 10px;
-  height: calc(100% - 20px);
+  width: 6em;
+  width: auto;
 }
 .WidgetSimple.Setting .SettingWrapper fieldset .SettingUpdateBox button {
   margin: 0;
@@ -2956,16 +3008,24 @@ body .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
   font-size: 87.5%;
   margin-left: -1px;
   padding: 0 1em;
+}
+
+body .Preferences .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
   width: 30%;
 }
 
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox {
   width: 6em;
+  width: auto;
 }
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button {
   margin: 0;
+  margin-left: var(--gap);
 }
-.Preferences .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper fieldset > .SettingUpdateBox button.Cancel i.fa::before {
+  content: "\f073a";
+}
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
   padding-right: 1em;
 }
 
@@ -3143,13 +3203,11 @@ body .Cluster ul ul li a:hover {
   box-shadow: none;
   margin-left: 0.5em;
 }
+.ItemActions .Actions > li.cmt-item-action-dropdown label {
+  display: inline-block;
+}
 .ItemActions .Actions > li.cmt-item-action-dropdown label::after {
   content: ":";
-}
-.ItemActions .Actions > li.cmt-item-action-dropdown input {
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
-  border-bottom: solid 2px #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
 }
 .ItemActions .Actions > li.cmt-item-action-link-last a {
   border-bottom-right-radius: 4px;
@@ -3212,6 +3270,7 @@ button.CallForAction {
   border-radius: 4px;
   font-family: inherit;
   font-size: inherit;
+  margin: 0;
   padding: 12px 32px;
   padding: 0.3em 1.2em;
   position: relative;
@@ -3486,6 +3545,16 @@ a.CallForAction span i.fa.fa-reply::before, .ProcessManagementEditScreen #Proces
 button.CallForAction span i.fa.fa-reply::before {
   content: "\f045a";
 }
+a.CallForAction span i.fa.fa-search::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-search::before,
+.v-application a.CallForAction span i.fa.fa-search::before,
+button.CallForAction span i.fa.fa-search::before {
+  content: "\f0349";
+}
+a.CallForAction span i.fa.fa-star::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-star::before,
+.v-application a.CallForAction span i.fa.fa-star::before,
+button.CallForAction span i.fa.fa-star::before {
+  content: "\f04ce";
+}
 a.CallForAction span i.fa.fa-user::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-user::before,
 .v-application a.CallForAction span i.fa.fa-user::before,
 button.CallForAction span i.fa.fa-user::before {
@@ -3509,6 +3578,10 @@ a.CallForAction.Fullsize span i.fa, .ProcessManagementEditScreen #ProcessElement
 button.CallForAction.Fullsize span i.fa {
   color: inherit;
   margin-right: 0.3em;
+}
+
+form fieldset .CallForAction, form fieldset .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements form fieldset a.CallForAction {
+  margin: auto calc(var(--gap, 12px) / 2);
 }
 
 /* List displayed as table */
@@ -4053,6 +4126,27 @@ input#Subject {
   width: auto;
 }
 
+form.SearchBox {
+  position: relative;
+}
+form.SearchBox#SearchBoxAutoComplete > span {
+  position: static;
+}
+.GettingStarted + form.SearchBox input[type=text] {
+  height: auto;
+  padding: 5px;
+}
+.GettingStarted + form.SearchBox button[type=submit] {
+  padding: 0;
+  right: initial;
+}
+form.SearchBox button i.fa.fa-search {
+  font-family: "Material Design Icons";
+}
+form.SearchBox button i.fa.fa-search::before {
+  content: "\f0349";
+}
+
 #UserWidgetState_SystemConfiguration_Sticky .CallForAction, #UserWidgetState_SystemConfiguration_Sticky .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements #UserWidgetState_SystemConfiguration_Sticky a.CallForAction {
   padding-left: 0.1em;
   padding-right: 0.1em;
@@ -4090,16 +4184,95 @@ input#Subject {
   margin-left: 14px;
 }
 
-.WidgetSimple.Setting {
+.SettingsList .WidgetSimple.Setting {
   font-size: inherit;
 }
-.WidgetSimple.Setting .SettingContent {
+.SettingsList .WidgetSimple.Setting .Header .Icon {
+  height: auto;
+}
+.SettingsList .WidgetSimple.Setting .Header .Icon i.fa {
+  margin-left: 0;
+  margin-right: calc(var(--gap) / 2);
+}
+.SettingsList .WidgetSimple.Setting .Header .Icon i.fa.fa-ban::before {
+  content: "\f073a";
+  font-family: "Material Design Icons";
+}
+.SettingsList .WidgetSimple.Setting .Header p.HeaderMessage {
+  margin-bottom: 0;
+}
+.SettingsList .WidgetSimple.Setting .SettingWrapper form {
+  padding-right: var(--gap);
+}
+.SettingsList .WidgetSimple.Setting .SettingWrapper form .SettingContainer {
+  padding-right: var(--gap);
+}
+.SettingsList .WidgetSimple.Setting .SettingWrapper form fieldset.TableLike {
+  border-right: none;
+  float: none;
+  width: auto;
+}
+.SettingsList .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
+  width: 100%;
+}
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingDescription {
+  width: calc(100% - 11.4285714286em);
+}
+.SettingsList .WidgetSimple.Setting.IsLockedByMe .Content .SettingUpdateBox {
+  left: calc(100% - 11.4285714286em);
+}
+.SettingsList .WidgetSimple.Setting.IsLockedByMe.MenuExpanded .Content .SettingUpdateBox {
+  left: 100%;
+  right: 0;
+}
+.SettingsList .WidgetSimple.Setting .Setting .Array, .SettingsList .WidgetSimple.Setting .Setting .Hash {
+  border-radius: 4px;
+  margin-left: 0;
+}
+.SettingsList .WidgetSimple.Setting .Setting .Array .SettingContent input, .SettingsList .WidgetSimple.Setting .Setting .Hash .SettingContent input {
+  box-shadow: none;
+}
+.SettingsList .WidgetSimple.Setting .Setting .Array button.AddArrayItem i.fa,
+.SettingsList .WidgetSimple.Setting .Setting .Array button.AddHashKey i.fa, .SettingsList .WidgetSimple.Setting .Setting .Hash button.AddArrayItem i.fa,
+.SettingsList .WidgetSimple.Setting .Setting .Hash button.AddHashKey i.fa {
+  font-family: "Material Design Icons";
+}
+.SettingsList .WidgetSimple.Setting .Setting .Array button.AddArrayItem i.fa::before,
+.SettingsList .WidgetSimple.Setting .Setting .Array button.AddHashKey i.fa::before, .SettingsList .WidgetSimple.Setting .Setting .Hash button.AddArrayItem i.fa::before,
+.SettingsList .WidgetSimple.Setting .Setting .Hash button.AddHashKey i.fa::before {
+  content: "\f0704";
+}
+.SettingsList .WidgetSimple.Setting .Setting .Array button.RemoveButton i.fa, .SettingsList .WidgetSimple.Setting .Setting .Hash button.RemoveButton i.fa {
+  font-family: "Material Design Icons";
+}
+.SettingsList .WidgetSimple.Setting .Setting .Array button.RemoveButton i.fa::before, .SettingsList .WidgetSimple.Setting .Setting .Hash button.RemoveButton i.fa::before {
+  content: "\f06f2";
+}
+.SettingsList .WidgetSimple.Setting .Setting .Hash .HashItem {
   font-size: initial;
 }
-.WidgetSimple.Setting .SettingContent .AlreadyDisabled div.InputField_Selection {
+.SettingsList .WidgetSimple.Setting .Setting .Hash .HashItem > .SettingContent {
+  align-items: center;
+  display: flex;
+}
+.SettingsList .WidgetSimple.Setting .Setting .Hash .HashItem > .SettingContent::before {
+  content: "\f0054";
+  font-family: "Material Design Icons";
+  font-size: initial;
+  margin-left: calc(var(--gap) / 2);
+  margin-right: calc(var(--gap) / 2);
+}
+.SettingsList .WidgetSimple.Setting .Setting .Hash button.AddHashKey {
+  background: none;
+}
+.SettingsList .WidgetSimple.Setting .SettingContent {
+  font-size: initial;
+  padding-left: 0;
+}
+.SettingsList .WidgetSimple.Setting .SettingContent .AlreadyDisabled div.InputField_Selection {
   background-color: #d0d0d0;
 }
-.WidgetSimple.Setting .SettingContent .AlreadyDisabled div.InputField_Selection div.Text {
+.SettingsList .WidgetSimple.Setting .SettingContent .AlreadyDisabled div.InputField_Selection div.Text {
   background-color: transparent;
   color: #666;
 }
@@ -4123,11 +4296,16 @@ input#Subject {
   font-size: 110%;
   padding-left: 0;
 }
-.QueueOverview {
-  margin-left: 0;
+body .QueueOverview {
+  margin: var(--gap-y) var(--gap-x);
+  padding: 0;
 }
 
-.QueueOverviewList {
+.WidgetSimple.QueueOverview > .Content {
+  padding-bottom: var(--pad-y);
+}
+
+.QueueOverview .QueueOverviewList {
   border-radius: 4px;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
   box-shadow: 0px 1px 10px #e8e8e8;
@@ -4136,8 +4314,9 @@ input#Subject {
   margin-bottom: var(--gap, 8px);
   padding-left: 0;
   float: left;
+  margin-bottom: 0;
 }
-.QueueOverviewList > li {
+.QueueOverview .QueueOverviewList > li {
   float: left;
   font-size: smaller;
   height: auto;
@@ -4147,7 +4326,7 @@ input#Subject {
   border-radius: 0;
   line-height: 1.5;
 }
-.QueueOverviewList > li > a, .QueueOverviewList > li > span.ClusterLink {
+.QueueOverview .QueueOverviewList > li > a, .QueueOverview .QueueOverviewList > li > span.ClusterLink {
   background: #f8f8f8;
   color: #444;
   display: inline-block;
@@ -4157,47 +4336,47 @@ input#Subject {
   border-radius: 4px;
   box-shadow: 0px 1px 10px #e4e4e4;
 }
-.QueueOverviewList > li:hover > a, .QueueOverviewList > li:hover > span.ClusterLink {
+.QueueOverview .QueueOverviewList > li:hover > a, .QueueOverview .QueueOverviewList > li:hover > span.ClusterLink {
   background: #24408c;
   border: solid 1px #2e53b5 !important;
   color: white;
   text-decoration: none;
 }
-.QueueOverviewList > li > a, .QueueOverviewList > li > span.ClusterLink {
+.QueueOverview .QueueOverviewList > li > a, .QueueOverview .QueueOverviewList > li > span.ClusterLink {
   border-radius: 0;
   box-shadow: none;
 }
-.QueueOverviewList > li:first-child > a, .QueueOverviewList > li:first-child > span.ClusterLink {
+.QueueOverview .QueueOverviewList > li:first-child > a, .QueueOverview .QueueOverviewList > li:first-child > span.ClusterLink {
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
   padding-left: 10px;
 }
-.QueueOverviewList > li:not(:last-child) > a, .QueueOverviewList > li:not(:last-child) > span.ClusterLink {
+.QueueOverview .QueueOverviewList > li:not(:last-child) > a, .QueueOverview .QueueOverviewList > li:not(:last-child) > span.ClusterLink {
   border-right: none;
 }
-.QueueOverviewList > li:not(:last-child):hover > a, .QueueOverviewList > li:not(:last-child):hover > span.ClusterLink {
+.QueueOverview .QueueOverviewList > li:not(:last-child):hover > a, .QueueOverview .QueueOverviewList > li:not(:last-child):hover > span.ClusterLink {
   border-right: none !important;
 }
-.QueueOverviewList > li:last-child > a, .QueueOverviewList > li:last-child > span.ClusterLink, .QueueOverviewList > li.cmt-item-action-link-last > a, .QueueOverviewList > li.cmt-item-action-link-last > span.ClusterLink {
+.QueueOverview .QueueOverviewList > li:last-child > a, .QueueOverview .QueueOverviewList > li:last-child > span.ClusterLink, .QueueOverview .QueueOverviewList > li.cmt-item-action-link-last > a, .QueueOverview .QueueOverviewList > li.cmt-item-action-link-last > span.ClusterLink {
   border-bottom-right-radius: 4px;
   border-right: solid 1px #ccc;
   border-top-right-radius: 4px;
 }
-.QueueOverviewList > li:last-child:hover > a, .QueueOverviewList > li:last-child:hover > span.ClusterLink, .QueueOverviewList > li.cmt-item-action-link-last:hover > a, .QueueOverviewList > li.cmt-item-action-link-last:hover > span.ClusterLink {
+.QueueOverview .QueueOverviewList > li:last-child:hover > a, .QueueOverview .QueueOverviewList > li:last-child:hover > span.ClusterLink, .QueueOverview .QueueOverviewList > li.cmt-item-action-link-last:hover > a, .QueueOverview .QueueOverviewList > li.cmt-item-action-link-last:hover > span.ClusterLink {
   border-right: solid 1px #2e53b5 !important;
 }
-.QueueOverviewList > li.Selected a,
-.QueueOverviewList > li a.Active {
+.QueueOverview .QueueOverviewList > li.Selected a,
+.QueueOverview .QueueOverviewList > li a.Active {
   color: white;
   background-color: #24408c;
   border-color: #2e53b5;
   border-right-color: #2e53b5;
   font-weight: normal;
 }
-.QueueOverviewList > li::after {
+.QueueOverview .QueueOverviewList > li::after {
   content: none;
 }
-.QueueOverviewList a.Active {
+.QueueOverview .QueueOverviewList a.Active {
   background-color: #24408c;
   border-color: #2e53b5;
   border-right: solid 1px #2e53b5;
@@ -4710,11 +4889,6 @@ div.Headline .Flag + h1 {
   border-bottom-left-radius: 4px;
   margin-left: 0.5em;
 }
-.ActionRow .Actions > li form input {
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0.2);
-  border-bottom: solid 2px #fff;
-  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
-}
 
 .WidgetAction {
   width: auto;
@@ -4744,7 +4918,6 @@ div.Headline .Flag + h1 {
 }
 .WidgetAction a i.fa {
   font-size: initial;
-  padding: 0.2em;
 }
 .WidgetAction a i.fa::before {
   font-family: "Material Design Icons";
@@ -4775,6 +4948,123 @@ div.Headline .Flag + h1 {
   top: 0;
   z-index: 1000;
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-arrows-h {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-arrows-h::before {
+  content: "\f0e73";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-arrows-v {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-arrows-v::before {
+  content: "\f0e79";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-bar-chart {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-bar-chart::before {
+  content: "\f0128";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-bell-o {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-bell-o::before {
+  content: "\f009a";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-building {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-building::before {
+  content: "\f0991";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-building-o {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-building-o::before {
+  content: "\f0991";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-calendar {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-calendar::before {
+  content: "\f00ed";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-check {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-check::before {
+  content: "\f012c";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-filter {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-filter::before {
+  content: "\f0232";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-paperclip {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-paperclip::before {
+  content: "\f03e2";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-plus-square {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-plus-square::before {
+  content: "\f0415";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-refresh {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-refresh::before {
+  content: "\f0450";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-reply {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-reply::before {
+  content: "\f045a";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-search {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-search::before {
+  content: "\f0349";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-star {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-star::before {
+  content: "\f04ce";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-user {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-user::before {
+  content: "\f0004";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-users {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-users::before {
+  content: "\f0849";
+}
+#ArticleTableBody #ArticleTable thead span.UnreadArticles {
+  height: auto;
+  margin-left: 0;
+  position: initial;
+  width: auto;
+}
+#ArticleTableBody #ArticleTable thead span.UnreadArticles i.fa {
+  color: initial;
+  display: initial;
+  font-size: initial;
+  position: initial;
+}
+#ArticleTableBody #ArticleTable thead span.UnreadArticles i.fa:first-child {
+  display: none;
+}
 
 .MessageBrowser {
   background: none;
@@ -4782,6 +5072,10 @@ div.Headline .Flag + h1 {
   caret-color: rgb(251, 140, 0);
   color: #2196f3ff;
   margin-top: var(--pad-y, 10px);
+  margin-bottom: var(--pad-y, 10px);
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
 }
 .MessageBrowser .Icon {
   display: inline;
@@ -4868,6 +5162,7 @@ div.Headline .Flag + h1 {
 }
 #ArticleItems .ArticleMailContent .ItemActions {
   padding-left: 0;
+  top: 0;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions {
   border-radius: 4px;
@@ -4878,7 +5173,6 @@ div.Headline .Flag + h1 {
   margin-bottom: var(--gap, 8px);
   padding-left: 0;
   box-shadow: none;
-  margin-bottom: 0;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li {
   float: left;
@@ -4940,12 +5234,16 @@ div.Headline .Flag + h1 {
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li::after {
   content: none;
 }
+#ArticleItems .ArticleMailContent .ItemActions .Actions form {
+  padding: 0;
+}
 #ArticleItems .Incoming .Avatar {
   margin-left: 1em;
   order: 4;
 }
 #ArticleItems .Incoming .ArticleBody,
 #ArticleItems .Incoming .ArticleMailContentHTMLWrapper {
+  display: flex;
   margin-left: 0;
   margin-right: 0;
   order: 3;

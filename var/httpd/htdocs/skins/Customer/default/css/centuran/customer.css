@@ -334,7 +334,7 @@ select option:hover {
 div.InputField_InputContainer {
   align-items: center;
   display: flex;
-  height: 32px;
+  height: 33px;
 }
 div.InputField_InputContainer .InputField_Search {
   position: relative;
@@ -484,6 +484,15 @@ fieldset .cmt-otrs-datetime-hidden select[name$=Minute] {
   background-color: rgba(36, 64, 140, 0.1);
   caret-color: #24408c !important;
   color: #24408c !important;
+}
+
+.Field.cmt-otrs-color-hidden span.cmt-color-display {
+  border: solid 1px #d2d2d2;
+}
+.Field.cmt-otrs-color-hidden div.sp-replacer,
+.Field.cmt-otrs-color-hidden div.TooltipErrorMessage,
+.Field.cmt-otrs-color-hidden input[type=text] {
+  display: none;
 }
 
 body {
