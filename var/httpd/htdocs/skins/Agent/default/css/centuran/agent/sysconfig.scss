@@ -1,3 +1,45 @@
+.ContentColumn .GettingStarted {
+  display: flex;
+  justify-content: center;
+
+  li {
+    border-radius: 4px;
+    height: auto;
+    padding: var(--gap);
+
+    i.fa {
+      font-family: "Material Design Icons";
+      position: static;
+      text-shadow: none;
+
+      &.fa-code-fork::before {
+        content: mdi("file-tree");
+      }
+
+      &.fa-search::before {
+        content: mdi("magnify");
+      }
+
+      &.fa-lightbulb-o::before {
+        content: mdi("book-open-variant");
+      }
+    }
+
+    p {
+      font-size: calc(var(--font-size-base) * 0.85);
+      margin: 0;
+      margin-top: var(--gap);
+      padding-top: 0;
+      padding-bottom: 0;
+
+      // Prevent displaying the original bar below icon
+      &::before {
+        content: none;
+      }
+    }
+  }
+}
+
 form.SearchBox {
   position: relative;
 
