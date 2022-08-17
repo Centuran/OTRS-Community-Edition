@@ -282,9 +282,9 @@ ul.Tablelike li.Header {
         background-color: transparent;
         border-left: solid 1px #ccc;
         font-size: initial;
-        height: calc(100% - 2 * 10px);
-        margin-top: 10px; // Same as .Content's padding
+        height: calc(100% - 2 * var(--pad-y));
         margin-right: var(--gap);
+        margin-top: var(--pad-y);
         padding: 0;
         text-align: center;
         top: 0;
