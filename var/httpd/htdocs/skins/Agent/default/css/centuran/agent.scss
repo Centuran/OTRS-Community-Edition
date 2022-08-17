@@ -63,6 +63,38 @@ select {
   padding: var(--pad-y) var(--pad-x);
 }
 
+@media only screen and (min-width: 0px) and (max-width: 1024px) {
+  #Header {
+    height: 60px;
+  }
+
+  #AppWrapper .ResponsiveHandle {
+    border-radius: 50%;
+    font-size: initial;
+    height: auto;
+    left: auto;
+    line-height: 1;
+    padding: 0;
+    padding: calc(var(--pad-x) * 0.75);
+    margin: calc(var(--pad-x) * 0.25);
+    top: 0;
+    width: auto;
+
+    i.fa {
+      font-family: "Material Design Icons";
+      font-size: 30px;
+
+      &.fa-navicon::before {
+        content: mdi("menu");
+      }
+
+      &.fa-caret-square-o-left::before {
+        content: mdi("more");
+      }
+    }
+  }
+}
+
 #NavigationContainer {
   top: 69px;
 }

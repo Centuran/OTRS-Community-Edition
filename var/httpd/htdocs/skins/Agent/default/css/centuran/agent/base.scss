@@ -860,6 +860,15 @@ ul.Tablelike {
   padding: 0.8em 1.8em;
 }
 
+/* Miscellaneous rules */
+
+// A 1px by 1px element is added by CKEditor and it apparently causes
+// the vertical scrollbar to appear in lower resolutions. This changes
+// the position of the element by 1px, making the scrollbar disappear.
+body .cke_screen_reader_only {
+  top: calc(100% - 1px);
+}
+
 /* Rules to override what Vuetify does */
 
 .v-application ol, .v-application ul {
