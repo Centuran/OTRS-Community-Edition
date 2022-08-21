@@ -170,9 +170,12 @@
 
   .Icon {
     display: inline;
+    left: 2em;
     margin-right: 0;
     margin-top: 0;
     padding: 0;
+    position: absolute;
+    top: calc(0.75em / 2);
     vertical-align: middle;
   }
 
@@ -215,6 +218,10 @@
         color: currentColor;
       }
     }
+  }
+
+  .Icon + p {
+    padding-left: 2.2em;
   }
 }
 
