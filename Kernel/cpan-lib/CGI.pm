@@ -3713,7 +3713,6 @@ sub new {
     unless ($boundary_read) {
       while ($self->read(0)) { }
     }
-use Carp::Always;    
     die "Malformed multipart POST: data truncated\n" if $self->eof;
 
     return $retval;
@@ -3862,10 +3861,6 @@ sub fillBuffer {
 							 $bufferLength);
     warn "bytesToRead=$bytesToRead, bufferLength=$bufferLength, buffer=$self->{BUFFER}\n" if $_DEBUG;
     $self->{BUFFER} = '' unless defined $self->{BUFFER};
-open my $f, '>>', "/tmp/foo";
-print $f "BYTES TO READ: $bytesToRead\n";
-print $f "BUFFER: '$self->{BUFFER}'\n";
-close $f;
 
     # An apparent bug in the Apache server causes the read()
     # to return zero bytes repeatedly without blocking if the
