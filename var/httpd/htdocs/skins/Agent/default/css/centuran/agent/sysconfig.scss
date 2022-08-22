@@ -127,6 +127,10 @@ form.SearchBox {
   font-size: inherit;
 
   .Header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
     .Icon {
       height: auto;
 
@@ -142,12 +146,15 @@ form.SearchBox {
     }
 
     p.HeaderMessage {
+      font-size: calc(var(--font-size-base) * 0.85);
+      margin: 0;
       margin-bottom: 0;
     }
   }
 
   .SettingWrapper {
     form {
+      border-right: solid 1px #ccc;
       padding-right: var(--gap);
 
       .SettingContainer {

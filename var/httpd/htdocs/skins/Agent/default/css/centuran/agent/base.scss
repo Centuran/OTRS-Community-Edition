@@ -150,7 +150,7 @@ ul.Tablelike li.Header {
   text-transform: none;
 }
 
-.WidgetSimple {
+body .WidgetSimple {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
   margin-bottom: var(--gap-120);
 
@@ -226,6 +226,10 @@ ul.Tablelike li.Header {
           &.fa-times::before {
             content: mdi("close-thick");
           }
+
+          &.fa-trash-o::before {
+            content: mdi("filter-off");
+          }
         }
 
         &:hover i.fa {
@@ -253,6 +257,54 @@ ul.Tablelike li.Header {
   &.Expanded.AnimationRunning .Header {
     line-height: 1;
     padding: var(--gap) var(--gap-120);
+  }
+
+  .WidgetMenu {
+    padding: var(--pad-y) var(--pad-x);
+
+    a.Button,
+    span.Button {
+      border: solid 1px #ccc;
+      border-radius: 4px;
+      box-shadow: 0px 1px 10px #e4e4e4;
+      color: #444;
+      font-size: calc(var(--font-size-base) * 0.85);
+      padding: 5px 10px;
+      vertical-align: middle;
+
+      &.Right {
+        float: right;
+      }
+
+      .fa {
+        font-family: "Material Design Icons";
+        font-size: inherit;
+
+        &.fa-times::before {
+          content: mdi("cancel");
+        }
+
+        &.fa-check::before {
+          content: mdi("check");
+        }
+
+        &.fa-undo::before {
+          content: mdi("undo");
+        }
+
+        &.fa-link::before {
+          content: mdi("link-variant");
+        }
+
+        &.fa-star-o::before {
+          content: mdi("star");
+        }
+
+        &.fa-pencil-square {
+          content: mdi("square-edit-outline");
+        }
+      }
+    }
   }
 
   & > .Content {
@@ -337,6 +389,13 @@ ul.Tablelike li.Header {
       & > .SettingDescription {
         padding-right: 1em;
       }
+    }
+  }
+
+  @at-root {
+    // Different position for the setting update box in agent preferences
+    body .SettingsList.Preferences &.IsLockedByMe .Content .SettingUpdateBox {
+      left: calc(100% - 6em/0.875);
     }
   }
 }
