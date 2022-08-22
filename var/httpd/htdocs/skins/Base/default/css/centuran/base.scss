@@ -492,7 +492,8 @@ div.InputField_Selection div.Text {
       &:hover,
       &.jstree-wholerow-hovered,
       &.jstree-wholerow-clicked:hover {
-        background-color: #f15a22;
+        background-color: $secondary-color;
+        color: #fff;
       }
     }
   
@@ -502,7 +503,8 @@ div.InputField_Selection div.Text {
     }
 
     .jstree-hovered {
-      background-color: #f15a22;
+      background-color: $secondary-color;
+      color: #fff;
     }
   }
 }
