@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.999141188594985;
+    $Self->{Completeness}        = 0.997770154373928;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2437,6 +2437,14 @@ sub Data {
             '你可以注册您的电子邮件地址%s（在%s）来更改您的头像图像。 请注意，由于缓存，可能需要一些时间才能使你的新头像变得可用。',
         'Off' => '关',
         'End' => '结束',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => '简洁',
+        'Medium' => '基本',
+        'Large' => '详细',
         'This setting can currently not be saved.' => '此设置目前无法保存。',
         'This setting can currently not be saved' => '此设置目前无法保存',
         'Save this setting' => '保存该设置',
@@ -2836,10 +2844,10 @@ sub Data {
         'User name' => '用户名',
         'Your user name' => '你的用户名',
         'Your password' => '你的密码',
-        'Forgot password?' => '密码忘记?',
         '2 Factor Token' => '双因素令牌',
         'Your 2 Factor Token' => '你的双因素令牌',
         'Log In' => '登录',
+        'Forgot password?' => '密码忘记?',
         'Not yet registered?' => '还未注册?',
         'Back' => '后退',
         'Request New Password' => '请求新密码',
@@ -7454,6 +7462,8 @@ Thanks for your help!
             '如果设置了此参数，这个地址用于外发通知的信件发件人头信息。如果没有指定地址，则信件发件人头信息为空（除非设置了SendmailNotificationEnvelopeFrom::FallbackToEmailFrom参数）。',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '如果设置了此参数，这个地址将用于外发消息（不是通知-通知在下面查看）的信件发件人头。如果不指定地址，信件发件人头就为空。',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '如果这个选项启用了，服务人员或客户通过WEB界面创建的工单将收到自动响应（如果配置了自动响应）。如果这个选项不启用，则不会发送自动响应。',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7501,7 +7511,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => '搜索界面的JavaScript函数。',
         'Korean' => '韩语',
         'Language' => '语言',
-        'Large' => '详细',
         'Last Screen Overview' => '最近屏幕概览',
         'Last customer subject' => '最后客户主题',
         'Lastname Firstname' => '姓 名',
@@ -7618,7 +7627,6 @@ Thanks for your help!
             '本次操作结果显示的最大工单数。',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             '工单详情视图客户信息表格的最大尺寸（单位：字符）。',
-        'Medium' => '基本',
         'Merge this ticket and all articles into another ticket' => '将这个工单和所有的信件合并到另一工单',
         'Merged Ticket (%s/%s) to (%s/%s).' => '已将工单(%s/%s)合并到(%s/%s)。',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => '合并工单<OTRS_TICKET>到 <OTRS_MERGE_TO_TICKET>。',
@@ -7945,6 +7953,7 @@ Thanks for your help!
         'Second Queue' => '第二队列',
         'Select after which period ticket overviews should refresh automatically.' =>
             '选择工单概览视图自动刷新的时间间隔。',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '选择概览视图中默认显示的工单数。',
         'Select the main interface language.' => '选择主界面语言。',
@@ -8390,9 +8399,9 @@ Thanks for your help!
         'Signatures' => '签名',
         'Simple' => '简单',
         'Skin' => '皮肤',
+        'Skin Options' => '',
         'Slovak' => '斯洛伐克语',
         'Slovenian' => '斯洛文尼亚语',
-        'Small' => '简洁',
         'Software Package Manager.' => '软件包管理器。',
         'Solution time' => '解决时间',
         'SolutionDiffInMin' => '解决时间差（分钟）',

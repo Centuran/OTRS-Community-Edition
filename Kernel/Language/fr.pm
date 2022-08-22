@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.428031604259705;
+    $Self->{Completeness}        = 0.427444253859348;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2439,6 +2439,14 @@ sub Data {
             '',
         'Off' => 'Désactivé',
         'End' => 'Fin',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Petit',
+        'Medium' => 'Moyen',
+        'Large' => 'Grand',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2838,10 +2846,10 @@ sub Data {
         'User name' => 'Identifiant',
         'Your user name' => 'Votre Identifiant',
         'Your password' => 'Votre mot de passe',
-        'Forgot password?' => 'Mot de passe oublié?',
         '2 Factor Token' => '',
         'Your 2 Factor Token' => '',
         'Log In' => 'Connexion',
+        'Forgot password?' => 'Mot de passe oublié?',
         'Not yet registered?' => 'Pas encore enregistré?',
         'Back' => 'Retour',
         'Request New Password' => 'Demander un nouveau mot de passe',
@@ -7446,6 +7454,8 @@ Thanks for your help!
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7493,7 +7503,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => 'Langue',
-        'Large' => 'Grand',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '',
@@ -7610,7 +7619,6 @@ Thanks for your help!
             '',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             '',
-        'Medium' => 'Moyen',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Fusionner le ticket <OTRS_TICKET> avec <OTRS_MERGE_TO_TICKET>.',
@@ -7937,6 +7945,7 @@ Thanks for your help!
         'Second Queue' => '',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => 'Sélectionnez la langue principale de l\'interface.',
@@ -8382,9 +8391,9 @@ Thanks for your help!
         'Signatures' => 'Signatures',
         'Simple' => '',
         'Skin' => 'Skin',
+        'Skin Options' => '',
         'Slovak' => '',
         'Slovenian' => '',
-        'Small' => 'Petit',
         'Software Package Manager.' => '',
         'Solution time' => '',
         'SolutionDiffInMin' => '',

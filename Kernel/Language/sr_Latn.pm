@@ -31,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.995362418412917;
+    $Self->{Completeness}        = 0.993996569468268;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2438,6 +2438,14 @@ sub Data {
             'Vašu avatar sličicu možete promeniti registracijom vaše imejl adrese %s na %s. Molimo obratite pažnju da je zbog keširanja neophodno da prođe neko vreme pre nego što vaš novi avatar postane vidljiv.',
         'Off' => 'Isključeno',
         'End' => 'Kraj',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Malo',
+        'Medium' => 'Srednje',
+        'Large' => 'Veliko',
         'This setting can currently not be saved.' => 'Ovo podešavanje trenutno ne može biti sačuvano.',
         'This setting can currently not be saved' => 'Ovo podešavanje trenutno ne može biti sačuvano',
         'Save this setting' => 'Sačuvaj ovo podešavanje',
@@ -2837,10 +2845,10 @@ sub Data {
         'User name' => 'Korisničko ime',
         'Your user name' => 'Vaše korisničko ime',
         'Your password' => 'Vaša lozinka',
-        'Forgot password?' => 'Zaboravili ste lozinku?',
         '2 Factor Token' => 'Dvofaktorski token',
         'Your 2 Factor Token' => 'Vaš dvofaktorski token',
         'Log In' => 'Prijavljivanje',
+        'Forgot password?' => 'Zaboravili ste lozinku?',
         'Not yet registered?' => 'Niste registrovani?',
         'Back' => 'Nazad',
         'Request New Password' => 'Zahtev za novu lozinku',
@@ -7456,6 +7464,8 @@ Vaša tehnička podrška
             'Ako je podešeno ova adresa se koristi kao okvir zaglavlja pošiljaoca u odlaznim obaveštenjima. Ako adresa nije uneta, okvir zaglavlja pošiljaoca je prazan (osim ako je SendmailNotificationEnvelopeFrom::FallbackToEmailFrom podešen).',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Ako je podešeno ova adresa se koristi kao okvir zaglavlja pošiljaoca u odlaznim porukama (ne za obaveštenja - vidi niže). Ako adresa nije uneta, okvir zaglavlja pošiljaoca je jednak imejl adresi reda.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             'Ukoliko je ova opcija uključena, tiketi kreirani preko veb interfejsa od strane klijenata ili operatera, će dobiti automatski odgovor ukoliko je podešen. Ako je ova opcija isključena, automatski odgovori neće biti slati.',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7503,7 +7513,6 @@ Vaša tehnička podrška
         'JavaScript function for the search frontend.' => 'JavaScript funkcija za modul pretrage.',
         'Korean' => 'Korejski',
         'Language' => 'Jezik',
-        'Large' => 'Veliko',
         'Last Screen Overview' => 'Pregled poslednjeg ekrana',
         'Last customer subject' => 'Poslednji predmet poruke klijenta',
         'Lastname Firstname' => 'Prezime, Ime',
@@ -7620,7 +7629,6 @@ Vaša tehnička podrška
             'Maksimalni broj tiketa koji će biti prikazani u rezultatu ove operacije.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Maksimalna dužina (u znacima) klijentske info tabele na detaljnom pregledu tiketa.',
-        'Medium' => 'Srednje',
         'Merge this ticket and all articles into another ticket' => 'Spoji ovaj tiket i sve članke u drugi tiket',
         'Merged Ticket (%s/%s) to (%s/%s).' => 'Spojen tiket (%s/%s) u (%s/%s)',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Tiket <OTRS_TICKET> spojen u <OTRS_MERGE_TO_TICKET>.',
@@ -7947,6 +7955,7 @@ Vaša tehnička podrška
         'Second Queue' => 'Drugi Red',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Izaberite posle kog perioda će pregledi tiketa biti automatski osveženi.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             'Izaberite koji broj tiketa će biti podrazumevano prikazan u pregledima.',
         'Select the main interface language.' => 'Izaberite glavni jezik interfejsa.',
@@ -8392,9 +8401,9 @@ Vaša tehnička podrška
         'Signatures' => 'Potpisi',
         'Simple' => 'Jednostavno',
         'Skin' => 'Izgled',
+        'Skin Options' => '',
         'Slovak' => 'Slovački',
         'Slovenian' => 'Slovenački',
-        'Small' => 'Malo',
         'Software Package Manager.' => 'Upravljanje programskim paketima.',
         'Solution time' => 'Vreme rešavanja',
         'SolutionDiffInMin' => 'SolutionDiffInMin',

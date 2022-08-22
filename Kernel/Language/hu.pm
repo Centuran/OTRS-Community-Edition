@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.999141188594985;
+    $Self->{Completeness}        = 0.997770154373928;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2436,6 +2436,14 @@ sub Data {
             'Megváltoztathatja a profilképét, ha regisztrálja az e-mail címét (%s) a következő oldalon: %s. Ne feledje, hogy a gyorsítótárazás miatt eltarthat egy ideig, amíg az új profilképe elérhetővé válik.',
         'Off' => 'Ki',
         'End' => 'Befejezés',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Kicsi',
+        'Medium' => 'Közepes',
+        'Large' => 'Nagy',
         'This setting can currently not be saved.' => 'Ezt a beállítás jelenleg nem lehet elmenteni.',
         'This setting can currently not be saved' => 'Ezt a beállítás jelenleg nem lehet elmenteni',
         'Save this setting' => 'Beállítás mentése',
@@ -2835,10 +2843,10 @@ sub Data {
         'User name' => 'Felhasználónév',
         'Your user name' => 'A felhasználóneve',
         'Your password' => 'A jelszava',
-        'Forgot password?' => 'Elfelejtette a jelszót?',
         '2 Factor Token' => 'Kétlépcsős token',
         'Your 2 Factor Token' => 'Az Ön kétlépcsős tokenje',
         'Log In' => 'Bejelentkezés',
+        'Forgot password?' => 'Elfelejtette a jelszót?',
         'Not yet registered?' => 'Még nem regisztrált?',
         'Back' => 'Vissza',
         'Request New Password' => 'Új jelszó kérése',
@@ -7454,6 +7462,8 @@ Az Ön segélyszolgálat csapata
             'Ha be van állítva, akkor ez a cím lesz használva a kimenő értesítések boríték küldő fejléceként. Ha nincs cím beállítva, a boríték küldő fejléc üres (hacsak a SendmailNotificationEnvelopeFrom::FallbackToEmailFrom be nincs állítva).',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Ha be van állítva, akkor ez a cím lesz használva boríték küldőként a kimenő üzenetekben (nem értesítések – lásd lent). Ha nincs cím beállítva, a boríték küldő megegyezik a várólista e-mail címével.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             'Ha ez a beállítás engedélyezve van, akkor a webes felületen keresztül, az ügyfelek vagy az ügyintézők által létrehozott jegyek egy automatikus választ fognak kapni, ha be van állítva. Ha ez a beállítás nincs engedélyezve, akkor nem lesznek automatikus válaszok elküldve.',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7501,7 +7511,6 @@ Az Ön segélyszolgálat csapata
         'JavaScript function for the search frontend.' => 'JavaScript függvény a keresési előtétprogramhoz.',
         'Korean' => 'Koreai',
         'Language' => 'Nyelv',
-        'Large' => 'Nagy',
         'Last Screen Overview' => 'Utolsó képernyő áttekintője',
         'Last customer subject' => 'Legutóbbi ügyféltárgy',
         'Lastname Firstname' => 'Vezetéknév Keresztnév',
@@ -7618,7 +7627,6 @@ Az Ön segélyszolgálat csapata
             'Ennek a műveletnek az eredményében megjelenített jegyek legnagyobb száma.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Az ügyfél-információs tábla legnagyobb mérete (karakterben) a jegynagyítás nézeten.',
-        'Medium' => 'Közepes',
         'Merge this ticket and all articles into another ticket' => 'A jegy és minden bejegyzés egyesítése egy másik jegybe',
         'Merged Ticket (%s/%s) to (%s/%s).' => 'Jegy (%s/%s) egyesítve ezzel: (%s/%s).',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'A(z) <OTRS_TICKET> jegy egyesítve a következővel: <OTRS_MERGE_TO_TICKET>.',
@@ -7945,6 +7953,7 @@ Az Ön segélyszolgálat csapata
         'Second Queue' => 'Második várólista',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Annak kiválasztása, hogy a jegyáttekintőket milyen időszakonként kell automatikusan frissíteni.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             'Annak kiválasztása, hogy alapértelmezetten hány jegyet kell megjeleníteni az áttekintőkben.',
         'Select the main interface language.' => 'A felület fő nyelvének kiválasztása.',
@@ -8390,9 +8399,9 @@ Az Ön segélyszolgálat csapata
         'Signatures' => 'Aláírások',
         'Simple' => 'Egyszerű',
         'Skin' => 'Felszín',
+        'Skin Options' => '',
         'Slovak' => 'Szlovák',
         'Slovenian' => 'Szlovén',
-        'Small' => 'Kicsi',
         'Software Package Manager.' => 'Szoftvercsomag-kezelő.',
         'Solution time' => 'Megoldási idő',
         'SolutionDiffInMin' => 'Megoldás különbsége percben',

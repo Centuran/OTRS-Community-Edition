@@ -31,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D-%M-%Y';
     $Self->{DateInputFormat}     = '%D-%M-%Y';
     $Self->{DateInputFormatLong} = '%D-%M-%Y - %T';
-    $Self->{Completeness}        = 0.555479216763999;
+    $Self->{Completeness}        = 0.554716981132075;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2438,6 +2438,14 @@ sub Data {
             'U kunt uw eigen avatar afbeeling registreren door uw e-mail adres   %s op %s te gebruiken. Let op: het kan enige tijd duren voordat uw avatar beschikbaar is vanwege buffering.',
         'Off' => 'Uit',
         'End' => 'Einde',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Klein',
+        'Medium' => 'Middel',
+        'Large' => 'Groot',
         'This setting can currently not be saved.' => 'Deze instelling kan op dit moment niet worden opgeslagen.',
         'This setting can currently not be saved' => 'Deze instelling kan op dit moment niet worden opgeslagen',
         'Save this setting' => 'Sla deze instelling op',
@@ -2837,10 +2845,10 @@ sub Data {
         'User name' => 'Gebruikersnaam',
         'Your user name' => 'Uw gebruikersnaam',
         'Your password' => 'Uw wachtwoord',
-        'Forgot password?' => 'Wachtwoord vergeten?',
         '2 Factor Token' => '2 stappen code',
         'Your 2 Factor Token' => 'Uw 2 stappen code',
         'Log In' => 'Inloggen',
+        'Forgot password?' => 'Wachtwoord vergeten?',
         'Not yet registered?' => 'Nog niet geregistreerd?',
         'Back' => 'Terug',
         'Request New Password' => 'Vraag nieuw wachtwoord aan',
@@ -7456,6 +7464,8 @@ Het Helpdesk Team
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7503,7 +7513,6 @@ Het Helpdesk Team
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => 'Taal',
-        'Large' => 'Groot',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '',
@@ -7620,7 +7629,6 @@ Het Helpdesk Team
             '',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             '',
-        'Medium' => 'Middel',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => '',
@@ -7947,6 +7955,7 @@ Het Helpdesk Team
         'Second Queue' => '',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => 'Selecteer uw standaard taal.',
@@ -8392,9 +8401,9 @@ Het Helpdesk Team
         'Signatures' => 'Handtekeningen',
         'Simple' => '',
         'Skin' => 'Skin',
+        'Skin Options' => '',
         'Slovak' => '',
         'Slovenian' => '',
-        'Small' => 'Klein',
         'Software Package Manager.' => '',
         'Solution time' => '',
         'SolutionDiffInMin' => '',

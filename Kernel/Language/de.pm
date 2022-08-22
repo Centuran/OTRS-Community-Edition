@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.999141188594985;
+    $Self->{Completeness}        = 0.997770154373928;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2432,6 +2432,14 @@ sub Data {
             'Sie können Ihr Avatar-Bild ändern, indem Sie sich mit Ihrer E-Mail-Adresse %s unter %s registrieren. Bitte beachten Sie, dass es einige Zeit dauern kann, bis Änderungen sichtbar werden.',
         'Off' => 'Aus',
         'End' => 'Ende',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Klein',
+        'Medium' => 'Mittel',
+        'Large' => 'Groß',
         'This setting can currently not be saved.' => 'Diese Einstellung kann derzeit nicht gespeichert werden.',
         'This setting can currently not be saved' => 'Diese Einstellung kann derzeit nicht gespeichert werden',
         'Save this setting' => 'Einstellung speichern',
@@ -2831,10 +2839,10 @@ sub Data {
         'User name' => 'Benutzername',
         'Your user name' => 'Ihr Benutzername',
         'Your password' => 'Ihr Passwort',
-        'Forgot password?' => 'Passwort vergessen?',
         '2 Factor Token' => '2-Faktor-Token',
         'Your 2 Factor Token' => 'Ihr 2-Faktor-Token',
         'Log In' => 'Anmelden',
+        'Forgot password?' => 'Passwort vergessen?',
         'Not yet registered?' => 'Noch nicht registriert?',
         'Back' => 'Zurück',
         'Request New Password' => 'Neues Passwort anfordern',
@@ -7449,6 +7457,8 @@ Ihr Helpdesk-Team
             'Wenn gesetzt, wird diese Adresse als Envelope-Sender-Header in ausgehenden Benachrichtigungen genutzt. Ist keine Adresse angegeben, bleibt der Header leer (außer SendmailNotificationEnvelopeFrom::FallbackToEmailFrom ist gesetzt).',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Wenn gesetzt, wird diese Adresse als Envelope-Sender-Header in ausgehenden Nachrichten (nicht Benachrichtigungen, siehe unten) genutzt. Ist keine Adresse angegeben, entspricht der Envelope-Sender der an der Queue hinterlegten E-Mail-Adresse.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             'Wenn diese Option aktiviert ist, werden für Tickets, welche über das externe Interface oder das Agenten-Interface erstellt wurden, eine Automatische Antwort versendet, sofern dies in der Konfiguration der Queue so eingestellt ist. Wenn diese Option nicht aktiviert ist, werden keine Automatischen Antworten versendet.',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7496,7 +7506,6 @@ Ihr Helpdesk-Team
         'JavaScript function for the search frontend.' => 'JavaScript-Funktion für das Suche-Frontend.',
         'Korean' => 'Koreanisch',
         'Language' => 'Sprache',
-        'Large' => 'Groß',
         'Last Screen Overview' => 'Letzte Masken-Übersicht',
         'Last customer subject' => 'Letzter Kunden-Betreff',
         'Lastname Firstname' => 'Nachname Vorname',
@@ -7613,7 +7622,6 @@ Ihr Helpdesk-Team
             'Maximale Anzahl von Tickets, die als Ergebnis dieser Aktion angezeigt werden sollen.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Maximale Zeichenanzahl für die Tabelle mit Kundeninformationen in der TicketZoom-Ansicht.',
-        'Medium' => 'Mittel',
         'Merge this ticket and all articles into another ticket' => 'Dieses Ticket und alle Artikel in ein anderes Ticket zusammenfassen',
         'Merged Ticket (%s/%s) to (%s/%s).' => 'Ticket (%s/%s) zusammengeführt mit (%s/%s).',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Ticket <OTRS_TICKET> wurde mit <OTRS_MERGE_TO_TICKET> zusammengefasst.',
@@ -7940,6 +7948,7 @@ Ihr Helpdesk-Team
         'Second Queue' => 'Zweite Queue',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Definiert, in welchen Zeitabständen die Ticket-Zusammenfassung automatisch aktualisiert wird.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             'Definiert, wieviele Tickets in der Übersicht standardmäßig angezeigt werden.',
         'Select the main interface language.' => 'Wählen Sie die Sprache der Hauptoberfläche.',
@@ -8385,9 +8394,9 @@ Ihr Helpdesk-Team
         'Signatures' => 'Signaturen',
         'Simple' => 'Einfach',
         'Skin' => 'Skin',
+        'Skin Options' => '',
         'Slovak' => 'Slowakisch',
         'Slovenian' => 'Slowenisch',
-        'Small' => 'Klein',
         'Software Package Manager.' => 'Softwarepaketverwaltung.',
         'Solution time' => 'Lösungszeit',
         'SolutionDiffInMin' => 'Lösungszeitdifferenz in Minuten',

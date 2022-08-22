@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.693919615252491;
+    $Self->{Completeness}        = 0.692967409948542;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2436,6 +2436,14 @@ sub Data {
             '',
         'Off' => 'خاموش',
         'End' => 'پایان',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'کوچک',
+        'Medium' => 'متوسط',
+        'Large' => 'بزرگ',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2835,10 +2843,10 @@ sub Data {
         'User name' => 'نام کاربری',
         'Your user name' => 'نام کاربری شما',
         'Your password' => 'رمز عبور شما',
-        'Forgot password?' => 'رمز عبور را فراموش کردید؟',
         '2 Factor Token' => '2 فاکتور رمز',
         'Your 2 Factor Token' => ' 2 فاکتور رمزشما',
         'Log In' => 'ورود',
+        'Forgot password?' => 'رمز عبور را فراموش کردید؟',
         'Not yet registered?' => 'هنوز ثبت نام نشده‌اید؟',
         'Back' => 'بازگشت',
         'Request New Password' => 'درخواست رمز عبور جدید',
@@ -7454,6 +7462,8 @@ Thanks for your help!
             'اگر تعیین شود، این آدرس به عنوان هدر فرستنده پاکت در اطلاعیه های خروجی استفاده می شود. اگر هیچ آدرس مشخص شده باشد، هدر فرستنده پاکت خالی است (مگر اینکه SendmailNotificationEnvelopeFrom :: FallbackToEmailFrom تنظیم شده است).',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'اگر تعیین شود، این آدرس به عنوان فرستنده پاکت در پیام های خروجی استفاده می شود (اطلاعیه - پایین را ببینید). اگر هیچ آدرس مشخص شده باشد، فرستنده پاکت برابر به صف آدرس ایمیل است.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7501,7 +7511,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => 'جاوا اسکریپت تابع برای ظاهر جستجو.',
         'Korean' => '',
         'Language' => 'زبان',
-        'Large' => 'بزرگ',
         'Last Screen Overview' => '',
         'Last customer subject' => 'آخرین موضوع مشتری',
         'Lastname Firstname' => 'نام خانوادگی',
@@ -7618,7 +7627,6 @@ Thanks for your help!
             'حداکثر تعداد درخواست در نتیجه این کار نمایش داده می شود.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'حداکثر اندازه (در شخصیت) از جدول اطلاعات مربوط به مشتری در نظر زوم بلیط.',
-        'Medium' => 'متوسط',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'با هم ادغام شدند بلیط <OTRS_TICKET> تا <OTRS_MERGE_TO_TICKET>.',
@@ -7945,6 +7953,7 @@ Thanks for your help!
         'Second Queue' => 'صف دوم',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => '',
@@ -8390,9 +8399,9 @@ Thanks for your help!
         'Signatures' => 'امضاء',
         'Simple' => 'ساده',
         'Skin' => 'پوسته',
+        'Skin Options' => '',
         'Slovak' => 'اسلواکی',
         'Slovenian' => 'اسلوونی',
-        'Small' => 'کوچک',
         'Software Package Manager.' => 'نرم افزار مدیریت بسته بندی.',
         'Solution time' => '',
         'SolutionDiffInMin' => 'SolutionDiffInMin',

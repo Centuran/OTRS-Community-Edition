@@ -35,7 +35,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.930436276193748;
+    $Self->{Completeness}        = 0.929159519725557;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2442,6 +2442,14 @@ sub Data {
             'Вы можете изменить свое изображение аватара, зарегистрировавшись на ваш адрес электронной почты %s на %s. Обратите внимание, что это может занять некоторое время, пока ваш новый аватар не станет доступен из-за кэширования.',
         'Off' => 'Выключено',
         'End' => 'Окончание',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Маленький',
+        'Medium' => 'Средний',
+        'Large' => 'Большой',
         'This setting can currently not be saved.' => 'Этот параметр не может быть изменен в настоящее время.',
         'This setting can currently not be saved' => 'Этот параметр не может быть изменен в настоящее время.',
         'Save this setting' => 'Сохранить эту настройку',
@@ -2841,10 +2849,10 @@ sub Data {
         'User name' => 'Имя пользователя',
         'Your user name' => 'Ваше имя пользователя',
         'Your password' => 'Ваш пароль',
-        'Forgot password?' => 'Забыли пароль?',
         '2 Factor Token' => '2-факторный токен',
         'Your 2 Factor Token' => 'Ваш 2-факторный токен',
         'Log In' => 'Войти',
+        'Forgot password?' => 'Забыли пароль?',
         'Not yet registered?' => 'Хотите зарегистрироваться?',
         'Back' => 'Назад',
         'Request New Password' => 'Запросить новый пароль',
@@ -7460,6 +7468,8 @@ Thanks for your help!
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7507,7 +7517,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => 'Функция JavaScript для фронтэнд поиска.',
         'Korean' => 'Корейский',
         'Language' => 'Язык',
-        'Large' => 'Большой',
         'Last Screen Overview' => '',
         'Last customer subject' => 'Последняя заголовок клиента',
         'Lastname Firstname' => 'Фамилия Имя',
@@ -7624,7 +7633,6 @@ Thanks for your help!
             'Максимальное количество заявок отображаемых в результате этой операции.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Максимальная длина (в символах) для таблицы информации о клиенте при просмотре заявки.',
-        'Medium' => 'Средний',
         'Merge this ticket and all articles into another ticket' => 'Объединить эту заявку и все ее заметки с другой заявкой',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Объединена заявка <OTRS_TICKET> с <OTRS_MERGE_TO_TICKET>.',
@@ -7951,6 +7959,7 @@ Thanks for your help!
         'Second Queue' => 'Вторая очередь',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Выберите период, после которого просмотр списка заявок будет автоматически обновлен.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             'Выберете как много заявок будет показываться в обзоре по умолчанию.',
         'Select the main interface language.' => 'Выберете главный язык интерфейса.',
@@ -8396,9 +8405,9 @@ Thanks for your help!
         'Signatures' => 'Подписи',
         'Simple' => 'Простой',
         'Skin' => 'Окрас',
+        'Skin Options' => '',
         'Slovak' => 'Словацкий',
         'Slovenian' => 'Словенский',
-        'Small' => 'Маленький',
         'Software Package Manager.' => 'Управление пакетами программного обеспечения',
         'Solution time' => 'Время решения',
         'SolutionDiffInMin' => 'SolutionDiffInMin',

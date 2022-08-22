@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.340776365510134;
+    $Self->{Completeness}        = 0.340308747855918;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2434,6 +2434,14 @@ sub Data {
 請注意，更換頭像需要一點時間才會生效。',
         'Off' => '關閉',
         'End' => '結束',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => '簡潔',
+        'Medium' => '基本',
+        'Large' => '詳細',
         'This setting can currently not be saved.' => '目前無法儲存此設定',
         'This setting can currently not be saved' => '目前無法儲存此設定',
         'Save this setting' => '儲存設定',
@@ -2833,10 +2841,10 @@ sub Data {
         'User name' => '用戶名',
         'Your user name' => '您的用戶名',
         'Your password' => '您的密碼',
-        'Forgot password?' => '密碼遺忘?',
         '2 Factor Token' => '',
         'Your 2 Factor Token' => '',
         'Log In' => '登錄',
+        'Forgot password?' => '密碼遺忘?',
         'Not yet registered?' => '還未註冊?',
         'Back' => '上一步',
         'Request New Password' => '請求新密碼',
@@ -7442,6 +7450,8 @@ Thanks for your help!
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7489,7 +7499,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => '語言',
-        'Large' => '詳細',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '姓氏 名字',
@@ -7606,7 +7615,6 @@ Thanks for your help!
             '',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             '',
-        'Medium' => '基本',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => '',
@@ -7933,6 +7941,7 @@ Thanks for your help!
         'Second Queue' => '',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => '',
@@ -8378,9 +8387,9 @@ Thanks for your help!
         'Signatures' => '回復簽名',
         'Simple' => '簡易',
         'Skin' => '主題',
+        'Skin Options' => '',
         'Slovak' => '',
         'Slovenian' => '',
-        'Small' => '簡潔',
         'Software Package Manager.' => '',
         'Solution time' => '',
         'SolutionDiffInMin' => '',

@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.938165578838887;
+    $Self->{Completeness}        = 0.936878216123499;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2437,6 +2437,14 @@ sub Data {
             'Você pode alterar a sua imagem de avatar registrando-se com sua conta de e-mail %s em %s. Por favor note que pode levar algum tempo até que o seu novo avatar fique disponível por conta do cache.',
         'Off' => 'Desligado',
         'End' => 'Fim',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Pequeno',
+        'Medium' => 'Médio',
+        'Large' => 'Grande',
         'This setting can currently not be saved.' => 'Esta configuração não pode ser salva no momento.',
         'This setting can currently not be saved' => 'Esta configuração não pode ser salva no momento',
         'Save this setting' => 'Salvar esta configuração',
@@ -2836,10 +2844,10 @@ sub Data {
         'User name' => 'Nome de usuário',
         'Your user name' => 'Seu nome de usuário',
         'Your password' => 'Sua senha',
-        'Forgot password?' => 'Esqueceu a senha?',
         '2 Factor Token' => 'Fator de 2 autenticação',
         'Your 2 Factor Token' => 'Seu fator de 2 autenticação',
         'Log In' => 'Entrar',
+        'Forgot password?' => 'Esqueceu a senha?',
         'Not yet registered?' => 'Não registrado ainda?',
         'Back' => 'Voltar',
         'Request New Password' => 'Solicitar uma nova senha',
@@ -7455,6 +7463,8 @@ Obrigado pela ajuda!
             'Se definido, este endereço é utilizado como header de envelope de remetente em notificações enviadas. Se nenhum endereçno for especificado, o header de envelope de remetente é vazio (a não ser que SendmailNotificationEnvelopeFrom::FallbackToEmailFrom seja definido).',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Se definido, este endereço é utilizado com envelope de remetente em mensagens enviadas (não notificações - ver abaixo). Se nenhum endereço for especificado, o envelope de remetente é igual ao endereço de e-mail da fila.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7502,7 +7512,6 @@ Obrigado pela ajuda!
         'JavaScript function for the search frontend.' => '',
         'Korean' => 'Coreano',
         'Language' => 'Idioma',
-        'Large' => 'Grande',
         'Last Screen Overview' => 'Visão Geral da Última Tela',
         'Last customer subject' => 'Último assunto de cliente',
         'Lastname Firstname' => 'ÚltimoNome PrimeiroNome',
@@ -7619,7 +7628,6 @@ Obrigado pela ajuda!
             'Número máxiom de tickets a serem apresentados como resultado desta operação.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Tamanho máximo (em caracteres) da tabela de informação de cliente na visão de zoom de ticket.',
-        'Medium' => 'Médio',
         'Merge this ticket and all articles into another ticket' => 'Agrupar esse ticket e todos artigos com um outro ticket',
         'Merged Ticket (%s/%s) to (%s/%s).' => 'Ticket Agrupado (%s/%s) com (%s/%s).',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Chamado <OTRS_TICKET> agrupado com <OTRS_MERGE_TO_TICKET>.',
@@ -7946,6 +7954,7 @@ Obrigado pela ajuda!
         'Second Queue' => 'Segunda Fila',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Selecione a frequência com que a visão geral de chamados deve ser atualizada.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             'Selecione quantos chamados deverão ser mostrados na visão geral por padrão.',
         'Select the main interface language.' => 'Selecione o idioma principal da interface.',
@@ -8391,9 +8400,9 @@ Obrigado pela ajuda!
         'Signatures' => 'Assinaturas',
         'Simple' => 'Simples',
         'Skin' => 'Tema',
+        'Skin Options' => '',
         'Slovak' => 'Eslovaco',
         'Slovenian' => 'Esloveno',
-        'Small' => 'Pequeno',
         'Software Package Manager.' => 'Gerenciado de pacote de software.',
         'Solution time' => 'Tempo de solução',
         'SolutionDiffInMin' => 'Delta de tempo de solução em minutos',

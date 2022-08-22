@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.500343524562006;
+    $Self->{Completeness}        = 0.499656946826758;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -2431,6 +2431,14 @@ sub Data {
             '',
         'Off' => 'Вимкнено',
         'End' => 'Закінчення',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Малий',
+        'Medium' => 'Середній',
+        'Large' => 'Великий',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2830,10 +2838,10 @@ sub Data {
         'User name' => 'Ім\'я користувача',
         'Your user name' => 'Ваше ім\'я користувача',
         'Your password' => 'Ваш пароль',
-        'Forgot password?' => 'Забули пароль?',
         '2 Factor Token' => '2-факторний Токен',
         'Your 2 Factor Token' => 'Ваш 2-факторний Токен',
         'Log In' => 'Увійти',
+        'Forgot password?' => 'Забули пароль?',
         'Not yet registered?' => 'Прагнете зареєструватися?',
         'Back' => 'Назад',
         'Request New Password' => 'Вислати новий пароль',
@@ -7438,6 +7446,8 @@ Thanks for your help!
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7485,7 +7495,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => 'Мова',
-        'Large' => 'Великий',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '',
@@ -7602,7 +7611,6 @@ Thanks for your help!
             '',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             '',
-        'Medium' => 'Середній',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => '',
@@ -7929,6 +7937,7 @@ Thanks for your help!
         'Second Queue' => '',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => '',
@@ -8374,9 +8383,9 @@ Thanks for your help!
         'Signatures' => 'Підписи',
         'Simple' => '',
         'Skin' => 'Оболонка',
+        'Skin Options' => '',
         'Slovak' => '',
         'Slovenian' => '',
-        'Small' => 'Малий',
         'Software Package Manager.' => '',
         'Solution time' => 'Час вирішення',
         'SolutionDiffInMin' => '',

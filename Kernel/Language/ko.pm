@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.968223978014428;
+    $Self->{Completeness}        = 0.966895368782161;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2432,6 +2432,14 @@ sub Data {
             '이메일 주소 %s at %s 에 등록하여 아바타 이미지를 변경할 수 있습니다. 새로운 아바타가 캐싱으로 인해 사용 가능해질 때까지 약간의 시간이 걸릴 수 있습니다.',
         'Off' => '떨어져서',
         'End' => '종료',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => '작은',
+        'Medium' => '중간의',
+        'Large' => '큰',
         'This setting can currently not be saved.' => '이 설정은 현재 저장할 수 없습니다.',
         'This setting can currently not be saved' => '이 설정은 현재 저장할 수 없습니다.',
         'Save this setting' => '이 설정 저장',
@@ -2831,10 +2839,10 @@ sub Data {
         'User name' => '사용자 이름',
         'Your user name' => '사용자 이름',
         'Your password' => '너의 비밀번호',
-        'Forgot password?' => '비밀번호를 잊으셨나요?',
         '2 Factor Token' => '2 요소 토큰',
         'Your 2 Factor Token' => '당신의 2 팩터 토큰',
         'Log In' => '로그인',
+        'Forgot password?' => '비밀번호를 잊으셨나요?',
         'Not yet registered?' => '아직 등록되지 않았습니까?',
         'Back' => '뒤',
         'Request New Password' => '새 비밀번호 요청',
@@ -7450,6 +7458,8 @@ Thanks for your help!
             '설정된 경우이 주소는 보내는 알림의 봉투 보낸 사람 헤더로 사용됩니다. 주소를 지정하지 않으면 봉투 송신자 헤더가 비어 있습니다 (SendmailNotificationEnvelopeFrom :: FallbackToEmailFrom이 설정되지 않은 경우).',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '설정된 경우 이 주소는 발신 메일에서 봉투 발신자로 사용됩니다 ( 알림이 아님 - 아래 참조). 주소를 지정하지 않으면 봉투 송신자는 대기열 전자 우편 주소와 같습니다.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '이 옵션을 사용하면 Customers 나 Agents를 통해 웹 인터페이스를 통해 생성 된 티켓은 자동 응답을받습니다. 이 옵션을 사용하지 않으면 자동 응답이 전송되지 않습니다.',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7497,7 +7507,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => '검색 프론트 엔드 용 JavaScript 함수.',
         'Korean' => '',
         'Language' => '언어',
-        'Large' => '큰',
         'Last Screen Overview' => '마지막 화면 개요',
         'Last customer subject' => '마지막 고객 주제',
         'Lastname Firstname' => '성 이름',
@@ -7614,7 +7623,6 @@ Thanks for your help!
             '이 작업의 결과로 표시될 최대 티켓 수입니다.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             '티켓 확대보기의 고객 정보 테이블의 최대 크기 (문자 수)',
-        'Medium' => '중간의',
         'Merge this ticket and all articles into another ticket' => '이 티켓과 모든 기사를 다른 티켓으로 병합하십시오.',
         'Merged Ticket (%s/%s) to (%s/%s).' => '합쳐진 티켓 (%s/%s) ~ (%s/ 1 %s).',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Merged Ticket 1 to 2.',
@@ -7941,6 +7949,7 @@ Thanks for your help!
         'Second Queue' => '두 번째 대기열',
         'Select after which period ticket overviews should refresh automatically.' =>
             '티켓 개요가 자동으로 새로 고쳐져야하는 기간을 선택하십시오.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '개요별로 표시할 티켓 수를 기본적으로 선택하십시오.',
         'Select the main interface language.' => '기본 인터페이스 언어를 선택하십시오.',
@@ -8386,9 +8395,9 @@ Thanks for your help!
         'Signatures' => '서명',
         'Simple' => '단순한',
         'Skin' => '피부',
+        'Skin Options' => '',
         'Slovak' => '슬로바키아 사람',
         'Slovenian' => '슬로베니아',
-        'Small' => '작은',
         'Software Package Manager.' => '소프트웨어 패키지 관리자.',
         'Solution time' => '솔루션 시간',
         'SolutionDiffInMin' => 'SolutionDiffInMin',

@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.802988663689454;
+    $Self->{Completeness}        = 0.80188679245283;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2432,6 +2432,14 @@ sub Data {
             '',
         'Off' => 'Apagado',
         'End' => 'Fin',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Pequeño',
+        'Medium' => 'Mediano',
+        'Large' => 'Grande',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => 'Guardar este parámetro',
@@ -2831,10 +2839,10 @@ sub Data {
         'User name' => 'Nombre de usuario',
         'Your user name' => 'Su nombre de usuario',
         'Your password' => 'Su contraseña',
-        'Forgot password?' => '¿Olvidó su contraseña?',
         '2 Factor Token' => '',
         'Your 2 Factor Token' => '',
         'Log In' => 'Iniciar sesión',
+        'Forgot password?' => '¿Olvidó su contraseña?',
         'Not yet registered?' => '¿Aún no se ha registrado?',
         'Back' => 'Atrás',
         'Request New Password' => 'Solicite una Contraseña Nueva',
@@ -7450,6 +7458,8 @@ Tu Equipo de Soporte
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7497,7 +7507,6 @@ Tu Equipo de Soporte
         'JavaScript function for the search frontend.' => '',
         'Korean' => 'Coreano',
         'Language' => 'Idioma',
-        'Large' => 'Grande',
         'Last Screen Overview' => '',
         'Last customer subject' => 'Último asunto del cliente',
         'Lastname Firstname' => 'Apellidos Nombre',
@@ -7614,7 +7623,6 @@ Tu Equipo de Soporte
             'El número máximo de tickets que se mostrarán en el resultado de esta operación.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Número máximo (en caracteres) de la tabla de información del cliente en la vista detallada del ticket.',
-        'Medium' => 'Mediano',
         'Merge this ticket and all articles into another ticket' => 'Fusiona este ticket y todos los artículos en otro ticket',
         'Merged Ticket (%s/%s) to (%s/%s).' => 'Mezclar Ticket (%s/%s) a (%s/%s).',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Mezclar Ticket <OTRS_TICKET> con <OTRS_MERGE_TO_TICKET>.',
@@ -7941,6 +7949,7 @@ Tu Equipo de Soporte
         'Second Queue' => 'Segunda Fila de Espera',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Seleccione después de que periodo las vistas generales de tickets deberán actualizarse automáticamente.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             'Seleccione cuántos tickets deben mostrarse en las vistas generales de forma predeterminada.',
         'Select the main interface language.' => 'Seleccione el idioma de la interfaz principal.',
@@ -8386,9 +8395,9 @@ Tu Equipo de Soporte
         'Signatures' => 'Firmas',
         'Simple' => '',
         'Skin' => 'Apariencia',
+        'Skin Options' => '',
         'Slovak' => 'Eslovaco',
         'Slovenian' => 'Esloveno',
-        'Small' => 'Pequeño',
         'Software Package Manager.' => 'Administrador de Paquetes de Software.',
         'Solution time' => 'Tiempo de Solución',
         'SolutionDiffInMin' => '',

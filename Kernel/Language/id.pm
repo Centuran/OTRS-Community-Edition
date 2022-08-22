@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.678117485400206;
+    $Self->{Completeness}        = 0.677186963979417;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -2434,6 +2434,14 @@ bin/otrs.Daemon.pl status\').',
             '',
         'Off' => 'Nonaktifkan',
         'End' => 'Akhir',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Kecil',
+        'Medium' => 'Medium',
+        'Large' => 'Besar',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2833,10 +2841,10 @@ bin/otrs.Daemon.pl status\').',
         'User name' => 'Nama pengguna',
         'Your user name' => 'Nama pengguna anda',
         'Your password' => 'Kata sandi anda',
-        'Forgot password?' => 'Lupa kata sandi?',
         '2 Factor Token' => '2 faktor bukti',
         'Your 2 Factor Token' => '2 faktor bukti anda',
         'Log In' => 'Masukkan',
+        'Forgot password?' => 'Lupa kata sandi?',
         'Not yet registered?' => 'Belum terdaftar?',
         'Back' => 'Kembali',
         'Request New Password' => 'Meminta kata sandi baru',
@@ -7453,6 +7461,8 @@ Helpdesk Team Anda
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Jika diatur, alamat ini digunakan sebagai pengirim amplop di pesan keluar (tidak pemberitahuan - lihat di bawah). Jika tidak ada alamat yang ditentukan, pengirim amplop sama dengan antrian alamat e-mail.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7500,7 +7510,6 @@ Helpdesk Team Anda
         'JavaScript function for the search frontend.' => 'Fungsi JavaScript untuk pencarian frontend ',
         'Korean' => '',
         'Language' => 'Bahasa',
-        'Large' => 'Besar',
         'Last Screen Overview' => '',
         'Last customer subject' => 'subjek pelanggan terakhir',
         'Lastname Firstname' => 'Nama Pertama Nama Akhir',
@@ -7617,7 +7626,6 @@ Helpdesk Team Anda
             'Jumlah maksimum tiket yang akan ditampilkan dalam hasil operasi ini.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'ukuran maksimum (dalam karakter) dari meja informasi pelanggan dalam tampilan zoom tiket.',
-        'Medium' => 'Medium',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'igabung Tiket <OTRS TIKET> ke <OTRS MERGE_TO_TICKET>.',
@@ -7944,6 +7952,7 @@ Helpdesk Team Anda
         'Second Queue' => 'Antrian kedua',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => '',
@@ -8389,9 +8398,9 @@ Helpdesk Team Anda
         'Signatures' => 'Tanda tangan',
         'Simple' => 'Sederhana',
         'Skin' => 'Kulit',
+        'Skin Options' => '',
         'Slovak' => 'Slovak',
         'Slovenian' => 'Slovenia',
-        'Small' => 'Kecil',
         'Software Package Manager.' => 'Software Package Manager.',
         'Solution time' => '',
         'SolutionDiffInMin' => 'solusi diffinmin',

@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.484541394709722;
+    $Self->{Completeness}        = 0.483876500857633;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -2435,6 +2435,14 @@ sub Data {
             '',
         'Off' => 'Zima',
         'End' => 'Mwisho',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Ndogo',
+        'Medium' => 'Wastani',
+        'Large' => 'Kubwa',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2834,10 +2842,10 @@ sub Data {
         'User name' => 'Jina la mtumiaji',
         'Your user name' => 'Jina lako lamtumiaji',
         'Your password' => 'Neno lako la siri',
-        'Forgot password?' => 'Umesahau neno la siri?',
         '2 Factor Token' => '',
         'Your 2 Factor Token' => '',
         'Log In' => 'Ingia',
+        'Forgot password?' => 'Umesahau neno la siri?',
         'Not yet registered?' => 'Bado haujasajiliwa?',
         'Back' => 'Nyuma',
         'Request New Password' => 'Ombi la neno jipya la siri',
@@ -7445,6 +7453,8 @@ Mfano:
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Kama imewekwa, anwani hii inatumika kama mtumaji wa bahasha katika ujumbe unaokwenda nje (hakuna taarifa- angalia chini). Kama hakuna anwani iliyobainishwa mtumaji wa bahasha ni sawa anwani ya barua pepe ya foleni',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7492,7 +7502,6 @@ Mfano:
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => 'Lugha',
-        'Large' => 'Kubwa',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '',
@@ -7609,7 +7618,6 @@ Mfano:
             'Namba ya upeo wa juu wa tiketi zitakazo onyeshwa katika matokeo ya mchakato huu.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Ukubwa wa upeo wa juu (katika herufi) wa jedwali la taarifa za mteja katika mandhari iliyokuzwa ya tiketi.',
-        'Medium' => 'Wastani',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => '',
@@ -7936,6 +7944,7 @@ Mfano:
         'Second Queue' => '',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => '',
@@ -8381,9 +8390,9 @@ Mfano:
         'Signatures' => 'Saini',
         'Simple' => '',
         'Skin' => 'Gamba',
+        'Skin Options' => '',
         'Slovak' => '',
         'Slovenian' => '',
-        'Small' => 'Ndogo',
         'Software Package Manager.' => '',
         'Solution time' => '',
         'SolutionDiffInMin' => 'Tofauti katika dakika katika ufumbuzi',

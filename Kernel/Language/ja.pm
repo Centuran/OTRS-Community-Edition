@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.762281003091721;
+    $Self->{Completeness}        = 0.761234991423671;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2438,6 +2438,14 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
             'アバターイメージを変更するには、%sにあなたのメールアドレス(%s)を登録して下さい。キャッシュの影響により新しいアバターが利用可能になるまでには時間がかかることがあります。',
         'Off' => 'オフ',
         'End' => '終了',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => '小',
+        'Medium' => '中',
+        'Large' => '大',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => 'この設定は現在保存できません。',
         'Save this setting' => 'この設定を保存',
@@ -2837,10 +2845,10 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'User name' => 'ユーザー名',
         'Your user name' => 'ユーザー名',
         'Your password' => 'パスワード',
-        'Forgot password?' => 'パスワードを忘れましたか？',
         '2 Factor Token' => '',
         'Your 2 Factor Token' => '',
         'Log In' => 'ログイン',
+        'Forgot password?' => 'パスワードを忘れましたか？',
         'Not yet registered?' => '未登録ですか？',
         'Back' => '戻る',
         'Request New Password' => '新規パスワードを申請',
@@ -7464,6 +7472,8 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7511,7 +7521,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => '言語',
-        'Large' => '大',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '',
@@ -7628,7 +7637,6 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'チケットズームビューにおける、顧客情報テーブルの最大サイズ (文字) です。',
-        'Medium' => '中',
         'Merge this ticket and all articles into another ticket' => '別のチケットの全ての記事とこのチケットを結合',
         'Merged Ticket (%s/%s) to (%s/%s).' => 'チケットを（%s/%s）から（%s/%s）にマージしました。',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'チケット番号 <OTRS_TICKET> は、チケット番号 <OTRS_MERGE_TO_TICKET> にマージされました。',
@@ -7956,6 +7964,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Second Queue' => '第二キュー',
         'Select after which period ticket overviews should refresh automatically.' =>
             'チケット表示の更新間隔を選択してください。',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '一覧に表示するデフォルトのチケット数を選択して下さい。',
         'Select the main interface language.' => '主として使用する言語を選択してください。',
@@ -8401,9 +8410,9 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Signatures' => '署名',
         'Simple' => 'シンプル',
         'Skin' => 'スキン',
+        'Skin Options' => '',
         'Slovak' => 'スロバキア語',
         'Slovenian' => 'スロベニア語',
-        'Small' => '小',
         'Software Package Manager.' => 'ソフトウェアパッケージマネージャー',
         'Solution time' => '解決期限',
         'SolutionDiffInMin' => '解決期限超過時間',

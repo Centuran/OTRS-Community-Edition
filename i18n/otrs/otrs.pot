@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-05-19 22:18+0000\n"
+"POT-Creation-Date: 2022-08-22 20:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7195,6 +7195,38 @@ msgid "End"
 msgstr ""
 
 #. Template: AgentPreferences
+msgid "Use modern variant"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Text size"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Example of small text"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Example of medium text"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Example of large text"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Small"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Medium"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Large"
+msgstr ""
+
+#. Template: AgentPreferences
 msgid "This setting can currently not be saved."
 msgstr ""
 
@@ -8331,10 +8363,6 @@ msgid "Your password"
 msgstr ""
 
 #. Template: CustomerLogin
-msgid "Forgot password?"
-msgstr ""
-
-#. Template: CustomerLogin
 msgid "2 Factor Token"
 msgstr ""
 
@@ -8344,6 +8372,10 @@ msgstr ""
 
 #. Template: CustomerLogin
 msgid "Log In"
+msgstr ""
+
+#. Template: CustomerLogin
+msgid "Forgot password?"
 msgstr ""
 
 #. Template: CustomerLogin
@@ -20006,6 +20038,10 @@ msgid "If set, this address is used as envelope sender in outgoing messages (not
 msgstr ""
 
 #. SysConfig
+msgid "If the \"default\" agent skin is in use, enable its modern variant by default."
+msgstr ""
+
+#. SysConfig
 msgid "If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent."
 msgstr ""
 
@@ -20131,10 +20167,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Language"
-msgstr ""
-
-#. SysConfig
-msgid "Large"
 msgstr ""
 
 #. SysConfig
@@ -20499,10 +20531,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Maximum size (in characters) of the customer information table in the ticket zoom view."
-msgstr ""
-
-#. SysConfig
-msgid "Medium"
 msgstr ""
 
 #. SysConfig
@@ -21407,6 +21435,10 @@ msgstr ""
 
 #. SysConfig
 msgid "Select after which period ticket overviews should refresh automatically."
+msgstr ""
+
+#. SysConfig
+msgid "Select configuration options of the selected skin."
 msgstr ""
 
 #. SysConfig
@@ -22402,15 +22434,15 @@ msgid "Skin"
 msgstr ""
 
 #. SysConfig
+msgid "Skin Options"
+msgstr ""
+
+#. SysConfig
 msgid "Slovak"
 msgstr ""
 
 #. SysConfig
 msgid "Slovenian"
-msgstr ""
-
-#. SysConfig
-msgid "Small"
 msgstr ""
 
 #. SysConfig

@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.603400893163861;
+    $Self->{Completeness}        = 0.602572898799314;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2431,6 +2431,14 @@ sub Data {
             '',
         'Off' => 'Tutup',
         'End' => 'Tamat',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Kecil',
+        'Medium' => 'Sederhana',
+        'Large' => 'Besar',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2830,10 +2838,10 @@ sub Data {
         'User name' => 'Nama pengguna',
         'Your user name' => 'Nama pengguna anda',
         'Your password' => 'Kata kunci anda',
-        'Forgot password?' => 'Lupa kata kunci?',
         '2 Factor Token' => 'Token 2 Faktor',
         'Your 2 Factor Token' => 'Token 2 Faktor Anda',
         'Log In' => 'Log masuk',
+        'Forgot password?' => 'Lupa kata kunci?',
         'Not yet registered?' => 'Belum lagi mendaftar?',
         'Back' => 'Kebelakang',
         'Request New Password' => 'Mohon Kata Kunci Baru',
@@ -7452,6 +7460,8 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Jika ditetapkan, alamat ini digunakan sebagai sampul surat penghantar dalam mesej keluar (bukan pemberitahuan - lihat di bawah). Jika tiada alamat dinyatakan, pengguna sampul surat itu adalah sama dengan barisan alamat emel.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7499,7 +7509,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'JavaScript function for the search frontend.' => 'Fungsi JavaScript untuk muka hadapan carian.',
         'Korean' => '',
         'Language' => 'Bahasa',
-        'Large' => 'Besar',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => 'Namaakhir Namapertama',
@@ -7616,7 +7625,6 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Jumlah tiket maksimum untuk dipamerkan di keputusan operasi ini.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Saiz maksimum (dalam aksara) dari jadual maklumat pelanggan dalam paparan zum tiket.',
-        'Medium' => 'Sederhana',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Gabung Tiket <OTRS_TICKET> ke <OTRS_MERGE_TO_TICKET>.',
@@ -7943,6 +7951,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Second Queue' => 'Barisan kedua',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => '',
@@ -8388,9 +8397,9 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Signatures' => 'Tanda Tangan',
         'Simple' => '',
         'Skin' => 'Kulit',
+        'Skin Options' => '',
         'Slovak' => 'Slovakia',
         'Slovenian' => 'Slovenia',
-        'Small' => 'Kecil',
         'Software Package Manager.' => '',
         'Solution time' => '',
         'SolutionDiffInMin' => 'SolutionDiffInMin',
