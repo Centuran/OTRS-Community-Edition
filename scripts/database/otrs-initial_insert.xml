@@ -1392,13 +1392,7 @@ Centuran Consulting
         <Data Key="id" Type="AutoIncrement">1</Data>
         <Data Key="article_id">1</Data>
         <Data Key="content_type" Type="Quote">text/html; charset=&quot;utf-8&quot;</Data>
-        <Data Key="body" Type="Quote">From: &quot;((OTRS)) Community Edition&quot; &lt;otrsce@otrscommunityedition.com&gt;
-To: Your Support System &lt;otrsce@localhost&gt;
-Subject: Welcome to ((OTRS)) Community Edition!
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
-
-&lt;html&gt;
+        <Data Key="content" Type="Quote">&lt;html&gt;
 &lt;head&gt;
 &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
 &lt;/head&gt;
