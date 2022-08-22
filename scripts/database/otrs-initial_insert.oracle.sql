@@ -920,7 +920,8 @@ INSERT INTO article_data_mime_attachment (article_id, content_type, content, fil
 </p>
 
 </body>
-</html>', 'file-1', 1, current_timestamp, 1, current_timestamp);
+</html>
+', 'file-1', 1, current_timestamp, 1, current_timestamp);
 -- ----------------------------------------------------------
 --  insert into table ticket_history
 -- ----------------------------------------------------------
