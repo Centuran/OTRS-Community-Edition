@@ -106,7 +106,7 @@ $Selenium->RunTest(
 
         # Check for password recovery message.
         $Self->True(
-            $Selenium->find_element( ".SuccessBox span", 'css' ),
+            $Selenium->find_element( ".SuccessBox p", 'css' ),
             "Password recovery message found on screen for valid customer",
         );
 
@@ -164,7 +164,7 @@ $Selenium->RunTest(
         # Check for password recovery message for invalid customer user, for security measures it
         # should be visible.
         $Self->True(
-            $Selenium->find_element( ".SuccessBox span", 'css' ),
+            $Selenium->find_element( ".SuccessBox p", 'css' ),
             "Password recovery message found on screen for invalid customer",
         );
 
