@@ -132,6 +132,10 @@ div.Headline {
           &.fa-#{$fa_name}::before {
             content: mdi($mdi_name);
           }
+
+          &.fa-exchange::before {
+            content: mdi("arrow-left-right-bold");
+          }
         }
       }
 
@@ -150,6 +154,23 @@ div.Headline {
 
         i.fa:first-child {
           display: none;
+        }
+      }
+    }
+
+    tbody {
+      span.Direction {
+        i.fa {
+          font-family: "Material Design Icons";
+          font-size: initial;
+        }
+
+        &.Incoming i.fa.fa-long-arrow-left::before {
+          content: mdi("arrow-left-bold");
+        }
+
+        &.Outgoing i.fa.fa-long-arrow-right::before {
+          content: mdi("arrow-right-bold");
         }
       }
     }
