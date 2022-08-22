@@ -216,6 +216,7 @@ sub Run {
         $Output .= $LayoutObject->NavigationBar();
         $Self->_Edit(
             Action => 'Add',
+            Color  => '#FFFFFF',    # Pre-selected default color
             %GetParam,
         );
         $Output .= $LayoutObject->Output(
