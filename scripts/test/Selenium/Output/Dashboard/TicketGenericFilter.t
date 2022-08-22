@@ -470,7 +470,7 @@ $Selenium->RunTest(
         # Check if dynamic field filter for TicketNew dashboard is set.
         eval {
             $Self->True(
-                $Selenium->find_element("//a[contains(\@title, \'$DynamicFieldName\' )]"),
+                $Selenium->find_element("//a[contains(\@title, \'$DynamicFieldName, filter\' )]"),
                 "'$DynamicFieldName' filter for TicketNew dashboard is set",
             );
         };
@@ -486,7 +486,7 @@ $Selenium->RunTest(
                 "ColumnFilterDynamicField_${DynamicFieldName}0120-TicketNew";
 
             # Click on column setting filter for the dynamic field in TicketNew generic dashboard overview.
-            $Selenium->find_element("//a[contains(\@title, \'$DynamicFieldName\' )]")->click();
+            $Selenium->find_element("//a[contains(\@title, \'$DynamicFieldName, filter\' )]")->click();
 
             my $FieldValue = $Tickets[0]->{DynamicFieldValue};
 
@@ -545,7 +545,7 @@ $Selenium->RunTest(
             );
 
             # Click on column setting filter for the dynamic field in TicketNew generic dashboard overview.
-            $Selenium->find_element("//a[contains(\@title, \'$DynamicFieldName\' )]")->click();
+            $Selenium->find_element("//a[contains(\@title, \'$DynamicFieldName, filter\' )]")->click();
 
             $FieldValue = $Tickets[1]->{DynamicFieldValue};
 
@@ -604,7 +604,7 @@ $Selenium->RunTest(
             );
 
             # Click on column setting filter for the dynamic field in TicketNew generic dashboard overview.
-            $Selenium->find_element("//a[contains(\@title, \'$DynamicFieldName\' )]")->click();
+            $Selenium->find_element("//a[contains(\@title, \'$DynamicFieldName, filter\' )]")->click();
 
             $FieldValue = $Tickets[2]->{DynamicFieldValue};
 
