@@ -421,14 +421,16 @@ div.InputField_Selection div.Text {
   line-height: initial;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-clicked:hover {
-  background-color: #f15a22;
+  background-color: #24408c;
+  color: #fff;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-anchor {
   height: auto;
   line-height: initial;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-hovered {
-  background-color: #f15a22;
+  background-color: #24408c;
+  color: #fff;
 }
 
 div.InputField_ToolbarContainer {
@@ -542,9 +544,12 @@ input[type=radio]:checked {
 }
 .MessageBox.Error .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 .MessageBox.Error .Icon::before {
@@ -588,6 +593,9 @@ input[type=radio]:checked {
 .MessageBox.Error p a:hover {
   color: currentColor;
 }
+.MessageBox.Error .Icon + p {
+  padding-left: 2.2em;
+}
 
 .MessageBox.Notice {
   background: none;
@@ -598,9 +606,12 @@ input[type=radio]:checked {
 }
 .MessageBox.Notice .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 .MessageBox.Notice .Icon::before {
@@ -643,6 +654,9 @@ input[type=radio]:checked {
 }
 .MessageBox.Notice p a:hover {
   color: currentColor;
+}
+.MessageBox.Notice .Icon + p {
+  padding-left: 2.2em;
 }
 
 code,
@@ -700,86 +714,135 @@ ul.Tablelike li.Header {
   text-transform: none;
 }
 
-.WidgetSimple {
+body .WidgetSimple {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
   margin-bottom: var(--gap-120);
 }
-.WidgetSimple > .Header h2 {
+body .WidgetSimple > .Header h2 {
   color: #333;
   font-size: inherit;
   font-weight: bolder;
   padding: 0;
   text-shadow: none;
 }
-.WidgetSimple .Header {
+body .WidgetSimple .Header {
   line-height: 1;
   padding: var(--pad-y) var(--pad-x);
 }
-.WidgetSimple .Header .ActionMenu {
+body .WidgetSimple .Header .ActionMenu {
   margin-right: var(--pad-x);
   position: absolute;
   right: 0;
   top: initial;
 }
-.WidgetSimple .Header .WidgetAction {
+body .WidgetSimple .Header .WidgetAction {
   width: auto;
   height: auto;
 }
-.WidgetSimple .Header .WidgetAction.Toggle {
+body .WidgetSimple .Header .WidgetAction.Toggle {
   height: auto;
   margin: 0;
   width: auto;
 }
-.WidgetSimple .Header .WidgetAction.Toggle::before {
+body .WidgetSimple .Header .WidgetAction.Toggle::before {
   font-family: "Material Design Icons";
   font-size: 120%;
   line-height: 0.8333333333;
 }
-.WidgetSimple .Header .WidgetAction.Toggle a {
+body .WidgetSimple .Header .WidgetAction.Toggle a {
   height: 100%;
   width: 100%;
 }
-.WidgetSimple .Header .WidgetAction.Toggle a:hover i.fa {
+body .WidgetSimple .Header .WidgetAction.Toggle a:hover i.fa {
   background: none;
 }
-.WidgetSimple .Header .WidgetAction a {
+body .WidgetSimple .Header .WidgetAction a {
   font-size: initial;
   height: auto;
   display: inline-block;
 }
-.WidgetSimple .Header .WidgetAction a i.fa {
+body .WidgetSimple .Header .WidgetAction a i.fa {
   font-size: initial;
   margin: 0;
 }
-.WidgetSimple .Header .WidgetAction a i.fa::before {
+body .WidgetSimple .Header .WidgetAction a i.fa::before {
   font-family: "Material Design Icons";
   font-size: 110%;
 }
-.WidgetSimple .Header .WidgetAction a i.fa.fa-cog::before {
+body .WidgetSimple .Header .WidgetAction a i.fa.fa-cog::before {
   content: "\f01d9";
 }
-.WidgetSimple .Header .WidgetAction a i.fa.fa-refresh::before {
+body .WidgetSimple .Header .WidgetAction a i.fa.fa-refresh::before {
   content: "\f0450";
 }
-.WidgetSimple .Header .WidgetAction a i.fa.fa-times::before {
+body .WidgetSimple .Header .WidgetAction a i.fa.fa-times::before {
   content: "\f1398";
 }
-.WidgetSimple .Header .WidgetAction a:hover i.fa {
+body .WidgetSimple .Header .WidgetAction a i.fa.fa-trash-o::before {
+  content: "\f14ef";
+}
+body .WidgetSimple .Header .WidgetAction a:hover i.fa {
   color: #24408c;
   background: #ddd;
   border-radius: 50px;
 }
-.WidgetSimple.Collapsed .Header .WidgetAction.Toggle::before {
+body .WidgetSimple.Collapsed .Header .WidgetAction.Toggle::before {
   content: "\f0140";
 }
-.WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
+body .WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
   content: "\f0143";
 }
-.WidgetSimple.Collapsed.AnimationRunning .Header, .WidgetSimple.Expanded.AnimationRunning .Header {
+body .WidgetSimple.Collapsed.AnimationRunning .Header, body .WidgetSimple.Expanded.AnimationRunning .Header {
   line-height: 1;
   padding: var(--gap) var(--gap-120);
 }
-.WidgetSimple > .Content {
+body .WidgetSimple .WidgetMenu {
+  padding: var(--pad-y) var(--pad-x);
+}
+body .WidgetSimple .WidgetMenu a.Button,
+body .WidgetSimple .WidgetMenu span.Button {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
+  color: #444;
+  font-size: calc(var(--font-size-base) * 0.85);
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+body .WidgetSimple .WidgetMenu a.Button.Right,
+body .WidgetSimple .WidgetMenu span.Button.Right {
+  float: right;
+}
+body .WidgetSimple .WidgetMenu a.Button .fa,
+body .WidgetSimple .WidgetMenu span.Button .fa {
+  font-family: "Material Design Icons";
+  font-size: inherit;
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-times::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-times::before {
+  content: "\f073a";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-check::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-check::before {
+  content: "\f012c";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-undo::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-undo::before {
+  content: "\f054c";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-link::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-link::before {
+  content: "\f0339";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-star-o::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-star-o::before {
+  content: "\f04ce";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-pencil-square,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-pencil-square {
+  content: "\f090c";
+}
+body .WidgetSimple > .Content {
   border-top: solid 1px ghostwhite;
   padding: var(--pad-y) var(--pad-x);
 }
@@ -801,9 +864,9 @@ body .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
   background-color: transparent;
   border-left: solid 1px #ccc;
   font-size: initial;
-  height: calc(100% - 20px);
-  margin-top: 10px;
+  height: calc(100% - 2 * var(--pad-y));
   margin-right: var(--gap);
+  margin-top: var(--pad-y);
   padding: 0;
   text-align: center;
   top: 0;
@@ -840,6 +903,10 @@ body .Preferences .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
 }
 .SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
   padding-right: 1em;
+}
+
+body .SettingsList.Preferences .WidgetSimple.Setting.IsLockedByMe .Content .SettingUpdateBox {
+  left: calc(100% - 6.8571428571em);
 }
 
 body .MainBox {
@@ -1062,13 +1129,32 @@ div.UnreadArticles span.UnreadArticles i.fa {
   overflow: hidden;
 }
 .Dialog > .Header {
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
   height: auto;
 }
 .Dialog > .Header h1 {
+  flex: 1;
   font-size: inherit;
   font-weight: bold;
   margin-bottom: 0;
-  padding: 10px;
+  padding: var(--pad-y) var(--pad-x);
+}
+.Dialog > .Header .Close {
+  display: inline;
+  flex: 1;
+  height: auto;
+  margin-right: var(--pad-x);
+  right: auto;
+  top: auto;
+  width: auto;
+}
+.Dialog > .Header .Close i.fa {
+  font-family: "Material Design Icons";
+}
+.Dialog > .Header .Close i.fa::before {
+  content: "\f0156";
 }
 .Dialog .Content .ContentFooter {
   padding: 10px 0;
@@ -1333,6 +1419,11 @@ a.CallForAction span i.fa.fa-check::before, .ProcessManagementEditScreen #Proces
 button.CallForAction span i.fa.fa-check::before {
   content: "\f012c";
 }
+a.CallForAction span i.fa.fa-exchange::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-exchange::before,
+.v-application a.CallForAction span i.fa.fa-exchange::before,
+button.CallForAction span i.fa.fa-exchange::before {
+  content: "\f0e73";
+}
 a.CallForAction span i.fa.fa-filter::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-filter::before,
 .v-application a.CallForAction span i.fa.fa-filter::before,
 button.CallForAction span i.fa.fa-filter::before {
@@ -1417,6 +1508,11 @@ ul.Tablelike li.Header {
 /* Popup windows */
 .LayoutPopup > .Footer .CallForAction, .LayoutPopup > .Footer .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements .LayoutPopup > .Footer a.CallForAction {
   padding: 0.8em 1.8em;
+}
+
+/* Miscellaneous rules */
+body .cke_screen_reader_only {
+  top: calc(100% - 1px);
 }
 
 /* Rules to override what Vuetify does */
@@ -1536,6 +1632,33 @@ select.Modernize {
   padding: var(--pad-y) var(--pad-x);
 }
 
+@media only screen and (min-width: 0px) and (max-width: 1024px) {
+  #Header {
+    height: 60px;
+  }
+  #AppWrapper .ResponsiveHandle {
+    border-radius: 50%;
+    font-size: initial;
+    height: auto;
+    left: auto;
+    line-height: 1;
+    padding: 0;
+    padding: calc(var(--pad-x) * 0.75);
+    margin: calc(var(--pad-x) * 0.25);
+    top: 0;
+    width: auto;
+  }
+  #AppWrapper .ResponsiveHandle i.fa {
+    font-family: "Material Design Icons";
+    font-size: 30px;
+  }
+  #AppWrapper .ResponsiveHandle i.fa.fa-navicon::before {
+    content: "\f035c";
+  }
+  #AppWrapper .ResponsiveHandle i.fa.fa-caret-square-o-left::before {
+    content: "\f037b";
+  }
+}
 #NavigationContainer {
   top: 69px;
 }
@@ -2362,6 +2485,9 @@ label + .v-input--switch {
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-check::before {
   content: "\f012c";
 }
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-exchange::before {
+  content: "\f0e73";
+}
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-filter::before {
   content: "\f0232";
 }
@@ -2729,9 +2855,12 @@ input[type=radio]:checked {
 }
 .MessageBox.Error .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 .MessageBox.Error .Icon::before {
@@ -2775,6 +2904,9 @@ input[type=radio]:checked {
 .MessageBox.Error p a:hover {
   color: currentColor;
 }
+.MessageBox.Error .Icon + p {
+  padding-left: 2.2em;
+}
 
 .MessageBox.Notice {
   background: none;
@@ -2785,9 +2917,12 @@ input[type=radio]:checked {
 }
 .MessageBox.Notice .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 .MessageBox.Notice .Icon::before {
@@ -2830,6 +2965,9 @@ input[type=radio]:checked {
 }
 .MessageBox.Notice p a:hover {
   color: currentColor;
+}
+.MessageBox.Notice .Icon + p {
+  padding-left: 2.2em;
 }
 
 code,
@@ -2887,86 +3025,135 @@ ul.Tablelike li.Header {
   text-transform: none;
 }
 
-.WidgetSimple {
+body .WidgetSimple {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
   margin-bottom: var(--gap-120);
 }
-.WidgetSimple > .Header h2 {
+body .WidgetSimple > .Header h2 {
   color: #333;
   font-size: inherit;
   font-weight: bolder;
   padding: 0;
   text-shadow: none;
 }
-.WidgetSimple .Header {
+body .WidgetSimple .Header {
   line-height: 1;
   padding: var(--pad-y) var(--pad-x);
 }
-.WidgetSimple .Header .ActionMenu {
+body .WidgetSimple .Header .ActionMenu {
   margin-right: var(--pad-x);
   position: absolute;
   right: 0;
   top: initial;
 }
-.WidgetSimple .Header .WidgetAction {
+body .WidgetSimple .Header .WidgetAction {
   width: auto;
   height: auto;
 }
-.WidgetSimple .Header .WidgetAction.Toggle {
+body .WidgetSimple .Header .WidgetAction.Toggle {
   height: auto;
   margin: 0;
   width: auto;
 }
-.WidgetSimple .Header .WidgetAction.Toggle::before {
+body .WidgetSimple .Header .WidgetAction.Toggle::before {
   font-family: "Material Design Icons";
   font-size: 120%;
   line-height: 0.8333333333;
 }
-.WidgetSimple .Header .WidgetAction.Toggle a {
+body .WidgetSimple .Header .WidgetAction.Toggle a {
   height: 100%;
   width: 100%;
 }
-.WidgetSimple .Header .WidgetAction.Toggle a:hover i.fa {
+body .WidgetSimple .Header .WidgetAction.Toggle a:hover i.fa {
   background: none;
 }
-.WidgetSimple .Header .WidgetAction a {
+body .WidgetSimple .Header .WidgetAction a {
   font-size: initial;
   height: auto;
   display: inline-block;
 }
-.WidgetSimple .Header .WidgetAction a i.fa {
+body .WidgetSimple .Header .WidgetAction a i.fa {
   font-size: initial;
   margin: 0;
 }
-.WidgetSimple .Header .WidgetAction a i.fa::before {
+body .WidgetSimple .Header .WidgetAction a i.fa::before {
   font-family: "Material Design Icons";
   font-size: 110%;
 }
-.WidgetSimple .Header .WidgetAction a i.fa.fa-cog::before {
+body .WidgetSimple .Header .WidgetAction a i.fa.fa-cog::before {
   content: "\f01d9";
 }
-.WidgetSimple .Header .WidgetAction a i.fa.fa-refresh::before {
+body .WidgetSimple .Header .WidgetAction a i.fa.fa-refresh::before {
   content: "\f0450";
 }
-.WidgetSimple .Header .WidgetAction a i.fa.fa-times::before {
+body .WidgetSimple .Header .WidgetAction a i.fa.fa-times::before {
   content: "\f1398";
 }
-.WidgetSimple .Header .WidgetAction a:hover i.fa {
+body .WidgetSimple .Header .WidgetAction a i.fa.fa-trash-o::before {
+  content: "\f14ef";
+}
+body .WidgetSimple .Header .WidgetAction a:hover i.fa {
   color: #24408c;
   background: #ddd;
   border-radius: 50px;
 }
-.WidgetSimple.Collapsed .Header .WidgetAction.Toggle::before {
+body .WidgetSimple.Collapsed .Header .WidgetAction.Toggle::before {
   content: "\f0140";
 }
-.WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
+body .WidgetSimple.Expanded .Header .WidgetAction.Toggle::before {
   content: "\f0143";
 }
-.WidgetSimple.Collapsed.AnimationRunning .Header, .WidgetSimple.Expanded.AnimationRunning .Header {
+body .WidgetSimple.Collapsed.AnimationRunning .Header, body .WidgetSimple.Expanded.AnimationRunning .Header {
   line-height: 1;
   padding: var(--gap) var(--gap-120);
 }
-.WidgetSimple > .Content {
+body .WidgetSimple .WidgetMenu {
+  padding: var(--pad-y) var(--pad-x);
+}
+body .WidgetSimple .WidgetMenu a.Button,
+body .WidgetSimple .WidgetMenu span.Button {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 10px #e4e4e4;
+  color: #444;
+  font-size: calc(var(--font-size-base) * 0.85);
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+body .WidgetSimple .WidgetMenu a.Button.Right,
+body .WidgetSimple .WidgetMenu span.Button.Right {
+  float: right;
+}
+body .WidgetSimple .WidgetMenu a.Button .fa,
+body .WidgetSimple .WidgetMenu span.Button .fa {
+  font-family: "Material Design Icons";
+  font-size: inherit;
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-times::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-times::before {
+  content: "\f073a";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-check::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-check::before {
+  content: "\f012c";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-undo::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-undo::before {
+  content: "\f054c";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-link::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-link::before {
+  content: "\f0339";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-star-o::before,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-star-o::before {
+  content: "\f04ce";
+}
+body .WidgetSimple .WidgetMenu a.Button .fa.fa-pencil-square,
+body .WidgetSimple .WidgetMenu span.Button .fa.fa-pencil-square {
+  content: "\f090c";
+}
+body .WidgetSimple > .Content {
   border-top: solid 1px ghostwhite;
   padding: var(--pad-y) var(--pad-x);
 }
@@ -2988,9 +3175,9 @@ body .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
   background-color: transparent;
   border-left: solid 1px #ccc;
   font-size: initial;
-  height: calc(100% - 20px);
-  margin-top: 10px;
+  height: calc(100% - 2 * var(--pad-y));
   margin-right: var(--gap);
+  margin-top: var(--pad-y);
   padding: 0;
   text-align: center;
   top: 0;
@@ -3027,6 +3214,10 @@ body .Preferences .WidgetSimple.Setting .SettingWrapper > .SettingDescription {
 }
 .SettingsList .WidgetSimple.Setting.IsLockedByMe .SettingWrapper > .SettingDescription {
   padding-right: 1em;
+}
+
+body .SettingsList.Preferences .WidgetSimple.Setting.IsLockedByMe .Content .SettingUpdateBox {
+  left: calc(100% - 6.8571428571em);
 }
 
 body .MainBox {
@@ -3249,13 +3440,32 @@ div.UnreadArticles span.UnreadArticles i.fa {
   overflow: hidden;
 }
 .Dialog > .Header {
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
   height: auto;
 }
 .Dialog > .Header h1 {
+  flex: 1;
   font-size: inherit;
   font-weight: bold;
   margin-bottom: 0;
-  padding: 10px;
+  padding: var(--pad-y) var(--pad-x);
+}
+.Dialog > .Header .Close {
+  display: inline;
+  flex: 1;
+  height: auto;
+  margin-right: var(--pad-x);
+  right: auto;
+  top: auto;
+  width: auto;
+}
+.Dialog > .Header .Close i.fa {
+  font-family: "Material Design Icons";
+}
+.Dialog > .Header .Close i.fa::before {
+  content: "\f0156";
 }
 .Dialog .Content .ContentFooter {
   padding: 10px 0;
@@ -3520,6 +3730,11 @@ a.CallForAction span i.fa.fa-check::before, .ProcessManagementEditScreen #Proces
 button.CallForAction span i.fa.fa-check::before {
   content: "\f012c";
 }
+a.CallForAction span i.fa.fa-exchange::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-exchange::before,
+.v-application a.CallForAction span i.fa.fa-exchange::before,
+button.CallForAction span i.fa.fa-exchange::before {
+  content: "\f0e73";
+}
 a.CallForAction span i.fa.fa-filter::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-filter::before,
 .v-application a.CallForAction span i.fa.fa-filter::before,
 button.CallForAction span i.fa.fa-filter::before {
@@ -3604,6 +3819,11 @@ ul.Tablelike li.Header {
 /* Popup windows */
 .LayoutPopup > .Footer .CallForAction, .LayoutPopup > .Footer .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements .LayoutPopup > .Footer a.CallForAction {
   padding: 0.8em 1.8em;
+}
+
+/* Miscellaneous rules */
+body .cke_screen_reader_only {
+  top: calc(100% - 1px);
 }
 
 /* Rules to override what Vuetify does */
@@ -3856,9 +4076,12 @@ hr.cmt-flex-break {
 }
 .LoginScreen .SuccessBox .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 .LoginScreen .SuccessBox .Icon::before {
@@ -3902,6 +4125,9 @@ hr.cmt-flex-break {
 .LoginScreen .SuccessBox p a:hover {
   color: currentColor;
 }
+.LoginScreen .SuccessBox .Icon + p {
+  padding-left: 2.2em;
+}
 .LoginScreen .SuccessBox span::before {
   content: "\f05e1";
   font-family: "Material Design Icons";
@@ -3923,9 +4149,12 @@ hr.cmt-flex-break {
 }
 .LoginScreen .ErrorBox .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 .LoginScreen .ErrorBox .Icon::before {
@@ -3968,6 +4197,9 @@ hr.cmt-flex-break {
 }
 .LoginScreen .ErrorBox p a:hover {
   color: currentColor;
+}
+.LoginScreen .ErrorBox .Icon + p {
+  padding-left: 2.2em;
 }
 .LoginScreen .ErrorBox span::before {
   content: "\f0ce6";
@@ -4126,6 +4358,40 @@ input#Subject {
   width: auto;
 }
 
+.ContentColumn .GettingStarted {
+  display: flex;
+  justify-content: center;
+}
+.ContentColumn .GettingStarted li {
+  border-radius: 4px;
+  height: auto;
+  padding: var(--gap);
+}
+.ContentColumn .GettingStarted li i.fa {
+  font-family: "Material Design Icons";
+  position: static;
+  text-shadow: none;
+}
+.ContentColumn .GettingStarted li i.fa.fa-code-fork::before {
+  content: "\f0645";
+}
+.ContentColumn .GettingStarted li i.fa.fa-search::before {
+  content: "\f0349";
+}
+.ContentColumn .GettingStarted li i.fa.fa-lightbulb-o::before {
+  content: "\f14f7";
+}
+.ContentColumn .GettingStarted li p {
+  font-size: calc(var(--font-size-base) * 0.85);
+  margin: 0;
+  margin-top: var(--gap);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.ContentColumn .GettingStarted li p::before {
+  content: none;
+}
+
 form.SearchBox {
   position: relative;
 }
@@ -4187,6 +4453,11 @@ form.SearchBox button i.fa.fa-search::before {
 .SettingsList .WidgetSimple.Setting {
   font-size: inherit;
 }
+.SettingsList .WidgetSimple.Setting .Header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
 .SettingsList .WidgetSimple.Setting .Header .Icon {
   height: auto;
 }
@@ -4199,9 +4470,12 @@ form.SearchBox button i.fa.fa-search::before {
   font-family: "Material Design Icons";
 }
 .SettingsList .WidgetSimple.Setting .Header p.HeaderMessage {
+  font-size: calc(var(--font-size-base) * 0.85);
+  margin: 0;
   margin-bottom: 0;
 }
 .SettingsList .WidgetSimple.Setting .SettingWrapper form {
+  border-right: solid 1px #ccc;
   padding-right: var(--gap);
 }
 .SettingsList .WidgetSimple.Setting .SettingWrapper form .SettingContainer {
@@ -4882,6 +5156,7 @@ div.Headline .Flag + h1 {
   content: "\f004d";
   font-family: "Material Design Icons";
   margin-right: 0.25em;
+  line-height: 1;
 }
 .ActionRow .Actions li#nav-Back + li > a {
   border-left: solid 1px #ccc;
@@ -4954,11 +5229,17 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead i.fa.fa-arrows-h::before {
   content: "\f0e73";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-arrows-v {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-arrows-v::before {
   content: "\f0e79";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-bar-chart {
   font-family: "Material Design Icons";
@@ -4966,11 +5247,17 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead i.fa.fa-bar-chart::before {
   content: "\f0128";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-bell-o {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-bell-o::before {
   content: "\f009a";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-building {
   font-family: "Material Design Icons";
@@ -4978,11 +5265,17 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead i.fa.fa-building::before {
   content: "\f0991";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-building-o {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-building-o::before {
   content: "\f0991";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-calendar {
   font-family: "Material Design Icons";
@@ -4990,11 +5283,26 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead i.fa.fa-calendar::before {
   content: "\f00ed";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-check {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-check::before {
   content: "\f012c";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e73";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-filter {
   font-family: "Material Design Icons";
@@ -5002,11 +5310,17 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead i.fa.fa-filter::before {
   content: "\f0232";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-paperclip {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-paperclip::before {
   content: "\f03e2";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-plus-square {
   font-family: "Material Design Icons";
@@ -5014,11 +5328,17 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead i.fa.fa-plus-square::before {
   content: "\f0415";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-refresh {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-refresh::before {
   content: "\f0450";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-reply {
   font-family: "Material Design Icons";
@@ -5026,11 +5346,17 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead i.fa.fa-reply::before {
   content: "\f045a";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-search {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-search::before {
   content: "\f0349";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-star {
   font-family: "Material Design Icons";
@@ -5038,17 +5364,26 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead i.fa.fa-star::before {
   content: "\f04ce";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-user {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-user::before {
   content: "\f0004";
 }
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
 #ArticleTableBody #ArticleTable thead i.fa.fa-users {
   font-family: "Material Design Icons";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-users::before {
   content: "\f0849";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
 }
 #ArticleTableBody #ArticleTable thead span.UnreadArticles {
   height: auto;
@@ -5065,6 +5400,16 @@ div.Headline .Flag + h1 {
 #ArticleTableBody #ArticleTable thead span.UnreadArticles i.fa:first-child {
   display: none;
 }
+#ArticleTableBody #ArticleTable tbody span.Direction i.fa {
+  font-family: "Material Design Icons";
+  font-size: initial;
+}
+#ArticleTableBody #ArticleTable tbody span.Direction.Incoming i.fa.fa-long-arrow-left::before {
+  content: "\f0731";
+}
+#ArticleTableBody #ArticleTable tbody span.Direction.Outgoing i.fa.fa-long-arrow-right::before {
+  content: "\f0734";
+}
 
 .MessageBrowser {
   background: none;
@@ -5079,9 +5424,12 @@ div.Headline .Flag + h1 {
 }
 .MessageBrowser .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 .MessageBrowser .Icon::before {
@@ -5125,8 +5473,11 @@ div.Headline .Flag + h1 {
 .MessageBrowser p a:hover {
   color: currentColor;
 }
+.MessageBrowser .Icon + p {
+  padding-left: 2.2em;
+}
 .MessageBrowser p {
-  background: transparent;
+  background: white;
   color: #333;
   font-size: smaller;
   margin-left: 0;

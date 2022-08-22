@@ -421,14 +421,16 @@ div.InputField_Selection div.Text {
   line-height: initial;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-hovered, .jstree-InputField .jstree-wholerow-ul .jstree-wholerow.jstree-wholerow-clicked:hover {
-  background-color: #f15a22;
+  background-color: #24408c;
+  color: #fff;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-anchor {
   height: auto;
   line-height: initial;
 }
 .jstree-InputField .jstree-wholerow-ul .jstree-hovered {
-  background-color: #f15a22;
+  background-color: #24408c;
+  color: #fff;
 }
 
 div.InputField_ToolbarContainer {
@@ -698,9 +700,12 @@ p.AsteriskExplanation {
 }
 #MainBox.Login .ErrorBox .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 #MainBox.Login .ErrorBox .Icon::before {
@@ -744,6 +749,9 @@ p.AsteriskExplanation {
 #MainBox.Login .ErrorBox p a:hover {
   color: currentColor;
 }
+#MainBox.Login .ErrorBox .Icon + p {
+  padding-left: 2.2em;
+}
 #MainBox.Login .SuccessBox {
   background: none;
   border-radius: 4px;
@@ -753,9 +761,12 @@ p.AsteriskExplanation {
 }
 #MainBox.Login .SuccessBox .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 #MainBox.Login .SuccessBox .Icon::before {
@@ -798,6 +809,9 @@ p.AsteriskExplanation {
 }
 #MainBox.Login .SuccessBox p a:hover {
   color: currentColor;
+}
+#MainBox.Login .SuccessBox .Icon + p {
+  padding-left: 2.2em;
 }
 #MainBox.Login .ErrorBox,
 #MainBox.Login .SuccessBox {
@@ -1419,9 +1433,12 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 }
 .TicketZoom ul#Messages .MessageContent .MessageBrowser .Icon {
   display: inline;
+  left: 2em;
   margin-right: 0;
   margin-top: 0;
   padding: 0;
+  position: absolute;
+  top: 0.375em;
   vertical-align: middle;
 }
 .TicketZoom ul#Messages .MessageContent .MessageBrowser .Icon::before {
@@ -1464,6 +1481,9 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 }
 .TicketZoom ul#Messages .MessageContent .MessageBrowser p a:hover {
   color: currentColor;
+}
+.TicketZoom ul#Messages .MessageContent .MessageBrowser .Icon + p {
+  padding-left: 2.2em;
 }
 .TicketZoom ul#Messages .MessageContent .MessageBrowser p {
   background: transparent;
