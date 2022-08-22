@@ -1,7 +1,9 @@
 # 6.0.36 2022-08-??
+ - Added refreshed version of the default agent user interface skin (optional and experimental)
  - Added configurable ticket priority colors
  - Fixed issues with database update process
  - Fixed identification of Linux distributions in Support Data Collector
+ - Updated CGI CPAN module to version 4.54
  - Implemented bug fixes and changes present in Znuny version 6.0.41
    - Notifications are no longer sent to customer user accounts which are flagged as invalid
    - Fixed checking of pending time in TicketPendingTimeReset event module
