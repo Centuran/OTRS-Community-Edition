@@ -36,6 +36,7 @@ div.Headline {
       content: mdi("arrow-left");
       font-family: "Material Design Icons";
       margin-right: 0.25em;
+      line-height: 1;
     }
 
     & + li > a {
