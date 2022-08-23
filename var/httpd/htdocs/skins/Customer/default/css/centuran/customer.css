@@ -699,6 +699,7 @@ p.AsteriskExplanation {
   margin-top: var(--pad-y, 10px);
 }
 #MainBox.Login .ErrorBox .Icon {
+  color: #ff5252ff;
   display: inline;
   left: 2em;
   margin-right: 0;
@@ -760,6 +761,7 @@ p.AsteriskExplanation {
   margin-top: var(--pad-y, 10px);
 }
 #MainBox.Login .SuccessBox .Icon {
+  color: #4caf50ff;
   display: inline;
   left: 2em;
   margin-right: 0;
@@ -1432,6 +1434,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   border: none;
 }
 .TicketZoom ul#Messages .MessageContent .MessageBrowser .Icon {
+  color: #2196f3ff;
   display: inline;
   left: 2em;
   margin-right: 0;

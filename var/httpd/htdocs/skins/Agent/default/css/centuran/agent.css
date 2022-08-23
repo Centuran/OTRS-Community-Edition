@@ -543,6 +543,7 @@ input[type=radio]:checked {
   margin-top: var(--pad-y, 10px);
 }
 .MessageBox.Error .Icon {
+  color: #ff5252ff;
   display: inline;
   left: 2em;
   margin-right: 0;
@@ -605,6 +606,7 @@ input[type=radio]:checked {
   margin-top: var(--pad-y, 10px);
 }
 .MessageBox.Notice .Icon {
+  color: #fb8c00ff;
   display: inline;
   left: 2em;
   margin-right: 0;
@@ -2854,6 +2856,7 @@ input[type=radio]:checked {
   margin-top: var(--pad-y, 10px);
 }
 .MessageBox.Error .Icon {
+  color: #ff5252ff;
   display: inline;
   left: 2em;
   margin-right: 0;
@@ -2916,6 +2919,7 @@ input[type=radio]:checked {
   margin-top: var(--pad-y, 10px);
 }
 .MessageBox.Notice .Icon {
+  color: #fb8c00ff;
   display: inline;
   left: 2em;
   margin-right: 0;
@@ -4075,6 +4079,7 @@ hr.cmt-flex-break {
   border-color: #4caf50ff;
 }
 .LoginScreen .SuccessBox .Icon {
+  color: #4caf50ff;
   display: inline;
   left: 2em;
   margin-right: 0;
@@ -4148,6 +4153,7 @@ hr.cmt-flex-break {
   border-color: #ff5252ff;
 }
 .LoginScreen .ErrorBox .Icon {
+  color: #ff5252ff;
   display: inline;
   left: 2em;
   margin-right: 0;
@@ -4387,6 +4393,7 @@ input#Subject {
   margin-top: var(--gap);
   padding-top: 0;
   padding-bottom: 0;
+  text-shadow: none;
 }
 .ContentColumn .GettingStarted li p::before {
   content: none;
@@ -4418,35 +4425,40 @@ form.SearchBox button i.fa.fa-search::before {
   padding-right: 0.1em;
 }
 
-#ConfigTree {
-  font-size: 90%;
+body #ConfigTree {
+  font-size: inherit;
 }
-#ConfigTree li.jstree-node {
+body #ConfigTree li.jstree-node {
   background-image: none;
 }
-#ConfigTree li.jstree-node::before {
+body #ConfigTree li.jstree-node.jstree-closed::before, body #ConfigTree li.jstree-node.jstree-open::before {
+  visibility: visible;
+}
+body #ConfigTree li.jstree-node .jstree-icon {
+  background: none;
+  font-style: normal;
+}
+body #ConfigTree li.jstree-node .jstree-icon::before {
   content: "\f035f";
   display: inline-block;
   font-family: "Material Design Icons";
   font-size: 150%;
+  transform: rotate(0deg);
   transition: all ease 0.2s;
-  visibility: hidden;
 }
-#ConfigTree li.jstree-node.jstree-closed::before, #ConfigTree li.jstree-node.jstree-open::before {
-  visibility: visible;
-}
-#ConfigTree li.jstree-node.jstree-open::before {
+body #ConfigTree li.jstree-node.jstree-open > .jstree-icon::before {
   transform: rotate(90deg);
 }
-#ConfigTree li.jstree-node .jstree-icon {
-  margin-left: -20px;
-  opacity: 0;
-  position: absolute;
+body #ConfigTree li.jstree-node .jstree-wholerow-hovered {
+  color: inherit;
 }
-#ConfigTree > ul > .jstree-node {
+body #ConfigTree li.jstree-node .jstree-anchor.jstree-hovered {
+  color: inherit;
+}
+body #ConfigTree > ul > .jstree-node {
   margin-left: 0;
 }
-#ConfigTree .jstree-node {
+body #ConfigTree .jstree-node {
   margin-left: 14px;
 }
 
@@ -4476,6 +4488,7 @@ form.SearchBox button i.fa.fa-search::before {
 }
 .SettingsList .WidgetSimple.Setting .SettingWrapper form {
   border-right: solid 1px #ccc;
+  font-size: inherit;
   padding-right: var(--gap);
 }
 .SettingsList .WidgetSimple.Setting .SettingWrapper form .SettingContainer {
@@ -4483,6 +4496,7 @@ form.SearchBox button i.fa.fa-search::before {
 }
 .SettingsList .WidgetSimple.Setting .SettingWrapper form fieldset.TableLike {
   border-right: none;
+  font-size: inherit;
   float: none;
   width: auto;
 }
@@ -4540,7 +4554,6 @@ form.SearchBox button i.fa.fa-search::before {
   background: none;
 }
 .SettingsList .WidgetSimple.Setting .SettingContent {
-  font-size: initial;
   padding-left: 0;
 }
 .SettingsList .WidgetSimple.Setting .SettingContent .AlreadyDisabled div.InputField_Selection {
@@ -5423,6 +5436,7 @@ div.Headline .Flag + h1 {
   margin-top: 0;
 }
 .MessageBrowser .Icon {
+  color: #2196f3ff;
   display: inline;
   left: 2em;
   margin-right: 0;
