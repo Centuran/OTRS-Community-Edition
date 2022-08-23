@@ -31,6 +31,7 @@
       margin-top: var(--gap);
       padding-top: 0;
       padding-bottom: 0;
+      text-shadow: none;
 
       // Prevent displaying the original bar below icon
       &::before {
@@ -75,24 +76,11 @@ form.SearchBox {
   }
 }
 
-#ConfigTree {
-  font-size: 90%;
+body #ConfigTree {
+  font-size: inherit;
 
   li.jstree-node {
     background-image: none;
-
-    // Expand/collapse icon before item names
-    &::before {
-      content: mdi("menu-right");
-      display: inline-block;
-      font-family: 'Material Design Icons';
-      font-size: 150%;
-      transition: all ease 0.2s;
-      // Hidden by default, so that it's not shown for non-expandable items,
-      // but still takes space (so that expandable and non-expandable items
-      // are aligned)
-      visibility: hidden;
-    }
 
     &.jstree-closed,
     &.jstree-open {
@@ -101,16 +89,31 @@ form.SearchBox {
       }
     }
 
-    &.jstree-open::before {
+    // Expand/collapse icon before item names
+    .jstree-icon {
+      background: none;
+      font-style: normal;
+
+      &::before {
+        content: mdi("menu-right");
+        display: inline-block;
+        font-family: 'Material Design Icons';
+        font-size: 150%;
+        transform: rotate(0deg);
+        transition: all ease 0.2s;
+      }
+    }
+
+    &.jstree-open > .jstree-icon::before {
       transform: rotate(90deg);
     }
 
-    // Place original expand/collapse icon over our replacement
-    // (and make it transparent)
-    .jstree-icon {
-      margin-left: -20px;
-      opacity: 0;
-      position: absolute;
+    .jstree-wholerow-hovered {
+      color: inherit;
+    }
+
+    .jstree-anchor.jstree-hovered {
+      color: inherit;
     }
   }
 
@@ -155,6 +158,7 @@ form.SearchBox {
   .SettingWrapper {
     form {
       border-right: solid 1px #ccc;
+      font-size: inherit;
       padding-right: var(--gap);
 
       .SettingContainer {
@@ -163,6 +167,7 @@ form.SearchBox {
 
       fieldset.TableLike {
         border-right: none;
+        font-size: inherit;
         float: none;
         width: auto;
       }
@@ -240,7 +245,6 @@ form.SearchBox {
   }
 
   .SettingContent {
-    font-size: initial;
     padding-left: 0;
 
     .AlreadyDisabled {
