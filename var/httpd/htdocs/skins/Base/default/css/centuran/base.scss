@@ -169,6 +169,7 @@
   margin-top: var(--pad-y, 10px);
 
   .Icon {
+    color: msg-color($type);
     display: inline;
     left: 2em;
     margin-right: 0;
