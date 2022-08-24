@@ -550,6 +550,17 @@ my @NeededModules = (
         },
     },
     {
+        Module    => 'Unicode::Collate',
+        Required  => 1,
+        Comment   => 'Unicode collation module.',
+        InstTypes => {
+            aptget => 'libunicode-collate-perl',
+            emerge => 'perl-core/Unicode-Collate',
+            zypper => 'perl-Unicode-Collate',
+            ports  => 'textproc/p5-Unicode-Collate',
+        },
+    },
+    {
         Module    => 'XML::LibXML',
         Required  => 1,
         Comment   => 'Required for XML processing.',
