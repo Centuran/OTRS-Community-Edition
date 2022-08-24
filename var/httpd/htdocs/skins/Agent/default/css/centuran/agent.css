@@ -4223,6 +4223,8 @@ hr.cmt-flex-break {
 }
 .LoginScreen #LoginButton {
   line-height: 1.9em;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .CustomerContainer {
