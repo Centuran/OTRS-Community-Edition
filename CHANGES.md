@@ -1,15 +1,15 @@
-# 6.0.36 2022-08-??
+# 6.0.36 2022-08-25
  - Added refreshed version of the default agent user interface skin (optional and experimental)
  - Added configurable ticket priority colors
  - Fixed issues with database update process
  - Fixed identification of Linux distributions in Support Data Collector
  - Updated CGI CPAN module to version 4.54
+ - Updated the CodeMirror plugin for CKEditor to version 1.18.5
  - Implemented bug fixes and changes present in Znuny version 6.0.41
    - Notifications are no longer sent to customer user accounts which are flagged as invalid
    - Fixed checking of pending time in TicketPendingTimeReset event module
  - Implemented bug fixes and changes present in Znuny version 6.0.43
    - Fixed migration module DisableGenericAgentSystemCommandJobs
- - Updated the CodeMirror plugin for CKEditor to version 1.18.5
  - Thanks to Znuny GmbH and contributors
 
 # 6.0.35 2022-05-27
