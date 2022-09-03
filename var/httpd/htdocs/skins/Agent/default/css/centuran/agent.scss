@@ -370,30 +370,30 @@ div.InputField_ListContainer {
 .DataTable {
   border-radius: 4px;
   border-spacing: 0;
-}
 
-.DataTable thead {
-  background: none;
-}
+  thead {
+    background: none;
+  
+    th {
+      background: none;
+      border: none;
+      border-bottom: thin solid rgba(0,0,0,.12);
+      font-size: inherit;
+      font-weight: 500;
+      text-transform: none;
+      padding: 10px 10px;
 
-.DataTable thead th {
-  background: none;
-  border: none;
-  border-bottom: thin solid rgba(0,0,0,.12);
-  font-size: inherit;
-  font-weight: 500;
-  text-transform: none;
-  padding: 10px 10px;
-
-  &.UnreadArticles {
-    padding: 10px 10px;
+      &.UnreadArticles {
+        padding: 10px 10px;
+      }
+    }
   }
-}
 
-.DataTable p.TableEmpty {
-  color: #666;
-  padding: 2.6em 0;
-  text-align: center;
+  p.TableEmpty {
+    color: #666;
+    padding: 2.6em 0;
+    text-align: center;
+  }
 }
 
 #Footer a {
