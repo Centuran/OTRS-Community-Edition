@@ -389,6 +389,25 @@ div.InputField_ListContainer {
     }
   }
 
+  tbody td {
+    a.Pencil, a.TrashCan {
+      vertical-align: initial;
+
+      i.fa {
+        font-family: "Material Design Icons";
+        top: auto;
+        
+        &.fa-edit::before {
+          content: mdi("pencil");
+        }
+
+        &.fa-trash-o::before {
+          content: mdi("delete");
+        }
+      }
+    }
+  }
+
   p.TableEmpty {
     color: #666;
     padding: 2.6em 0;
