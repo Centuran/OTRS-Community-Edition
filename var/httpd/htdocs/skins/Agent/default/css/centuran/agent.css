@@ -444,6 +444,10 @@ div.InputField_ToolbarContainer ul li a {
 .AsteriskExplanation {
   font-size: 87.5%;
 }
+.FieldExplanation p,
+.AsteriskExplanation p {
+  font-size: inherit;
+}
 
 .Field.cmt-otrs-datetime-hidden::first-line,
 fieldset .cmt-otrs-datetime-hidden::first-line {
@@ -1523,6 +1527,10 @@ body .cke_screen_reader_only {
 }
 
 /* Newly introduced rules (TODO: Move to a separate file) */
+.cmt-nowrap {
+  white-space: nowrap;
+}
+
 hr.cmt-flex-break {
   height: 0;
   width: 100%;
@@ -1625,6 +1633,9 @@ select.Modernize {
 
 .v-application {
   font-family: inherit;
+}
+.v-application p {
+  margin-bottom: initial;
 }
 
 #Header {
@@ -1807,6 +1818,10 @@ form label.Mandatory span.Marker {
   box-sizing: border-box;
 }
 
+.SidebarColumn .WidgetSimple .ActionList .CallForAction:not(:first-child), .SidebarColumn .WidgetSimple .ActionList .ProcessManagementEditScreen #ProcessElements a.CallForAction:not(:first-child), .ProcessManagementEditScreen #ProcessElements .SidebarColumn .WidgetSimple .ActionList a.CallForAction:not(:first-child) {
+  margin-top: var(--gap);
+}
+
 div.InputField_ListContainer {
   z-index: 9999;
 }
@@ -1815,11 +1830,9 @@ div.InputField_ListContainer {
   border-radius: 4px;
   border-spacing: 0;
 }
-
 .DataTable thead {
   background: none;
 }
-
 .DataTable thead th {
   background: none;
   border: none;
@@ -1832,7 +1845,19 @@ div.InputField_ListContainer {
 .DataTable thead th.UnreadArticles {
   padding: 10px 10px;
 }
-
+.DataTable tbody td a.Pencil, .DataTable tbody td a.TrashCan {
+  vertical-align: initial;
+}
+.DataTable tbody td a.Pencil i.fa, .DataTable tbody td a.TrashCan i.fa {
+  font-family: "Material Design Icons";
+  top: auto;
+}
+.DataTable tbody td a.Pencil i.fa.fa-edit::before, .DataTable tbody td a.TrashCan i.fa.fa-edit::before {
+  content: "\f03eb";
+}
+.DataTable tbody td a.Pencil i.fa.fa-trash-o::before, .DataTable tbody td a.TrashCan i.fa.fa-trash-o::before {
+  content: "\f01b4";
+}
 .DataTable p.TableEmpty {
   color: #666;
   padding: 2.6em 0;
@@ -2682,6 +2707,9 @@ label + .v-input--switch {
 }
 .ItemListGrid.WithIcons li[data-module=AdminNotificationEvent] span.Icons i.fa::before {
   content: "\f0026";
+}
+.ItemListGrid.WithIcons li[data-module=AdminOAuth2TokenConfig] span.Icons i.fa::before {
+  content: "\f0306";
 }
 .ItemListGrid.WithIcons li[data-module=AdminPackageManager] span.Icons i.fa::before {
   content: "\f03d3";
@@ -3836,6 +3864,10 @@ body .cke_screen_reader_only {
 }
 
 /* Newly introduced rules (TODO: Move to a separate file) */
+.cmt-nowrap {
+  white-space: nowrap;
+}
+
 hr.cmt-flex-break {
   height: 0;
   width: 100%;

@@ -1584,6 +1584,8 @@
     <Column Name="queue_id" Required="true" Type="INTEGER"/>
     <Column Name="trusted" Required="true" Type="SMALLINT"/>
     <Column Name="imap_folder" Required="false" Size="250" Type="VARCHAR"/>
+    <Column Name="auth_method" Required="true" Size="100" Type="VARCHAR" Default="password"/>
+    <Column Name="oauth2_token_config_id" Required="false" Type="INTEGER"/>
     <Column Name="comments" Required="false" Size="250" Type="VARCHAR"/>
     <Column Name="valid_id" Required="true" Type="SMALLINT"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
@@ -1596,6 +1598,9 @@
     <ForeignKey ForeignTable="users">
         <Reference Local="create_by" Foreign="id"/>
         <Reference Local="change_by" Foreign="id"/>
+    </ForeignKey>
+    <ForeignKey ForeignTable="oauth2_token_config">
+        <Reference Local="oauth2_token_config_id" Foreign="id"/>
     </ForeignKey>
 </Table>
 
@@ -2714,6 +2719,56 @@
     <ForeignKey ForeignTable="users">
         <Reference Local="create_by" Foreign="id" />
         <Reference Local="change_by" Foreign="id" />
+    </ForeignKey>
+</Table>
+
+<!-- OAuth2 token configuration -->
+<Table Name="oauth2_token_config">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
+    <Column Name="name" Required="true" Size="250" Type="VARCHAR"/>
+    <Column Name="config" Required="true" Size="5000" Type="VARCHAR"/>
+    <Column Name="valid_id" Required="true" Type="SMALLINT"/>
+    <Column Name="create_time" Required="true" Type="DATE"/>
+    <Column Name="create_by" Required="true" Type="INTEGER"/>
+    <Column Name="change_time" Required="true" Type="DATE"/>
+    <Column Name="change_by" Required="true" Type="INTEGER"/>
+    <Unique Name="oauth2_token_config_name">
+        <UniqueColumn Name="name"/>
+    </Unique>
+    <ForeignKey ForeignTable="valid">
+        <Reference Local="valid_id" Foreign="id"/>
+    </ForeignKey>
+    <ForeignKey ForeignTable="users">
+        <Reference Local="create_by" Foreign="id"/>
+        <Reference Local="change_by" Foreign="id"/>
+    </ForeignKey>
+</Table>
+
+<!-- OAuth2 tokens -->
+<Table Name="oauth2_token">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
+    <Column Name="config_id" Required="true" Type="INTEGER"/>
+    <Column Name="authorization_code" Required="false" Size="2000" Type="VARCHAR"/>
+    <Column Name="token" Required="false" Size="2000" Type="VARCHAR"/>
+    <Column Name="token_expiration_date" Required="false" Type="DATE"/>
+    <Column Name="refresh_token" Required="false" Size="2000" Type="VARCHAR"/>
+    <Column Name="refresh_token_expiration_date" Required="false" Type="DATE"/>
+    <Column Name="error_message" Required="false" Size="2000" Type="VARCHAR"/>
+    <Column Name="error_description" Required="false" Size="2000" Type="VARCHAR"/>
+    <Column Name="error_code" Required="false" Size="250" Type="VARCHAR"/>
+    <Column Name="create_time" Required="true" Type="DATE"/>
+    <Column Name="create_by" Required="true" Type="INTEGER"/>
+    <Column Name="change_time" Required="true" Type="DATE"/>
+    <Column Name="change_by" Required="true" Type="INTEGER"/>
+    <Unique Name="oauth2_token_config_id">
+        <UniqueColumn Name="config_id"/>
+    </Unique>
+    <ForeignKey ForeignTable="oauth2_token_config">
+        <Reference Local="config_id" Foreign="id"/>
+    </ForeignKey>
+    <ForeignKey ForeignTable="users">
+        <Reference Local="create_by" Foreign="id"/>
+        <Reference Local="change_by" Foreign="id"/>
     </ForeignKey>
 </Table>
 

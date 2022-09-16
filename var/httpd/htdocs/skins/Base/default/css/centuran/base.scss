@@ -521,6 +521,10 @@ div.InputField_ToolbarContainer {
 .FieldExplanation,
 .AsteriskExplanation {
   font-size: 87.5%;
+
+  p {
+    font-size: inherit;
+  }
 }
 
 .Field.cmt-otrs-datetime-hidden,

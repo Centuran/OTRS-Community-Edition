@@ -54,6 +54,10 @@ select {
 
 .v-application {
   font-family: inherit;
+
+  p {
+    margin-bottom: initial;
+  }
 }
 
 #Header {
@@ -267,6 +271,12 @@ form {
 
 .SidebarColumn .WidgetSimple .InputField_Search {
   box-sizing: border-box;
+}
+
+.SidebarColumn .WidgetSimple .ActionList {
+  .CallForAction:not(:first-child) {
+    margin-top: var(--gap);
+  }
 }
 
 // NOTE: Moved to common styles

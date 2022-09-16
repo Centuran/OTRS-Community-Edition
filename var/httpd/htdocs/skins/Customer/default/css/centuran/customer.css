@@ -444,6 +444,10 @@ div.InputField_ToolbarContainer ul li a {
 .AsteriskExplanation {
   font-size: 87.5%;
 }
+.FieldExplanation p,
+.AsteriskExplanation p {
+  font-size: inherit;
+}
 
 .Field.cmt-otrs-datetime-hidden::first-line,
 fieldset .cmt-otrs-datetime-hidden::first-line {

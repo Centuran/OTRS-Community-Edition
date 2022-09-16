@@ -3013,6 +3013,8 @@ CREATE TABLE mail_account (
     queue_id NUMBER (12, 0) NOT NULL,
     trusted NUMBER (5, 0) NOT NULL,
     imap_folder VARCHAR2 (250) NULL,
+    auth_method VARCHAR2 (100) DEFAULT 'password' NOT NULL,
+    oauth2_token_config_id NUMBER (12, 0) NULL,
     comments VARCHAR2 (250) NULL,
     valid_id NUMBER (5, 0) NOT NULL,
     create_time DATE NOT NULL,
@@ -5664,6 +5666,116 @@ BEGIN
     EXECUTE IMMEDIATE 'CREATE INDEX form_draft_object_type_objecaf ON form_draft (object_type, object_id, action)';
 EXCEPTION
   WHEN OTHERS THEN NULL;
+END;
+/
+--
+;
+-- ----------------------------------------------------------
+--  create table oauth2_token_config
+-- ----------------------------------------------------------
+CREATE TABLE oauth2_token_config (
+    id NUMBER (12, 0) NOT NULL,
+    name VARCHAR2 (250) NOT NULL,
+    config CLOB NOT NULL,
+    valid_id NUMBER (5, 0) NOT NULL,
+    create_time DATE NOT NULL,
+    create_by NUMBER (12, 0) NOT NULL,
+    change_time DATE NOT NULL,
+    change_by NUMBER (12, 0) NOT NULL,
+    CONSTRAINT oauth2_token_config_name UNIQUE (name)
+);
+ALTER TABLE oauth2_token_config ADD CONSTRAINT PK_oauth2_token_config PRIMARY KEY (id);
+BEGIN
+    EXECUTE IMMEDIATE 'DROP SEQUENCE SE_oauth2_token_config';
+EXCEPTION
+    WHEN OTHERS THEN NULL;
+END;
+/
+--
+;
+CREATE SEQUENCE SE_oauth2_token_config
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+CACHE 20
+ORDER
+;
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TRIGGER SE_oauth2_token_config_t';
+EXCEPTION
+    WHEN OTHERS THEN NULL;
+END;
+/
+--
+;
+CREATE OR REPLACE TRIGGER SE_oauth2_token_config_t
+BEFORE INSERT ON oauth2_token_config
+FOR EACH ROW
+BEGIN
+    IF :new.id IS NULL THEN
+        SELECT SE_oauth2_token_config.nextval
+        INTO :new.id
+        FROM DUAL;
+    END IF;
+END;
+/
+--
+;
+-- ----------------------------------------------------------
+--  create table oauth2_token
+-- ----------------------------------------------------------
+CREATE TABLE oauth2_token (
+    id NUMBER (12, 0) NOT NULL,
+    config_id NUMBER (12, 0) NOT NULL,
+    authorization_code VARCHAR2 (2000) NULL,
+    token VARCHAR2 (2000) NULL,
+    token_expiration_date DATE NULL,
+    refresh_token VARCHAR2 (2000) NULL,
+    refresh_token_expiration_date DATE NULL,
+    error_message VARCHAR2 (2000) NULL,
+    error_description VARCHAR2 (2000) NULL,
+    error_code VARCHAR2 (250) NULL,
+    create_time DATE NOT NULL,
+    create_by NUMBER (12, 0) NOT NULL,
+    change_time DATE NOT NULL,
+    change_by NUMBER (12, 0) NOT NULL,
+    CONSTRAINT oauth2_token_config_id UNIQUE (config_id)
+);
+ALTER TABLE oauth2_token ADD CONSTRAINT PK_oauth2_token PRIMARY KEY (id);
+BEGIN
+    EXECUTE IMMEDIATE 'DROP SEQUENCE SE_oauth2_token';
+EXCEPTION
+    WHEN OTHERS THEN NULL;
+END;
+/
+--
+;
+CREATE SEQUENCE SE_oauth2_token
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+CACHE 20
+ORDER
+;
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TRIGGER SE_oauth2_token_t';
+EXCEPTION
+    WHEN OTHERS THEN NULL;
+END;
+/
+--
+;
+CREATE OR REPLACE TRIGGER SE_oauth2_token_t
+BEFORE INSERT ON oauth2_token
+FOR EACH ROW
+BEGIN
+    IF :new.id IS NULL THEN
+        SELECT SE_oauth2_token.nextval
+        INTO :new.id
+        FROM DUAL;
+    END IF;
 END;
 /
 --

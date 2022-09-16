@@ -103,6 +103,34 @@ Core.Agent.Admin = Core.Agent.Admin || {};
         Core.UI.Table.InitTableFilter($("#FilterMailAccounts"), $("#MailAccounts"));
 
         TargetNS.MailAccountDelete();
+
+        $('#AuthenticationMethod').on('change', function () {
+            var Method = $(this).val();
+
+            switch (Method) {
+                case 'oauth2_token':
+                    $('#CredentialsPassword').hide();
+                    $('#PasswordAdd').removeClass('Validate_Required');
+                    $('#PasswordEdit').removeClass('Validate_Required');
+
+                    $('#CredentialsOAuth2Token').show();
+                    $('#OAuth2TokenConfigID').addClass('Validate_Required');
+                    break;
+                case 'password':
+                default:
+                    $('#CredentialsOAuth2Token').hide();
+                    $('#OAuth2TokenConfigID').removeClass('Validate_Required');
+
+                    $('#CredentialsPassword').show();
+                    $('#PasswordAdd').addClass('Validate_Required');
+                    $('#PasswordEdit').addClass('Validate_Required');
+                    break;
+            }
+
+            Core.UI.InputFields.Activate();
+        });
+
+        $('#AuthenticationMethod').trigger('change');
     };
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');

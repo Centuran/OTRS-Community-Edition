@@ -1,0 +1,143 @@
+# --
+# Copyright (C) 2022 Centuran Consulting, https://centuran.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+<div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst">
+    <h1 class="InvisibleText">[% Translate("OAuth2 Configuration Management") | html %] - [% Translate(Data.Action) | html %]</h1>
+
+    [% BreadcrumbPath = [
+        {
+            Name => Translate("OAuth2 Configuration Management"),
+            Link => Env("Action"),
+        },
+    ] %]
+
+    [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
+
+    <div class="Clear"></div>
+    <div class="SidebarColumn">
+        [% IF Data.TokenConfigTemplateSelection %]
+            <div class="WidgetSimple">
+                <div class="Header">
+                    <h2>[% Translate("Actions") | html %]</h2>
+                </div>
+                <div class="Content">
+                    <ul class="ActionList">
+                        <li>
+                            <h4><label for="[% Data.TokenConfigFile | html %]">[% Translate('Add OAuth2 token configuration') | html %]</label></h4>
+                            <div class="FieldExplanation">
+                                <p>[% Translate("Add a new OAuth2 token configuration based on the selected template.") | html %]</p>
+                            </div>
+                            [% Data.TokenConfigTemplateSelection %]
+                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=ProcessNew" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i> [% Translate("Add Configuration") | html %]</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        [% END %]
+    </div>
+
+    <div class="ContentColumn">
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("OAuth2 token configurations") | html %]</h2>
+            </div>
+
+            <div class="Content">
+                <table class="DataTable">
+                    <thead>
+                        <tr>
+                            <th>[% Translate("Name") | html %]</th>
+                            <th>[% Translate("Token status") | html %]</th>
+                            <th>[% Translate("Refresh token status") | html %]</th>
+                            <th>[% Translate("Validity") | html %]</th>
+                            <th>[% Translate("Actions") | html %]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        [% IF Data.Configurations && Data.Configurations.size %]
+                            [% FOR Config IN Data.Configurations %]
+                                [% TokenInfo = Data.TokenInfo.item(Config.ConfigID) %]
+                                [% TokenExpirationDate = TokenInfo.TokenExpirationDate | Localize("TimeShort") %]
+                                [% RefreshTokenExpirationDate = TokenInfo.RefreshTokenExpirationDate | Localize("TimeShort") %]
+
+                                <tr class="[% IF Data.ValidIDs.item(Config.ValidID) != 'valid' %] Invalid[% END %]">
+                                    <td>
+                                        <a href="[% Env("Baselink") %]Action=AdminOAuth2TokenConfig;Subaction=EditConfig;ConfigID=[% Config.ConfigID | uri %]" title="[% Config.Name | html %]" class="MasterActionLink">[% Config.Name %]</a>
+                                    </td>
+                                    <td>
+                                        [% IF TokenInfo.LastTokenRequestFailed %]
+                                            [% Translate("Last token request failed.") | html %]
+                                        [% ELSE %]
+                                            [% IF TokenInfo.TokenPresent %]
+                                                [% IF TokenInfo.TokenExpired %]
+                                                    [% Translate("Token has expired on %s.", TokenExpirationDate) | html %]
+                                                [% ELSE %]
+                                                    [% Translate("Token is valid until %s.", TokenExpirationDate) | html %]
+                                                [% END %]
+                                            [% ELSE %]
+                                                [% Translate("Token not yet requested.") | html %]
+                                            [% END %]
+                                        [% END %]
+                                    </td>
+                                    <td>
+                                        [% IF TokenInfo.RefreshTokenRequestConfigured %]
+                                            [% IF TokenInfo.LastTokenRequestFailed %]
+                                                [% Translate("Last token (or refresh token) request failed.") | html %]
+                                            [% ELSE %]
+                                                [% IF TokenInfo.RefreshTokenPresent %]
+                                                    [% IF TokenInfo.RefreshTokenExpired %]
+                                                        [% IF RefreshTokenExpirationDate %]
+                                                            [% Translate("Refresh token has expired on %s.", RefreshTokenExpirationDate) | html %]
+                                                        [% ELSE %]
+                                                            [% Translate("Refresh token has expired.") | html %]
+                                                        [% END %]
+                                                    [% ELSE %]
+                                                        [% IF RefreshTokenExpirationDate %]
+                                                            [% Translate("Refresh token is valid until %s.", RefreshTokenExpirationDate) | html %]
+                                                        [% ELSE %]
+                                                            [% Translate("Refresh token is valid with no expiration date.") | html %]
+                                                        [% END %]
+                                                    [% END %]
+                                                [% ELSE %]
+                                                    [% Translate("Refresh token not yet requested.") | html %]
+                                                [% END %]
+                                            [% END %]
+                                        [% ELSE %]
+                                            [% Translate("Refresh token request is not configured.") | html %]
+                                        [% END %]
+                                    </td>
+                                    <td>
+                                        [% Translate(Data.ValidIDs.item(Config.ValidID)) | html %]
+                                    </td>
+                                    <td class="cmt-nowrap">
+                                        <a class="CallForAction AsPopup" href="[% TokenInfo.AuthCodeRequestURL | html %]" title="[% Translate("Request new token") | html %]">
+                                            <span>[% Translate("Request new token") | html %]</span>
+                                        </a>
+                                        &nbsp;
+                                        [% IF !Config.Used %]
+                                            <a class="CallForAction" data-action-delete-token-config href="[% Env("Baselink") %]Action=AdminOAuth2TokenConfig;Subaction=DeleteConfig;ConfigID=[% Config.ConfigID | uri %]" title="[% Translate("Delete this OAuth2 token configuration.") | html %]">
+                                                <span>[% Translate("Delete") | html %]</span>
+                                            </a>
+                                        [% END %]
+                                    </td>
+                                </tr>
+                            [% END %]
+                        [% ELSE %]
+                            <tr>
+                                <td colspan="5">
+                                    [% Translate("No data found.") | html %]
+                                </td>
+                            </tr>
+                        [% END %]
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="Clear"></div>
+    </div>
+</div>
