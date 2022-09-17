@@ -1502,6 +1502,8 @@ sub _AssembleResponseDataFromJSONString {
 
         next PARAMETER if !defined $Attribute;
 
+        next PARAMETER if !exists $JSONData->{$Parameter};
+
         if ( ref $JSONData->{$Parameter} eq 'ARRAY' ) {
             $JSONData->{$Parameter} = join ', ', @{$JSONData->{$Parameter}};
         }
