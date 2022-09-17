@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-03-24 20:44+0000\n"
+"POT-Creation-Date: 2022-08-22 20:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2236,14 +2236,6 @@ msgstr ""
 
 #. Template: AdminGenericAgent
 msgid "Send agent/customer notifications on changes"
-msgstr ""
-
-#. Template: AdminGenericAgent
-msgid "CMD"
-msgstr ""
-
-#. Template: AdminGenericAgent
-msgid "This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id."
 msgstr ""
 
 #. Template: AdminGenericAgent
@@ -7203,6 +7195,38 @@ msgid "End"
 msgstr ""
 
 #. Template: AgentPreferences
+msgid "Use modern variant"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Text size"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Example of small text"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Example of medium text"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Example of large text"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Small"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Medium"
+msgstr ""
+
+#. Template: AgentPreferences
+msgid "Large"
+msgstr ""
+
+#. Template: AgentPreferences
 msgid "This setting can currently not be saved."
 msgstr ""
 
@@ -8339,10 +8363,6 @@ msgid "Your password"
 msgstr ""
 
 #. Template: CustomerLogin
-msgid "Forgot password?"
-msgstr ""
-
-#. Template: CustomerLogin
 msgid "2 Factor Token"
 msgstr ""
 
@@ -8352,6 +8372,10 @@ msgstr ""
 
 #. Template: CustomerLogin
 msgid "Log In"
+msgstr ""
+
+#. Template: CustomerLogin
+msgid "Forgot password?"
 msgstr ""
 
 #. Template: CustomerLogin
@@ -12671,15 +12695,7 @@ msgid "No %s!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/PublicCalendar.pm
-msgid "No such user!"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/PublicCalendar.pm
 msgid "Invalid calendar!"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/PublicCalendar.pm
-msgid "Invalid URL!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/PublicCalendar.pm
@@ -13932,14 +13948,6 @@ msgstr ""
 
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/MaxAllowedPacket.pm
 msgid "The setting 'max_allowed_packet' must be higher than 64 MB."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-msgid "Query Cache Size"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-msgid "The setting 'query_cache_size' should be used (higher than 10 MB but not more than 512 MB)."
 msgstr ""
 
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
@@ -16446,10 +16454,6 @@ msgid "Allows extended search conditions in ticket search of the generic agent i
 msgstr ""
 
 #. SysConfig
-msgid "Allows generic agent to execute custom command line scripts."
-msgstr ""
-
-#. SysConfig
 msgid "Allows generic agent to execute custom modules."
 msgstr ""
 
@@ -16643,10 +16647,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Bulk Action"
-msgstr ""
-
-#. SysConfig
-msgid "CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin)."
 msgstr ""
 
 #. SysConfig
@@ -18638,10 +18638,6 @@ msgid "Defines the parameters for the customer preferences table."
 msgstr ""
 
 #. SysConfig
-msgid "Defines the parameters for the dashboard backend. \"Cmd\" is used to specify command with parameters. \"Group\" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). \"Default\" indicates if the plugin is enabled by default or if the user needs to enable it manually. \"CacheTTL\" indicates the cache expiration period in minutes for the plugin. \"Mandatory\" determines if the plugin is always shown and can not be removed by agents."
-msgstr ""
-
-#. SysConfig
 msgid "Defines the parameters for the dashboard backend. \"Group\" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). \"Default\" indicates if the plugin is enabled by default or if the user needs to enable it manually. \"CacheTTL\" indicates the cache expiration period in minutes for the plugin. \"Mandatory\" determines if the plugin is always shown and can not be removed by agents."
 msgstr ""
 
@@ -19930,10 +19926,6 @@ msgid "If \"Radius\" was selected for Customer::AuthModule, you can specify if t
 msgstr ""
 
 #. SysConfig
-msgid "If \"Sendmail\" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified."
-msgstr ""
-
-#. SysConfig
 msgid "If \"SysLog\" was selected for LogModule, a special log facility can be specified."
 msgstr ""
 
@@ -20046,6 +20038,10 @@ msgid "If set, this address is used as envelope sender in outgoing messages (not
 msgstr ""
 
 #. SysConfig
+msgid "If the \"default\" agent skin is in use, enable its modern variant by default."
+msgstr ""
+
+#. SysConfig
 msgid "If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent."
 msgstr ""
 
@@ -20067,6 +20063,10 @@ msgstr ""
 
 #. SysConfig
 msgid "Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as 'Unread Article' in AgentTicketZoom or expanded automatically in Large view screens."
+msgstr ""
+
+#. SysConfig
+msgid "Ignores attributes not related to tickets."
 msgstr ""
 
 #. SysConfig
@@ -20167,10 +20167,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Language"
-msgstr ""
-
-#. SysConfig
-msgid "Large"
 msgstr ""
 
 #. SysConfig
@@ -20538,10 +20534,6 @@ msgid "Maximum size (in characters) of the customer information table in the tic
 msgstr ""
 
 #. SysConfig
-msgid "Medium"
-msgstr ""
-
-#. SysConfig
 msgid "Merge this ticket and all articles into another ticket"
 msgstr ""
 
@@ -20779,10 +20771,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Number of tickets to be displayed in each page of a search result in the customer interface."
-msgstr ""
-
-#. SysConfig
-msgid "Number of tickets to be displayed in each page."
 msgstr ""
 
 #. SysConfig
@@ -21398,10 +21386,6 @@ msgid "Salutations"
 msgstr ""
 
 #. SysConfig
-msgid "Sample command output"
-msgstr ""
-
-#. SysConfig
 msgid "Saves the attachments of articles. \"DB\" stores all data in the database (not recommended for storing big attachments). \"FS\" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when \"FS\" is used."
 msgstr ""
 
@@ -21454,6 +21438,10 @@ msgid "Select after which period ticket overviews should refresh automatically."
 msgstr ""
 
 #. SysConfig
+msgid "Select configuration options of the selected skin."
+msgstr ""
+
+#. SysConfig
 msgid "Select how many tickets should be shown in overviews by default."
 msgstr ""
 
@@ -21479,6 +21467,10 @@ msgstr ""
 
 #. SysConfig
 msgid "Select your preferred theme for OTRS."
+msgstr ""
+
+#. SysConfig
+msgid "Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree."
 msgstr ""
 
 #. SysConfig
@@ -22058,10 +22050,6 @@ msgid "Show article as rich text even if rich text writing is disabled."
 msgstr ""
 
 #. SysConfig
-msgid "Show command line output."
-msgstr ""
-
-#. SysConfig
 msgid "Show queues even when only locked tickets are in."
 msgstr ""
 
@@ -22290,10 +22278,6 @@ msgid "Shows all both ro and rw tickets in the service view."
 msgstr ""
 
 #. SysConfig
-msgid "Shows all open tickets (even if they are locked) in the escalation view of the agent interface."
-msgstr ""
-
-#. SysConfig
 msgid "Shows all the articles of the ticket (expanded) in the agent zoom view."
 msgstr ""
 
@@ -22450,15 +22434,15 @@ msgid "Skin"
 msgstr ""
 
 #. SysConfig
+msgid "Skin Options"
+msgstr ""
+
+#. SysConfig
 msgid "Slovak"
 msgstr ""
 
 #. SysConfig
 msgid "Slovenian"
-msgstr ""
-
-#. SysConfig
-msgid "Small"
 msgstr ""
 
 #. SysConfig
@@ -22495,14 +22479,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Spam"
-msgstr ""
-
-#. SysConfig
-msgid "Spam Assassin example setup. Ignores emails that are marked with SpamAssassin."
-msgstr ""
-
-#. SysConfig
-msgid "Spam Assassin example setup. Moves marked mails to spam queue."
 msgstr ""
 
 #. SysConfig
@@ -22567,22 +22543,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Specifies the path of the file for the performance log."
-msgstr ""
-
-#. SysConfig
-msgid "Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface."
-msgstr ""
-
-#. SysConfig
-msgid "Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface."
-msgstr ""
-
-#. SysConfig
-msgid "Specifies the path to the converter that allows the view of PDF documents, in the web interface."
-msgstr ""
-
-#. SysConfig
-msgid "Specifies the path to the converter that allows the view of XML files, in the web interface."
 msgstr ""
 
 #. SysConfig

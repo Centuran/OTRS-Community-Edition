@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -37,13 +37,13 @@ sub Run {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(JobConfig GetParam)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(JobConfig GetParam)) {
+        if ( !$Param{$Name} ) {
             $Self->{CommunicationLogObject}->ObjectLog(
                 ObjectLogType => 'Message',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::PostMaster::Filter::MatchDBSource',
-                Value         => "Need $_!",
+                Value         => "Need $Name!",
             );
             return;
         }
@@ -55,12 +55,12 @@ sub Run {
     # get all db filters
     my %JobList = $PostMasterFilter->FilterList();
 
-    for ( sort keys %JobList ) {
+    for my $FilterName ( sort keys %JobList ) {
 
         my %NamedCaptures;
 
         # get config options
-        my %Config = $PostMasterFilter->FilterGet( Name => $_ );
+        my %Config = $PostMasterFilter->FilterGet( Name => $FilterName );
 
         my @Match;
         my @Set;

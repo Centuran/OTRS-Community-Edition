@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -9,15 +9,6 @@
 
 <div class="MainBox ARIARoleMain FormScreen">
 
-    [% IF Data.TicketID %]
-    <h1>[% Translate("Split Into New Phone Ticket") | html %]</h1>
-    [% ELSIF Data.FromChatID %]
-    <h1>[% Translate("Save Chat Into New Phone Ticket") | html %]</h1>
-    [% ELSE %]
-    <h1>[% Translate("Create New Phone Ticket") | html %]</h1>
-    [% END %]
-
-    <p class="AsteriskExplanation">[% Translate("All fields marked with an asterisk (*) are mandatory.") | html %]</p>
 
     <div class="LayoutFixedSidebar SidebarLast">
 
@@ -35,6 +26,21 @@
         </div>
 
         <div class="ContentColumn">
+            <div class="cmt-form-wrapper">
+                <div class="WidgetSimple">
+                    <div class="Header">
+                        [% IF Data.TicketID %]
+                        <h2>[% Translate("Split Into New Phone Ticket") | html %]</h2>
+                        [% ELSIF Data.FromChatID %]
+                        <h2>[% Translate("Save Chat Into New Phone Ticket") | html %]</h2>
+                        [% ELSE %]
+                        <h2>[% Translate("Create New Phone Ticket") | html %]</h2>
+                        [% END %]
+                    </div>
+                    <div class="Content">
+
+    <p class="AsteriskExplanation">[% Translate("All fields marked with an asterisk (*) are mandatory.") | html %]</p>
+
             <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="NewPhoneTicket" class="Validate PreventMultipleSubmits">
                 <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                 <input type="hidden" name="Subaction" value="StoreNew"/>
@@ -66,7 +72,7 @@
                     <div class="Clear"></div>
 [% RenderBlockEnd("TicketType") %]
 
-                    <label for="FromCustomer" class="Mandatory"><span class="Marker">*</span>[% Translate("Customer user") | html %]:</label>
+                    <label for="FromCustomer" class="Mandatory"><span class="Marker">*</span> [% Translate("Customer user") | html %]:</label>
                     <div class="Field">
                         <input id="FromCustomer" type="text" name="FromCustomer" value="" class="CustomerAutoComplete W75pc [% Data.FromInvalid | html %]" autocomplete="off" />
                         <div id="FromCustomerServerError" class="TooltipErrorMessage">
@@ -276,7 +282,8 @@
 
                         <label>[% Translate("Pending date") | html %]:</label>
                         <div class="Field">
-                        [% Data.PendingDateString %]
+                            [% Data.PendingDateString %]
+                            <datetimepicker></datetimepicker>
                             <div id="DayError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                             <div id="HourError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                             <p class="FieldExplanation">[% Translate("For all pending* states.") | html %]</p>
@@ -336,11 +343,16 @@
                         <div class="Clear"></div>
 [% RenderBlockEnd("TimeUnits") %]
                         <div class="Field SpacingTop">
-                            <button class="Primary CallForAction" id="submitRichText" accesskey="g" title="[% Translate("Create") | html %] (g)" type="submit" value="[% Translate("Create") | html %]"><span><i class="fa fa-check-square-o"></i> [% Translate("Create") | html %]</span></button>
+                            <button v-ripple class="Primary CallForAction" id="submitRichText" accesskey="g" title="[% Translate("Create") | html %] (g)" type="submit" value="[% Translate("Create") | html %]"><span><i class="fa fa-check-square-o"></i> [% Translate("Create") | html %]</span></button>
                         </div>
                     </fieldset>
                 </form>
             </div>
+
+            </div>
+            </div>
+            </div>
+
             <div class="Clear"></div>
         </div>
         <div id="CustomerTickets"></div>

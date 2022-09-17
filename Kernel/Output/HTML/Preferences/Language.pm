@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -111,14 +111,14 @@ sub Run {
 
     for my $Key ( sort keys %{ $Param{GetParam} } ) {
         my @Array = @{ $Param{GetParam}->{$Key} };
-        for (@Array) {
+        for my $Value (@Array) {
 
             # pref update db
             if ( !$Kernel::OM->Get('Kernel::Config')->Get('DemoSystem') ) {
                 $Self->{UserObject}->SetPreferences(
                     UserID => $Param{UserData}->{UserID},
                     Key    => $Key,
-                    Value  => $_,
+                    Value  => $Value,
                 );
             }
 
@@ -127,7 +127,7 @@ sub Run {
                 $Kernel::OM->Get('Kernel::System::AuthSession')->UpdateSessionID(
                     SessionID => $Self->{SessionID},
                     Key       => $Key,
-                    Value     => $_,
+                    Value     => $Value,
                 );
             }
         }

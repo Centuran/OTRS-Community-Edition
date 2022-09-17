@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -42,13 +42,13 @@ sub Run {
     return 1 if !$Param{TicketID};
 
     # check needed stuff
-    for (qw(JobConfig GetParam UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(JobConfig GetParam UserID)) {
+        if ( !$Param{$Name} ) {
             $Self->{CommunicationLogObject}->ObjectLog(
                 ObjectLogType => 'Message',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::PostMaster::Filter::FollowUpArticleVisibilityCheck',
-                Value         => "Need $_!",
+                Value         => "Need $Name!",
             );
             return;
         }

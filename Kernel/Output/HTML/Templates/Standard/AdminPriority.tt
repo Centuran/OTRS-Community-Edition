@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -81,6 +81,7 @@
                     <thead>
                         <tr>
                             <th>[% Translate("Name") | html %]</th>
+                            <th>[% Translate("Color") | html %]</th>
                             <th>[% Translate("Validity") | html %]</th>
                             <th>[% Translate("Changed") | html %]</th>
                             <th>[% Translate("Created") | html %]</th>
@@ -100,6 +101,14 @@
                                 <a class="AsBlock" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Change;PriorityID=[% Data.PriorityID | uri %]">
                                     [% Data.Name | html %]
                                 </a>
+                            </td>
+                            <td class="Flag Small">
+                                <span
+                                    class="PriorityID-[% Data.PriorityID | html %]"
+                                    [% IF Data.Color %]                                    
+                                        style="background-color: [% Data.Color | html %];"
+                                    [% END %]
+                                    ></span>
                             </td>
                             <td>
                                 [% Translate(Data.Valid) | html %]
@@ -150,6 +159,17 @@
 [% RenderBlockEnd("InSettingNameServerError") %]
                                 </p>
                             </div>
+                        </div>
+                        <div class="Clear"></div>
+
+                        <label for="Color" class="Mandatory">
+                            <span class="Marker">*</span>
+                            [% Translate("Color") | html %]:
+                        </label>
+                        <div class="Field">
+                            <input type="text" id="Color" name="Color" value="[% Data.Color | html %]" class="Validate_Required W50pc" />
+                            <div id="ColorError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                            <colorpicker></colorpicker>
                         </div>
                         <div class="Clear"></div>
 

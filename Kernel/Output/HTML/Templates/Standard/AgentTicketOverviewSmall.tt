@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -71,6 +71,8 @@
                     <th class="OverviewHeader [% Data.HeaderColumnName | html %] [% Data.CSS | html %]">
 
 [% RenderBlockStart("OverviewNavBarPageColumnFilter") %]
+                        <span class="Gray" title="[% Data.Title | html %]">[% Data.ColumnNameTranslated | html %]</span>
+
                         <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
                             <i class="fa fa-filter"></i>
                         </a>
@@ -84,10 +86,11 @@
 
                             </div>
                         </div>
-                        <span class="Gray" title="[% Data.Title | html %]">[% Data.ColumnNameTranslated | html %]</span>
 [% RenderBlockEnd("OverviewNavBarPageColumnFilter") %]
 
 [% RenderBlockStart("OverviewNavBarPageColumnFilterLink") %]
+                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=[% Data.ColumnName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.ColumnNameTranslated | html %]</a>
+
                         <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
                             <i class="fa fa-filter"></i>
                         </a>
@@ -104,7 +107,6 @@
 [% RenderBlockEnd("ContentLargeTicketGenericHeaderColumnFilterLinkUserSearch") %]
                             </div>
                         </div>
-                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=[% Data.ColumnName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.ColumnNameTranslated | html %]</a>
 [% RenderBlockEnd("OverviewNavBarPageColumnFilterLink") %]
 
 [% RenderBlockStart("OverviewNavBarPageColumnLink") %]
@@ -244,7 +246,7 @@
                     <td class="[% Data.ClassTable | html %]" title="[% Translate(Data.Title) | html %]">
 [% RenderBlockStart("ContentLargeTicketGenericRowMetaImage") %]
                         <div class="[% Data.Class | html %] Small" title="[% Translate(Data.Title) | html %]">
-                            <span class="[% Data.ClassSpan | html %]">
+                            <span class="[% Data.ClassSpan | html %]" style="[% Data.StyleSpan | html %]">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <em>[% Translate(Data.Title) | html %]</em>

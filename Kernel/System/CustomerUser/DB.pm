@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -17,8 +17,6 @@ use Kernel::System::VariableCheck qw(:all);
 use Crypt::PasswdMD5 qw(unix_md5_crypt apache_md5_crypt);
 use Digest::SHA;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::Language',
@@ -28,13 +26,11 @@ our @ObjectDependencies = (
     'Kernel::System::DB',
     'Kernel::System::DynamicField',
     'Kernel::System::DynamicField::Backend',
+    'Kernel::System::DynamicFieldValueObjectName',
     'Kernel::System::Encode',
     'Kernel::System::Log',
     'Kernel::System::Main',
     'Kernel::System::Valid',
-    'Kernel::System::DynamicField',
-    'Kernel::System::DynamicField::Backend',
-    'Kernel::System::DynamicFieldValueObjectName',
 );
 
 sub new {
@@ -1642,12 +1638,6 @@ sub CustomerUserUpdate {
             OldUserID => $UserData{UserLogin},
         );
     }
-
-    # log notice
-    $Kernel::OM->Get('Kernel::System::Log')->Log(
-        Priority => 'info',
-        Message  => "CustomerUser: '$Param{UserLogin}' updated successfully ($Param{UserID})!",
-    );
 
     # check pw
     if ( $Param{UserPassword} ) {

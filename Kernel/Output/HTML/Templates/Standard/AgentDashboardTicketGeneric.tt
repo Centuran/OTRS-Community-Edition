@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -79,6 +79,8 @@
                 <th class="DashboardHeader [% Data.HeaderColumnName | html %] [% Data.CSS | html %]" data-column="[% Data.HeaderColumnName | html %]">
 
 [% RenderBlockStart("ContentLargeTicketGenericHeaderColumnFilterLink") %]
+                    <a id="[% Data.HeaderColumnName | html %]OverviewControl[% Data.Name | html %]" name="[% Data.HeaderColumnName | html %]OverviewControl[% Data.Name | html %]" href="#" title="[% Data.Title | html %]" >[% Data.HeaderNameTranslated | html %]</a>
+
                     <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
                         <i class="fa fa-filter"></i>
                     </a>
@@ -95,8 +97,6 @@
                             <a href="#" class="DeleteFilter Hidden"><i class="fa fa-trash-o"></i></a>
                         </div>
                     </div>
-
-                    <a id="[% Data.HeaderColumnName | html %]OverviewControl[% Data.Name | html %]" name="[% Data.HeaderColumnName | html %]OverviewControl[% Data.Name | html %]" href="#" title="[% Data.Title | html %]" >[% Data.HeaderNameTranslated | html %]</a>
 
 [% RenderBlockEnd("ContentLargeTicketGenericHeaderColumnFilterLink") %]
 
@@ -144,7 +144,7 @@
                 <td class="[% Data.ClassTable | html %] Flags" title="[% Translate(Data.Title) | html %]">
 [% RenderBlockStart("ContentLargeTicketGenericRowMetaImage") %]
                     <div class="[% Data.Class | html %] Small" title="[% Translate(Data.Title) | html %]">
-                        <span class="[% Data.ClassSpan | html %]">
+                        <span class="[% Data.ClassSpan | html %]" style="[% Data.StyleSpan | html %]">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <em>[% Translate(Data.Title) | html %]</em>

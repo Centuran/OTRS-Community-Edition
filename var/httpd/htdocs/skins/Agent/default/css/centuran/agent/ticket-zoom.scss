@@ -1,0 +1,340 @@
+div.Headline {
+  display: flex;
+  align-items: center;
+
+  .Flag {
+    @include priority-flag();
+  }
+
+  h1 {
+    font-size: 110%;
+  }
+  
+  .Flag + h1 {
+    margin-left: 0.5em;
+  }
+}
+
+.ActionRow .Actions {
+  box-shadow: none;
+
+  // Display "Back" (which is the first item) separately, since it's not really
+  // an "action"
+  li#nav-Back {
+    a {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom: solid 1px #ccc;
+      border-right: solid 1px #ccc;
+    }
+
+    &:hover a {
+      border-right: solid 1px $secondary-action-color !important;
+    }
+
+    a::before {
+      content: mdi("arrow-left");
+      font-family: "Material Design Icons";
+      margin-right: 0.25em;
+      line-height: 1;
+    }
+
+    & + li > a {
+      border-left: solid 1px #ccc;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      margin-left: 0.5em;
+    }
+  }
+
+}
+
+// TODO: This is copypasted from base.scss .WidgetSimple .Header .ActionMenu,
+// should probably by DRY-ified
+.WidgetAction {
+  width: auto;
+  height: auto;
+
+  &.Toggle {
+    height: auto;
+    margin: 0;
+    width: auto;
+
+    &::before {
+      font-family: "Material Design Icons";
+      font-size: 120%;
+      line-height: 120%;
+    }
+
+    a {
+      height: 100%;
+      width: 100%;
+
+      &:hover i.fa {
+        background: none;
+      }
+    }
+  }
+
+  a {
+    font-size: initial;
+    height: auto;
+    display: inline-block;
+
+    i.fa {
+      font-size: initial;
+
+      &::before {
+        font-family: "Material Design Icons";
+        font-size: 110%;
+      }
+
+      // Widget settings
+      &.fa-cog::before {
+        content: mdi("dots-vertical");
+      }
+
+      // Close widget
+      &.fa-times::before {
+        content: mdi("close-thick");
+      }
+    }
+
+    &:hover i.fa {
+      color: $secondary-color;
+      background: #ddd;
+      border-radius: 50px;
+    }
+  }
+}
+
+#ArticleTableBody {
+  .Scroller {
+    border-radius: 4px;
+    height: 10em;
+  }
+
+  #ArticleTable { 
+    overflow: initial;
+    
+    thead {
+      overflow: auto;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      i.fa {
+        @each $fa_name, $mdi_name in $fa_to_mdi {
+          &.fa-#{$fa_name} {
+            font-family: "Material Design Icons";
+          }
+  
+          &.fa-#{$fa_name}::before {
+            content: mdi($mdi_name);
+          }
+
+          &.fa-exchange::before {
+            content: mdi("arrow-left-right-bold");
+          }
+        }
+      }
+
+      span.UnreadArticles {
+        height: auto;
+        margin-left: 0;
+        position: initial;
+        width: auto;
+
+        i.fa {
+          color: initial;
+          display: initial;
+          font-size: initial;
+          position: initial;
+        }
+
+        i.fa:first-child {
+          display: none;
+        }
+      }
+    }
+
+    tbody {
+      span.Direction {
+        i.fa {
+          font-family: "Material Design Icons";
+          font-size: initial;
+        }
+
+        &.Incoming i.fa.fa-long-arrow-left::before {
+          content: mdi("arrow-left-bold");
+        }
+
+        &.Outgoing i.fa.fa-long-arrow-right::before {
+          content: mdi("arrow-right-bold");
+        }
+      }
+    }
+  }
+}
+
+.MessageBrowser {
+  @include msg-box("info");
+  margin-bottom: var(--pad-y, 10px);
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+
+  p {
+    background: white;
+    color: #333;
+    font-size: smaller;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.5em 0.75em;
+    text-align: left;
+
+    &::before {
+      @include msg-icon-before("info");
+      color: msg-color("info");
+    }
+  }
+
+  a.Close {
+    &::before {
+      color: msg-color("info");
+      content: mdi("close");
+      font-family: "Material Design Icons";
+      margin-left: -0.5em;
+    }
+
+    i.fa {
+      display: none;
+    }
+  }
+}
+
+// FIXME: There's a lot of playing with flex element order inside #ArticleItems,
+// consider switching to a simpler solution (possibly by changing the structure
+// of HTML)
+#ArticleItems {
+  .ActionMenu .WidgetAction.Expand {
+    i.fa.fa-info::before {
+      content: mdi("more");
+    }
+  }
+
+  .ArticleMailContent {
+    padding-left: 0;
+    padding-right: 0;
+
+    .ItemActions {
+      padding-left: 0;
+      top: 0;
+
+      .Actions {
+        @include button-group();
+        
+        box-shadow: none;
+
+        form {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .Incoming {
+    .Avatar {
+      margin-left: 1em;
+      order: 4;
+    }
+
+    .ArticleBody,
+    .ArticleMailContentHTMLWrapper {
+      display: flex;
+      margin-left: 0;
+      margin-right: 0;
+      order: 3;
+    }
+  }
+
+  .Outgoing {
+    .Avatar {
+      margin-right: 1em;
+      order: 3;
+    }
+
+    .ArticleBody,
+    .ArticleMailContentHTMLWrapper {
+      margin-left: 0;
+      margin-right: 0;
+      order: 4;
+    }
+  }
+}
+
+.ArticleMailContent {
+  padding-left: 0;
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .Avatar {
+    border-radius: 50%;
+    flex-grow: 0;
+    order: 4;
+    padding: 3px;
+    position: static;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  .ItemActions {
+    order: 1;
+
+    & + hr.cmt-flex-break {
+      order: 2;
+    }
+  }
+
+  .ArticleBody {
+    align-self: flex-start;
+    border-radius: 4px;
+    flex-grow: 1;
+    margin-right: 0;
+    order: 3;
+  }
+  
+  .ArticleMailContentHTMLWrapper {
+    @extend .ArticleBody;
+
+    iframe {
+      border-radius: 4px;
+    }
+  }
+
+  hr.cmt-flex-break {
+    order: 5;
+  }
+
+  .ArticleAttachments {
+    order: 6;
+  }
+}
+
+#ArticleItems .Outgoing {
+  .ArticleMailContent {
+    .ItemActions,
+    .ArticleAttachments {
+      left: 50px;       // Account for avatar width
+      margin-left: 1em; // Account for avatar right margin
+      margin-right: 0;
+      position: relative;
+    }
+  }
+}
+
+/* Ticket Information box */

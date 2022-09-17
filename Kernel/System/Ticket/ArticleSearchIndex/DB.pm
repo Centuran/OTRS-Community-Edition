@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -16,6 +16,7 @@ use Kernel::System::VariableCheck qw(:all);
 
 our @ObjectDependencies = (
     'Kernel::Config',
+    'Kernel::System::CheckItem',
     'Kernel::System::DB',
     'Kernel::System::Log',
     'Kernel::System::Ticket::Article',
@@ -84,7 +85,8 @@ sub ArticleSearchIndexBuild {
     my $ForceUnfilteredStorage = $Kernel::OM->Get('Kernel::Config')->Get('Ticket::SearchIndex::ForceUnfilteredStorage')
         // 0;
 
-    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+    my $CheckItemObject = $Kernel::OM->Get('Kernel::System::CheckItem');
+    my $DBObject        = $Kernel::OM->Get('Kernel::System::DB');
 
     # Use regular multi-inserts for MySQL and PostgreSQL:
     # INSERT INTO table (field1, field2) VALUES (?, ?), (?, ?);
@@ -131,6 +133,13 @@ sub ArticleSearchIndexBuild {
         # (this will be done automatically on filterable fields)
         else {
             $ArticleSearchableContent{$FieldKey}->{String} = lc $ArticleSearchableContent{$FieldKey}->{String};
+
+            $CheckItemObject->StringClean(
+                StringRef             => \$ArticleSearchableContent{$FieldKey}->{String},
+                RemoveAllNewlines     => 1,
+                RemoveAllTabs         => 1,
+                ReplaceWithWhiteSpace => 1,
+            );
         }
 
         my @CurrentBind = (

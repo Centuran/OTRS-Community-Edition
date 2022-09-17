@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -77,7 +77,7 @@ sub Run {
         my ( %GetParam, %Errors );
 
         # get params
-        for my $Parameter (qw(PriorityID Name ValidID)) {
+        for my $Parameter (qw(PriorityID Name Color ValidID)) {
             $GetParam{$Parameter} = $ParamObject->GetParam( Param => $Parameter ) || '';
         }
 
@@ -216,6 +216,7 @@ sub Run {
         $Output .= $LayoutObject->NavigationBar();
         $Self->_Edit(
             Action => 'Add',
+            Color  => '#FFFFFF',    # Pre-selected default color
             %GetParam,
         );
         $Output .= $LayoutObject->Output(
@@ -237,7 +238,7 @@ sub Run {
         my ( %GetParam, %Errors );
 
         # get params
-        for my $Parameter (qw(PriorityID Name ValidID)) {
+        for my $Parameter (qw(PriorityID Name Color ValidID)) {
             $GetParam{$Parameter} = $ParamObject->GetParam( Param => $Parameter ) || '';
         }
 

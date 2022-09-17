@@ -1,6 +1,6 @@
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-// Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+// Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 // --
 // This software comes with ABSOLUTELY NO WARRANTY. For details, see
 // the enclosed file COPYING for license information (GPL). If you
@@ -1406,7 +1406,7 @@ Core.Agent.Dashboard = (function (TargetNS) {
         if (!$('#Dashboard' + Core.App.EscapeSelector(WidgetRemoveFilter.Name) + '-box').find('.ActionMenu').find('.RemoveFilters').length) {
             $('#Dashboard' + Core.App.EscapeSelector(WidgetRemoveFilter.Name) + '-box')
                 .find('.ActionMenu')
-                .prepend('<div class="WidgetAction RemoveFilters"><a href="#" id="Dashboard' + WidgetRemoveFilter.Name + '-remove-filters" title=' + Core.Language.Translate("Remove active filters for this widget.") + '"><i class="fa fa-trash-o"></i></a></div>')
+                .prepend('<div class="WidgetAction RemoveFilters"><a href="#" id="Dashboard' + WidgetRemoveFilter.Name + '-remove-filters" title="' + Core.Language.Translate("Remove active filters for this widget.") + '"><i class="fa fa-trash-o"></i></a></div>')
                 .find('.RemoveFilters')
                 .on('click', function() {
 

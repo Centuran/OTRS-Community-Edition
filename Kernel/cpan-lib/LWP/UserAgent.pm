@@ -2,9 +2,10 @@ package LWP::UserAgent;
 
 use strict;
 
-use base qw(LWP::MemberMixin);
+use parent qw(LWP::MemberMixin);
 
 use Carp ();
+use File::Copy ();
 use HTTP::Request ();
 use HTTP::Response ();
 use HTTP::Date ();
@@ -13,10 +14,10 @@ use LWP ();
 use HTTP::Status ();
 use LWP::Protocol ();
 
-use Scalar::Util qw(blessed);
+use Scalar::Util qw(blessed openhandle);
 use Try::Tiny qw(try catch);
 
-our $VERSION = '6.54';
+our $VERSION = '6.64';
 
 sub new
 {
@@ -302,7 +303,7 @@ sub request {
     $response->previous($previous) if $previous;
 
     if ($response->redirects >= $self->{max_redirect}) {
-        if ($response->header('Location')) {
+        if ($response->header('Location') or $response->header('Refresh')) {
             $response->header("Client-Warning" =>
                 "Redirect loop detected (max_redirect = $self->{max_redirect})"
             );
@@ -445,38 +446,41 @@ sub get {
     return $self->request( HTTP::Request::Common::GET( @parameters ), @suff );
 }
 
-sub _has_raw_content {
+sub _maybe_copy_default_content_type {
     my $self = shift;
-    shift; # drop url
+    my $req  = shift;
 
-    # taken from HTTP::Request::Common::request_type_with_data
+    my $default_ct = $self->default_header('Content-Type');
+    return unless defined $default_ct;
+
+    # drop url
+    shift;
+
+    # adapted from HTTP::Request::Common::request_type_with_data
     my $content;
     $content = shift if @_ and ref $_[0];
-    my($k, $v);
-    while (($k,$v) = splice(@_, 0, 2)) {
+
+    # We only care about the final value, really
+    my $ct;
+
+    my ($k, $v);
+    while (($k, $v) = splice(@_, 0, 2)) {
         if (lc($k) eq 'content') {
             $content = $v;
         }
+        elsif (lc($k) eq 'content-type') {
+            $ct = $v;
+        }
     }
 
-    # We were given Content => 'string' ...
-    if (defined $content && ! ref ($content)) {
-        return 1;
-    }
+    # Content-type provided and truthy? skip
+    return if $ct;
 
-    return;
-}
+    # Content is not just a string? Then it must be x-www-form-urlencoded
+    return if defined $content && ref($content);
 
-sub _maybe_copy_default_content_type {
-    my ($self, $req, @parameters) = @_;
-
-    # If we have a default Content-Type and someone passes in a POST/PUT
-    # with Content => 'some-string-value', use that Content-Type instead
-    # of x-www-form-urlencoded
-    my $ct = $self->default_header('Content-Type');
-    return unless defined $ct && $self->_has_raw_content(@parameters);
-
-    $req->header('Content-Type' => $ct);
+    # Provide default
+    $req->header('Content-Type' => $default_ct);
 }
 
 sub post {
@@ -554,11 +558,13 @@ sub _process_colonic_headers {
 	    # Some sanity-checking...
 	    Carp::croak("A :content_file value can't be undef")
 		unless defined $arg;
-	    Carp::croak("A :content_file value can't be a reference")
-		if ref $arg;
-	    Carp::croak("A :content_file value can't be \"\"")
-		unless length $arg;
 
+	    unless ( defined openhandle($arg) ) {
+		    Carp::croak("A :content_file value can't be a reference")
+			if ref $arg;
+		    Carp::croak("A :content_file value can't be \"\"")
+			unless length $arg;
+	    }
 	}
 	elsif ($args->[$i] eq ':read_size_hint') {
 	    $size = $args->[$i + 1];
@@ -745,26 +751,41 @@ sub parse_head {
         my $flag = shift;
         my $parser;
         my $old = $self->set_my_handler("response_header", $flag ? sub {
-               my($response, $ua) = @_;
-               require HTML::HeadParser;
-               $parser = HTML::HeadParser->new;
-               $parser->xml_mode(1) if $response->content_is_xhtml;
-               $parser->utf8_mode(1) if $] >= 5.008 && $HTML::Parser::VERSION >= 3.40;
+                my($response, $ua) = @_;
+                require HTML::HeadParser;
+                $parser = HTML::HeadParser->new;
+                $parser->xml_mode(1) if $response->content_is_xhtml;
+                $parser->utf8_mode(1) if $] >= 5.008 && $HTML::Parser::VERSION >= 3.40;
 
-               push(@{$response->{handlers}{response_data}}, {
-		   callback => sub {
-		       return unless $parser;
-		       unless ($parser->parse($_[3])) {
-			   my $h = $parser->header;
-			   my $r = $_[0];
-			   for my $f ($h->header_field_names) {
-			       $r->init_header($f, [$h->header($f)]);
-			   }
-			   undef($parser);
-		       }
-		   },
-	       });
-
+                push(@{$response->{handlers}{response_data}}, {
+                    callback => sub {
+                        return unless $parser;
+                        unless ($parser->parse($_[3])) {
+                            my $h = $parser->header;
+                            my $r = $_[0];
+                            for my $f ($h->header_field_names) {
+                                $r->init_header($f, [$h->header($f)]);
+                            }
+                            undef($parser);
+                        }
+                    },
+                });
+                push(@{$response->{handlers}{response_redirect}}, {
+                    callback => sub {
+                        my ($res, $ua, $handler, $data) = @_;
+                        my $refresh = $res->header('refresh') or return;
+                        my ($url) = $refresh =~ /;\s*url\s*=\s*['"]?([^"'>]+)/i
+                            or return;
+                        require HTML::Entities;
+                        HTML::Entities::decode($url);
+                        my $base = $res->request->uri;
+                        my $uri = $base->new_abs($url, $base);
+                        return if $uri == $base;
+                        return HTTP::Request->new(
+                            GET => $uri, [referer => $base]
+                        );
+                    },
+                });
             } : undef,
             m_media_type => "html",
         );
@@ -1002,10 +1023,14 @@ sub mirror
             $request->header( 'If-Modified-Since' => HTTP::Date::time2str($mtime) );
         }
     }
-    my $tmpfile = "$file-$$";
+
+    require File::Temp;
+    my ($tmpfh, $tmpfile) = File::Temp::tempfile("$file-XXXXXX");
+    close($tmpfh) or die "Could not close tmpfile '$tmpfile': $!";
 
     my $response = $self->request($request, $tmpfile);
     if ( $response->header('X-Died') ) {
+        unlink($tmpfile);
         die $response->header('X-Died');
     }
 
@@ -1019,26 +1044,32 @@ sub mirror
 
         if ( defined $content_length and $file_length < $content_length ) {
             unlink($tmpfile);
-            die "Transfer truncated: " . "only $file_length out of $content_length bytes received\n";
+            die "Transfer truncated: only $file_length out of $content_length bytes received\n";
         }
         elsif ( defined $content_length and $file_length > $content_length ) {
             unlink($tmpfile);
-            die "Content-length mismatch: " . "expected $content_length bytes, got $file_length\n";
+            die "Content-length mismatch: expected $content_length bytes, got $file_length\n";
         }
         # The file was the expected length.
         else {
             # Replace the stale file with a fresh copy
-            if ( -e $file ) {
-                # Some DOSish systems fail to rename if the target exists
-                chmod 0777, $file;
-                unlink $file;
-            }
-            rename( $tmpfile, $file )
+            # File::Copy will attempt to do it atomically,
+            # and fall back to a delete + copy if that fails.
+            File::Copy::move( $tmpfile, $file )
                 or die "Cannot rename '$tmpfile' to '$file': $!\n";
+
+            # Set standard file permissions if umask is supported.
+            # If not, leave what File::Temp created in effect.
+            if ( defined(my $umask = umask()) ) {
+                my $mode = 0666 &~ $umask;
+                chmod $mode, $file
+                    or die sprintf("Cannot chmod %o '%s': %s\n", $mode, $file, $!);
+            }
 
             # make sure the file has the same last modification time
             if ( my $lm = $response->last_modified ) {
-                utime $lm, $lm, $file;
+                utime $lm, $lm, $file
+                    or warn "Cannot update modification time of '$file': $!\n";
             }
         }
     }
@@ -1792,7 +1823,7 @@ Set handlers private to the executing subroutine.  Works by defaulting
 an C<owner> field to the C<%matchspec> that holds the name of the called
 subroutine.  You might pass an explicit C<owner> to override this.
 
-If $cb is passed as C<undef>, remove the handler.
+If C<$cb> is passed as C<undef>, remove the handler.
 
 =head1 REQUEST METHODS
 
@@ -1808,7 +1839,7 @@ This method will dispatch a C<DELETE> request on the given URL.  Additional
 headers and content options are the same as for the L<LWP::UserAgent/get>
 method.
 
-This method will use the DELETE() function from L<HTTP::Request::Common>
+This method will use the C<DELETE()> function from L<HTTP::Request::Common>
 to build the request.  See L<HTTP::Request::Common> for a details on
 how to pass form content and other advanced features.
 
@@ -1836,13 +1867,15 @@ Fields names that start with ":" are special.  These will not
 initialize headers of the request but will determine how the response
 content is treated.  The following special field names are recognized:
 
-    ':content_file'   => $filename
+    ':content_file'   => $filename # or $filehandle
     ':content_cb'     => \&callback
     ':read_size_hint' => $bytes
 
-If a $filename is provided with the C<:content_file> option, then the
-response content will be saved here instead of in the response
-object.  If a callback is provided with the C<:content_cb> option then
+If a C<$filename> or C<$filehandle> is provided with the C<:content_file>
+option, then the response content will be saved here instead of in
+the response object.  The C<$filehandle> may also be an object with
+an open file descriptor, such as a L<File::Temp> object.
+If a callback is provided with the C<:content_cb> option then
 this function will be called for each chunk of the response content as
 it is received from the server.  If neither of these options are
 given, then the response content will accumulate in the response
@@ -1862,9 +1895,9 @@ number of callback invocations.
 
 The callback function is called with 3 arguments: a chunk of data, a
 reference to the response object, and a reference to the protocol
-object.  The callback can abort the request by invoking die().  The
+object.  The callback can abort the request by invoking C<die()>.  The
 exception message will show up as the "X-Died" header field in the
-response returned by the get() function.
+response returned by the C<< $ua->get() >> method.
 
 =head2 head
 
@@ -1909,6 +1942,8 @@ time of the file.  If the document on the server has not changed since
 this time, then nothing happens.  If the document has been updated, it
 will be downloaded again.  The modification time of the file will be
 forced to match that of the server.
+
+Uses L<File::Copy/move> to attempt to atomically replace the C<$filename>.
 
 The return value is an L<HTTP::Response> object.
 
@@ -2122,8 +2157,7 @@ See L</"cookie_jar"> for more information.
 
 =head2 Managing Protocols
 
-C<protocols_allowed> gives you the ability to whitelist the protocols you're
-willing to allow.
+C<protocols_allowed> gives you the ability to allow arbitrary protocols.
 
     my $ua = LWP::UserAgent->new(
         protocols_allowed => [ 'http', 'https' ]
@@ -2132,8 +2166,7 @@ willing to allow.
 This will prevent you from inadvertently following URLs like
 C<file:///etc/passwd>.  See L</"protocols_allowed">.
 
-C<protocols_forbidden> gives you the ability to blacklist the protocols you're
-unwilling to allow.
+C<protocols_forbidden> gives you the ability to deny arbitrary protocols.
 
     my $ua = LWP::UserAgent->new(
         protocols_forbidden => [ 'file', 'mailto', 'ssh', ]

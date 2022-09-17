@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -223,9 +223,9 @@ sub _CheckVersion {
 
         my @Parts = split /\./, $Param{$Type};
         $Param{$Type} = 0;
-        for ( 0 .. 4 ) {
-            if ( IsNumber( $Parts[$_] ) ) {
-                $Param{$Type} .= sprintf( "%04d", $Parts[$_] );
+        for my $Part ( 0 .. 4 ) {
+            if ( IsNumber( $Parts[$Part] ) ) {
+                $Param{$Type} .= sprintf( "%04d", $Parts[$Part] );
             }
             else {
                 $Param{$Type} .= '0000';

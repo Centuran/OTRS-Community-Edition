@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.42722602739726;
+    $Self->{Completeness}        = 0.427444253859348;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -731,9 +731,6 @@ sub Data {
         'Time units' => 'Unités de temps',
         'Execute Ticket Commands' => '',
         'Send agent/customer notifications on changes' => 'Envoyer des notifications à l\'opérateur/au client sur les changements',
-        'CMD' => 'CMD',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'Cette commande sera exécuté. ARG[0] sera le numéro du ticket et ARG[1] son identifiant.',
         'Delete tickets' => 'Supprimer les tickets',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'Attention : Tous les tickets impactés seront supprimés de la base de données et ne pourront pas être restaurés !',
@@ -2442,6 +2439,14 @@ sub Data {
             '',
         'Off' => 'Désactivé',
         'End' => 'Fin',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Petit',
+        'Medium' => 'Moyen',
+        'Large' => 'Grand',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2841,10 +2846,10 @@ sub Data {
         'User name' => 'Identifiant',
         'Your user name' => 'Votre Identifiant',
         'Your password' => 'Votre mot de passe',
-        'Forgot password?' => 'Mot de passe oublié?',
         '2 Factor Token' => '',
         'Your 2 Factor Token' => '',
         'Log In' => 'Connexion',
+        'Forgot password?' => 'Mot de passe oublié?',
         'Not yet registered?' => 'Pas encore enregistré?',
         'Back' => 'Retour',
         'Request New Password' => 'Demander un nouveau mot de passe',
@@ -4396,9 +4401,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '',
-        'No such user!' => '',
         'Invalid calendar!' => '',
-        'Invalid URL!' => '',
         'There was an error exporting the calendar!' => '',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4950,11 +4953,6 @@ sub Data {
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/MaxAllowedPacket.pm
         'Maximum Query Size' => '',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => '',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
             '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
@@ -6001,8 +5999,6 @@ Thanks for your help!
             '',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             '',
-        'Allows generic agent to execute custom command line scripts.' =>
-            '',
         'Allows generic agent to execute custom modules.' => '',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             '',
@@ -6080,8 +6076,6 @@ Thanks for your help!
         'Bounced to "%s".' => 'Redirigé vers "%s".',
         'Bulgarian' => 'Bulgare',
         'Bulk Action' => 'Action groupée',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            '',
         'CSV Separator' => 'Séparateur CSV',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             '',
@@ -6893,8 +6887,6 @@ Thanks for your help!
         'Defines the number of hours a successful communication will be stored.' =>
             '',
         'Defines the parameters for the customer preferences table.' => '',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7410,8 +7402,6 @@ Thanks for your help!
             '',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             '',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            '',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             '',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7464,6 +7454,8 @@ Thanks for your help!
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7476,6 +7468,7 @@ Thanks for your help!
             'Si vous prévoyez d\'être absent(e) du bureau, vous pouvez choisir de le faire savoir aux autres utilisateurs en spécifiant les dates de départ et retour.',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             '',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => '',
         'Include tickets of subqueues per default when selecting a queue.' =>
             '',
@@ -7510,7 +7503,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => 'Langue',
-        'Large' => 'Grand',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '',
@@ -7627,7 +7619,6 @@ Thanks for your help!
             '',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             '',
-        'Medium' => 'Moyen',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Fusionner le ticket <OTRS_TICKET> avec <OTRS_MERGE_TO_TICKET>.',
@@ -7712,7 +7703,6 @@ Thanks for your help!
             '',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7940,7 +7930,6 @@ Thanks for your help!
         'SMS' => 'SMS',
         'SMS (Short Message Service)' => '',
         'Salutations' => 'Salutations',
-        'Sample command output' => '',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             '',
         'Schedule a maintenance period.' => 'Planifier une plage de maintenance.',
@@ -7956,6 +7945,7 @@ Thanks for your help!
         'Second Queue' => '',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => 'Sélectionnez la langue principale de l\'interface.',
@@ -7966,6 +7956,8 @@ Thanks for your help!
             'Sélectionnez votre fuseau horaire personnel. L\'horaire du système OTRS sera relatif à cette heure.',
         'Select your preferred layout for the software.' => 'Sélectionnez votre skin préféré pour le système.',
         'Select your preferred theme for OTRS.' => 'Sélectionnez votre thème préféré pour OTRS.',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => '',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             '',
@@ -8221,7 +8213,6 @@ Thanks for your help!
             '',
         'Show article as rich text even if rich text writing is disabled.' =>
             '',
-        'Show command line output.' => 'Afficher le résultat de la ligne de commande.',
         'Show queues even when only locked tickets are in.' => '',
         'Show the current owner in the customer interface.' => '',
         'Show the current queue in the customer interface.' => '',
@@ -8328,8 +8319,6 @@ Thanks for your help!
             '',
         'Shows all both ro and rw queues in the queue view.' => '',
         'Shows all both ro and rw tickets in the service view.' => '',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            '',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8402,9 +8391,9 @@ Thanks for your help!
         'Signatures' => 'Signatures',
         'Simple' => '',
         'Skin' => 'Skin',
+        'Skin Options' => '',
         'Slovak' => '',
         'Slovenian' => '',
-        'Small' => 'Petit',
         'Software Package Manager.' => '',
         'Solution time' => '',
         'SolutionDiffInMin' => '',
@@ -8416,10 +8405,6 @@ Thanks for your help!
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             '',
         'Spam' => '',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            '',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            '',
         'Spanish' => '',
         'Spanish (Colombia)' => '',
         'Spanish (Mexico)' => '',
@@ -8447,14 +8432,6 @@ Thanks for your help!
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             '',
         'Specifies the path of the file for the performance log.' => '',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            '',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            '',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            '',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            '',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             '',
         'Specifies user id of the postmaster data base.' => '',

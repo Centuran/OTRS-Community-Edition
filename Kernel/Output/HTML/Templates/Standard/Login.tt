@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -19,6 +19,8 @@ X-OTRS-Login: [% Env("Baselink") %]
     <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
     <link rel="shortcut icon" href="[% Config("Frontend::ImagePath") %]icons/vendor.ico" type="image/ico" />
     <link rel="apple-touch-icon" href="[% Config("Frontend::ImagePath") %]icons/apple-touch-icon.png" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,900" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css" />
 
 [% RenderBlockStart("CommonCSS") %]
     <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/[% Data.Skin | uri %]/[% Data.CSSDirectory %]/[% Data.Filename %]" />
@@ -79,6 +81,11 @@ X-OTRS-Login: [% Env("Baselink") %]
 <!-- end header -->
 <body class="[% Data.BodyClass | html %] LoginScreen">
     <div id="AppWrapper">
+
+    [% IF Data.UseModern %]
+    <div id="vue-app"><v-app>
+    [% END %]
+
     <div id="Header" class="ARIARoleBanner">
         <div id="Logo"></div>
     </div>

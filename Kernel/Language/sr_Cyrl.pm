@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # Copyright (C) 2010 Milorad Jovanovic <j.milorad at gmail.com>
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.995719178082192;
+    $Self->{Completeness}        = 0.993996569468268;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -724,9 +724,6 @@ sub Data {
         'Time units' => 'Временске јединице',
         'Execute Ticket Commands' => 'Изврши команде тикета',
         'Send agent/customer notifications on changes' => 'Пошаљи обавештења оператеру/клијенту при променама',
-        'CMD' => 'CMD',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'Ова наредба ће бити извршена. ARG[0] је број тикета, а ARG[1] ID тикета.',
         'Delete tickets' => 'Обриши тикете',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'УПОЗОРЕЊЕ: Сви обухваћени тикети ће бити неповратно уклоњени из базе!',
@@ -2435,6 +2432,14 @@ sub Data {
             'Вашу аватар сличицу можете променити регистрацијом ваше имејл адресе %s на %s. Молимо обратите пажњу да је због кеширања неопходно да прође неко време пре него што ваш нови аватар постане видљив.',
         'Off' => 'Искључено',
         'End' => 'Крај',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Мало',
+        'Medium' => 'Средње',
+        'Large' => 'Велико',
         'This setting can currently not be saved.' => 'Ово подешавање тренутно не може бити сачувано.',
         'This setting can currently not be saved' => 'Ово подешавање тренутно не може бити сачувано',
         'Save this setting' => 'Сачувај ово подешавање',
@@ -2834,10 +2839,10 @@ sub Data {
         'User name' => 'Корисничко име',
         'Your user name' => 'Ваше корисничко име',
         'Your password' => 'Ваша лозинка',
-        'Forgot password?' => 'Заборавили сте лозинку?',
         '2 Factor Token' => 'Двофакторски токен',
         'Your 2 Factor Token' => 'Ваш двофакторски токен',
         'Log In' => 'Пријављивање',
+        'Forgot password?' => 'Заборавили сте лозинку?',
         'Not yet registered?' => 'Нисте регистровани?',
         'Back' => 'Назад',
         'Request New Password' => 'Захтев за нову лозинку',
@@ -4389,9 +4394,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => 'Без %s!',
-        'No such user!' => 'Непознат корисник!',
         'Invalid calendar!' => 'Неисправан календар!',
-        'Invalid URL!' => 'Неисправна адреса!',
         'There was an error exporting the calendar!' => 'Грешка приликом експортовања календара!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4944,11 +4947,6 @@ sub Data {
         'Maximum Query Size' => 'Максимална величина упита',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             'Подешавање \'max_allowed_packet\' мора бити више од 64 MB.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => 'Величина кеш упита',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            'Подешавање \'query_cache_size\' мора бити коришћено (веће од 10 MB, али не више од 512 MB)',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => 'Подразумевани механизам за складиштење',
@@ -6005,8 +6003,6 @@ Thanks for your help!
             'Омогућава напредне услове претраге тикета у интерфејсу корисника. Са овом опцијом моћете претраживати нпр. наслов тикета са условима као "(*key1*&&*key2*)" или "(*key1*||*key2*)".',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             'Дозвољава проширене услове претраге у претрази тикета на интерфејсу генеричког оператера. Помоћу ове функције можете вршити претраге нпр. наслов тикета са врстом услова као што су "(*key1*&&*key2*)" или "(*key1*||*key2*)".',
-        'Allows generic agent to execute custom command line scripts.' =>
-            'Омогућава генеричком оператеру да извршава командне скрипте.',
         'Allows generic agent to execute custom modules.' => 'Омогућава генеричком оператеру да извршава додатне модуле.',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             'Дозвољава поседовање средњег формата прегледа тикета ( CustomerInfo => 1 - такође приказује информације о клијенту).',
@@ -6084,8 +6080,6 @@ Thanks for your help!
         'Bounced to "%s".' => 'Одбијено на "%s".',
         'Bulgarian' => 'Бугарски',
         'Bulk Action' => 'Масовна акција',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'Пример подешавања CMD. Игнорише имејлове када екстерни CMD врати неке излазе на STDOUT (имејл ће бити каналисан у STDIN од some.bin).',
         'CSV Separator' => 'CSV сепаратор',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             'Време кеширања у секундама за аутентификације оператера у генеричком интерфејсу.',
@@ -6897,8 +6891,6 @@ Thanks for your help!
         'Defines the number of hours a successful communication will be stored.' =>
             'Дефинише колико ће дуго у часовима комуникација бити чувана.',
         'Defines the parameters for the customer preferences table.' => 'Одређује параметре за табелу подешавања клијената.',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            'Дефинише параметре за додатак командне табле. "Cmd" се користи за командне параметре. "Group" се користи да ограничи приступ додатку (нпр. Group: admin;group1;group2;). "Default" одређује да ли је додатак подразумевано активиран или да је неопходно да га корисник мануелно активира. "CacheTTL" је време у минутима за кеширање додатка. "Mandatory" одређује да ли је додатак увек приказан и не може бити искључен од стране оператера.',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Дефинише параметре за додатак контролне табле. "Group" се користи да ограничи приступ додатку (нпр. Group: admin;group1;group2;). "Default" одређује да ли је додатак подразумевано активиран или да је неопходно да га корисник мануелно активира. "CacheTTL" је време у минутима за кеширање додатка. "Mandatory" одређује да ли је додатак увек приказан и не може бити искључен од стране оператера.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7414,8 +7406,6 @@ Thanks for your help!
             'Уколико је подешен „Radius” за „Customer::AuthModule”, адреса „Radius” сервера мора бити дефинисана.',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Уколико је подешен „Radius” за „Customer::AuthModule”, можете дефинисати да ли ће апликација престати са радом уколико нпр. конекција са сервером не може бити остварена због проблема са мрежом.',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            'Уколико је подешен Sendmail за SendmailModule, морате дефинисати локацију апликације sendmail и неопходне опције.',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'Уколико је подешен SysLog за LogModule, може бити дефинисана посебна лог секција.',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7468,6 +7458,8 @@ Thanks for your help!
             'Ако је подешено ова адреса се користи као оквир заглавља пошиљаоца у одлазним обавештењима. Ако адреса није унета, оквир заглавља пошиљаоца је празан (осим ако је SendmailNotificationEnvelopeFrom::FallbackToEmailFrom подешен).',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Ако је подешено ова адреса се користи као оквир заглавља пошиљаоца у одлазним порукама (не за обавештења - види ниже). Ако адреса није унета, оквир заглавља пошиљаоца је једнак имејл адреси реда.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             'Уколико је ова опција укључена, тикети креирани преко веб интерфејса од стране клијената или оператера, ће добити аутоматски одговор уколико је подешен. Ако је ова опција искључена, аутоматски одговори неће бити слати.',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7480,6 +7472,7 @@ Thanks for your help!
             'Уколико ћете бити ван канцеларије, можда ћете желети да обавестите друге кориснике постављањем тачних датума вашег изостанка.',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             'Игнорише врсту пошиљаоца чланака (нпр. аутоматски одговори или имејл обавештења) приликом приказа непрочитаних чланака у детаљном прегледу тикета или аутоматског проширивања у великом екрану прегледа.',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => 'Екран за увоз термина.',
         'Include tickets of subqueues per default when selecting a queue.' =>
             'Код избора реда, подразумевано укључи и тикете подредова.',
@@ -7514,7 +7507,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => 'JavaScript функција за модул претраге.',
         'Korean' => 'Корејски',
         'Language' => 'Језик',
-        'Large' => 'Велико',
         'Last Screen Overview' => 'Преглед последњег екрана',
         'Last customer subject' => 'Последњи предмет поруке клијента',
         'Lastname Firstname' => 'Презиме, Име',
@@ -7631,7 +7623,6 @@ Thanks for your help!
             'Максимални број тикета који ће бити приказани у резултату ове операције.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Максимална дужина (у знацима) клијентске инфо табеле на детаљном прегледу тикета.',
-        'Medium' => 'Средње',
         'Merge this ticket and all articles into another ticket' => 'Споји овај тикет и све чланке у други тикет',
         'Merged Ticket (%s/%s) to (%s/%s).' => 'Спојен тикет (%s/%s) у (%s/%s)',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'Тикет <OTRS_TICKET> спојен у <OTRS_MERGE_TO_TICKET>.',
@@ -7716,7 +7707,6 @@ Thanks for your help!
             'Број тикета који ће бити приказани на свакој страни резултата претраге у интерфејсу оператера.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Број тикета који ће бити приказани на свакој страни резултата претраге у интерфејсу клијента.',
-        'Number of tickets to be displayed in each page.' => 'Број тикета који ће бити приказани на свакој страни.',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '„OTRS” може да користи једну или више пресликаних база података за скупе операције као што су претрага текста или генерисање статистика. Овде можете дефинисати DSN за прву пресликану базу података.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7944,7 +7934,6 @@ Thanks for your help!
         'SMS' => 'СМС',
         'SMS (Short Message Service)' => 'SMS (сервис кратких порука)',
         'Salutations' => 'Поздрави',
-        'Sample command output' => 'Пример командног излаза',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             'Чува прилоге у чланцима. „DB” снима све прилоге у бази података (није препоручљиво за чување великих прилога). „FS” снима прилоге у систему датотека; ово је бржа опција, али веб сервер мора бити покренут под „OTRS” системским корисником. Дозвољена је промена модула чак и на продукцијским системима без било каквог губитка података. Напомена: претрага прилога по називу није могућа када је „FS” у функцији.',
         'Schedule a maintenance period.' => 'Планирање периода одржавања.',
@@ -7960,6 +7949,7 @@ Thanks for your help!
         'Second Queue' => 'Други Ред',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Изаберите после ког периода ће прегледи тикета бити аутоматски освежени.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             'Изаберите који број тикета ће бити подразумевано приказан у прегледима.',
         'Select the main interface language.' => 'Изаберите главни језик интерфејса.',
@@ -7970,6 +7960,8 @@ Thanks for your help!
             'Изаберите вашу личну временску зону. Сва времена ће бити приказана у њој.',
         'Select your preferred layout for the software.' => 'Изаберите изглед апликације по вашој жељи.',
         'Select your preferred theme for OTRS.' => 'Изаберите тему за OTRS по вашој жељи.',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => 'Модул кеша који ће користити систем.',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             'Бира модул за руковање пренешеним датотекама преко веб интерфејса. "DB" складишти све пренешене датотеке у базу података, "FS" користи систем датотека.',
@@ -8225,7 +8217,6 @@ Thanks for your help!
             'Прикажи избор одговорног у тикетима позива и имејл тикетима у интерфејсу оператера.',
         'Show article as rich text even if rich text writing is disabled.' =>
             'Прикажи чланак као обогаћени текст чак и кад је писање обогаћеног текста деактивирано.',
-        'Show command line output.' => 'Приказ командног излаза.',
         'Show queues even when only locked tickets are in.' => 'Прикажи редове чак и кад садрже само закључане тикете.',
         'Show the current owner in the customer interface.' => 'Приказује актуелног власника у клијентском интерфејсу.',
         'Show the current queue in the customer interface.' => 'Приказује актуелни ред у клијентском интерфејсу.',
@@ -8332,8 +8323,6 @@ Thanks for your help!
             'Приказује прегледа тикета (Инфо клијента => 1 - показује и податке о клијенту, Максимална величина приказа података о клијенту у карактерима).',
         'Shows all both ro and rw queues in the queue view.' => 'Приказује све, и ro и rw редове на прегледу редова.',
         'Shows all both ro and rw tickets in the service view.' => 'Приказује све, и ro и rw тикете на прегледу услуга.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'Приказује све отворене тикете (чак иако су закључани) на ескалационом прегледу у интерфејсу оператера.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             'Приказује све чланке тикета (детаљно) на детаљном прегледу.',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8406,9 +8395,9 @@ Thanks for your help!
         'Signatures' => 'Потписи',
         'Simple' => 'Једноставно',
         'Skin' => 'Изглед',
+        'Skin Options' => '',
         'Slovak' => 'Словачки',
         'Slovenian' => 'Словеначки',
-        'Small' => 'Мало',
         'Software Package Manager.' => 'Управљање програмским пакетима.',
         'Solution time' => 'Време решавања',
         'SolutionDiffInMin' => 'SolutionDiffInMin',
@@ -8420,10 +8409,6 @@ Thanks for your help!
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             'Сортирање тикета (растуће или опадајуће) када се изабере један ред из прегледа услуге после сортирања тикета по приоритету. Вредности: 0 = растуће (најстарије на врху, подразумевано), 1 = опадајуће (најновије на врху). Користи ID услуге за кључ и 0 или 1 за вредност.',
         'Spam' => 'Spam',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'Пример подешавања за Spam Assassin. Игнорише имејлове које је означио Spam Assassin.',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            'Пример подешавања за Spam Assassin. Премешта означене имејлове у ред за непожељне.',
         'Spanish' => 'Шпански',
         'Spanish (Colombia)' => 'Шпански (Колумбија)',
         'Spanish (Mexico)' => 'Шпански (Мексико)',
@@ -8451,14 +8436,6 @@ Thanks for your help!
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             'Одређује путању датотеке логоа у заглављу стране (gif|jpg|png, 700 x 100 pixel).',
         'Specifies the path of the file for the performance log.' => 'Одређује путању датотеке за перформансу лог-а.',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'Одређује путању конвертора који дозвољава преглед Microsoft Excel датотека у веб интерфејсу.',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'Одређује путању конвертора који дозвољава преглед Microsoft Word датотека у веб интерфејсу.',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'Одређује путању конвертора који дозвољава преглед PDF докумената у веб интерфе',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'Одређује путању конвертора који дозвољава преглед XML датотека у веб интерфе',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'Одређује текст који треба да се појави у лог датотеци да означи улазак CGI скрипте.',
         'Specifies user id of the postmaster data base.' => 'Одређује ИД корисника „postmaster” базе података.',

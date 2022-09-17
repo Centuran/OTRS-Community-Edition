@@ -1,0 +1,275 @@
+.ContentColumn .GettingStarted {
+  display: flex;
+  justify-content: center;
+
+  li {
+    border-radius: 4px;
+    height: auto;
+    padding: var(--gap);
+
+    i.fa {
+      font-family: "Material Design Icons";
+      position: static;
+      text-shadow: none;
+
+      &.fa-code-fork::before {
+        content: mdi("file-tree");
+      }
+
+      &.fa-search::before {
+        content: mdi("magnify");
+      }
+
+      &.fa-lightbulb-o::before {
+        content: mdi("book-open-variant");
+      }
+    }
+
+    p {
+      font-size: calc(var(--font-size-base) * 0.85);
+      margin: 0;
+      margin-top: var(--gap);
+      padding-top: 0;
+      padding-bottom: 0;
+      text-shadow: none;
+
+      // Prevent displaying the original bar below icon
+      &::before {
+        content: none;
+      }
+    }
+  }
+}
+
+form.SearchBox {
+  position: relative;
+
+  &#SearchBoxAutoComplete > span {
+    position: static;
+  }
+
+  .GettingStarted + & {
+    input[type="text"] {
+      height: auto;
+      padding: $form-field-padding;
+    }
+
+    button[type="submit"] {
+      padding: 0;
+      right: initial;
+    }
+  }
+
+  button i.fa.fa-search {
+    font-family: "Material Design Icons";
+
+    &::before {
+      content: mdi("magnify");
+    }
+  }
+}
+
+#UserWidgetState_SystemConfiguration_Sticky {
+  .CallForAction {
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+  }
+}
+
+body #ConfigTree {
+  font-size: inherit;
+
+  li.jstree-node {
+    background-image: none;
+
+    &.jstree-closed,
+    &.jstree-open {
+      &::before {
+        visibility: visible;
+      }
+    }
+
+    // Expand/collapse icon before item names
+    .jstree-icon {
+      background: none;
+      font-style: normal;
+
+      &::before {
+        content: mdi("menu-right");
+        display: inline-block;
+        font-family: 'Material Design Icons';
+        font-size: 150%;
+        transform: rotate(0deg);
+        transition: all ease 0.2s;
+      }
+    }
+
+    &.jstree-open > .jstree-icon::before {
+      transform: rotate(90deg);
+    }
+
+    .jstree-wholerow-hovered {
+      color: inherit;
+    }
+
+    .jstree-anchor.jstree-hovered {
+      color: inherit;
+    }
+  }
+
+  & > ul > .jstree-node {
+    margin-left: 0;
+  }
+
+  .jstree-node {
+    margin-left: 14px;
+  }
+}
+
+.SettingsList .WidgetSimple.Setting {
+  font-size: inherit;
+
+  .Header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    .Icon {
+      height: auto;
+
+      i.fa {
+        margin-left: 0;
+        margin-right: calc(var(--gap) / 2);
+
+        &.fa-ban::before {
+          content: mdi("cancel");
+          font-family: "Material Design Icons";
+        }
+      }
+    }
+
+    p.HeaderMessage {
+      font-size: calc(var(--font-size-base) * 0.85);
+      margin: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .SettingWrapper {
+    form {
+      border-right: solid 1px #ccc;
+      font-size: inherit;
+      padding-right: var(--gap);
+
+      .SettingContainer {
+        padding-right: var(--gap);
+      }
+
+      fieldset.TableLike {
+        border-right: none;
+        font-size: inherit;
+        float: none;
+        width: auto;
+      }
+    }
+
+    & > .SettingDescription {
+      width: 100%;
+    }
+  }
+
+  &.IsLockedByMe {
+    .SettingDescription {
+      width: calc(100% - 10em/0.875);
+    }
+
+    .Content .SettingUpdateBox {
+      left: calc(100% - 10em/0.875);
+    }
+
+    &.MenuExpanded .Content .SettingUpdateBox {
+      left: 100%;
+      right: 0;
+    }
+  }
+
+  .Setting {
+    .Array, .Hash {
+      border-radius: 4px;
+      margin-left: 0;
+
+      .SettingContent input {
+        box-shadow: none;
+      }
+
+      button.AddArrayItem i.fa,
+      button.AddHashKey i.fa {
+        font-family: "Material Design Icons";
+
+        &::before {
+          content: mdi("plus-box-outline");
+        }
+      }
+
+      button.RemoveButton i.fa {
+        font-family: "Material Design Icons";
+
+        &::before {
+          content: mdi("minus-box-outline");
+        }
+      }
+    }
+
+    .Hash {
+      .HashItem {
+        font-size: initial;
+
+        & > .SettingContent {
+          align-items: center;
+          display: flex;
+
+          &::before {
+            content: mdi("arrow-right");
+            font-family: "Material Design Icons";
+            font-size: initial;
+            margin-left: calc(var(--gap) / 2);
+            margin-right: calc(var(--gap) / 2);
+          }
+        }
+      }
+
+      button.AddHashKey {
+        background: none;
+      }
+    }
+  }
+
+  .SettingContent {
+    padding-left: 0;
+
+    .AlreadyDisabled {
+      div.InputField_Selection {
+        background-color: #d0d0d0;
+  
+        div.Text {
+          background-color: transparent;
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+.Array button.AddArrayItem,
+.Hash button.AddHashKey {
+  width: 100%;
+  position: static;
+  span.InvisibleText {
+    width: auto;
+    height: auto;
+    text-indent: initial;
+    position: static !important;
+    left: auto;
+    top: auto;
+  }
+}

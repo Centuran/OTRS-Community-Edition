@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -39,11 +39,11 @@ sub Connect {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Login Password Host Timeout Debug)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Login Password Host Timeout Debug)) {
+        if ( !defined $Param{$Name} ) {
             return (
                 Successful => 0,
-                Message    => "Need $_!",
+                Message    => "Need $Name!",
             );
         }
     }
@@ -111,13 +111,13 @@ sub Fetch {
     );
 
     # check needed stuff
-    for (qw(Login Password Host Trusted QueueID)) {
-        if ( !defined $Param{$_} ) {
+    for my $Name (qw(Login Password Host Trusted QueueID)) {
+        if ( !defined $Param{$Name} ) {
             $CommunicationLogObject->ObjectLog(
                 ObjectLogType => 'Connection',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::MailAccount::POP3',
-                Value         => "$_ not defined!",
+                Value         => "$Name not defined!",
             );
 
             $CommunicationLogObject->ObjectLogStop(
@@ -131,13 +131,13 @@ sub Fetch {
         }
     }
 
-    for (qw(Login Password Host)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Login Password Host)) {
+        if ( !$Param{$Name} ) {
             $CommunicationLogObject->ObjectLog(
                 ObjectLogType => 'Connection',
                 Priority      => 'Error',
                 Key           => 'Kernel::System::MailAccount::POP3',
-                Value         => "Need $_!",
+                Value         => "Need $Name!",
             );
 
             $CommunicationLogObject->ObjectLogStop(

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -276,7 +276,7 @@ my @InvokerHandleResponseTests = (
 );
 
 for my $Test (@InvokerHandleResponseTests) {
-    my %InvokerParams = {};
+    my %InvokerParams = ();
     $InvokerParams{Data}                 = $Test->{Data}                 || undef;
     $InvokerParams{ResponseSuccess}      = $Test->{ResponseSuccess}      || undef;
     $InvokerParams{ResponseErrorMessage} = $Test->{ResponseErrorMessage} || undef;

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -157,9 +157,9 @@ sub new {
 
         return $Text if !@Parameters;
 
-        for ( 0 .. $#Parameters ) {
-            return $Text if !defined $Parameters[$_];
-            $Text =~ s/%(s|d)/$Parameters[$_]/;
+        for my $Number ( 0 .. $#Parameters ) {
+            return $Text if !defined $Parameters[$Number];
+            $Text =~ s/%(s|d)/$Parameters[$Number]/;
         }
 
         return $Text;

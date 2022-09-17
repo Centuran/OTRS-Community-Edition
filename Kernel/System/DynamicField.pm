@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -20,6 +20,7 @@ our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::System::Cache',
     'Kernel::System::DB',
+    'Kernel::System::HTMLUtils',
     'Kernel::System::Log',
     'Kernel::System::Valid',
     'Kernel::System::YAML',
@@ -147,6 +148,8 @@ sub DynamicFieldAdd {
         );
         return;
     }
+
+    $Self->_SanitizeConfig( Config => $Param{Config} );
 
     # dump config as string
     my $Config = $Kernel::OM->Get('Kernel::System::YAML')->Dump( Data => $Param{Config} );
@@ -374,6 +377,8 @@ sub DynamicFieldUpdate {
     if ( !exists $Param{Reorder} || $Param{Reorder} eq 1 ) {
         $Reorder = 1;
     }
+
+    $Self->_SanitizeConfig( Config => $Param{Config} );
 
     my $YAMLObject = $Kernel::OM->Get('Kernel::System::YAML');
 
@@ -1519,7 +1524,7 @@ sub _DynamicFieldReorder {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => 'Need $Needed!'
+                Message  => "Need $Needed!"
             );
             return;
         }
@@ -1684,6 +1689,61 @@ sub _DynamicFieldReorder {
     $Kernel::OM->Get('Kernel::System::Cache')->CleanUp(
         Type => 'DynamicField',
     );
+
+    return 1;
+}
+
+=head2 _SanitizeConfig
+
+Check dynamic field configuration and remove unsafe content. The passed
+configuration hash reference can then be passed to DynamicFieldAdd()
+or DynamicFieldUpdate().
+
+    $DynamicFieldObject->_SanitizeConfig(
+        Config => $Config
+    );
+
+=cut
+
+sub _SanitizeConfig {
+    my ( $Self, %Param ) = @_;
+
+    for my $Name (qw(Config)) {
+        if ( !$Param{$Name} ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Need $Name!"
+            );
+            return;
+        }
+    }
+
+    return if !IsHashRefWithData( $Param{Config} );
+
+    return 1 if !exists $Param{Config}->{RegExList};
+    return 1 if !IsArrayRefWithData( $Param{Config}->{RegExList} );
+
+    my $HTMLUtilsObject = $Kernel::OM->Get('Kernel::System::HTMLUtils');
+
+    REGEX:
+    for my $RegEx ( @{ $Param{Config}->{RegExList} } ) {
+        next REGEX if !defined $RegEx->{ErrorMessage};
+
+        my %SafeMessage = $HTMLUtilsObject->Safety(
+            String       => $RegEx->{ErrorMessage},
+            NoApplet     => 1,
+            NoEmbed      => 1,
+            NoImg        => 1,
+            NoObject     => 1,
+            NoSVG        => 1,
+            NoIntSrcLoad => 1,
+            NoExtSrcLoad => 1,
+            NoJavaScript => 1,
+        );
+        next REGEX if !%SafeMessage;
+
+        $RegEx->{ErrorMessage} = $SafeMessage{String} // '';
+    }
 
     return 1;
 }

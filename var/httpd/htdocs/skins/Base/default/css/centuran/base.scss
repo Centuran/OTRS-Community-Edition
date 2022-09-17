@@ -1,0 +1,582 @@
+@use "sass:string";
+
+@import 'fonts';
+@import 'icons';
+
+@mixin button {
+  background: $button-action-background-color;
+  border-radius: 4px;
+  color: $button-action-text-color;
+  padding: 0.3em 1.2em;
+
+  // Border and shadow for regular action buttons when displayed on a light
+  // (white) background
+  // TODO: Add variant for dark background (see agent's base.scss) as variable
+  border: solid 1px $button-action-border-color;
+  box-shadow: $button-action-box-shadow;
+}
+
+@mixin minor-button {
+  float: left;
+  font-size: smaller;
+  height: auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  & > a,
+  & > span.ClusterLink {
+    //border-bottom: none;
+    background: #f8f8f8;
+    color: #444;
+    display: inline-block;
+    padding: 5px 10px;
+    vertical-align: middle;
+
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 1px 10px #e4e4e4;
+  }
+  
+  &:hover > a,
+  &:hover > span.ClusterLink {
+    background: $secondary-action-color;
+    border: solid 1px lighten($secondary-action-color, 10%) !important;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@mixin button-group($item: "li") {
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e8e8e8;
+  box-shadow: 0px 1px 10px #e4e4e4;
+  font-size: initial;
+  margin-bottom: var(--gap, 8px);
+  padding-left: 0;
+
+  & > #{$item} {
+    @include minor-button();
+
+    box-shadow: none;
+    border-radius: 0;
+    line-height: 1.5;
+    
+    & > a,
+    & > span.ClusterLink {
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    &:first-child > a,
+    &:first-child > span.ClusterLink {
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+
+      padding-left: 10px;
+    }
+
+    &:not(:last-child) > a,
+    &:not(:last-child) > span.ClusterLink {
+      border-right: none;
+    }
+
+    &:not(:last-child):hover > a,
+    &:not(:last-child):hover > span.ClusterLink {
+      border-right: none !important;
+    }
+
+    &:last-child,
+    &.cmt-item-action-link-last {
+      & > a,
+      & > span.ClusterLink {
+        border-bottom-right-radius: 4px;
+        border-right: solid 1px #ccc;
+        border-top-right-radius: 4px;
+      }
+
+      &:hover > a,
+      &:hover > span.ClusterLink {
+        border-right: solid 1px lighten($secondary-action-color, 10%) !important;
+      }
+    }
+  
+    &.Selected a,
+    a.Active {
+      color: white;
+      background-color: $secondary-action-color;
+      border-color: lighten($secondary-action-color, 10%);
+      border-right-color: lighten($secondary-action-color, 10%);
+      font-weight: normal;
+    }
+
+    &::after {
+      content: none;
+    }
+  }
+}
+
+@function msg-icon($type) {
+  $icons: (
+    "error":   "\0F0CE6", // alert-octagon-outline
+    "info":    "\0F02FD", // information-outline
+    "notice":  "\0F11CF", // alert-rhombus-outline
+    "success": "\0F05E1"  // check-circle-outline
+  );
+
+  @return map-get($map: $icons, $key: $type);
+}
+
+@function msg-color($type, $alpha: "ff") {
+  $colors: (
+    "error":   #ff5252,
+    "info":    #2196f3,
+    "notice":  #fb8c00,
+    "success": #4caf50
+  );
+
+  @return string.unquote(map-get($map: $colors, $key: $type) + $alpha);
+}
+
+@mixin msg-icon-before($type) {
+  content: msg-icon($type);
+  font-family: "Material Design Icons";
+  font-size: 125%;
+  opacity: 1;
+  position: static;
+  vertical-align: text-top;
+}
+
+@mixin msg-background($type) {
+  background-color: msg-color($type);
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: .12;
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+}
+
+@mixin msg-box($type) {
+  background: none;  
+  border-radius: 4px;
+  caret-color:rgb(251, 140, 0);
+  color: msg-color($type);
+  margin-top: var(--pad-y, 10px);
+
+  .Icon {
+    color: msg-color($type);
+    display: inline;
+    left: 2em;
+    margin-right: 0;
+    margin-top: 0;
+    padding: 0;
+    position: absolute;
+    top: calc(0.75em / 2);
+    vertical-align: middle;
+  }
+
+  .Icon::before {
+    @include msg-icon-before($type);
+  }
+
+  p {
+    border: thin solid;
+    border-color: msg-color($type);
+    border-radius: 4px;
+    border-width: 1px 1px 1px 8px;
+    box-shadow: 0px 1px 0px msg-color($type, "34"); // 0x34 -> 0.2
+    caret-color: msg-color($type);
+    color: msg-color($type);
+    margin-bottom: 0;
+    margin-left: var(--pad-x, 10px);
+    margin-right: var(--pad-x, 10px);
+    padding: 0.75em;
+
+    &::after {
+      background-color: msg-color($type);
+      border-radius: inherit;
+      bottom: 0;
+      content: "";
+      left: 0;
+      opacity: .05;
+      position: absolute;
+      pointer-events: none;
+      right: 0;
+      top: 0;
+      margin: inherit;
+    }
+
+    a {
+      color: #333;
+      transition: color ease 0.2s;
+
+      &:hover {
+        color: currentColor;
+      }
+    }
+  }
+
+  .Icon + p {
+    padding-left: 2.2em;
+  }
+}
+
+@mixin priority-flag {
+  height: initial;
+  left: initial;
+  position: static;
+  text-indent: initial;
+  top: initial;
+  width: initial;
+
+  span {
+    border-radius: 0.2em;
+    //box-shadow: 0px 2px 0 rgba(0, 0, 0, 0.5);
+    font-size: initial;
+    height: auto;
+    text-indent: -9999px;
+    width: 1.8em;
+
+    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+
+    // Border around the priority flag
+    // &::after {
+    //   content: "";
+    //   border-bottom: solid 2px #000;
+    //   border-radius: inherit;
+    //   bottom: 0;
+    //   display: block;
+    //   height: inherit;
+    //   left: 0;
+    //   opacity: 0.2;
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    //   width: inherit;
+    // }
+  }
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  border: solid 1px rgba(0,0,0,.38);
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(0,0,0,.87);
+  height: 32px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: $form-field-padding;
+}
+
+textarea {
+  border: solid 1px $form-field-border-color;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: 'Roboto Mono', monospace, fixed;
+  font-size: 90%;
+  padding: $form-field-padding;
+}
+
+/* From https://moderncss.dev/pure-css-custom-styled-radio-buttons/ */
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  font: inherit;
+  color: currentColor;
+  height: 1.15em;
+  transform: translateY(-0.075em);
+  width: 1.15em;
+
+  display: grid;
+  place-content: center;
+  vertical-align: middle;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+/* --- */
+
+input[type="radio"] {
+  color: rgba(0, 0, 0, 0.54);
+  cursor: pointer;
+  // The default display of "grid" makes the round button a block element
+  display: inline-grid;
+  margin-right: 0.25em;
+}
+
+input[type="radio"]::before {
+  box-shadow: inset 1em 1em $primary-color;
+}
+
+input[type="radio"]:checked {
+  color: $primary-color;
+}
+
+input[type="radio"]:hover {
+  align-items: center;
+  justify-items: center;
+  
+  &::after {
+    background: #000;
+    border-radius: 50%;
+    content: "";
+    height: 2em;
+    opacity: 0.1;
+    position: absolute;
+    width: 2em;
+  }
+}
+
+input[type="radio"]:focus {
+  outline: none;
+}
+
+input[type="radio"] + label {
+  vertical-align: middle;
+}
+
+select {
+  background: #fff;
+  border: solid 1px #d2d2d2;
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(0,0,0,.87);
+  font-family: inherit;
+  font-size: inherit;
+  height: 32px;
+  padding: $form-field-padding;
+
+  option:hover {
+    background-color: green;
+  }
+}
+
+div.InputField_InputContainer {
+  align-items: center;
+  display: flex;
+  height: 33px;
+
+  .InputField_Search {
+    position: relative;
+  }
+
+  .InputField_More {
+    top: auto;
+  }
+}
+
+div.InputField_Selection,
+fieldset.Columns .Column div.InputField_Selection {
+  align-items: center;
+  background: #e0e0e0;
+  border-radius: 50px;
+  display: inline-block;
+  height: auto;
+  line-height: 20px;
+  padding: 2px 8px;
+  position: absolute;
+  top: auto;
+  vertical-align: middle;
+  z-index: 1;
+
+  div.Remove {
+    background: none;
+    font-family: "Material Design Icons";
+    font-size: inherit;
+    height: auto;
+    line-height: inherit;
+    overflow: hidden;
+    padding-left: 0;
+    //position: absolute;
+    //right: -26px;
+    vertical-align: middle;
+    overflow: visible;
+    
+    a {
+      position: relative;
+      //width: 0;
+      //color: #e0e0e0;
+      padding: 0;
+      line-height: inherit;
+      font-size: 0;
+      left: 4px;
+
+      &::before {
+        //background: #e0e0e0;
+        //border-radius: 0 50px 50px 0;
+        color: #888;
+        content: "\0F1398"; // close-thick
+        font-size: initial;
+        height: 100%;
+        left: 0;
+        line-height: inherit;
+        padding: 0;
+        padding-right: 0;
+        padding-left: 0;
+        position: static;
+        top: 0;
+        vertical-align: middle;
+        width: auto;
+      }
+    }
+  }
+}
+
+div.InputField_Selection div.Text {
+  background: #e0e0e0;
+  border-radius: 50px;
+  color: rgba(0,0,0,.87);
+  font-size: inherit;
+  height: 22px;
+  line-height: 20px;
+
+  height: auto;
+  line-height: auto;
+
+  padding: 0 !important;
+  
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  border-radius: 0;
+  line-height: inherit;
+  height: 100%;
+}
+
+/* Modernized select boxes */
+
+.jstree-InputField {
+  font-size: 87.5%;
+
+  .jstree-wholerow-ul {
+    .jstree-wholerow {
+      height: auto;
+      line-height: initial;
+
+      &:hover,
+      &.jstree-wholerow-hovered,
+      &.jstree-wholerow-clicked:hover {
+        background-color: $secondary-color;
+        color: #fff;
+      }
+    }
+  
+    .jstree-anchor {
+      height: auto;
+      line-height: initial;
+    }
+
+    .jstree-hovered {
+      background-color: $secondary-color;
+      color: #fff;
+    }
+  }
+}
+
+div.InputField_ToolbarContainer {
+  font-size: 87.5%;
+
+  ul li a {
+    font-size: inherit;
+  }
+}
+
+.FieldExplanation,
+.AsteriskExplanation {
+  font-size: 87.5%;
+}
+
+.Field.cmt-otrs-datetime-hidden,
+fieldset .cmt-otrs-datetime-hidden {
+  &::first-line {
+    font-size: 0;
+  }
+
+  select[name$="Day"], select[name$="Month"], select[name$="Year"],
+  div.TooltipErrorMessage,
+  a.DatepickerIcon,
+  select[name$="Hour"], select[name$="Minute"] {
+    display: none;
+  }
+}
+
+.Field.__vue_datetimepicker.cmt-otrs-datetime-hidden {
+  & > input[type="checkbox"] {
+    margin-right: 0.5em;
+  }
+
+  & > div:last-child {
+    display: inline-block;
+  }
+}
+
+.v-picker--date button {
+  background: none;
+  border: none;
+}
+
+.v-picker--date .v-date-picker-table--date {
+  .v-btn--active {
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+  }
+
+  .v-date-picker-table__current {
+    font-weight: bold;
+  }
+  
+  .v-date-picker-table__current:not(.v-btn--active) {
+    background-color: transparentize($secondary-color, 0.9);
+    caret-color: $secondary-color !important;
+    color: $secondary-color !important;
+  }
+}
+
+.Field.cmt-otrs-color-hidden {
+  span.cmt-color-display {
+    border: solid 1px $form-field-border-color;
+  }
+
+  div.sp-replacer,
+  div.TooltipErrorMessage,
+  input[type="text"] {
+    display: none;
+  }
+}

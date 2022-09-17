@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -21,7 +21,7 @@ my @Tests = (
         Name   => 'Simple Data',
         Input  => { 'Key1' => 'Value1' },
         Result => '
-<script type="text/javascript">//<![CDATA[
+<script type="application/javascript">//<![CDATA[
 "use strict";
 Core.Config.AddConfig({"Key1":"Value1"});
 //]]></script>',
@@ -35,7 +35,7 @@ Core.Config.AddConfig({"Key1":"Value1"});
             }
         },
         Result => '
-<script type="text/javascript">//<![CDATA[
+<script type="application/javascript">//<![CDATA[
 "use strict";
 Core.Config.AddConfig({"Key1":{"1":"2","3":"4"}});
 //]]></script>',

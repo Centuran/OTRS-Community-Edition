@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -367,6 +367,27 @@ my @Tests = (
         Result =>
             'Following unquoted link is an actual ftp URL: <a href="ftp://ftp.my.de" title="ftp://ftp.my.de">ftp.my.de</a>',
         Name   => 'Text with FTP url (bug#12472)',
+        Target => '',
+    },
+    {
+        Name  => 'LinkQuote with a domain followed by a dot',
+        Input => '<html>www.otrscommunityedition.com.</html>',
+        Result =>
+            '<html><a href="http://www.otrscommunityedition.com" title="http://www.otrscommunityedition.com">www.otrscommunityedition.com</a>.</html>',
+        Target => '',
+    },
+    {
+        Name  => 'LinkQuote with a domain followed by multiple dots',
+        Input => '<html>www.otrscommunityedition.com...</html>',
+        Result =>
+            '<html><a href="http://www.otrscommunityedition.com" title="http://www.otrscommunityedition.com">www.otrscommunityedition.com</a>...</html>',
+        Target => '',
+    },
+    {
+        Name  => 'LinkQuote with an URL followed by a dot',
+        Input => '<html>www.otrscommunityedition.com/foo.</html>',
+        Result =>
+            '<html><a href="http://www.otrscommunityedition.com/foo" title="http://www.otrscommunityedition.com/foo">www.otrscommunityedition.com/foo</a>.</html>',
         Target => '',
     },
 );

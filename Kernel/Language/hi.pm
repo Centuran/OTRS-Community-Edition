@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.274657534246575;
+    $Self->{Completeness}        = 0.273241852487136;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -725,9 +725,6 @@ sub Data {
         'Time units' => 'समय इकाइयों',
         'Execute Ticket Commands' => '',
         'Send agent/customer notifications on changes' => 'बदलाव पर प्रतिनिधि/ग्राहक कि अधिसूचना भेजें',
-        'CMD' => 'CMD',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'यह  आदेश चलाएँ। ARG[0] टिकट संख्या होगी, ARG[0] टिकट id।',
         'Delete tickets' => 'टिकट हटाएँ',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'चेतावनी:सभी प्रभावित टिकट आंकड़ाकोष से हटा दिए जाएँगे और तब ये पुनर्स्थापित नहीं हो सकते।',
@@ -2436,6 +2433,14 @@ sub Data {
             '',
         'Off' => 'बंद',
         'End' => 'समाप्त',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'लघु',
+        'Medium' => 'मध्यम',
+        'Large' => 'बड़ा',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2835,10 +2840,10 @@ sub Data {
         'User name' => 'उपयोगकर्ता का नाम',
         'Your user name' => 'आपका उपयोगकर्ता नाम',
         'Your password' => 'आपका कूटशब्द',
-        'Forgot password?' => 'कूटशब्द भूल गए?',
         '2 Factor Token' => '',
         'Your 2 Factor Token' => '',
         'Log In' => 'प्रवेश',
+        'Forgot password?' => 'कूटशब्द भूल गए?',
         'Not yet registered?' => 'अभी तक पंजीकृत नही?',
         'Back' => 'वापस',
         'Request New Password' => 'नए कूटशब्द के लिए अनुरोध करे',
@@ -4390,9 +4395,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '',
-        'No such user!' => '',
         'Invalid calendar!' => '',
-        'Invalid URL!' => '',
         'There was an error exporting the calendar!' => '',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4944,11 +4947,6 @@ sub Data {
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/MaxAllowedPacket.pm
         'Maximum Query Size' => '',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => '',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
             '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
@@ -5995,8 +5993,6 @@ Thanks for your help!
             '',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             '',
-        'Allows generic agent to execute custom command line scripts.' =>
-            '',
         'Allows generic agent to execute custom modules.' => '',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             'एक मध्यम प्रारूप टिकट अवलोकन होने की अनुमति देता है(ग्राहक जानकारी =>1 - यह भी ग्राहकों की जानकारी दिखाता है)।',
@@ -6074,8 +6070,6 @@ Thanks for your help!
         'Bounced to "%s".' => 'फलांग "%s"।',
         'Bulgarian' => '',
         'Bulk Action' => 'थोक क्रिया',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'CMD उदाहरण स्थापना,ईमेल पर ध्यान न दें जब बाहरी CMD STDOUT को कुछ उत्पादन देता है(ईमेल some.bin का stdin में पहुंचाया जाएगा)।',
         'CSV Separator' => 'CSV विभाजक',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             '',
@@ -6887,8 +6881,6 @@ Thanks for your help!
         'Defines the number of hours a successful communication will be stored.' =>
             '',
         'Defines the parameters for the customer preferences table.' => 'ग्राहक वरीयता तालिका के लिए मापदंडों को परिभाषित करता है।',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7404,8 +7396,6 @@ Thanks for your help!
             'यदि ग्राहक::AuthModule के लिए "त्रिज्या" चयन किया गया,त्रिज्या मेजबान निर्दिष्ट किया जाना चाहिए।',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'यदि ग्राहक::AuthModule के लिए "त्रिज्या" चयन किया गया,तो आप निर्दिष्ट कर सकते हैं यदि अनुप्रयोग बंद हो जाएगा। उदा. यदि किसी सर्वर से कोई संबंध नेटवर्क समस्याओं के कारण स्थापित नहीं किया जा सकता है।',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            'यदि SendmailModule के रूप में "Sendmail" चुना गया,sendmail द्विआधारी के स्थान और आवश्यक विकल्प निर्दिष्ट किया जाना चाहिए।',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'यदि LogModule लिए "syslog" चुना गया,एक विशेष अभिलेख सुविधा निर्दिष्ट की जा सकती है।',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7458,6 +7448,8 @@ Thanks for your help!
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             '',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7470,6 +7462,7 @@ Thanks for your help!
             '',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             '',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => '',
         'Include tickets of subqueues per default when selecting a queue.' =>
             '',
@@ -7504,7 +7497,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => 'भाषा',
-        'Large' => 'बड़ा',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '',
@@ -7621,7 +7613,6 @@ Thanks for your help!
             '',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'टिकट ज़ूम दृश्य में ग्राहक जानकारी तालिका का अधिकतम आकार(अक्षरों में)।',
-        'Medium' => 'मध्यम',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => '',
@@ -7706,7 +7697,6 @@ Thanks for your help!
             'प्रतिनिधि अंतरफलक में एक खोज परिणाम के प्रत्येक पृष्ठ में प्रदर्शित होने के लिए टिकटों की संख्या।',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'ग्राहक अंतरफलक में एक खोज परिणाम के प्रत्येक पृष्ठ में प्रदर्शित होने के लिए टिकटों की संख्या।',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7934,7 +7924,6 @@ Thanks for your help!
         'SMS' => '',
         'SMS (Short Message Service)' => '',
         'Salutations' => 'अभिवादन',
-        'Sample command output' => '',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             '',
         'Schedule a maintenance period.' => '',
@@ -7950,6 +7939,7 @@ Thanks for your help!
         'Second Queue' => '',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => '',
@@ -7960,6 +7950,8 @@ Thanks for your help!
             '',
         'Select your preferred layout for the software.' => '',
         'Select your preferred theme for OTRS.' => '',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => '',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             'वेब अंतरफलक के द्वारा अपलोड संभालने के लिए मॉड्यूल चुनता है। "DB" आंकड़ाकोष में सभी अपलोड को संग्रहीत करता है,"FS" फ़ाइल प्रणाली का उपयोग करता है।',
@@ -8215,7 +8207,6 @@ Thanks for your help!
             'प्रतिनिधि अंतरफलक में फोन और ईमेल के टिकटों में एक जिम्मेदार चयन दिखाएँ।',
         'Show article as rich text even if rich text writing is disabled.' =>
             '',
-        'Show command line output.' => '',
         'Show queues even when only locked tickets are in.' => '',
         'Show the current owner in the customer interface.' => '',
         'Show the current queue in the customer interface.' => '',
@@ -8322,8 +8313,6 @@ Thanks for your help!
             'टिकट अवलोकन का पूर्वावलोकन दिखाता है(ग्राहक जानकारी => 1- ग्राहक जानकारी भी दिखाता है,CustomerInfoMaxSize ग्राहक जानकारी के अक्षरों में अधिकतम आकार)।',
         'Shows all both ro and rw queues in the queue view.' => 'श्रेणी दृश्य में दोनों सभी ro और rw श्रेणीयो को दिखाता है।',
         'Shows all both ro and rw tickets in the service view.' => '',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'प्रतिनिधि अंतरफलक की संवर्धित दृश्य में सभी खुले टिकट(भले ही वे लॉकङ हो) दिखाता है।',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8396,9 +8385,9 @@ Thanks for your help!
         'Signatures' => 'हस्ताक्षर',
         'Simple' => '',
         'Skin' => 'सतही',
+        'Skin Options' => '',
         'Slovak' => '',
         'Slovenian' => '',
-        'Small' => 'लघु',
         'Software Package Manager.' => '',
         'Solution time' => '',
         'SolutionDiffInMin' => '',
@@ -8410,10 +8399,6 @@ Thanks for your help!
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             '',
         'Spam' => '',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'अवांछनीय अवरोधी उदाहरण स्थापना। ईमेल जो अवांछनीय अवरोधी से चिह्नित हैं पर ध्यान न दें।',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            'अवांछनीय अवरोधी उदाहरण स्थापना। चिह्नित मेल अवांछनीय श्रेणी में स्थानांतरित करें।',
         'Spanish' => '',
         'Spanish (Colombia)' => '',
         'Spanish (Mexico)' => '',
@@ -8441,14 +8426,6 @@ Thanks for your help!
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             'पृष्ठ शीर्षक में प्रतीक चिह्न के लिए फ़ाइल का पथ निर्दिष्ट करता है(gif|jpg|png, 700 x 100 पिक्सेल)।',
         'Specifies the path of the file for the performance log.' => 'प्रदर्शन के लिए अभिलेख के लिए फ़ाइल का पथ निर्दिष्ट करता है।',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'वेब अंतरफलक में,परिवर्तक के लिए पथ निर्दिष्ट करता है जो Microsoft Excel फ़ाइलों को देखने की अनुमति देता हैं।',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'वेब अंतरफलक में,परिवर्तक के लिए पथ निर्दिष्ट करता है जो Microsoft Word फ़ाइलों को देखने की अनुमति देता हैं।',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'वेब अंतरफलक में,परिवर्तक के लिए पथ निर्दिष्ट करता है जो PDF दस्तावेजों को देखने की अनुमति देता हैं।',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'वेब अंतरफलक में,परिवर्तक के लिए पथ निर्दिष्ट करता है जो XML फ़ाइलों को देखने की अनुमति देता हैं।',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'पाठ को निर्दिष्ट करता है जो लॉग फ़ाइल में दिखाई देना चाहिए CGI स्क्रिप्ट प्रविष्टि निरूपित करने के लिए।',
         'Specifies user id of the postmaster data base.' => 'डाकपाल आंकड़ा कोष के उपयोगकर्ता आईडी को निर्दिष्ट करता है।',

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -318,6 +318,26 @@ sub GetMinifiedFile {
     return $Result;
 }
 
+=head2 CSSMinifier()
+
+returns the name of the available CSS Minifier package.
+
+CSS::Minifier::XS is selected if it's present, otherwise CSS::Minifier.
+
+=cut
+
+sub CSSMinifier {
+    my ( $Self ) = @_;
+
+    $Self->{CSSMinifier} //= eval {
+        require CSS::Minifier::XS;
+        CSS::Minifier::XS->import();
+        'CSS::Minifier::XS';
+    } || 'CSS::Minifier';
+
+    return $Self->{CSSMinifier};
+}
+
 =head2 MinifyCSS()
 
 returns a minified version of the given CSS Code
@@ -341,9 +361,21 @@ sub MinifyCSS {
         return;
     }
 
-    my $Result = CSS::Minifier::minify( input => $Param{Code} );
+    my $Result;
 
-    # a few optimizations can be made for the minified CSS that CSS::Minifier doesn't yet do
+    if ( $Self->CSSMinifier eq 'CSS::Minifier::XS' ) {
+        # Strip the initial copyright comment as CSS::Minifier::XS
+        # will unnecessarily preserve it
+        $Param{Code} =~ s{^ /\* .*? [Cc]opyright .+? \n \*/ \n }{}sx;
+
+        $Result = CSS::Minifier::XS::minify( $Param{Code} );
+    }
+    else {
+        $Result = CSS::Minifier::minify( input => $Param{Code} );
+        
+        # a few optimizations can be made for the minified CSS
+        # that CSS::Minifier doesn't yet do
+    }
 
     # remove remaining linebreaks
     $Result =~ s/\r?\n\s*//smxg;
@@ -352,6 +384,26 @@ sub MinifyCSS {
     $Result =~ s/,\s*/,/smxg;
 
     return $Result;
+}
+
+=head2 JavaScriptMinifier()
+
+returns the name of the available JavaScript Minifier package.
+
+JavaScript::Minifier::XS is selected if it's present, otherwise JavaScript::Minifier.
+
+=cut
+
+sub JavaScriptMinifier {
+    my ( $Self ) = @_;
+
+    $Self->{JavaScriptMinifier} //= eval {
+        require JavaScript::Minifier::XS;
+        JavaScript::Minifier::XS->import();
+        'JavaScript::Minifier::XS';
+    } || 'JavaScript::Minifier';
+
+    return $Self->{JavaScriptMinifier};
 }
 
 =head2 MinifyJavaScript()
@@ -388,7 +440,23 @@ sub MinifyJavaScript {
         return;
     }
 
-    return JavaScript::Minifier::minify( input => $Param{Code} );
+    if ( $Self->JavaScriptMinifier eq 'JavaScript::Minifier::XS' ) {
+        # Strip the initial copyright comment as JavaScript::Minifier::XS
+        # will unnecessarily preserve it
+        $Param{Code} =~ s{^
+            (?: \n )*                               # Any number of empty lines
+            (?: // [^\n]* \n )*                     # Any number of // lines
+            (?: // [^\n]* [Cc]opyright [^\n]+ \n )  # At least one "Copyright"
+            (?: // [^\n]* \n )*                     # Any number of // lines
+            ([^/][^/])                              # Line not beginning with //
+        }{$1}sx;
+        $Param{Code} =~ s{^ /\* .*? [Cc]opyright .+? \n \*/ \n }{}sx;
+
+        return JavaScript::Minifier::XS::minify( $Param{Code} );
+    }
+    else {
+        return JavaScript::Minifier::minify( input => $Param{Code} );
+    }
 }
 
 =head2 CacheGenerate()

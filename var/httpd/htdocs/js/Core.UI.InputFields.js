@@ -1,6 +1,6 @@
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-// Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+// Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 // --
 // This software comes with ABSOLUTELY NO WARRANTY. For details, see
 // the enclosed file COPYING for license information (GPL). If you
@@ -194,6 +194,11 @@ Core.UI.InputFields = (function (TargetNS) {
             "\u2089":"9", "\u2468":"9", "\u2079":"9"
         }
     };
+
+    if ($('#vue-app').length) {
+        Config.InputFieldPadding = 5;
+        Config.SelectionBoxOffsetLeft = 5;
+    }
 
     /**
      * @name Activate
@@ -530,6 +535,11 @@ Core.UI.InputFields = (function (TargetNS) {
                                 $TextObj.text().substring(0, $TextObj.text().length - 4)
                                 + '...'
                             );
+
+                            // Don't end up in an endless loop if the text can't
+                            // be shortened anymore
+                            if ($TextObj.text() == '...')
+                                break;
                         }
 
                         // Offset the box and show it
@@ -1191,6 +1201,11 @@ Core.UI.InputFields = (function (TargetNS) {
 
                 // Get width now, since we will hide the element
                 SelectWidth = $SelectObj.outerWidth();
+
+                if ($('#vue-app').length) {
+                    // New style select values need more space
+                    SelectWidth += Config.InputFieldPadding * 4;
+                }
 
                 // Hide original field
                 $SelectObj.hide();

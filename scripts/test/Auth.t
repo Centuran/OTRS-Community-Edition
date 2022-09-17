@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -49,7 +49,8 @@ my $TestUserID;
 my $UserRand = 'example-user' . $Helper->GetRandomID();
 
 # get user object
-my $UserObject = $Kernel::OM->Get('Kernel::System::User');
+my $UserObject  = $Kernel::OM->Get('Kernel::System::User');
+my $ValidObject = $Kernel::OM->Get('Kernel::System::Valid');
 
 # add test user
 $TestUserID = $UserObject->UserAdd(
@@ -307,6 +308,70 @@ my $Result = $AuthObject->Auth(
 $Self->True(
     $Result,
     "System crypt type - $Tests[1]->{CryptType}, crypt type for user password - $Tests[0]->{CryptType}, user password '$Tests[0]->{Password}'",
+);
+
+# Now, let's update user to be invalid
+my $UpdateResult;
+
+my $InvalidValidID = $ValidObject->ValidLookup(
+    Valid => 'invalid',
+);
+
+my %User = $UserObject->GetUserData(
+    UserID => $TestUserID,
+);
+
+$UpdateResult = $UserObject->UserUpdate(
+    %User,
+    ValidID      => $InvalidValidID,
+    ChangeUserID => 1,
+);
+
+$Self->Is(
+    $UpdateResult,
+    1,
+    "User gets invalidated",
+);
+
+my $MaxLoginAttempts = 2;
+
+my $AuthResult;
+
+for ( 1 .. $MaxLoginAttempts ) {
+    $AuthResult = $AuthObject->Auth(
+        User => $UserRand,
+        Pw   => 'wrong',
+    );
+
+    $Self->Is(
+        $AuthResult,
+        undef,
+        "Authentication with a wrong password fails",
+    );
+}
+
+$AuthResult = $AuthObject->Auth(
+    User => $UserRand,
+    Pw   => '123',
+);
+
+$Self->Is(
+    $AuthResult,
+    undef,
+    "Should be undefined after second lockout"
+);
+
+%User = $UserObject->GetUserData(
+    User => $UserRand,
+);
+delete $User{UserPw};    # don't update/break password
+
+my $CurrentValidID = $User{ValidID};
+
+$Self->Is(
+    $CurrentValidID,
+    $InvalidValidID,
+    "User is flagged as invalid",
 );
 
 # cleanup is done by RestoreDatabase

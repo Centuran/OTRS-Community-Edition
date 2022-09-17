@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -12,6 +12,11 @@ use warnings;
 use utf8;
 
 use vars (qw($Self));
+
+$Kernel::OM->Get('Kernel::Config')->Set(
+    Key   => 'OTRSTimeZone',
+    Value => 'UTC',
+);
 
 #
 # Tests for converting date/time string to hash

@@ -1,0 +1,944 @@
+@use "sass:string";
+
+@import 'variables';
+
+// TODO: Remove in favor of @function mdi()
+@mixin mdi($codepoint) {
+  content: $codepoint;
+  font-family: "Material Design Icons";  
+}
+
+@function priority-color($priority) {
+  $colors: (
+    5: #ff0000,
+    4: #ffc940,
+    3: #aaaaaa,
+    2: #0059ff,
+    1: #00a000
+  );
+
+  @return map-get($map: $colors, $key: $priority);
+}
+
+.Flag.Small {
+  height: auto;
+  width: auto;
+  
+  span {
+    border-radius: 0.2em;
+    height: 1em;
+    width: 1em;
+  }
+}
+
+@for $priority from 1 through 5 {
+  .Flag span.PriorityID-#{$priority} {
+    background-color: priority-color($priority);
+  }
+}
+
+// NOTE: Moved to common styles
+// /* Modernized select boxes */
+
+// .jstree-InputField {
+//   font-size: 85%;
+
+//   .jstree-wholerow-ul {
+//     .jstree-wholerow {
+//       height: auto;
+//       line-height: initial;
+
+//       &:hover,
+//       &.jstree-wholerow-hovered,
+//       &.jstree-wholerow-clicked:hover {
+//         background-color: #f15a22;
+//       }
+//     }
+  
+//     .jstree-anchor {
+//       height: auto;
+//       line-height: initial;
+//     }
+
+//     .jstree-hovered {
+//       background-color: #f15a22;
+//     }
+//   }
+// }
+
+input[type="radio"]::before {
+  box-shadow: inset 1em 1em $secondary-color;
+}
+
+input[type="radio"]:checked {
+  color: $secondary-color;
+}
+
+.MessageBox.Error {
+  @include msg-box("error");
+}
+
+.MessageBox.Notice {
+  @include msg-box("notice");
+}
+
+code,
+.v-application code,
+.v-application.theme--light code {
+  font-family: 'Roboto Mono', monospace, fixed;
+  font-size: 90%;
+  padding: 0.1em 0.2em;
+  background-color: rgba(119, 136, 153, 0.15); // RGB values of lightslategray
+}
+
+dl {
+  dt {
+    font-size: initial;
+    line-height: 1.5;
+  }
+
+  dd {
+    line-height: 1.5;
+    margin-left: 0.8em;
+  }
+}
+
+fieldset.TableLike.FixedLabelSmall > label {
+  width: 8em;
+}
+
+fieldset.TableLike.FixedLabelSmall > .Field,
+fieldset.TableLike.FixedLabelSmall > .Row > .Field,
+fieldset.TableLike.FixedLabelSmall > .Value,
+fieldset.TableLike.FixedLabelSmall > .Row > .Value {
+  margin-left: 8em;
+}
+
+fieldset.TableLike {
+  .Field, .RichTextField {
+    padding-left: 0;
+  }
+
+  & > label,
+  & > .Row > label {
+    color: #666;
+
+    & + .Field,
+    & + .RichTextField {
+      padding-left: var(--pad-x);
+    }
+  }
+
+  p.Value {
+    margin-bottom: 0;
+  }
+
+  // Label that's displayed above the value
+  label.cmt-stacked {
+    float: none;
+    text-align: left;
+    width: 100%;
+
+    & + p.Value {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+ul.Tablelike li.Header {
+  text-transform: none;
+}
+
+body .WidgetSimple {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: var(--gap-120);
+
+  & > .Header h2 {
+    color: #333;
+    font-size: inherit;
+    font-weight: bolder;
+    padding: 0;
+    text-shadow: none;
+  }
+
+  .Header {
+    line-height: 1;
+    padding: var(--pad-y) var(--pad-x);
+
+    .ActionMenu {
+      margin-right: var(--pad-x);
+      position: absolute;
+      right: 0;
+      top: initial;
+    }
+
+    .WidgetAction {
+      width: auto;
+      height: auto;
+
+      &.Toggle {
+        height: auto;
+        margin: 0;
+        width: auto;
+
+        &::before {
+          font-family: "Material Design Icons";
+          font-size: 120%;
+          line-height: calc(1 / 1.2);
+        }
+
+        a {
+          height: 100%;
+          width: 100%;
+
+          &:hover i.fa {
+            background: none;
+          }
+        }
+      }
+
+      a {
+        font-size: initial;
+        height: auto;
+        display: inline-block;
+
+        i.fa {
+          font-size: initial;
+          margin: 0;
+    
+          &::before {
+            font-family: "Material Design Icons";
+            font-size: 110%;
+          }
+    
+          // Widget settings
+          &.fa-cog::before {
+            content: mdi("dots-vertical");
+          }
+
+          // Refresh widget
+          &.fa-refresh::before {
+            content: mdi("refresh");
+          }
+    
+          // Close widget
+          &.fa-times::before {
+            content: mdi("close-thick");
+          }
+
+          &.fa-trash-o::before {
+            content: mdi("filter-off");
+          }
+        }
+
+        &:hover i.fa {
+          color: $secondary-color;
+          background: #ddd;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+
+  &.Collapsed .Header {
+    .WidgetAction.Toggle::before {
+      content: "\0F0140"; // chevron-down
+    }
+  }
+
+  &.Expanded .Header {
+    .WidgetAction.Toggle::before {
+      content: "\0F0143"; // chevron-up
+    }
+  }
+
+  &.Collapsed.AnimationRunning .Header,
+  &.Expanded.AnimationRunning .Header {
+    line-height: 1;
+    padding: var(--gap) var(--gap-120);
+  }
+
+  .WidgetMenu {
+    padding: var(--pad-y) var(--pad-x);
+
+    a.Button,
+    span.Button {
+      border: solid 1px #ccc;
+      border-radius: 4px;
+      box-shadow: 0px 1px 10px #e4e4e4;
+      color: #444;
+      font-size: calc(var(--font-size-base) * 0.85);
+      padding: 5px 10px;
+      vertical-align: middle;
+
+      &.Right {
+        float: right;
+      }
+
+      .fa {
+        font-family: "Material Design Icons";
+        font-size: inherit;
+
+        &.fa-times::before {
+          content: mdi("cancel");
+        }
+
+        &.fa-check::before {
+          content: mdi("check");
+        }
+
+        &.fa-undo::before {
+          content: mdi("undo");
+        }
+
+        &.fa-link::before {
+          content: mdi("link-variant");
+        }
+
+        &.fa-star-o::before {
+          content: mdi("star");
+        }
+
+        &.fa-pencil-square {
+          content: mdi("square-edit-outline");
+        }
+      }
+    }
+  }
+
+  & > .Content {
+    border-top: solid 1px ghostwhite;
+    padding: var(--pad-y) var(--pad-x);
+  }
+}
+
+.WidgetSimple.Setting {
+  @at-root {
+    body & .Header h2 {
+      padding-left: 0;
+    }
+
+    body &.IsLockedByMe .SettingWrapper > .SettingDescription {
+      padding-right: 1em;
+    }
+  }
+
+  .SettingWrapper {
+    fieldset {
+      border-right: solid 1px #ccc;
+      float: left;
+      width: calc(70% - 6em);
+
+      .SettingUpdateBox {
+        background-color: transparent;
+        border-left: solid 1px #ccc;
+        font-size: initial;
+        height: calc(100% - 2 * var(--pad-y));
+        margin-right: var(--gap);
+        margin-top: var(--pad-y);
+        padding: 0;
+        text-align: center;
+        top: 0;
+        width: 6em;
+        width: auto;
+
+        button {
+          margin: 0;
+        }
+      }
+    }
+
+    @at-root {
+      body & > .SettingDescription {
+        border: none;
+        border-left: solid 1px #ccc;
+        display: block;
+        float: left;
+        font-size: 87.5%;
+        margin-left: -1px; // To merge the longer and shorter border
+        padding: 0 1em;
+      }
+
+      // Different width for the setting description in agent preferences
+      body .Preferences & > .SettingDescription {
+        width: 30%;
+      }
+    }
+  }
+
+  // Some properties seem to be overridden on the user preferences screen
+  @at-root {
+    .SettingsList &.IsLockedByMe .SettingWrapper {
+      fieldset > .SettingUpdateBox {
+        width: 6em;
+        width: auto;
+
+        button {
+          margin: 0;
+          margin-left: var(--gap);
+
+          &.Cancel {
+            i.fa::before {
+              content: mdi("cancel");
+            }
+          }
+        }
+      }
+
+      & > .SettingDescription {
+        padding-right: 1em;
+      }
+    }
+  }
+
+  @at-root {
+    // Different position for the setting update box in agent preferences
+    body .SettingsList.Preferences &.IsLockedByMe .Content .SettingUpdateBox {
+      left: calc(100% - 6em/0.875);
+    }
+  }
+}
+
+.MainBox {
+  @at-root {
+    body & {
+      padding: var(--pad-y) var(--pad-x);
+
+      & > h1 {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+/* Action Row */
+
+.ActionRow {
+  .WidgetSimple .Content > & {
+    margin-left: 0;
+  }
+
+  .Actions {
+    @include button-group();
+
+    display: flex;
+    margin-bottom: 0;
+    
+    li {
+      font-size: inherit;
+
+      // This pseudoelement fills the 2px gap between the contents
+      // of the top-level item and the sub-level dropdown list (caused by a 2px
+      // margin-top above the list), eliminating the problem that the list
+      // disappeared when the pointer was placed inside the gap.
+      &::after {
+        content: "";
+        float: none;
+        background: transparent;
+        height: 2px;
+        margin: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+
+    & > li {
+      align-self: center;
+      float: left;
+      font-size: 85%;
+      margin: 0;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &[id^="nav-"] {
+        //@include minor-button();
+
+        border-radius: 0;
+        // Override box shadow to not include the outer blurred part
+        // box-shadow: 0px 1px 0px #c8c8c8;
+        overflow: visible;
+        
+        &:first-child {
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 0;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 0;
+        }
+
+        &:not(:first-child) {
+          border-left: none;
+        }
+      }
+
+      &[id^="nav-"] + li[id^="nav-"] {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      &:not([id^="nav-"]) {
+        margin-left: 0.5em;
+      }
+
+      // TODO: Need to set right border radius to 4px for the last item with
+      // an ID of "nav-*", but it's probably not possible in CSS (no "followed
+      // by" selector). Maybe set a class in JS?
+
+      span.ClusterLink {
+        color: #444;
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+
+body .Cluster ul ul {
+  border-radius: 0 0 4px 4px;
+  box-shadow: $elevated-2-box-shadow;
+  left: 0;
+  margin-top: 2px;
+  top: 100%;
+
+  li {
+    line-height: initial;
+
+    a:hover {
+      background-color: $secondary-action-color;
+      color: white;
+    }
+  }
+}
+
+.ItemActions {
+  .Actions {
+    display: flex;
+
+    li {
+      font-size: 85%;
+
+      &::after {
+        content: none;
+        // TODO: Might want to add a pseudoelement like in .Actions above
+      }
+    }
+
+    & > li {
+      align-self: center;
+      float: left;
+      line-height: initial;
+      margin: 0;
+
+      &:first-child {
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+      }
+
+      &:not(:first-child) {
+        border-left: none;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      &.cmt-item-action-dropdown {
+        border: none;
+        box-shadow: none;
+        margin-left: 0.5em;
+
+        label {
+          display: inline-block;
+        }
+
+        label::after {
+          // Add a colon after the "Reply" and "Forward" labels
+          content: ":";
+        }
+      }
+
+      &.cmt-item-action-link-last a {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      a, span.ClusterLink {
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+
+/* Unread articles marker */
+
+div.UnreadArticles {
+  line-height: 15px; // Equal to originally set height
+  margin: 0;
+  padding: 0 !important;
+  vertical-align: initial;
+  width: auto;
+
+  span.UnreadArticles {
+    margin: 0;
+    padding: 0 !important;
+    width: auto;
+
+    &::before {
+      color: #aaa;
+      content: "\0F04CE"; // star
+      font-family: "Material Design Icons";
+      font-size: 150%;
+    }
+
+    &.Remarkable::before {
+      color: #ffc940;
+    }
+
+    i.fa {
+      display: none !important;
+    }
+  }
+}
+
+/* Dialog windows */
+
+.Dialog {
+  border-radius: 4px;
+  overflow: hidden;
+
+  & > .Header {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    height: auto;
+
+    h1 {
+      flex: 1;
+      font-size: inherit;
+      font-weight: bold;
+      margin-bottom: 0;
+      padding: var(--pad-y) var(--pad-x)
+    }
+
+    .Close {
+      display: inline;
+      flex: 1;
+      height: auto;
+      margin-right: var(--pad-x);
+      right: auto;
+      top: auto;
+      width: auto;
+
+      i.fa {
+        font-family: "Material Design Icons";
+
+        &::before {
+          content: mdi("close");
+        }
+      }
+    }
+  }
+
+  .Content {
+    .ContentFooter {
+      padding: 10px 0;
+    }
+  }
+}
+
+/* Action buttons */
+
+a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  background-color: #f15a22;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 12px 32px;
+  padding: 0.3em 1.2em;
+  position: relative;
+  transition: all ease-in 0.1s;
+
+  i.fa {
+    // Hide FontAwesome icons by default (to only selectively show the ones
+    // that have been replaced with Material Design counterparts)
+    display: none;
+  }
+
+  span {
+    border: none;
+    color: #fff;
+    font-size: inherit;
+    font-weight: 500;
+    text-shadow: none;
+  }
+
+  &.Fullsize span {
+    padding: 0;
+  }
+
+  &.Fullsize.Center span i {
+    left: auto;
+    position: static;
+    top: auto;
+  }
+
+  &::before {
+    background-color: #f15a22;
+    border-radius: inherit;
+    bottom: 0;
+    color: inherit;
+    content: "";
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity .2s cubic-bezier(.4,0,.6,1);
+  }
+
+  &::before {
+    content: none;
+  }
+
+  &:hover {
+    background-color: #f15a22;
+    border: solid 1px #ff6a32;
+    background-color: $button-action-hover-background-color;
+    border: solid 1px $button-action-hover-border-color;
+    color: #fff;
+    color: $button-action-hover-text-color;
+    
+    &::before {
+      opacity: .08;
+    }
+
+    span i.fa::before {
+      color: #fff;
+      color: $button-action-hover-icon-color;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    &::before {
+      opacity: .08;
+    }
+  }
+
+  &.Inline {
+    height: 32px;
+    padding: 0 32px;
+    top: 1px;
+    vertical-align: middle;
+
+    span {
+      line-height: inherit;
+    }
+  }
+
+  span.v-ripple__container {
+    color: inherit;
+    position: absolute;
+
+    span.v-ripple__animation {
+      color: inherit;
+      position: absolute;
+    }
+  }
+}
+
+a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  @include button;
+
+  &:hover {
+    //border: solid 1px #ff6a32;
+  }
+
+  &:active {
+    background: $button-action-hover-background-color;
+    color: $button-action-hover-text-color;
+  }
+
+  &.Primary {
+    background-color: #f15a22;
+    border: solid 1px #ff6a32;
+    box-shadow: $button-action-primary-box-shadow;
+    color: #fff;
+    padding: 0.3em 1.2em;
+
+    &:hover {
+      background-color: $button-action-primary-hover-background-color;
+      
+      span {
+        text-shadow: 0 0 20px #fff;
+        transition: all ease-in 0.1s;
+      }
+    }
+  }
+
+  // Disabled action buttons
+  &.Disabled {
+    color: $button-action-disabled-text-color;
+    background: #d0d0d0 !important;
+    border: solid 1px #d8d8d8 !important;
+    border-bottom: solid 1px #d8d8d8 !important;
+    box-shadow: $button-action-disabled-box-shadow !important;
+  }
+
+  span {
+    color: inherit;
+    padding: 0;
+  }
+}
+
+// Regular action buttons when inside a widget or other elements with a gray
+// background
+.WidgetSimple .Content,
+.Dialog .ContentFooter {
+  a.CallForAction,
+  .v-application a.CallForAction,
+  button.CallForAction {
+    &:not(.Primary) {
+      border: solid 1px #fff;
+      border: solid 1px $button-action-border-color;
+      box-shadow: 0px 1px 0px #ddd, 0px 1px 10px #eee;
+      box-shadow: $button-action-box-shadow;
+    }
+  }
+}
+
+// Action buttons in process elements sidebar widget (which has white
+// background)
+.ProcessManagementEditScreen #ProcessElements a.CallForAction {
+  // Extend the original class to revert to styles for white background
+  @extend .CallForAction;
+  width: auto;
+}
+
+// Cancel buttons have different hover style
+#EditFormCancel.CallForAction,
+.WidgetSettingsForm button.CallForAction[id$="_cancel"] {
+  &:hover {
+    background-color: $button-action-cancel-hover-background-color;
+    border-color: $button-action-border-color;
+    color: $button-action-cancel-hover-text-color;
+  }
+}
+
+// Action button icons
+a.CallForAction,
+.v-application a.CallForAction,
+button.CallForAction {
+  span {
+    display: inline;
+    position: static;
+
+    i.fa {
+      display: inline;
+      font-size: inherit;
+      line-height: inherit;
+      margin: 0;
+      margin-right: 0.15em;
+
+      &::before {
+        color: $button-action-icon-color;
+        content: "";
+        font-family: "Material Design Icons";
+        font-weight: bold;
+      }
+      
+      @each $fa_name, $mdi_name in $fa_to_mdi {
+        &.fa-#{$fa_name}::before {
+          content: mdi($mdi_name);
+        }
+      }
+    }
+  }
+
+  &.Disabled {
+    span,
+    &:hover span {
+      i.fa::before {
+        color: #888;
+      }
+    }
+  }
+}
+
+a.CallForAction.Fullsize span,
+.v-application a.CallForAction.Fullsize span,
+button.CallForAction.Fullsize span {
+  i.fa {
+    color: inherit;
+    margin-right: 0.3em;
+  }
+}
+
+// Action (mostly submit) buttons in forms
+form fieldset {
+  .CallForAction {
+    margin: auto calc(var(--gap, 12px) / 2);
+  }
+}
+
+/* List displayed as table */
+
+ul.Tablelike {
+  background-color: $table-head-background;
+  border-radius: 4px;
+  overflow: hidden;
+
+  li {
+    padding: $table-cell-padding;
+
+    &.Header {
+      background: none;
+      border: none;
+      border-bottom: thin solid rgba(0, 0, 0, 0.12);
+      font-size: inherit;
+      font-weight: bold;
+    }
+  }
+}
+
+/* Popup windows */
+
+.LayoutPopup > .Footer .CallForAction {
+  padding: 0.8em 1.8em;
+}
+
+/* Miscellaneous rules */
+
+// A 1px by 1px element is added by CKEditor and it apparently causes
+// the vertical scrollbar to appear in lower resolutions. This changes
+// the position of the element by 1px, making the scrollbar disappear.
+body .cke_screen_reader_only {
+  top: calc(100% - 1px);
+}
+
+/* Rules to override what Vuetify does */
+
+.v-application ol, .v-application ul {
+  padding-left: 0;
+}
+
+/* Newly introduced rules (TODO: Move to a separate file) */
+
+// Invisible element to force a break into next flex row
+hr.cmt-flex-break {
+  height: 0;
+  width: 100%;
+  // NOTE: This element needs to be assigned the appropriate order inside parent
+}

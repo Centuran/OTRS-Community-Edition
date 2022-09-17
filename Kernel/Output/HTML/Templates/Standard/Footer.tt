@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -22,9 +22,82 @@
 [% END %]
 </div>
 
+[% IF Data.UseModern %]
+</v-app></div>
+[% END %]
+
 [% InsertTemplate("FooterJS.tt") %]
 
     </div><!-- end AppWrapper -->
+
+<script>
+(function () {
+
+if (!window.__use_new_agent_ui)
+    return;
+
+new Vue({
+    el: '#vue-app',
+    vuetify: new Vuetify({
+        theme: { disable: true }
+    }),
+    components: {
+        'colorpicker':    httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/colorpicker.vue'),
+        'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue'),
+        'toggleswitch':   httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/toggleswitch.vue')
+    },
+    data() {
+        return {
+            document: document,
+            console: console,
+            jQuery: window.jQuery
+        };
+    }
+});
+
+// FIXME: This is an ugly-ish workaround for an issue when unset select fields
+// suddenly have the first option pre-selected after Vue initialization above
+// (i.e. $('#some-select').val() returns null just before Vue initialization,
+// and some value right after). Resetting the inner HTML of the element seems
+// to fix this.
+jQuery('select').each(function () {
+    jQuery(this).html(jQuery(this).html());
+});
+
+new MutationObserver(function (mutations, observer) {
+    var newDialogs =
+        document.querySelectorAll('body > .Dialog:not(.__vue_processed), ' +
+            'body .LayoutPopup:not(.__vue_processed)');
+
+    newDialogs.forEach(function (dialog) {
+        var fields = dialog.querySelectorAll('.Field.__vue_datetimepicker');
+
+        fields.forEach(function (field) {
+            new Vue({
+                el: field,
+                vuetify: new Vuetify({ theme: { disable: true } }),
+                components: {
+                    'datetimepicker': httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/datetimepicker.vue')
+                }
+            });
+
+            dialog.classList.add('__vue_processed');
+        });
+    });
+}).observe(document.body,
+    { attributes: false, childList: true, subtree: false });
+
+})();
+
+// Add custom class to action list items that should be followed by free space
+// (i.e. those which are the last in a group)
+$(function () {
+    $('.ActionRow .Actions li, .ItemActions .Actions li').each(function () {
+        if ($(this).next('li').find('> a, > span.ClusterLink').length == 0)
+            this.classList.add('cmt-item-action-link-last');
+    });
+});
+</script>
 
 </body>
 </html>

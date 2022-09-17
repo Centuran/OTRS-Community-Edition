@@ -13,13 +13,13 @@ sub match {
     # @since v4.22.3
     my $class = shift;
     my $argv1 = shift // return undef;
-    my $index = [
+
+    state $index = [
         'i am away on vacation',
         'i am away until',
         'i am out of the office',
         'i will be traveling for work on',
     ];
-
     return 1 if grep { rindex($argv1, $_) > -1 } @$index;
     return 0;
 }
@@ -73,4 +73,3 @@ Copyright (C) 2016-2018 azumakuniyuki, All rights reserved.
 This software is distributed under The BSD 2-Clause License.
 
 =cut
-

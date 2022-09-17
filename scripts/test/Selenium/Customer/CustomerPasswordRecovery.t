@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -106,7 +106,7 @@ $Selenium->RunTest(
 
         # Check for password recovery message.
         $Self->True(
-            $Selenium->find_element( ".SuccessBox span", 'css' ),
+            $Selenium->find_element( ".SuccessBox p", 'css' ),
             "Password recovery message found on screen for valid customer",
         );
 
@@ -164,7 +164,7 @@ $Selenium->RunTest(
         # Check for password recovery message for invalid customer user, for security measures it
         # should be visible.
         $Self->True(
-            $Selenium->find_element( ".SuccessBox span", 'css' ),
+            $Selenium->find_element( ".SuccessBox p", 'css' ),
             "Password recovery message found on screen for invalid customer",
         );
 

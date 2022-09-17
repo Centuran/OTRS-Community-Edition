@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -332,7 +332,7 @@ sub TicketCheckNumber {
     my $Limit = 10;
     my $Count = 1;
     MERGELOOP:
-    for ( 1 .. $Limit ) {
+    for my $Level ( 1 .. $Limit ) {
         my %Ticket = $Self->TicketGet(
             TicketID      => $TicketID,
             DynamicFields => 0,
@@ -1355,8 +1355,14 @@ sub TicketGet {
     my $Delta = $TicketCreatedDTObj->Delta( DateTimeObject => $Kernel::OM->Create('Kernel::System::DateTime') );
     $Ticket{Age} = $Delta->{AbsoluteSeconds};
 
-    $Ticket{Priority} = $Kernel::OM->Get('Kernel::System::Priority')->PriorityLookup(
+    my $PriorityObject = $Kernel::OM->Get('Kernel::System::Priority');
+
+    $Ticket{Priority} = $PriorityObject->PriorityLookup(
         PriorityID => $Ticket{PriorityID},
+    );
+    $Ticket{PriorityColor} = $PriorityObject->PriorityColor(
+        PriorityID => $Ticket{PriorityID},
+        UserID     => 1,
     );
 
     # get user object
@@ -7750,7 +7756,7 @@ sub _TicketGetClosed {
     my %Data;
     ROW:
     while ( my @Row = $DBObject->FetchrowArray() ) {
-        last ROW if !defined $Row[0];
+        next ROW if !defined $Row[0];
         $Data{Closed} = $Row[0];
 
         # cleanup time stamps (some databases are using e. g. 2008-02-25 22:03:00.000000

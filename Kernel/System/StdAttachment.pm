@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -72,11 +72,11 @@ sub StdAttachmentAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Name ValidID Content ContentType Filename UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(Name ValidID Content ContentType Filename UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -197,11 +197,11 @@ sub StdAttachmentUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ID Name ValidID UserID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(ID Name ValidID UserID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }
@@ -276,11 +276,11 @@ sub StdAttachmentDelete {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(ID)) {
-        if ( !$Param{$_} ) {
+    for my $Name (qw(ID)) {
+        if ( !$Param{$Name} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Name!",
             );
             return;
         }

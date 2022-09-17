@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -87,8 +87,8 @@ sub Post {
                         next KEYWORD;
                     }
 
-                    for ( 1 .. $Elements ) {
-                        $Keywords{$HoleMatchString}{$_} = $MatchData[ $Counter + $_ ];
+                    for my $Item ( 1 .. $Elements ) {
+                        $Keywords{$HoleMatchString}{$Item} = $MatchData[ $Counter + $Item ];
                     }
                     $Counter += $Elements + 1;
                 }
@@ -115,9 +115,9 @@ sub Post {
                 $URL =~ s/<MATCH>/$KeywordLinkEncode/g;
 
                 # replace the keyword components
-                for ( sort keys %KW ) {
-                    $KeywordLinkEncode = $LayoutObject->LinkEncode( $KW{$_} );
-                    $URL =~ s/<MATCH$_>/$KeywordLinkEncode/g;
+                for my $Key ( sort keys %KW ) {
+                    $KeywordLinkEncode = $LayoutObject->LinkEncode( $KW{$Key} );
+                    $URL =~ s/<MATCH$Key>/$KeywordLinkEncode/g;
                 }
 
                 # find out if it is an internal image or an external image

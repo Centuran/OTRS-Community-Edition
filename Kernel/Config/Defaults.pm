@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -910,14 +910,14 @@ sub LoadDefaults {
     # MIME-Viewer for online to html converter
     # --------------------------------------------------- #
     # (e. g. xlhtml (xls2html), http://chicago.sourceforge.net/xlhtml/)
-#    $Self->{'MIME-Viewer'}->{'application/excel'} = 'xlhtml';
+#     $Self->{'MIME-Viewer'}->{'application/excel'} = 'xlhtml';
     # MIME-Viewer for online to html converter
     # (e. g. wv (word2html), http://wvware.sourceforge.net/)
-#    $Self->{'MIME-Viewer'}->{'application/msword'} = 'wvWare';
+#     $Self->{'MIME-Viewer'}->{'application/msword'} = 'wvWare';
     # (e. g. pdftohtml (pdf2html), http://pdftohtml.sourceforge.net/)
-#    $Self->{'MIME-Viewer'}->{'application/pdf'} = 'pdftohtml -stdout -i';
+#     $Self->{'MIME-Viewer'}->{'application/pdf'} = 'pdftohtml -stdout -i';
     # (e. g. xml2html (xml2html))
-#    $Self->{'MIME-Viewer'}->{'text/xml'} = $Self->{Home}.'/scripts/tools/xml2html.pl';
+#     $Self->{'MIME-Viewer'}->{'text/xml'} = $Self->{Home}.'/scripts/tools/xml2html.pl';
 
     # --------------------------------------------------- #
     # directories                                         #
@@ -988,7 +988,7 @@ sub LoadDefaults {
         'thirdparty/jquery-3.5.1/jquery.js',
         'thirdparty/jquery-browser-detection/jquery-browser-detection.js',
         'thirdparty/jquery-validate-1.19.3/jquery.validate.js',
-        'thirdparty/jquery-ui-1.13.0/jquery-ui.js',
+        'thirdparty/jquery-ui-1.13.1/jquery-ui.js',
         'thirdparty/jquery-pubsub/pubsub.js',
         'thirdparty/jquery-jstree-3.3.7/jquery.jstree.js',
         'thirdparty/nunjucks-3.2.3/nunjucks.js',
@@ -1025,7 +1025,7 @@ sub LoadDefaults {
     $Self->{'Loader::Agent::CommonJS'}->{'000-Framework'} = [
         'thirdparty/jquery-3.5.1/jquery.js',
         'thirdparty/jquery-browser-detection/jquery-browser-detection.js',
-        'thirdparty/jquery-ui-1.13.0/jquery-ui.js',
+        'thirdparty/jquery-ui-1.13.1/jquery-ui.js',
         'thirdparty/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.js',
         'thirdparty/jquery-validate-1.19.3/jquery.validate.js',
         'thirdparty/jquery-pubsub/pubsub.js',
@@ -2061,9 +2061,9 @@ sub Get {
 sub Set {
     my ( $Self, %Param ) = @_;
 
-    for (qw(Key)) {
-        if ( !defined $Param{$_} ) {
-            $Param{$_} = '';
+    for my $Name (qw(Key)) {
+        if ( !defined $Param{$Name} ) {
+            $Param{$Name} = '';
         }
     }
 

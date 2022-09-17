@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -57,13 +57,32 @@ sub Run {
     my $LimitGroup = $Self->{Config}->{QueuePermissionGroup} || 0;
     my $CacheKey   = 'User' . '-' . $Self->{UserID} . '-' . $LimitGroup;
 
-    # get cache object
-    my $CacheObject = $Kernel::OM->Get('Kernel::System::Cache');
+    my $CacheObject  = $Kernel::OM->Get('Kernel::System::Cache');
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+
+    # check for refresh time
+    my $Refresh = '';
+    if ( $Self->{UserRefreshTime} ) {
+        $Refresh = 60 * $Self->{UserRefreshTime};
+        my $NameHTML = $Self->{Name};
+        $NameHTML =~ s{-}{_}msg;
+
+        # send data to JS
+        $LayoutObject->AddJSData(
+            Key   => 'QueueOverview',
+            Value => {
+                Name        => $Self->{Name},
+                NameHTML    => $NameHTML,
+                RefreshTime => $Refresh,
+            },
+        );
+    }
 
     my $Content = $CacheObject->Get(
         Type => 'DashboardQueueOverview',
         Key  => $CacheKey,
     );
+    
     return $Content if defined $Content;
 
     # get configured states, get their state ID and test if they exist while we do it
@@ -172,9 +191,6 @@ sub Run {
         push @Headers, $ConfiguredStates{$StateOrder};
     }
 
-    # get layout object
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
-
     for my $HeaderItem (@Headers) {
         $LayoutObject->Block(
             Name => 'ContentLargeTicketQueueOverviewHeaderStatus',
@@ -261,24 +277,6 @@ sub Run {
             Data => {
                 ColumnCount => ( scalar keys %ConfiguredStates ) + 2,
             }
-        );
-    }
-
-    # check for refresh time
-    my $Refresh = '';
-    if ( $Self->{UserRefreshTime} ) {
-        $Refresh = 60 * $Self->{UserRefreshTime};
-        my $NameHTML = $Self->{Name};
-        $NameHTML =~ s{-}{_}xmsg;
-
-        # send data to JS
-        $LayoutObject->AddJSData(
-            Key   => 'QueueOverview',
-            Value => {
-                Name        => $Self->{Name},
-                NameHTML    => $NameHTML,
-                RefreshTime => $Refresh,
-            },
         );
     }
 

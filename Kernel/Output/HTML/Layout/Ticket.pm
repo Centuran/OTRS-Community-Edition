@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -481,20 +481,20 @@ sub AgentQueueListOption {
     my $MoveStr           = $Self->{LanguageObject}->Translate('Move');
     my $ValueOfQueueNoKey = "- " . $MoveStr . " -";
     DATA:
-    for ( sort { $Data{$a} cmp $Data{$b} } keys %Data ) {
+    for my $Item ( sort { $Data{$a} cmp $Data{$b} } keys %Data ) {
 
         # find value for default item in select box
         # it can be "-" or "Move"
         if (
-            $Data{$_} eq "-"
-            || $Data{$_} eq $ValueOfQueueNoKey
+            $Data{$Item} eq "-"
+            || $Data{$Item} eq $ValueOfQueueNoKey
             )
         {
-            $KeyNoQueue   = $_;
-            $ValueNoQueue = $Data{$_};
+            $KeyNoQueue   = $Item;
+            $ValueNoQueue = $Data{$Item};
             next DATA;
         }
-        $Data{$_} .= '::';
+        $Data{$Item} .= '::';
     }
 
     # get HTML utils object
@@ -514,14 +514,14 @@ sub AgentQueueListOption {
 
     # build selection string
     KEY:
-    for ( sort { $Data{$a} cmp $Data{$b} } keys %Data ) {
+    for my $Item ( sort { $Data{$a} cmp $Data{$b} } keys %Data ) {
 
         # default item of select box has set already
-        next KEY if ( $Data{$_} eq "-" || $Data{$_} eq $ValueOfQueueNoKey );
+        next KEY if ( $Data{$Item} eq "-" || $Data{$Item} eq $ValueOfQueueNoKey );
 
-        my @Queue = split( /::/, $Param{Data}->{$_} );
-        $UsedData{ $Param{Data}->{$_} } = 1;
-        my $UpQueue = $Param{Data}->{$_};
+        my @Queue = split( /::/, $Param{Data}->{$Item} );
+        $UsedData{ $Param{Data}->{$Item} } = 1;
+        my $UpQueue = $Param{Data}->{$Item};
         $UpQueue =~ s/^(.*)::.+?$/$1/g;
         if ( !$Queue[$MaxLevel] && $Queue[-1] ne '' ) {
             $Queue[-1] = $Self->Ascii2Html(
@@ -536,8 +536,8 @@ sub AgentQueueListOption {
             # check if SelectedIDRefArray exists
             if ($SelectedIDRefArray) {
                 for my $ID ( @{$SelectedIDRefArray} ) {
-                    if ( $ID eq $_ ) {
-                        $Param{SelectedIDRefArrayOK}->{$_} = 1;
+                    if ( $ID eq $Item ) {
+                        $Param{SelectedIDRefArrayOK}->{$Item} = 1;
                     }
                 }
             }
@@ -593,13 +593,13 @@ sub AgentQueueListOption {
                 $OptionTitleHTMLValue = ' title="' . $HTMLValue . '"';
             }
             my $HTMLValue = $HTMLUtilsObject->ToHTML(
-                String             => $_,
+                String             => $Item,
                 ReplaceDoubleSpace => 0,
             );
             if (
-                $SelectedID eq $_
-                || $Selected eq $Param{Data}->{$_}
-                || $Param{SelectedIDRefArrayOK}->{$_}
+                $SelectedID eq $Item
+                || $Selected eq $Param{Data}->{$Item}
+                || $Param{SelectedIDRefArrayOK}->{$Item}
                 )
             {
                 $Param{MoveQueuesStrg}
@@ -609,7 +609,7 @@ sub AgentQueueListOption {
                     . $String
                     . "</option>\n";
             }
-            elsif ( $CurrentQueueID eq $_ )
+            elsif ( $CurrentQueueID eq $Item )
             {
                 $Param{MoveQueuesStrg}
                     .= '<option value="-" disabled="disabled"'
@@ -1042,6 +1042,14 @@ sub TicketMetaItems {
     # return attributes
     my @Result;
 
+    my $PriorityObject = $Kernel::OM->Get('Kernel::System::Priority');
+    
+    my $PriorityColor = $PriorityObject->PriorityColor(
+        PriorityID => $Param{Ticket}->{PriorityID},
+        UserID     => $Self->{UserID},
+    );
+    $PriorityColor = $Param{Ticket}->{PriorityColor};
+
     # show priority
     push @Result, {
 
@@ -1049,6 +1057,7 @@ sub TicketMetaItems {
         Title      => $Param{Ticket}->{Priority},
         Class      => 'Flag',
         ClassSpan  => 'PriorityID-' . $Param{Ticket}->{PriorityID},
+        StyleSpan  => $PriorityColor ? "background-color: $PriorityColor;" : '',
         ClassTable => 'Flags',
     };
 

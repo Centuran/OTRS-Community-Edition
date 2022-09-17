@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.999486301369863;
+    $Self->{Completeness}        = 0.997770154373928;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -728,9 +728,6 @@ sub Data {
         'Time units' => 'Időegységek',
         'Execute Ticket Commands' => 'Jegyparancsok végrehajtása',
         'Send agent/customer notifications on changes' => 'Ügyintéző/ügyfél értesítések küldése módosításkor',
-        'CMD' => 'PARANCS',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'Ez a parancs lesz végrehajtva. Az ARG[0] lesz a jegy száma. Az ARG[1] lesz a jegy azonosítója.',
         'Delete tickets' => 'Jegyek törlése',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'Figyelem: Minden érintett jegy el lesz távolítva az adatbázisból, és nem lehet visszaállítani!',
@@ -2439,6 +2436,14 @@ sub Data {
             'Megváltoztathatja a profilképét, ha regisztrálja az e-mail címét (%s) a következő oldalon: %s. Ne feledje, hogy a gyorsítótárazás miatt eltarthat egy ideig, amíg az új profilképe elérhetővé válik.',
         'Off' => 'Ki',
         'End' => 'Befejezés',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Kicsi',
+        'Medium' => 'Közepes',
+        'Large' => 'Nagy',
         'This setting can currently not be saved.' => 'Ezt a beállítás jelenleg nem lehet elmenteni.',
         'This setting can currently not be saved' => 'Ezt a beállítás jelenleg nem lehet elmenteni',
         'Save this setting' => 'Beállítás mentése',
@@ -2838,10 +2843,10 @@ sub Data {
         'User name' => 'Felhasználónév',
         'Your user name' => 'A felhasználóneve',
         'Your password' => 'A jelszava',
-        'Forgot password?' => 'Elfelejtette a jelszót?',
         '2 Factor Token' => 'Kétlépcsős token',
         'Your 2 Factor Token' => 'Az Ön kétlépcsős tokenje',
         'Log In' => 'Bejelentkezés',
+        'Forgot password?' => 'Elfelejtette a jelszót?',
         'Not yet registered?' => 'Még nem regisztrált?',
         'Back' => 'Vissza',
         'Request New Password' => 'Új jelszó kérése',
@@ -4393,9 +4398,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => 'Nincs %s!',
-        'No such user!' => 'Nincs ilyen felhasználó!',
         'Invalid calendar!' => 'Érvénytelen naptár!',
-        'Invalid URL!' => 'Érvénytelen URL!',
         'There was an error exporting the calendar!' => 'Hiba történt a naptár exportálásakor!',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4948,11 +4951,6 @@ sub Data {
         'Maximum Query Size' => 'Legnagyobb lekérdezési méret',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             'A „max_allowed_packet” beállításnak nagyobbnak kell lennie mint 64 MB.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => 'Lekérdezési gyorsítótár méret',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            'A „query_cache_size” beállítást használni kell (nagyobb mint 10 MB, de nem több mint 512 MB).',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => 'Alapértelmezett tárolómotor',
@@ -6009,8 +6007,6 @@ Az Ön segélyszolgálat csapata
             'Lehetővé teszi a kiterjesztett keresési feltételeket az ügyfélfelület jegykeresésében. Ezzel a funkcióval rákereshet például a jegycímre olyan típusú feltételekkel mint „(*kulcs1*&&*kulcs2*)” vagy „(*kulcs1*||*kulcs2*)”.',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             'Lehetővé teszi a kiterjesztett keresési feltételeket az általános ügyintézői felület jegykeresésében. Ezzel a funkcióval rákereshet például a jegycímre olyan típusú feltételekkel mint „(*kulcs1*&&*kulcs2*)” vagy „(*kulcs1*||*kulcs2*)”.',
-        'Allows generic agent to execute custom command line scripts.' =>
-            'Lehetővé teszi az általános ügyintézőnek az egyéni parancssori parancsfájlok végrehajtását.',
         'Allows generic agent to execute custom modules.' => 'Lehetővé teszi az általános ügyintézőnek az egyéni modulok végrehajtását.',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             'Lehetővé teszi a közepes formátumú jegyáttekintőt (CustomerInfo => 1 – megjeleníti az ügyfél-információkat is).',
@@ -6088,8 +6084,6 @@ Az Ön segélyszolgálat csapata
         'Bounced to "%s".' => 'Átirányítva ide: „%s”.',
         'Bulgarian' => 'Bolgár',
         'Bulk Action' => 'Tömeges művelet',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'PARANCS példa beállítás. Mellőzi azokat az e-maileket, ahol a külső PARANCS néhány kimenettel tér vissza a SZABVÁNYOS KIMENETEN (az e-mail át lesz irányítva a some.bin SZABVÁNYOS BEMENETÉRE).',
         'CSV Separator' => 'CSV elválasztó',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             'Gyorsítótárazás ideje másodpercben az ügyintéző hitelesítésénél az általános felületen.',
@@ -6901,8 +6895,6 @@ Az Ön segélyszolgálat csapata
         'Defines the number of hours a successful communication will be stored.' =>
             'Meghatározza azon órák számát, amíg egy sikeres kommunikáció el lesz tárolva.',
         'Defines the parameters for the customer preferences table.' => 'Meghatározza az ügyfélbeállítások tábla paramétereit.',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            'Meghatározza a vezérlőpult háttérprogram paramétereit. A „Cmd” egy paraméterekkel ellátott parancs megadásához használható. A „Group” használható a hozzáférés korlátozásához a bővítményre (például Group: admin;csoport1;csoport2;). A „Default” jelzi, hogy a bővítmény alapértelmezetten engedélyezve van, vagy hogy a felhasználónak kézzel kell engedélyeznie azt. A „CacheTTL” a bővítmény gyorsítótár lejárati időtartamát jelzi percben. A „Mandatory” határozza meg, hogy a bővítmény mindig megjelenjen, és az ügyintézők ne tudják eltávolítani.',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             'Meghatározza a vezérlőpult háttérprogram paramétereit. A „Group” használható a hozzáférés korlátozásához a bővítményre (például Group: admin;csoport1;csoport2;). A „Default” jelzi, hogy a bővítmény alapértelmezetten engedélyezve van, vagy hogy a felhasználónak kézzel kell engedélyeznie azt. A „CacheTTL” a bővítmény gyorsítótár lejárati időtartamát jelzi percben. A „Mandatory” határozza meg, hogy a bővítmény mindig megjelenjen, és az ügyintézők ne tudják eltávolítani.',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7418,8 +7410,6 @@ Az Ön segélyszolgálat csapata
             'Ha „Radius” lett kiválasztva a Customer::AuthModule modulnál, akkor meg kell adni a radius kiszolgálót.',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Ha „Radius” lett kiválasztva a Customer::AuthModule modulnál, akkor megadhatja, hogy az alkalmazás leálljon, ha például hálózati problémák miatt nem lehet kapcsolatot létesíteni a kiszolgálóval.',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            'Ha „Sendmail” lett kiválasztva a SendmailModule modulnál, akkor meg kell adni a sendmail bináris helyét és a szükséges beállításokat.',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'Ha „SysLog” lett kiválasztva a LogModule modulnál, akkor megadható egy speciális naplózó összetevő.',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7472,6 +7462,8 @@ Az Ön segélyszolgálat csapata
             'Ha be van állítva, akkor ez a cím lesz használva a kimenő értesítések boríték küldő fejléceként. Ha nincs cím beállítva, a boríték küldő fejléc üres (hacsak a SendmailNotificationEnvelopeFrom::FallbackToEmailFrom be nincs állítva).',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Ha be van állítva, akkor ez a cím lesz használva boríték küldőként a kimenő üzenetekben (nem értesítések – lásd lent). Ha nincs cím beállítva, a boríték küldő megegyezik a várólista e-mail címével.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             'Ha ez a beállítás engedélyezve van, akkor a webes felületen keresztül, az ügyfelek vagy az ügyintézők által létrehozott jegyek egy automatikus választ fognak kapni, ha be van állítva. Ha ez a beállítás nincs engedélyezve, akkor nem lesznek automatikus válaszok elküldve.',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7484,6 +7476,7 @@ Az Ön segélyszolgálat csapata
             'Ha irodán kívül lesz, akkor érdemes lenne azt a többi felhasználóval tudatni a távollét pontos dátumának beállításával.',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             'Annak mellőzése, hogy a rendszer által küldött bejegyzéstípusok (például automatikus válaszok vagy e-mail értesítések) „olvasatlan bejegyzésként” legyenek megjelölve az ügyintézői jegynagyításban vagy automatikusan ki legyenek nyitva a nagy nézet képernyőkben.',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => 'Időpontok importálása képernyő.',
         'Include tickets of subqueues per default when selecting a queue.' =>
             'Az alvárólisták jegyeinek felvétele alapértelmezetten egy várólista kijelölésekor.',
@@ -7518,7 +7511,6 @@ Az Ön segélyszolgálat csapata
         'JavaScript function for the search frontend.' => 'JavaScript függvény a keresési előtétprogramhoz.',
         'Korean' => 'Koreai',
         'Language' => 'Nyelv',
-        'Large' => 'Nagy',
         'Last Screen Overview' => 'Utolsó képernyő áttekintője',
         'Last customer subject' => 'Legutóbbi ügyféltárgy',
         'Lastname Firstname' => 'Vezetéknév Keresztnév',
@@ -7635,7 +7627,6 @@ Az Ön segélyszolgálat csapata
             'Ennek a műveletnek az eredményében megjelenített jegyek legnagyobb száma.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Az ügyfél-információs tábla legnagyobb mérete (karakterben) a jegynagyítás nézeten.',
-        'Medium' => 'Közepes',
         'Merge this ticket and all articles into another ticket' => 'A jegy és minden bejegyzés egyesítése egy másik jegybe',
         'Merged Ticket (%s/%s) to (%s/%s).' => 'Jegy (%s/%s) egyesítve ezzel: (%s/%s).',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => 'A(z) <OTRS_TICKET> jegy egyesítve a következővel: <OTRS_MERGE_TO_TICKET>.',
@@ -7720,7 +7711,6 @@ Az Ön segélyszolgálat csapata
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyintézői felületen.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyfélfelületen.',
-        'Number of tickets to be displayed in each page.' => 'Az egyes oldalakon megjelenített jegyek száma.',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'Az OTRS képes egy vagy több csak olvasható tükör adatbázist használni az olyan költséges műveleteknél, mint például a szabad-szavas keresés vagy a statisztikák előállítása. Itt adhatja meg a DNS-t az első tükör adatbázishoz.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7948,7 +7938,6 @@ Az Ön segélyszolgálat csapata
         'SMS' => 'SMS',
         'SMS (Short Message Service)' => 'SMS (rövid szöveges üzenet)',
         'Salutations' => 'Megszólítások',
-        'Sample command output' => 'Minta parancskimenet',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             'Elmenti a bejegyzések mellékleteit. A „DB” minden adatot az adatbázisban tárol (nem ajánlott nagy mellékletek tárolásához). Az „FS” a fájlrendszeren tárolja az adatokat. Ez gyorsabb, de a webkiszolgálót az OTRS felhasználó alatt kell futtatni. Adatvesztés nélkül válthat át a modulok között még egy olyan rendszeren is, amely produktív használatban van. Megjegyzés: A mellékletnevek keresése nem támogatott „FS” használata esetén.',
         'Schedule a maintenance period.' => 'Egy karbantartási időszakot ütemez.',
@@ -7964,6 +7953,7 @@ Az Ön segélyszolgálat csapata
         'Second Queue' => 'Második várólista',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Annak kiválasztása, hogy a jegyáttekintőket milyen időszakonként kell automatikusan frissíteni.',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             'Annak kiválasztása, hogy alapértelmezetten hány jegyet kell megjeleníteni az áttekintőkben.',
         'Select the main interface language.' => 'A felület fő nyelvének kiválasztása.',
@@ -7974,6 +7964,8 @@ Az Ön segélyszolgálat csapata
             'Személyes időzóna kiválasztása. Az összes idő ettől az időzónától relatívan lesz megjelenítve.',
         'Select your preferred layout for the software.' => 'Az előnyben részesített elrendezés kiválasztása a szoftverhez.',
         'Select your preferred theme for OTRS.' => 'Az előnyben részesített téma kiválasztása az OTRS-hez.',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => 'Kiválasztja a használandó gyorsítótár háttérprogramot.',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             'Kiválasztja a modult a webes felületen keresztüli feltöltések kezeléséhez. A „DB” minden feltöltést adatbázisban tárol, az „FS” a fájlrendszert használja.',
@@ -8229,7 +8221,6 @@ Az Ön segélyszolgálat csapata
             'Egy felelős kiválasztás megjelenítése a telefon és e-mail jegyekben az ügyintézői felületen.',
         'Show article as rich text even if rich text writing is disabled.' =>
             'Bejegyzés megjelenítése RichTextként még akkor is, ha a RichText írás le van tiltva.',
-        'Show command line output.' => 'Parancssori kimenet megjelenítése.',
         'Show queues even when only locked tickets are in.' => 'Várólisták megjelenítése még akkor is, ha csak zárolt jegyek vannak bennük.',
         'Show the current owner in the customer interface.' => 'Az aktuális tulajdonos megjelenítése az ügyfélfelületen.',
         'Show the current queue in the customer interface.' => 'Az aktuális várólista megjelenítése az ügyfélfelületen.',
@@ -8336,8 +8327,6 @@ Az Ön segélyszolgálat csapata
             'Megjeleníti a jegyáttekintő előnézetét (CustomerInfo => 1 – az ügyfél-információt is megjeleníti, a CustomerInfoMaxSize az ügyfél-információ legnagyobb mérete karakterben).',
         'Shows all both ro and rw queues in the queue view.' => 'Megjeleníti a csak olvasható és az írható, olvasható várólistákat is a várólista nézetben.',
         'Shows all both ro and rw tickets in the service view.' => 'Megjeleníti a csak olvasható és az írható, olvasható jegyeket is a szolgáltatás nézetben.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'Megjelenít minden nyitott jegyet (akkor is, ha zárolt) az ügyintézői felület eszkalációs nézetében.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             'Megjeleníti a jegy összes bejegyzését (kinyitva) az ügyintézői nagyítás nézetben.',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8410,9 +8399,9 @@ Az Ön segélyszolgálat csapata
         'Signatures' => 'Aláírások',
         'Simple' => 'Egyszerű',
         'Skin' => 'Felszín',
+        'Skin Options' => '',
         'Slovak' => 'Szlovák',
         'Slovenian' => 'Szlovén',
-        'Small' => 'Kicsi',
         'Software Package Manager.' => 'Szoftvercsomag-kezelő.',
         'Solution time' => 'Megoldási idő',
         'SolutionDiffInMin' => 'Megoldás különbsége percben',
@@ -8424,10 +8413,6 @@ Az Ön segélyszolgálat csapata
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             'Rendezi a jegyeket (növekvően vagy csökkenően), ha egyedüli várólista van kiválasztva a szolgáltatás nézetben, és miután a jegyek prioritás szerint lettek rendezve. Értékek: 0 = növekvő (legrégebbi felül, alapértelmezett), 1 = csökkenő (legfiatalabb felül). Használja a szolgáltatás-azonosítót a kulcshoz és a 0 vagy az 1 számjegyeket az értékhez.',
         'Spam' => 'Levélszemét',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'Spam Assassin példa beállítás. Mellőzi azokat az e-maileket, amelyeket a SpamAssassin megjelölt.',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            'Spam Assassin példa beállítás. Áthelyezi a megjelölt leveleket a spam várólistába.',
         'Spanish' => 'Spanyol',
         'Spanish (Colombia)' => 'Spanyol (Kolumbia)',
         'Spanish (Mexico)' => 'Spanyol (Mexikó)',
@@ -8455,14 +8440,6 @@ Az Ön segélyszolgálat csapata
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             'Megadja a fájl útvonalát az oldal fejlécében lévő logóhoz (gif|jpg|png, 700 x 100 képpont).',
         'Specifies the path of the file for the performance log.' => 'Megadja a fájl útvonalát a teljesítménynaplóhoz.',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'Megadja az átalakító útvonalát, amely lehetővé teszi a Microsoft Excel fájlok megtekintését a webes felületen.',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'Megadja az átalakító útvonalát, amely lehetővé teszi a Microsoft Word fájlok megtekintését a webes felületen.',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'Megadja az átalakító útvonalát, amely lehetővé teszi a PDF dokumentumok megtekintését a webes felületen.',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'Megadja az átalakító útvonalát, amely lehetővé teszi az XML fájlok megtekintését a webes felületen.',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'Azt a szöveget adja meg, amelynek a naplófájlban kell megjelennie egy CGI parancsfájl bejegyzést jelezve.',
         'Specifies user id of the postmaster data base.' => 'Megadja a levelezési adatbázis felhasználó-azonosítóját.',

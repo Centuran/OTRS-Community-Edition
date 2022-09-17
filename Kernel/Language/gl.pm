@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.516438356164384;
+    $Self->{Completeness}        = 0.514922813036021;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -724,9 +724,6 @@ sub Data {
         'Time units' => 'Unidades de tempo',
         'Execute Ticket Commands' => 'Execute Comandos de Ticket',
         'Send agent/customer notifications on changes' => 'Enviar notificacións sobre os cambios ao axente/cliente',
-        'CMD' => 'CMD',
-        'This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id.' =>
-            'Este comando será executado. ARG[0] sera o número de ticket. ARG[1] será o id do ticket.',
         'Delete tickets' => 'Borre tickets',
         'Warning: All affected tickets will be removed from the database and cannot be restored!' =>
             'Alerta: Tódolos tickets afectados serán eliminados da base de datos en non poderanse reestablecer! ',
@@ -2435,6 +2432,14 @@ sub Data {
             '',
         'Off' => 'Desactivado',
         'End' => 'Fin',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Example of small text' => '',
+        'Example of medium text' => '',
+        'Example of large text' => '',
+        'Small' => 'Pequeno',
+        'Medium' => 'Medio',
+        'Large' => 'Grande',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -2834,10 +2839,10 @@ sub Data {
         'User name' => 'Nome do usuario',
         'Your user name' => 'O seu nome de usuario',
         'Your password' => 'O seu contrasinal',
-        'Forgot password?' => 'Esqueceu o contrasinal?',
         '2 Factor Token' => '2 Factor Token',
         'Your 2 Factor Token' => 'Teus 2 Factor Token',
         'Log In' => 'Acceso',
+        'Forgot password?' => 'Esqueceu o contrasinal?',
         'Not yet registered?' => 'Aínda non se rexistrou?',
         'Back' => 'Volver',
         'Request New Password' => 'Solicitar un contrasinal novo',
@@ -4389,9 +4394,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/PublicCalendar.pm
         'No %s!' => '',
-        'No such user!' => '',
         'Invalid calendar!' => '',
-        'Invalid URL!' => '',
         'There was an error exporting the calendar!' => '',
 
         # Perl Module: Kernel/Modules/PublicRepository.pm
@@ -4944,11 +4947,6 @@ sub Data {
         'Maximum Query Size' => 'Tamaño Máximo da Consulta',
         'The setting \'max_allowed_packet\' must be higher than 64 MB.' =>
             '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Performance.pm
-        'Query Cache Size' => 'Tamaño da Cache da Consulta',
-        'The setting \'query_cache_size\' should be used (higher than 10 MB but not more than 512 MB).' =>
-            'Deberíase empregar a opción «query_cache_size» (maior de 10 MB mais non de 512 MB).',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/StorageEngine.pm
         'Default Storage Engine' => 'Motor de almacenamento predeterminado',
@@ -5994,8 +5992,6 @@ Thanks for your help!
             '',
         'Allows extended search conditions in ticket search of the generic agent interface. With this feature you can search e. g. ticket title with this kind of conditions like "(*key1*&&*key2*)" or "(*key1*||*key2*)".' =>
             '',
-        'Allows generic agent to execute custom command line scripts.' =>
-            '',
         'Allows generic agent to execute custom modules.' => '',
         'Allows having a medium format ticket overview (CustomerInfo => 1 - shows also the customer information).' =>
             'Permite ter unha visión xeral de ticket de formato medio (CustomerInfo => 1 - mostra tamén a información de clientes).',
@@ -6073,8 +6069,6 @@ Thanks for your help!
         'Bounced to "%s".' => 'Rebotado para «%s».',
         'Bulgarian' => '',
         'Bulk Action' => 'Acción en masa',
-        'CMD example setup. Ignores emails where external CMD returns some output on STDOUT (email will be piped into STDIN of some.bin).' =>
-            'Montaxe exemplo CMD. Ignora os correos electrónicos onde unha CMD externa retorna nun STDOUT (correo será canalizado en STDIN de some.bin).',
         'CSV Separator' => 'Separador de CSV',
         'Cache time in seconds for agent authentication in the GenericInterface.' =>
             'Tempo cache en segundos para á autenticación de axente na InterfaceXenérica.',
@@ -6886,8 +6880,6 @@ Thanks for your help!
         'Defines the number of hours a successful communication will be stored.' =>
             '',
         'Defines the parameters for the customer preferences table.' => 'Define os parametros para a táboa de preferencias de cliente.',
-        'Defines the parameters for the dashboard backend. "Cmd" is used to specify command with parameters. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
-            '',
         'Defines the parameters for the dashboard backend. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
             '',
         'Defines the parameters for the dashboard backend. "Limit" defines the number of entries displayed by default. "Group" is used to restrict access to the plugin (e. g. Group: admin;group1;group2;). "Default" indicates if the plugin is enabled by default or if the user needs to enable it manually. "CacheTTL" indicates the cache expiration period in minutes for the plugin. "Mandatory" determines if the plugin is always shown and can not be removed by agents.' =>
@@ -7403,8 +7395,6 @@ Thanks for your help!
             'Se "Radio" foi seleccionado para Customer::AuthModule, o host do radio debe ser especificado.',
         'If "Radius" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Se "Radio" foi seleccionado para Customer::AuthModule, pode especificar se as aplicacións van parar se ex. unha conexión a un servidor non pode ser establecida debido a problemas na rede.',
-        'If "Sendmail" was selected as SendmailModule, the location of the sendmail binary and the needed options must be specified.' =>
-            'Se "Enviarmail" foi seleccionado coma EnviarmailModule, a localización do binario sendmail e as opcións necesitadas deben ser especificadas.',
         'If "SysLog" was selected for LogModule, a special log facility can be specified.' =>
             'Se "SysLog" foi seleccionado para LogModulo, unha instalación especial de log pode ser especificada.',
         'If "SysLog" was selected for LogModule, the charset that should be used for logging can be specified.' =>
@@ -7457,6 +7447,8 @@ Thanks for your help!
             '',
         'If set, this address is used as envelope sender in outgoing messages (not notifications - see below). If no address is specified, the envelope sender is equal to queue e-mail address.' =>
             'Se é fixado, este enderezo é utilizado como remitente de sobre en mensaxes de saída (non notificacións - vexa abaixo). Se ningún enderezo é especificado, o remitente de sobre é igual o enderezo de correo electrónico da cola.',
+        'If the "default" agent skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7469,6 +7461,7 @@ Thanks for your help!
             '',
         'Ignore system sender article types (e. g. auto responses or email notifications) to be flagged as \'Unread Article\' in AgentTicketZoom or expanded automatically in Large view screens.' =>
             '',
+        'Ignores attributes not related to tickets.' => '',
         'Import appointments screen.' => '',
         'Include tickets of subqueues per default when selecting a queue.' =>
             '',
@@ -7503,7 +7496,6 @@ Thanks for your help!
         'JavaScript function for the search frontend.' => '',
         'Korean' => '',
         'Language' => 'Idioma',
-        'Large' => 'Grande',
         'Last Screen Overview' => '',
         'Last customer subject' => '',
         'Lastname Firstname' => '',
@@ -7620,7 +7612,6 @@ Thanks for your help!
             'Número máximo de tickets para ser mostrados no resultado desta operación.',
         'Maximum size (in characters) of the customer information table in the ticket zoom view.' =>
             'Tamaño máximo (en carácteres) da táboa de información de cliente na vista zoom de ticket.',
-        'Medium' => 'Medio',
         'Merge this ticket and all articles into another ticket' => '',
         'Merged Ticket (%s/%s) to (%s/%s).' => '',
         'Merged Ticket <OTRS_TICKET> to <OTRS_MERGE_TO_TICKET>.' => '',
@@ -7705,7 +7696,6 @@ Thanks for your help!
             'Número de tickets para ser mostrados en cada páxina dun resultado de busca na interface de axente.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Número de tickets para ser mostrados en cada páxina dun resultado de busca na interface de cliente.',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7933,7 +7923,6 @@ Thanks for your help!
         'SMS' => '',
         'SMS (Short Message Service)' => '',
         'Salutations' => 'Saúdos',
-        'Sample command output' => 'Saída comando exemplo',
         'Saves the attachments of articles. "DB" stores all data in the database (not recommended for storing big attachments). "FS" stores the data on the filesystem; this is faster but the webserver should run under the OTRS user. You can switch between the modules even on a system that is already in production without any loss of data. Note: Searching for attachment names is not supported when "FS" is used.' =>
             'Garda os anexos dos artigos. «BD» almacena todos os datos na base de datos (non se recomenda para almacenar anexos grandes). «SF» almacena os datos no sistema de ficheiros; isto é máis rápido mais o servidor web debería ser executado co usuario OTRS. Pódese alternar entre os módulos mesmo nun sistema que xa estea en produción, sen perda de datos. Nota: A busca nos nomes dos anexos non é posíbel cando se emprega «SF».',
         'Schedule a maintenance period.' => 'Planifique un periodo mantemento.',
@@ -7949,6 +7938,7 @@ Thanks for your help!
         'Second Queue' => 'Segunda Cola',
         'Select after which period ticket overviews should refresh automatically.' =>
             '',
+        'Select configuration options of the selected skin.' => '',
         'Select how many tickets should be shown in overviews by default.' =>
             '',
         'Select the main interface language.' => '',
@@ -7959,6 +7949,8 @@ Thanks for your help!
             '',
         'Select your preferred layout for the software.' => '',
         'Select your preferred theme for OTRS.' => '',
+        'Selects if parent/child processes (using the :: separator) are displayed as a list or as a tree.' =>
+            '',
         'Selects the cache backend to use.' => 'Seleccione o cache backend a usar.',
         'Selects the module to handle uploads via the web interface. "DB" stores all uploads in the database, "FS" uses the file system.' =>
             'Selecciona el módulo para manexar cargas vía a interface web. "BD" garda tódalas cargas na base de datos, "FS" emprega o arquivo de sistema.',
@@ -8214,7 +8206,6 @@ Thanks for your help!
             'Mostra unha selección de responsable en tickets telefónicos e de correo electronico na interface de axente.',
         'Show article as rich text even if rich text writing is disabled.' =>
             'Mostrar artigo coma texto rico inluso se a escritura en texto rico está deshabilitada.',
-        'Show command line output.' => '',
         'Show queues even when only locked tickets are in.' => '',
         'Show the current owner in the customer interface.' => 'Mostrar o dono actual na interface do cliente.',
         'Show the current queue in the customer interface.' => 'Mostrar a fila actual na interface do cliente.',
@@ -8321,8 +8312,6 @@ Thanks for your help!
             'Mostra unha vista previa da vista xeral de ticket (ClienteInfo => 1 - mostra tamén Cliente-Info, ClienteInfoMaxTamaño max. tamaño en carácteres de Cliente-Info).',
         'Shows all both ro and rw queues in the queue view.' => 'Mostra ambas as dúas colas ro and rw na vista da cola.',
         'Shows all both ro and rw tickets in the service view.' => 'Mostra ambas os dous tickets ro and rw na vista dde servizo.',
-        'Shows all open tickets (even if they are locked) in the escalation view of the agent interface.' =>
-            'Mostra tódolos tickets abertos (incluso se están bloqueados) na vista de escalado da interface de axente.',
         'Shows all the articles of the ticket (expanded) in the agent zoom view.' =>
             '',
         'Shows all the articles of the ticket (expanded) in the customer zoom view.' =>
@@ -8395,9 +8384,9 @@ Thanks for your help!
         'Signatures' => 'Sinaturas',
         'Simple' => '',
         'Skin' => 'Aparencia',
+        'Skin Options' => '',
         'Slovak' => '',
         'Slovenian' => '',
-        'Small' => 'Pequeno',
         'Software Package Manager.' => '',
         'Solution time' => '',
         'SolutionDiffInMin' => 'SolucionDifEnMin',
@@ -8409,10 +8398,6 @@ Thanks for your help!
         'Sorts the tickets (ascendingly or descendingly) when a single queue is selected in the service view and after the tickets are sorted by priority. Values: 0 = ascending (oldest on top, default), 1 = descending (youngest on top). Use the ServiceID for the key and 0 or 1 for value.' =>
             'Ordea os tickets (ascendente ou descendentemente) cando unha única cola é seleccionada na vista de servizo e despois os tickets son ordeados por prioridade. Valores: 0 = ascendente (mais vello enriba, por defecto), 1 = descendente (mais novo enriba). Use IDServizo para a chave e 0 ou 1 para o valor.',
         'Spam' => '',
-        'Spam Assassin example setup. Ignores emails that are marked with SpamAssassin.' =>
-            'Exemplo de montaxe de Asasino de Spam. Ignorar correos electrónicos marcados con AsasinoSpam.',
-        'Spam Assassin example setup. Moves marked mails to spam queue.' =>
-            'Exemplo de mantaxe de Asasino de Spam. Mover correos electrónicos marcados á cola de spam.',
         'Spanish' => '',
         'Spanish (Colombia)' => '',
         'Spanish (Mexico)' => '',
@@ -8440,14 +8425,6 @@ Thanks for your help!
         'Specifies the path of the file for the logo in the page header (gif|jpg|png, 700 x 100 pixel).' =>
             'Especifica a ruta do arquivo para o logo na cabeceira de páxina (gif|jpg|png, 700 x 100 pixel).',
         'Specifies the path of the file for the performance log.' => 'Especifica a ruta do arquivo de rendemento de log.',
-        'Specifies the path to the converter that allows the view of Microsoft Excel files, in the web interface.' =>
-            'Especifica a ruta ao conversor que permite a vista de arquivos Microsoft Excel, na interface web.',
-        'Specifies the path to the converter that allows the view of Microsoft Word files, in the web interface.' =>
-            'Especifica a ruta ao conversor que permite a vista de arquivos Microsoft Word, na interface web.',
-        'Specifies the path to the converter that allows the view of PDF documents, in the web interface.' =>
-            'Especifica a ruta ao conversor que permite a vista de documentos PDF, na interface web.',
-        'Specifies the path to the converter that allows the view of XML files, in the web interface.' =>
-            'Especifica a ruta ao conversor que permite a vista de arquivos XML, na interface web.',
         'Specifies the text that should appear in the log file to denote a CGI script entry.' =>
             'Especifica o texto que debería aparecer no arquivo log para indicar unha entrada de script de CGI.',
         'Specifies user id of the postmaster data base.' => 'Especifica o id usuario da base de datos postmaster.',

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -235,6 +235,19 @@ $Selenium->RunTest(
 
         $CheckBreadcrumb->(
             BreadcrumbText => 'Install Package:',
+        );
+
+        $ClickAction->("//button[\@value='Continue'][\@type='submit']");
+
+        $Self->Is(
+            scalar(@{$Selenium->find_elements('.IntroInstall script', 'css')}),
+            0,
+            'No unsafe <script> element is found'
+        );
+
+        $Self->True(
+            $Selenium->execute_script('return window.__xss === undefined;'),
+            'No unsafe JavaScript code was executed'
         );
 
         $ClickAction->("//button[\@value='Continue'][\@type='submit']");

@@ -1,0 +1,325 @@
+@use "sass:list";
+
+.ItemListGrid {
+  display: grid;
+  gap: 10px 10px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding-top: 0;
+
+  & > li {
+    border: solid 1px #e0e0e0;
+    border-radius: 4px;
+    display: block;
+    float: none;
+    height: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    max-width: none;
+    min-width: none;
+    width: auto;
+
+    & > a {
+      background: #e0e0e0;
+      background: #f6f6f6;
+      background-size: 11%;
+      background-repeat: no-repeat;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0px 1px 0px rgba(0,0,0, 0.2),
+        0px 1px 1px rgba(0,0,0, 0.2);
+      padding: 0.8em;
+      padding-top: 0.8em;
+      text-align: left;
+      transition: all ease 0.2s;
+
+      &:not(.Disabled):hover {
+        background: #fff;
+      }
+    }
+
+    span.Title {
+      font-size: inherit;
+      font-weight: 500;
+      margin: 0;
+      margin-left: 15%;
+    }
+
+    span.Description {
+      font-size: 90%;
+      margin: 0;
+      margin-left: 15%;
+    }
+  }
+}
+
+.ItemListGrid.WithIcons {
+  & > li {
+    background: #f0f0f0;
+    height: auto;
+
+    span.Icons {
+      border: none;
+      height: auto;
+      left: 0.8em;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0.8em;
+      width: 10%;
+
+      i.fa {
+        font-size: 150%;
+        line-height: inherit;
+
+        &::before {
+          font-family: "Material Design Icons";
+          content: "";
+          transition: all ease 0.2s;
+        }
+
+        &.Icon2 {
+          background: transparent;
+          border: none;
+          left: 50%;
+          top: 25%;
+          padding: 0;
+          font-size: 100% !important;
+          position: relative;
+          left: -10%;
+          top: 12%;
+          margin-left: -0.5em;
+          
+          &::before {
+            color: lighten(slategray, 20%) !important;
+          }
+        }
+
+        @each $fa_name, $mdi_name in $fa_to_mdi {
+          &.fa-#{$fa_name}::before {
+            content: mdi($mdi_name);
+          }
+        }
+      }
+    }
+
+    & > a {
+      padding-top: 0.8em;
+
+      &:not(.Disabled):hover {
+        span.Icons {
+          background: none;
+
+          i.fa::before {
+            color: #f15a22 !important;
+            color: $primary-color !important;
+          }
+
+          i.fa.Icon2 {
+            background: transparent;
+
+            &::before {
+              color: #ff9a62 !important;
+              color: lighten($primary-color, 20%) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.ItemListGrid.WithIcons {
+  & > li {
+    & > a {
+      background: linear-gradient(90deg, #fff 15%, #ccc 15.2%,
+        transparent 15.4%);
+    }
+
+    span.Title,
+    span.Description {
+      margin-left: 34pt;
+    }
+  }
+}
+
+.ItemListGrid.WithIcons {
+  & > li {
+    & > a {
+      background: #e9e9e9;
+    }
+
+    span.Icons {
+      background: #fff;
+      border: solid 1px #f0f0f0;
+      border-radius: 50%;
+      height: 2.8em;
+      width: 2.8em;
+      text-align: center;
+      line-height: 2.8em;
+      top: 0.4em;
+      left: 0.4em;
+    }
+  }
+}
+
+.ItemListGrid.WithIcons {
+  & > li {
+    & > a {
+      background: #f2f2f2;
+    }
+
+    span.Title {
+      color: #f15a22;
+    }
+  }
+}
+
+.ItemListGrid.WithIcons {
+  & > li {
+    & > a {
+      background: #f2f2f2;
+    }
+
+    span.Title {
+      color: #333;
+    }
+  }
+}
+
+// Style similar to action buttons
+.ItemListGrid.WithIcons {
+  & > li {
+    & > a {
+      background: $button-action-background-color;
+      border: solid 1px $button-action-border-color;
+      box-shadow: $button-action-box-shadow;
+      color: #444;
+
+      span.Icons i.fa::before {
+        color: slategray !important;
+      }
+  
+      span.Title {
+        color: #333;
+      }
+
+      &:not(.Disabled):hover {
+        border: solid 1px $button-action-border-color;
+
+        span.Icons {
+          border-color: $primary-color;
+          background-color: $primary-color;
+
+          i.fa::before {
+            color: white !important;
+          }
+
+          i.fa.Icon2::before {
+            color: darken(white, 10%) !important;
+            color: lighten($primary-color, 25%) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ItemListGrid.WithIcons {
+  $module_icons: (
+    "ACL":                          "playlist-check",
+    "AppointmentNotificationEvent": "calendar-alert",
+    "Attachment":                   "paperclip",
+    "AutoResponse":                 "reply",
+    "CalendarManage":               "calendar",
+    "CommunicationLog":             "email-search",
+    "CustomerCompany":              "office-building",
+    "CustomerGroup":                ("office-building", "account-group"),
+    "CustomerUser":                 "account-outline",
+    "CustomerUserCustomer":         ("account-outline", "office-building"),
+    "CustomerUserGroup":            ("account-outline", "account-group"),
+    "CustomerUserService":          ("account-outline", "cogs"),
+    "DynamicField":                 "form-select",
+    "Email":                        "email-alert",
+    "GenericAgent":                 "robot",
+    "GenericInterfaceWebservice":   "cog-transfer",
+    "Group":                        "account-group",
+    "Log":                          "format-list-bulleted",
+    "MailAccount":                  "email-multiple",
+    "NotificationEvent":            "alert",
+    "PackageManager":               "package",
+    "PerformanceLog":               "chart-bar",
+    "PGP":                          "file-key",
+    "PostMasterFilter":             "filter",
+    "Priority":                     ("sort-ascending": "rotate(180deg) scaleX(-1)"),
+    "ProcessManagement":            "timeline-text",
+    "Queue":                        "folder-text",
+    "QueueAutoResponse":            ("folder-text", "reply"),
+    "QueueTemplates":               ("file-document", "folder-text"),
+    "Role":                         "account-box",
+    "RoleGroup":                    ("account-box", "account-group"),
+    "RoleUser":                     ("account", "account-box"),
+    "Salutation":                   "message-text",
+    "SelectBox":                    "database-search",
+    "Service":                      "cogs",
+    "Session":                      "account-clock",
+    "Signature":                    "pen",
+    "SLA":                          "file-certificate",
+    "SMIME":                        "certificate",
+    "State":                        "format-list-checks",
+    "SupportDataCollector":         "clipboard-check",
+    "SystemAddress":                "at",
+    "SystemConfiguration":          "wrench",
+    "SystemMaintenance":            "progress-wrench",
+    "Template":                     "file-document",
+    "TemplateAttachment":           ("file-document", "paperclip"),
+    "Type":                         "label",
+    "User":                         "account",
+    "UserGroup":                    ("account", "account-group")
+  );
+
+  @each $module, $icons in $module_icons {
+    li[data-module="Admin#{$module}"] {
+      @if type-of($icons) == string {
+        $icons: ( $icons );
+      }
+      
+      $first_icon: true;
+      $icon_class: "";
+
+      @each $icon in $icons {
+        @if not $first_icon {
+          $icon_class: ".Icon2";
+
+          // We have more than one icon -- pretend the line-height is smaller
+          // so that the larger icons are positioned slightly higher
+          span.Icons {
+            line-height: 2.4em;
+          }
+        }
+
+        @if type-of($icon) == string {
+          span.Icons i.fa#{$icon_class}::before {
+            content: mdi($icon);
+          }
+        }
+        @else {
+          @if type-of($icon) == list {
+            $name: list.nth($icon, 1);
+            $transformation: list.nth($icon, 2);
+
+            span.Icons i.fa#{$icon_class} {
+              transform: #{$transformation};
+
+              &::before {
+                content: mdi($name);
+              }
+            }
+          }
+        }
+
+        $first_icon: false;
+      }
+    }
+  }
+}

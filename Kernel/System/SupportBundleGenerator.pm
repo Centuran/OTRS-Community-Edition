@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -13,6 +13,7 @@ use strict;
 use warnings;
 
 use Archive::Tar;
+use Cwd qw( abs_path );
 
 our @ObjectDependencies = (
     'Kernel::Config',
@@ -623,11 +624,17 @@ sub _GetCustomFileList {
     # cleanup file name
     $TempDir =~ s/\/\//\//g;
 
+    # Find paths containing possibly sensitive files to exclude from the list
+    my %SensitivePaths = map {
+        $Self->_AbsolutePath($ConfigObject->Get($_)) => 1
+    } qw( SMIME::CertPath SMIME::PrivatePath );
+
     # check all $Param{Directory}/* in home directory
     my @Files;
     my @List = glob("$Param{Directory}/*");
     FILE:
     for my $File (@List) {
+        next FILE if $SensitivePaths{$Self->_AbsolutePath($File)};
 
         # cleanup file name
         $File =~ s/\/\//\//g;
@@ -719,6 +726,14 @@ sub _MaskPasswords {
 
     return $StringToMask;
 
+}
+
+sub _AbsolutePath {
+    my ( $Self, $Path ) = @_;
+
+    return if !defined $Path || !length $Path;
+
+    return abs_path($Path);
 }
 
 =head1 TERMS AND CONDITIONS

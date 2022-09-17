@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -13,6 +13,7 @@ use strict;
 use warnings;
 
 use Kernel::Language qw(Translatable);
+use Kernel::System::VariableCheck qw(:all);
 
 our @ObjectDependencies = (
     'Kernel::System::Web::Request',
@@ -28,8 +29,8 @@ sub new {
     my $Self = {%Param};
     bless( $Self, $Type );
 
-    for (qw(UserID ConfigItem)) {
-        die "Got no $_!" if ( !$Self->{$_} );
+    for my $Name (qw(UserID ConfigItem)) {
+        die "Got no $Name!" if ( !$Self->{$Name} );
     }
 
     return $Self;
@@ -57,14 +58,25 @@ sub Run {
 
     return 1 if !defined $FilterAction;
 
-    for my $Key ( sort keys %{ $Param{GetParam} } ) {
+    if ( !$Kernel::OM->Get('Kernel::Config')->Get('DemoSystem') ) {
+        KEY:
+        for my $Key ( sort keys %{ $Param{GetParam} } ) {
+            next KEY if !IsArrayRefWithData($Param{GetParam}->{$Key});
 
-        # pref update db
-        if ( !$Kernel::OM->Get('Kernel::Config')->Get('DemoSystem') ) {
+            my %SeenColumns;
+            my @Columns;
+
+            for my $Column ( @{ $Param{GetParam}->{$Key} } ) {
+                push @Columns, $Column if !$SeenColumns{$Column};
+                $SeenColumns{$Column} = 1;
+            }
+
             $Kernel::OM->Get('Kernel::System::User')->SetPreferences(
                 UserID => $Param{UserData}->{UserID},
                 Key    => $Key . '-' . $FilterAction,
-                Value  => $Kernel::OM->Get('Kernel::System::JSON')->Encode( Data => $Param{GetParam}->{$Key} ),
+                Value  => $Kernel::OM->Get('Kernel::System::JSON')->Encode(
+                    Data => \@Columns
+                ),
             );
         }
     }

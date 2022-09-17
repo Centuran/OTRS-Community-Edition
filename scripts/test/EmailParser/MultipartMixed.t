@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -249,7 +249,7 @@ for my $Test (@Tests) {
     $Self->Is(
         $Body,
         $Test->{Body},
-        "Test->{Name} - body",
+        "$Test->{Name} - body",
     );
 
     # Turn on utf-8 flag for parts that were not converted but are still utf-8 for correct comparison.

@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -224,15 +224,18 @@ sub CheckEmail {
 
 =head2 StringClean()
 
-clean a given string
+Removes whitespace from a string. If ReplaceWithWhiteSpace is set to 1,
+then newlines and tabs are replaced with a single space character.
+If RemoveAllSpaces is set to 1, ReplaceWithWhiteSpace has no effect.
 
     my $StringRef = $CheckItemObject->StringClean(
-        StringRef         => \'String',
-        TrimLeft          => 0,  # (optional) default 1
-        TrimRight         => 0,  # (optional) default 1
-        RemoveAllNewlines => 1,  # (optional) default 0
-        RemoveAllTabs     => 1,  # (optional) default 0
-        RemoveAllSpaces   => 1,  # (optional) default 0
+        StringRef             => \'String',
+        TrimLeft              => 0,  # (optional) default 1
+        TrimRight             => 0,  # (optional) default 1
+        RemoveAllNewlines     => 1,  # (optional) default 0
+        RemoveAllTabs         => 1,  # (optional) default 0
+        RemoveAllSpaces       => 1,  # (optional) default 0
+        ReplaceWithWhiteSpace => 1,  # (optional) default 0
     );
 
 =cut
@@ -266,7 +269,7 @@ sub StringClean {
     $Param{TrimRight} = defined $Param{TrimRight} ? $Param{TrimRight} : 1;
 
     my %TrimAction = (
-        RemoveAllNewlines => qr{ [\n\r\f] }xms,
+        RemoveAllNewlines => qr{ (\r\n|\n|\r|\f)+ }xms,
         RemoveAllTabs     => qr{ \t       }xms,
         RemoveAllSpaces   => qr{ [ ]      }xms,
         TrimLeft          => qr{ \A \s+   }xms,
@@ -277,7 +280,18 @@ sub StringClean {
     for my $Action ( sort keys %TrimAction ) {
         next ACTION if !$Param{$Action};
 
-        ${ $Param{StringRef} } =~ s{ $TrimAction{$Action} }{}xmsg;
+        my $Replacement = '';
+
+        if (
+            $Param{ReplaceWithWhiteSpace}
+            && !$Param{RemoveAllSpaces}
+            && ( $Action eq 'RemoveAllNewlines' || $Action eq 'RemoveAllTabs' )
+            )
+        {
+            $Replacement = ' ';
+        }
+
+        ${ $Param{StringRef} } =~ s{ $TrimAction{$Action} }{$Replacement}xmsg;
     }
 
     return $Param{StringRef};

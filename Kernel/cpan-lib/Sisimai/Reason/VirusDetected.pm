@@ -13,13 +13,14 @@ sub match {
     # @since v4.22.0
     my $class = shift;
     my $argv1 = shift // return undef;
-    my $index = [
+
+    state $index = [
         'it has a potentially executable attachment',
         'the message was rejected because it contains prohibited virus or spam content',
         'this form of attachment has been used by recent viruses or other malware',
+        'virus detected',
         'your message was infected with a virus',
     ];
-
     return 1 if grep { rindex($argv1, $_) > -1 } @$index;
     return 0;
 }
@@ -31,7 +32,16 @@ sub true {
     #                                   0: virus was not detected
     # @since v4.22.0
     # @see http://www.ietf.org/rfc/rfc2822.txt
-    return undef;
+    my $class = shift;
+    my $argvs = shift // return undef;
+
+    # The value of "reason" isn't "virusdetected" when the value of "smtpcommand" is an SMTP com-
+    # mand to be sent before the SMTP DATA command because all the MTAs read the headers and the
+    # entire message body after the DATA command.
+    return 1 if $argvs->{'reason'} eq 'virusdetected';
+    return 0 if $argvs->{'smtpcommand'} =~ /\A(?:CONN|EHLO|HELO|MAIL|RCPT)\z/;
+    return 1 if __PACKAGE__->match(lc $argvs->{'diagnosticcode'});
+    return 0;
 }
 
 1;
@@ -89,7 +99,7 @@ azumakuniyuki
 
 =head1 COPYRIGHT
 
-Copyright (C) 2017-2018 azumakuniyuki, All rights reserved.
+Copyright (C) 2017-2019,2021 azumakuniyuki, All rights reserved.
 
 =head1 LICENSE
 

@@ -1,0 +1,79 @@
+@import '../../../../Base/default/css/centuran/variables';
+@import 'customer/variables';
+
+@import '../../../../Base/default/css/centuran/base';
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 100%;
+}
+
+a:link, a[href] {
+  color: $primary-color;
+}
+
+a.Button,
+button {
+  @include button;
+  font-size: initial;
+  font-weight: 500;
+}
+
+fieldset {
+  label {
+    background: none;
+    font-size: initial;
+    width: 25%;
+
+    &.Mandatory span.Marker {
+      top: initial;
+    }
+  }
+}
+
+.jstree-InputField {
+  font-size: 87.5% !important;
+
+  .jstree-wholerow-ul {
+    .jstree-wholerow {
+      // FIXME: "initial" from base styles doesn't seem to produce the same
+      // effect as for agent
+      line-height: 19px;
+
+      &:hover,
+      &.jstree-wholerow-hovered {
+        background-color: $primary-color !important;
+      }
+    }
+  
+    .jstree-anchor {
+      line-height: 19px;
+
+      &.jstree-hovered {
+        color: #fff;
+      }
+    }
+  }
+}
+
+p.AsteriskExplanation {
+  margin: 5px 0;
+}
+
+@mixin primary-button {
+  background-color: $button-primary-color;
+  border: none;
+  box-shadow: $button-primary-box-shadow;
+  color: $button-primary-text-color;
+  line-height: 1.9em;
+  padding: 0.3em 1.2em;
+}
+
+@import 'customer/login';
+@import 'customer/main';
+@import 'customer/new-ticket';
+@import 'customer/preferences';
+@import 'customer/ticket-overview';
+@import 'customer/ticket-process';
+@import 'customer/ticket-search';
+@import 'customer/ticket-zoom';

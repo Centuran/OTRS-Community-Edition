@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -199,6 +199,17 @@ my @NeededModules = (
         },
     },
     {
+        Module    => 'CSS::Minifier::XS',
+        Required  => 0,
+        Comment   => 'CSS::Minifier::XS - XS based CSS minifier, faster than pure Perl CSS::Minifier',
+        InstTypes => {
+            aptget => 'libcss-minifier-xs-perl',
+            emerge => 'dev-perl/CSS-Minifier-XS',
+            zypper => 'perl-CSS-Minifier-XS',
+            ports  => 'converters/p5-CSS-Minifier-XS',
+        },
+    },
+    {
         Module    => 'Date::Format',
         Required  => 1,
         InstTypes => {
@@ -341,6 +352,17 @@ my @NeededModules = (
             emerge => 'dev-perl/JSON-XS',
             zypper => 'perl-JSON-XS',
             ports  => 'converters/p5-JSON-XS',
+        },
+    },
+    {
+        Module    => 'JavaScript::Minifier::XS',
+        Required  => 0,
+        Comment   => 'JavaScript::Minifier::XS - XS based JavaScript minifier, faster than pure Perl JavaScript::Minifier',
+        InstTypes => {
+            aptget => 'libjavascript-minifier-xs-perl',
+            emerge => 'dev-perl/JavaScript-Minifier-XS',
+            zypper => 'perl-JavaScript-Minifier-XS',
+            ports  => 'converters/p5-JavaScript-Minifier-XS',
         },
     },
     {
@@ -525,6 +547,17 @@ my @NeededModules = (
             emerge => 'perl-core/Time-HiRes',
             zypper => 'perl-Time-HiRes',
             ports  => 'devel/p5-Time-HiRes',
+        },
+    },
+    {
+        Module    => 'Unicode::Collate',
+        Required  => 1,
+        Comment   => 'Unicode collation module.',
+        InstTypes => {
+            aptget => 'libunicode-collate-perl',
+            emerge => 'perl-core/Unicode-Collate',
+            zypper => 'perl-Unicode-Collate',
+            ports  => 'textproc/p5-Unicode-Collate',
         },
     },
     {

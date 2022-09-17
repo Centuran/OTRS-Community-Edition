@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -30,6 +30,10 @@
 [% RenderBlockEnd("MetaLink") %]
     <link rel="shortcut icon" href="[% Config("Frontend::ImagePath") %]icons/vendor.ico" type="image/ico" />
     <link rel="apple-touch-icon" href="[% Config("Frontend::ImagePath") %]icons/apple-touch-icon.png" />
+
+[% IF Data.UseModern %]
+    <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]common/fonts/Material-Design-Icons/css/materialdesignicons.min.css" />
+[% END %]
 
 [% RenderBlockStart("CommonCSS") %]
     <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/[% Data.Skin | uri %]/[% Data.CSSDirectory %]/[% Data.Filename %]" />

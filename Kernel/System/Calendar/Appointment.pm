@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -2278,7 +2278,7 @@ sub _AppointmentRecurringCreate {
     elsif ( $Param{Appointment}->{RecurrenceCount} ) {
 
         COUNT:
-        for ( 1 .. $Param{Appointment}->{RecurrenceCount} - 1 ) {
+        for my $Value ( 1 .. $Param{Appointment}->{RecurrenceCount} - 1 ) {
             $Step += $Param{Appointment}->{RecurrenceInterval};
 
             # calculate recurring times
@@ -2500,6 +2500,17 @@ sub _CalculateRecurrenceTime {
     # We will modify this object throughout the function.
     my $CurrentTimeObject = $Param{CurrentTime};
 
+    # Get the original settings of the date/time object
+    my $CurrentTimeObjectSettings = $CurrentTimeObject->Get();
+    # Save the time zone that we want to use finally
+    my $TimeZone = $CurrentTimeObjectSettings->{TimeZone};
+
+    # Convert to floating time zone to be able to do date/time calculations
+    # without worrying about DST (which may result in nonexistent date/time
+    # combinations). The object will be converted back to the original time zone
+    # when we're done.
+    $CurrentTimeObject->ToTimeZone( TimeZone => 'floating' );
+
     if ( $Param{Appointment}->{RecurrenceType} eq 'Daily' ) {
 
         # Add one day.
@@ -2704,6 +2715,9 @@ sub _CalculateRecurrenceTime {
     else {
         return;
     }
+
+    # Convert the object from floating time zone to the desired one
+    $CurrentTimeObject->ToTimeZone( TimeZone => $TimeZone );
 
     return $CurrentTimeObject;
 }
