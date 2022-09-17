@@ -681,6 +681,16 @@
             <Item ValueType="String" ValueRegex="^[0-9]{1,6}$">25</Item>
         </Value>
     </Setting>
+    <Setting Name="SendmailModule::AuthenticationMethod" Required="1" Valid="1" ConfigLevel="200">
+        <Description Translatable="1">Authentication method to use with sendmail module. For 'OAuth2 token', SendmailModule::OAuth2TokenConfigName must be set as well.</Description>
+        <Navigation>Core::Email</Navigation>
+        <Value>
+            <Item ValueType="Select" SelectedID="password">
+                <Item ValueType="Option" Value="password" Translatable="1">Password</Item>
+                <Item ValueType="Option" Value="oauth2_token" Translatable="1">OAuth2 token</Item>
+            </Item>
+        </Value>
+    </Setting>
     <Setting Name="SendmailModule::AuthUser" Required="0" Valid="0" ConfigLevel="200">
         <Description Translatable="1">If any of the "SMTP" mechanisms was selected as SendmailModule, and authentication to the mail server is needed, an username must be specified.</Description>
         <Navigation>Core::Email</Navigation>
@@ -693,6 +703,13 @@
         <Navigation>Core::Email</Navigation>
         <Value>
             <Item ValueType="Password">MailserverPassword</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SendmailModule::OAuth2TokenConfigName" Required="0" Valid="0" ConfigLevel="200">
+        <Description Translatable="1">Name of the OAuth2 token configuration to use with sendmail module. Applies if 'OAuth2 token' is selected as SendmailModule::AuthenticationMethod.</Description>
+        <Navigation>Core::Email</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex=""></Item>
         </Value>
     </Setting>
     <Setting Name="SendmailBcc" Required="0" Valid="1" ConfigLevel="200">
