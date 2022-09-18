@@ -1812,6 +1812,8 @@ CREATE TABLE mail_account (
     queue_id INTEGER NOT NULL,
     trusted SMALLINT NOT NULL,
     imap_folder VARCHAR (250) NULL,
+    auth_method VARCHAR (100) DEFAULT 'password' NOT NULL,
+    oauth2_token_config_id INTEGER NULL,
     comments VARCHAR (250) NULL,
     valid_id SMALLINT NOT NULL,
     create_time timestamp(0) NOT NULL,
@@ -3091,3 +3093,39 @@ IF NOT EXISTS (
 END IF;
 END$$;
 ;
+-- ----------------------------------------------------------
+--  create table oauth2_token_config
+-- ----------------------------------------------------------
+CREATE TABLE oauth2_token_config (
+    id serial NOT NULL,
+    name VARCHAR (250) NOT NULL,
+    config VARCHAR (5000) NOT NULL,
+    valid_id SMALLINT NOT NULL,
+    create_time timestamp(0) NOT NULL,
+    create_by INTEGER NOT NULL,
+    change_time timestamp(0) NOT NULL,
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT oauth2_token_config_name UNIQUE (name)
+);
+-- ----------------------------------------------------------
+--  create table oauth2_token
+-- ----------------------------------------------------------
+CREATE TABLE oauth2_token (
+    id serial NOT NULL,
+    config_id INTEGER NOT NULL,
+    authorization_code VARCHAR (2000) NULL,
+    token VARCHAR (2000) NULL,
+    token_expiration_date timestamp(0) NULL,
+    refresh_token VARCHAR (2000) NULL,
+    refresh_token_expiration_date timestamp(0) NULL,
+    error_message VARCHAR (2000) NULL,
+    error_description VARCHAR (2000) NULL,
+    error_code VARCHAR (250) NULL,
+    create_time timestamp(0) NOT NULL,
+    create_by INTEGER NOT NULL,
+    change_time timestamp(0) NOT NULL,
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT oauth2_token_config_id UNIQUE (config_id)
+);

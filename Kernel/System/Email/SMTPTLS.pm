@@ -12,57 +12,26 @@ package Kernel::System::Email::SMTPTLS;
 use strict;
 use warnings;
 
-use Net::SMTP;
+use parent 'Kernel::System::Email::SMTP';
 
-use parent qw(Kernel::System::Email::SMTP);
+our @ObjectDependencies;
 
-our @ObjectDependencies = (
-    'Kernel::System::Log',
-);
+sub new {
+    my ( $Type, %Param ) = @_;
 
-# Use Net::SSLGlue::SMTP on systems with older Net::SMTP modules that cannot handle SMTPTLS.
-BEGIN {
-    if ( !defined &Net::SMTP::starttls ) {
-        ## nofilter(TidyAll::Plugin::OTRS::Perl::Require)
-        ## nofilter(TidyAll::Plugin::OTRS::Perl::SyntaxCheck)
-        require Net::SSLGlue::SMTP;
-    }
-}
+    my $Self = $Type->SUPER::new(%Param);
+    bless( $Self, $Type );
 
-sub _Connect {
-    my ( $Self, %Param ) = @_;
+    $Self->{_Port} = 587;
 
-    # check needed stuff
-    for my $Name (qw(MailHost FQDN)) {
-        if ( !$Param{$Name} ) {
-            $Kernel::OM->Get('Kernel::System::Log')->Log(
-                Priority => 'error',
-                Message  => "Need $Name!"
-            );
-            return;
-        }
-    }
-
-    # Remove a possible port from the FQDN value
-    my $FQDN = $Param{FQDN};
-    $FQDN =~ s{:\d+}{}smx;
-
-    # set up connection connection
-    my $SMTP = Net::SMTP->new(
-        $Param{MailHost},
-        Hello   => $FQDN,
-        Port    => $Param{SMTPPort} || 587,
-        Timeout => 30,
-        Debug   => $Param{SMTPDebug},
-    );
-
-    return if !$SMTP;
-
-    $SMTP->starttls(
+    $Self->{_StartTLSOptions} = {
         SSL_verify_mode => 0,
-    );
+    };
 
-    return $SMTP;
+    $Self->{FullModuleName} = __PACKAGE__;
+    $Self->{ModuleName}     = __PACKAGE__ =~ s/.*:://r;
+
+    return $Self;
 }
 
 1;

@@ -936,6 +936,11 @@ body .cke_screen_reader_only {
 
 /* Newly introduced rules (TODO: Move to a separate file) */
 
+// Class to disable line wrapping
+.cmt-nowrap {
+  white-space: nowrap;
+}
+
 // Invisible element to force a break into next flex row
 hr.cmt-flex-break {
   height: 0;

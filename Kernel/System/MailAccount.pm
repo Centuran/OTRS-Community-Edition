@@ -54,30 +54,37 @@ sub new {
 
 =head2 MailAccountAdd()
 
-adds a new mail account
+Adds a new mail account.
 
-    $MailAccount->MailAccountAdd(
-        Login         => 'mail',
-        Password      => 'SomePassword',
-        Host          => 'pop3.example.com',
-        Type          => 'POP3',
-        IMAPFolder    => 'Some Folder', # optional, only valid for IMAP-type accounts
-        ValidID       => 1,
-        Trusted       => 0,
-        DispatchingBy => 'Queue', # Queue|From
-        QueueID       => 12,
-        UserID        => 123,
+    my $MailAccountID = $MailAccount->MailAccountAdd(
+        Login                => 'mail',
+        Password             => 'SomePassword',
+        Host                 => 'pop3.example.com',
+        Type                 => 'POP3',
+        IMAPFolder           => 'Some Folder',      # optional, valid for IMAP accounts
+        ValidID              => 1,
+        Trusted              => 0,
+        AuthenticationMethod => 'oauth2_token',     # optional, defaults to 'password'
+        OAuth2TokenConfigID  => 1,                  # optional
+        DispatchingBy        => 'Queue',            # Queue|From
+        QueueID              => 12,
+        UserID               => 123,
     );
+
+Returns:
+
+    $MailAccountID = 1;
 
 =cut
 
 sub MailAccountAdd {
     my ( $Self, %Param ) = @_;
-
-    # check needed stuff
+    
+    my $LogObject = $Kernel::OM->Get('Kernel::System::Log');
+    
     for my $Name (qw(Login Password Host ValidID Trusted DispatchingBy QueueID UserID)) {
         if ( !defined $Param{$Name} ) {
-            $Kernel::OM->Get('Kernel::System::Log')->Log(
+            $LogObject->Log(
                 Priority => 'error',
                 Message  => "$Name not defined!"
             );
@@ -86,7 +93,7 @@ sub MailAccountAdd {
     }
     for my $Name (qw(Login Password Host Type ValidID UserID)) {
         if ( !$Param{$Name} ) {
-            $Kernel::OM->Get('Kernel::System::Log')->Log(
+            $LogObject->Log(
                 Priority => 'error',
                 Message  => "Need $Name!"
             );
@@ -94,12 +101,25 @@ sub MailAccountAdd {
         }
     }
 
+    $Param{AuthenticationMethod} //= 'password';
+
+    my %AuthMethods = $Self->GetAuthenticationMethods();
+
+    if ( !exists $AuthMethods{$Param{AuthenticationMethod}} ) {
+        $LogObject->Log(
+            Priority => 'error',
+            Message  => "Invalid value '$Param{AuthenticationMethod}' " .
+                'for parameter AuthenticationMethod.'
+        );
+        return;
+    }
+
     # check if dispatching is by From
     if ( $Param{DispatchingBy} eq 'From' ) {
         $Param{QueueID} = 0;
     }
     elsif ( $Param{DispatchingBy} eq 'Queue' && !$Param{QueueID} ) {
-        $Kernel::OM->Get('Kernel::System::Log')->Log(
+        $LogObject->Log(
             Priority => 'error',
             Message  => "Need QueueID for dispatching!"
         );
@@ -123,13 +143,18 @@ sub MailAccountAdd {
     # sql
     return if !$DBObject->Do(
         SQL =>
-            'INSERT INTO mail_account (login, pw, host, account_type, valid_id, comments, queue_id, '
-            . ' imap_folder, trusted, create_time, create_by, change_time, change_by)'
-            . ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp, ?, current_timestamp, ?)',
+            'INSERT INTO mail_account (login, pw, host, account_type, '
+            . 'valid_id, comments, queue_id, imap_folder, trusted, '
+            . 'auth_method, oauth2_token_config_id, create_time, create_by, '
+            . 'change_time, change_by) '
+            . 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp, ?, '
+            . 'current_timestamp, ?)',
         Bind => [
-            \$Param{Login},   \$Param{Password}, \$Param{Host},    \$Param{Type},
-            \$Param{ValidID}, \$Param{Comment},  \$Param{QueueID}, \$Param{IMAPFolder},
-            \$Param{Trusted}, \$Param{UserID},   \$Param{UserID},
+            \$Param{Login}, \$Param{Password}, \$Param{Host}, \$Param{Type},
+            \$Param{ValidID}, \$Param{Comment}, \$Param{QueueID},
+            \$Param{IMAPFolder}, \$Param{Trusted},
+            \$Param{AuthenticationMethod}, \$Param{OAuth2TokenConfigID},
+            \$Param{UserID}, \$Param{UserID},
         ],
     );
 
@@ -153,12 +178,34 @@ sub MailAccountAdd {
 
 =head2 MailAccountGetAll()
 
-returns an array of all mail account data
+Returns an array of all mail accounts.
 
     my @MailAccounts = $MailAccount->MailAccountGetAll();
 
-(returns list of the fields for each account: ID, Login, Password, Host, Type, QueueID, Trusted, IMAPFolder, Comment, DispatchingBy, ValidID)
+Returns:
 
+    @MailAccounts = (
+        {
+            ID                  => 123,
+            Login               => 'alice@example.com',
+            Password            => 'abcd1234',
+            Host                => 'mail.example.com',
+            Type                => 'IMAP',
+            QueueID             => 1,
+            IMAPFolder          => 'INBOX',
+            Trusted             => 0,
+            Comment             => 'Comment',
+            ValidID             => 1,
+            AuthenticationType  => 'oauth2_token',
+            OAuth2TokenConfigID => 1,
+            CreateTime          => '2022-01-01 12:34:56',
+            ChangeTime          => '2022-01-01 12:34:56',
+        },
+        {
+            # ...
+        },
+        # ...
+    );
 
 =cut
 
@@ -179,25 +226,29 @@ sub MailAccountGetAll {
     # sql
     return if !$DBObject->Prepare(
         SQL =>
-            'SELECT id, login, pw, host, account_type, queue_id, imap_folder, trusted, comments, valid_id, '
-            . ' create_time, change_time FROM mail_account',
+            'SELECT id, login, pw, host, account_type, queue_id, imap_folder, '
+            . 'trusted, comments, valid_id, auth_method, '
+            . 'oauth2_token_config_id, create_time, change_time '
+            . 'FROM mail_account',
     );
 
     my @Accounts;
     while ( my @Data = $DBObject->FetchrowArray() ) {
         my %Data = (
-            ID         => $Data[0],
-            Login      => $Data[1],
-            Password   => $Data[2],
-            Host       => $Data[3],
-            Type       => $Data[4] || 'POP3',    # compat for old setups
-            QueueID    => $Data[5],
-            IMAPFolder => $Data[6],
-            Trusted    => $Data[7],
-            Comment    => $Data[8],
-            ValidID    => $Data[9],
-            CreateTime => $Data[10],
-            ChangeTime => $Data[11],
+            ID                   => $Data[0],
+            Login                => $Data[1],
+            Password             => $Data[2],
+            Host                 => $Data[3],
+            Type                 => $Data[4] || 'POP3', # compat for old setups
+            QueueID              => $Data[5],
+            IMAPFolder           => $Data[6],
+            Trusted              => $Data[7],
+            Comment              => $Data[8],
+            ValidID              => $Data[9],
+            AuthenticationMethod => $Data[10],
+            OAuth2TokenConfigID  => $Data[11],
+            CreateTime           => $Data[12],
+            ChangeTime           => $Data[13],
         );
 
         if ( $Data{QueueID} == 0 ) {
@@ -234,13 +285,30 @@ sub MailAccountGetAll {
 
 =head2 MailAccountGet()
 
-returns a hash of mail account data
+Returns a hash of mail account data.
 
     my %MailAccount = $MailAccount->MailAccountGet(
         ID => 123,
     );
 
-(returns: ID, Login, Password, Host, Type, QueueID, Trusted, IMAPFolder, Comment, DispatchingBy, ValidID)
+Returns:
+
+    %MailAccount = (
+        ID                  => 123,
+        Login               => 'alice@example.com',
+        Password            => 'abcd1234',
+        Host                => 'mail.example.com',
+        Type                => 'IMAP',
+        QueueID             => 1,
+        IMAPFolder          => 'INBOX',
+        Trusted             => 0,
+        Comment             => 'Comment',
+        ValidID             => 1,
+        AuthenticationType  => 'oauth2_token',
+        OAuth2TokenConfigID => 1,
+        CreateTime          => '2022-01-01 12:34:56',
+        ChangeTime          => '2022-01-01 12:34:56',
+    );
 
 =cut
 
@@ -270,26 +338,30 @@ sub MailAccountGet {
     # sql
     return if !$DBObject->Prepare(
         SQL =>
-            'SELECT login, pw, host, account_type, queue_id, imap_folder, trusted, comments, valid_id, '
-            . ' create_time, change_time FROM mail_account WHERE id = ?',
+            'SELECT login, pw, host, account_type, queue_id, imap_folder, '
+            . 'trusted, comments, valid_id, auth_method, '
+            . 'oauth2_token_config_id, create_time, change_time '
+            . 'FROM mail_account WHERE id = ?',
         Bind => [ \$Param{ID} ],
     );
 
     my %Data;
     while ( my @Data = $DBObject->FetchrowArray() ) {
         %Data = (
-            ID         => $Param{ID},
-            Login      => $Data[0],
-            Password   => $Data[1],
-            Host       => $Data[2],
-            Type       => $Data[3] || 'POP3',    # compat for old setups
-            QueueID    => $Data[4],
-            IMAPFolder => $Data[5],
-            Trusted    => $Data[6],
-            Comment    => $Data[7],
-            ValidID    => $Data[8],
-            CreateTime => $Data[9],
-            ChangeTime => $Data[10],
+            ID                   => $Param{ID},
+            Login                => $Data[0],
+            Password             => $Data[1],
+            Host                 => $Data[2],
+            Type                 => $Data[3] || 'POP3', # compat for old setups
+            QueueID              => $Data[4],
+            IMAPFolder           => $Data[5],
+            Trusted              => $Data[6],
+            Comment              => $Data[7],
+            ValidID              => $Data[8],
+            AuthenticationMethod => $Data[9],
+            OAuth2TokenConfigID  => $Data[10],
+            CreateTime           => $Data[11],
+            ChangeTime           => $Data[12],
         );
     }
 
@@ -324,31 +396,38 @@ sub MailAccountGet {
 
 =head2 MailAccountUpdate()
 
-update a new mail account
+Updates a mail account.
 
-    $MailAccount->MailAccountUpdate(
-        ID            => 1,
-        Login         => 'mail',
-        Password      => 'SomePassword',
-        Host          => 'pop3.example.com',
-        Type          => 'POP3',
-        IMAPFolder    => 'Some Folder', # optional, only valid for IMAP-type accounts
-        ValidID       => 1,
-        Trusted       => 0,
-        DispatchingBy => 'Queue', # Queue|From
-        QueueID       => 12,
-        UserID        => 123,
+    my $Success = $MailAccount->MailAccountUpdate(
+        ID                   => 1,
+        Login                => 'mail',
+        Password             => 'SomePassword',
+        Host                 => 'pop3.example.com',
+        Type                 => 'POP3',
+        IMAPFolder           => 'Some Folder',  # optional, valid for IMAP accounts
+        ValidID              => 1,
+        Trusted              => 0,
+        AuthenticationMethod => 'oauth2_token', # optional, defaults to 'password'
+        OAuth2TokenConfigID  => 1,              # optional
+        DispatchingBy        => 'Queue',        # Queue|From
+        QueueID              => 12,
+        UserID               => 123,
     );
+
+Returns:
+
+    $Success = 1;
 
 =cut
 
 sub MailAccountUpdate {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
+    my $LogObject = $Kernel::OM->Get('Kernel::System::Log');
+
     for my $Name (qw(ID Login Password Host Type ValidID Trusted DispatchingBy QueueID UserID)) {
         if ( !defined $Param{$Name} ) {
-            $Kernel::OM->Get('Kernel::System::Log')->Log(
+            $LogObject->Log(
                 Priority => 'error',
                 Message  => "Need $Name!"
             );
@@ -356,12 +435,25 @@ sub MailAccountUpdate {
         }
     }
 
+    $Param{AuthenticationMethod} //= 'password';
+
+    my %AuthMethods = $Self->GetAuthenticationMethods();
+
+    if ( !exists $AuthMethods{$Param{AuthenticationMethod}} ) {
+        $LogObject->Log(
+            Priority => 'error',
+            Message  => "Invalid value '$Param{AuthenticationMethod}' " .
+                'for parameter AuthenticationMethod.'
+        );
+        return;
+    }
+
     # check if dispatching is by From
     if ( $Param{DispatchingBy} eq 'From' ) {
         $Param{QueueID} = 0;
     }
     elsif ( $Param{DispatchingBy} eq 'Queue' && !$Param{QueueID} ) {
-        $Kernel::OM->Get('Kernel::System::Log')->Log(
+        $LogObject->Log(
             Priority => 'error',
             Message  => "Need QueueID for dispatching!"
         );
@@ -381,13 +473,16 @@ sub MailAccountUpdate {
 
     # sql
     return if !$Kernel::OM->Get('Kernel::System::DB')->Do(
-        SQL => 'UPDATE mail_account SET login = ?, pw = ?, host = ?, account_type = ?, '
-            . ' comments = ?, imap_folder = ?, trusted = ?, valid_id = ?, change_time = current_timestamp, '
-            . ' change_by = ?, queue_id = ? WHERE id = ?',
+        SQL => 'UPDATE mail_account SET login = ?, pw = ?, host = ?, '
+            . 'account_type = ?, comments = ?, imap_folder = ?, trusted = ?, '
+            . 'auth_method = ?, oauth2_token_config_id = ?, valid_id = ?, '
+            . 'change_time = current_timestamp, change_by = ?, queue_id = ? '
+            . 'WHERE id = ?',
         Bind => [
-            \$Param{Login},   \$Param{Password},   \$Param{Host},    \$Param{Type},
-            \$Param{Comment}, \$Param{IMAPFolder}, \$Param{Trusted}, \$Param{ValidID},
-            \$Param{UserID},  \$Param{QueueID},    \$Param{ID},
+            \$Param{Login}, \$Param{Password}, \$Param{Host}, \$Param{Type},
+            \$Param{Comment}, \$Param{IMAPFolder}, \$Param{Trusted},
+            \$Param{AuthenticationMethod}, \$Param{OAuth2TokenConfigID},
+            \$Param{ValidID}, \$Param{UserID}, \$Param{QueueID}, \$Param{ID},
         ],
     );
 
@@ -505,10 +600,14 @@ sub MailAccountBackendList {
     );
 
     my %Backends;
+
+    BACKEND_FILE:
     for my $File (@List) {
 
         # remove .pm
         $File =~ s/^.*\/(.+?)\.pm$/$1/;
+        next BACKEND_FILE if $File eq 'Base'; # Exclude base module
+
         my $GenericModule = "Kernel::System::MailAccount::$File";
 
         # try to load module $GenericModule
@@ -617,6 +716,30 @@ sub MailAccountCheck {
             Message    => $Check{Message}
         );
     }
+}
+
+=head2 GetAuthenticationMethods()
+
+Returns the supported authentication methods.
+
+    my %AuthMethods = $MailAccountObject->GetAuthenticationMethods();
+
+Returns:
+
+    %AuthMethods = (
+        password     => 'Password',
+        oauth2_token => 'OAuth2 token',
+    );
+
+=cut
+
+sub GetAuthenticationMethods {
+    my ( $Self ) = @_;
+
+    return (
+        password     => 'Password',
+        oauth2_token => 'OAuth2 token',
+    );
 }
 
 1;
