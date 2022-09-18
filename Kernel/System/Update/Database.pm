@@ -1,5 +1,5 @@
 # --
-# Copyright (C) 2021 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -307,6 +307,65 @@ sub GenerateSchemaUpdateXML {
         }
     }
 
+    # FIXME: Get database name from configuration
+    $XML .= sprintf("<database Name=\"%s\">\n", 'otrs');
+
+    for my $Table (@{$Differences->{TablesAdded}}) {
+        $XML .= sprintf("<Table Name=\"%s\">\n", $Table->{Name});
+
+        for my $Column (@{$Table->{Columns}}) {
+            $XML .= sprintf("<Column Name=\"%s\" Type=\"%s\" %s/>\n",
+                $Column->{Name},
+                $Column->{Type},
+                _Attr($Column, 'AutoIncrement') .
+                _Attr($Column, 'Default') .
+                _Attr($Column, 'PrimaryKey') .
+                _Attr($Column, 'Required') .
+                _Attr($Column, 'Size')
+            );
+        }
+
+        for my $Index (@{$Table->{Indices}}) {
+            $XML .= sprintf("<Index Name=\"%s\">\n", $Index->{Name});
+
+            for my $IndexColumn (@{$Index->{IndexColumns}}) {
+                $XML .= sprintf("  <IndexColumn Name=\"%s\"/>\n",
+                    $IndexColumn->{Name}
+                );
+            }
+
+            $XML .= "</Index>\n";
+        }
+
+        for my $Unique (@{$Table->{Unique}}) {
+            $XML .= sprintf("<Unique Name=\"%s\">\n", $Unique->{Name});
+
+            for my $UniqueColumn (@{$Unique->{UniqueColumns}}) {
+                $XML .= sprintf("  <UniqueColumn Name=\"%s\"/>\n",
+                    $UniqueColumn->{Name}
+                );
+            }
+
+            $XML .= "</Unique>\n";
+        }
+
+        for my $ForeignKey (@{$Table->{ForeignKeys}}) {
+            $XML .= sprintf("<ForeignKey ForeignTable=\"%s\">\n",
+                $ForeignKey->{ForeignTable});
+
+            for my $Reference (@{$ForeignKey->{References}}) {
+                $XML .= sprintf("  <Reference Local=\"%s\" Foreign=\"%s\"/>\n",
+                    $Reference->{Local},
+                    $Reference->{Foreign}
+                );
+            }
+
+            $XML .= "</ForeignKey>\n";
+        }
+
+        $XML .= "</Table>\n";
+    }
+
     for my $Table (@{$Differences->{TablesChanged}}) {
         $XML .= sprintf("<TableAlter Name=\"%s\">\n", $Table->{Name});
 
@@ -322,8 +381,14 @@ sub GenerateSchemaUpdateXML {
             );
         }
 
+        # TODO: Altered and removed columns
+
+        # TODO: Indices and foreign keys
+
         $XML .= "</TableAlter>\n";
     }
+
+    $XML .= "</database>\n";
 
     return $XML;
 }
