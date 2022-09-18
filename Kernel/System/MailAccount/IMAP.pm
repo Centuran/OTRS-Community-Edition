@@ -89,9 +89,8 @@ sub Connect {
     }
     else {
         return (
-                Successful => 0,
-                Message    => "Authentication method $AuthMethod is not " .
-                    'supported.',
+            Successful => 0,
+            Message    => "Authentication method $AuthMethod is not supported.",
         );
     }
 
