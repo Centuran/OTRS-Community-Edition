@@ -115,7 +115,7 @@
                                         [% Translate(Data.ValidIDs.item(Config.ValidID)) | html %]
                                     </td>
                                     <td class="cmt-nowrap">
-                                        <a class="CallForAction AsPopup" href="[% TokenInfo.AuthCodeRequestURL | html %]" title="[% Translate("Request new token") | html %]">
+                                        <a class="CallForAction AsPopup PopupType_AdminOAuth2TokenConfig" href="[% TokenInfo.AuthCodeRequestURL | html %]" title="[% Translate("Request new token") | html %]">
                                             <span>[% Translate("Request new token") | html %]</span>
                                         </a>
                                         &nbsp;
