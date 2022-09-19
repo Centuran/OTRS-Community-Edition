@@ -39,7 +39,10 @@ sub Run {
 
     my $Output;
 
-    if ( $Self->{Subaction} eq 'EditConfig' ) {
+    if ( $Self->{Subaction} eq 'AddConfig' ) {
+        $Output = $Self->_AddConfig(%Param);
+    }
+    elsif ( $Self->{Subaction} eq 'EditConfig' ) {
         $Output = $Self->_EditConfig(%Param);
     }
     elsif ( $Self->{Subaction} eq 'SaveConfig' ) {
@@ -65,6 +68,64 @@ sub _WrapOutput {
         $LayoutObject->NavigationBar() .
         $Output .
         $LayoutObject->Footer();
+}
+
+sub _AddConfig {
+    my ( $Self, %Param ) = @_;
+
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $ValidObject  = $Kernel::OM->Get('Kernel::System::Valid');
+    
+    my $OAuth2TokenConfigObject =
+        $Kernel::OM->Get('Kernel::System::OAuth2TokenConfig');
+
+    my $TemplateFilename = $ParamObject->GetParam(
+        Param => 'TemplateFilename',
+    );
+
+    if ( !$TemplateFilename ) {
+        return $LayoutObject->ErrorScreen(
+            Message => 'Missing parameter TemplateFilename.',
+            Comment => Translatable('Please contact the administrator.'),
+        );
+    }
+
+    my %ConfigTemplates = $Self->_GetConfigTemplates(
+        Filter => "$TemplateFilename.yml"
+    );
+    my $Config = $ConfigTemplates{$TemplateFilename};
+
+    if ( !IsHashRefWithData($Config) ) {
+        return $LayoutObject->ErrorScreen(
+            Message => 'Failed to read OAuth2 token configuration template ' .
+                "$TemplateFilename.yml.",
+            Comment => Translatable('Please contact the administrator.'),
+        );
+    }
+
+    my %ValidIDs = $ValidObject->ValidList();
+    
+    my $ValidIDSelection = $LayoutObject->BuildSelection(
+        Data       => \%ValidIDs,
+        Name       => 'ValidID',
+        SelectedID => $ValidObject->ValidLookup(Valid => 'valid'),
+        Class      => 'Modernize Validate_Required',
+    );
+
+    return $Self->_WrapOutput($LayoutObject->Output(
+        TemplateFile => 'AdminOAuth2TokenConfig/Edit',
+        Data         => {
+            TemplateFilename            => $TemplateFilename,
+            TemplateName                => $Config->{Name},
+            Name                        => '',
+            ClientID                    => $Config->{Config}{ClientID},
+            ClientSecret                => $Config->{Config}{ClientSecret},
+            NotifyOnExpiredToken        => $Config->{Config}{Notifications}{NotifyOnExpiredToken},
+            NotifyOnExpiredRefreshToken => $Config->{Config}{Notifications}{NotifyOnExpiredRefreshToken},
+            ValidIDSelection            => $ValidIDSelection,
+        },
+    ));
 }
 
 sub _EditConfig {
@@ -136,7 +197,7 @@ sub _SaveConfig {
     my %GetParam = map {
         $_ => $ParamObject->GetParam(Param => $_)
     } qw(
-        ConfigID ConfigTemplateFilename ConfigTemplateName Name ClientID
+        ConfigID TemplateFilename TemplateName Name ClientID
         ClientSecret ValidID NotifyOnExpiredToken NotifyOnExpiredRefreshToken
         ContinueAfterSave
     );
@@ -242,11 +303,68 @@ sub _SaveConfig {
             );
         }
     }
-    else {
-        # Add a new configuration
-        # my $Template = $Self->_GetTemplate(
+    elsif ( $GetParam{TemplateFilename} ) {
+        my $TemplateFilename = $GetParam{TemplateFilename};
 
-        # );
+        my %ConfigTemplates = $Self->_GetConfigTemplates(
+            Filter => "$TemplateFilename.yml"
+        );
+        my $Config = $ConfigTemplates{$TemplateFilename};
+
+        if ( !IsHashRefWithData($Config) ) {
+            return $LayoutObject->ErrorScreen(
+                Message => 'Failed to read OAuth2 token configuration ' .
+                    "template $TemplateFilename.yml.",
+                Comment => Translatable('Please contact the administrator.'),
+            );
+        }
+
+        my %Config = %$Config;
+
+        $Config{Name}    = $GetParam{Name};
+        $Config{ValidID} = $GetParam{ValidID};
+        
+        $Config{Config}->{ClientID}     = $GetParam{ClientID};
+        $Config{Config}->{ClientSecret} = $GetParam{ClientSecret};
+
+        $Config{Config}->{Notifications}{NotifyOnExpiredToken} =
+            $GetParam{NotifyOnExpiredToken} ? 1 : 0;
+        $Config{Config}->{Notifications}{NotifyOnExpiredRefreshToken} =
+            $GetParam{NotifyOnExpiredRefreshToken} ? 1 : 0;
+
+        my $Added = $OAuth2TokenConfigObject->ConfigAdd(
+            %Config,
+            UserID => $Self->{UserID},
+        );
+
+        if ( !$Added ) {
+            return $LayoutObject->ErrorScreen(
+                Message => 'Failed to add OAuth2 token configuration with ' .
+                    "name $GetParam{Name}.",
+                Comment => Translatable('Please contact the administrator.'),
+            );
+        }
+
+        %Config = $OAuth2TokenConfigObject->ConfigGet(
+            Name   => $GetParam{Name},
+            UserID => $Self->{UserID},
+        );
+
+        if ( !%Config ) {
+            return $LayoutObject->ErrorScreen(
+                Message => 'Failed to get OAuth2 token configuration with ' .
+                    "name $GetParam{Name}.",
+                Comment => Translatable('Please contact the administrator.'),
+            );
+        }
+
+        $GetParam{ConfigID} = $Config{ConfigID};
+    }
+    else {
+        return $LayoutObject->ErrorScreen(
+            Message => 'Missing parameter ConfigID or TemplateFilename.',
+            Comment => Translatable('Please contact the administrator.'),
+        );
     }
 
     if ( $GetParam{ContinueAfterSave} ) {
@@ -379,40 +497,62 @@ sub _Overview {
         };
     }
 
-    my $TokenConfigTemplateSelection = $Self->_TokenConfigTemplateSelection();
+    my $ConfigTemplateSelection = $Self->_ConfigTemplateSelection();
 
     my %ValidIDs = $ValidObject->ValidList();
 
     return $Self->_WrapOutput($LayoutObject->Output(
         TemplateFile => 'AdminOAuth2TokenConfig/Overview',
         Data         => {
-            Configurations               => \@Configurations,
-            TokenInfo                    => \%TokenInfo,
-            ValidIDs                     => \%ValidIDs,
-            TokenConfigTemplateSelection => $TokenConfigTemplateSelection,
+            Configurations          => \@Configurations,
+            TokenInfo               => \%TokenInfo,
+            ValidIDs                => \%ValidIDs,
+            ConfigTemplateSelection => $ConfigTemplateSelection,
         },
     ));
 }
 
-sub _TokenConfigTemplateSelection {
+sub _ConfigTemplateSelection {
     my ( $Self, %Param ) = @_;
 
-    my $MainObject   = $Kernel::OM->Get('Kernel::System::Main');
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
-    my $YAMLObject   = $Kernel::OM->Get('Kernel::System::YAML');
 
-    my @ConfigTemplates = $MainObject->DirectoryRead(
+    my %ConfigTemplates = $Self->_GetConfigTemplates();
+
+    my %ConfigTemplateSelection = map {
+        $_ => $ConfigTemplates{$_}->{Name}
+    } keys %ConfigTemplates;
+
+    return if !%ConfigTemplateSelection;
+
+    my $Selection = $LayoutObject->BuildSelection(
+        Data         => \%ConfigTemplateSelection,
+        Name         => 'TemplateFilename',
+        PossibleNone => 1,
+        Class        => 'Modernize',
+    );
+
+    return $Selection;    
+}
+
+sub _GetConfigTemplates {
+    my ( $Self, %Param ) = @_;
+
+    my $MainObject = $Kernel::OM->Get('Kernel::System::Main');
+    my $YAMLObject = $Kernel::OM->Get('Kernel::System::YAML');
+
+    my @TemplateFiles = $MainObject->DirectoryRead(
         Directory => $Self->{ConfigTemplatesBasePath},
-        Filter    => '*.yml',
+        Filter    => $Param{Filter} // '*.yml',
         Silent    => 1,
     );
-    
-    return if !@ConfigTemplates;
 
-    my %TokenConfigTemplateSelection;
+    my %ConfigTemplates;
+
+    return %ConfigTemplates if !@TemplateFiles;
 
     FILE:
-    for my $File (@ConfigTemplates) {
+    for my $File (@TemplateFiles) {
         my $Content = $MainObject->FileRead(
             Location => $File,
             Result   => 'SCALAR',
@@ -432,19 +572,10 @@ sub _TokenConfigTemplateSelection {
         next FILE if !IsHashRefWithData($ConfigData);
 
         my $Filename = fileparse($File, '.yml');
-        $TokenConfigTemplateSelection{$Filename} = $ConfigData->{Name};
+        $ConfigTemplates{$Filename} = $ConfigData;
     }
 
-    return if !%TokenConfigTemplateSelection;
-
-    my $Selection = $LayoutObject->BuildSelection(
-        Data         => \%TokenConfigTemplateSelection,
-        Name         => 'TokenConfigTemplate',
-        PossibleNone => 1,
-        Class        => 'Modernize',
-    );
-
-    return $Selection;    
+    return %ConfigTemplates;
 }
 
 1;

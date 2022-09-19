@@ -21,6 +21,15 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  Core.Agent.Admin.OAuth2TokenConfig = (function (TargetNS) {
 
     TargetNS.Init = function () {
+        $('#TemplateFilename').on('change', function () {
+            var URL = Core.Config.Get('Baselink') +
+                'Action=AdminOAuth2TokenConfig;' +
+                'Subaction=AddConfig;' +
+                'TemplateFilename=' + encodeURIComponent($(this).val());
+            
+            $(this).next('a').attr('href', URL);
+        });
+
         $('a.AsPopup.PopupType_AdminOAuth2TokenConfig').on('click', function () {
             Core.UI.Popup.OpenPopup(
                 $(this).attr('href'),

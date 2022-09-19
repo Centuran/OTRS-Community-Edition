@@ -20,7 +20,7 @@
 
     <div class="Clear"></div>
     <div class="SidebarColumn">
-        [% IF Data.TokenConfigTemplateSelection %]
+        [% IF Data.ConfigTemplateSelection %]
             <div class="WidgetSimple">
                 <div class="Header">
                     <h2>[% Translate("Actions") | html %]</h2>
@@ -32,8 +32,8 @@
                             <div class="FieldExplanation">
                                 <p>[% Translate("Add a new OAuth2 token configuration based on the selected template.") | html %]</p>
                             </div>
-                            [% Data.TokenConfigTemplateSelection %]
-                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=ProcessNew" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i> [% Translate("Add Configuration") | html %]</span></a>
+                            [% Data.ConfigTemplateSelection %]
+                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=AddConfig" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i> [% Translate("Add Configuration") | html %]</span></a>
                         </li>
                     </ul>
                 </div>

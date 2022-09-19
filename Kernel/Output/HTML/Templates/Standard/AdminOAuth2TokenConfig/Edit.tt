@@ -18,7 +18,14 @@
 
     [% IF Data.ConfigID %]
         [% USE EditTitle = String(Translate("Edit")) %]
-        [% BreadcrumbPath.push({ Name => EditTitle.append( ': ', Data.Name ) }) %]
+        [% BreadcrumbPath.push({
+            Name => EditTitle.append( ': ', Data.Name )
+        }) %]
+    [% ELSIF Data.TemplateFilename %]
+        [% USE AddTitle = String(Translate("Add using template")) %]
+        [% BreadcrumbPath.push({
+            Name => AddTitle.append( ': ', Data.TemplateName )
+        }) %]
     [% END %]
 
     [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
