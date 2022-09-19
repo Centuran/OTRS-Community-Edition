@@ -126,8 +126,6 @@ update_db() {
 
             local $Kernel::OM = Kernel::System::ObjectManager->new();
             
-            print $Kernel::OM->Get("Kernel::Config")->Get("Home") . "\n";
-
             my $DistPath = shift;
 
             my $UpdateObject = $Kernel::OM->Get("Kernel::System::Update");
