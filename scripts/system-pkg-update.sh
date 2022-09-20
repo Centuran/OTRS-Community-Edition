@@ -17,11 +17,25 @@ start_service() {
     systemctl start "${SERVICE}"
 }
 
+restart_service() {
+    local SERVICE=$1
+
+    systemctl restart "${SERVICE}"
+}
+
 get_webserver_group() {
     if [ -e /etc/redhat-release ]; then
         echo 'apache'
     elif [ -e /etc/debian_version ]; then
         echo 'www-data'
+    fi
+}
+
+get_webserver_service() {
+    if [ -e /etc/redhat-release ]; then
+        echo 'httpd'
+    elif [ -e /etc/debian_version ]; then
+        echo 'apache2'
     fi
 }
 
@@ -164,5 +178,7 @@ update_db
 update_files
 
 start_background_jobs &> /dev/null
+
+restart_service $(get_webserver_service)
 
 disable_maintenance_mode "${MAINT_ID}"
