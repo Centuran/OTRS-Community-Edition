@@ -137,13 +137,31 @@ update_db() {
         "${FILES_DIR}"
 }
 
+update_files() {
+    find "${FILES_DIR}" -type f | while read FILE; do
+        FILE=${FILE#$FILES_DIR}
+        DIR=${FILE%/*}
+
+        if [ "${DIR}" = "${FILE}" ]; then
+            DIR=""
+        fi
+
+        if [ ! -d "${INSTALL_DIR}/${DIR}" ]; then
+            echo mkdir -p "${INSTALL_DIR}/${DIR}"
+            mkdir -p "${INSTALL_DIR}/${DIR}"
+        fi
+        
+        cp "${FILES_DIR%/}/${FILE}" "${INSTALL_DIR}/${FILE}"
+    done
+}
+
 MAINT_ID=$(enable_maintenance_mode)
 
 stop_background_jobs &> /dev/null
 
 update_db
 
-# update_files
+update_files
 
 start_background_jobs &> /dev/null
 
