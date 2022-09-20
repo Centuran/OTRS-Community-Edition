@@ -116,7 +116,12 @@ sub Connect {
             );
         }
 
-        $NOM = $PopObject->xoauth2($Param{Login}, $Token);
+        # Check if this host requires authentication data to be sent separately
+        my $Hosts = $Kernel::OM->Get('Kernel::Config')->Get(
+            'MailAccount::POP3::Auth::SplitOAuth2MethodAndToken::Hosts') // [];
+        my $SplitAuthData = grep { $_ eq $Param{Host} } @$Hosts;
+
+        $NOM = $PopObject->xoauth2($Param{Login}, $Token, $SplitAuthData);
     }
 
     if ( !defined $NOM ) {
