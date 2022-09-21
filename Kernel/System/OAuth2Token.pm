@@ -926,9 +926,9 @@ sub RequestTokenByRefreshToken {
     }
 
     my %RequestData = $Self->_AssembleRequestData(
-        ConfigID    => $Param{ConfigID},
-        RequestType => $RequestType,
-        UserID      => $Param{UserID},
+        ConfigID => $Param{ConfigID},
+        Type     => $RequestType,
+        UserID   => $Param{UserID},
     );
 
     my $TokenUpdated = $Self->TokenUpdate(
