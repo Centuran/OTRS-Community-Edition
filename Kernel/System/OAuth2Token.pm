@@ -933,6 +933,7 @@ sub RequestTokenByRefreshToken {
 
     my $TokenUpdated = $Self->TokenUpdate(
         TokenID           => $Token{TokenID},
+        ConfigID          => $Param{ConfigID},
         AuthorizationCode => undef,
         Error             => undef,
         ErrorDescription  => undef,
@@ -988,7 +989,8 @@ sub RequestTokenByRefreshToken {
     }
 
     $TokenUpdated = $Self->TokenUpdate(
-        TokenID => $Token{TokenID},
+        TokenID  => $Token{TokenID},
+        ConfigID => $Param{ConfigID},
         
         %ResponseData,
         
