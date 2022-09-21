@@ -492,6 +492,11 @@ sub ConfigDelete {
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     return if !$DBObject->Do(
+        SQL  => 'DELETE FROM oauth2_token WHERE config_id = ?',
+        Bind => [ \$Param{ConfigID} ],
+    );
+
+    return if !$DBObject->Do(
         SQL  => 'DELETE FROM oauth2_token_config WHERE id = ?',
         Bind => [ \$Param{ConfigID} ],
     );

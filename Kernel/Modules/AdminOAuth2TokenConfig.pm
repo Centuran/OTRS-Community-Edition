@@ -51,6 +51,9 @@ sub Run {
     elsif ( $Self->{Subaction} eq 'RequestTokenByAuthorizationCode' ) {
         $Output = $Self->_RequestTokenByAuthorizationCode(%Param);
     }
+    elsif ( $Self->{Subaction} eq 'DeleteConfig' ) {
+        $Output = $Self->_DeleteConfig(%Param);
+    }
     else {
         $Output = $Self->_Overview(%Param);
     }
@@ -433,6 +436,61 @@ sub _RequestTokenByAuthorizationCode {
     return $LayoutObject->PopupClose(
         Reload => 1,
     );    
+}
+
+sub _DeleteConfig {
+    my ( $Self, %Param ) = @_;
+
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
+
+    my $OAuth2TokenConfigObject =
+        $Kernel::OM->Get('Kernel::System::OAuth2TokenConfig');
+
+    my $ConfigID = $ParamObject->GetParam(
+        Param => 'ConfigID',
+    );
+
+    if ( !$ConfigID ) {
+        return $LayoutObject->ErrorScreen(
+            Message => 'Missing parameter ConfigID.',
+            Comment => Translatable('Please contact the administrator.'),
+        );
+    }
+
+    my @Configurations = $OAuth2TokenConfigObject->ConfigGetList(
+        Used   => 1,
+        UserID => $Self->{UserID},
+    );
+
+    my ($UsedConfig) = grep { $_->{ConfigID} eq $ConfigID } @Configurations;
+
+    if ( $UsedConfig ) {
+        my $ScopeInfo = "$UsedConfig->{Scope} - ID: $UsedConfig->{ScopeID}";
+
+        return $LayoutObject->ErrorScreen(
+            Message => 'OAuth2 token configuration is currently in use (' .
+                "$ScopeInfo).",
+            Comment => Translatable('Please contact the administrator.'),
+        );
+    }
+
+    my $ConfigDeleted = $OAuth2TokenConfigObject->ConfigDelete(
+        ConfigID => $ConfigID,
+        UserID   => $Self->{UserID},
+    );
+
+    if ( !$ConfigDeleted ) {
+        return $LayoutObject->ErrorScreen(
+            Message => 'Failed to delete OAuth2 token configuration with ID ' .
+                "$ConfigID.",
+            Comment => Translatable('Please contact the administrator.'),
+        );
+    }
+
+    return $LayoutObject->Redirect(
+        OP => 'Action=AdminOAuth2TokenConfig',
+    );
 }
 
 sub _Overview {
