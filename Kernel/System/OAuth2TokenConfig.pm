@@ -210,15 +210,18 @@ sub ConfigGetList {
     $Param{Scope} = 'MailAccount' if !$Param{Scope};
     $Param{Used}  = 0 if !exists $Param{Used};
 
-    my $CacheKey =
-        join '::', 'OAuth2TokenConfig', 'GetList', $Param{Scope}, $Param{Used};
-    
-    my $Cache = $Kernel::OM->Get('Kernel::System::Cache')->Get(
-        Type => $Self->{CacheType},
-        Key  => $CacheKey,
-    );
+    my $CacheKey = join '::', 'OAuth2TokenConfig', 'GetList', $Param{Scope},
+        $Param{Used}, $Param{Valid};
 
-    return @{$Cache} if $Cache;
+    # Use cached value if no filtering is in use
+    if ( ! exists $Param{Filter} ) {
+        my $Cache = $Kernel::OM->Get('Kernel::System::Cache')->Get(
+            Type => $Self->{CacheType},
+            Key  => $CacheKey,
+        );
+
+        return @{$Cache} if $Cache;
+    }
 
     my $DBObject   = $Kernel::OM->Get('Kernel::System::DB');
     my $JSONObject = $Kernel::OM->Get('Kernel::System::JSON');
@@ -325,12 +328,15 @@ sub ConfigGetList {
         @Configurations = grep { defined $_->{Scope} } @Configurations;
     }
 
-    $Kernel::OM->Get('Kernel::System::Cache')->Set(
-        Type  => $Self->{CacheType},
-        TTL   => $Self->{CacheTTL},
-        Key   => $CacheKey,
-        Value => \@Configurations,
-    );
+    # Save cache if no filtering is in use
+    if ( ! $Param{Filter} ) {
+        $Kernel::OM->Get('Kernel::System::Cache')->Set(
+            Type  => $Self->{CacheType},
+            TTL   => $Self->{CacheTTL},
+            Key   => $CacheKey,
+            Value => \@Configurations,
+        );
+    }
 
     return @Configurations;
 }
