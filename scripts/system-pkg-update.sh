@@ -152,21 +152,24 @@ update_db() {
 }
 
 update_files() {
-    find "${FILES_DIR}" -type f | while read FILE; do
-        FILE=${FILE#$FILES_DIR}
-        DIR=${FILE%/*}
+    perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
+        -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
+        -MKernel::System::ObjectManager \
+        -e '
+            use strict;
+            use warnings;
 
-        if [ "${DIR}" = "${FILE}" ]; then
-            DIR=""
-        fi
+            local $Kernel::OM = Kernel::System::ObjectManager->new();
+            
+            my $DistPath = shift;
 
-        if [ ! -d "${INSTALL_DIR}/${DIR}" ]; then
-            echo mkdir -p "${INSTALL_DIR}/${DIR}"
-            mkdir -p "${INSTALL_DIR}/${DIR}"
-        fi
-        
-        cp "${FILES_DIR%/}/${FILE}" "${INSTALL_DIR}/${FILE}"
-    done
+            my $UpdateObject = $Kernel::OM->Get("Kernel::System::Update");
+
+            $UpdateObject->CopyFiles(
+                DistPath => $DistPath,
+            );
+        ' \
+        "${FILES_DIR}"
 }
 
 MAINT_ID=$(enable_maintenance_mode)
