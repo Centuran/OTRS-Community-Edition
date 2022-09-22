@@ -4422,6 +4422,23 @@ form.SearchBox button i.fa.fa-search::before {
   content: "\f0349";
 }
 
+#UserWidgetState_SystemConfiguration_Actions .ActionList li a.CallForAction {
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+#UserWidgetState_SystemConfiguration_Actions .ActionList li i.fa.fa-rocket {
+  font-family: "Material Design Icons";
+}
+#UserWidgetState_SystemConfiguration_Actions .ActionList li i.fa.fa-rocket::before {
+  content: "\f0e1e";
+}
+#UserWidgetState_SystemConfiguration_Actions .ActionList li i.fa.fa-edit {
+  font-family: "Material Design Icons";
+}
+#UserWidgetState_SystemConfiguration_Actions .ActionList li i.fa.fa-edit::before {
+  content: "\f03eb";
+}
+
 #UserWidgetState_SystemConfiguration_Sticky .CallForAction, #UserWidgetState_SystemConfiguration_Sticky .ProcessManagementEditScreen #ProcessElements a.CallForAction, .ProcessManagementEditScreen #ProcessElements #UserWidgetState_SystemConfiguration_Sticky a.CallForAction {
   padding-left: 0.1em;
   padding-right: 0.1em;
