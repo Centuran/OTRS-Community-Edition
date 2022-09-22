@@ -69,6 +69,31 @@ form.SearchBox {
   }
 }
 
+#UserWidgetState_SystemConfiguration_Actions {
+  .ActionList li {
+    a.CallForAction {
+      padding-left: 0.3em;
+      padding-right: 0.3em;
+    }
+
+    i.fa.fa-rocket {
+      font-family: "Material Design Icons";
+
+      &::before {
+        content: mdi("check-bold");
+      }
+    }
+
+    i.fa.fa-edit {
+      font-family: "Material Design Icons";
+
+      &::before {
+        content: mdi("pencil");
+      }
+    }
+  }
+}
+
 #UserWidgetState_SystemConfiguration_Sticky {
   .CallForAction {
     padding-left: 0.1em;
