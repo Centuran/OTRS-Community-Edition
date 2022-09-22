@@ -926,13 +926,14 @@ sub RequestTokenByRefreshToken {
     }
 
     my %RequestData = $Self->_AssembleRequestData(
-        ConfigID    => $Param{ConfigID},
-        RequestType => $RequestType,
-        UserID      => $Param{UserID},
+        ConfigID => $Param{ConfigID},
+        Type     => $RequestType,
+        UserID   => $Param{UserID},
     );
 
     my $TokenUpdated = $Self->TokenUpdate(
         TokenID           => $Token{TokenID},
+        ConfigID          => $Param{ConfigID},
         AuthorizationCode => undef,
         Error             => undef,
         ErrorDescription  => undef,
@@ -988,7 +989,8 @@ sub RequestTokenByRefreshToken {
     }
 
     $TokenUpdated = $Self->TokenUpdate(
-        TokenID => $Token{TokenID},
+        TokenID  => $Token{TokenID},
+        ConfigID => $Param{ConfigID},
         
         %ResponseData,
         

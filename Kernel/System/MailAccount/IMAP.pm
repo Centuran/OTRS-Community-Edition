@@ -89,9 +89,8 @@ sub Connect {
     }
     else {
         return (
-                Successful => 0,
-                Message    => "Authentication method $AuthMethod is not " .
-                    'supported.',
+            Successful => 0,
+            Message    => "Authentication method $AuthMethod is not supported.",
         );
     }
 
@@ -262,8 +261,8 @@ sub _Fetch {
         %Connect = $Self->Connect(
             Host                 => $Param{Host},
             Login                => $Param{Login},
-            Password             => $Param{Password},
             AuthenticationMethod => $Param{AuthenticationMethod},
+            Password             => $Param{Password},
             OAuth2TokenConfigID  => $Param{OAuth2TokenConfigID},
             Timeout              => $Timeout,
             Debug                => $Debug

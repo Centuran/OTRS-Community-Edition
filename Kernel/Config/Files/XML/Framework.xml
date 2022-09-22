@@ -712,6 +712,16 @@
             <Item ValueType="String" ValueRegex=""></Item>
         </Value>
     </Setting>
+    <Setting Name="MailAccount::POP3::Auth::SplitOAuth2MethodAndToken::Hosts" Required="1" Valid="1" ConfigLevel="200">
+        <Description Translatable="1">List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).</Description>
+        <Navigation>Core::Email</Navigation>
+        <Value>
+            <Array>
+                <Item>outlook.office365.com</Item>
+                <Item>pop-mail.outlook.com</Item>
+            </Array>
+        </Value>
+    </Setting>    
     <Setting Name="SendmailBcc" Required="0" Valid="1" ConfigLevel="200">
         <Description Translatable="1">Sends all outgoing email via bcc to the specified address. Please use this only for backup reasons.</Description>
         <Navigation>Core::Email</Navigation>
@@ -6119,6 +6129,19 @@ via the Preferences button after logging in.
                     <Item Key="Title" Translatable="1">OAuth2 Configuration Management</Item>
                 </Hash>
             </Item>
+        </Value>
+    </Setting>
+    <Setting Name="Loader::Module::AdminOAuth2TokenConfig###001-Framework" Required="0" Valid="1">
+        <Description Translatable="1">Loader module registration for the agent interface.</Description>
+        <Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="JavaScript">
+                    <Array>
+                        <Item>Core.Agent.Admin.AdminOAuth2TokenConfig.js</Item>
+                    </Array>
+                </Item>
+            </Hash>
         </Value>
     </Setting>
     <Setting Name="Frontend::NavigationModule###AdminOAuth2TokenConfig" Required="0" Valid="1">

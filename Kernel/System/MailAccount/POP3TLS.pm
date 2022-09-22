@@ -12,73 +12,25 @@ package Kernel::System::MailAccount::POP3TLS;
 use strict;
 use warnings;
 
-use Net::POP3;
+use parent 'Kernel::System::MailAccount::POP3';
 
-use parent qw(Kernel::System::MailAccount::POP3);
+our @ObjectDependencies;
 
-our @ObjectDependencies = (
-    'Kernel::System::Log',
-);
+sub new {
+    my ( $Type, %Param ) = @_;
 
-# Use Net::SSLGlue::POP3 on systems with older Net::POP3 modules that cannot handle POP3TLS.
-BEGIN {
-    if ( !defined &Net::POP3::starttls ) {
-        ## nofilter(TidyAll::Plugin::OTRS::Perl::Require)
-        ## nofilter(TidyAll::Plugin::OTRS::Perl::SyntaxCheck)
-        require Net::SSLGlue::POP3;
-    }
-}
+    my $Self = $Type->SUPER::new(%Param);
+    bless( $Self, $Type );
 
-sub Connect {
-    my ( $Self, %Param ) = @_;
-
-    # check needed stuff
-    for my $Name (qw(Login Password Host Timeout Debug)) {
-        if ( !defined $Param{$Name} ) {
-            return (
-                Successful => 0,
-                Message    => "Need $Name!",
-            );
-        }
-    }
-
-    my $Type = 'POP3TLS';
-
-    # connect to host
-    my $PopObject = Net::POP3->new(
-        $Param{Host},
-        Timeout => $Param{Timeout},
-        Debug   => $Param{Debug},
-    );
-
-    if ( !$PopObject ) {
-        return (
-            Successful => 0,
-            Message    => "$Type: Can't connect to $Param{Host}"
-        );
-    }
-
-    $PopObject->starttls(
+    $Self->{_StartTLSOptions} = {
         SSL             => 1,
         SSL_verify_mode => 0,
-    );
+    };
 
-    # authentication
-    my $NOM = $PopObject->login( $Param{Login}, $Param{Password} );
-    if ( !defined $NOM ) {
-        $PopObject->quit();
-        return (
-            Successful => 0,
-            Message    => "$Type: Auth for user $Param{Login}/$Param{Host} failed!"
-        );
-    }
+    $Self->{FullModuleName} = __PACKAGE__;
+    $Self->{ModuleName}     = __PACKAGE__ =~ s/.*:://r;
 
-    return (
-        Successful => 1,
-        PopObject  => $PopObject,
-        NOM        => $NOM,
-        Type       => $Type,
-    );
+    return $Self;
 }
 
 1;

@@ -18,7 +18,14 @@
 
     [% IF Data.ConfigID %]
         [% USE EditTitle = String(Translate("Edit")) %]
-        [% BreadcrumbPath.push({ Name => EditTitle.append( ': ', Data.Name ) }) %]
+        [% BreadcrumbPath.push({
+            Name => EditTitle.append( ': ', Data.Name )
+        }) %]
+    [% ELSIF Data.TemplateFilename %]
+        [% USE AddTitle = String(Translate("Add using template")) %]
+        [% BreadcrumbPath.push({
+            Name => AddTitle.append( ': ', Data.TemplateName )
+        }) %]
     [% END %]
 
     [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
@@ -58,7 +65,7 @@
                             <span class="Marker">*</span> [% Translate("Name") | html %]:
                         </label>
                         <div class="Field">
-                            <input type="text" id="Name" name="Name" value="[% Data.Name | html %]" class="W20pc Validate_Required [% Data.NameInvalid | html %]" maxlength="250" />
+                            <input type="text" id="Name" name="Name" value="[% Data.Name | html %]" class="W33pc Validate_Required [% Data.NameInvalid | html %]" maxlength="250" />
                             <div id="NameError" class="TooltipErrorMessage">
                                 <p>[% Translate("This field is required.") | html %]</p>
                             </div>
@@ -77,7 +84,7 @@
                             <span class="Marker">*</span> [% Translate("Client ID") | html %]:
                         </label>
                         <div class="Field">
-                            <input type="text" id="ClientID" name="ClientID" value="[% Data.ClientID | html %]" class="W20pc Validate_Required [% Data.ClientIDInvalid | html %]" />
+                            <input type="text" id="ClientID" name="ClientID" value="[% Data.ClientID | html %]" class="W50pc Validate_Required [% Data.ClientIDInvalid | html %]" />
                             <div id="ClientIDError" class="TooltipErrorMessage">
                                 <p>[% Translate("This field is required.") | html %]</p>
                             </div>
@@ -91,7 +98,7 @@
                             <span class="Marker">*</span> [% Translate("Client secret") | html %]:
                         </label>
                         <div class="Field">
-                            <input type="text" id="ClientSecret" name="ClientSecret" value="[% Data.ClientSecret | html %]" class="W20pc Validate_Required [% Data.ClientSecretInvalid | html %]" />
+                            <input type="text" id="ClientSecret" name="ClientSecret" value="[% Data.ClientSecret | html %]" class="W50pc Validate_Required [% Data.ClientSecretInvalid | html %]" />
                             <div id="ClientSecretError" class="TooltipErrorMessage">
                                 <p>[% Translate("This field is required.") | html %]</p>
                             </div>

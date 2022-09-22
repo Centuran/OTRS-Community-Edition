@@ -20,7 +20,7 @@
 
     <div class="Clear"></div>
     <div class="SidebarColumn">
-        [% IF Data.TokenConfigTemplateSelection %]
+        [% IF Data.ConfigTemplateSelection %]
             <div class="WidgetSimple">
                 <div class="Header">
                     <h2>[% Translate("Actions") | html %]</h2>
@@ -32,8 +32,8 @@
                             <div class="FieldExplanation">
                                 <p>[% Translate("Add a new OAuth2 token configuration based on the selected template.") | html %]</p>
                             </div>
-                            [% Data.TokenConfigTemplateSelection %]
-                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=ProcessNew" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i> [% Translate("Add Configuration") | html %]</span></a>
+                            [% Data.ConfigTemplateSelection %]
+                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=AddConfig" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i> [% Translate("Add Configuration") | html %]</span></a>
                         </li>
                     </ul>
                 </div>
@@ -71,51 +71,51 @@
                                     </td>
                                     <td>
                                         [% IF TokenInfo.LastTokenRequestFailed %]
-                                            [% Translate("Last token request failed.") | html %]
+                                            [% Translate("Last token request failed") | html %]
                                         [% ELSE %]
                                             [% IF TokenInfo.TokenPresent %]
                                                 [% IF TokenInfo.TokenExpired %]
-                                                    [% Translate("Token has expired on %s.", TokenExpirationDate) | html %]
+                                                    [% Translate("Expired on %s", TokenExpirationDate) | html %]
                                                 [% ELSE %]
-                                                    [% Translate("Token is valid until %s.", TokenExpirationDate) | html %]
+                                                    [% Translate("Valid until %s", TokenExpirationDate) | html %]
                                                 [% END %]
                                             [% ELSE %]
-                                                [% Translate("Token not yet requested.") | html %]
+                                                [% Translate("Token not yet requested") | html %]
                                             [% END %]
                                         [% END %]
                                     </td>
                                     <td>
                                         [% IF TokenInfo.RefreshTokenRequestConfigured %]
                                             [% IF TokenInfo.LastTokenRequestFailed %]
-                                                [% Translate("Last token (or refresh token) request failed.") | html %]
+                                                [% Translate("Last token (or refresh token) request failed") | html %]
                                             [% ELSE %]
                                                 [% IF TokenInfo.RefreshTokenPresent %]
                                                     [% IF TokenInfo.RefreshTokenExpired %]
                                                         [% IF RefreshTokenExpirationDate %]
-                                                            [% Translate("Refresh token has expired on %s.", RefreshTokenExpirationDate) | html %]
+                                                            [% Translate("Expired on %s", RefreshTokenExpirationDate) | html %]
                                                         [% ELSE %]
-                                                            [% Translate("Refresh token has expired.") | html %]
+                                                            [% Translate("Expired") | html %]
                                                         [% END %]
                                                     [% ELSE %]
                                                         [% IF RefreshTokenExpirationDate %]
-                                                            [% Translate("Refresh token is valid until %s.", RefreshTokenExpirationDate) | html %]
+                                                            [% Translate("Valid until %s", RefreshTokenExpirationDate) | html %]
                                                         [% ELSE %]
-                                                            [% Translate("Refresh token is valid with no expiration date.") | html %]
+                                                            [% Translate("Valid with no expiration date") | html %]
                                                         [% END %]
                                                     [% END %]
                                                 [% ELSE %]
-                                                    [% Translate("Refresh token not yet requested.") | html %]
+                                                    [% Translate("Not yet requested") | html %]
                                                 [% END %]
                                             [% END %]
                                         [% ELSE %]
-                                            [% Translate("Refresh token request is not configured.") | html %]
+                                            [% Translate("Refresh token request not configured") | html %]
                                         [% END %]
                                     </td>
                                     <td>
                                         [% Translate(Data.ValidIDs.item(Config.ValidID)) | html %]
                                     </td>
                                     <td class="cmt-nowrap">
-                                        <a class="CallForAction AsPopup" href="[% TokenInfo.AuthCodeRequestURL | html %]" title="[% Translate("Request new token") | html %]">
+                                        <a class="CallForAction AsPopup PopupType_AdminOAuth2TokenConfig" href="[% TokenInfo.AuthCodeRequestURL | html %]" title="[% Translate("Request new token") | html %]">
                                             <span>[% Translate("Request new token") | html %]</span>
                                         </a>
                                         &nbsp;

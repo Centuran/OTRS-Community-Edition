@@ -2748,7 +2748,7 @@
 <Table Name="oauth2_token">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
     <Column Name="config_id" Required="true" Type="INTEGER"/>
-    <Column Name="authorization_code" Required="false" Size="2000" Type="VARCHAR"/>
+    <Column Name="authorization_code" Required="false" Size="10000" Type="VARCHAR"/>
     <Column Name="token" Required="false" Size="10000" Type="VARCHAR"/>
     <Column Name="token_expiration_date" Required="false" Type="DATE"/>
     <Column Name="refresh_token" Required="false" Size="10000" Type="VARCHAR"/>
