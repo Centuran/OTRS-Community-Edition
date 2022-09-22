@@ -11,7 +11,6 @@ package Kernel::System::Update;
 use strict;
 use warnings;
 
-use Archive::Tar;
 use Cwd;
 use Digest::MD5;
 use File::Basename;
@@ -176,11 +175,11 @@ sub _ExtractDistArchive {
     my $Cwd = cwd();
     chdir($TempDir);
 
-    my $Compression = COMPRESS_GZIP;
-    $Compression = COMPRESS_BZIP if $DistArchive =~ /\.bz2$/;
+    my $CompressionOption = 'z';
+    $CompressionOption = 'j' if $DistArchive =~ /\.bz2$/;
 
-    #Archive::Tar->extract_archive($DistArchive, $Compression);
-    system('tar ' . ($Compression == COMPRESS_GZIP ? 'z' : 'j') . 'xf ' . $DistArchive);
+    # Use system tar utility rather than e.g. Archive::Tar, because it's faster
+    system('tar ' . $CompressionOption . 'xf ' . $DistArchive);
     
     chdir($Cwd);
 
@@ -221,6 +220,5 @@ sub UpdateDatabase {
 
     $UpdateDBObject->UpdateData($$CurrentInitRef, $$DistInitRef);
 }
-
 
 1;
