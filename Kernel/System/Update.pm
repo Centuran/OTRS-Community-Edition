@@ -11,6 +11,7 @@ package Kernel::System::Update;
 use strict;
 use warnings;
 
+use Archive::Zip qw( :ERROR_CODES );
 use Cwd;
 use Digest::MD5;
 use File::Basename;
@@ -175,11 +176,27 @@ sub _ExtractDistArchive {
     my $Cwd = cwd();
     chdir($TempDir);
 
-    my $CompressionOption = 'z';
-    $CompressionOption = 'j' if $DistArchive =~ /\.bz2$/;
+    if ( $DistArchive =~ / \.tar \.(?: gz | bz2 ) $/ix ) {
+        my $CompressionOption = 'z';
+        $CompressionOption = 'j' if $DistArchive =~ /\.bz2$/;
 
-    # Use system tar utility rather than e.g. Archive::Tar, because it's faster
-    system('tar ' . $CompressionOption . 'xf ' . $DistArchive);
+        # Use system tar utility rather than e.g. Archive::Tar, because
+        # it's faster
+        system('tar ' . $CompressionOption . 'xf ' . $DistArchive);
+    }
+    elsif ( $DistArchive =~ / \.zip $/ix ) {
+        my $zip = Archive::Zip->new();
+        
+        $zip->read($DistArchive);
+        $zip->extractTree();
+
+        # TODO: Check for Archive::Zip errors
+    }
+    else {
+        # TODO: Log/report error on wrong file type
+
+        return;
+    }
     
     chdir($Cwd);
 
