@@ -11,6 +11,7 @@ package Kernel::System::Update;
 use strict;
 use warnings;
 
+use Archive::Tar;
 use Archive::Zip qw( :ERROR_CODES );
 use Cwd;
 use Digest::MD5;
@@ -153,7 +154,7 @@ sub CopyFiles {
     chdir($Cwd);
 }
 
-sub _CheckDistVersion {
+sub _GetDistVersion {
     my ($Self, $DistArchive) = @_;
 
     my $Tar = Archive::Tar->new($DistArchive);
