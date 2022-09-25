@@ -13,6 +13,7 @@ use warnings;
 
 use Archive::Tar;
 use Archive::Zip qw( :ERROR_CODES );
+use Archive::Zip::MemberRead;
 use Cwd;
 use Digest::MD5;
 use File::Basename;
@@ -157,10 +158,32 @@ sub CopyFiles {
 sub _GetDistVersion {
     my ($Self, $DistArchive) = @_;
 
-    my $Tar = Archive::Tar->new($DistArchive);
-    
-    my ($Dir) = $Tar->list_files();
-    my $Content = $Tar->get_content($Dir . 'RELEASE');
+    my $Content = '';
+
+    if ( $DistArchive =~ / \.tar \.(?: gz | bz2 ) $/ix ) {
+        my $Tar   = Archive::Tar->new($DistArchive);
+        my ($Dir) = $Tar->list_files();
+        
+        $Content = $Tar->get_content($Dir . 'RELEASE');
+    }
+    elsif ( $DistArchive =~ / \.zip $/ix ) {
+        my $Zip   = Archive::Zip->new($DistArchive);
+        my ($Dir) = $Zip->memberNames();
+
+        my $Handle = Archive::Zip::MemberRead->new($Zip, $Dir . 'RELEASE');
+        
+        while (defined (my $Line = $Handle->getline())) {
+            $Content .= $Line . "\n";
+        }
+
+        # TODO: Check for Archive::Zip errors
+    }
+    else {
+        # TODO: Log/report error on wrong file type
+
+        return;
+    }
+
     my ($Version) = ($Content =~ m/^ VERSION \s* = \s* ( \S+ ) $/mx);
 
     return $Version;
