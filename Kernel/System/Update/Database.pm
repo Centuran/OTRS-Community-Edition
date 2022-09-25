@@ -544,6 +544,7 @@ sub UpdateData {
         }
     }
 
+    return 1;
 }
 
 1;
