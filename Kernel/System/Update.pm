@@ -38,6 +38,11 @@ sub new {
     my $Self = { };
     bless( $Self, $Type );
 
+    $Self->{PossibleUpdates} = {
+        # 6.0.31+ -> 6.0.37
+        '6.0.37' => qr{^ 6 \. 0 \. 3[1-6] $}x,
+    };
+
     return $Self;
 }
 
