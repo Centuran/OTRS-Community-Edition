@@ -47,7 +47,7 @@ sub new {
 }
 
 sub CheckUpdate {
-    my ($Self, %Param) = @_;
+    my ( $Self, %Param ) = @_;
 
     # TODO: Check required parameters
 
@@ -61,7 +61,7 @@ sub CheckUpdate {
 }
 
 sub PerformUpdate {
-    my ($Self, %Param) = @_;
+    my ( $Self, %Param ) = @_;
 
     # TODO: Check parameters
 
@@ -84,13 +84,13 @@ sub PerformUpdate {
 }
 
 sub ExtractDistArchive {
-    my ($Self, %Param) = @_;
+    my ( $Self, %Param ) = @_;
 
     return $Self->_ExtractDistArchive($Param{Path});
 }
 
 sub FindModifiedFiles {
-    my ($Self, %Param) = @_;
+    my ( $Self, %Param ) = @_;
 
     my $CurrentPath = $Kernel::OM->Get('Kernel::Config')->Get('Home');
 
@@ -133,7 +133,7 @@ sub FindModifiedFiles {
 }
 
 sub CopyFiles {
-    my ($Self, %Param) = @_;
+    my ( $Self, %Param ) = @_;
 
     my $CurrentPath = $Kernel::OM->Get('Kernel::Config')->Get('Home');
     my $DistPath    = $Param{DistPath};
@@ -238,7 +238,7 @@ sub _ExtractDistArchive {
 }
 
 sub UpdateDatabase {
-    my ($Self, %Param) = @_;
+    my ( $Self, %Param ) = @_;
 
     # TODO: Check required params
 
