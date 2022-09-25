@@ -87,7 +87,7 @@ sub PerformUpdate {
 sub ExtractDistArchive {
     my ( $Self, %Param ) = @_;
 
-    return $Self->_ExtractDistArchive($Param{Path});
+    return $Self->_ExtractDistArchive($Param{DistArchive});
 }
 
 sub FindModifiedFiles {
