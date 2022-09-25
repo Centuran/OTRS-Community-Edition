@@ -215,10 +215,10 @@ sub _ExtractDistArchive {
         system('tar ' . $CompressionOption . 'xf ' . $DistArchive);
     }
     elsif ( $DistArchive =~ / \.zip $/ix ) {
-        my $zip = Archive::Zip->new();
+        my $Zip = Archive::Zip->new();
         
-        $zip->read($DistArchive);
-        $zip->extractTree();
+        $Zip->read($DistArchive);
+        $Zip->extractTree();
 
         # TODO: Check for Archive::Zip errors
     }
@@ -230,12 +230,12 @@ sub _ExtractDistArchive {
     
     chdir($Cwd);
 
-    my ($DistDir) = $Kernel::OM->Get('Kernel::System::Main')->DirectoryRead(
+    my ($DistPath) = $Kernel::OM->Get('Kernel::System::Main')->DirectoryRead(
         Directory => $TempDir,
         Filter    => '*'
     );
 
-    return $DistDir;
+    return $DistPath;
 }
 
 sub UpdateDatabase {
