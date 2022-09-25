@@ -290,6 +290,14 @@ sub UpdateDatabase {
 
     my $UpdateDBObject = Kernel::System::Update::Database->new;
 
+    return if ! $UpdateDBObject->UpdateSchema($$CurrentSchemaRef,
+        $$DistSchemaRef);
+
+    return if ! $UpdateDBObject->UpdateData($$CurrentInitRef, $$DistInitRef);
+
+    return 1;
+}
+
 sub StopUserSessions {
     my ( $Self, %Param ) = @_;
 
