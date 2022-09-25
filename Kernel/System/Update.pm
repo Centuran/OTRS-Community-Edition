@@ -359,7 +359,6 @@ sub _GetDistVersion {
     return $Version;
 }
 
-# tar.gz or tar.bz2 supported
 sub _ExtractDistArchive {
     my ($Self, $DistArchive) = @_;
 
