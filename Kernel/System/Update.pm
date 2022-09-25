@@ -269,7 +269,62 @@ sub StopUserSessions {
     return $Kernel::OM->Get("Kernel::System::AuthSession")->CleanUp();
 }
 
-    $UpdateDBObject->UpdateData($$CurrentInitRef, $$DistInitRef);
+sub EnableMaintenanceMode {
+    my ( $Self, %Param ) = @_;
+
+    my $DistVersion = '';
+
+    if ( $Param{DistVersion} ) {
+        $DistVersion = $Param{DistVersion};
+    }
+    elsif ( exists $Self->{DistVersion} ) {
+        $DistVersion = $Self->{DistVersion};
+    }
+    else {
+        # TODO: Get version from distribution package
+    }
+
+    my $SysMaintObject = $Kernel::OM->Get("Kernel::System::SystemMaintenance");
+    
+    my $SysMaintID = $SysMaintObject->SystemMaintenanceAdd(
+        StartDate        => time,
+        StopDate         => time + (60 * 60 * 24),
+        Comment          => "Update to $DistVersion",
+        ShowLoginMessage => 1,
+        ValidID          => 1,
+        UserID           => 1,
+    );
+
+    return $SysMaintID;
+}
+
+sub DisableMaintenanceMode {
+    my ( $Self, %Param ) = @_;
+
+    # TODO: Check required parameters
+
+    my $SysMaintID = $Param{SystemMaintenanceID};
+
+    my $SysMaintObject = $Kernel::OM->Get("Kernel::System::SystemMaintenance");
+
+    my $SysMaint = $SysMaintObject->SystemMaintenanceGet(
+        ID     => $SysMaintID,
+        UserID => 1,
+    );
+    
+    # Stop maintenance mode by setting stop date to current time
+    my $Updated = $SysMaintObject->SystemMaintenanceUpdate(
+        ID        => $SysMaint->{ID},
+        StartDate => $SysMaint->{StartDate},
+        StopDate  => time,
+        Comment   => $SysMaint->{Comment},
+        ValidID   => 1,
+        UserID    => 1,
+    );
+
+    return $Updated;
+}
+
 }
 
 1;
