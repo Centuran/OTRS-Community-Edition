@@ -19,7 +19,6 @@ X-OTRS-Login: [% Env("Baselink") %]
     <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
     <link rel="shortcut icon" href="[% Config("Frontend::ImagePath") %]icons/vendor.ico" type="image/ico" />
     <link rel="apple-touch-icon" href="[% Config("Frontend::ImagePath") %]icons/apple-touch-icon.png" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,900" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css" />
 
 [% RenderBlockStart("CommonCSS") %]
