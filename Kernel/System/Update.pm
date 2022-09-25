@@ -163,6 +163,31 @@ sub CopyFiles {
     return 1;
 }
 
+sub GetDistVersion {
+    my ( $Self, %Param ) = @_;
+
+    # TODO: Check for required parameters
+
+    return $Self->_GetDistVersion($Param{DistArchive});
+}
+
+sub VersionSupported {
+    my ( $Self, %Param ) = @_;
+
+    # TODO: Check for required parameters
+
+    my $DistVersion = $Self->_GetDistVersion($Param{DistArchive});
+
+    # Strip off trailing "-rc1", "-rc2" parts, if present
+    $DistVersion =~ s/ -rc \d+ $//x;
+
+    return if !exists $Self->{PossibleUpdates}{$DistVersion};
+
+    my $CurrentVersion = $Kernel::OM->Get('Kernel::Config')->Get('Version');
+
+    return $CurrentVersion =~ $Self->{PossibleUpdates}{$DistVersion};
+}
+
 sub _GetDistVersion {
     my ($Self, $DistArchive) = @_;
 
