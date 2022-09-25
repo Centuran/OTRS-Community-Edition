@@ -24,6 +24,7 @@ use Kernel::System::Update::Database;
 
 our @ObjectDependencies = (
     'Kernel::Config',
+    'Kernel::System::AuthSession',
     'Kernel::System::Cache',
     'Kernel::System::DB',
     'Kernel::System::FileTemp',
@@ -262,7 +263,11 @@ sub UpdateDatabase {
 
     my $UpdateDBObject = Kernel::System::Update::Database->new;
 
-    $UpdateDBObject->UpdateSchema($$CurrentSchemaRef, $$DistSchemaRef);
+sub StopUserSessions {
+    my ( $Self, %Param ) = @_;
+
+    return $Kernel::OM->Get("Kernel::System::AuthSession")->CleanUp();
+}
 
     $UpdateDBObject->UpdateData($$CurrentInitRef, $$DistInitRef);
 }
