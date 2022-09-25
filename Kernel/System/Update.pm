@@ -326,7 +326,7 @@ sub StartBackgroundTasks {
 }
 
 sub _GetDistVersion {
-    my ($Self, $DistArchive) = @_;
+    my ( $Self, $DistArchive ) = @_;
 
     my $Content = '';
 
@@ -360,7 +360,7 @@ sub _GetDistVersion {
 }
 
 sub _ExtractDistArchive {
-    my ($Self, $DistArchive) = @_;
+    my ( $Self, $DistArchive ) = @_;
 
     # TODO: Check if $DistArchive exists and is readable
 
