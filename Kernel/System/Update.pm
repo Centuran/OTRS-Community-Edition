@@ -325,6 +325,46 @@ sub DisableMaintenanceMode {
     return $Updated;
 }
 
+sub StopBackgroundTasks {
+    my ( $Self, %Param ) = @_;
+
+    my $Home = $Kernel::OM->Get('Kernel::Config')->Get('Home');
+
+    # Stop cron jobs
+
+    my $CronJobsStopped;
+
+    # First check if crontab for OTRS user is active
+    # FIXME: Do not hardcode OTRS user name
+    if ( system("crontab -l -u otrs >/dev/null 2>&1") != 0 ) {
+        $CronJobsStopped = 1;
+    }
+    else {
+        $CronJobsStopped =
+            system("$Home/bin/Cron.sh stop >/dev/null 2>&1") == 0;
+    }
+
+    # Stop daemon
+    my $DaemonStopped =
+        system("$^X $Home/bin/otrs.Daemon.pl stop >/dev/null 2>&1") == 0;
+    
+    return $CronJobsStopped && $DaemonStopped;
+}
+
+sub StartBackgroundTasks {
+    my ( $Self, %Param ) = @_;
+
+    my $Home = $Kernel::OM->Get('Kernel::Config')->Get('Home');
+
+    # Start cron jobs
+    my $CronJobsStarted =
+        system("$Home/bin/Cron.sh start >/dev/null 2>&1") == 0;
+
+    # Start daemon
+    my $DaemonStarted =
+        system("$^X $Home/bin/otrs.Daemon.pl start >/dev/null 2>&1") == 0;
+    
+    return $CronJobsStarted && $DaemonStarted;
 }
 
 1;
