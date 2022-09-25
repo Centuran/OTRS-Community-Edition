@@ -188,83 +188,6 @@ sub VersionSupported {
     return $CurrentVersion =~ $Self->{PossibleUpdates}{$DistVersion};
 }
 
-sub _GetDistVersion {
-    my ($Self, $DistArchive) = @_;
-
-    my $Content = '';
-
-    if ( $DistArchive =~ / \.tar \.(?: gz | bz2 ) $/ix ) {
-        my $Tar   = Archive::Tar->new($DistArchive);
-        my ($Dir) = $Tar->list_files();
-        
-        $Content = $Tar->get_content($Dir . 'RELEASE');
-    }
-    elsif ( $DistArchive =~ / \.zip $/ix ) {
-        my $Zip   = Archive::Zip->new($DistArchive);
-        my ($Dir) = $Zip->memberNames();
-
-        my $Handle = Archive::Zip::MemberRead->new($Zip, $Dir . 'RELEASE');
-        
-        while (defined (my $Line = $Handle->getline())) {
-            $Content .= $Line . "\n";
-        }
-
-        # TODO: Check for Archive::Zip errors
-    }
-    else {
-        # TODO: Log/report error on wrong file type
-
-        return;
-    }
-
-    my ($Version) = ($Content =~ m/^ VERSION \s* = \s* ( \S+ ) $/mx);
-
-    return $Version;
-}
-
-# tar.gz or tar.bz2 supported
-sub _ExtractDistArchive {
-    my ($Self, $DistArchive) = @_;
-
-    # TODO: Check if $DistArchive exists and is readable
-
-    my $TempDir = $Kernel::OM->Get('Kernel::System::FileTemp')->TempDir();
-
-    my $Cwd = cwd();
-    chdir($TempDir);
-
-    if ( $DistArchive =~ / \.tar \.(?: gz | bz2 ) $/ix ) {
-        my $CompressionOption = 'z';
-        $CompressionOption = 'j' if $DistArchive =~ /\.bz2$/;
-
-        # Use system tar utility rather than e.g. Archive::Tar, because
-        # it's faster
-        system('tar ' . $CompressionOption . 'xf ' . $DistArchive);
-    }
-    elsif ( $DistArchive =~ / \.zip $/ix ) {
-        my $Zip = Archive::Zip->new();
-        
-        $Zip->read($DistArchive);
-        $Zip->extractTree();
-
-        # TODO: Check for Archive::Zip errors
-    }
-    else {
-        # TODO: Log/report error on wrong file type
-
-        return;
-    }
-    
-    chdir($Cwd);
-
-    my ($DistPath) = $Kernel::OM->Get('Kernel::System::Main')->DirectoryRead(
-        Directory => $TempDir,
-        Filter    => '*'
-    );
-
-    return $DistPath;
-}
-
 sub UpdateDatabase {
     my ( $Self, %Param ) = @_;
 
@@ -400,6 +323,83 @@ sub StartBackgroundTasks {
         system("$^X $Home/bin/otrs.Daemon.pl start >/dev/null 2>&1") == 0;
     
     return $CronJobsStarted && $DaemonStarted;
+}
+
+sub _GetDistVersion {
+    my ($Self, $DistArchive) = @_;
+
+    my $Content = '';
+
+    if ( $DistArchive =~ / \.tar \.(?: gz | bz2 ) $/ix ) {
+        my $Tar   = Archive::Tar->new($DistArchive);
+        my ($Dir) = $Tar->list_files();
+        
+        $Content = $Tar->get_content($Dir . 'RELEASE');
+    }
+    elsif ( $DistArchive =~ / \.zip $/ix ) {
+        my $Zip   = Archive::Zip->new($DistArchive);
+        my ($Dir) = $Zip->memberNames();
+
+        my $Handle = Archive::Zip::MemberRead->new($Zip, $Dir . 'RELEASE');
+        
+        while (defined (my $Line = $Handle->getline())) {
+            $Content .= $Line . "\n";
+        }
+
+        # TODO: Check for Archive::Zip errors
+    }
+    else {
+        # TODO: Log/report error on wrong file type
+
+        return;
+    }
+
+    my ($Version) = ($Content =~ m/^ VERSION \s* = \s* ( \S+ ) $/mx);
+
+    return $Version;
+}
+
+# tar.gz or tar.bz2 supported
+sub _ExtractDistArchive {
+    my ($Self, $DistArchive) = @_;
+
+    # TODO: Check if $DistArchive exists and is readable
+
+    my $TempDir = $Kernel::OM->Get('Kernel::System::FileTemp')->TempDir();
+
+    my $Cwd = cwd();
+    chdir($TempDir);
+
+    if ( $DistArchive =~ / \.tar \.(?: gz | bz2 ) $/ix ) {
+        my $CompressionOption = 'z';
+        $CompressionOption = 'j' if $DistArchive =~ /\.bz2$/;
+
+        # Use system tar utility rather than e.g. Archive::Tar, because
+        # it's faster
+        system('tar ' . $CompressionOption . 'xf ' . $DistArchive);
+    }
+    elsif ( $DistArchive =~ / \.zip $/ix ) {
+        my $Zip = Archive::Zip->new();
+        
+        $Zip->read($DistArchive);
+        $Zip->extractTree();
+
+        # TODO: Check for Archive::Zip errors
+    }
+    else {
+        # TODO: Log/report error on wrong file type
+
+        return;
+    }
+    
+    chdir($Cwd);
+
+    my ($DistPath) = $Kernel::OM->Get('Kernel::System::Main')->DirectoryRead(
+        Directory => $TempDir,
+        Filter    => '*'
+    );
+
+    return $DistPath;
 }
 
 1;
