@@ -159,6 +159,8 @@ sub CopyFiles {
     close($Archive);
 
     chdir($Cwd);
+
+    return 1;
 }
 
 sub _GetDistVersion {
