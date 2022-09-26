@@ -11,6 +11,7 @@ package Kernel::System::Console::Command::Maint::System::Update;
 use strict;
 use warnings;
 
+use Cwd;
 use IO::Interactive qw(is_interactive);
 use Text::Wrap;
 
@@ -61,6 +62,8 @@ sub Run {
     }
 
     my $UpdateObject = $Kernel::OM->Get('Kernel::System::Update');
+
+    $Self->{Cwd} = cwd();
 
     my $CurrentVersion = $Kernel::OM->Get('Kernel::Config')->Get('Version');
     my $DistVersion = $UpdateObject->GetDistVersion(
@@ -304,6 +307,8 @@ sub Run {
 
     $Self->Print("\n");
 
+    $Self->_ReturnToCwd();
+
     return $Self->ExitCodeOk();
 }
 
@@ -379,6 +384,14 @@ sub _DisableMaintenanceModeOnError {
     return $Disabled;
 }
 
+sub _ReturnToCwd {
+    my ( $Self ) = @_;
+
+    if ( $Self->{Cwd} ) {
+        chdir($Self->{Cwd}) or chdir($ENV{HOME});
+    }
+}
+
 sub _ExitWithError {
     my ( $Self ) = @_;
 
@@ -388,6 +401,8 @@ sub _ExitWithError {
     if ( $Self->{SysMaintID} ) {
         $Self->_DisableMaintenanceModeOnError();
     }
+
+    $Self->_ReturnToCwd();
 
     return $Self->ExitCodeError();
 }
