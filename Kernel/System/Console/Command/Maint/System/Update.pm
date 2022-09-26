@@ -404,8 +404,6 @@ sub _ReturnToCwd {
 sub _ExitWithError {
     my ( $Self ) = @_;
 
-    my $UpdateObject = $Kernel::OM->Get('Kernel::System::Update');
-
     # Make sure the system is not left in maintenance mode when exiting
     if ( $Self->{SysMaintID} ) {
         $Self->_DisableMaintenanceModeOnError();
