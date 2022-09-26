@@ -72,11 +72,6 @@ sub Run {
     );
 
     if ( ! $VersionSupported ) {
-        my $CurrentVersion = $Kernel::OM->Get('Kernel::Config')->Get('Version');
-        my $DistVersion = $UpdateObject->GetDistVersion(
-            DistArchive => $DistArchive,
-        );
-
         $Self->PrintError("Updating from version $CurrentVersion to " .
             "$DistVersion is not supported.");
 
