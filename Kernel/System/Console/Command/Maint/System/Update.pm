@@ -83,6 +83,9 @@ sub Run {
         }
     }
 
+    $Self->{CurrentVersion} = $CurrentVersion;
+    $Self->{DistVersion}    = $DistVersion;
+
     $Self->_PrintPreRunWarning();
     $Self->Print("\n");
 
