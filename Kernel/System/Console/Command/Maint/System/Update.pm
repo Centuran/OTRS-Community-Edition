@@ -335,9 +335,9 @@ sub _PrintPreRunWarning {
             'any packages which may affect the core features of the ' .
             "system (such as OTRS::ITSM).\n" .
             "\n" .
-            'When the update starts, all user sessions will be closed. The ' .
-            'system will be put in maintenance mode until the update is ' .
-            "completed.\n"
+            'When the update starts, all active user sessions will be ' .
+            'stopped. The system will be put in maintenance mode until the ' .
+            "update is completed.\n"
         ) . '</yellow>'
     );
 }
