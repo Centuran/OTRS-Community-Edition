@@ -1770,7 +1770,7 @@ form label.Mandatory span.Marker {
   border-right: solid 1px rgba(0, 0, 0, 0.38);
   border-right: solid 1px #d2d2d2;
   box-sizing: border-box;
-  font-family: Heebo, sans-serif;
+  font-family: inherit;
   font-size: inherit;
   height: auto;
   height: 32px;
@@ -1900,7 +1900,7 @@ div.InputField_ListContainer {
   box-shadow: none;
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.87);
-  font-family: Heebo, sans-serif;
+  font-family: inherit;
   font-size: inherit;
   height: 42px;
   margin-top: 15px;
@@ -3985,7 +3985,7 @@ hr.cmt-flex-break {
   margin-left: -0.3em;
 }
 [id$=TicketStats-box] [id$=-TicketStats] svg text {
-  font: 11px Heebo !important;
+  font: 11px Roboto !important;
 }
 
 .SidebarColumn .SettingsWidget .Content {
