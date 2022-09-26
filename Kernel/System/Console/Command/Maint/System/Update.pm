@@ -316,6 +316,8 @@ sub Run {
 
     $Self->Print("\n");
 
+    $Self->_PrintSuccessMessage();
+
     $Self->_ReturnToCwd();
 
     return $Self->ExitCodeOk();
@@ -347,6 +349,23 @@ sub _PrintProceedingMessage {
 
     $Self->Print('<yellow>Force mode is in effect -- proceeding with ' .
         "update...</yellow>\n");
+}
+
+sub _PrintSuccessMessage {
+    my ( $Self, %Param ) = @_;
+
+    $Self->Print(
+        '<green>' . wrap('', '',
+            "Update to version $Self->{DistVersion} completed successfully."
+        ) . "</green>\n" .
+        "\n" .
+        '<yellow>' . wrap('', '',
+            'Please restart the HTTP server before you start using the new ' .
+            'version of the system (usually with "systemctl restart httpd" ' .
+            'or "systemctl restart apache2").'
+        ) . "</yellow>\n" .
+        "\n"
+    );
 }
 
 sub _ConfirmRun {
