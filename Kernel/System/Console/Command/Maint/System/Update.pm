@@ -353,8 +353,8 @@ sub _ConfirmRun {
     my ( $Self ) = @_;
 
     if ( is_interactive() ) {
-        $Self->Print('Do you want to start the update? ');
-        $Self->Print('[Y]es/[N]o: ');
+        $Self->Print('<yellow>Do you want to start the update?</yellow> ');
+        $Self->Print('<yellow>[Y]es/[N]o:</yellow> ');
 
         my $Answer = <STDIN>;
         $Answer =~ s{\s}{}g;
