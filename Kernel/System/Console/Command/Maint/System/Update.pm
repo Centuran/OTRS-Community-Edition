@@ -105,7 +105,7 @@ sub Run {
     }
 
     $Self->Print("\n");
-    $Self->Print("Starting system update...\n");
+    $Self->Print("<yellow>Starting system update...</yellow>\n");
     $Self->Print("\n");
 
     #
