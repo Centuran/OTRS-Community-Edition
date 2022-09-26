@@ -65,6 +65,8 @@ sub Run {
 
     $Self->{Cwd} = cwd();
 
+    $Self->{Errors} = 0;
+
     my $CurrentVersion = $Kernel::OM->Get('Kernel::Config')->Get('Version');
     my $DistVersion = $UpdateObject->GetDistVersion(
         DistArchive => $DistArchive,
@@ -77,6 +79,8 @@ sub Run {
     if ( ! $VersionSupported ) {
         $Self->PrintError("Updating from version $CurrentVersion to " .
             "$DistVersion is not supported.");
+
+        # Not increasing error count in this case
 
         if ( $Forced ) {
             $Self->_PrintProceedingMessage();
@@ -123,6 +127,8 @@ sub Run {
     }
     else {
         $Self->Print("<red>Failed to extract files.</red>\n");
+
+        $Self->{Errors}++;
         
         return $Self->_ExitWithError();
     }
@@ -142,6 +148,8 @@ sub Run {
     }
     else {
         $Self->Print("<red>Failed to stop active user sessions.</red>\n");
+
+        $Self->{Errors}++;
 
         if ( $Forced ) {
             $Self->_PrintProceedingMessage();
@@ -169,6 +177,8 @@ sub Run {
     else {
         $Self->Print("<red>Failed to enable system maintenance mode.</red>\n");
 
+        $Self->{Errors}++;
+
         if ( $Forced ) {
             $Self->_PrintProceedingMessage();
         }
@@ -192,6 +202,8 @@ sub Run {
     }
     else {
         $Self->Print("<red>Failed to stop background tasks.</red>\n");
+
+        $Self->{Errors}++;
 
         if ( $Forced ) {
             $Self->_PrintProceedingMessage();
@@ -218,6 +230,8 @@ sub Run {
     }
     else {
         $Self->Print("<red>Failed to update database.</red>\n");
+
+        $Self->{Errors}++;
 
         if ( $Forced ) {
             $Self->_PrintProceedingMessage();
@@ -254,6 +268,8 @@ sub Run {
     else {
         $Self->Print("<red>Failed to update application files.</red>\n");
 
+        $Self->{Errors}++;
+
         if ( $Forced ) {
             $Self->_PrintProceedingMessage();
         }
@@ -277,6 +293,8 @@ sub Run {
     }
     else {
         $Self->Print("<red>Failed to restart background tasks.</red>\n");
+
+        $Self->{Errors}++;
 
         if ( $Forced ) {
             $Self->_PrintProceedingMessage();
@@ -306,6 +324,8 @@ sub Run {
     else {
         $Self->Print("<red>Failed to disable system maintenance mode.</red>\n");
 
+        $Self->{Errors}++;
+
         if ( $Forced ) {
             $Self->_PrintProceedingMessage();
         }
@@ -316,9 +336,15 @@ sub Run {
 
     $Self->Print("\n");
 
-    $Self->_PrintSuccessMessage();
-
     $Self->_ReturnToCwd();
+
+    if ( $Self->{Errors} > 0 ) {
+        $Self->_PrintDoneWithErrorsMessage();
+        
+        return $Self->ExitCodeError();
+    }
+
+    $Self->_PrintSuccessMessage();
 
     return $Self->ExitCodeOk();
 }
@@ -364,6 +390,21 @@ sub _PrintSuccessMessage {
             'version of the system (usually with "systemctl restart httpd" ' .
             'or "systemctl restart apache2").'
         ) . "</yellow>\n" .
+        "\n"
+    );
+}
+
+sub _PrintDoneWithErrorsMessage {
+    my ( $Self, %Param ) = @_;
+
+    $Self->Print(
+        '<red>' . wrap('', '',
+            "Update to version $Self->{DistVersion} finished with errors."
+        ) . "</red>\n" .
+        "\n" .
+        '<red>' . wrap('', '',
+            'Please review the messages above for more information.'
+        ) . "</red>\n" .
         "\n"
     );
 }
