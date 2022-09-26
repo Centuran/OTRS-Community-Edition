@@ -235,9 +235,18 @@ sub Run {
 
     $Self->Print("<yellow>Updating application files...</yellow>\n");
 
-    my $FilesCopied = $UpdateObject->CopyFiles(
-        DistPath => $DistPath,
-    );
+    my $FilesCopied;
+    
+    if ( $CurrentVersion =~ / \s git $/x ) {
+        $Self->Print("<yellow>Current version is $CurrentVersion, possibly " .
+            "a development environment, will not overwrite files.</yellow>\n");
+        $FilesCopied = 1;
+    }
+    else {
+        $FilesCopied = $UpdateObject->CopyFiles(
+            DistPath => $DistPath,
+        );
+    }
     
     if ( $FilesCopied ) {
         $Self->Print("<green>Files updated successfully.</green>\n");
