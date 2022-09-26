@@ -301,7 +301,7 @@ sub Run {
     $Self->{SysMaintID} = undef;
 
     if ( $SysMaintDisabled ) {
-        $Self->Print("<green>Disabled system maintenance mode.</green>\n");
+        $Self->Print("<green>System maintenance mode disabled.</green>\n");
     }
     else {
         $Self->Print("<red>Failed to disable system maintenance mode.</red>\n");
