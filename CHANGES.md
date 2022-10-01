@@ -1,3 +1,8 @@
+# 6.0.37 2022-10-03
+ - Implemented a new method of performing system updates using console command Maint::System::Update
+ - Added support for OAuth2 authentication for retrieving and sending email
+ - Thanks to Znuny GmbH and contributors
+
 # 6.0.36 2022-08-25
  - Added refreshed version of the default agent user interface skin (optional and experimental)
  - Added configurable ticket priority colors
