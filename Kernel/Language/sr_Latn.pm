@@ -31,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.993996569468268;
+    $Self->{Completeness}        = 0.984542211652794;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1219,10 +1219,12 @@ sub Data {
             'Podešavanja odlazećih imejl poruka mogu biti konfigurisana putem Sendmail* opcija u %s.',
         'System Configuration' => 'Konfiguracija sistema',
         'Host' => 'Domaćin',
+        'Authentication method' => '',
         'Delete account' => 'Obriši nalog',
         'Fetch mail' => 'Preuzmi poštu',
         'Do you really want to delete this mail account?' => 'Da li stvarno želite da obrišete ovaj imejl nalog?',
         'Password' => 'Lozinka',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => 'Primer: mail.example.com',
         'IMAP Folder' => 'IMAP folder',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1289,6 +1291,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => 'Koristite zarez ili tačku-zarez za odvajanje imejl adresa.',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             'Možete koristiti OTRS tagove kao <OTRS_TICKET_DynamicField_...> za umetanje vrednosti iz trenutnog tiketa.',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => 'Šablon',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => 'Obaveštenja',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => 'Upravljaj sa %s',
@@ -2131,7 +2172,6 @@ sub Data {
         'Delete this entry' => 'Obriši ovaj unos',
         'Do you really want to delete this template?' => 'Da li stvarno želite da obrišete ovaj šablon?',
         'A standard template with this name already exists!' => 'Standardni šablon sa ovim nazivom već postoji!',
-        'Template' => 'Šablon',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             '',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2160,6 +2200,34 @@ sub Data {
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             'Ovaj tip se koristi u sistemskoj konfiguraciji, neophodna je dodatna potvrda za promenu podešavanja na novu vrednost!',
         'This type is used in the following config settings:' => 'Ovaj tip se koristi u sledećim sistemskim podešavanjima:',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => 'Odjava',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => 'Zatvori',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => 'Upravljanje operaterima',
@@ -2936,7 +3004,6 @@ sub Data {
 
         # Template: Header
         'Personal preferences' => 'Lična podešavanja',
-        'Logout' => 'Odjava',
         'You are logged in as' => 'Prijavljeni ste kao',
 
         # Template: Installer
@@ -3223,6 +3290,7 @@ sub Data {
         'Edit search' => 'Uredi pretragu',
         'Go back to admin: ' => 'Nazad na admin:',
         'Deployment' => 'Raspored',
+        'Currently edited settings' => '',
         'My favourite settings' => 'Moja omiljena podešavanja',
         'Invalid settings' => 'Nevažeća podešavanja',
 
@@ -3244,6 +3312,9 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Navigacija',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS test strana',
@@ -3682,6 +3753,9 @@ sub Data {
         'All recipients of the last article' => 'Svi primaoci poslednjeg članka',
         'Invisible to customer' => 'Nevidljivo klijentu',
         'Visible to customer' => 'Vidljivo klijentu',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => 'Vaš sistem je uspešno unapređen na %s.',
@@ -6063,6 +6137,8 @@ Vaša tehnička podrška
         'Arabic (Saudi Arabia)' => 'Arapski (Saudijska arabija)',
         'ArticleTree' => 'Članak u obliku drveta',
         'Attachment Name' => 'Naziv priloga',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             'Automatski kraj reda u tekstualnim porukama posle h karaktera.',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6144,7 +6220,6 @@ Vaša tehnička podrška
             'Izaberite za kakve promene tiketa želite da primate obaveštenja. Molimo obratite pažnju da ne možete u potpunosti da isključite obaveštenja koja su označena kao obavezna.',
         'Choose which notifications you\'d like to receive.' => 'Izaberite koja obaveštenja želite da primate.',
         'Christmas Eve' => 'Badnje veče',
-        'Close' => 'Zatvori',
         'Close this ticket' => 'Zatvori ovaj tiket',
         'Closed tickets (customer user)' => 'Zatvoreni tiketi (klijent korisnik)',
         'Closed tickets (customer)' => 'Zatvoreni tiketi (klijent)',
@@ -7561,6 +7636,8 @@ Vaša tehnička podrška
             'Lista boja u heksadecimalnom RGB zapisu koje će biti dostupne za izbor prilikom pravljenja kalendara. Obratite pažnju da su boje dovoljno tamne tako da beli tekst može biti ispisan na njima.',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             'Lista podrazumevanih standardnih šablona koji se automatski dodeljiju novom Redu nakon kreiranja.',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             'Lista prilagodljivih CSS datoteka uvek učitanih za interfejs operatera.',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7590,6 +7667,7 @@ Vaša tehnička podrška
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'Određuje da li sesije koriste HTML kolačiće. Ukoliko su kolačići isključeni ili klijentski pretraživač ih ne podržava, sistem će raditi uobičajeno i dodavaće ID sesije u svim vezama.',
         'Malay' => 'Malajski',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => 'Upravlja PGP ključevima za imejl šifrovanje.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Upravljanje POP3 ili IMAP nalozima za preuzimanje email-a od.',
         'Manage S/MIME certificates for email encryption.' => 'Upravljaj S/MIME sertifikatima za imej enkripciju.',
@@ -7687,6 +7765,8 @@ Vaša tehnička podrška
             'Naziv namenskog reda. Namenski red je izbor redova po vašoj želji i može se izabrati u podešavanjima.',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             'Naziv namenske usluge. Namenska usluga je izbor usluga po vašoj želji i može se izabrati u podešavanjima.',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => 'NameX',
         'New Ticket' => 'Novi tiket',
         'New Tickets' => 'Novi tiketi',
@@ -7713,6 +7793,8 @@ Vaša tehnička podrška
             'Broj tiketa koji će biti prikazani na svakoj strani rezultata pretrage u interfejsu operatera.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Broj tiketa koji će biti prikazani na svakoj strani rezultata pretrage u interfejsu klijenta.',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '„OTRS” može da koristi jednu ili više preslikanih baza podataka za skupe operacije kao što su pretraga teksta ili generisanje statistika. Ovde možete definisati DSN za prvu preslikanu bazu podataka.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7817,6 +7899,7 @@ Vaša tehnička podrška
             'Putanja do log datoteke (važi jedino ako je za LoopProtectionModule izabrano "FS" i postavljeno kao obavezno).',
         'Pending time' => 'Vreme čekanja',
         'People' => 'Osobe',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             'Izvršava podešenu akciju za svaki događaj (kao pozivalac) za svaki konfigurisan veb servis.',
         'Permitted width for compose email windows.' => 'Dozvoljena širina prozora za pisanje poruke.',

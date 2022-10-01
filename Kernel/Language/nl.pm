@@ -31,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D-%M-%Y';
     $Self->{DateInputFormat}     = '%D-%M-%Y';
     $Self->{DateInputFormatLong} = '%D-%M-%Y - %T';
-    $Self->{Completeness}        = 0.554716981132075;
+    $Self->{Completeness}        = 0.549515882452862;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1219,10 +1219,12 @@ sub Data {
             '',
         'System Configuration' => 'Systeemconfiguratie',
         'Host' => 'Server',
+        'Authentication method' => '',
         'Delete account' => 'Verwijder account',
         'Fetch mail' => 'Mail ophalen',
         'Do you really want to delete this mail account?' => '',
         'Password' => 'Wachtwoord',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => 'Bijvoorbeeld: mail.example.com',
         'IMAP Folder' => 'IMAP folder',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1289,6 +1291,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => '',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             '',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => 'Sjabloon',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => 'Meldingen',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => 'Beheer %s',
@@ -2131,7 +2172,6 @@ sub Data {
         'Delete this entry' => 'Verwijder antwoord',
         'Do you really want to delete this template?' => 'Wilt u deze template echt verwijderen?',
         'A standard template with this name already exists!' => 'Er bestaat al een standaard template met deze naam!',
-        'Template' => 'Sjabloon',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             '',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2160,6 +2200,34 @@ sub Data {
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             '',
         'This type is used in the following config settings:' => '',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => 'Afmelden',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => 'Sluiten',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => 'Beheer behandelaars',
@@ -2936,7 +3004,6 @@ sub Data {
 
         # Template: Header
         'Personal preferences' => 'Eigen voorkeuren',
-        'Logout' => 'Afmelden',
         'You are logged in as' => 'Ingelogd als',
 
         # Template: Installer
@@ -3223,6 +3290,7 @@ sub Data {
         'Edit search' => 'Bewerk zoekopdracht',
         'Go back to admin: ' => 'Ga terug naar admin:',
         'Deployment' => '',
+        'Currently edited settings' => '',
         'My favourite settings' => '',
         'Invalid settings' => 'Ongeldige instellingen',
 
@@ -3244,6 +3312,9 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Navigatie',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS Testpagina',
@@ -3682,6 +3753,9 @@ sub Data {
         'All recipients of the last article' => 'Alle ontvangers van het laatste artikel',
         'Invisible to customer' => 'Onzichtbaar voor klant',
         'Visible to customer' => 'Zichtbaar voor klant',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => 'Het systeem is succesvol geupgraded naar %s.',
@@ -6063,6 +6137,8 @@ Het Helpdesk Team
         'Arabic (Saudi Arabia)' => 'Arabisch (Saudi Arabië)',
         'ArticleTree' => 'Interactie-boom',
         'Attachment Name' => 'Bijlage naam',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6144,7 +6220,6 @@ Het Helpdesk Team
             '',
         'Choose which notifications you\'d like to receive.' => '',
         'Christmas Eve' => 'Kerstavond',
-        'Close' => 'Sluiten',
         'Close this ticket' => 'Sluit dit ticket',
         'Closed tickets (customer user)' => 'Gesloten tickets (klant gebruiker)',
         'Closed tickets (customer)' => 'Gesloten tickets (klant)',
@@ -7561,6 +7636,8 @@ Het Helpdesk Team
             '',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             'Lijst van standaard sjablonen die automatisch gekoppeld worden bij het aanmaken van een wachtrij.',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             '',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7590,6 +7667,7 @@ Het Helpdesk Team
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             '',
         'Malay' => '',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => 'Beheer PGP-sleutels voor encryptie van e-mail.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Beheer POP3 of IMAP accounts om e-mail op te halen en om te zetten naar tickets.',
         'Manage S/MIME certificates for email encryption.' => 'Beheer S/MIME certificaten voor encryptie van e-mail.',
@@ -7687,6 +7765,8 @@ Het Helpdesk Team
             '',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             '',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => 'NaamX',
         'New Ticket' => 'Nieuw ticket',
         'New Tickets' => 'Nieuwe tickets',
@@ -7713,6 +7793,8 @@ Het Helpdesk Team
             '',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7817,6 +7899,7 @@ Het Helpdesk Team
             '',
         'Pending time' => '',
         'People' => 'Personen',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             '',
         'Permitted width for compose email windows.' => '',

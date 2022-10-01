@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.966895368782161;
+    $Self->{Completeness}        = 0.957703414302701;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1213,10 +1213,12 @@ sub Data {
             '나가는 이메일은 %s의 Sendmail * 설정을 통해 구성 할 수 있습니다.',
         'System Configuration' => '시스템 설정',
         'Host' => '호스트',
+        'Authentication method' => '',
         'Delete account' => '계정 삭제',
         'Fetch mail' => '메일 가져오기',
         'Do you really want to delete this mail account?' => '정말로 이 메일 계정을 삭제 하시겠습니까?',
         'Password' => '암호',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => '예 : mail.example.com',
         'IMAP Folder' => 'IMAP 폴더',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1283,6 +1285,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => '',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             '<OTRS_TICKET_DynamicField _...>와 같은 OTRS 태그를 사용하여 현재 티켓의 값을 삽입 할 수 있습니다.',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => '템플릿',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => '알림',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => '%s 관리',
@@ -2125,7 +2166,6 @@ sub Data {
         'Delete this entry' => '이 항목 삭제',
         'Do you really want to delete this template?' => '이 템플릿을 정말로 삭제 하시겠습니까?',
         'A standard template with this name already exists!' => '이 이름을 가진 표준 템플릿이 이미 존재합니다!',
-        'Template' => '템플릿',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             '',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2154,6 +2194,34 @@ sub Data {
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             '이 유형은 SysConfig 설정에 있으며, 새 유형을 가리 키도록 설정을 업데이트해야합니다!',
         'This type is used in the following config settings:' => '이 유형은 다음 구성 설정에서 사용됩니다.',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => '로그아웃',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => '닫기',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => '상담원 관리',
@@ -2930,7 +2998,6 @@ sub Data {
 
         # Template: Header
         'Personal preferences' => '개인 환경설정',
-        'Logout' => '로그아웃',
         'You are logged in as' => '귀하는 다음 계정으로 로그인했습니다.',
 
         # Template: Installer
@@ -3217,6 +3284,7 @@ sub Data {
         'Edit search' => '검색 수정',
         'Go back to admin: ' => '관리자에게 돌아가기 : ',
         'Deployment' => '전개',
+        'Currently edited settings' => '',
         'My favourite settings' => '내가 가장 좋아하는 설정',
         'Invalid settings' => '설정이 잘못되었습니다.',
 
@@ -3238,6 +3306,9 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '항해',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS 테스트 페이지',
@@ -3676,6 +3747,9 @@ sub Data {
         'All recipients of the last article' => '마지막 기사의 모든 수신자',
         'Invisible to customer' => '',
         'Visible to customer' => '',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => '시스템이 %s로 성공적으로 업그레이드되었습니다.',
@@ -6057,6 +6131,8 @@ Thanks for your help!
         'Arabic (Saudi Arabia)' => '아랍어 (사우디 아라비아)',
         'ArticleTree' => 'ArticleTree',
         'Attachment Name' => '첨부명',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             'X 문자 수 후에 문자 메시지의 자동 줄바꿈',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6138,7 +6214,6 @@ Thanks for your help!
             '알림을 수신할 티켓 변경 유형을 선택하십시오. 필수로 표시된 알림은 완전히 사용 중지할 수 없습니다.',
         'Choose which notifications you\'d like to receive.' => '수신할 알림을 선택하십시오.',
         'Christmas Eve' => '크리스마스 이브',
-        'Close' => '닫기',
         'Close this ticket' => '이 티켓을 닫습니다.',
         'Closed tickets (customer user)' => '폐쇄된 티켓 (고객 사용자)',
         'Closed tickets (customer)' => '정기권(고객)',
@@ -7555,6 +7630,8 @@ Thanks for your help!
             '달력을 만들 때 선택할 수있는 16 진수 RGB 색상 목록입니다. 흰색 텍스트를 오버레이 할 수 있도록 색이 충분히 어두워 졌는지 확인하십시오.',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             '생성시 새 대기열에 자동으로 할당되는 기본 표준 템플릿 목록입니다.',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             '에이전트 인터페이스 용으로 항상로드되는 반응 형 CSS 파일 목록입니다.',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7584,6 +7661,7 @@ Thanks for your help!
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             '세션 관리가 html 쿠키를 사용하게합니다. html 쿠키가 비활성화되거나 클라이언트 브라우저가 html 쿠키를 비활성화 한 경우 시스템은 평소와 같이 작동하고 링크에 세션 ID를 추가합니다.',
         'Malay' => '말레이 사람',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => '전자 메일 암호화를위한 PGP 키 관리.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'POP3 또는 IMAP 계정을 관리하여 전자 메일을 가져옵니다.',
         'Manage S/MIME certificates for email encryption.' => '전자 메일 암호화를위한 S / MIME 인증서를 관리합니다.',
@@ -7681,6 +7759,8 @@ Thanks for your help!
             '사용자 정의 대기열의 이름입니다. 사용자 정의 대기열은 기본 설정 대기열의 대기열 선택이며 환경 설정에서 선택할 수 있습니다.',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             '사용자 지정 서비스의 이름입니다. 사용자 지정 서비스는 기본 설정 서비스에서 선택한 서비스이며 기본 설정에서 선택할 수 있습니다.',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => 'NameX',
         'New Ticket' => '새 티켓',
         'New Tickets' => '새 티켓',
@@ -7707,6 +7787,8 @@ Thanks for your help!
             '에이전트 인터페이스에서 검색 결과의 각 페이지에 표시할 티넷 수입니다.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '고객 인터페이스에서 검색 결과의 각 페이지에 표시할 티켓 수입니다.',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS는 전체 텍스트 검색이나 통계 생성과 같은 값 비싼 작업에 대해 하나 이상의 읽기 전용 미러 데이터베이스를 사용할 수 있습니다. 여기서 첫 번째 미러 데이터베이스에 대해 DSN을 지정할 수 있습니다.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7811,6 +7893,7 @@ Thanks for your help!
             '로그 파일 경로 (LoopProtectionModule에 대해 "FS"가 선택되고 필수 항목 인 경우에만 적용됩니다).',
         'Pending time' => '보류 시간',
         'People' => '사람들',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             '구성된 각 웹 서비스의 각 이벤트 (Invoker)에 대해 구성된 작업을 수행합니다.',
         'Permitted width for compose email windows.' => '전자 메일 작성용으로 허용된 너비.',

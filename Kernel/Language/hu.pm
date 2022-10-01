@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.997770154373928;
+    $Self->{Completeness}        = 0.988279259385086;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1217,10 +1217,12 @@ sub Data {
             'A kimenő e-mail a Sendmail* beállításokon keresztül állítható be itt: %s.',
         'System Configuration' => 'Rendszerbeállítások',
         'Host' => 'Kiszolgáló',
+        'Authentication method' => '',
         'Delete account' => 'Fiók törlése',
         'Fetch mail' => 'Levél lekérése',
         'Do you really want to delete this mail account?' => 'Valóban törölni szeretné ezt a levelezési fiókot?',
         'Password' => 'Jelszó',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => 'Példa: mail.example.com',
         'IMAP Folder' => 'IMAP mappa',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1287,6 +1289,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => 'Használjon vesszőt vagy pontosvesszőt az e-mail címek elválasztásához.',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             'Használhatja az OTRS címkéket (mint például <OTRS_TICKET_DynamicField_...>) értékek beszúrásához a jelenlegi jegyből.',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => 'Sablon',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => 'Értesítések',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => '%s kezelése',
@@ -2129,7 +2170,6 @@ sub Data {
         'Delete this entry' => 'Bejegyzés törlése',
         'Do you really want to delete this template?' => 'Valóban törölni szeretné ezt a sablont?',
         'A standard template with this name already exists!' => 'Már létezik ilyen nevű szabványos sablon!',
-        'Template' => 'Sablon',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             'A jelenlegi vagy a legfrissebb ügyintézői bejegyzés tárgyának első 20 karakterének lekéréséhez (jelenlegi a válasznál és továbbításnál, a legfrissebb a jegyzet sablontípusnál). Ez a címke nem támogatott más sablontípusoknál.',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2158,6 +2198,34 @@ sub Data {
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             'Ez a típus megtalálható egy rendszerbállításban, az új típusra mutató beállítások frissítésének megerősítése szükséges!',
         'This type is used in the following config settings:' => 'Ez a típus a következő konfigurációs beállításokban van használva:',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => 'Kilépés',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => 'Lezárás',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => 'Ügyintéző-kezelés',
@@ -2934,7 +3002,6 @@ sub Data {
 
         # Template: Header
         'Personal preferences' => 'Személyes beállítások',
-        'Logout' => 'Kilépés',
         'You are logged in as' => 'Belépett a következő néven:',
 
         # Template: Installer
@@ -3221,6 +3288,7 @@ sub Data {
         'Edit search' => 'Keresés szerkesztése',
         'Go back to admin: ' => 'Vissza az adminisztrációhoz: ',
         'Deployment' => 'Üzembe állítás',
+        'Currently edited settings' => '',
         'My favourite settings' => 'Kedvenc beállításaim',
         'Invalid settings' => 'Érvénytelen beállítások',
 
@@ -3242,6 +3310,9 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Navigáció',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS tesztoldal',
@@ -3680,6 +3751,9 @@ sub Data {
         'All recipients of the last article' => 'Az utolsó bejegyzés összes címzettje',
         'Invisible to customer' => 'Láthatatlan az ügyfélnek',
         'Visible to customer' => 'Látható az ügyfélnek',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => 'A rendszere sikeresen frissítve lett a következő verzióra: %s.',
@@ -6061,6 +6135,8 @@ Az Ön segélyszolgálat csapata
         'Arabic (Saudi Arabia)' => 'Arab (Szaúd-Arábia)',
         'ArticleTree' => 'Bejegyzés fa',
         'Attachment Name' => 'Melléklet neve',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             'Automatikus sortörés a szöveges üzenetekben x karakter után.',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6142,7 +6218,6 @@ Az Ön segélyszolgálat csapata
             'Annak kiválasztása, hogy mely típusú jegyváltozásokról szeretne értesítéseket kapni. Ne feledje, hogy nem tudja teljesen letiltani a kötelezőként megjelölt értesítéseket.',
         'Choose which notifications you\'d like to receive.' => 'Annak kiválasztása, hogy milyen értesítéseket szeretne kapni.',
         'Christmas Eve' => 'Szenteste',
-        'Close' => 'Lezárás',
         'Close this ticket' => 'Jegy lezárása',
         'Closed tickets (customer user)' => 'Lezárt jegyek (ügyfél-felhasználó)',
         'Closed tickets (customer)' => 'Lezárt jegyek (ügyfél)',
@@ -7559,6 +7634,8 @@ Az Ön segélyszolgálat csapata
             'Színek listája hexadecimális RGB formában, amelyek elérhetők lesznek a kiválasztáshoz a naptár létrehozása közben. Győződjön meg arról, hogy a színek elég sötétek-e ahhoz, hogy a világos szöveg megjeleníthető legyen rajtuk.',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             'Az alapértelmezett szabványos sablonok listája, amelyek automatikusan hozzá vannak rendelve az új várólistákhoz a létrehozáskor.',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             'Alkalmazkodó CSS fájlok listája, amelyek mindig betöltődnek az ügyintézői felületnél.',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7588,6 +7665,7 @@ Az Ön segélyszolgálat csapata
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'HTML sütik használatát írja elő a munkamenet-kezelőnek. Ha a HTML sütik le vannak tiltva, vagy a kliens böngésző letiltotta a HTML sütiket, akkor a rendszer a szokásos módon fog működni, és hozzáfűzi a munkamenet-azonosítót a hivatkozásokhoz.',
         'Malay' => 'Maláj',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => 'PGP kulcsok kezelése e-mail titkosításhoz.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'POP3 vagy IMAP fiókok kezelése e-mailek letöltéséhez.',
         'Manage S/MIME certificates for email encryption.' => 'S/MIME tanúsítványok kezelése e-mailek titkosításához.',
@@ -7685,6 +7763,8 @@ Az Ön segélyszolgálat csapata
             'Az egyéni várólista neve. Az egyéni várólista az előnyben részesített várólisták kiválasztása, és a beállításokban választható ki.',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             'Az egyéni szolgáltatás neve. Az egyéni szolgáltatás az előnyben részesített szolgáltatások kiválasztása, és a beállításokban választható ki.',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => 'NévX',
         'New Ticket' => 'Új jegy',
         'New Tickets' => 'Új jegyek',
@@ -7711,6 +7791,8 @@ Az Ön segélyszolgálat csapata
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyintézői felületen.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyfélfelületen.',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'Az OTRS képes egy vagy több csak olvasható tükör adatbázist használni az olyan költséges műveleteknél, mint például a szabad-szavas keresés vagy a statisztikák előállítása. Itt adhatja meg a DNS-t az első tükör adatbázishoz.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7815,6 +7897,7 @@ Az Ön segélyszolgálat csapata
             'A naplófájl útvonala (csak akkor alkalmazza, ha „FS” lett kiválasztva a LoopProtectionModule modulnál, és nem kötelező).',
         'Pending time' => 'Várakozási idő',
         'People' => 'Emberek',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             'Végrehajtja a beállított műveletet minden eseménynél (mint egy meghívó) minden egyes beállított webszolgáltatáshoz.',
         'Permitted width for compose email windows.' => 'Engedélyezett szélesség az e-mail írás ablakoknál.',

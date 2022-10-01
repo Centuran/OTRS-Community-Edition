@@ -35,7 +35,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.929159519725557;
+    $Self->{Completeness}        = 0.920332936979786;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1223,10 +1223,12 @@ sub Data {
             'Исходящая почта может быть настроена через параметр Sendmail* в %s.',
         'System Configuration' => 'Настройка системы',
         'Host' => 'Сервер',
+        'Authentication method' => '',
         'Delete account' => 'Удалить учётную запись',
         'Fetch mail' => 'Забрать почту',
         'Do you really want to delete this mail account?' => 'Действительно удалить эту почтовую учётную запись?',
         'Password' => 'Пароль',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => 'Пример: mail.example.com',
         'IMAP Folder' => 'Папка IMAP',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1293,6 +1295,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => '',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             'Вы можете использовать OTRS-тэги типа <OTRS_TICKET_DynamicField_...> для вставки значений из текущей заявки.',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => 'Шаблон',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => 'Уведомления',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => 'Упровление %s',
@@ -2135,7 +2176,6 @@ sub Data {
         'Delete this entry' => 'Удалить эту запись',
         'Do you really want to delete this template?' => 'Действительно удалить этот шаблон?',
         'A standard template with this name already exists!' => 'Стандартный шаблон с таким именем уже существует!',
-        'Template' => 'Шаблон',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             '',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2164,6 +2204,34 @@ sub Data {
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             'Это состояние есть в настройках SysConfig, требуется подтверждение для обновления настроек для использования нового типа в системе!',
         'This type is used in the following config settings:' => 'Этот тип используется в следующих параметрах конфигурации:',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => 'Выход',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => 'Закрыть',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => 'Управление агентами',
@@ -2940,7 +3008,6 @@ sub Data {
 
         # Template: Header
         'Personal preferences' => 'Персональные настройки',
-        'Logout' => 'Выход',
         'You are logged in as' => 'Вы вошли как',
 
         # Template: Installer
@@ -3227,6 +3294,7 @@ sub Data {
         'Edit search' => 'Изменить условия поиска',
         'Go back to admin: ' => 'Вернуться в панель администратора: ',
         'Deployment' => 'Применение',
+        'Currently edited settings' => '',
         'My favourite settings' => 'Мои избранные настройки',
         'Invalid settings' => 'Неверное значение параметра',
 
@@ -3248,6 +3316,9 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Навигация',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'Тестовая страница OTRS',
@@ -3686,6 +3757,9 @@ sub Data {
         'All recipients of the last article' => 'Все получатели последней заметки',
         'Invisible to customer' => '',
         'Visible to customer' => '',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => 'Ваша система успешно обновлена до %s.',
@@ -6067,6 +6141,8 @@ Thanks for your help!
         'Arabic (Saudi Arabia)' => 'Арабский (Саудовская Аравия)',
         'ArticleTree' => 'Дерево сообщений',
         'Attachment Name' => 'Имя вложения',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             'Автоматический перевод строки в тексте сообщения после х символов.',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6148,7 +6224,6 @@ Thanks for your help!
             'Выберите для какого типа изменений заявок вы будете получать уведомления. Обратите внимание, что нельзя отключить уведомление отмеченное как обязательное.',
         'Choose which notifications you\'d like to receive.' => 'Выберите, какие уведомления Вы хотели бы получать.',
         'Christmas Eve' => 'Сочельник',
-        'Close' => 'Закрыть',
         'Close this ticket' => 'Закрыть эту заявку',
         'Closed tickets (customer user)' => 'Закрытые заявки (клиента)',
         'Closed tickets (customer)' => 'Закрытые заявки (клиента)',
@@ -7565,6 +7640,8 @@ Thanks for your help!
             'Список цветов в шестнадцатеричном RGB доступных для выбора при создании календаря. Убедитесь при выборе, что цвет фона достаточно темный, чтобы белый текст был на нем виден/читаем.',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             'Список по умолчанию для Стандартных Шаблонов, которые назначаются автоматически при создании новой очереди.',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             'Список CSS файлов всегда загружаемых в интерфейсе агента.',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7594,6 +7671,7 @@ Thanks for your help!
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'Позволяет использовать html cookies для управления сеансами. Если html cookies выключены, или в браузере клиента выключено использование html cookies, в этом случае система работает как обычно и добавляет session id к ссылке.',
         'Malay' => 'Малайский',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => 'Управления PGP ключами для шифрования почтовых сообщений.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Управление учётными записями POP3 или IMAP для получения почтовых сообщений.',
         'Manage S/MIME certificates for email encryption.' => 'Управление S/MIME сертификатами для шифрования почты',
@@ -7691,6 +7769,8 @@ Thanks for your help!
             'Имя пользовательского списка очередей. Это набор очередей, выбранных из списка доступных очередей в личных настройках.',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             'Имя пользовательского сервиса. Это сервис, выбранный из списка предпочтительных сервисов и он может быть выбран в личных настройках.',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => 'ИмяХ',
         'New Ticket' => 'Новая заявка',
         'New Tickets' => 'Новые Заявки',
@@ -7717,6 +7797,8 @@ Thanks for your help!
             'Количество заявок которое показывается на каждой странице при выводе результатов поиска в интерфейсе агента.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Количество заявок которое показывается на каждой странице при выводе результатов поиска в интерфейсе клиента.',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS может использовать одну или более зеркальных БД, в режиме только для чтения, для ресурсоёмких операций, типа полнотекстового поиска или генерации отчетов. Здесь вы можете указать имя/DSN для первой зеркальной БД.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7821,6 +7903,7 @@ Thanks for your help!
             'Путь к лог файлу (применяется только если выбран атрибут "FS" для LoopProtectionModule и он обязателен).',
         'Pending time' => 'Время в ожидании',
         'People' => 'Агенты',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             '',
         'Permitted width for compose email windows.' => 'Ширина окна для текста ответа.',

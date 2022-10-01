@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.761234991423671;
+    $Self->{Completeness}        = 0.754034312892815;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1218,10 +1218,12 @@ sub Data {
             '',
         'System Configuration' => 'システム設定',
         'Host' => 'ホスト',
+        'Authentication method' => '',
         'Delete account' => 'アカウント削除',
         'Fetch mail' => 'メールを取得',
         'Do you really want to delete this mail account?' => '本当にこのメールアカウントを削除しますか？',
         'Password' => 'パスワード',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => '例: mail.example.com',
         'IMAP Folder' => 'IMAPフォルダー',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1288,6 +1290,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => '',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             '<OTRS_TICKET_DynamicField_...> を指定することで、現在のチケットの値を参照することができます。',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => 'テンプレート',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => '通知',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => '%s を管理',
@@ -2131,7 +2172,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Delete this entry' => 'この登録を削除',
         'Do you really want to delete this template?' => '本当にこのテンプレートを削除してよろしいですか？',
         'A standard template with this name already exists!' => '',
-        'Template' => 'テンプレート',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             '',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2160,6 +2200,34 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             '',
         'This type is used in the following config settings:' => '',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => 'ログアウト',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => 'クローズ',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => '担当者管理',
@@ -2936,7 +3004,6 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
 
         # Template: Header
         'Personal preferences' => '個人設定',
-        'Logout' => 'ログアウト',
         'You are logged in as' => 'ログイン中: ',
 
         # Template: Installer
@@ -3223,6 +3290,7 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Edit search' => '検索を修正',
         'Go back to admin: ' => '管理に戻る：',
         'Deployment' => 'デプロイ',
+        'Currently edited settings' => '',
         'My favourite settings' => '私のお気に入りの設定',
         'Invalid settings' => '無効な設定',
 
@@ -3244,6 +3312,9 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
 
         # Template: Navigation
         'Navigation' => 'ナビゲーション',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'OTRS テストページ',
@@ -3683,6 +3754,9 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'All recipients of the last article' => '最後の記事の全ての受信者',
         'Invisible to customer' => '',
         'Visible to customer' => '',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => 'システムは正常に%sにアップグレードされました。',
@@ -6062,6 +6136,8 @@ Thanks for your help!
         'Arabic (Saudi Arabia)' => '',
         'ArticleTree' => '',
         'Attachment Name' => '添付ファイル名',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             'X個の文字型の後の、テキスト・メッセージにおける自動化されたライン・ブレイク。',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6143,7 +6219,6 @@ Thanks for your help!
             '',
         'Choose which notifications you\'d like to receive.' => '',
         'Christmas Eve' => 'クリスマスイブ',
-        'Close' => 'クローズ',
         'Close this ticket' => 'このチケットをクローズ',
         'Closed tickets (customer user)' => 'クローズ・チケット(顧客ユーザー)',
         'Closed tickets (customer)' => 'クローズ・チケット(顧客)',
@@ -7569,6 +7644,8 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             '作成時に新しいキューに自動的に割り当てられるデフォルトの標準テンプレートのリスト。',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             '',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7598,6 +7675,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'セッション管理に、htmlクッキーを使用させるようにします。htmlクッキーが無効にされている場合、またはクライアント・ブラウザがhtmlクッキーを無効にしている場合、システムは通常どおり動作し、またセッションIDをリンクに付け加えます。',
         'Malay' => 'マレー語',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => 'メール暗号用のPGP鍵管理',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'メール受信用POP3/IMAPアカウント管理',
         'Manage S/MIME certificates for email encryption.' => 'メール暗号用のS/MIME証明書管理',
@@ -7696,6 +7774,8 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             'カスタム・キューの名前です。カスタム・キューとは、利用者が特に優先するキューの一覧であり、プレファレンス設定から選択できます。',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             '',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => '',
         'New Ticket' => '新規チケット',
         'New Tickets' => '新規チケット',
@@ -7722,6 +7802,8 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '担当者インタフェースの検索結果の各ページで、表示されるチケットの数です。',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '顧客インタフェースの検索結果の各ページで表示される、チケット数です。',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRSは、フルテキスト検索や統計生成などの高価な操作に、1つまたは複数の読み取り専用ミラーデータベースを使用できます。 ここでは、最初のミラーデータベースのDSNを指定できます。',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7826,6 +7908,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             'ログ・ファイルのパスです（LoopProtectionModuleに関して“FS”が選択されており、それが強制である場合にのみ適用されます）。',
         'Pending time' => '保留期限',
         'People' => '担当者/顧客',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             '',
         'Permitted width for compose email windows.' => 'Eメール・ウィンドウを構成するために許容される幅です。',

@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.676329331046312;
+    $Self->{Completeness}        = 0.669950738916256;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1220,10 +1220,12 @@ sub Data {
             'La posta elettronica in uscita può essere configurata tramite le impostazioni di Sendmail * in %s.',
         'System Configuration' => 'Configurazione di sistema',
         'Host' => 'Server',
+        'Authentication method' => '',
         'Delete account' => 'Elimina account',
         'Fetch mail' => 'Scarica posta',
         'Do you really want to delete this mail account?' => 'Vuoi veramente cancellare questo account di posta?',
         'Password' => 'Password',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => 'Esempio: mail.esempio.it',
         'IMAP Folder' => 'Cartella IMAP',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1290,6 +1292,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => 'Utilizzare la virgola o il punto e virgola per separare gli indirizzi e-mail.',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             'È possibile utilizzare tag OTRS come <OTRS_TICKET_DynamicField_...> per inserire valori dal ticket corrente.',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => 'Modello',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => 'Notifiche',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => 'Gestisci %s',
@@ -2132,7 +2173,6 @@ sub Data {
         'Delete this entry' => 'Elimina questa voce',
         'Do you really want to delete this template?' => 'Vuoi veramente cancellare questo modello?',
         'A standard template with this name already exists!' => 'Un modello standard con questo nome esiste già!',
-        'Template' => 'Modello',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             'Per ottenere i primi 20 caratteri dell\'oggetto dell\'articolo agente corrente / più recente (corrente per risposta e inoltro, ultima per tipo di modello Nota). Questo tag non è supportato per altri tipi di modello.',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2161,6 +2201,34 @@ sub Data {
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             'Questo tipo è presente in un\'impostazione SysConfig, è necessaria una conferma per l\'aggiornamento delle impostazioni per puntare al nuovo tipo!',
         'This type is used in the following config settings:' => 'Questo tipo viene utilizzato nelle seguenti impostazioni di configurazione:',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => 'Esci',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => 'Chiudi',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => 'Gestione agenti',
@@ -2937,7 +3005,6 @@ sub Data {
 
         # Template: Header
         'Personal preferences' => 'Preferenze personali',
-        'Logout' => 'Esci',
         'You are logged in as' => 'Hai effettuato l\'accesso come',
 
         # Template: Installer
@@ -3224,6 +3291,7 @@ sub Data {
         'Edit search' => 'Modifica ricerca',
         'Go back to admin: ' => 'Torna all\'amministratore: ',
         'Deployment' => 'Attivazione',
+        'Currently edited settings' => '',
         'My favourite settings' => 'Le mie impostazioni preferite',
         'Invalid settings' => 'Impostazioni non valide',
 
@@ -3245,6 +3313,9 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => 'Navigazione',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'Pagina di test OTRS',
@@ -3683,6 +3754,9 @@ sub Data {
         'All recipients of the last article' => 'Tutti i destinatari dell\'ultimo articolo',
         'Invisible to customer' => 'Invisibile al cliente',
         'Visible to customer' => 'Visibile al cliente',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => 'Il tuo sistema è stato aggiornato correttamente a %s.',
@@ -6053,6 +6127,8 @@ Thanks for your help!
         'Arabic (Saudi Arabia)' => 'Arabo (Arabia Saudita)',
         'ArticleTree' => '',
         'Attachment Name' => 'Nome allegato',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             'A capo automatico nelle linee dopo X caratteri',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6134,7 +6210,6 @@ Thanks for your help!
             '',
         'Choose which notifications you\'d like to receive.' => '',
         'Christmas Eve' => 'Vigilia di Natale',
-        'Close' => 'Chiudi',
         'Close this ticket' => 'Chiudi questo ticket',
         'Closed tickets (customer user)' => 'Ticket chiusi (utenza cliente)',
         'Closed tickets (customer)' => 'Ticket chiusi (cliente)',
@@ -7551,6 +7626,8 @@ Thanks for your help!
             '',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             '',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             '',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7580,6 +7657,7 @@ Thanks for your help!
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             '',
         'Malay' => 'Malese',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => 'Gestisci le chiavi PGP per la cifratura delle email.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Gestisci gli account POP3 o IMAP da cui recuperare le email.',
         'Manage S/MIME certificates for email encryption.' => 'Gestisci i certificati S/MIME per la cifratura delle email.',
@@ -7677,6 +7755,8 @@ Thanks for your help!
             'Nome della coda personalizzata. La coda personalizzata raccoglie le tue code preferite e può essere selezionata tra le proprie impostazioni.',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             '',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => 'NomeX',
         'New Ticket' => 'Nuovo ticket',
         'New Tickets' => 'Nuovi ticket',
@@ -7703,6 +7783,8 @@ Thanks for your help!
             '',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7807,6 +7889,7 @@ Thanks for your help!
             '',
         'Pending time' => '',
         'People' => 'Persone',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             '',
         'Permitted width for compose email windows.' => '',

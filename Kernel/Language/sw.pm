@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.483876500857633;
+    $Self->{Completeness}        = 0.47936130456939;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -1216,10 +1216,12 @@ sub Data {
             '',
         'System Configuration' => 'Usanidi wa Mfumo',
         'Host' => 'Mwenyeji',
+        'Authentication method' => '',
         'Delete account' => 'kufuta akaunti',
         'Fetch mail' => 'Pakua barua pepe',
         'Do you really want to delete this mail account?' => '',
         'Password' => 'Neno la siri',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => 'Mfano: barua pepe.mfano.com',
         'IMAP Folder' => 'Kabrasha la IMAP',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1286,6 +1288,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => '',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             '',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => 'Kielezo',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => 'Taarifa',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => 'Sisamia %s',
@@ -2128,7 +2169,6 @@ sub Data {
         'Delete this entry' => 'Futa ingizo hili',
         'Do you really want to delete this template?' => 'Kweli uanataka kufuta hiki kiolezo?',
         'A standard template with this name already exists!' => 'Kielezo cha kawaida kwa jina hili tayari kipo!',
-        'Template' => 'Kielezo',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             '',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2157,6 +2197,34 @@ sub Data {
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             '',
         'This type is used in the following config settings:' => '',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => 'Toka',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => 'Funga',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => 'Usimamizi wa wakala',
@@ -2933,7 +3001,6 @@ sub Data {
 
         # Template: Header
         'Personal preferences' => '',
-        'Logout' => 'Toka',
         'You are logged in as' => 'Umeingia kama',
 
         # Template: Installer
@@ -3220,6 +3287,7 @@ sub Data {
         'Edit search' => '',
         'Go back to admin: ' => '',
         'Deployment' => '',
+        'Currently edited settings' => '',
         'My favourite settings' => '',
         'Invalid settings' => '',
 
@@ -3241,6 +3309,9 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'Ukurasa wa majaribio wa OTRS',
@@ -3679,6 +3750,9 @@ sub Data {
         'All recipients of the last article' => '',
         'Invisible to customer' => '',
         'Visible to customer' => '',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => 'Mfumo wako mara kwa mafanikio kuboreshwa kwa %s.',
@@ -6049,6 +6123,8 @@ Thanks for your help!
         'Arabic (Saudi Arabia)' => '',
         'ArticleTree' => 'Mti wa makala',
         'Attachment Name' => 'Jina la kiambatanishi',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             'Kigawa mstari otomatiki katika ujumbe wa maneno baada ya namba x ya herufi.',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6130,7 +6206,6 @@ Thanks for your help!
             '',
         'Choose which notifications you\'d like to receive.' => '',
         'Christmas Eve' => 'Usiku wa kuamkia Krismasi.',
-        'Close' => 'Funga',
         'Close this ticket' => 'Funga tiketi hii',
         'Closed tickets (customer user)' => 'Tiketi zilizofungwa (Mteja mtumiaji)',
         'Closed tickets (customer)' => 'Tiketi zilizofungwa (Mteja )',
@@ -7550,6 +7625,8 @@ Mfano:
             '',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             'Orodha ya vielezo vya viwango chaguo msingi ambavyo vimepewa otomatiki kwa foleni mpya wakati wa kutengenezwa.',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             '',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7579,6 +7656,7 @@ Mfano:
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'Inafanya usimamizi wa kipindi utumie vidakuzi vya html. Kama vidakuzi vya html havijawezeshwa au kivinjari cha mteja haijawezesha vidakuzi vya  html, mfumo utafanya kazi kama kawaida na itaambatisha kitambulisho cha kipindi kwenye viunganishi.',
         'Malay' => '',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => 'Simamia vibonye vya PGP kwa ajili ya usimbaji fiche wa barua pepe. ',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Simamia akaunti za POP3 au IMAP kupata barua pepe kutika huko. ',
         'Manage S/MIME certificates for email encryption.' => 'Simamia vyeti vya S/MIME kwa ajili ya usimbaji fiche.',
@@ -7676,6 +7754,8 @@ Mfano:
             'Jina la foleni maalum. Foleni maalum ni uchaguzi wa foleni wa foleni zako unazozipendelea na zinazeweza kuchaguliwa katika mipangilio ya mapendeleo.',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             'Jina la huduma maalum. Huduma maalum ni uchaguzi wa huduma wa huduma zako unazozipendelea na zinazeweza kuchaguliwa katika mipangilio ya mapendeleo.',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => 'Jina X',
         'New Ticket' => 'Tiketi mpya',
         'New Tickets' => 'Tiketi Mpya',
@@ -7702,6 +7782,8 @@ Mfano:
             'Namba ta tiketi zitakazoonyeshwa katika kila ukurasa wa matokeo ya utafutaji katika kiolesura cha wakala.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Namba ta tiketi zitakazoonyeshwa katika kila ukurasa wa matokeo ya utafutaji katika kiolesura cha mteja.',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             '',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7806,6 +7888,7 @@ Mfano:
             'Njia ya faili ya batli (Inatumika tu kama "FS" ilichaguliwa kwa ajili ya Moduli ya Kulinda Kitanzi na ni lazima).',
         'Pending time' => '',
         'People' => '',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             '',
         'Permitted width for compose email windows.' => 'Imeruhusu upana katika windows kwa ajili ya kutunga barua pepe.',

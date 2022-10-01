@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-08-22 20:07+0000\n"
+"POT-Creation-Date: 2022-10-01 20:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3663,6 +3663,10 @@ msgid "Host"
 msgstr ""
 
 #. Template: AdminMailAccount
+msgid "Authentication method"
+msgstr ""
+
+#. Template: AdminMailAccount
 msgid "Delete account"
 msgstr ""
 
@@ -3676,6 +3680,10 @@ msgstr ""
 
 #. Template: AdminMailAccount
 msgid "Password"
+msgstr ""
+
+#. Template: AdminMailAccount
+msgid "OAuth2 token configuration"
 msgstr ""
 
 #. Template: AdminMailAccount
@@ -3860,6 +3868,126 @@ msgstr ""
 
 #. Template: AdminNotificationEventTransportEmailSettings
 msgid "You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket."
+msgstr ""
+
+#. Template: Edit
+msgid "OAuth2 Configuration Management"
+msgstr ""
+
+#. Template: Edit
+msgid "Add using template"
+msgstr ""
+
+#. Template: Edit
+msgid "Base configuration"
+msgstr ""
+
+#. Template: Edit
+msgid "An OAuth2 token configuration with this name already exists."
+msgstr ""
+
+#. Template: Edit
+msgid "Client ID"
+msgstr ""
+
+#. Template: Edit
+msgid "Client secret"
+msgstr ""
+
+#. Template: Edit
+msgid "Template"
+msgstr ""
+
+#. Template: Edit
+msgid "The template used to create this OAuth2 token configuration."
+msgstr ""
+
+#. Template: Edit
+msgid "Notifications"
+msgstr ""
+
+#. Template: Edit
+msgid "Expired token"
+msgstr ""
+
+#. Template: Edit
+msgid "Displays a notification for administrator if the OAuth2 token has expired."
+msgstr ""
+
+#. Template: Edit
+msgid "Expired refresh token"
+msgstr ""
+
+#. Template: Edit
+msgid "Displays a notification for administrator if the OAuth2 refresh token has expired."
+msgstr ""
+
+#. Template: Overview
+msgid "Add OAuth2 token configuration"
+msgstr ""
+
+#. Template: Overview
+msgid "Add a new OAuth2 token configuration based on the selected template."
+msgstr ""
+
+#. Template: Overview
+msgid "Add Configuration"
+msgstr ""
+
+#. Template: Overview
+msgid "OAuth2 token configurations"
+msgstr ""
+
+#. Template: Overview
+msgid "Token status"
+msgstr ""
+
+#. Template: Overview
+msgid "Refresh token status"
+msgstr ""
+
+#. Template: Overview
+msgid "Last token request failed"
+msgstr ""
+
+#. Template: Overview
+msgid "Expired on %s"
+msgstr ""
+
+#. Template: Overview
+msgid "Valid until %s"
+msgstr ""
+
+#. Template: Overview
+msgid "Token not yet requested"
+msgstr ""
+
+#. Template: Overview
+msgid "Last token (or refresh token) request failed"
+msgstr ""
+
+#. Template: Overview
+msgid "Expired"
+msgstr ""
+
+#. Template: Overview
+msgid "Valid with no expiration date"
+msgstr ""
+
+#. Template: Overview
+msgid "Not yet requested"
+msgstr ""
+
+#. Template: Overview
+msgid "Refresh token request not configured"
+msgstr ""
+
+#. Template: Overview
+msgid "Request new token"
+msgstr ""
+
+#. Template: Overview
+msgid "Delete this OAuth2 token configuration."
 msgstr ""
 
 #. Template: AdminOTRSBusinessInstalled
@@ -6335,10 +6463,6 @@ msgid "A standard template with this name already exists!"
 msgstr ""
 
 #. Template: AdminTemplate
-msgid "Template"
-msgstr ""
-
-#. Template: AdminTemplate
 msgid "To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types."
 msgstr ""
 
@@ -6412,6 +6536,78 @@ msgstr ""
 
 #. Template: AdminType
 msgid "This type is used in the following config settings:"
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "System Update"
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "Distribution package"
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "System checks passed. Your system is ready to be updated."
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "Some system checks passed with warnings. Please review the warnings before proceeding with system update."
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "System checks failed. Your system can not be automatically updated while the reported problems persist."
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "Update System"
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "System updated successfully. Use the button below to log out and log in again."
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "System update finished with warnings. Please review the warnings and then use the button below to log out and log in again."
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "System update failed. Please review any errors or warnings above."
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "Logout"
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "See details"
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "System Check Details"
+msgstr ""
+
+#. Template: AdminUpdate
+msgid "Close"
+msgstr ""
+
+#. Template: CheckDetails
+msgid "At least %s of free disk space is required in %s, while %s is available."
+msgstr ""
+
+#. Template: CheckDetails
+msgid "The following packages are installed"
+msgstr ""
+
+#. Template: CheckDetails
+msgid "(and %s more)"
+msgstr ""
+
+#. Template: CheckDetails
+msgid "The following files have been modified"
+msgstr ""
+
+#. Template: CheckDetails
+msgid "The following custom files have been found"
 msgstr ""
 
 #. Template: AdminUser
@@ -8607,10 +8803,6 @@ msgid "Personal preferences"
 msgstr ""
 
 #. Template: Header
-msgid "Logout"
-msgstr ""
-
-#. Template: Header
 msgid "You are logged in as"
 msgstr ""
 
@@ -9375,6 +9567,10 @@ msgid "Deployment"
 msgstr ""
 
 #. Template: Actions
+msgid "Currently edited settings"
+msgstr ""
+
+#. Template: Actions
 msgid "My favourite settings"
 msgstr ""
 
@@ -9428,6 +9624,10 @@ msgstr ""
 
 #. Template: Navigation
 msgid "Navigation"
+msgstr ""
+
+#. Template: SystemUpdate
+msgid "%s is being updated"
 msgstr ""
 
 #. Template: Test
@@ -10692,6 +10892,10 @@ msgstr ""
 
 #. Perl Module: Kernel/Modules/AdminNotificationEvent.pm
 msgid "Visible to customer"
+msgstr ""
+
+#. Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+msgid "Failed to get authorization code "
 msgstr ""
 
 #. Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
@@ -16590,6 +16794,10 @@ msgid "Attachment Name"
 msgstr ""
 
 #. SysConfig
+msgid "Authentication method to use with sendmail module. For 'OAuth2 token', SendmailModule::OAuth2TokenConfigName must be set as well."
+msgstr ""
+
+#. SysConfig
 msgid "Automated line break in text messages after x number of chars."
 msgstr ""
 
@@ -16839,10 +17047,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Christmas Eve"
-msgstr ""
-
-#. SysConfig
-msgid "Close"
 msgstr ""
 
 #. SysConfig
@@ -20334,6 +20538,10 @@ msgid "List of default Standard Templates which are assigned automatically to ne
 msgstr ""
 
 #. SysConfig
+msgid "List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts)."
+msgstr ""
+
+#. SysConfig
 msgid "List of responsive CSS files to always be loaded for the agent interface."
 msgstr ""
 
@@ -20431,6 +20639,10 @@ msgstr ""
 
 #. SysConfig
 msgid "Malay"
+msgstr ""
+
+#. SysConfig
+msgid "Manage OAuth2 tokens and configuration."
 msgstr ""
 
 #. SysConfig
@@ -20690,6 +20902,10 @@ msgid "Name of custom service. The custom service is a service selection of your
 msgstr ""
 
 #. SysConfig
+msgid "Name of the OAuth2 token configuration to use with sendmail module. Applies if 'OAuth2 token' is selected as SendmailModule::AuthenticationMethod."
+msgstr ""
+
+#. SysConfig
 msgid "NameX"
 msgstr ""
 
@@ -20771,6 +20987,14 @@ msgstr ""
 
 #. SysConfig
 msgid "Number of tickets to be displayed in each page of a search result in the customer interface."
+msgstr ""
+
+#. SysConfig
+msgid "OAuth2"
+msgstr ""
+
+#. SysConfig
+msgid "OAuth2 token"
 msgstr ""
 
 #. SysConfig
@@ -21031,6 +21255,10 @@ msgstr ""
 
 #. SysConfig
 msgid "People"
+msgstr ""
+
+#. SysConfig
+msgid "Perform system update."
 msgstr ""
 
 #. SysConfig

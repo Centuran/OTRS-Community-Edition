@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.602572898799314;
+    $Self->{Completeness}        = 0.596738576524546;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1212,10 +1212,12 @@ sub Data {
             '',
         'System Configuration' => 'Konfigurasi Sistem',
         'Host' => 'Hos',
+        'Authentication method' => '',
         'Delete account' => 'Padam akaun',
         'Fetch mail' => 'E-Mails abholen',
         'Do you really want to delete this mail account?' => '',
         'Password' => 'Kata Laluan',
+        'OAuth2 token configuration' => '',
         'Example: mail.example.com' => 'Contoh: mail.contoh.com',
         'IMAP Folder' => 'folder IMAP',
         'Only modify this if you need to fetch mail from a different folder than INBOX.' =>
@@ -1282,6 +1284,45 @@ sub Data {
         'Use comma or semicolon to separate email addresses.' => '',
         'You can use OTRS-tags like <OTRS_TICKET_DynamicField_...> to insert values from the current ticket.' =>
             '',
+
+        # Template: Edit
+        'OAuth2 Configuration Management' => '',
+        'Add using template' => '',
+        'Base configuration' => '',
+        'An OAuth2 token configuration with this name already exists.' =>
+            '',
+        'Client ID' => '',
+        'Client secret' => '',
+        'Template' => 'Templat',
+        'The template used to create this OAuth2 token configuration.' =>
+            '',
+        'Notifications' => '',
+        'Expired token' => '',
+        'Displays a notification for administrator if the OAuth2 token has expired.' =>
+            '',
+        'Expired refresh token' => '',
+        'Displays a notification for administrator if the OAuth2 refresh token has expired.' =>
+            '',
+
+        # Template: Overview
+        'Add OAuth2 token configuration' => '',
+        'Add a new OAuth2 token configuration based on the selected template.' =>
+            '',
+        'Add Configuration' => '',
+        'OAuth2 token configurations' => '',
+        'Token status' => '',
+        'Refresh token status' => '',
+        'Last token request failed' => '',
+        'Expired on %s' => '',
+        'Valid until %s' => '',
+        'Token not yet requested' => '',
+        'Last token (or refresh token) request failed' => '',
+        'Expired' => '',
+        'Valid with no expiration date' => '',
+        'Not yet requested' => '',
+        'Refresh token request not configured' => '',
+        'Request new token' => '',
+        'Delete this OAuth2 token configuration.' => '',
 
         # Template: AdminOTRSBusinessInstalled
         'Manage %s' => 'Mengurus %s',
@@ -2124,7 +2165,6 @@ sub Data {
         'Delete this entry' => 'Padam entri ini',
         'Do you really want to delete this template?' => 'Adakah anda benar-benar mahu untuk memadam template ini?',
         'A standard template with this name already exists!' => 'Templat piawai dengan nama ini sudah wujud!',
-        'Template' => 'Templat',
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
             '',
         'To get the first 5 lines of the body of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -2153,6 +2193,34 @@ sub Data {
         'This type is present in a SysConfig setting, confirmation for updating settings to point to the new type is needed!' =>
             '',
         'This type is used in the following config settings:' => '',
+
+        # Template: AdminUpdate
+        'System Update' => '',
+        'Distribution package' => '',
+        'System checks passed. Your system is ready to be updated.' => '',
+        'Some system checks passed with warnings. Please review the warnings before proceeding with system update.' =>
+            '',
+        'System checks failed. Your system can not be automatically updated while the reported problems persist.' =>
+            '',
+        'Update System' => '',
+        'System updated successfully. Use the button below to log out and log in again.' =>
+            '',
+        'System update finished with warnings. Please review the warnings and then use the button below to log out and log in again.' =>
+            '',
+        'System update failed. Please review any errors or warnings above.' =>
+            '',
+        'Logout' => 'Log keluar',
+        'See details' => '',
+        'System Check Details' => '',
+        'Close' => 'Tutup',
+
+        # Template: CheckDetails
+        'At least %s of free disk space is required in %s, while %s is available.' =>
+            '',
+        'The following packages are installed' => '',
+        '(and %s more)' => '',
+        'The following files have been modified' => '',
+        'The following custom files have been found' => '',
 
         # Template: AdminUser
         'Agent Management' => 'Pengurusan Ejen',
@@ -2929,7 +2997,6 @@ sub Data {
 
         # Template: Header
         'Personal preferences' => '',
-        'Logout' => 'Log keluar',
         'You are logged in as' => 'Anda menlog masuk sebagai',
 
         # Template: Installer
@@ -3216,6 +3283,7 @@ sub Data {
         'Edit search' => '',
         'Go back to admin: ' => '',
         'Deployment' => '',
+        'Currently edited settings' => '',
         'My favourite settings' => '',
         'Invalid settings' => '',
 
@@ -3237,6 +3305,9 @@ sub Data {
 
         # Template: Navigation
         'Navigation' => '',
+
+        # Template: SystemUpdate
+        '%s is being updated' => '',
 
         # Template: Test
         'OTRS Test Page' => 'Halaman percubaan OTRS',
@@ -3675,6 +3746,9 @@ sub Data {
         'All recipients of the last article' => '',
         'Invisible to customer' => '',
         'Visible to customer' => '',
+
+        # Perl Module: Kernel/Modules/AdminOAuth2TokenConfig.pm
+        'Failed to get authorization code ' => '',
 
         # Perl Module: Kernel/Modules/AdminOTRSBusiness.pm
         'Your system was successfully upgraded to %s.' => 'Sistem anda telah berjaya dinaik taraf kepada %s.',
@@ -6058,6 +6132,8 @@ dalaman.',
         'Arabic (Saudi Arabia)' => 'Arab (Arab Saudi)',
         'ArticleTree' => 'PokokArtikel',
         'Attachment Name' => 'Nama Lampiran',
+        'Authentication method to use with sendmail module. For \'OAuth2 token\', SendmailModule::OAuth2TokenConfigName must be set as well.' =>
+            '',
         'Automated line break in text messages after x number of chars.' =>
             'Memecahkan garis Automatik dalam mesej teks selepas beberapa x aksara.',
         'Automatically change the state of a ticket with an invalid owner once it is unlocked. Maps from a state type to a new ticket state.' =>
@@ -6139,7 +6215,6 @@ dalaman.',
             '',
         'Choose which notifications you\'d like to receive.' => '',
         'Christmas Eve' => 'Perayaan Natal',
-        'Close' => 'Tutup',
         'Close this ticket' => 'Tutup tiket ini',
         'Closed tickets (customer user)' => 'Tiket ditutup (pengguna pelanggan)',
         'Closed tickets (customer)' => 'Tiket ditutup (pelanggan)',
@@ -7557,6 +7632,8 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             '',
         'List of default Standard Templates which are assigned automatically to new Queues upon creation.' =>
             'Senarai Templat Piawai default yang ditetapkan secara automatik kepada Barisan baharu atas penciptaan.',
+        'List of hosts that require OAuth2 method and token sent separately (commonly needed for Microsoft 365 and Outlook accounts).' =>
+            '',
         'List of responsive CSS files to always be loaded for the agent interface.' =>
             'Senarai fail responsif CSS untuk sentiasa dimuatkan untuk paparan ejen.',
         'List of responsive CSS files to always be loaded for the customer interface.' =>
@@ -7586,6 +7663,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Makes the session management use html cookies. If html cookies are disabled or if the client browser disabled html cookies, then the system will work as usual and append the session id to the links.' =>
             'Membuatkan pengurusan sesi menggunakan cookies html. Jika cookies html dimatikan atau browser klien matikan cookies html, sistem akan berjalan seperti biasa dan melampirkan id sesi kepada pautan.',
         'Malay' => 'Melayu',
+        'Manage OAuth2 tokens and configuration.' => '',
         'Manage PGP keys for email encryption.' => 'Mengurus kunci PGP untuk enkripsi emel.',
         'Manage POP3 or IMAP accounts to fetch email from.' => 'Mengurus akaun POP3 atau IMAP untuk mengambil emel dari.',
         'Manage S/MIME certificates for email encryption.' => 'Mengurus Perakuan S/MIME untuk enkripsi emel.',
@@ -7683,6 +7761,8 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Nama aturan tersuai. Aturan tersuai ialah pemilihan aturan pada aturan yang anda inginkan dan boleh dipilih dalam tetapan pilihan.',
         'Name of custom service. The custom service is a service selection of your preferred services and can be selected in the preferences settings.' =>
             'Nama servis tersuai. Servis tersuai ialah pemilihan servis pada aturan yang anda inginkan dan boleh dipilih dalam tetapan pilihan.',
+        'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
+            '',
         'NameX' => 'NamaX',
         'New Ticket' => 'Tiket Baru',
         'New Tickets' => 'Tiket Baru',
@@ -7709,6 +7789,8 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Jumlah tiket yang akan dipamerkan dalam setiap halaman dari hasil carian dalam paparan ejen.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Jumlah tiket yang akan dipamerkan dalam setiap halaman dari hasil carian dalam paparan pelanggan.',
+        'OAuth2' => '',
+        'OAuth2 token' => '',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>
             'OTRS boleh menggunakan salah satu atau lebih pangkalan data cermin baca sahaja untuk operasi mahal seperti carian atau statistik teks penuh generasi. Di sini anda boleh menentukan DSN untuk pangkalan data cermin pertama.',
         'OTRS doesn\'t support recurring Appointments without end date or number of iterations. During import process, it might happen that ICS file contains such Appointments. Instead, system creates all Appointments in the past, plus Appointments for the next N months (120 months/10 years by default).' =>
@@ -7813,6 +7895,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             'Laluan untuk fail log (ia hanya diunakan jika "FS" dipilh untuk LoopProtectionModule dan ia adalam mandatori).',
         'Pending time' => '',
         'People' => 'Orang',
+        'Perform system update.' => '',
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
             '',
         'Permitted width for compose email windows.' => 'Kelebaran yang diberi kebenaran untuk karang emel windows.',
