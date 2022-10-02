@@ -1,6 +1,6 @@
 @use "sass:list";
 
-.ItemListGrid {
+body .ItemListGrid {
   display: grid;
   gap: 10px 10px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -57,15 +57,19 @@
   & > li {
     background: #f0f0f0;
     height: auto;
+    min-width: auto;
 
     span.Icons {
       border: none;
+      display: block;
+      float: left;
       height: auto;
-      left: 0.8em;
+      left: 0;
       margin: 0;
+      margin-right: var(--pad-x);
       padding: 0;
-      position: absolute;
-      top: 0.8em;
+      position: static;
+      top: 0;
       width: 10%;
 
       i.fa {
@@ -104,7 +108,7 @@
     }
 
     & > a {
-      padding-top: 0.8em;
+      padding: var(--pad-y) var(--pad-x);
 
       &:not(.Disabled):hover {
         span.Icons {
@@ -139,6 +143,11 @@
     span.Title,
     span.Description {
       margin-left: 34pt;
+      margin-left: auto;
+    }
+
+    span.Description {
+      display: inline-block;
     }
   }
 }
