@@ -35,7 +35,7 @@ body .QueueOverview {
 
 .OverviewControl,
 .Content.Overview {
-  font-size: initial;
+  font-size: inherit;
 
   .ControlRow {
     background-color: #eee;
