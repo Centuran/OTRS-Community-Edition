@@ -156,21 +156,27 @@ body .WidgetSimple {
 
   & > .Header h2 {
     color: #333;
+    flex: 1;
     font-size: inherit;
     font-weight: bolder;
+    order: 5;
     padding: 0;
     text-shadow: none;
   }
 
   .Header {
+    align-items: center;
+    display: flex;
     line-height: 1;
     padding: var(--pad-y) var(--pad-x);
 
     .ActionMenu {
       margin-right: var(--pad-x);
+      order: 10;
       position: absolute;
       right: 0;
       top: initial;
+      z-index: 1;
     }
 
     .WidgetAction {
