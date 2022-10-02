@@ -1,6 +1,7 @@
 # 6.0.37 2022-10-03
  - Implemented a new method of performing system updates using console command Maint::System::Update
  - Added support for OAuth2 authentication for retrieving and sending email
+ - Fixed several minor issues in the refreshed agent user interface
  - Thanks to Znuny GmbH and contributors
 
 # 6.0.36 2022-08-25
