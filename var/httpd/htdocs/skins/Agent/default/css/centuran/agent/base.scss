@@ -192,6 +192,10 @@ body .WidgetSimple {
           height: 100%;
           width: 100%;
 
+          i.fa {
+            display: none !important;
+          }
+
           &:hover i.fa {
             background: none;
           }
