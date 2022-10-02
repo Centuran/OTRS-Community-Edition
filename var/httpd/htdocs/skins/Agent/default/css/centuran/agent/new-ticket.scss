@@ -1,3 +1,16 @@
+form#NewEmailTicket,
+form#NewPhoneTicket {
+  fieldset.TableLike {
+    label {
+      width: 22%;
+    }
+
+    .Field, .RichTextField {
+      margin-left: 22%;
+    }
+  }
+}
+
 .CustomerContainer {
   font-size: 13pt;
   padding: 0 0.8em;
