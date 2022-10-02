@@ -48,20 +48,57 @@ run_as_otrs_user() {
 }
 
 stop_background_jobs() {
-    cd "${INSTALL_DIR}"
-    run_as_otrs_user bin/Cron.sh stop
-    run_as_otrs_user bin/otrs.Daemon.pl stop
+    perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
+        -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
+        -MKernel::System::ObjectManager \
+        -e '
+            use strict;
+            use warnings;
+
+            local $Kernel::OM = Kernel::System::ObjectManager->new();
+
+            my $UpdateObject = $Kernel::OM->Get("Kernel::System::Update");
+
+            $UpdateObject->StopBackgroundTasks();
+        '
 }
 
 start_background_jobs() {
-    cd "${INSTALL_DIR}"
-    run_as_otrs_user bin/otrs.Daemon.pl start
-    run_as_otrs_user bin/Cron.sh start
+    perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
+        -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
+        -MKernel::System::ObjectManager \
+        -e '
+            use strict;
+            use warnings;
+
+            local $Kernel::OM = Kernel::System::ObjectManager->new();
+
+            my $UpdateObject = $Kernel::OM->Get("Kernel::System::Update");
+
+            $UpdateObject->StartBackgroundTasks();
+        '
+}
+
+stop_user_sessions() {
+    perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
+        -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
+        -MKernel::System::ObjectManager \
+        -e '
+            use strict;
+            use warnings;
+
+            local $Kernel::OM = Kernel::System::ObjectManager->new();
+
+            my $UpdateObject = $Kernel::OM->Get("Kernel::System::Update");
+
+            $UpdateObject->StopUserSessions();
+        '
 }
 
 enable_maintenance_mode() {
     local MAINT_ID=$(
-        perl -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
+        perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
+            -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
             -MKernel::System::ObjectManager \
             -e '
                 use strict;
@@ -71,21 +108,10 @@ enable_maintenance_mode() {
 
                 my $Version = shift;
 
-                # Log out users
-                my $SessionObject =
-                    $Kernel::OM->Get("Kernel::System::AuthSession");
-                $SessionObject->CleanUp();
+                my $UpdateObject = $Kernel::OM->Get("Kernel::System::Update");
 
-                # Start maintenance mode
-                my $SysMaintObject =
-                    $Kernel::OM->Get("Kernel::System::SystemMaintenance");
-                my $MaintID = $SysMaintObject->SystemMaintenanceAdd(
-                    StartDate        => time,
-                    StopDate         => time + (60 * 60 * 24),
-                    Comment          => "Update to $Version",
-                    ShowLoginMessage => 1,
-                    ValidID          => 1,
-                    UserID           => 1,
+                my $MaintID = $UpdateObject->EnableMaintenanceMode(
+                    DistVersion => $Version,
                 );
 
                 print "$MaintID\n";
@@ -99,7 +125,8 @@ enable_maintenance_mode() {
 disable_maintenance_mode() {
     local MAINT_ID=$1
 
-    perl -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
+    perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
+        -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
         -MKernel::System::ObjectManager \
         -e '
             use strict;
@@ -109,22 +136,10 @@ disable_maintenance_mode() {
 
             my $MaintID = shift;
 
-            my $SysMaintObject =
-                $Kernel::OM->Get("Kernel::System::SystemMaintenance");
-            
-            my $Maint = $SysMaintObject->SystemMaintenanceGet(
-                ID     => $MaintID,
-                UserID => 1,
-            );
+            my $UpdateObject = $Kernel::OM->Get("Kernel::System::Update");
 
-            # Stop maintenance mode by setting stop date to current time
-            $SysMaintObject->SystemMaintenanceUpdate(
-                ID        => $Maint->{ID},
-                StartDate => $Maint->{StartDate},
-                StopDate  => time,
-                Comment   => $Maint->{Comment},
-                ValidID   => 1,
-                UserID    => 1,
+            $UpdateObject->DisableMaintenanceMode(
+                SystemMaintenanceID => $MaintID,
             );
         ' \
         "${MAINT_ID}"
@@ -172,15 +187,17 @@ update_files() {
         "${FILES_DIR}"
 }
 
+stop_user_sessions
+
 MAINT_ID=$(enable_maintenance_mode)
 
-stop_background_jobs &> /dev/null
+stop_background_jobs
 
 update_db
 
 update_files
 
-start_background_jobs &> /dev/null
+start_background_jobs
 
 restart_service $(get_webserver_service)
 
