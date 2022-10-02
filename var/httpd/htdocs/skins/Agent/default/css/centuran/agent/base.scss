@@ -805,6 +805,10 @@ button.CallForAction {
     border: solid 1px #d8d8d8 !important;
     border-bottom: solid 1px #d8d8d8 !important;
     box-shadow: $button-action-disabled-box-shadow !important;
+
+    &.Inline {
+      box-shadow: none !important;
+    }
   }
 
   span {
