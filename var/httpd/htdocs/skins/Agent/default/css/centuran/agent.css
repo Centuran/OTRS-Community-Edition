@@ -726,20 +726,26 @@ body .WidgetSimple {
 }
 body .WidgetSimple > .Header h2 {
   color: #333;
+  flex: 1;
   font-size: inherit;
   font-weight: bolder;
+  order: 5;
   padding: 0;
   text-shadow: none;
 }
 body .WidgetSimple .Header {
+  align-items: center;
+  display: flex;
   line-height: 1;
   padding: var(--pad-y) var(--pad-x);
 }
 body .WidgetSimple .Header .ActionMenu {
   margin-right: var(--pad-x);
+  order: 10;
   position: absolute;
   right: 0;
   top: initial;
+  z-index: 1;
 }
 body .WidgetSimple .Header .WidgetAction {
   width: auto;
@@ -758,6 +764,9 @@ body .WidgetSimple .Header .WidgetAction.Toggle::before {
 body .WidgetSimple .Header .WidgetAction.Toggle a {
   height: 100%;
   width: 100%;
+}
+body .WidgetSimple .Header .WidgetAction.Toggle a i.fa {
+  display: none !important;
 }
 body .WidgetSimple .Header .WidgetAction.Toggle a:hover i.fa {
   background: none;
@@ -1330,6 +1339,11 @@ button.CallForAction.Disabled {
   border-bottom: solid 1px #d8d8d8 !important;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee !important;
 }
+a.CallForAction.Disabled.Inline, .ProcessManagementEditScreen #ProcessElements a.Disabled.Inline.CallForAction,
+.v-application a.CallForAction.Disabled.Inline,
+button.CallForAction.Disabled.Inline {
+  box-shadow: none !important;
+}
 a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
 .v-application a.CallForAction span,
 button.CallForAction span {
@@ -1424,6 +1438,11 @@ a.CallForAction span i.fa.fa-check::before, .ProcessManagementEditScreen #Proces
 .v-application a.CallForAction span i.fa.fa-check::before,
 button.CallForAction span i.fa.fa-check::before {
   content: "\f012c";
+}
+a.CallForAction span i.fa.fa-clock-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-clock-o::before,
+.v-application a.CallForAction span i.fa.fa-clock-o::before,
+button.CallForAction span i.fa.fa-clock-o::before {
+  content: "\f0954";
 }
 a.CallForAction span i.fa.fa-exchange::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-exchange::before,
 .v-application a.CallForAction span i.fa.fa-exchange::before,
@@ -1734,7 +1753,7 @@ ul.BreadCrumb {
 }
 
 ul.BreadCrumb li:before, ul.BreadCrumb li:after {
-  margin-top: -22px;
+  margin-top: -23px;
 }
 
 ul.BreadCrumb li::before {
@@ -2403,13 +2422,13 @@ label + .v-input--switch {
   content: "\f062e";
 }
 
-.ItemListGrid {
+body .ItemListGrid {
   display: grid;
   gap: 10px 10px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   padding-top: 0;
 }
-.ItemListGrid > li {
+body .ItemListGrid > li {
   border: solid 1px #e0e0e0;
   border-radius: 4px;
   display: block;
@@ -2422,7 +2441,7 @@ label + .v-input--switch {
   min-width: none;
   width: auto;
 }
-.ItemListGrid > li > a {
+body .ItemListGrid > li > a {
   background: #e0e0e0;
   background: #f6f6f6;
   background-size: 11%;
@@ -2435,16 +2454,16 @@ label + .v-input--switch {
   text-align: left;
   transition: all ease 0.2s;
 }
-.ItemListGrid > li > a:not(.Disabled):hover {
+body .ItemListGrid > li > a:not(.Disabled):hover {
   background: #fff;
 }
-.ItemListGrid > li span.Title {
+body .ItemListGrid > li span.Title {
   font-size: inherit;
   font-weight: 500;
   margin: 0;
   margin-left: 15%;
 }
-.ItemListGrid > li span.Description {
+body .ItemListGrid > li span.Description {
   font-size: 90%;
   margin: 0;
   margin-left: 15%;
@@ -2453,15 +2472,19 @@ label + .v-input--switch {
 .ItemListGrid.WithIcons > li {
   background: #f0f0f0;
   height: auto;
+  min-width: auto;
 }
 .ItemListGrid.WithIcons > li span.Icons {
   border: none;
+  display: block;
+  float: left;
   height: auto;
-  left: 0.8em;
+  left: 0;
   margin: 0;
+  margin-right: var(--pad-x);
   padding: 0;
-  position: absolute;
-  top: 0.8em;
+  position: static;
+  top: 0;
   width: 10%;
 }
 .ItemListGrid.WithIcons > li span.Icons i.fa {
@@ -2512,6 +2535,9 @@ label + .v-input--switch {
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-check::before {
   content: "\f012c";
 }
+.ItemListGrid.WithIcons > li span.Icons i.fa.fa-clock-o::before {
+  content: "\f0954";
+}
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-exchange::before {
   content: "\f0e73";
 }
@@ -2543,7 +2569,7 @@ label + .v-input--switch {
   content: "\f0849";
 }
 .ItemListGrid.WithIcons > li > a {
-  padding-top: 0.8em;
+  padding: var(--pad-y) var(--pad-x);
 }
 .ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons {
   background: none;
@@ -2566,6 +2592,10 @@ label + .v-input--switch {
 .ItemListGrid.WithIcons > li span.Title,
 .ItemListGrid.WithIcons > li span.Description {
   margin-left: 34pt;
+  margin-left: auto;
+}
+.ItemListGrid.WithIcons > li span.Description {
+  display: inline-block;
 }
 
 .ItemListGrid.WithIcons > li > a {
@@ -2838,6 +2868,19 @@ label + .v-input--switch {
   content: "\f0849";
 }
 
+.ItemListGrid.WithIcons a[href*="Action=AdminCommunicationLog;"] .Icons .fa {
+  font-family: "Material Design Icons";
+}
+.ItemListGrid.WithIcons a[href*="Action=AdminCommunicationLog;"] .Icons .fa.fa-exclamation::before {
+  content: "\f1238";
+}
+.ItemListGrid.WithIcons a[href*="Action=AdminCommunicationLog;"] .Icons .fa.fa-question::before {
+  content: "\f02d6";
+}
+.ItemListGrid.WithIcons a[href*="Action=AdminCommunicationLog;"] .Icons .fa.fa-times::before {
+  content: "\f1398";
+}
+
 .Flag.Small {
   height: auto;
   width: auto;
@@ -3063,20 +3106,26 @@ body .WidgetSimple {
 }
 body .WidgetSimple > .Header h2 {
   color: #333;
+  flex: 1;
   font-size: inherit;
   font-weight: bolder;
+  order: 5;
   padding: 0;
   text-shadow: none;
 }
 body .WidgetSimple .Header {
+  align-items: center;
+  display: flex;
   line-height: 1;
   padding: var(--pad-y) var(--pad-x);
 }
 body .WidgetSimple .Header .ActionMenu {
   margin-right: var(--pad-x);
+  order: 10;
   position: absolute;
   right: 0;
   top: initial;
+  z-index: 1;
 }
 body .WidgetSimple .Header .WidgetAction {
   width: auto;
@@ -3095,6 +3144,9 @@ body .WidgetSimple .Header .WidgetAction.Toggle::before {
 body .WidgetSimple .Header .WidgetAction.Toggle a {
   height: 100%;
   width: 100%;
+}
+body .WidgetSimple .Header .WidgetAction.Toggle a i.fa {
+  display: none !important;
 }
 body .WidgetSimple .Header .WidgetAction.Toggle a:hover i.fa {
   background: none;
@@ -3667,6 +3719,11 @@ button.CallForAction.Disabled {
   border-bottom: solid 1px #d8d8d8 !important;
   box-shadow: 0px 1px 0px #c8c8c8, 0px 1px 10px #eee !important;
 }
+a.CallForAction.Disabled.Inline, .ProcessManagementEditScreen #ProcessElements a.Disabled.Inline.CallForAction,
+.v-application a.CallForAction.Disabled.Inline,
+button.CallForAction.Disabled.Inline {
+  box-shadow: none !important;
+}
 a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
 .v-application a.CallForAction span,
 button.CallForAction span {
@@ -3761,6 +3818,11 @@ a.CallForAction span i.fa.fa-check::before, .ProcessManagementEditScreen #Proces
 .v-application a.CallForAction span i.fa.fa-check::before,
 button.CallForAction span i.fa.fa-check::before {
   content: "\f012c";
+}
+a.CallForAction span i.fa.fa-clock-o::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-clock-o::before,
+.v-application a.CallForAction span i.fa.fa-clock-o::before,
+button.CallForAction span i.fa.fa-clock-o::before {
+  content: "\f0954";
 }
 a.CallForAction span i.fa.fa-exchange::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa.fa-exchange::before,
 .v-application a.CallForAction span i.fa.fa-exchange::before,
@@ -4259,6 +4321,16 @@ hr.cmt-flex-break {
   margin-right: 0;
 }
 
+form#NewEmailTicket fieldset.TableLike label,
+form#NewPhoneTicket fieldset.TableLike label {
+  width: 22%;
+}
+form#NewEmailTicket fieldset.TableLike .Field, form#NewEmailTicket fieldset.TableLike .RichTextField,
+form#NewPhoneTicket fieldset.TableLike .Field,
+form#NewPhoneTicket fieldset.TableLike .RichTextField {
+  margin-left: 22%;
+}
+
 .CustomerContainer {
   font-size: 13pt;
   padding: 0 0.8em;
@@ -4288,7 +4360,9 @@ hr.cmt-flex-break {
 }
 
 button#SelectionCustomerID {
+  padding: 0 1em;
   top: initial;
+  vertical-align: top;
 }
 
 a#OwnerSelectionGetAll::after {
@@ -4724,7 +4798,7 @@ body .QueueOverview {
 
 .OverviewControl,
 .Content.Overview {
-  font-size: initial;
+  font-size: inherit;
 }
 .OverviewControl .ControlRow,
 .Content.Overview .ControlRow {
@@ -5355,6 +5429,15 @@ div.Headline .Flag + h1 {
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-check::before {
   content: "\f012c";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
+  content: "\f0e74";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-clock-o {
+  font-family: "Material Design Icons";
+}
+#ArticleTableBody #ArticleTable thead i.fa.fa-clock-o::before {
+  content: "\f0954";
 }
 #ArticleTableBody #ArticleTable thead i.fa.fa-exchange::before {
   content: "\f0e74";
