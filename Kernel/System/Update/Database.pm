@@ -290,8 +290,21 @@ sub TableDiff {
         }
     }
 
+    my (@UniqueAdded, @UniqueChanged, @UniqueRemoved);
+
+    my @UniqueBefore = @{$TableBefore->{Unique}};
+    my @UniqueAfter  = @{$TableAfter->{Unique}};
+
+    for my $Unique (@UniqueAfter) {
+        if (!grep { $_->{Name} eq $Unique->{Name} } @UniqueBefore) {
+            push @UniqueAdded, $Unique;
+        }
+    }
+
+    # Don't return anything if nothing has changed
     return if !(
-        @ColumnsAdded || @ColumnsChanged || @ColumnsRemoved ||
+        @ColumnsAdded     || @ColumnsChanged     || @ColumnsRemoved     ||
+        @UniqueAdded      || @UniqueChanged      || @UniqueRemoved      ||
         @ForeignKeysAdded || @ForeignKeysChanged || @ForeignKeysRemoved
     );
 
@@ -300,6 +313,7 @@ sub TableDiff {
         ColumnsChanged   => \@ColumnsChanged,
         ColumnsRemoved   => \@ColumnsRemoved,
         ForeignKeysAdded => \@ForeignKeysAdded,
+        UniqueAdded      => \@UniqueAdded,
     };
 }
 
