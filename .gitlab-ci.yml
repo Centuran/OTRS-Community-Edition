@@ -36,6 +36,18 @@ build-otrs-db-image:
     - docker build --cache-from "${REGISTRY_PATH}/otrs-db:latest" -t "${REGISTRY_PATH}/otrs-db:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs-db:latest" .
     - docker push "${REGISTRY_PATH}/otrs-db:latest"
 
+build-otrs-db-test-image:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:20.10-dind
+  before_script: *before-build
+  script:
+    - cd /tmp/otrs-ce-dev-env/setup/otrs-db-test
+    - docker -D pull "${REGISTRY_PATH}/otrs-db-test:latest" || true
+    - docker build --cache-from "${REGISTRY_PATH}/otrs-db-test:latest" -t "${REGISTRY_PATH}/otrs-db-test:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs-db-test:latest" .
+    - docker push "${REGISTRY_PATH}/otrs-db-test:latest"
+
 build-otrs-image:
   stage: build
   image: docker:20.10
@@ -108,6 +120,7 @@ apply-images:
     # Set variables used in docker-compose.yml
     - export OTRS_IMAGE="${REGISTRY_PATH}/otrs:latest"
     - export OTRS_DB_IMAGE="${REGISTRY_PATH}/otrs-db:latest"
+    - export OTRS_DB_TEST_IMAGE="${REGISTRY_PATH}/otrs-db-test:latest"
     - export SELENIUM_CHROME_IMAGE="${REGISTRY_PATH}/selenium-chrome:latest"
     - export SELENIUM_FF_IMAGE="${REGISTRY_PATH}/selenium-ff:latest"
 
