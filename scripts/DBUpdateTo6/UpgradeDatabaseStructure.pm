@@ -114,6 +114,14 @@ sub Run {
             Message => 'Add color field to ticket_priority table',
             Module  => 'AddTicketPriorityColors',
         },
+        {
+            Message => 'Add tables for OAuth2 authentication',
+            Module  => 'NewOAuth2Tables',
+        },
+        {
+            Message => 'Add OAuth2-related fields to mail_account table',
+            Module  => 'AddMailAccountOAuth2Fields',
+        },
     );
 
     print "\n" if $Verbose;
