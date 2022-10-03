@@ -17,6 +17,7 @@ use Mail::IMAPClient;
 use parent 'Kernel::System::MailAccount::Base';
 
 use Kernel::System::PostMaster;
+use Kernel::System::VariableCheck qw(:all);
 
 our @ObjectDependencies = (
     'Kernel::Config',
@@ -334,7 +335,7 @@ sub _Fetch {
     };
 
     my $IMAPFolder = $Param{IMAPFolder} || 'INBOX';
-    my $MessageCount;
+    my $MessageCount = 0;
     my $Messages;
 
     my $ConnectionWithErrors = 0;
@@ -347,7 +348,9 @@ sub _Fetch {
         $Messages = $IMAPOperation->('messages')
             or die "Failed to retrieve messages: $@\n";
 
-        $MessageCount = scalar @$Messages // 0;
+        if ( IsArrayRefWithData($Messages) ) {
+            $MessageCount = scalar @$Messages;
+        }
 
         if ( $CMD ) {
             print "$Self->{ModuleName}: Found $MessageCount messages on " .
