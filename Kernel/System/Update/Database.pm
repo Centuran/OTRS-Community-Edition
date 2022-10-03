@@ -11,6 +11,11 @@ package Kernel::System::Update::Database;
 use strict;
 use warnings;
 
+our @ObjectDependencies = (
+    'Kernel::System::DB',
+    'Kernel::System::XML',
+);
+
 sub new {
     my ( $Type, %Param ) = @_;
 
@@ -270,14 +275,31 @@ sub TableDiff {
             push @ColumnsAdded, $Column;
         }
     }
+    # TODO: ColumnsChanged, ColumnsRemoved
 
-    return if !(@ColumnsAdded || @ColumnsChanged || @ColumnsRemoved);
-    # return if !(@IndicesAdded ...)
+    my (@ForeignKeysAdded, @ForeignKeysChanged, @ForeignKeysRemoved);
+
+    my @ForeignKeysBefore = @{$TableBefore->{ForeignKeys}};
+    my @ForeignKeysAfter  = @{$TableAfter->{ForeignKeys}};
+
+    for my $ForeignKey (@ForeignKeysAfter) {
+        if (!grep { $_->{ForeignTable} eq $ForeignKey->{ForeignTable} }
+            @ForeignKeysBefore)
+        {
+            push @ForeignKeysAdded, $ForeignKey;
+        }
+    }
+
+    return if !(
+        @ColumnsAdded || @ColumnsChanged || @ColumnsRemoved ||
+        @ForeignKeysAdded || @ForeignKeysChanged || @ForeignKeysRemoved
+    );
 
     return {
-        ColumnsAdded   => \@ColumnsAdded,
-        ColumnsChanged => \@ColumnsChanged,
-        ColumnsRemoved => \@ColumnsRemoved
+        ColumnsAdded     => \@ColumnsAdded,
+        ColumnsChanged   => \@ColumnsChanged,
+        ColumnsRemoved   => \@ColumnsRemoved,
+        ForeignKeysAdded => \@ForeignKeysAdded,
     };
 }
 
@@ -311,7 +333,7 @@ sub GenerateSchemaUpdateXML {
     $XML .= sprintf("<database Name=\"%s\">\n", 'otrs');
 
     for my $Table (@{$Differences->{TablesAdded}}) {
-        $XML .= sprintf("<Table Name=\"%s\">\n", $Table->{Name});
+        $XML .= sprintf("<TableCreate Name=\"%s\">\n", $Table->{Name});
 
         for my $Column (@{$Table->{Columns}}) {
             $XML .= sprintf("<Column Name=\"%s\" Type=\"%s\" %s/>\n",
@@ -363,7 +385,7 @@ sub GenerateSchemaUpdateXML {
             $XML .= "</ForeignKey>\n";
         }
 
-        $XML .= "</Table>\n";
+        $XML .= "</TableCreate>\n";
     }
 
     for my $Table (@{$Differences->{TablesChanged}}) {
@@ -384,6 +406,20 @@ sub GenerateSchemaUpdateXML {
         # TODO: Altered and removed columns
 
         # TODO: Indices and foreign keys
+
+        for my $ForeignKey (@{$Table->{ForeignKeysAdded}}) {
+            $XML .= sprintf("<ForeignKeyCreate ForeignTable=\"%s\">\n",
+                $ForeignKey->{ForeignTable});
+
+            for my $Reference (@{$ForeignKey->{References}}) {
+                $XML .= sprintf("  <Reference Local=\"%s\" Foreign=\"%s\"/>\n",
+                    $Reference->{Local},
+                    $Reference->{Foreign}
+                );
+            }
+
+            $XML .= "</ForeignKeyCreate>\n";
+        }
 
         $XML .= "</TableAlter>\n";
     }
