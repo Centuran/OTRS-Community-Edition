@@ -47,6 +47,11 @@ run_as_otrs_user() {
         "$@"
 }
 
+fix_cron_files_owner() {
+    chown otrs $(ls /opt/otrs/var/cron/* | \
+        grep -Ev '(\.(dist|rpm|bak|backup|custom_backup|save|swp)|\~)$')
+}
+
 stop_background_jobs() {
     perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
         -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
@@ -190,6 +195,8 @@ update_files() {
 stop_user_sessions
 
 MAINT_ID=$(enable_maintenance_mode)
+
+fix_cron_files_owner
 
 stop_background_jobs
 
