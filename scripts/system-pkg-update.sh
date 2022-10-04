@@ -44,7 +44,7 @@ run_as_otrs_user() {
         --egid $(id -g $(get_webserver_group)) \
         --rgid $(id -g $(get_webserver_group)) \
         --keep-groups \
-        $*
+        "$@"
 }
 
 stop_background_jobs() {
