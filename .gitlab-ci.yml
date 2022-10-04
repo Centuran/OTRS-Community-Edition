@@ -203,9 +203,15 @@ run-selenium-tests:
     # Set TestHTTPHostname to otrs-2
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sed -i '/^[^#].*{TestHTTPHostname} =/c\ \ \ \ $Self->{TestHTTPHostname} = '"'"'otrs-2'"'"';' /opt/otrs/Kernel/Config.pm
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- /opt/otrs/bin/otrs.SetPermissions.pl
+    # Comment out SecureMode setting (Installer.t tests need this)
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sed -i 's/^\(\s*\)\(\$Self->{SecureMode}\)/\1#\2/' /opt/otrs/Kernel/Config.pm
+    # Set Kernel/Config.pm as writable by web server
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- chmod g+w /opt/otrs/Kernel/Config.pm
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Admin::Group::UserLink --user-name 'root@localhost' --group-name admin --permission rw
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Config::Rebuild --cleanup
+    # Enable SecureMode through console command
+    - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.Console.pl Admin::Config::Update --setting-name SecureMode --value 1
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- supervisorctl restart apache2
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs /opt/otrs/bin/otrs.CheckSum.pl -a create
     - kubectl --kubeconfig "${KUBECONFIG}" exec svc/otrs-2 -- sudo -u otrs -i /opt/otrs/bin/otrs.Console.pl Dev::UnitTest::Run --directory=Selenium
