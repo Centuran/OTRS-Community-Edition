@@ -288,23 +288,28 @@ sub StopBackgroundTasks {
 
     my $Home = $Kernel::OM->Get('Kernel::Config')->Get('Home');
 
-    # Stop cron jobs
+    my ($CronJobsStopped, $DaemonStopped);
 
-    my $CronJobsStopped;
+    {
+        local $< = getpwnam('otrs');
+        local $> = getpwnam('otrs');
 
-    # First check if crontab for OTRS user is active
-    # FIXME: Do not hardcode OTRS user name
-    if ( system("crontab -l -u otrs >/dev/null 2>&1") != 0 ) {
-        $CronJobsStopped = 1;
+        # Stop cron jobs
+
+        # First check if crontab for OTRS user is active
+        # FIXME: Do not hardcode OTRS user name
+        if ( system("crontab -l >/dev/null 2>&1") != 0 ) {
+            $CronJobsStopped = 1;
+        }
+        else {
+            $CronJobsStopped =
+                system("$Home/bin/Cron.sh stop >/dev/null 2>&1") == 0;
+        }
+
+        # Stop daemon
+        $DaemonStopped =
+            system("$^X $Home/bin/otrs.Daemon.pl stop >/dev/null 2>&1") == 0;
     }
-    else {
-        $CronJobsStopped =
-            system("$Home/bin/Cron.sh stop >/dev/null 2>&1") == 0;
-    }
-
-    # Stop daemon
-    my $DaemonStopped =
-        system("$^X $Home/bin/otrs.Daemon.pl stop >/dev/null 2>&1") == 0;
     
     return $CronJobsStopped && $DaemonStopped;
 }
@@ -314,13 +319,20 @@ sub StartBackgroundTasks {
 
     my $Home = $Kernel::OM->Get('Kernel::Config')->Get('Home');
 
-    # Start cron jobs
-    my $CronJobsStarted =
-        system("$Home/bin/Cron.sh start >/dev/null 2>&1") == 0;
+    my ($CronJobsStarted, $DaemonStarted);
 
-    # Start daemon
-    my $DaemonStarted =
-        system("$^X $Home/bin/otrs.Daemon.pl start >/dev/null 2>&1") == 0;
+    {
+        local $< = getpwnam('otrs');
+        local $> = getpwnam('otrs');
+
+        # Start cron jobs
+        $CronJobsStarted =
+            system("$Home/bin/Cron.sh start >/dev/null 2>&1") == 0;
+
+        # Start daemon
+        $DaemonStarted =
+            system("$^X $Home/bin/otrs.Daemon.pl start >/dev/null 2>&1") == 0;
+    }
     
     return $CronJobsStarted && $DaemonStarted;
 }
