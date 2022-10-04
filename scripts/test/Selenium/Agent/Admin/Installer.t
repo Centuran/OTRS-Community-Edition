@@ -41,11 +41,17 @@ $Selenium->RunTest(
         my ( $DBType, $DBName, $DBPort, $DBHost );
         if ( $TestDatabase->{DatabaseDSN} =~ /^DBI:mysql/ ) {
             $DBType = 'mysql';
-            ( $DBName, $DBHost ) = ( $TestDatabase->{DatabaseDSN} =~ /database=(.*);host=(.*);?/ );
+            ( $DBName, $DBHost ) = (
+                $TestDatabase->{DatabaseDSN} =~ /database=([^;]*);?/,
+                $TestDatabase->{DatabaseDSN} =~ /host=([^;]*);?/
+            );
         }
         elsif ( $TestDatabase->{DatabaseDSN} =~ /^DBI:Pg/ ) {
             $DBType = 'postgresql';
-            ( $DBName, $DBHost ) = ( $TestDatabase->{DatabaseDSN} =~ /dbname=(.*);host=(.*);?/ );
+            ( $DBName, $DBHost ) = (
+                $TestDatabase->{DatabaseDSN} =~ /dbname=([^;]*);?/,
+                $TestDatabase->{DatabaseDSN} =~ /host=([^;]*);?/
+            );
         }
         elsif ( $TestDatabase->{DatabaseDSN} =~ /^DBI:Oracle/ ) {
             $DBType = 'oracle';
