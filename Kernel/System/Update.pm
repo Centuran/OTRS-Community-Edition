@@ -152,7 +152,8 @@ sub CopyFiles {
             make_path(dirname("$CurrentPath/$File"), {
                 chmod => 0775
             });
-            copy("$DistPath/$File", "$CurrentPath/$File")
+            copy("$DistPath/$File", "$CurrentPath/$File");
+            _SetFilePermissions("$CurrentPath/$File", "$File");
         }
     }
 
@@ -411,6 +412,120 @@ sub _ExtractDistArchive {
     );
 
     return $DistPath;
+}
+
+# FIXME: This part is copied (slightly modified) from otrs.SetPermissions.pl,
+# should probably me refactored into a proper method
+{
+    my $OtrsUser = 'otrs';    # default: otrs
+    my $WebGroup = '';        # Try to find a default from predefined group list, take the first match.
+
+    WEBGROUP:
+    for my $GroupCheck (qw(wwwrun apache www-data www _www)) {
+        my ($GroupName) = getgrnam $GroupCheck;
+        if ($GroupName) {
+            $WebGroup = $GroupName;
+            last WEBGROUP;
+        }
+    }
+
+    my $AdminGroup = 'root';    # default: root
+
+    my $OtrsUserID   = getpwnam $OtrsUser;
+    my $WebGroupID   = getgrnam $WebGroup;
+    my $AdminGroupID = getgrnam $AdminGroup;
+
+    # Files/directories that should be ignored and not recursed into.
+    my @IgnoreFiles = (
+        qr{^/\.git}smx,
+        qr{^/\.tidyall}smx,
+        qr{^/\.tx}smx,
+        qr{^/\.settings}smx,
+        qr{^/\.ssh}smx,
+        qr{^/\.gpg}smx,
+        qr{^/\.gnupg}smx,
+    );
+
+    # Files to be marked as executable.
+    my @ExecutableFiles = (
+        qr{\.(?:pl|psgi|sh)$}smx,
+        qr{^/var/git/hooks/(?:pre|post)-receive$}smx,
+    );
+
+    # Special files that must not be written by web server user.
+    my @ProtectedFiles = (
+        qr{^/\.fetchmailrc$}smx,
+        qr{^/\.procmailrc$}smx,
+    );
+
+    sub _SetFilePermissions {
+        my ( $File, $RelativeFile ) = @_;
+
+        ## no critic (ProhibitLeadingZeros)
+        # Writable by default, owner OTRS and group webserver.
+        my ( $TargetPermission, $TargetUserID, $TargetGroupID ) = ( 0660, $OtrsUserID, $WebGroupID );
+        if ( -d $File ) {
+
+            # SETGID for all directories so that both OTRS and the web server can write to the files.
+            # Other users should be able to read and cd to the directories.
+            $TargetPermission = 02775;
+        }
+        else {
+            # Executable bit for script files.
+            EXEXUTABLE_REGEX:
+            for my $ExecutableRegex (@ExecutableFiles) {
+                if ( $RelativeFile =~ $ExecutableRegex ) {
+                    $TargetPermission = 0770;
+                    last EXEXUTABLE_REGEX;
+                }
+            }
+
+            # Some files are protected and must not be written by webserver. Set admin group.
+            PROTECTED_REGEX:
+            for my $ProtectedRegex (@ProtectedFiles) {
+                if ( $RelativeFile =~ $ProtectedRegex ) {
+                    $TargetPermission = -d $File ? 0750 : 0640;
+                    $TargetGroupID    = $AdminGroupID;
+                    last PROTECTED_REGEX;
+                }
+            }
+        }
+
+        # Special treatment for toplevel folder: this must be readonly,
+        #   otherwise procmail will refuse to read .procmailrc (see bug#9391).
+        if ( $RelativeFile eq '/' ) {
+            $TargetPermission = 0755;
+        }
+
+        # There seem to be cases when stat does not work on a dangling link, skip in this case.
+        my $Stat = File::stat::stat($File) || return;
+        if ( ( $Stat->mode() & 07777 ) != $TargetPermission ) {
+            if ( !chmod( $TargetPermission, $File ) ) {
+                print STDERR sprintf(
+                    "ERROR: could not change $RelativeFile permissions %o -> %o: $!\n",
+                    $Stat->mode() & 07777,
+                    $TargetPermission
+                );
+                return;
+            }
+        }
+        if ( ( $Stat->uid() != $TargetUserID ) || ( $Stat->gid() != $TargetGroupID ) ) {
+            if ( !chown( $TargetUserID, $TargetGroupID, $File ) ) {
+                print STDERR sprintf(
+                    "ERROR: could not change $RelativeFile ownership %s:%s -> %s:%s: $!\n",
+                    $Stat->uid(),
+                    $Stat->gid(),
+                    $TargetUserID,
+                    $TargetGroupID
+                );
+
+                return;
+            }
+        }
+
+        return 1;
+        ## use critic
+    }
 }
 
 1;
