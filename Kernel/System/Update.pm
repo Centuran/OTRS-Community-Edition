@@ -338,6 +338,29 @@ sub StartBackgroundTasks {
     return $CronJobsStarted && $DaemonStarted;
 }
 
+sub ResetConfigAndCache {
+    my ( $Self, %Param ) = @_;
+
+    my $Home = $Kernel::OM->Get('Kernel::Config')->Get('Home');
+
+    my ($ConfigRebuilt, $CacheDeleted);
+
+    {
+        local $< = getpwnam('otrs');
+        local $> = getpwnam('otrs');
+
+        $ConfigRebuilt =
+            system("$Home/bin/otrs.Console.pl Maint::Config::Rebuild " .
+                '>/dev/null 2>&1') == 0;
+        
+        $CacheDeleted =
+            system("$Home/bin/otrs.Console.pl Maint::Cache::Delete " .
+                '>/dev/null 2>&1') == 0;
+    }
+
+    return $ConfigRebuilt && $CacheDeleted;
+}
+
 sub _GetDistVersion {
     my ( $Self, $DistArchive ) = @_;
 

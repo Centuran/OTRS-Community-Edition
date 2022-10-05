@@ -192,6 +192,22 @@ update_files() {
         "${FILES_DIR}"
 }
 
+reset_config_and_cache() {
+    perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
+        -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
+        -MKernel::System::ObjectManager \
+        -e '
+            use strict;
+            use warnings;
+
+            local $Kernel::OM = Kernel::System::ObjectManager->new();
+
+            my $UpdateObject = $Kernel::OM->Get("Kernel::System::Update");
+
+            $UpdateObject->ResetConfigAndCache();
+        '
+}
+
 stop_user_sessions
 
 MAINT_ID=$(enable_maintenance_mode)
@@ -205,6 +221,8 @@ update_db
 update_files
 
 start_background_jobs
+
+reset_config_and_cache
 
 restart_service $(get_webserver_service)
 

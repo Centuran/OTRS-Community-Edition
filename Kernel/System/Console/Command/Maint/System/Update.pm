@@ -307,6 +307,32 @@ sub Run {
     $Self->Print("\n");
 
     #
+    # Rebuild configuration and delete cache
+    #
+
+    $Self->Print("<yellow>Updating configuration and cache...</yellow>\n");
+    
+    my $Reset = $UpdateObject->ResetConfigAndCache();
+
+    if ( $Reset ) {
+        $Self->Print("<green>Configuration and cache updated.</green>\n");
+    }
+    else {
+        $Self->Print("<red>Failed to update configuration and cache.</red>\n");
+
+        $Self->{Errors}++;
+
+        if ( $Forced ) {
+            $Self->_PrintProceedingMessage();
+        }
+        else {
+            return $Self->_ExitWithError();
+        }
+    }
+
+    $Self->Print("\n");
+
+    #
     # Disable system maintenance mode
     #
 
