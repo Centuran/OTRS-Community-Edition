@@ -432,6 +432,17 @@ div.InputField_Selection div.Text {
   background-color: #24408c;
   color: #fff;
 }
+.jstree-InputField.jstree-InputField-NoTree .jstree-node {
+  margin-left: 0;
+  padding-left: 2px;
+}
+.jstree-InputField.jstree-InputField-NoTree .jstree-node .jstree-wholerow {
+  line-height: inherit;
+  min-height: inherit;
+}
+.jstree-InputField.jstree-InputField-NoTree .jstree-node .jstree-anchor {
+  vertical-align: middle;
+}
 
 div.InputField_ToolbarContainer {
   font-size: 87.5%;
@@ -4610,6 +4621,7 @@ body #ConfigTree .jstree-node {
   font-size: calc(var(--font-size-base) * 0.85);
   margin: 0;
   margin-bottom: 0;
+  order: 6;
 }
 .SettingsList .WidgetSimple.Setting .SettingWrapper form {
   border-right: solid 1px #ccc;

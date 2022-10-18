@@ -432,6 +432,17 @@ div.InputField_Selection div.Text {
   background-color: #24408c;
   color: #fff;
 }
+.jstree-InputField.jstree-InputField-NoTree .jstree-node {
+  margin-left: 0;
+  padding-left: 2px;
+}
+.jstree-InputField.jstree-InputField-NoTree .jstree-node .jstree-wholerow {
+  line-height: inherit;
+  min-height: inherit;
+}
+.jstree-InputField.jstree-InputField-NoTree .jstree-node .jstree-anchor {
+  vertical-align: middle;
+}
 
 div.InputField_ToolbarContainer {
   font-size: 87.5%;
@@ -501,9 +512,20 @@ fieldset .cmt-otrs-datetime-hidden select[name$=Minute] {
   display: none;
 }
 
+:root {
+  --scale-s: 0.85;
+  --scale-m: 1;
+  --scale-l: 1.2;
+  --font-size-base: calc(var(--scale) * 16px);
+  --gap: calc(var(--scale) * 5/8 * 1.2em);
+  --gap-120: calc(var(--gap) * 1.2);
+  --pad-x: var(--gap-120);
+  --pad-y: var(--gap);
+}
+
 body {
   font-family: Roboto, sans-serif;
-  font-size: 100%;
+  font-size: var(--font-size-base);
 }
 
 a:link, a[href] {
@@ -518,13 +540,13 @@ button {
   padding: 0.3em 1.2em;
   border: solid 1px #3949ab;
   box-shadow: 0px 1px 0px #99a;
-  font-size: initial;
+  font-size: inherit;
   font-weight: 500;
 }
 
 fieldset label {
   background: none;
-  font-size: initial;
+  font-size: inherit;
   width: 25%;
 }
 fieldset label.Mandatory span.Marker {
@@ -938,7 +960,7 @@ button[type=submit] {
   top: initial;
 }
 #Navigation > ul > li > a {
-  font-size: initial;
+  font-size: inherit;
 }
 #Navigation ul > li > ul {
   background-color: #cfd8dc;
@@ -1042,7 +1064,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   border-bottom: solid 1px #ddd;
   border-top: none;
   box-shadow: 0px 1px 0px ghostwhite;
-  font-size: initial;
+  font-size: inherit;
 }
 .Preferences .Box fieldset p.Description {
   font-size: 87.5%;
@@ -1050,15 +1072,31 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 .Preferences .Box fieldset > div {
   display: grid;
   grid-template-columns: 1fr 1fr 0;
+  padding: 3px 8px 3px 0;
 }
 .Preferences .Box fieldset > div label {
   width: auto;
+}
+.Preferences .Box fieldset > div > label + div {
+  padding-top: 3px;
 }
 .Preferences .Box fieldset > div input[type=password] {
   width: 60%;
 }
 .Preferences .Box fieldset > div div.xClearLeft {
   display: none;
+}
+.Preferences .Box fieldset > div > div {
+  padding: initial;
+}
+.Preferences .Box fieldset > div label + .v-input--switch, .Preferences .Box fieldset > div input[type=checkbox] + .v-input--switch {
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.Preferences .Box fieldset > div label + .v-input--switch div, .Preferences .Box fieldset > div input[type=checkbox] + .v-input--switch div {
+  padding: 0;
 }
 .Preferences .Box fieldset button[type=submit] {
   margin: 0.5em auto;
@@ -1161,7 +1199,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   height: auto;
 }
 #MainBox.TicketView table.Overview .Title div h2 {
-  font-size: initial;
+  font-size: inherit;
 }
 #MainBox.TicketView table.Overview tr:hover td {
   background-color: rgba(170, 184, 217, 0.8);
@@ -1329,7 +1367,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 .TicketZoom .ActionRow {
   background: none;
   border: none;
-  font-size: initial;
+  font-size: inherit;
   margin-top: 10px;
 }
 .TicketZoom .ActionRow ul.Tabs {
@@ -1345,6 +1383,7 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 .TicketZoom .TicketHeader h2 {
   align-items: center;
   display: flex;
+  font-size: 135%;
   padding-left: 0;
 }
 .TicketZoom .TicketHeader h2 .Flag {
