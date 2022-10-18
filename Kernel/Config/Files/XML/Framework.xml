@@ -8210,6 +8210,13 @@ via the Preferences button after logging in.
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="Loader::Customer::DefaultSkin::UseModern" Required="0" Valid="1">
+        <Description Translatable="1">If the "default" customer skin is in use, enable its modern variant by default.</Description>
+        <Navigation>Frontend::Base::Loader</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">0</Item>
+        </Value>
+    </Setting>
     <Setting Name="TimeShowCompleteDescription" Required="1" Valid="1">
         <Description Translatable="1">Shows time use complete description (days, hours, minutes), if enabled; or just first letter (d, h, m), if not enabled.</Description>
         <Navigation>Core::Time</Navigation>
