@@ -35,22 +35,16 @@
 [% END %]
 </div>
 
-<!-- </v-app></div> -->
-<script type="application/javascript">
-if (window.localStorage.getItem('__use_new_customer_ui') === 'true')
-    document.write('</v-app></div>');
-</script>
+[% IF Data.UseModern %]
+</v-app></div>
+[% END %]
 
 [% InsertTemplate("CustomerFooterJS.tt") %]
-
-<script src="[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]thirdparty/vue-2.7.0/vue.min.js"></script>
-<script src="[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]thirdparty/vuetify-2.6.7/vuetify.min.js"></script>
-<script src="[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]thirdparty/http-vue-loader-1.4.2/httpVueLoader.min.js"></script>
 
 <script>
 (function () {
 
-if (window.localStorage.getItem('__use_new_customer_ui') !== 'true')
+if (!window.__use_new_customer_ui)
     return;
 
 // Login screen requires the URL fragment to be set, so if it's not, we need

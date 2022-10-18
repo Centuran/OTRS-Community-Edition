@@ -14,7 +14,11 @@
 #       <h1>[% Translate(Data.Header) | html %]</h1>
 [% RenderBlockEnd("Head") %]
 [% RenderBlockStart("Item") %]
+        [% IF Data.Group == 'SkinOptions' && Env('UserSkin') != 'default' && Env('UserSkin') != '' %]
+        <div class="Box" style="display: none;">
+        [% ELSE %]
         <div class="Box">
+        [% END %]
             <form action="[% Env("CGIHandle") %]" enctype="multipart/form-data" method="post" class="Validate">
                 <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                 <input type="hidden" name="Subaction" value="Update"/>
@@ -59,6 +63,46 @@
                         <div class="ClearLeft"></div>
                     </div>
 [% RenderBlockEnd("Password") %]
+[% RenderBlockStart("SkinOptions") %]
+                    <div>
+                        <input type="hidden" name="Skin" value="default">
+                        <label for="UseModern">[% Translate("Use modern variant") | html %]:</label>
+                        <input type="checkbox" name="UseModern" id="UseModern" value="1" [% Data.UseModern %] [% Data.Readonly %]/>
+                        <toggleswitch></toggleswitch>
+                        <div class="ClearLeft"></div>
+                    </div>
+                    <div>
+                        <label>[% Translate("Text size") | html %]:</label>
+                        <div style="float: left;">
+                            <input type="radio" name="TextSize" id="TextSizeSmall" value="small" [% Data.TextSize.TextSizeSmall %] />
+                            <label for="TextSizeSmall" style="float: none; background: none; padding: initial;">[% Translate("Small") | html %]</label>
+                            <br>
+                            <input type="radio" name="TextSize" id="TextSizeMedium" value="medium" [% Data.TextSize.TextSizeMedium %] />
+                            <label for="TextSizeMedium" style="float: none; background: none; padding: initial;">[% Translate("Medium") | html %]</label>
+                            <br>
+                            <input type="radio" name="TextSize" id="TextSizeLarge" value="large" [% Data.TextSize.TextSizeLarge %] />
+                            <label for="TextSizeLarge" style="float: none; background: none; padding: initial;">[% Translate("Large") | html %]</label>
+                        </div>
+
+#                        [% IF Data.UseModern %]
+#                        <div class="Clear"></div>
+#                        <div style="float: right; color: inherit;">
+#                            <span style="margin-left: 20pt; font-size: calc(var(--scale-s) * 16px);">
+#                                [% Translate("Example of small text") %]
+#                            </span>
+#                            <br>
+#                            <span style="margin-left: 20pt; font-size: calc(var(--scale-m) * 16px);">
+#                                [% Translate("Example of medium text") %]
+#                            </span>
+#                            <br>
+#                            <span style="margin-left: 20pt; font-size: calc(var(--scale-l) * 16px);">
+#                                [% Translate("Example of large text") %]
+#                            </span>
+#                        </div>
+#                        [% END %]
+                        <div class="Clear"></div>
+                    </div>
+[% RenderBlockEnd("SkinOptions") %]
 [% RenderBlockEnd("Block") %]
                     <button type="submit" id="[% Data.PrefKey | html %]Update" value="[% Translate("Update") | html %]">[% Translate("Update") | html %]</button>
                 </fieldset>

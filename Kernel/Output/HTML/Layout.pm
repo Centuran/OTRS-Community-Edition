@@ -3918,6 +3918,16 @@ sub CustomerLogin {
         );
     }
 
+    my $SelectedSkin = $ConfigObject->Get('Loader::Customer::SelectedSkin');
+    my $UseModernByDefault =
+        $ConfigObject->Get('Loader::Customer::DefaultSkin::UseModern');
+
+    if (($SelectedSkin eq 'default' || $SelectedSkin eq '') &&
+        $UseModernByDefault)
+    {
+        $Param{UseModern} = 1;       
+    }
+
     # Generate the minified CSS and JavaScript files and the tags referencing them (see LayoutLoader)
     $Self->LoaderCreateCustomerCSSCalls();
     $Self->LoaderCreateCustomerJSCalls();
@@ -4218,6 +4228,20 @@ sub CustomerHeader {
     # and the tags referencing them (see LayoutLoader)
     $Self->LoaderCreateCustomerCSSCalls();
 
+    # TODO: This is repeated in LoaderCreateCustomerCSSCalls above, should
+    # be simplified and DRY-ified somehow (for agent as well, probably)
+    my $UseModernByDefault =
+        $ConfigObject->Get('Loader::Customer::DefaultSkin::UseModern');
+    my $UseModern =
+        $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
+
+    if ($Self->{SkinSelected} &&
+        ($Self->{SkinSelected} eq 'default' || $Self->{SkinSelected} eq '') &&
+        $UseModern)
+    {
+        $Param{UseModern} = 1;
+    }
+
     # create & return output
     $Output .= $Self->Output(
         TemplateFile => "CustomerHeader$Type",
@@ -4241,6 +4265,12 @@ sub CustomerFooter {
     $Self->LoaderCreateCustomerJSCalls();
     $Self->LoaderCreateJavaScriptTranslationData();
     $Self->LoaderCreateJavaScriptTemplateData();
+
+    if ($Self->{SkinSelected} && $Self->{SkinSelected} eq 'default' &&
+        $Self->{'UserSkinOptions-default-UseModern'})
+    {
+        $Param{UseModern} = 1;
+    }
 
     # get datepicker data, if needed in module
     if ($HasDatepicker) {

@@ -6,7 +6,7 @@ $content-width: calc(100% - $sidebar-width - $sidebar-margin);
   .ActionRow {
     background: none;
     border: none;
-    font-size: initial;
+    font-size: inherit;
     margin-top: 10px;
 
     ul.Tabs {
@@ -25,6 +25,7 @@ $content-width: calc(100% - $sidebar-width - $sidebar-margin);
     h2 {
       align-items: center;
       display: flex;
+      font-size: 135%;
       padding-left: 0;
 
       .Flag {

@@ -3,9 +3,21 @@
 
 @import '../../../../Base/default/css/centuran/base';
 
+:root {
+  --scale-s: 0.85;
+  --scale-m: 1;
+  --scale-l: 1.2;
+
+  --font-size-base: calc(var(--scale) * 16px);
+  --gap: calc(var(--scale) * 5/8 * 1.2em);
+  --gap-120: calc(var(--gap) * 1.2);
+  --pad-x: var(--gap-120);
+  --pad-y: var(--gap);
+}
+
 body {
   font-family: Roboto, sans-serif;
-  font-size: 100%;
+  font-size: var(--font-size-base);
 }
 
 a:link, a[href] {
@@ -15,14 +27,14 @@ a:link, a[href] {
 a.Button,
 button {
   @include button;
-  font-size: initial;
+  font-size: inherit;
   font-weight: 500;
 }
 
 fieldset {
   label {
     background: none;
-    font-size: initial;
+    font-size: inherit;
     width: 25%;
 
     &.Mandatory span.Marker {

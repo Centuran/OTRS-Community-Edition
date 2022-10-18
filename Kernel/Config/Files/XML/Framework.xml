@@ -3332,6 +3332,7 @@ You can log in via the following URL:
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::Preferences::SkinOptions</Item>
+                <Item Key="Area">Agent</Item>
                 <Item Key="PreferenceGroup">Miscellaneous</Item>
                 <Item Key="Label" Translatable="1">Skin Options</Item>
                 <Item Key="Desc" Translatable="1">Select configuration options of the selected skin.</Item>
@@ -4079,6 +4080,23 @@ via the Preferences button after logging in.
                 <Item Key="PrefKey">UserTheme</Item>
                 <Item Key="Prio">1000</Item>
                 <Item Key="Active">0</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="CustomerPreferencesGroups###SkinOptions" Required="0" Valid="1">
+        <Description Translatable="1">Defines all the parameters for this item in the customer preferences.</Description>
+        <Navigation>Frontend::Customer::View::Preferences</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::Preferences::SkinOptions</Item>
+                <Item Key="Area">Customer</Item>
+                <Item Key="PreferenceGroup">UserProfile</Item>
+                <Item Key="Label" Translatable="1">Skin Options</Item>
+                <Item Key="Desc" Translatable="1">Select configuration options of the selected skin.</Item>
+                <Item Key="Key" Translatable="1"></Item>
+                <Item Key="PrefKey">UserSkinOptions</Item>
+                <Item Key="Prio">2000</Item>
+                <Item Key="Active">1</Item>
             </Hash>
         </Value>
     </Setting>

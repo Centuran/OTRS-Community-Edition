@@ -271,7 +271,7 @@ sub LoaderCreateAgentJSCalls {
             $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
 
         if (($UserSkin eq 'default' || $UserSkin eq '') && $UseModern) {
-            push @FileList, 'centuran/_use-new-ui.js';
+            push @FileList, 'centuran/_use-new-agent-ui.js';
             push @FileList, 'thirdparty/vue-2.7.0/vue.min.js';
             push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.js';
             push @FileList, 'thirdparty/http-vue-loader-1.4.2/' .
@@ -638,6 +638,8 @@ sub LoaderCreateCustomerCSSCalls {
         }
     }
 
+    $Self->{SkinSelected} = $SkinSelected;
+
     my $SkinHome = $ConfigObject->Get('Home') . '/var/httpd/htdocs/skins';
     my $DoMinify = $ConfigObject->Get('Loader::Enabled::CSS');
 
@@ -648,6 +650,29 @@ sub LoaderCreateCustomerCSSCalls {
 
         for my $Key ( sort keys %{$CommonCSSList} ) {
             push @FileList, @{ $CommonCSSList->{$Key} };
+        }
+
+        my $UseModernByDefault =
+            $ConfigObject->Get('Loader::Customer::DefaultSkin::UseModern');
+        my $UseModern =
+            $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
+
+        if ($SkinSelected eq 'default' && $UseModern) {
+            # FIXME: We're loading styles from agent skin here, need to move to
+            # some common place
+            push @FileList, '../../../Agent/default/css/thirdparty/vuetify-2.6.7/vuetify.min.css';
+            push @FileList, 'centuran/customer.css';
+        }
+
+        if ($SkinSelected eq 'default') {
+            my $TextSize =
+                $Self->{'UserSkinOptions-default-TextSize'} || 'medium';
+            
+            push @FileList, {
+                'small'  => 'centuran/customer-font-size-s.css',
+                'medium' => 'centuran/customer-font-size-m.css',
+                'large'  => 'centuran/customer-font-size-l.css',
+            }->{$TextSize};
         }
 
         $Self->_HandleCSSList(
@@ -763,6 +788,21 @@ sub LoaderCreateCustomerJSCalls {
         for my $Module ( sort keys %{$Setting} ) {
             next MODULE if ref $Setting->{$Module}->{JavaScript} ne 'ARRAY';
             @FileList = ( @FileList, @{ $Setting->{$Module}->{JavaScript} || [] } );
+        }
+
+        my $UserSkin = $Self->{'UserSkin'} // '';
+
+        my $UseModernByDefault =
+            $ConfigObject->Get('Loader::Customer::DefaultSkin::UseModern');
+        my $UseModern =
+            $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
+
+        if (($UserSkin eq 'default' || $UserSkin eq '') && $UseModern) {
+            push @FileList, 'centuran/_use-new-customer-ui.js';
+            push @FileList, 'thirdparty/vue-2.7.0/vue.min.js';
+            push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.js';
+            push @FileList, 'thirdparty/http-vue-loader-1.4.2/' .
+                'httpVueLoader.min.js';
         }
 
         $Self->_HandleJSList(

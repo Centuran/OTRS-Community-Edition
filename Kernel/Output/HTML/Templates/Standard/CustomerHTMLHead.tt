@@ -55,11 +55,6 @@
     <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Customer/[% Data.Skin | uri %]/[% Data.CSSDirectory | html %]/[% Data.Filename | html %]" />
 [% RenderBlockEnd("ModuleCSS") %]
 
-    <!-- <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Customer/default/css/centuran/customer.css" /> -->
-    <script type="text/javascript">
-    if (window.localStorage.getItem('__use_new_customer_ui') === 'true')
-        document.write('<link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Customer/default/css/centuran/customer.css" />');
-    </script>
     <style type="text/css">
         #Footer {
             position: relative;

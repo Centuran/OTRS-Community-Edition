@@ -42,8 +42,9 @@ sub Param {
     my $TextSize  = $Param{UserData}->{'UserSkinOptions-default-TextSize'};
 
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-    my $UseModernByDefault =
-        $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
+    my $UseModernByDefault = $Self->{ConfigItem}->{Area} eq 'Agent' ?
+        $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern') :
+        $ConfigObject->Get('Loader::Customer::DefaultSkin::UseModern');
 
     $UseModern //= $UseModernByDefault;
     $TextSize  ||= 'small';
@@ -85,7 +86,7 @@ sub Run {
 
     for my $Skin (keys %UserSkinOptions) {
         while (my ($SkinOption, $Value) = each(%{$UserSkinOptions{$Skin}})) {
-            my $Key   = "UserSkinOptions-$Skin-$SkinOption";
+            my $Key = "UserSkinOptions-$Skin-$SkinOption";
 
             $Self->{UserObject}->SetPreferences(
                 UserID => $Param{UserData}->{UserID},

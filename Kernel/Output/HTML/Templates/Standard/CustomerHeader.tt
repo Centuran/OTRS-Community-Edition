@@ -14,11 +14,10 @@
 [% InsertTemplate("CustomerHTMLHead.tt") %]
 <body class="NoJavaScript [% Data.BodyClass | html %]">
 <!-- start CI layout -->
-    <!-- <div id="vue-app"><v-app> -->
-    <script type="text/javascript">
-    if (window.localStorage.getItem('__use_new_customer_ui') === 'true')
-        document.write('<div id="vue-app"><v-app>');
-    </script>
+    
+[% IF Data.UseModern %]
+    <div id="vue-app"><v-app>
+[% END %]
 
 [% IF Env("Action") == 'CustomerLogin' %]
     <div id="Header" class="cmt-login-screen cmt-layout-wrapped">
