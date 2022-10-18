@@ -508,6 +508,22 @@ div.InputField_Selection div.Text {
       color: #fff;
     }
   }
+
+  &.jstree-InputField-NoTree {
+    .jstree-node {
+      margin-left: 0;
+      padding-left: 2px;
+
+      .jstree-wholerow {
+        line-height: inherit;
+        min-height: inherit;
+      }
+
+      .jstree-anchor {
+        vertical-align: middle;
+      }
+    }
+  }
 }
 
 div.InputField_ToolbarContainer {
