@@ -45,7 +45,7 @@ sub Param {
     my $UseModernByDefault =
         $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
 
-    $UseModern ||= $UseModernByDefault;
+    $UseModern //= $UseModernByDefault;
     $TextSize  ||= 'small';
 
     my %Options = (
@@ -78,7 +78,7 @@ sub Run {
 
     my %UserSkinOptions = (
         'default' => {
-            'UseModern' => $ParamObject->GetParam( Param => 'UseModern' ),
+            'UseModern' => $ParamObject->GetParam( Param => 'UseModern' ) || 0,
             'TextSize'  => $ParamObject->GetParam( Param => 'TextSize' ),
         },
     );

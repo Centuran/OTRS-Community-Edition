@@ -1376,7 +1376,7 @@ sub Header {
     my $UseModernByDefault =
         $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
     my $UseModern =
-        $Self->{'UserSkinOptions-default-UseModern'} || $UseModernByDefault;
+        $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
 
     if ($Self->{SkinSelected} &&
         ($Self->{SkinSelected} eq 'default' || $Self->{SkinSelected} eq '') &&

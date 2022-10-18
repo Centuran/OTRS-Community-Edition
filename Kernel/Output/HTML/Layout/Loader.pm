@@ -121,7 +121,7 @@ sub LoaderCreateAgentCSSCalls {
         my $UseModernByDefault =
             $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
         my $UseModern =
-            $Self->{'UserSkinOptions-default-UseModern'} || $UseModernByDefault;
+            $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
 
         if ($SkinSelected eq 'default' && $UseModern) {
             push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.css';
@@ -268,7 +268,7 @@ sub LoaderCreateAgentJSCalls {
         my $UseModernByDefault =
             $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
         my $UseModern =
-            $Self->{'UserSkinOptions-default-UseModern'} || $UseModernByDefault;
+            $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
 
         if (($UserSkin eq 'default' || $UserSkin eq '') && $UseModern) {
             push @FileList, 'centuran/_use-new-ui.js';
