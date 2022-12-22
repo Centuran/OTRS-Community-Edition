@@ -422,6 +422,45 @@ sub PriorityColor {
     return;
 }
 
+sub PriorityColorList {
+    my ( $Self, %Param ) = @_;
+
+    if ( !defined $Param{Valid} ) {
+        $Param{Valid} = 1;
+    }
+
+    my $CacheKey = 'PriorityColorList::' . ($Param{Valid} ? 'Valid' : 'All');
+
+    my $Cache = $Kernel::OM->Get('Kernel::System::Cache')->Get(
+        Type => $Self->{CacheType},
+        Key  => $CacheKey,
+    );
+    return %{$Cache} if $Cache;
+
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+    my $SQL = 'SELECT id, color FROM ticket_priority ';
+    if ( $Param{Valid} ) {
+        $SQL .= "WHERE valid_id IN ( ${\(join ', ', $Kernel::OM->Get('Kernel::System::Valid')->ValidIDsGet())} )";
+    }
+
+    return if !$DBObject->Prepare( SQL => $SQL );
+
+    my %Data;
+    while ( my @Row = $DBObject->FetchrowArray() ) {
+        $Data{ $Row[0] } = $Row[1];
+    }
+
+    $Kernel::OM->Get('Kernel::System::Cache')->Set(
+        Type  => $Self->{CacheType},
+        TTL   => $Self->{CacheTTL},
+        Key   => $CacheKey,
+        Value => \%Data,
+    );
+
+    return %Data;
+}
+
 1;
 
 =head1 TERMS AND CONDITIONS
