@@ -24,11 +24,21 @@ a:link, a[href] {
   color: $primary-color;
 }
 
-a.Button,
-button {
+a.Button {
   @include button;
-  font-size: inherit;
+  
+  box-shadow:
+    0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+  border: thin solid;
+  color: $primary-color;
+  caret-color: $primary-color;
+  font-size: initial;
   font-weight: 500;
+  letter-spacing: 0.025em;
+  padding: 4px 24px;
+  text-transform: none;
 }
 
 fieldset {
