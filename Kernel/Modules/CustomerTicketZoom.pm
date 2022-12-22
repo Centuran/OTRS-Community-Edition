@@ -12,6 +12,8 @@ package Kernel::Modules::CustomerTicketZoom;
 use strict;
 use warnings;
 
+use Digest::MD5 qw(md5_hex);
+
 use Kernel::System::VariableCheck qw(:all);
 use Kernel::Language qw(Translatable);
 
@@ -877,6 +879,11 @@ sub Run {
         %GetParam,
         AclAction        => \%AclAction,
         DynamicFieldHTML => \%DynamicFieldHTML,
+
+        UserLanguage     => $Self->{UserLanguage},
+        UserFullname     => $Self->{UserFullname},
+        UserEmailAddress => $Self->{UserEmail},
+        UserEmailMD5Hash => md5_hex($Self->{UserEmail}),
     );
 
     # return if HTML email
@@ -1777,13 +1784,45 @@ sub _Mask {
         }
     }
 
+    my %PriorityColors =
+        $Kernel::OM->Get('Kernel::System::Priority')->PriorityColorList();
+
+    my $PriorityColorsJSON = $Kernel::OM->Get('Kernel::System::JSON')->Encode(
+        Data => \%PriorityColors,
+    );
+
+    # Get the list of "closed" states to be able to determine which selectable
+    # states are of this type and to allow the user to automatically close
+    # the ticket when replying.
+    my @ClosedStates =
+        $Kernel::OM->Get('Kernel::System::State')->StateGetStatesByType(
+            StateType => ['closed'],
+            Result    => 'ID'
+        );
+
+    my $ClosedStatesJSON = $Kernel::OM->Get('Kernel::System::JSON')->Encode(
+        Data => \@ClosedStates,
+    );
+
+    if (exists $Ticket{PriorityColor}) {       
+        $Param{PriorityColor} = $Ticket{PriorityColor};
+    }
+
+    my $UseModern = $Self->{'UserSkinOptions-default-UseModern'};
+
+    my $TemplateFile =
+        $UseModern ? 'Modern/Customer/TicketZoom' : 'CustomerTicketZoom';
+
     # select the output template
     return $LayoutObject->Output(
-        TemplateFile => 'CustomerTicketZoom',
+        TemplateFile => $TemplateFile,
         Data         => {
             %Article,
             %Param,
             Articles => $ArticleHTML,
+
+            PriorityColorsJSON => $PriorityColorsJSON,
+            ClosedStatesJSON   => $ClosedStatesJSON,
         },
     );
 }

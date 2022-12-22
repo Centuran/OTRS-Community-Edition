@@ -604,10 +604,16 @@ sub Run {
         Refresh => $Refresh,
     );
 
+    my $UseModern = $Self->{'UserSkinOptions-default-UseModern'};
+
+    my $TemplateFile =
+        $UseModern ?
+            'Modern/Customer/TicketOverview' : 'CustomerTicketOverview';
+
     # build NavigationBar
     $Output .= $LayoutObject->CustomerNavigationBar();
     $Output .= $LayoutObject->Output(
-        TemplateFile => 'CustomerTicketOverview',
+        TemplateFile => $TemplateFile,
         Data         => \%Param,
     );
 

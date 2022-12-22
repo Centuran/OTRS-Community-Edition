@@ -1344,10 +1344,27 @@ sub _MaskNew {
         Value => $DynamicFieldNames,
     );
 
+    my %PriorityColors =
+        $Kernel::OM->Get('Kernel::System::Priority')->PriorityColorList();
+
+    my $PriorityColorsJSON = $Kernel::OM->Get('Kernel::System::JSON')->Encode(
+        Data => \%PriorityColors,
+    );
+
+    my $UseModern = $Self->{'UserSkinOptions-default-UseModern'};
+
+    my $TemplateFile =
+        $UseModern ?
+            'Modern/Customer/TicketMessage' : 'CustomerTicketMessage';
+
     # get output back
     return $LayoutObject->Output(
-        TemplateFile => 'CustomerTicketMessage',
-        Data         => \%Param,
+        TemplateFile => $TemplateFile,
+        Data         => {
+            %Param,
+
+            PriorityColorsJSON => $PriorityColorsJSON,
+        },
     );
 }
 
