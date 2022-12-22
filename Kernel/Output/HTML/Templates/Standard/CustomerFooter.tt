@@ -52,6 +52,15 @@ if (!window.__use_new_customer_ui)
 if (document.querySelector('#MainBox.Login') && !window.location.hash)
     history.replaceState(null, '', window.location.pathname + '#Login');
 
+if (window.__extraComponents) {
+    window.__extraComponents.forEach(function (component) {
+        Vue.component(component.replace(/.*\//, ''),
+            httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/' + component + '.vue'));
+    });
+}
+
+Vue.use(CKEditor);
+
 new Vue({
     el: '#vue-app',
     vuetify: new Vuetify({
@@ -111,6 +120,10 @@ $(function () {
         if ($(this).next('li').find('> a, > span.ClusterLink').length == 0)
             this.classList.add('cmt-item-action-link-last');
     });
+});
+
+Core.App.Ready(function () {
+    dayjs.locale((Core.Config.Get('UserLanguage') || 'en_US').replace('_', '-'));
 });
 </script>
 
