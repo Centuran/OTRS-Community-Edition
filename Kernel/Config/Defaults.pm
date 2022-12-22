@@ -992,6 +992,7 @@ sub LoadDefaults {
         'thirdparty/jquery-pubsub/pubsub.js',
         'thirdparty/jquery-jstree-3.3.7/jquery.jstree.js',
         'thirdparty/nunjucks-3.2.3/nunjucks.js',
+        'thirdparty/ckeditor4-vue/ckeditor.min.js',
         'Core.Init.js',
         'Core.Debug.js',
         'Core.Exception.js',
