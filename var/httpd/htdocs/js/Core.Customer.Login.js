@@ -39,10 +39,12 @@ Core.Customer.Login = (function (TargetNS) {
             $Label = $PopulatedInput.prev('label');
 
         if ($PopulatedInput.val() !== "" || $PopulatedInput[0] === document.activeElement) {
-            $Label.hide();
+            if (!window.__use_new_customer_ui)
+                $Label.hide();
         }
         else {
-            $Label.show();
+            if (!window.__use_new_customer_ui)
+                $Label.show();
         }
     }
 
@@ -96,7 +98,8 @@ Core.Customer.Login = (function (TargetNS) {
                 $Label = $(this).prev('label');
                 $(this).prev('label').addClass('Focused');
                 if ($(this).val()) {
-                    $Label.hide();
+                    if (!window.__use_new_customer_ui)
+                        $Label.hide();
                 }
             })
             .on('keyup change', function () {
@@ -113,7 +116,9 @@ Core.Customer.Login = (function (TargetNS) {
          $('#User').blur(function () {
             if ($(this).val()) {
                 // set the username-value and hide the field's label
-                $('#ResetUser').val('').prev('label').hide();
+                $('#ResetUser').val('');
+                if (!window.__use_new_customer_ui)
+                    $('#ResetUser').prev('label').hide();
             }
          });
 
@@ -133,7 +138,9 @@ Core.Customer.Login = (function (TargetNS) {
         $('#User').blur(function () {
             if ($(this).val()) {
                 // clear the username-value and hide the field's label
-                $('#ResetUser').val($(this).val()).prev('label').hide();
+                $('#ResetUser').val($(this).val());
+                if (!window.__use_new_customer_ui)
+                    $('#ResetUser').prev('label').hide();
             }
         });
 
