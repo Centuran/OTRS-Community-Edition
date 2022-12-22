@@ -496,6 +496,14 @@ sub HandleLanguage {
                 Filter    => '*.js',
                 Recursive => 1,
             );
+
+            my @VueFileList = $Kernel::OM->Get('Kernel::System::Main')->DirectoryRead(
+                Directory => $JSDirectory,
+                Filter    => '*.vue',
+                Recursive => 1,
+            );
+
+            push @JSFileList, @VueFileList;
         }
 
         FILE:
