@@ -44,7 +44,7 @@
             '[% Config("Centuran::UseNewUI") %]' === '1');
 
     window.__use_new_customer_ui =
-        window.localStorage.getItem('__use_new_customer_ui');
+        JSON.parse(window.localStorage.getItem('__use_new_customer_ui'));
     </script>
 
 [% RenderBlockStart("CommonCSS") %]
