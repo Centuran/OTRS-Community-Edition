@@ -8,6 +8,10 @@
 # --
 
 <li class="[% Data.SenderType | html %]-[% Data.IsVisibleForCustomer | html %] [% Data.Class | html %]">
+    <input type="hidden" name="cmt.Data.ArticleID" value="[% Data.ArticleID | html %]"/>
+    <input type="hidden" name="cmt.Data.From" value="[% Data.From | html %]"/>
+    <input type="hidden" name="cmt.Data.FromMD5Hash" value="[% Data.FromMD5Hash | html %]"/>
+    <input type="hidden" name="cmt.Data.IncomingTime" value="[% Data.IncomingTime | html %]"/>
     <div class="MessageHeader">
         <h3>
             <a href="[% Env("Baselink") %]Action=[% Env("Action") %];TicketNumber=[% Data.TicketNumber | uri %];TicketID=[% Data.TicketID | uri %];ArticleID=[% Data.ArticleID | uri %]">

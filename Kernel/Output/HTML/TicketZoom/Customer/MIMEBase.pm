@@ -14,12 +14,15 @@ use parent 'Kernel::Output::HTML::TicketZoom::Customer::Base';
 use strict;
 use warnings;
 
+use Digest::MD5 qw(md5_hex);
+
 use Kernel::System::VariableCheck qw(IsPositiveInteger);
 
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::Output::HTML::Layout',
     'Kernel::System::CommunicationChannel',
+    'Kernel::System::EmailParser',
     'Kernel::System::Main',
     'Kernel::System::Log',
     'Kernel::System::Ticket::Article',
@@ -181,10 +184,24 @@ sub ArticleRender {
         $Article{FromRealname}             = $DefaultAgentName;
     }
 
+    my $EmailParser = Kernel::System::EmailParser->new(
+        %{$Self},
+        Mode => 'Standalone',
+    );
+    my @Addresses = $EmailParser->SplitAddressLine(
+        Line => $Article{From}
+    );
+    my $FromEmail = $EmailParser->GetEmailAddress(
+        Email => $Addresses[0] || $Article{From},
+    );
+
     my $Content = $LayoutObject->Output(
         TemplateFile => 'CustomerTicketZoom/ArticleRender/MIMEBase',
         Data         => {
             %Article,
+
+            FromMD5Hash => md5_hex($FromEmail),
+
             ArticleFields        => \%ArticleFields,
             ArticleMetaFields    => \%ArticleMetaFields,
             Class                => $Param{Class},
