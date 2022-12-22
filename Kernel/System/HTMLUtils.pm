@@ -768,7 +768,7 @@ sub DocumentCleanup {
             <blockquote(.*?)>(.+?)</blockquote>
         }
         {
-            "<div $1 style=\"$Style\">$2</div>";
+            "<div class=\"__cmt-blockquote\" $1 style=\"$Style\">$2</div>";
         }segxmi;
     }
 
