@@ -5,7 +5,7 @@
     :label="label"
     inset
     hide-details
-    color="#24408c"
+    :color="color"
     @change="checkbox ? checkbox.checked = checked : undefined">
   </v-switch>
 </template>
@@ -13,6 +13,7 @@
 <script>
 module.exports = {
   props: {
+    color: '#24408c'
   },
   data: function () {
     return {

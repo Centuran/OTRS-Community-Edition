@@ -68,7 +68,7 @@
                         <input type="hidden" name="Skin" value="default">
                         <label for="UseModern">[% Translate("Use modern variant") | html %]:</label>
                         <input type="checkbox" name="UseModern" id="UseModern" value="1" [% Data.UseModern %] [% Data.Readonly %]/>
-                        <toggleswitch></toggleswitch>
+                        <toggleswitch color="#2196f3"></toggleswitch>
                         <div class="ClearLeft"></div>
                     </div>
                     <div>
