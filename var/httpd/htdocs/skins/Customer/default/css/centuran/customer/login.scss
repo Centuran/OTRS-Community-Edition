@@ -3,6 +3,9 @@
 }
 
 #MainBox.Login {
+  flex: 1;
+  padding-top: 3.4em;
+
   #Slider {
     height: initial;
     overflow: visible;
@@ -12,28 +15,34 @@
   #Login,
   #Reset,
   #Signup {
-    background-color: $background-color;
+    background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+    box-shadow:
+      0 3px 1px -2px rgb(0 0 0 / 20%),
+      0 2px 2px 0 rgb(0 0 0 / 14%),
+      0 1px 5px 0 rgb(0 0 0 / 12%);
     height: auto;
     margin: 0 auto;
     padding: 20px;
     padding-top: 0;
-    width: 350px;
+    min-width: 400px;
+    width: fit-content;
 
     h2 {
-      background-color: $primary-color;
-      border-bottom: solid 1px #ddd;
       border-top: none;
       border-radius: 4px 4px 0 0;
-      box-shadow: 0px 1px 0px ghostwhite;
-      color: #fff;
       font-size: initial;
-      margin-bottom: 0;
+      margin-bottom: -10px;
       margin-left: -20px;
       margin-right: -20px;
       margin-top: -20px;
       padding: 20px;
+
+      // From .v-card__title
+      line-height: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.0125em;
+      font-size: 1.25rem;
     }
 
     h2 + p {
@@ -43,37 +52,43 @@
     form {
       padding-top: 20px;
 
-      div {
+      & > div {
         float: none;
         margin: 0;
         margin-bottom: 20px;
+        display: flex;
+        align-items: center;
 
-        input {
-          background: #fff;
+        label {
+          color: rgba(0, 0, 0, .6) !important;
+          flex: 1;
           font-size: initial;
-          width: 100%;
+          margin: 0;
+          padding: 0;
+          position: initial;
 
-          &[value=""], &:not([value]) {
-            z-index: 0;
+          &::after {
+            content: ":";
           }
 
-          //&:autofill,
-          &:-webkit-autofill {
-            z-index: 10;
+          .Marker {
+            color: rgba(0, 0, 0, .4);
+            top: initial;
           }
         }
 
-        label {
+        input {
+          background: #fff;
+          flex: 2;
           font-size: initial;
-          line-height: initial;
-          margin-top: 3px;
-          z-index: 11;
+          line-height: 1.375rem;
+          min-height: 40px;
+          padding: 0 12px;
+          position: initial;
+          width: auto;
 
-          .Marker {
-            font-size: inherit;
-            line-height: inherit;
-            position: static;
-            top: 0;
+          &:-webkit-autofill {
+            z-index: 10;
           }
         }
 
@@ -82,6 +97,24 @@
 
           display: block;
           margin: auto;
+
+          // Based on customer-ticket.vue
+          background-color: rgb(33, 150, 243);
+          border-color: rgb(33, 150, 243);
+          box-shadow:
+            0 3px 1px -2px rgb(0 0 0 / 20%),
+            0 2px 2px 0 rgb(0 0 0 / 14%),
+            0 1px 5px 0 rgb(0 0 0 / 12%);
+          color: #fff !important;
+          caret-color: #fff !important;
+          font-size: initial;
+          font-weight: 500;
+          height: 44px;
+          letter-spacing: 0.025em;
+          min-width: 78px;
+          padding-left: 32px !important;
+          padding-right: 32px !important;
+          text-transform: none;
         }
       }
     }
@@ -120,6 +153,8 @@
   }
 
   #Signup {
+    min-width: 500px;
+
     .NewLine:nth-last-child(2),
     .Clear:last-child {
       margin-bottom: 0;
@@ -146,7 +181,7 @@
     margin-bottom: 40px;
     padding: 0;
     position: relative;
-    width: 350px;
+    width: 400px;
 
     p {
       margin: 0;
