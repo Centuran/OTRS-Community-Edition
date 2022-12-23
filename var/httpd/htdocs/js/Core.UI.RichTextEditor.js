@@ -108,6 +108,8 @@ Core.UI.RichTextEditor = (function (TargetNS) {
         });
 
         CKEDITOR.on('instanceReady', function (Editor) {
+            if (!Editor.editor.element.$.classList.contains('RichText'))
+                return true;
 
             // specific config for CodeMirror instances (e.g. XSLT editor)
             if (Core.Config.Get('RichText.Type') == 'CodeMirror') {
