@@ -1,13 +1,23 @@
 #MainBox.TicketView {
-  border-radius: 4px;
-  overflow: hidden;
+  border: none;
+  flex: 1;
+  // overflow: hidden;
 
   .ActionRow {
-    background-color: $background-color;
+    background-color: #fff;
+    border-bottom: none;
+    border-radius: 4px;
+    box-shadow:
+      0 2px 1px -1px rgba(0, 0, 0, .2),
+      0 1px 1px 0 rgba(0, 0, 0, .14),
+      0 1px 3px 0 rgba(0, 0, 0, .12) !important;
+    font-size: initial;
+    margin-bottom: var(--gap-120);
     padding: 10px;
 
     .Tabs {
       @include button-group();
+      box-shadow: 0px 1px 1px #e4e4e4;    
       margin-bottom: 0;
 
       li {
@@ -23,6 +33,10 @@
       }
     }
 
+    .Tabs.Pagination {
+      box-shadow: none;
+    }
+
     .Filter {
       a {
         text-shadow: none;
@@ -36,6 +50,219 @@
 }
 
 #MainBox.TicketView table.Overview {
+  background-color: #fdfdfd;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  border-collapse: separate;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, .2),
+    0 1px 1px 0 rgba(0, 0, 0, .14),
+    0 1px 3px 0 rgba(0, 0, 0, .12) !important;
+  overflow: hidden;
+
+  thead {
+    background: none;
+    display: table-header-group;
+    border-radius: 4px;
+
+    th {
+      background: none;
+      border: none;
+      border-bottom: thin solid rgba(0,0,0,.12);
+      font-size: inherit;
+      font-weight: 500;
+      padding: 10px 10px;
+      text-transform: none;
+
+      a,
+      span {
+        background: none;
+        display: inline;
+        font-size: inherit;
+        font-weight: inherit;
+        padding-left: 0;
+        text-shadow: none;
+        text-transform: none;
+      }
+
+      &.SortAscending a,
+      &.SortDescending a {
+        color: inherit;
+      }
+
+      a.ColumnSettingsTrigger::after,
+      &.SortAscending a::after,
+      &.SortDescending a::after,
+      &.SortAscendingLarge a::after,
+      &.SortDescendingLarge a::after {
+        background: #ddd;
+        border-radius: 50%;  
+        display: inline-block;
+        font-family: "Material Design Icons";
+        font-size: 110%;
+        height: 1.5em;
+        left: initial;
+        line-height: 150%;
+        margin-left: 0.4em;
+        position: static;
+        text-align: center;
+        text-shadow: none;
+        vertical-align: baseline;
+        width: 1.5em;
+      }
+  
+      &.DashboardHeader a.ColumnSettingsTrigger,
+      &.OverviewHeader a.ColumnSettingsTrigger {
+        display: initial;
+        float: none;
+        font-size: 100%;
+        height: 0;
+        margin-left: -0.4em;
+        opacity: 1;
+        position: relative;
+        width: 0;
+        z-index: 1000;
+  
+        &::after {
+          content: "\0F0232"; // filter
+        }
+        
+        i.fa {
+          display: none;
+        }
+      }
+  
+      &.SortAscending a::after,
+      &.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after {
+        content: "\0F0143";
+      }
+  
+      &.SortDescending a::after,
+      &.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after {
+        content: "\0F0140";
+      }
+  
+      &.SortAscendingLarge a,
+      &.SortDescendingLarge a {
+        &:not(.ColumnSettingsTrigger)::after {
+          position: static;
+          text-shadow: none;
+        }
+  
+        &.ColumnSettingsTrigger::after {
+          content: "\0F0232";
+        }
+      }
+  
+      &.OverviewHeader,
+      &.DashboardHeader {
+        a.ColumnSettingsTrigger:hover,
+        a.ColumnSettingsTrigger.Active,
+        &.FilterActive a.ColumnSettingsTrigger {
+          box-shadow: none;
+        }
+      }
+  
+      &.SortAscendingLarge a:not(.ColumnSettingsTrigger)::after,
+      &.SortDescendingLarge a:not(.ColumnSettingsTrigger)::after,
+      &.FilterActive a.ColumnSettingsTrigger::after {
+        background-color: $secondary-action-color;
+        color: white;
+      }
+  
+      &.OverviewHeader,
+      &.DashboardHeader {
+        //position: relative;
+        
+        .ColumnSettingsContainer {
+          position: relative;
+          display: inline-block;
+          width: 0;
+          height: 0;
+          margin-left: 0px;
+          vertical-align: bottom;
+          z-index: 999; // Needs to be lower than .ColumnSettingsTrigger's
+  
+          .ColumnSettingsBox {
+            top: calc(100% + 14px) !important;
+            right: -19px;
+            z-index: 1000;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: $elevated-2-box-shadow;
+  
+            // Triangular pointer at the top of the popup box
+            &::before {
+              color: #fff;
+              content: "\0F0360";
+              font-family: 'Material Design Icons';
+              font-size: 32px;
+              height: 28px;
+              line-height: 50px;
+              position: absolute;
+              right: 3px;
+              text-shadow: 0px 0px 10px rgb(0 0 0 / 65%);
+              top: 0;
+              transform: translateY(-100%);
+              width: 30px;
+              /* z-index: auto; */
+              text-shadow: $elevated-2-box-shadow;
+            }
+  
+            // Pseudo-element to cover the bottom text-shadow of the pointer
+            // which undesirably goes inside the popup box
+            &::after {
+              background-color: white;
+              border-top-right-radius: 4px;
+              content: "";
+              height: 10px;
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: 50px;
+            }
+          }
+        }
+      }  
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        td {
+          // color: white;
+        }
+      }
+
+      td {
+        border-right: solid 1px #ddd;
+        padding: $table-cell-padding;
+      }
+
+      td:last-child {
+        border-right: none;
+      }
+
+      &.Row td.QueueOverviewTotals {
+        border-top: solid 2px #ddd;
+      }
+    }
+
+    tr.MasterAction {
+      &:hover {
+        span.UnreadArticles.Remarkable::before {
+          // Outline to make the star stand out on similar background
+          text-shadow:
+            -1px  0px 0px rgba(0, 0, 0, 0.35),
+            0px -1px 0px rgba(0, 0, 0, 0.35),
+            1px  0px 0px rgba(0, 0, 0, 0.35),
+            0px  1px 0px rgba(0, 0, 0, 0.35);
+        }
+      }
+    }
+  }
+
   .Title div {
     height: auto;
 
@@ -47,14 +274,19 @@
   tr:hover {
     td {
       background-color: $table-row-hover-color;
-      background-color: #aab8d9cc;
+      // color: white;
+      // text-shadow: 0 1px 0 darken($table-row-hover-color, 0.1);
+      text-shadow: none;
+      // color: initial;
       color: #444;
-      text-shadow: 0 1px 0 darken($table-row-hover-color, 0.1);
       
       &.Title div,
+      &.Title h2,
       a {
-        color: #444;
-        text-shadow: 0 1px 0 darken($table-row-hover-color, 0.1);
+        // color: white;
+        color: inherit;
+        // text-shadow: 0 1px 0 darken($table-row-hover-color, 0.1);
+        text-shadow: none;
       }
     }
   }

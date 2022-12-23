@@ -1,13 +1,18 @@
-.TicketProcess {
+#MainBox.TicketProcess {
+  flex: 1;
+
   fieldset {
-    background: $background-color;
+    background: #fff;
     border-radius: 4px;
   }
 
   #NewProcessTicket {
     fieldset {
-      box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
-      padding: 10px;
+      box-shadow:
+        0 2px 1px -1px rgba(0, 0, 0, .2),
+        0 1px 1px 0 rgba(0, 0, 0, .14),
+        0 1px 3px 0 rgba(0, 0, 0, .12) !important;
+      padding: 12px;
     }
 
     label[for="ProcessEntityID"] span.Marker::after {
@@ -17,7 +22,10 @@
 
   #ActivityDialogContent {
     fieldset.TableLike {
-      box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+      box-shadow:
+        0 2px 1px -1px rgba(0, 0, 0, .2),
+        0 1px 1px 0 rgba(0, 0, 0, .14),
+        0 1px 3px 0 rgba(0, 0, 0, .12) !important;
       padding: 10px;
 
       h2 {
@@ -37,10 +45,13 @@
     }
 
     .PopupFooter {
-      background: $background-color;
+      background: #fff;
       border: none;
       border-radius: 4px;
-      box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+      box-shadow:
+        0 2px 1px -1px rgba(0, 0, 0, .2),
+        0 1px 1px 0 rgba(0, 0, 0, .14),
+        0 1px 3px 0 rgba(0, 0, 0, .12) !important;
       padding: 10px;
 
       button.Primary {

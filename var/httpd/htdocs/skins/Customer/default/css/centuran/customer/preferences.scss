@@ -15,29 +15,40 @@
     }
 
     fieldset {
-      background: $background-color;
+      background: #fff;
       border-radius: 4px;
-      box-shadow: 0px 1px 0px rgb(0 0 0 / 15%);
+      box-shadow:
+        0 2px 1px -1px rgba(0, 0, 0, .2),
+        0 1px 1px 0 rgba(0, 0, 0, .14),
+        0 1px 3px 0 rgba(0, 0, 0, .12);
       margin: 0;
+      padding: 16px;
 
       h2 {
-        border-bottom: solid 1px #ddd;
+        // border-bottom: solid 1px #ddd;
+        border-bottom: none;
         border-top: none;
-        box-shadow: 0px 1px 0px ghostwhite;
-        font-size: inherit;
+        // box-shadow: 0px 1px 0px ghostwhite;
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: 0;
       }
 
       p.Description {
         font-size: 87.5%;
+        padding: 16px 0;
       }
     }
 
     fieldset > div {
+      align-items: baseline;
       display: grid;
       grid-template-columns: 1fr 1fr 0;
       padding: 3px 8px 3px 0;
 
       label {
+        color: rgba(0,0,0,0.6);
+        padding-top: 8px;
         width: auto;
       }
 
@@ -45,8 +56,21 @@
         padding-top: 3px;
       }
 
+      input {
+        // margin-top: 8px;
+        margin-top: 0;
+      }
+
       input[type="password"] {
-        width: 60%;
+        font-size: initial;
+        width: 75%;
+      }
+
+      &:not(:first-of-type) {
+        .InputField_Container,
+        input[type="password"] {
+          margin-top: 16px;
+        }
       }
 
       div.xClearLeft { // FIXME: Remove this?
@@ -72,7 +96,7 @@
     }
 
     fieldset button[type="submit"] {
-      margin: 0.5em auto;
+      margin: 24px auto 8px auto;
       text-align: center;
     }
   }
