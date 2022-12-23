@@ -820,17 +820,17 @@ div.AllocationListContainer {
         border-top: solid 2px #ddd;
       }
     }
-  }
 
-  tr.MasterAction {
-    &:hover {
-      span.UnreadArticles.Remarkable::before {
-        // Outline to make the star stand out on similar background
-        text-shadow:
-          -1px  0px 0px rgba(0, 0, 0, 0.35),
-           0px -1px 0px rgba(0, 0, 0, 0.35),
-           1px  0px 0px rgba(0, 0, 0, 0.35),
-           0px  1px 0px rgba(0, 0, 0, 0.35);
+    tr.MasterAction {
+      &:hover {
+        span.UnreadArticles.Remarkable::before {
+          // Outline to make the star stand out on similar background
+          text-shadow:
+            -1px  0px 0px rgba(0, 0, 0, 0.35),
+            0px -1px 0px rgba(0, 0, 0, 0.35),
+            1px  0px 0px rgba(0, 0, 0, 0.35),
+            0px  1px 0px rgba(0, 0, 0, 0.35);
+        }
       }
     }
   }
