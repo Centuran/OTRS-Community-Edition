@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.343298793952777;
+    $Self->{Completeness}        = 0.342832909245123;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -3123,6 +3123,9 @@ sub Data {
         'Sorry, but this feature of OTRS is currently not available for mobile devices. If you\'d like to use it, you can either switch to desktop mode or use your regular desktop device.' =>
             '',
 
+        # Template: TicketOverview
+        'New Ticket' => 'Nuevo Ticket',
+
         # Template: Motd
         'Message of the Day' => 'Mensaje del día',
         'This is the message of the day. You can edit this in %s.' => '',
@@ -5887,6 +5890,17 @@ sub Data {
         'Stream' => '',
         'Expanded' => '',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
+        'Drop files here or click to browse' => '',
+
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
+        'Expand all articles' => '',
+        'Collapse all articles' => '',
+        'Collapse article' => '',
+        'Set state to' => '',
+        'Set priority to' => '',
+        'Reply and Close' => '',
+
         # SysConfig
         '
 Dear Customer,
@@ -7523,6 +7537,8 @@ Thanks for your help!
             '',
         'If the "default" agent skin is in use, enable its modern variant by default.' =>
             '',
+        'If the "default" customer skin is in use, enable its modern variant by default.' =>
+            '',
         'If this option is enabled, tickets created via the web interface, via Customers or Agents, will receive an autoresponse if configured. If this option is not enabled, no autoresponses will be sent.' =>
             '',
         'If this regex matches, no message will be send by the autoresponder.' =>
@@ -7750,7 +7766,6 @@ Thanks for your help!
         'Name of the OAuth2 token configuration to use with sendmail module. Applies if \'OAuth2 token\' is selected as SendmailModule::AuthenticationMethod.' =>
             '',
         'NameX' => '',
-        'New Ticket' => 'Nuevo Ticket',
         'New Tickets' => 'Nuevos tickets',
         'New Window' => '',
         'New Year\'s Day' => 'Año nuevo',
@@ -8844,6 +8859,8 @@ Thanks for your help!
         'Clone web service',
         'Close preview',
         'Close this dialog',
+        'Collapse all articles',
+        'Collapse article',
         'Complex %s with %s arguments',
         'Confirm',
         'Could not open popup window. Please disable any popup blockers for this application.',
@@ -8901,6 +8918,7 @@ Thanks for your help!
         'Do you really want to revert this setting to its historical value?',
         'Don\'t save, update manually',
         'Draft title',
+        'Drop files here or click to browse',
         'Duplicate event.',
         'Duplicated entry',
         'Edit Field Details',
@@ -8913,6 +8931,8 @@ Thanks for your help!
         'Error in the mail settings. Please correct and try again.',
         'Error: Browser Check failed!',
         'Event Type Filter',
+        'Expand all articles',
+        'Expand article',
         'Expanded',
         'Feb',
         'February',
@@ -8923,6 +8943,7 @@ Thanks for your help!
         'Fr',
         'Fri',
         'Friday',
+        'From',
         'Generate',
         'Generate Result',
         'Generating...',
@@ -8968,6 +8989,7 @@ Thanks for your help!
         'More',
         'Name',
         'Namespace %s could not be initialized, because %s could not be found.',
+        'New Ticket',
         'Next',
         'No Data Available.',
         'No TransitionActions assigned.',
@@ -9007,6 +9029,8 @@ Thanks for your help!
         'Preparing to deploy, please wait...',
         'Press Ctrl+C (Cmd+C) to copy to clipboard',
         'Previous',
+        'Print',
+        'Priority',
         'Process state',
         'Queues',
         'Reload page',
@@ -9022,6 +9046,8 @@ Thanks for your help!
         'Remove this dynamic field',
         'Remove this entry',
         'Repeat',
+        'Reply',
+        'Reply and Close',
         'Request Details',
         'Request Details for Communication ID',
         'Reset',
@@ -9037,6 +9063,7 @@ Thanks for your help!
         'Restore web service configuration',
         'Rule',
         'Running',
+        'SLA',
         'Sa',
         'Sat',
         'Saturday',
@@ -9050,9 +9077,13 @@ Thanks for your help!
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Send',
         'Sending Update...',
         'Sep',
         'September',
+        'Service',
+        'Set priority to',
+        'Set state to',
         'Setting a template will overwrite any text or attachment.',
         'Settings',
         'Show',
@@ -9073,6 +9104,7 @@ Thanks for your help!
         'Status',
         'Stream',
         'Su',
+        'Subject',
         'Sun',
         'Sunday',
         'Support Bundle',
@@ -9081,6 +9113,7 @@ Thanks for your help!
         'Switch to mobile mode',
         'System Registration',
         'Team',
+        'Text',
         'Th',
         'The browser you are using is too old.',
         'The deployment is already running.',
@@ -9104,6 +9137,7 @@ Thanks for your help!
         'This event is already attached to the job, Please use a different one.',
         'This feature is part of the %s. Please contact us at %s for an upgrade.',
         'This field can have no more than 250 characters.',
+        'This field is required',
         'This field is required.',
         'This is %s',
         'This is a repeating appointment',
@@ -9114,10 +9148,12 @@ Thanks for your help!
         'This window must be called from compose window.',
         'Thu',
         'Thursday',
+        'Ticket Information',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
         'Title',
+        'To',
         'Today',
         'Too many active calendars',
         'Try again',
@@ -9150,6 +9186,7 @@ Thanks for your help!
         'activate to apply an ascending sort',
         'activate to remove the sort',
         'and %s more...',
+        'closed successful',
         'day',
         'month',
         'more',
