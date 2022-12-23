@@ -271,8 +271,8 @@ label {
       }
     }
 
-    // This pseudoelement fills the 2px gap between the contents
-    // of the top-level item and the sub-level dropdown list (caused by a 2px
+    // This pseudoelement fills the gap between the contents
+    // of the top-level item and the sub-level dropdown list (caused by
     // margin-top above the list), eliminating the problem that the list
     // disappeared when the pointer was placed inside the gap.
     // TODO: Copy-pasted from agent styles, could use some DRY
@@ -280,7 +280,7 @@ label {
       content: "";
       float: none;
       background: transparent;
-      height: 2px;
+      height: 4px;
       margin: 0;
       position: absolute;
       width: 100%;
