@@ -2304,9 +2304,9 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 .TableSmall tbody tr.Row td.QueueOverviewTotals {
   border-top: solid 2px #ddd;
 }
-.DataTable tr.MasterAction:hover span.UnreadArticles.Remarkable::before,
-.Sortable.DataTable tr.MasterAction:hover span.UnreadArticles.Remarkable::before,
-.TableSmall tr.MasterAction:hover span.UnreadArticles.Remarkable::before {
+.DataTable tbody tr.MasterAction:hover span.UnreadArticles.Remarkable::before,
+.Sortable.DataTable tbody tr.MasterAction:hover span.UnreadArticles.Remarkable::before,
+.TableSmall tbody tr.MasterAction:hover span.UnreadArticles.Remarkable::before {
   text-shadow: -1px 0px 0px rgba(0, 0, 0, 0.35), 0px -1px 0px rgba(0, 0, 0, 0.35), 1px 0px 0px rgba(0, 0, 0, 0.35), 0px 1px 0px rgba(0, 0, 0, 0.35);
 }
 
