@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-10-01 20:29+0000\n"
+"POT-Creation-Date: 2022-12-06 00:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16170,6 +16170,34 @@ msgstr ""
 msgid "Expanded"
 msgstr ""
 
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
+msgid "Expand all articles"
+msgstr ""
+
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
+msgid "Collapse all articles"
+msgstr ""
+
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
+msgid "Collapse article"
+msgstr ""
+
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
+msgid "Drop files here or click to browse"
+msgstr ""
+
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
+msgid "Set state to"
+msgstr ""
+
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
+msgid "Set priority to"
+msgstr ""
+
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
+msgid "Reply and Close"
+msgstr ""
+
 #. SysConfig
 msgid ""
 "\n"
@@ -20243,6 +20271,10 @@ msgstr ""
 
 #. SysConfig
 msgid "If the \"default\" agent skin is in use, enable its modern variant by default."
+msgstr ""
+
+#. SysConfig
+msgid "If the \"default\" customer skin is in use, enable its modern variant by default."
 msgstr ""
 
 #. SysConfig
