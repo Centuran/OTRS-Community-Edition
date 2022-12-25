@@ -87,13 +87,13 @@ my @Tests = (
     {
         Input => '<blockquote>Some Tex<b>t</b></blockquote>',
         Result =>
-            '<div  style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">Some Tex<b>t</b></div>',
+            '<div class="__cmt-blockquote"  style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">Some Tex<b>t</b></div>',
         Name => 'DocumentCleanup - blockquote'
     },
     {
         Input => '<blockquote>Some Tex<b>t</b><blockquote>test</blockquote> </blockquote>',
         Result =>
-            '<div  style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">Some Tex<b>t</b><div  style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">test</div> </div>',
+            '<div class="__cmt-blockquote"  style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">Some Tex<b>t</b><div class="__cmt-blockquote"  style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">test</div> </div>',
         Name => 'DocumentCleanup - blockquote'
     },
     {
