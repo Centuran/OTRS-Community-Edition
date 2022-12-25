@@ -1109,10 +1109,6 @@ html {
   opacity: 1;
   visibility: visible;
 }
-.v-application--wrap #Navigation ul li:first-child a {
-  border-top: solid 1px #ccc !important;
-}
-
 @media (min-width: 960px) {
   .v-application--wrap #Header + .MessageBox,
   .v-application--wrap #Navigation + .MessageBox,
@@ -1125,6 +1121,10 @@ html {
   .v-application--wrap #MainBox .Content {
     padding-left: 0;
     padding-right: 0;
+  }
+  .v-application--wrap #Navigation > ul li ul li a {
+    border-top-width: 1px;
+    padding-left: 12px;
   }
 }
 @media (min-width: 1024px) {
@@ -1147,9 +1147,6 @@ html {
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
     opacity: 0;
     visibility: hidden;
-  }
-  .v-application--wrap #Navigation ul li:first-child a {
-    border-top-width: 0px !important;
   }
 }
 @media (min-width: 1264px) {

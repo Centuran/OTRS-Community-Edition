@@ -72,7 +72,7 @@ html {
     }
 
     ul li:first-child a {
-      border-top: solid 1px #ccc !important;
+      // border-top: solid 1px #ccc !important;
     }
   }
 }
@@ -94,6 +94,11 @@ html {
         padding-left: 0;
         padding-right: 0;
       }
+    }
+
+    #Navigation > ul li ul li a {
+      border-top-width: 1px;
+      padding-left: 12px;
     }
   } 
 }
@@ -126,7 +131,7 @@ html {
       }
 
       ul li:first-child a {
-        border-top-width: 0px !important;
+        // border-top-width: 0px !important;
       }   
     }
   }
