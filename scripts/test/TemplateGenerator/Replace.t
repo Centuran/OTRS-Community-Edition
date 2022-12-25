@@ -585,13 +585,13 @@ Line3",
         RichText => 1,
         Template => 'Test &lt;OTRS_AGENT_BODY[7]&gt; - &lt;OTRS_CUSTOMER_BODY[7]&gt;',
         Result =>
-            'Test <div  type="cite" style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">Line1<br/>
+            'Test <div class="__cmt-blockquote"  type="cite" style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">Line1<br/>
 Line2<br/>
 Line3<br/>
 Line4<br/>
 Line5<br/>
 Line6<br/>
-Line7</div> - <div  type="cite" style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">Line1<br/>
+Line7</div> - <div class="__cmt-blockquote"  type="cite" style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt">Line1<br/>
 Line2<br/>
 Line3<br/>
 Line4<br/>
