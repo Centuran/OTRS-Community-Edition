@@ -47,7 +47,7 @@ module.exports = {
   props: {
     color: {
       // default: '#f15a22',
-      default: '#24408c'
+      default: window.__use_new_customer_ui ? '#2196f3' : '#24408c'
     },
     mode: {
       default: 'date/time',
