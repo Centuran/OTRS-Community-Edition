@@ -13,7 +13,9 @@
 <script>
 module.exports = {
   props: {
-    color: '#24408c'
+    color: {
+      default: '#24408c'
+    }
   },
   data: function () {
     return {
