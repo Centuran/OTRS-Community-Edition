@@ -71,8 +71,8 @@ html {
       visibility: visible;
     }
 
-    ul li:first-child a {
-      // border-top: solid 1px #ccc !important;
+    & > ul > li:first-child a {
+      border-top: solid 1px #ccc !important;
     }
   }
 }
@@ -130,8 +130,8 @@ html {
         visibility: hidden;
       }
 
-      ul li:first-child a {
-        // border-top-width: 0px !important;
+      & > ul > li:first-child > a {
+        border-top-width: 0px !important;
       }   
     }
   }
