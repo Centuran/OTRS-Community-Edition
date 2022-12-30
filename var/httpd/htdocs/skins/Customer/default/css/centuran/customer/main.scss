@@ -224,8 +224,13 @@ label {
   display: flex;
 
   #ResponsiveNavigationHandle {
+    background: white;
+    border-radius: 1.6em;
+    height: 1.6em;
     left: 0;
-    line-height: initial;
+    line-height: 1.6em;
+    text-align: center;
+    width: 1.6em;
 
     i.fa-bars {
       font-family: "Material Design Icons";
