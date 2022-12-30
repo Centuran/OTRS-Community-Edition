@@ -60,6 +60,10 @@
       label:not(:last-child)::after {
         content: ":";
       }
+
+      & > div.InputField_Container {
+        width: auto;
+      }
     }
 
     h2 + div {
@@ -115,6 +119,10 @@
 
     #Submit {
       @include primary-button;
+    }
+
+    div.InputField_Container {
+      width: auto;
     }
   }
 }
