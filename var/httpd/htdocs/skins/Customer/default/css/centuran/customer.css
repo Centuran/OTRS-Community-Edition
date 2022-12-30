@@ -1232,8 +1232,13 @@ label {
   display: flex;
 }
 #Header #ResponsiveNavigationHandle {
+  background: white;
+  border-radius: 1.6em;
+  height: 1.6em;
   left: 0;
-  line-height: initial;
+  line-height: 1.6em;
+  text-align: center;
+  width: 1.6em;
 }
 #Header #ResponsiveNavigationHandle i.fa-bars {
   font-family: "Material Design Icons";
@@ -2142,6 +2147,9 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
 .Search fieldset > div label:not(:last-child)::after {
   content: ":";
 }
+.Search fieldset > div > div.InputField_Container {
+  width: auto;
+}
 .Search fieldset h2 + div {
   border-top: none;
 }
@@ -2188,6 +2196,9 @@ form#NewCustomerTicket #BottomActionRow button[type=submit] {
   color: #fff;
   line-height: 1.9em;
   padding: 0.3em 1.2em;
+}
+.Search #BottomActionRow div.InputField_Container {
+  width: auto;
 }
 
 #MainBox.TicketView.SearchResults ul.Tabs {
