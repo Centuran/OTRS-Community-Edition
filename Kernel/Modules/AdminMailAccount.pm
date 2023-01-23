@@ -1,10 +1,14 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2023 Centuran Consulting, https://centuran.com/
+# Includes AGPL-licensed work by:
+# Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# the enclosed files COPYING and COPYING-AGPL for license information (GPL
+# and AGPL). If you did not receive these files, see
+# https://www.gnu.org/licenses/gpl-3.0.txt and
+# https://www.gnu.org/licenses/agpl-3.0.txt.
 # --
 
 package Kernel::Modules::AdminMailAccount;
