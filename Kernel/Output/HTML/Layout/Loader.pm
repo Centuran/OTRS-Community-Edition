@@ -130,7 +130,7 @@ sub LoaderCreateAgentCSSCalls {
 
         if ($SkinSelected eq 'default') {
             my $TextSize =
-                $Self->{'UserSkinOptions-default-TextSize'} || 'medium';
+                $Self->{'UserSkinOptions-default-TextSize'} || 'small';
             
             push @FileList, {
                 'small'  => 'centuran/agent-font-size-s.css',
@@ -666,7 +666,7 @@ sub LoaderCreateCustomerCSSCalls {
 
         if ($SkinSelected eq 'default') {
             my $TextSize =
-                $Self->{'UserSkinOptions-default-TextSize'} || 'medium';
+                $Self->{'UserSkinOptions-default-TextSize'} || 'small';
             
             push @FileList, {
                 'small'  => 'centuran/customer-font-size-s.css',
