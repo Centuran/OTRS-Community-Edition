@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 FILES_DIR=$1
 INSTALL_DIR=${2:-/opt/otrs}
 
