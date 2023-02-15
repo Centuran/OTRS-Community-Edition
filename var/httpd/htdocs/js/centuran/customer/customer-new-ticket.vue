@@ -85,6 +85,17 @@
                     :rules="[ val(validateService) ]"
                     class="tooltip-error"
                   >
+                    <template v-slot:item="{ item, on, attrs }">
+                      <v-list-item
+                        v-on="on"
+                        v-bind="attrs"
+                        :value="item.value"
+                        class="select-item"
+                      >
+                        {{ item.name }}
+                      </v-list-item>
+                    </template>
+                  
                     <template v-slot:message="{ message }">
                       <v-tooltip bottom
                         :attach="document.querySelector('#msg_service').parentElement.parentElement.parentElement"
@@ -124,6 +135,17 @@
                     :rules="[ val(validateSLA) ]"
                     class="tooltip-error"
                   >
+                    <template v-slot:item="{ item, on, attrs }">
+                      <v-list-item
+                        v-on="on"
+                        v-bind="attrs"
+                        :value="item.value"
+                        class="select-item"
+                      >
+                        {{ item.name }}
+                      </v-list-item>
+                    </template>
+
                     <template v-slot:message="{ message }">
                       <v-tooltip bottom
                         :attach="document.querySelector('#msg_sla').parentElement.parentElement.parentElement"
