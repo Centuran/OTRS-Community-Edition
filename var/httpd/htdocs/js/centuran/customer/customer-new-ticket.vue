@@ -7,6 +7,56 @@
         <v-card>
           <v-form>
             <v-container>
+              <v-row class="align-baseline" v-if="types.length">
+                <v-col
+                  cols="12" sm="3"
+                  class="pb-0 pt-0 pt-sm-2"
+                >
+                  <label
+                    v-html="`${Core.Language.Translate('Type')}:`"
+                    class="mb-1 mt-3 mr-4"
+                  ></label>
+                </v-col>
+                <v-col
+                  cols="12" sm="9" md="6"
+                  class="pb-0 pt-0 pt-sm-2"
+                >
+                  <v-select
+                    id="msg_type"
+                    v-model="msg.type"
+                    dense
+                    outlined
+                    :items="types"
+                    item-text="name"
+                    item-value="value"
+                    :rules="[ val(validateType) ]"
+                    class="tooltip-error"
+                  >
+                    <template v-slot:item="{ item, on, attrs }">
+                      <v-list-item
+                        v-on="on"
+                        v-bind="attrs"
+                        :value="item.value"
+                        class="select-item"
+                      >
+                        {{ item.name }}
+                      </v-list-item>
+                    </template>
+                    
+                    <template v-slot:message="{ message }">
+                      <v-tooltip bottom
+                        :attach="document.querySelector('#msg_type').parentElement.parentElement.parentElement"
+                        color="error"
+                        dark
+                        v-model="message"
+                      >
+                        <span>{{ message }}</span>
+                      </v-tooltip>
+                    </template>
+                  </v-select>
+                </v-col>
+              </v-row>
+
               <v-row v-if="queues.length" 
                 class="align-baseline"
               >
@@ -379,24 +429,29 @@ module.exports = {
         resize_minHeight: 100,
         height: 200,
       },
-      queues: [],
-      priorities: [],
+      
+      queues:         [],
+      priorities:     [],
       priorityColors: {},
-      services: [],
-      sla: [],
+      services:       [],
+      sla:            [],
+      types:          [],
+
       msg: {
         attachments: [],
-        queue:    null,
-        priority: '',
-        subject:  '',
-        text:     '',
-        service:  null,
-        sla:      null,
+        queue:       null,
+        priority:    '',
+        subject:     '',
+        text:        '',
+        type:        null,
+        service:     null,
+        sla:         null,
       },
-      msgText: '',
+
+      msgText:        '',
       msgTextInvalid: false,
-      msgTextError: null,
-      msgValid: false,
+      msgTextError:   null,
+      msgValid:       false,
     };
   },
   watch: {
@@ -464,8 +519,21 @@ module.exports = {
       return 'This field is required';
     },
 
+    validateType: function (type) {
+      var label    = sel('#cmt-hide-original-ui label[for="TypeID"]');
+      var required = label.classList.contains('Mandatory');
+
+      if (!required)
+        return true;
+      
+      if (parseInt(type))
+        return true;
+      
+      return 'This field is required';
+    },
+
     validateService: function (service) {
-      var label    = sel('#cmt-hide-original-ui label[for="ServiceID"]')
+      var label    = sel('#cmt-hide-original-ui label[for="ServiceID"]');
       var required = label.classList.contains('Mandatory');
 
       if (!required)
@@ -478,7 +546,7 @@ module.exports = {
     },
 
     validateSLA: function (service) {
-      var label    = sel('#cmt-hide-original-ui label[for="SLAID"]')
+      var label    = sel('#cmt-hide-original-ui label[for="SLAID"]');
       var required = label.classList.contains('Mandatory');
 
       if (!required)
@@ -499,6 +567,10 @@ module.exports = {
       var origPriority = sel('#PriorityID');
       if (origPriority)
         origPriority.value = this.msg.priority;
+      
+      var origType = sel('#TypeID');
+      if (origType)
+        origType.value = this.msg.type;
       
       var origService = sel('#ServiceID');
       var origSla     = sel('#SLAID');
@@ -620,6 +692,16 @@ module.exports = {
 
       if (element.selected)
         this.msg.priority = element.value;
+    }, this);
+
+    selAll('#TypeID option').forEach(function (element) {
+      this.types.push({
+        value: element.value,
+        name:  element.label || element.textContent
+      });
+
+      if (element.selected)
+        this.msg.type = element.value;
     }, this);
 
     this.refreshServices();

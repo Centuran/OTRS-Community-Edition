@@ -1,3 +1,6 @@
+# 6.0.39 2023-XX-XX
+ - Added support for ticket type field in refreshed customer UI new ticket form
+
 # 6.0.38 2022-12-30
  - Added refreshed version of the default customer user interface skin (optional and not yet ready for production use)
  - Implemented minor fixes in the refreshed agent user interface skin
