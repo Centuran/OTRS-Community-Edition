@@ -109,10 +109,7 @@
                   class="content"
                   :style="`height: ${contentHeight(article)};`"
                 >
-                  <div
-                    v-html="article.content"
-                    style="overflow: auto; height: fit-content;"
-                  ></div>
+                  <iframe class="content-frame" style="height: 0;"></iframe>
 
                   <div v-if="article.attachments.length > 0" class="mt-4">
                     <v-divider class="mb-2"></v-divider>
@@ -781,8 +778,6 @@ module.exports = {
         expanded: true,
       };
 
-      var contentRegexp = new RegExp('^.*?<body.*?>|</body>.*?$', 'g');
-
       var contentIframe = sel('.MessageBody iframe', item);
       var contentSrc    = contentIframe.getAttribute('src');
       
@@ -794,14 +789,24 @@ module.exports = {
           return response.text();
         })
         .then((function (text) {
-          // The "overflow: hidden" rule is there to fix a bug in Chrome
-          // when the scrollbar appeared in the parent element
-          // as if there was a 1px difference in height (while both elements
-          // returned the exact same offsetHeight). TODO: Should investigate.
-          this.content =
-            '<div style="overflow: hidden;">' +
-              text.replaceAll(contentRegexp, '') +
-            '</div>';
+          this.content = text;
+
+          var iframe = sel('#article-' + this.id + ' .content-frame');
+
+          iframe.contentWindow.document.open();
+          iframe.contentWindow.document.write(this.content);
+          iframe.contentWindow.document.close();
+
+          // Most suggestions for adjusting iframe height to match contents
+          // seem to favor contentWindow.document.body.scrollHeight,
+          // but that resulted in additional vertical margin for some reason.
+          iframe.style.height =
+            iframe.contentWindow.document.documentElement.offsetHeight + 'px';
+
+          // Reset body margins
+          iframe.contentWindow.document.head.innerHTML =
+              '<style type="text/css">body { margin: 0; }</style>' +
+              iframe.contentWindow.document.head.innerHTML;
           
           this.loaded = true;
         }).bind(article))
