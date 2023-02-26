@@ -976,6 +976,24 @@ module.exports = {
   margin-top: -24px;
 }
 
+/* These styles create the shadow under the card pointer triangle
+   and should be there by default, but Vuetify insists on adding the "link"
+   class to the card (because there is a "@click" attribute), which overrides
+   these styles -- so we need to add them explicitly. */
+.v-timeline-item .v-card:before {
+  background: initial;  
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #000;
+  border-right-color: rgba(0, 0, 0, 0.12);
+  border-top: 10px solid transparent;
+  bottom: auto;
+  left: -10px;
+  opacity: 1;
+  right: auto;
+  top: 12px;
+  transform: rotate(0);
+}
+
 .v-card .sender {
   font-size: 0.875rem;
 }
