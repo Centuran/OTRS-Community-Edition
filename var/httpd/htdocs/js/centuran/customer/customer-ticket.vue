@@ -4,7 +4,9 @@
       <v-col cols="12" md="9">
         <div class="TicketHeader">
           <h2 :title="ticket.title">
-            <div class="Flag" :title="ticket.priority">
+            <div 
+              v-if="ticket.priority !== null"
+              class="Flag" :title="ticket.priority">
               <span
                 :class="`PriorityID-${ticket.priorityId}`"
                 :style="`background-color: ${priorityColors[ticket.priorityId]};`"
@@ -654,9 +656,18 @@ module.exports = {
     container.innerHTML = origArticlesHTML;
 
     var title = sel('.TicketHeader > h2').getAttribute('title');
+
+    var priority   = null;
+    var priorityId = null;
     
-    var priority   = sel('.TicketHeader > h2 .Flag').getAttribute('title');
-    var priorityId = sel('.TicketHeader > h2 .Flag span').getAttribute('class').replace(/^PriorityID-/, '');
+    var priorityIndicator = sel('.TicketHeader > h2 .Flag');
+
+    if (priorityIndicator) {
+      var priorityClass = sel('span', priorityIndicator).getAttribute('class');
+      
+      priority   = priorityIndicator.getAttribute('title');
+      priorityId = priorityClass.replace(/^PriorityID-/, '');
+    }
 
     var metaData = [];
 
