@@ -8,7 +8,7 @@
 # --
 ## nofilter(TidyAll::Plugin::OTRS::TT::ScriptUsage)
 
-<div>
+<div data-cmt-article-id="[% Data.ArticleID | html %]">
     <a name="Article[% Data.ArticleID | html %]"></a>
     <div class="WidgetSimple Expanded [% Data.SenderType | html %] [% IF Data.SenderType == 'customer' %]Incoming[% ELSE %]Outgoing[% END %] [% IF Data.IsVisibleForCustomer %]VisibleForCustomer[% ELSE %]NotVisibleForCustomer[% END %]">
         <div class="Header">

@@ -46,6 +46,17 @@ sub new {
         UserID => $Self->{UserID},
     );
 
+    my $UseModernByDefault =
+        $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
+    $Self->{UseModern} =
+        $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
+
+    # In modern UI, select the expanded variant to have all articles available
+    # in the content
+    if ( $Self->{UseModern} ) {
+        $Self->{ZoomExpand} = 1;
+    }
+
     # save last used view type in preferences
     if ( !$Self->{Subaction} ) {
 
@@ -2008,10 +2019,69 @@ sub MaskAgentZoom {
         Name => 'TicketZoomInit',
     );
 
+    my $TemplateFile =
+        $Self->{UseModern} ? 'Modern/Agent/TicketZoom' : 'AgentTicketZoom';
+
+    my %ExtraData;
+
+    if ($Self->{UseModern}) {
+        # TODO: Consider loading this with AJAX (possibly with infinite scroll)
+        my @HistoryItems = $TicketObject->HistoryGet(
+            TicketID => $Self->{TicketID},
+            UserID   => $Self->{UserID},
+        );
+
+        my %IgnoredTypes = map { $_ => 1 } qw(
+            ArchiveFlagUpdate
+            Misc
+            LoopProtection
+            Remove
+            SendAgentNotification
+            SendAutoReject
+            SendCustomerNotification
+            Subscribe
+            SystemRequest
+            Unsubscribe
+        );
+
+        @HistoryItems =
+            grep { !exists $IgnoredTypes{$_->{HistoryType}} } @HistoryItems;
+
+        for my $Item (@HistoryItems) {
+            # Remove irrelevant (and potentially sensitive) user data
+            for my $Key (keys %$Item) {
+                next if $Key !~ /^User/;
+                next if $Key =~ /^User (Email | Firstname | Fullname | ID |
+                    Lastname | Login | Title) $/x;
+                delete $Item->{$Key};
+            }
+
+            # Remove ChangeTime (it corresponds to the user, not the history
+            # item)
+            delete $Item->{ChangeTime};
+
+            $Item->{ItemTitle} =
+                $Self->{HistoryTypeMapping}{$Item->{HistoryType}};
+        }
+
+        my $HistoryItemsJSON = $LayoutObject->JSONEncode(
+            Data => \@HistoryItems,
+        );
+
+        $HistoryItemsJSON =~ s/'/\\'/g;
+
+        $ExtraData{Timeline} = {
+            UserLanguage     => '', # TODO: Add
+            Baselink         => $LayoutObject->{Baselink},
+            TicketID         => $Self->{TicketID},
+            HistoryItemsJSON => $HistoryItemsJSON,
+        };
+    }
+
     # return output
     return $LayoutObject->Output(
-        TemplateFile => 'AgentTicketZoom',
-        Data         => { %Param, %Ticket, %AclAction },
+        TemplateFile => $TemplateFile,
+        Data         => { %Param, %Ticket, %AclAction, %ExtraData },
     );
 }
 

@@ -36,6 +36,13 @@
 if (!window.__use_new_agent_ui)
     return;
 
+if (window.__extraComponents) {
+    window.__extraComponents.forEach(function (component) {
+        Vue.component(component.replace(/.*\//, ''),
+            httpVueLoader('[% Config("Frontend::JavaScriptPath") | html %][% Data.JSDirectory | html %]centuran/' + component + '.vue'));
+    });
+}
+
 new Vue({
     el: '#vue-app',
     vuetify: new Vuetify({
