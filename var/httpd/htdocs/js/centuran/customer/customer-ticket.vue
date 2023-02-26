@@ -107,7 +107,10 @@
                   class="content"
                   :style="`height: ${contentHeight(article)};`"
                 >
-                  <div style="overflow: auto; height: fit-content;" v-html="article.content"></div>
+                  <div
+                    v-html="article.content"
+                    style="overflow: auto; height: fit-content;"
+                  ></div>
 
                   <div v-if="article.attachments.length > 0" class="mt-4">
                     <v-divider class="mb-2"></v-divider>
