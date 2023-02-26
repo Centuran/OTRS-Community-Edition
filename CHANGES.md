@@ -1,5 +1,6 @@
 # 6.0.39 2023-XX-XX
  - Added support for ticket type field in refreshed customer UI new ticket form
+ - Fixed a bug with new customer UI ticket view always expecting ticket priority to be returned with ticket data
 
 # 6.0.38 2022-12-30
  - Added refreshed version of the default customer user interface skin (optional and not yet ready for production use)
