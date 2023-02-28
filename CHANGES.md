@@ -1,6 +1,10 @@
 # 6.0.39 2023-XX-XX
  - Added support for ticket type field in refreshed customer UI new ticket form
  - Fixed a bug with new customer UI ticket view always expecting ticket priority to be returned with ticket data
+ - Wrapped articles in iframes in new customer UI ticket view to prevent wrong styles being applied
+ - Fixed a bug with resize feature missing in rich text editors in new agent UI
+ - Added modern UI options to customer user edit screen in admin interface (which also fixed a problem with editing causing an overwrite of user's own preferences)
+ - Fixed wrong default font size preference for new customer UI
 
 # 6.0.38 2022-12-30
  - Added refreshed version of the default customer user interface skin (optional and not yet ready for production use)
