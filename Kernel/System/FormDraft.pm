@@ -146,7 +146,16 @@ sub FormDraftGet {
         Type => $Self->{CacheType},
         Key  => $CacheKey,
     );
-    return $Cache if $Cache;
+
+    if ( IsHashRefWithData($Cache) ) {
+        my $Permission = $Self->ObjectPermission(
+            %{$Cache},
+            UserID => $Param{UserID}
+        );
+
+        return if !$Permission;
+        return $Cache;
+    }
 
     # get database object
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
@@ -174,6 +183,12 @@ sub FormDraftGet {
     # fetch the result
     my %FormDraft;
     while ( my @Row = $DBObject->FetchrowArray() ) {
+        my $Permission = $Self->ObjectPermission(
+            ObjectType => $Row[1],
+            ObjectID   => $Row[2],
+            UserID     => $Param{UserID}
+        );
+
         %FormDraft = (
             FormDraftID => $Row[0],
             ObjectType  => $Row[1],
@@ -184,9 +199,9 @@ sub FormDraftGet {
             CreateBy    => $Row[6],
             ChangeTime  => $Row[7],
             ChangeBy    => $Row[8],
-        );
+        ) if $Permission;
 
-        if ( $Param{GetContent} ) {
+        if ( $Permission && $Param{GetContent} ) {
 
             my $RawContent      = $Row[9] // {};
             my $StorableContent = $RawContent;
@@ -547,7 +562,23 @@ sub FormDraftListGet {
         Type => $Self->{CacheType},
         Key  => $CacheKey,
     );
-    return $Cache if $Cache;
+
+    if ( IsArrayRefWithData($Cache) ) {
+        my @AccessibleFormDrafts;
+        FORMDRAFT:
+        for my $FormDraft ( @{$Cache} ) {
+            next FORMDRAFT if !IsHashRefWithData($FormDraft);
+
+            my $Permission = $Self->ObjectPermission(
+                %{$FormDraft},
+                UserID => $Param{UserID}
+            );
+
+            push @AccessibleFormDrafts, $FormDraft if $Permission;
+        }
+
+        return \@AccessibleFormDrafts if @AccessibleFormDrafts;
+    }
 
     # prepare database restrictions by given parameters
     my %ParamToField = (
@@ -581,6 +612,12 @@ sub FormDraftListGet {
     # fetch the results
     my @FormDrafts;
     while ( my @Row = $DBObject->FetchrowArray() ) {
+        my $Permission = $Self->ObjectPermission(
+            ObjectType => $Row[1],
+            ObjectID   => $Row[2],
+            UserID     => $Param{UserID}
+        );
+
         push @FormDrafts, {
             FormDraftID => $Row[0],
             ObjectType  => $Row[1],
@@ -591,7 +628,7 @@ sub FormDraftListGet {
             CreateBy    => $Row[6],
             ChangeTime  => $Row[7],
             ChangeBy    => $Row[8],
-        };
+        } if $Permission;
     }
 
     # set cache
@@ -602,6 +639,44 @@ sub FormDraftListGet {
     );
 
     return \@FormDrafts;
+}
+
+=item ObjectPermission()
+
+checks read permission for a given object and UserID.
+
+    $Permission = $FormDraftObject->ObjectPermission(
+        ObjectType  => 'Ticket',
+        ObjectID    => 123,
+        UserID      => 1,
+    );
+
+=cut
+
+sub ObjectPermission {
+    my ( $Self, %Param ) = @_;
+
+    # check needed stuff
+    for my $Argument (qw(ObjectType ObjectID UserID)) {
+        if ( !$Param{$Argument} ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Need $Argument!",
+            );
+            return;
+        }
+    }
+
+    # get backend object
+    my $BackendObject = $Kernel::OM->Get( 'Kernel::System::FormDraft::' . $Param{ObjectType} );
+
+    # allow access if no backend module to check for permission
+    return 1 if !$BackendObject;
+    return 1 if !$BackendObject->can('ObjectPermission');
+
+    return $BackendObject->ObjectPermission(
+        %Param,
+    );
 }
 
 =item _DeleteAffectedCaches()

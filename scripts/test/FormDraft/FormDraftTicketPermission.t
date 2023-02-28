@@ -14,12 +14,13 @@ use utf8;
 
 use vars (qw($Self));
 
-my $ConfigObject    = $Kernel::OM->Get('Kernel::Config');
-my $FormDraftObject = $Kernel::OM->Get('Kernel::System::FormDraft');
-my $GroupObject     = $Kernel::OM->Get('Kernel::System::Group');
-my $UserObject      = $Kernel::OM->Get('Kernel::System::User');
-my $TicketObject    = $Kernel::OM->Get('Kernel::System::Ticket');
-my $QueueObject     = $Kernel::OM->Get('Kernel::System::Queue');
+my $ConfigObject          = $Kernel::OM->Get('Kernel::Config');
+my $FormDraftObject       = $Kernel::OM->Get('Kernel::System::FormDraft');
+my $FormDraftTicketObject = $Kernel::OM->Get('Kernel::System::FormDraft::Ticket');
+my $GroupObject           = $Kernel::OM->Get('Kernel::System::Group');
+my $UserObject            = $Kernel::OM->Get('Kernel::System::User');
+my $TicketObject          = $Kernel::OM->Get('Kernel::System::Ticket');
+my $QueueObject           = $Kernel::OM->Get('Kernel::System::Queue');
 
 $Kernel::OM->ObjectParamAdd(
     'Kernel::System::UnitTest::Helper' => {
@@ -152,14 +153,12 @@ for my $Counter ( 1 .. 2 ) {
 my @Tests = (
     {
         Name     => 'no access to draft without UserID',
-        Object   => 'Ticket',
         ObjectID => $TicketIDs[0],
         UserID   => undef,
-        Result   => 0,
+        Result   => undef,
     },
     {
         Name          => 'user1 has access to draft for ticket1',
-        Object        => 'Ticket',
         ObjectID      => $TicketIDs[0],
         UserID        => $UserIDs[0],
         Result        => 1,
@@ -167,7 +166,6 @@ my @Tests = (
     },
     {
         Name          => 'user1 has no access to draft for ticket2',
-        Object        => 'Ticket',
         ObjectID      => $TicketIDs[1],
         UserID        => $UserIDs[0],
         Result        => 0,
@@ -175,7 +173,6 @@ my @Tests = (
     },
     {
         Name          => 'user2 has access to draft for ticket2',
-        Object        => 'Ticket',
         ObjectID      => $TicketIDs[1],
         UserID        => $UserIDs[1],
         Result        => 1,
@@ -183,7 +180,6 @@ my @Tests = (
     },
     {
         Name          => 'user2 has no access to draft for ticket1',
-        Object        => 'Ticket',
         ObjectID      => $TicketIDs[0],
         UserID        => $UserIDs[1],
         Result        => 0,
@@ -191,7 +187,8 @@ my @Tests = (
     },
 );
 
-for my $Test (@Tests) {
+# Run two times to verify both DB and cache results
+for my $Test ( @Tests, @Tests ) {
 
     my %TicketIDs = $TicketObject->TicketSearch(
         Result   => 'HASH',
@@ -227,11 +224,6 @@ for my $Test (@Tests) {
         UserID      => $Test->{UserID},
     );
 
-    # TODO: remove after implementation
-    if (!$Test->{Result}) {
-        undef $FormDraft;
-    }
-
     for my $FormDraftGetParam (qw(FormData ObjectID ObjectType Title Action)) {
         $Self->IsDeeply(
             $FormDraft->{$FormDraftGetParam},
@@ -248,13 +240,18 @@ for my $Test (@Tests) {
         );
     }
 
-    # TODO: finish after implementation
-    # my $Result = $FormDraftObject->ObjectPermission( %{$Test} );
-    # $Self->Is(
-    #     $Result,
-    #     $Test->{Result},
-    #     "ObjectPermission() - direct call for permission  ($Test->{Name})",
-    # );
+    for my $Object ( $FormDraftObject, $FormDraftTicketObject ) {
+        my $Result = $Object->ObjectPermission(
+            ObjectType => 'Ticket',
+            ObjectID   => $Test->{ObjectID},
+            UserID     => $Test->{UserID},
+        );
+        $Self->Is(
+            $Result,
+            $Test->{Result} ? $Test->{Result} : undef,
+            "ObjectPermission() - call for permission from object ($Test->{Name})",
+        );
+    }
 }
 
 1;
