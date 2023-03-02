@@ -183,12 +183,6 @@ sub FormDraftGet {
     # fetch the result
     my %FormDraft;
     while ( my @Row = $DBObject->FetchrowArray() ) {
-        my $Permission = $Self->ObjectPermission(
-            ObjectType => $Row[1],
-            ObjectID   => $Row[2],
-            UserID     => $Param{UserID}
-        );
-
         %FormDraft = (
             FormDraftID => $Row[0],
             ObjectType  => $Row[1],
@@ -199,9 +193,9 @@ sub FormDraftGet {
             CreateBy    => $Row[6],
             ChangeTime  => $Row[7],
             ChangeBy    => $Row[8],
-        ) if $Permission;
+        );
 
-        if ( $Permission && $Param{GetContent} ) {
+        if ( $Param{GetContent} ) {
 
             my $RawContent      = $Row[9] // {};
             my $StorableContent = $RawContent;
@@ -226,6 +220,14 @@ sub FormDraftGet {
         );
         return;
     }
+
+    my $ReadPermission = $Self->ObjectPermission(
+        ObjectType => $FormDraft{ObjectType},
+        ObjectID   => $FormDraft{ObjectID},
+        UserID     => $Param{UserID}
+    );
+
+    return if !$ReadPermission;
 
     # always cache version without content
     my $CacheKeyNoContent;
@@ -563,82 +565,81 @@ sub FormDraftListGet {
         Key  => $CacheKey,
     );
 
-    if ( IsArrayRefWithData($Cache) ) {
-        my @AccessibleFormDrafts;
-        FORMDRAFT:
-        for my $FormDraft ( @{$Cache} ) {
-            next FORMDRAFT if !IsHashRefWithData($FormDraft);
-
-            my $Permission = $Self->ObjectPermission(
-                %{$FormDraft},
-                UserID => $Param{UserID}
-            );
-
-            push @AccessibleFormDrafts, $FormDraft if $Permission;
-        }
-
-        return \@AccessibleFormDrafts if @AccessibleFormDrafts;
-    }
-
-    # prepare database restrictions by given parameters
-    my %ParamToField = (
-        ObjectType => 'object_type',
-        Action     => 'action',
-        ObjectID   => 'object_id',
-    );
-    my $SQLExt = '';
-    my @Bind;
-    RESTRICTION:
-    for my $Restriction (qw(ObjectType Action ObjectID)) {
-        next RESTRICTION if !IsStringWithData( $Param{$Restriction} );
-        $SQLExt .= $SQLExt ? ' AND ' : ' WHERE ';
-        $SQLExt .= $ParamToField{$Restriction} . ' = ?';
-        push @Bind, \$Param{$Restriction};
-    }
-
-    # get database object
-    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
-
-    # ask the database
-    return if !$DBObject->Prepare(
-        SQL =>
-            'SELECT id, object_type, object_id, action, title,'
-            . ' create_time, create_by, change_time, change_by'
-            . ' FROM form_draft' . $SQLExt
-            . ' ORDER BY id ASC',
-        Bind => \@Bind,
-    );
-
-    # fetch the results
     my @FormDrafts;
-    while ( my @Row = $DBObject->FetchrowArray() ) {
-        my $Permission = $Self->ObjectPermission(
-            ObjectType => $Row[1],
-            ObjectID   => $Row[2],
-            UserID     => $Param{UserID}
+    if (!$Cache) {
+        # prepare database restrictions by given parameters
+        my %ParamToField = (
+            ObjectType => 'object_type',
+            Action     => 'action',
+            ObjectID   => 'object_id',
+        );
+        my $SQLExt = '';
+        my @Bind;
+        RESTRICTION:
+        for my $Restriction (qw(ObjectType Action ObjectID)) {
+            next RESTRICTION if !IsStringWithData( $Param{$Restriction} );
+            $SQLExt .= $SQLExt ? ' AND ' : ' WHERE ';
+            $SQLExt .= $ParamToField{$Restriction} . ' = ?';
+            push @Bind, \$Param{$Restriction};
+        }
+    
+        # get database object
+        my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+    
+        # ask the database
+        return if !$DBObject->Prepare(
+            SQL =>
+                'SELECT id, object_type, object_id, action, title,'
+                . ' create_time, create_by, change_time, change_by'
+                . ' FROM form_draft' . $SQLExt
+                . ' ORDER BY id ASC',
+            Bind => \@Bind,
+        );
+    
+        # fetch the results
+        while ( my @Row = $DBObject->FetchrowArray() ) {
+            push @FormDrafts, {
+                FormDraftID => $Row[0],
+                ObjectType  => $Row[1],
+                ObjectID    => $Row[2],
+                Action      => $Row[3],
+                Title       => $Row[4] || '',
+                CreateTime  => $Row[5],
+                CreateBy    => $Row[6],
+                ChangeTime  => $Row[7],
+                ChangeBy    => $Row[8],
+            };
+        }
+    
+        # set cache
+        $Kernel::OM->Get('Kernel::System::Cache')->Set(
+            Type  => $Self->{CacheType},
+            Key   => $CacheKey,
+            Value => \@FormDrafts,
+        );
+    }
+
+    if ( IsArrayRefWithData($Cache) ) {
+        @FormDrafts = @{$Cache};
+    }
+
+    my @AccessibleFormDrafts;
+    FORMDRAFT:
+    for my $FormDraft ( @FormDrafts ) {
+        next FORMDRAFT if !IsHashRefWithData($FormDraft);
+        next FORMDRAFT if !$FormDraft->{FormDraftID};
+
+        my $ReadPermission = $Self->ObjectPermission(
+            %{$FormDraft},
+            UserID => $Param{UserID}
         );
 
-        push @FormDrafts, {
-            FormDraftID => $Row[0],
-            ObjectType  => $Row[1],
-            ObjectID    => $Row[2],
-            Action      => $Row[3],
-            Title       => $Row[4] || '',
-            CreateTime  => $Row[5],
-            CreateBy    => $Row[6],
-            ChangeTime  => $Row[7],
-            ChangeBy    => $Row[8],
-        } if $Permission;
+        next FORMDRAFT if !$ReadPermission;
+
+        push @AccessibleFormDrafts, $FormDraft;
     }
-
-    # set cache
-    $Kernel::OM->Get('Kernel::System::Cache')->Set(
-        Type  => $Self->{CacheType},
-        Key   => $CacheKey,
-        Value => \@FormDrafts,
-    );
-
-    return \@FormDrafts;
+    
+    return \@AccessibleFormDrafts;
 }
 
 =item ObjectPermission()
