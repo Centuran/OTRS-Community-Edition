@@ -6,7 +6,7 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-package Kernel::System::FormDraft::Ticket;
+package Kernel::System::FormDraft::Permission::Ticket;
 
 use strict;
 use warnings;
@@ -21,11 +21,11 @@ our @ObjectDependencies = (
 
 =head1 NAME
 
-Kernel::System::FormDraft::Ticket
+Kernel::System::FormDraft::Permission::Ticket
 
 =head1 DESCRIPTION
 
-Ticket permission backend for the form draft.
+Permission backend for the form draft Ticket ObjectType.
 
 =head1 PUBLIC INTERFACE
 
@@ -33,7 +33,7 @@ Ticket permission backend for the form draft.
 
 Don't use the constructor directly, use the ObjectManager instead:
 
-    my $FormDraftTicketObject = $Kernel::OM->Get('Kernel::System::FormDraft::Ticket');
+    my $FormDraftTicketPermissionObject = $Kernel::OM->Get('Kernel::System::FormDraft::Permission::Ticket');
 
 =cut
 
@@ -50,7 +50,7 @@ sub new {
 
 checks read permission for a given object and UserID.
 
-    $Permission = $FormDraft->ObjectPermission(
+    $Permission = $FormDraftTicketPermissionObject->ObjectPermission(
         ObjectType => 'Ticket',
         ObjectID   => 123,
         UserID     => 1,

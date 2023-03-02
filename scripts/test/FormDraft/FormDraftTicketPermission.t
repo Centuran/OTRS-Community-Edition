@@ -14,7 +14,7 @@ use vars (qw($Self));
 
 my $ConfigObject          = $Kernel::OM->Get('Kernel::Config');
 my $FormDraftObject       = $Kernel::OM->Get('Kernel::System::FormDraft');
-my $FormDraftTicketObject = $Kernel::OM->Get('Kernel::System::FormDraft::Ticket');
+my $FormDraftTicketObject = $Kernel::OM->Get('Kernel::System::FormDraft::Permission::Ticket');
 my $GroupObject           = $Kernel::OM->Get('Kernel::System::Group');
 my $UserObject            = $Kernel::OM->Get('Kernel::System::User');
 my $TicketObject          = $Kernel::OM->Get('Kernel::System::Ticket');

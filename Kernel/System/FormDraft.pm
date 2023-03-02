@@ -667,7 +667,7 @@ sub ObjectPermission {
         }
     }
 
-    my $BackendObject = $Kernel::OM->Get( 'Kernel::System::FormDraft::' . $Param{ObjectType} );
+    my $BackendObject = $Kernel::OM->Get( 'Kernel::System::FormDraft::Permission::' . $Param{ObjectType} );
 
     # allow access if no backend module to check for permission
     return 1 if !$BackendObject;
