@@ -1,6 +1,4 @@
-
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 # Copyright (C) 2021-2023 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
@@ -33,7 +31,6 @@ my @FormDrafts;
 my @TicketIDs;
 my @UserIDs;
 
-$ConfigObject->Get('CheckEmailAddresses') || 1;
 $ConfigObject->Set(
     Key   => 'CheckEmailAddresses',
     Value => 0,
@@ -158,28 +155,28 @@ my @Tests = (
         Result   => undef,
     },
     {
-        Name          => 'user1 has access to draft for ticket1',
+        Name          => 'user 1 has access to draft for ticket 1',
         ObjectID      => $TicketIDs[0],
         UserID        => $UserIDs[0],
         Result        => 1,
         FormDraftData => $FormDrafts[0],
     },
     {
-        Name          => 'user1 has no access to draft for ticket2',
+        Name          => 'user 1 has no access to draft for ticket 2',
         ObjectID      => $TicketIDs[1],
         UserID        => $UserIDs[0],
         Result        => 0,
         FormDraftData => $FormDrafts[1],
     },
     {
-        Name          => 'user2 has access to draft for ticket2',
+        Name          => 'user 2 has access to draft for ticket 2',
         ObjectID      => $TicketIDs[1],
         UserID        => $UserIDs[1],
         Result        => 1,
         FormDraftData => $FormDrafts[1],
     },
     {
-        Name          => 'user2 has no access to draft for ticket1',
+        Name          => 'user 2 has no access to draft for ticket 1',
         ObjectID      => $TicketIDs[0],
         UserID        => $UserIDs[1],
         Result        => 0,
@@ -196,11 +193,9 @@ for my $Test ( @Tests, @Tests ) {
         TicketID => $Test->{ObjectID},
     );
 
-    my $TestingMethod;
-    $TestingMethod = $Test->{Result} ? 'True' : 'False';
-
-    $Self->$TestingMethod(
-        $TicketIDs{ $Test->{ObjectID} },
+    $Self->Is(
+        $TicketIDs{ $Test->{ObjectID} } ? 1 : 0,
+        $Test->{Result}                 ? 1 : 0,
         "TicketSearch() - search result ($Test->{Name})",
     );
 

@@ -147,13 +147,13 @@ sub FormDraftGet {
         Key  => $CacheKey,
     );
 
-    if ( IsHashRefWithData($Cache) ) {
-        my $Permission = $Self->ObjectPermission(
+    if ($Cache) {
+        my $ReadPermission = $Self->ObjectPermission(
             %{$Cache},
             UserID => $Param{UserID}
         );
 
-        return if !$Permission;
+        return if !$ReadPermission;
         return $Cache;
     }
 
@@ -656,7 +656,6 @@ checks read permission for a given object and UserID.
 sub ObjectPermission {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Argument (qw(ObjectType ObjectID UserID)) {
         if ( !$Param{$Argument} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -667,7 +666,6 @@ sub ObjectPermission {
         }
     }
 
-    # get backend object
     my $BackendObject = $Kernel::OM->Get( 'Kernel::System::FormDraft::' . $Param{ObjectType} );
 
     # allow access if no backend module to check for permission
