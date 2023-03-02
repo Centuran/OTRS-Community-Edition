@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2023 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -566,7 +566,8 @@ sub FormDraftListGet {
     );
 
     my @FormDrafts;
-    if (!$Cache) {
+    if ( !$Cache ) {
+
         # prepare database restrictions by given parameters
         my %ParamToField = (
             ObjectType => 'object_type',
@@ -582,10 +583,10 @@ sub FormDraftListGet {
             $SQLExt .= $ParamToField{$Restriction} . ' = ?';
             push @Bind, \$Param{$Restriction};
         }
-    
+
         # get database object
         my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
-    
+
         # ask the database
         return if !$DBObject->Prepare(
             SQL =>
@@ -595,7 +596,7 @@ sub FormDraftListGet {
                 . ' ORDER BY id ASC',
             Bind => \@Bind,
         );
-    
+
         # fetch the results
         while ( my @Row = $DBObject->FetchrowArray() ) {
             push @FormDrafts, {
@@ -610,7 +611,7 @@ sub FormDraftListGet {
                 ChangeBy    => $Row[8],
             };
         }
-    
+
         # set cache
         $Kernel::OM->Get('Kernel::System::Cache')->Set(
             Type  => $Self->{CacheType},
@@ -625,7 +626,7 @@ sub FormDraftListGet {
 
     my @AccessibleFormDrafts;
     FORMDRAFT:
-    for my $FormDraft ( @FormDrafts ) {
+    for my $FormDraft (@FormDrafts) {
         next FORMDRAFT if !IsHashRefWithData($FormDraft);
         next FORMDRAFT if !$FormDraft->{FormDraftID};
 
@@ -638,7 +639,7 @@ sub FormDraftListGet {
 
         push @AccessibleFormDrafts, $FormDraft;
     }
-    
+
     return \@AccessibleFormDrafts;
 }
 
