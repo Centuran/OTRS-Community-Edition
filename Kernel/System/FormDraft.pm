@@ -50,7 +50,6 @@ create an object
 sub new {
     my ( $Type, %Param ) = @_;
 
-    # allocate new hash for object
     my $Self = {};
     bless( $Self, $Type );
 
@@ -119,7 +118,6 @@ Returns (without GetContent or GetContent = 1):
 sub FormDraftGet {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Needed (qw(FormDraftID UserID)) {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -140,7 +138,6 @@ sub FormDraftGet {
         return;
     }
 
-    # check cache
     my $CacheKey = 'FormDraftGet::GetContent' . $Param{GetContent} . '::ID' . $Param{FormDraftID};
     my $Cache    = $Kernel::OM->Get('Kernel::System::Cache')->Get(
         Type => $Self->{CacheType},
@@ -295,7 +292,6 @@ add a new draft
 sub FormDraftAdd {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Needed (qw(FormData ObjectType Action)) {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -317,7 +313,6 @@ sub FormDraftAdd {
 
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
-    # serialize form and file data
     my $StorableContent = $Kernel::OM->Get('Kernel::System::Storable')->Serialize(
         Data => {
             FormData => $Param{FormData},
@@ -330,7 +325,6 @@ sub FormDraftAdd {
         $Content = MIME::Base64::encode_base64($StorableContent);
     }
 
-    # add to database
     return if !$DBObject->Do(
         SQL =>
             'INSERT INTO form_draft'
@@ -342,7 +336,6 @@ sub FormDraftAdd {
         ],
     );
 
-    # delete affected caches
     $Self->_DeleteAffectedCaches(%Param);
 
     return 1;
@@ -383,7 +376,6 @@ update an existing draft
 sub FormDraftUpdate {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Needed (qw(FormData ObjectType Action)) {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -431,7 +423,6 @@ sub FormDraftUpdate {
 
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
-    # serialize form and file data
     my $StorableContent = $Kernel::OM->Get('Kernel::System::Storable')->Serialize(
         Data => {
             FormData => $Param{FormData},
@@ -453,7 +444,6 @@ sub FormDraftUpdate {
         Bind => [ \$Param{Title}, \$Content, \$Param{UserID}, \$Param{FormDraftID}, ],
     );
 
-    # delete affected caches
     $Self->_DeleteAffectedCaches(%Param);
 
     return 1;
@@ -473,7 +463,6 @@ remove draft
 sub FormDraftDelete {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Needed (qw(FormDraftID UserID)) {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -499,13 +488,11 @@ sub FormDraftDelete {
         return;
     }
 
-    # remove from database
     return if !$Kernel::OM->Get('Kernel::System::DB')->Do(
         SQL  => 'DELETE FROM form_draft WHERE id = ?',
         Bind => [ \$Param{FormDraftID} ],
     );
 
-    # delete affected caches
     $Self->_DeleteAffectedCaches( %{$FormDraft} );
 
     return 1;
@@ -544,7 +531,6 @@ Returns:
 sub FormDraftListGet {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     if ( !$Param{UserID} ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
@@ -553,7 +539,6 @@ sub FormDraftListGet {
         return;
     }
 
-    # check cache
     my $CacheKey = 'FormDraftListGet';
     RESTRICTION:
     for my $Restriction (qw(ObjectType Action ObjectID)) {
@@ -568,7 +553,6 @@ sub FormDraftListGet {
     my @FormDrafts;
     if ( !$Cache ) {
 
-        # prepare database restrictions by given parameters
         my %ParamToField = (
             ObjectType => 'object_type',
             Action     => 'action',
@@ -584,10 +568,8 @@ sub FormDraftListGet {
             push @Bind, \$Param{$Restriction};
         }
 
-        # get database object
         my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
-        # ask the database
         return if !$DBObject->Prepare(
             SQL =>
                 'SELECT id, object_type, object_id, action, title,'
@@ -597,7 +579,6 @@ sub FormDraftListGet {
             Bind => \@Bind,
         );
 
-        # fetch the results
         while ( my @Row = $DBObject->FetchrowArray() ) {
             push @FormDrafts, {
                 FormDraftID => $Row[0],
@@ -612,7 +593,6 @@ sub FormDraftListGet {
             };
         }
 
-        # set cache
         $Kernel::OM->Get('Kernel::System::Cache')->Set(
             Type  => $Self->{CacheType},
             Key   => $CacheKey,
