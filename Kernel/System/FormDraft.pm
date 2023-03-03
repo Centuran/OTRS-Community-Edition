@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2023 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -50,7 +50,6 @@ create an object
 sub new {
     my ( $Type, %Param ) = @_;
 
-    # allocate new hash for object
     my $Self = {};
     bless( $Self, $Type );
 
@@ -119,7 +118,6 @@ Returns (without GetContent or GetContent = 1):
 sub FormDraftGet {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Needed (qw(FormDraftID UserID)) {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -140,77 +138,86 @@ sub FormDraftGet {
         return;
     }
 
-    # check cache
     my $CacheKey = 'FormDraftGet::GetContent' . $Param{GetContent} . '::ID' . $Param{FormDraftID};
     my $Cache    = $Kernel::OM->Get('Kernel::System::Cache')->Get(
         Type => $Self->{CacheType},
         Key  => $CacheKey,
     );
-    return $Cache if $Cache;
 
-    # get database object
-    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
-
-    # prepare query
-    my $SQL =
-        'SELECT id, object_type, object_id, action, title,'
-        . ' create_time, create_by, change_time, change_by';
-
-    my @EncodeColumns = ( 1, 1, 1, 1, 1, 1, 1, 1, 1 );
-    if ( $Param{GetContent} ) {
-        $SQL .= ', content';
-        push @EncodeColumns, 0;
-    }
-    $SQL .= ' FROM form_draft WHERE id = ?';
-
-    # ask the database
-    return if !$DBObject->Prepare(
-        SQL    => $SQL,
-        Bind   => [ \$Param{FormDraftID} ],
-        Limit  => 1,
-        Encode => \@EncodeColumns,
-    );
-
-    # fetch the result
     my %FormDraft;
-    while ( my @Row = $DBObject->FetchrowArray() ) {
-        %FormDraft = (
-            FormDraftID => $Row[0],
-            ObjectType  => $Row[1],
-            ObjectID    => $Row[2],
-            Action      => $Row[3],
-            Title       => $Row[4] || '',
-            CreateTime  => $Row[5],
-            CreateBy    => $Row[6],
-            ChangeTime  => $Row[7],
-            ChangeBy    => $Row[8],
+
+    if ($Cache) {
+        %FormDraft = %{$Cache};
+    }
+    else {
+
+        my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+        my $SQL =
+            'SELECT id, object_type, object_id, action, title,'
+            . ' create_time, create_by, change_time, change_by';
+
+        my @EncodeColumns = ( 1, 1, 1, 1, 1, 1, 1, 1, 1 );
+        if ( $Param{GetContent} ) {
+            $SQL .= ', content';
+            push @EncodeColumns, 0;
+        }
+        $SQL .= ' FROM form_draft WHERE id = ?';
+
+        return if !$DBObject->Prepare(
+            SQL    => $SQL,
+            Bind   => [ \$Param{FormDraftID} ],
+            Limit  => 1,
+            Encode => \@EncodeColumns,
         );
 
-        if ( $Param{GetContent} ) {
+        while ( my @Row = $DBObject->FetchrowArray() ) {
+            %FormDraft = (
+                FormDraftID => $Row[0],
+                ObjectType  => $Row[1],
+                ObjectID    => $Row[2],
+                Action      => $Row[3],
+                Title       => $Row[4] || '',
+                CreateTime  => $Row[5],
+                CreateBy    => $Row[6],
+                ChangeTime  => $Row[7],
+                ChangeBy    => $Row[8],
+            );
 
-            my $RawContent      = $Row[9] // {};
-            my $StorableContent = $RawContent;
+            if ( $Param{GetContent} ) {
 
-            if ( !$DBObject->GetDatabaseFunction('DirectBlob') ) {
-                $StorableContent = MIME::Base64::decode_base64($RawContent);
+                my $RawContent      = $Row[9] // {};
+                my $StorableContent = $RawContent;
+
+                if ( !$DBObject->GetDatabaseFunction('DirectBlob') ) {
+                    $StorableContent = MIME::Base64::decode_base64($RawContent);
+                }
+
+                # convert form and file data from yaml
+                my $Content = $Kernel::OM->Get('Kernel::System::Storable')->Deserialize( Data => $StorableContent )
+                    // {};
+
+                $FormDraft{FormData} = $Content->{FormData};
+                $FormDraft{FileData} = $Content->{FileData};
             }
+        }
 
-            # convert form and file data from yaml
-            my $Content = $Kernel::OM->Get('Kernel::System::Storable')->Deserialize( Data => $StorableContent ) // {};
-
-            $FormDraft{FormData} = $Content->{FormData};
-            $FormDraft{FileData} = $Content->{FileData};
+        if ( !%FormDraft ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "FormDraft with ID '$Param{FormDraftID}' not found!",
+            );
+            return;
         }
     }
 
-    # no data found
-    if ( !%FormDraft ) {
-        $Kernel::OM->Get('Kernel::System::Log')->Log(
-            Priority => 'error',
-            Message  => "FormDraft with ID '$Param{FormDraftID}' not found!",
-        );
-        return;
-    }
+    my $ReadPermission = $Self->ObjectPermission(
+        ObjectType => $FormDraft{ObjectType},
+        ObjectID   => $FormDraft{ObjectID},
+        UserID     => $Param{UserID}
+    );
+
+    return if !$ReadPermission;
 
     # always cache version without content
     my $CacheKeyNoContent;
@@ -278,7 +285,6 @@ add a new draft
 sub FormDraftAdd {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Needed (qw(FormData ObjectType Action)) {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -300,7 +306,6 @@ sub FormDraftAdd {
 
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
-    # serialize form and file data
     my $StorableContent = $Kernel::OM->Get('Kernel::System::Storable')->Serialize(
         Data => {
             FormData => $Param{FormData},
@@ -313,7 +318,6 @@ sub FormDraftAdd {
         $Content = MIME::Base64::encode_base64($StorableContent);
     }
 
-    # add to database
     return if !$DBObject->Do(
         SQL =>
             'INSERT INTO form_draft'
@@ -325,7 +329,6 @@ sub FormDraftAdd {
         ],
     );
 
-    # delete affected caches
     $Self->_DeleteAffectedCaches(%Param);
 
     return 1;
@@ -366,7 +369,6 @@ update an existing draft
 sub FormDraftUpdate {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Needed (qw(FormData ObjectType Action)) {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -414,7 +416,6 @@ sub FormDraftUpdate {
 
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
-    # serialize form and file data
     my $StorableContent = $Kernel::OM->Get('Kernel::System::Storable')->Serialize(
         Data => {
             FormData => $Param{FormData},
@@ -436,7 +437,6 @@ sub FormDraftUpdate {
         Bind => [ \$Param{Title}, \$Content, \$Param{UserID}, \$Param{FormDraftID}, ],
     );
 
-    # delete affected caches
     $Self->_DeleteAffectedCaches(%Param);
 
     return 1;
@@ -456,7 +456,6 @@ remove draft
 sub FormDraftDelete {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     for my $Needed (qw(FormDraftID UserID)) {
         if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
@@ -482,13 +481,11 @@ sub FormDraftDelete {
         return;
     }
 
-    # remove from database
     return if !$Kernel::OM->Get('Kernel::System::DB')->Do(
         SQL  => 'DELETE FROM form_draft WHERE id = ?',
         Bind => [ \$Param{FormDraftID} ],
     );
 
-    # delete affected caches
     $Self->_DeleteAffectedCaches( %{$FormDraft} );
 
     return 1;
@@ -527,7 +524,6 @@ Returns:
 sub FormDraftListGet {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
     if ( !$Param{UserID} ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
@@ -536,7 +532,6 @@ sub FormDraftListGet {
         return;
     }
 
-    # check cache
     my $CacheKey = 'FormDraftListGet';
     RESTRICTION:
     for my $Restriction (qw(ObjectType Action ObjectID)) {
@@ -547,61 +542,114 @@ sub FormDraftListGet {
         Type => $Self->{CacheType},
         Key  => $CacheKey,
     );
-    return $Cache if $Cache;
 
-    # prepare database restrictions by given parameters
-    my %ParamToField = (
-        ObjectType => 'object_type',
-        Action     => 'action',
-        ObjectID   => 'object_id',
-    );
-    my $SQLExt = '';
-    my @Bind;
-    RESTRICTION:
-    for my $Restriction (qw(ObjectType Action ObjectID)) {
-        next RESTRICTION if !IsStringWithData( $Param{$Restriction} );
-        $SQLExt .= $SQLExt ? ' AND ' : ' WHERE ';
-        $SQLExt .= $ParamToField{$Restriction} . ' = ?';
-        push @Bind, \$Param{$Restriction};
-    }
-
-    # get database object
-    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
-
-    # ask the database
-    return if !$DBObject->Prepare(
-        SQL =>
-            'SELECT id, object_type, object_id, action, title,'
-            . ' create_time, create_by, change_time, change_by'
-            . ' FROM form_draft' . $SQLExt
-            . ' ORDER BY id ASC',
-        Bind => \@Bind,
-    );
-
-    # fetch the results
     my @FormDrafts;
-    while ( my @Row = $DBObject->FetchrowArray() ) {
-        push @FormDrafts, {
-            FormDraftID => $Row[0],
-            ObjectType  => $Row[1],
-            ObjectID    => $Row[2],
-            Action      => $Row[3],
-            Title       => $Row[4] || '',
-            CreateTime  => $Row[5],
-            CreateBy    => $Row[6],
-            ChangeTime  => $Row[7],
-            ChangeBy    => $Row[8],
-        };
+    if ( !$Cache ) {
+
+        my %ParamToField = (
+            ObjectType => 'object_type',
+            Action     => 'action',
+            ObjectID   => 'object_id',
+        );
+        my $SQLExt = '';
+        my @Bind;
+        RESTRICTION:
+        for my $Restriction (qw(ObjectType Action ObjectID)) {
+            next RESTRICTION if !IsStringWithData( $Param{$Restriction} );
+            $SQLExt .= $SQLExt ? ' AND ' : ' WHERE ';
+            $SQLExt .= $ParamToField{$Restriction} . ' = ?';
+            push @Bind, \$Param{$Restriction};
+        }
+
+        my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+        return if !$DBObject->Prepare(
+            SQL =>
+                'SELECT id, object_type, object_id, action, title,'
+                . ' create_time, create_by, change_time, change_by'
+                . ' FROM form_draft' . $SQLExt
+                . ' ORDER BY id ASC',
+            Bind => \@Bind,
+        );
+
+        while ( my @Row = $DBObject->FetchrowArray() ) {
+            push @FormDrafts, {
+                FormDraftID => $Row[0],
+                ObjectType  => $Row[1],
+                ObjectID    => $Row[2],
+                Action      => $Row[3],
+                Title       => $Row[4] || '',
+                CreateTime  => $Row[5],
+                CreateBy    => $Row[6],
+                ChangeTime  => $Row[7],
+                ChangeBy    => $Row[8],
+            };
+        }
+
+        $Kernel::OM->Get('Kernel::System::Cache')->Set(
+            Type  => $Self->{CacheType},
+            Key   => $CacheKey,
+            Value => \@FormDrafts,
+        );
     }
 
-    # set cache
-    $Kernel::OM->Get('Kernel::System::Cache')->Set(
-        Type  => $Self->{CacheType},
-        Key   => $CacheKey,
-        Value => \@FormDrafts,
+    if ( IsArrayRefWithData($Cache) ) {
+        @FormDrafts = @{$Cache};
+    }
+
+    my @AccessibleFormDrafts;
+    FORMDRAFT:
+    for my $FormDraft (@FormDrafts) {
+        next FORMDRAFT if !IsHashRefWithData($FormDraft);
+        next FORMDRAFT if !$FormDraft->{FormDraftID};
+
+        my $ReadPermission = $Self->ObjectPermission(
+            %{$FormDraft},
+            UserID => $Param{UserID}
+        );
+
+        next FORMDRAFT if !$ReadPermission;
+
+        push @AccessibleFormDrafts, $FormDraft;
+    }
+
+    return \@AccessibleFormDrafts;
+}
+
+=item ObjectPermission()
+
+checks read permission for a given object and UserID.
+
+    $Permission = $FormDraftObject->ObjectPermission(
+        ObjectType  => 'Ticket',
+        ObjectID    => 123,
+        UserID      => 1,
     );
 
-    return \@FormDrafts;
+=cut
+
+sub ObjectPermission {
+    my ( $Self, %Param ) = @_;
+
+    for my $Argument (qw(ObjectType ObjectID UserID)) {
+        if ( !$Param{$Argument} ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Need $Argument!",
+            );
+            return;
+        }
+    }
+
+    my $BackendObject = $Kernel::OM->Get( 'Kernel::System::FormDraft::Permission::' . $Param{ObjectType} );
+
+    # allow access if no backend module to check for permission
+    return 1 if !$BackendObject;
+    return 1 if !$BackendObject->can('ObjectPermission');
+
+    return $BackendObject->ObjectPermission(
+        %Param,
+    );
 }
 
 =item _DeleteAffectedCaches()
