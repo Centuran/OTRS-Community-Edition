@@ -212,7 +212,7 @@ for my $Test ( @Tests, @Tests ) {
         "FormDraftListGet() - form drafts count ($Test->{Name})"
     );
 
-    my $FormDraftID = $FormDraftList->[0]->{FormDraftID};
+    my $FormDraftID = $FormDraftList->[0]{FormDraftID};
     my $FormDraft   = $FormDraftObject->FormDraftGet(
         FormDraftID => $FormDraftID,
         GetContent  => 1,
