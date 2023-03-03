@@ -144,78 +144,71 @@ sub FormDraftGet {
         Key  => $CacheKey,
     );
 
-    if ($Cache) {
-        my $ReadPermission = $Self->ObjectPermission(
-            %{$Cache},
-            UserID => $Param{UserID}
-        );
-
-        return if !$ReadPermission;
-        return $Cache;
-    }
-
-    # get database object
-    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
-
-    # prepare query
-    my $SQL =
-        'SELECT id, object_type, object_id, action, title,'
-        . ' create_time, create_by, change_time, change_by';
-
-    my @EncodeColumns = ( 1, 1, 1, 1, 1, 1, 1, 1, 1 );
-    if ( $Param{GetContent} ) {
-        $SQL .= ', content';
-        push @EncodeColumns, 0;
-    }
-    $SQL .= ' FROM form_draft WHERE id = ?';
-
-    # ask the database
-    return if !$DBObject->Prepare(
-        SQL    => $SQL,
-        Bind   => [ \$Param{FormDraftID} ],
-        Limit  => 1,
-        Encode => \@EncodeColumns,
-    );
-
-    # fetch the result
     my %FormDraft;
-    while ( my @Row = $DBObject->FetchrowArray() ) {
-        %FormDraft = (
-            FormDraftID => $Row[0],
-            ObjectType  => $Row[1],
-            ObjectID    => $Row[2],
-            Action      => $Row[3],
-            Title       => $Row[4] || '',
-            CreateTime  => $Row[5],
-            CreateBy    => $Row[6],
-            ChangeTime  => $Row[7],
-            ChangeBy    => $Row[8],
-        );
 
-        if ( $Param{GetContent} ) {
-
-            my $RawContent      = $Row[9] // {};
-            my $StorableContent = $RawContent;
-
-            if ( !$DBObject->GetDatabaseFunction('DirectBlob') ) {
-                $StorableContent = MIME::Base64::decode_base64($RawContent);
-            }
-
-            # convert form and file data from yaml
-            my $Content = $Kernel::OM->Get('Kernel::System::Storable')->Deserialize( Data => $StorableContent ) // {};
-
-            $FormDraft{FormData} = $Content->{FormData};
-            $FormDraft{FileData} = $Content->{FileData};
-        }
+    if ($Cache) {
+        %FormDraft = %{$Cache};
     }
+    else {
 
-    # no data found
-    if ( !%FormDraft ) {
-        $Kernel::OM->Get('Kernel::System::Log')->Log(
-            Priority => 'error',
-            Message  => "FormDraft with ID '$Param{FormDraftID}' not found!",
+        my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+        my $SQL =
+            'SELECT id, object_type, object_id, action, title,'
+            . ' create_time, create_by, change_time, change_by';
+
+        my @EncodeColumns = ( 1, 1, 1, 1, 1, 1, 1, 1, 1 );
+        if ( $Param{GetContent} ) {
+            $SQL .= ', content';
+            push @EncodeColumns, 0;
+        }
+        $SQL .= ' FROM form_draft WHERE id = ?';
+
+        return if !$DBObject->Prepare(
+            SQL    => $SQL,
+            Bind   => [ \$Param{FormDraftID} ],
+            Limit  => 1,
+            Encode => \@EncodeColumns,
         );
-        return;
+
+        while ( my @Row = $DBObject->FetchrowArray() ) {
+            %FormDraft = (
+                FormDraftID => $Row[0],
+                ObjectType  => $Row[1],
+                ObjectID    => $Row[2],
+                Action      => $Row[3],
+                Title       => $Row[4] || '',
+                CreateTime  => $Row[5],
+                CreateBy    => $Row[6],
+                ChangeTime  => $Row[7],
+                ChangeBy    => $Row[8],
+            );
+
+            if ( $Param{GetContent} ) {
+
+                my $RawContent      = $Row[9] // {};
+                my $StorableContent = $RawContent;
+
+                if ( !$DBObject->GetDatabaseFunction('DirectBlob') ) {
+                    $StorableContent = MIME::Base64::decode_base64($RawContent);
+                }
+
+                # convert form and file data from yaml
+                my $Content = $Kernel::OM->Get('Kernel::System::Storable')->Deserialize( Data => $StorableContent )
+                    // {};
+
+                $FormDraft{FormData} = $Content->{FormData};
+                $FormDraft{FileData} = $Content->{FileData};
+            }
+        }
+
+        if ( !%FormDraft ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "FormDraft with ID '$Param{FormDraftID}' not found!",
+            );
+            return;
+        }
     }
 
     my $ReadPermission = $Self->ObjectPermission(
