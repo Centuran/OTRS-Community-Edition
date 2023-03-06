@@ -170,6 +170,7 @@ run-non-selenium-tests:
     - apk update
     - apk add --repository https://alpine.global.ssl.fastly.net/alpine/v3.13/community ca-certificates curl docker=20.10.3-r1 git
     - update-ca-certificates
+    - until docker info; do sleep 1; done
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
     # Install Kubectl
     - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
