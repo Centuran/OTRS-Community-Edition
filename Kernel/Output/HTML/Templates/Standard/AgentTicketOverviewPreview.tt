@@ -70,11 +70,20 @@
 [% RenderBlockEnd("MetaIcon") %]
 [% RenderBlockEnd("Meta") %]
             </div>
+
+[% IF Data.item('UserSkinOptions-default-UseModern') %]
             <h2>
                 <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %]" title="[% Data.Title | html %]" class="MasterActionLink">[% Config("Ticket::Hook") %][% Config("Ticket::HookDivider") %][% Data.TicketNumber %] &ndash; [% Data.Title | html %]</a>
             </h2>
             <hr class="cmt-flex-break"/>
             <div class="Infos">
+[% ELSE %]
+            <div class="Infos">
+                <h2>
+                    <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %]" title="[% Data.Title | html %]" class="MasterActionLink">[% Config("Ticket::Hook") %][% Config("Ticket::HookDivider") %][% Data.TicketNumber %] &ndash; [% Data.Title | html %]</a>
+                </h2>
+[% END %]
+
 [% RenderBlockStart("MenuItem") %]
                 <a href="[% Env("Baselink") %][% Data.Link %]" [% Data.LinkParam %] class="menuitem" title="[% Translate(Data.Description) | html %]">[% Translate(Data.Name) | html %]</a>
 [% RenderBlockEnd("MenuItem") %]
