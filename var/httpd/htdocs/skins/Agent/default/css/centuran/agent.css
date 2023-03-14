@@ -1610,15 +1610,185 @@ hr.cmt-flex-break {
   height: 40px;
   width: 40px;
 }
-#ToolBar li.Locked.New i.icon-small.icon-show-new {
+#ToolBar li.EmailTicket i.icon-small.icon-show-new,
+#ToolBar li.EscalationView i.icon-small.icon-show-new,
+#ToolBar li.Locked i.icon-small.icon-show-new,
+#ToolBar li.PhoneTicket i.icon-small.icon-show-new,
+#ToolBar li.ProcessTicket i.icon-small.icon-show-new,
+#ToolBar li.QueueView i.icon-small.icon-show-new,
+#ToolBar li.Responsible i.icon-small.icon-show-new,
+#ToolBar li.ServiceView i.icon-small.icon-show-new,
+#ToolBar li.StatusView i.icon-small.icon-show-new,
+#ToolBar li.Watcher i.icon-small.icon-show-new {
   display: none !important;
 }
-#ToolBar li.Locked.New a::after {
+#ToolBar li.EmailTicket.EmailTicket a::after,
+#ToolBar li.EscalationView.EmailTicket a::after,
+#ToolBar li.Locked.EmailTicket a::after,
+#ToolBar li.PhoneTicket.EmailTicket a::after,
+#ToolBar li.ProcessTicket.EmailTicket a::after,
+#ToolBar li.QueueView.EmailTicket a::after,
+#ToolBar li.Responsible.EmailTicket a::after,
+#ToolBar li.ServiceView.EmailTicket a::after,
+#ToolBar li.StatusView.EmailTicket a::after,
+#ToolBar li.Watcher.EmailTicket a::after {
+  content: "\f01ee";
+}
+#ToolBar li.EmailTicket.EscalationView a::after,
+#ToolBar li.EscalationView.EscalationView a::after,
+#ToolBar li.Locked.EscalationView a::after,
+#ToolBar li.PhoneTicket.EscalationView a::after,
+#ToolBar li.ProcessTicket.EscalationView a::after,
+#ToolBar li.QueueView.EscalationView a::after,
+#ToolBar li.Responsible.EscalationView a::after,
+#ToolBar li.ServiceView.EscalationView a::after,
+#ToolBar li.StatusView.EscalationView a::after,
+#ToolBar li.Watcher.EscalationView a::after {
+  content: "\f0dcc";
+}
+#ToolBar li.EmailTicket.Locked a::after,
+#ToolBar li.EscalationView.Locked a::after,
+#ToolBar li.Locked.Locked a::after,
+#ToolBar li.PhoneTicket.Locked a::after,
+#ToolBar li.ProcessTicket.Locked a::after,
+#ToolBar li.QueueView.Locked a::after,
+#ToolBar li.Responsible.Locked a::after,
+#ToolBar li.ServiceView.Locked a::after,
+#ToolBar li.StatusView.Locked a::after,
+#ToolBar li.Watcher.Locked a::after {
+  content: "\f033e";
+}
+#ToolBar li.EmailTicket.Locked.New a::after,
+#ToolBar li.EscalationView.Locked.New a::after,
+#ToolBar li.Locked.Locked.New a::after,
+#ToolBar li.PhoneTicket.Locked.New a::after,
+#ToolBar li.ProcessTicket.Locked.New a::after,
+#ToolBar li.QueueView.Locked.New a::after,
+#ToolBar li.Responsible.Locked.New a::after,
+#ToolBar li.ServiceView.Locked.New a::after,
+#ToolBar li.StatusView.Locked.New a::after,
+#ToolBar li.Watcher.Locked.New a::after {
   content: "\f08ee";
 }
-#ToolBar li.Locked a::after {
+#ToolBar li.EmailTicket.PhoneTicket a::after,
+#ToolBar li.EscalationView.PhoneTicket a::after,
+#ToolBar li.Locked.PhoneTicket a::after,
+#ToolBar li.PhoneTicket.PhoneTicket a::after,
+#ToolBar li.ProcessTicket.PhoneTicket a::after,
+#ToolBar li.QueueView.PhoneTicket a::after,
+#ToolBar li.Responsible.PhoneTicket a::after,
+#ToolBar li.ServiceView.PhoneTicket a::after,
+#ToolBar li.StatusView.PhoneTicket a::after,
+#ToolBar li.Watcher.PhoneTicket a::after {
+  content: "\f03f2";
+}
+#ToolBar li.EmailTicket.ProcessTicket a::after,
+#ToolBar li.EscalationView.ProcessTicket a::after,
+#ToolBar li.Locked.ProcessTicket a::after,
+#ToolBar li.PhoneTicket.ProcessTicket a::after,
+#ToolBar li.ProcessTicket.ProcessTicket a::after,
+#ToolBar li.QueueView.ProcessTicket a::after,
+#ToolBar li.Responsible.ProcessTicket a::after,
+#ToolBar li.ServiceView.ProcessTicket a::after,
+#ToolBar li.StatusView.ProcessTicket a::after,
+#ToolBar li.Watcher.ProcessTicket a::after {
+  content: "\f0bd3";
+}
+#ToolBar li.EmailTicket.QueueView a::after,
+#ToolBar li.EscalationView.QueueView a::after,
+#ToolBar li.Locked.QueueView a::after,
+#ToolBar li.PhoneTicket.QueueView a::after,
+#ToolBar li.ProcessTicket.QueueView a::after,
+#ToolBar li.QueueView.QueueView a::after,
+#ToolBar li.Responsible.QueueView a::after,
+#ToolBar li.ServiceView.QueueView a::after,
+#ToolBar li.StatusView.QueueView a::after,
+#ToolBar li.Watcher.QueueView a::after {
+  content: "\f0c82";
+}
+#ToolBar li.EmailTicket.Responsible a::after,
+#ToolBar li.EscalationView.Responsible a::after,
+#ToolBar li.Locked.Responsible a::after,
+#ToolBar li.PhoneTicket.Responsible a::after,
+#ToolBar li.ProcessTicket.Responsible a::after,
+#ToolBar li.QueueView.Responsible a::after,
+#ToolBar li.Responsible.Responsible a::after,
+#ToolBar li.ServiceView.Responsible a::after,
+#ToolBar li.StatusView.Responsible a::after,
+#ToolBar li.Watcher.Responsible a::after {
+  content: "\f0004";
+}
+#ToolBar li.EmailTicket.Responsible.New a::after,
+#ToolBar li.EscalationView.Responsible.New a::after,
+#ToolBar li.Locked.Responsible.New a::after,
+#ToolBar li.PhoneTicket.Responsible.New a::after,
+#ToolBar li.ProcessTicket.Responsible.New a::after,
+#ToolBar li.QueueView.Responsible.New a::after,
+#ToolBar li.Responsible.Responsible.New a::after,
+#ToolBar li.ServiceView.Responsible.New a::after,
+#ToolBar li.StatusView.Responsible.New a::after,
+#ToolBar li.Watcher.Responsible.New a::after {
+  content: "\f0005";
+}
+#ToolBar li.EmailTicket.ServiceView a::after,
+#ToolBar li.EscalationView.ServiceView a::after,
+#ToolBar li.Locked.ServiceView a::after,
+#ToolBar li.PhoneTicket.ServiceView a::after,
+#ToolBar li.ProcessTicket.ServiceView a::after,
+#ToolBar li.QueueView.ServiceView a::after,
+#ToolBar li.Responsible.ServiceView a::after,
+#ToolBar li.ServiceView.ServiceView a::after,
+#ToolBar li.StatusView.ServiceView a::after,
+#ToolBar li.Watcher.ServiceView a::after {
+  content: "\f08d6";
+}
+#ToolBar li.EmailTicket.StatusView a::after,
+#ToolBar li.EscalationView.StatusView a::after,
+#ToolBar li.Locked.StatusView a::after,
+#ToolBar li.PhoneTicket.StatusView a::after,
+#ToolBar li.ProcessTicket.StatusView a::after,
+#ToolBar li.QueueView.StatusView a::after,
+#ToolBar li.Responsible.StatusView a::after,
+#ToolBar li.ServiceView.StatusView a::after,
+#ToolBar li.StatusView.StatusView a::after,
+#ToolBar li.Watcher.StatusView a::after {
+  content: "\f0756";
+}
+#ToolBar li.EmailTicket.Watcher a::after,
+#ToolBar li.EscalationView.Watcher a::after,
+#ToolBar li.Locked.Watcher a::after,
+#ToolBar li.PhoneTicket.Watcher a::after,
+#ToolBar li.ProcessTicket.Watcher a::after,
+#ToolBar li.QueueView.Watcher a::after,
+#ToolBar li.Responsible.Watcher a::after,
+#ToolBar li.ServiceView.Watcher a::after,
+#ToolBar li.StatusView.Watcher a::after,
+#ToolBar li.Watcher.Watcher a::after {
+  content: "\f0208";
+}
+#ToolBar li.EmailTicket.Watcher.New a::after,
+#ToolBar li.EscalationView.Watcher.New a::after,
+#ToolBar li.Locked.Watcher.New a::after,
+#ToolBar li.PhoneTicket.Watcher.New a::after,
+#ToolBar li.ProcessTicket.Watcher.New a::after,
+#ToolBar li.QueueView.Watcher.New a::after,
+#ToolBar li.Responsible.Watcher.New a::after,
+#ToolBar li.ServiceView.Watcher.New a::after,
+#ToolBar li.StatusView.Watcher.New a::after,
+#ToolBar li.Watcher.Watcher.New a::after {
+  content: "\f0208";
+}
+#ToolBar li.EmailTicket a::after,
+#ToolBar li.EscalationView a::after,
+#ToolBar li.Locked a::after,
+#ToolBar li.PhoneTicket a::after,
+#ToolBar li.ProcessTicket a::after,
+#ToolBar li.QueueView a::after,
+#ToolBar li.Responsible a::after,
+#ToolBar li.ServiceView a::after,
+#ToolBar li.StatusView a::after,
+#ToolBar li.Watcher a::after {
   color: #f15a22;
-  content: "\f033e";
   font-family: "Material Design Icons";
   font-size: 225%;
   left: 9999px;
