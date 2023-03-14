@@ -58,20 +58,71 @@
     }
   }
 
-  li.Locked {
-    &.New {
-      i.icon-small.icon-show-new {
-        display: none !important;
-      }
+  li.EmailTicket,
+  li.EscalationView,
+  li.Locked,
+  li.PhoneTicket,
+  li.ProcessTicket,
+  li.QueueView,
+  li.Responsible,
+  li.ServiceView,
+  li.StatusView,
+  li.Watcher {
+    i.icon-small.icon-show-new {
+      display: none !important;
+    }
 
-      a::after {
-        content: "\0F08EE"; // lock-alert
-      }
+    &.EmailTicket a::after {
+      content: mdi("email");
+    }
+
+    &.EscalationView a::after {
+      content: mdi("folder-alert");
+    }
+
+    &.Locked a::after {
+      content: mdi("lock");
+    }
+    &.Locked.New a::after {
+      content: mdi("lock-alert");
+    }
+    
+    &.PhoneTicket a::after {
+      content: mdi("phone");
+    }
+
+    &.ProcessTicket a::after {
+      content: mdi("timeline-text");
+    }
+
+    &.QueueView a::after {
+      content: mdi("folder-text");
+    }
+
+    &.Responsible a::after {
+      content: mdi("account");
+    }
+    &.Responsible.New a::after {
+      content: mdi("account-alert");
+    }
+
+    &.ServiceView a::after {
+      content: mdi("cogs");
+    }
+
+    &.StatusView a::after {
+      content: mdi("format-list-checks");
+    }
+
+    &.Watcher a::after {
+      content: mdi("eye");
+    }
+    &.Watcher.New a::after {
+      content: mdi("eye");
     }
 
     a::after {
       color: #f15a22;
-      content: "\0F033E"; // lock
       font-family: "Material Design Icons";
       font-size: 225%;
       left: 9999px; // Due to negative text-indent of <a>
