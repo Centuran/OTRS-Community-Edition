@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.422900763358779;
+    $Self->{Completeness}        = 0.422757334237748;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -461,6 +461,11 @@ sub Data {
             'Problème DNS. Veuillez contrôler le journal d\'erreur ainsi que votre configuration.',
         'The syntax of this email address is incorrect.' => 'La syntaxe de cette adresse e-mail est incorrecte.',
         'This CustomerID is invalid.' => 'L\' IDClient est invalide.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Petit',
+        'Medium' => 'Moyen',
+        'Large' => 'Grand',
         'Effective Permissions for Customer User' => 'Permissions effectives pour l\'utilisateur client.',
         'Group Permissions' => 'Permissions au sein des groupes',
         'This customer user has no group permissions.' => 'Cet utilisateur client n\'a pas de permission de groupe.',
@@ -2507,14 +2512,9 @@ sub Data {
             '',
         'Off' => 'Désactivé',
         'End' => 'Fin',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Petit',
-        'Medium' => 'Moyen',
-        'Large' => 'Grand',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -5898,6 +5898,10 @@ sub Data {
         'Stream' => '',
         'Expanded' => '',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9085,6 +9089,7 @@ Thanks for your help!
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9157,6 +9162,7 @@ Thanks for your help!
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9168,6 +9174,7 @@ Thanks for your help!
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

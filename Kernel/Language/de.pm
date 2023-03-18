@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.986938083121289;
+    $Self->{Completeness}        = 0.986603357639478;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -454,6 +454,11 @@ sub Data {
             'DNS-Problem, bitte prüfen Sie ihre Konfiguration und das Fehlerprotokoll.',
         'The syntax of this email address is incorrect.' => 'Die Syntax dieser E-Mail-Adresse ist fehlerhaft.',
         'This CustomerID is invalid.' => 'Diese Kundennummer ist ungültig.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Klein',
+        'Medium' => 'Mittel',
+        'Large' => 'Groß',
         'Effective Permissions for Customer User' => 'Effektive Berechtigungen für Kundenbenutzer',
         'Group Permissions' => 'Gruppenberechtigungen',
         'This customer user has no group permissions.' => 'Dieser Kundenbenutzer hat keine Gruppenberechtigungen.',
@@ -2500,14 +2505,9 @@ sub Data {
             'Sie können Ihr Avatar-Bild ändern, indem Sie sich mit Ihrer E-Mail-Adresse %s unter %s registrieren. Bitte beachten Sie, dass es einige Zeit dauern kann, bis Änderungen sichtbar werden.',
         'Off' => 'Aus',
         'End' => 'Ende',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Klein',
-        'Medium' => 'Mittel',
-        'Large' => 'Groß',
         'This setting can currently not be saved.' => 'Diese Einstellung kann derzeit nicht gespeichert werden.',
         'This setting can currently not be saved' => 'Diese Einstellung kann derzeit nicht gespeichert werden',
         'Save this setting' => 'Einstellung speichern',
@@ -5891,6 +5891,10 @@ sub Data {
         'Stream' => 'Fließend',
         'Expanded' => 'Ausgedehnt',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9088,6 +9092,7 @@ Ihr Helpdesk-Team
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9160,6 +9165,7 @@ Ihr Helpdesk-Team
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9171,6 +9177,7 @@ Ihr Helpdesk-Team
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

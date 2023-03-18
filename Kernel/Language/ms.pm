@@ -24,7 +24,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.595928753180662;
+    $Self->{Completeness}        = 0.595726640664745;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -453,6 +453,11 @@ sub Data {
             'Masalah DNS, sila semak konfigurasi anda dan log ralat.',
         'The syntax of this email address is incorrect.' => 'Sintaks alamat e-mel tidak sah.',
         'This CustomerID is invalid.' => '',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Kecil',
+        'Medium' => 'Sederhana',
+        'Large' => 'Besar',
         'Effective Permissions for Customer User' => '',
         'Group Permissions' => '',
         'This customer user has no group permissions.' => '',
@@ -2499,14 +2504,9 @@ sub Data {
             '',
         'Off' => 'Tutup',
         'End' => 'Tamat',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Kecil',
-        'Medium' => 'Sederhana',
-        'Large' => 'Besar',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -5890,6 +5890,10 @@ sub Data {
         'Stream' => 'Aliran',
         'Expanded' => 'Dikembangkan',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9091,6 +9095,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9163,6 +9168,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9174,6 +9180,7 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

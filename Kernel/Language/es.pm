@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.663952502120441;
+    $Self->{Completeness}        = 0.66372731897575;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -458,6 +458,11 @@ sub Data {
             'Problema con el DNS. Por favor, verifique su configuración y el registro de errores.',
         'The syntax of this email address is incorrect.' => 'La sintaxis de esta dirección de correo es incorrecta',
         'This CustomerID is invalid.' => 'La ID del cliente no es valida',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Pequeño',
+        'Medium' => 'Mediano',
+        'Large' => 'Grande',
         'Effective Permissions for Customer User' => 'Los Permisos Efectivos para el Cliente',
         'Group Permissions' => 'Permisos del Grupo',
         'This customer user has no group permissions.' => 'Éste Cliente no tiene permisos del grupo.',
@@ -2504,14 +2509,9 @@ sub Data {
             '',
         'Off' => 'Desactivado',
         'End' => 'Fin',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Pequeño',
-        'Medium' => 'Mediano',
-        'Large' => 'Grande',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -5896,6 +5896,10 @@ sub Data {
         'Stream' => 'Stream',
         'Expanded' => 'Expandido',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9100,6 +9104,7 @@ El control del acceso adicional para demostrar o no demostrar éste enlace puede
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9172,6 +9177,7 @@ El control del acceso adicional para demostrar o no demostrar éste enlace puede
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9183,6 +9189,7 @@ El control del acceso adicional para demostrar o no demostrar éste enlace puede
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

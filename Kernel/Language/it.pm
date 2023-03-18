@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.669041560644614;
+    $Self->{Completeness}        = 0.668814651517721;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -461,6 +461,11 @@ sub Data {
             'Problema con il DNS, verifica la tua configurazione e il log degli errori.',
         'The syntax of this email address is incorrect.' => 'La sintassi di questa email è errata.',
         'This CustomerID is invalid.' => 'Questo CustomerID è invalido',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Small',
+        'Medium' => 'Medium',
+        'Large' => 'Large',
         'Effective Permissions for Customer User' => 'Permessi effettivi per utenza cliente',
         'Group Permissions' => 'Permessi di gruppo',
         'This customer user has no group permissions.' => 'Questa utenza cliente non ha permessi di gruppo.',
@@ -2507,14 +2512,9 @@ sub Data {
             'Puoi cambiare l\'immagine dell\'avatar registrandoti con il tuo indirizzo email %s a %s. Tieni presente che potrebbe trascorrere del tempo prima che il tuo nuovo avatar diventi disponibile a causa della memorizzazione nella cache.',
         'Off' => 'Spento',
         'End' => 'Fine',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Small',
-        'Medium' => 'Medium',
-        'Large' => 'Large',
         'This setting can currently not be saved.' => 'Questa impostazione al momento non può essere salvata.',
         'This setting can currently not be saved' => 'Questa impostazione al momento non può essere salvata',
         'Save this setting' => 'Salva questa impostazione',
@@ -5898,6 +5898,10 @@ sub Data {
         'Stream' => 'Flusso',
         'Expanded' => 'Espanso',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9089,6 +9093,7 @@ NOTA: i sistemi di terze parti richiedono una configurazione a se.',
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9161,6 +9166,7 @@ NOTA: i sistemi di terze parti richiedono una configurazione a se.',
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9172,6 +9178,7 @@ NOTA: i sistemi di terze parti richiedono una configurazione a se.',
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

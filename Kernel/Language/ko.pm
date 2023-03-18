@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.956403731976251;
+    $Self->{Completeness}        = 0.956079362387655;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -454,6 +454,11 @@ sub Data {
             'DNS 문제, 구성 및 오류로그를 확인하십시오.',
         'The syntax of this email address is incorrect.' => '이 전자 메일 주소의 구문이 잘못되었습니다.',
         'This CustomerID is invalid.' => '이 CustomerID는 유효하지 않습니다.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => '작은',
+        'Medium' => '중간의',
+        'Large' => '큰',
         'Effective Permissions for Customer User' => '고객 사용자를 위한 효과적인 권한',
         'Group Permissions' => '그룹 사용 권한',
         'This customer user has no group permissions.' => '이 고객 사용자에게는 그룹 권한이 없습니다.',
@@ -2500,14 +2505,9 @@ sub Data {
             '이메일 주소 %s at %s 에 등록하여 아바타 이미지를 변경할 수 있습니다. 새로운 아바타가 캐싱으로 인해 사용 가능해질 때까지 약간의 시간이 걸릴 수 있습니다.',
         'Off' => '떨어져서',
         'End' => '종료',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => '작은',
-        'Medium' => '중간의',
-        'Large' => '큰',
         'This setting can currently not be saved.' => '이 설정은 현재 저장할 수 없습니다.',
         'This setting can currently not be saved' => '이 설정은 현재 저장할 수 없습니다.',
         'Save this setting' => '이 설정 저장',
@@ -5891,6 +5891,10 @@ sub Data {
         'Stream' => '흐름',
         'Expanded' => '퍼지는',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9089,6 +9093,7 @@ Thanks for your help!
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9161,6 +9166,7 @@ Thanks for your help!
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9172,6 +9178,7 @@ Thanks for your help!
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

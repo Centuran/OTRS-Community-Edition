@@ -31,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D-%M-%Y';
     $Self->{DateInputFormat}     = '%D-%M-%Y';
     $Self->{DateInputFormatLong} = '%D-%M-%Y - %T';
-    $Self->{Completeness}        = 0.548770144189991;
+    $Self->{Completeness}        = 0.548584025775818;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -460,6 +460,11 @@ sub Data {
             'DNS probleem geconstateerd. Kijk in de log voor meer details en pas uw configuratie aan.',
         'The syntax of this email address is incorrect.' => 'De syntax van dit e-mailadres klopt niet.',
         'This CustomerID is invalid.' => 'Deze klantcode is ongeldig.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Klein',
+        'Medium' => 'Middel',
+        'Large' => 'Groot',
         'Effective Permissions for Customer User' => 'Effectieve machtigingen voor klanten',
         'Group Permissions' => 'Groepsrechten',
         'This customer user has no group permissions.' => 'Deze klant heeft geen groepsrechten.',
@@ -2506,14 +2511,9 @@ sub Data {
             'U kunt uw eigen avatar afbeeling registreren door uw e-mail adres   %s op %s te gebruiken. Let op: het kan enige tijd duren voordat uw avatar beschikbaar is vanwege buffering.',
         'Off' => 'Uit',
         'End' => 'Einde',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Klein',
-        'Medium' => 'Middel',
-        'Large' => 'Groot',
         'This setting can currently not be saved.' => 'Deze instelling kan op dit moment niet worden opgeslagen.',
         'This setting can currently not be saved' => 'Deze instelling kan op dit moment niet worden opgeslagen',
         'Save this setting' => 'Sla deze instelling op',
@@ -5897,6 +5897,10 @@ sub Data {
         'Stream' => 'Stream',
         'Expanded' => 'Uitgebreid',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9095,6 +9099,7 @@ Het Helpdesk Team
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9167,6 +9172,7 @@ Het Helpdesk Team
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9178,6 +9184,7 @@ Het Helpdesk Team
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

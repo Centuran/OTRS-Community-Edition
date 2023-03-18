@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.32078032230704;
+    $Self->{Completeness}        = 0.32067152789554;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -454,6 +454,11 @@ sub Data {
             '',
         'The syntax of this email address is incorrect.' => 'Sintaxe do email incorreta',
         'This CustomerID is invalid.' => 'Este ID de cliente é inválido.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Pequeno',
+        'Medium' => 'Médio',
+        'Large' => 'Grande',
         'Effective Permissions for Customer User' => 'Permissões Efetivas por Cliente',
         'Group Permissions' => 'Permissões de grupo',
         'This customer user has no group permissions.' => 'Este cliente não tem permissões de grupo.',
@@ -2500,14 +2505,9 @@ sub Data {
             '',
         'Off' => 'Desligado',
         'End' => 'Fim',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Pequeno',
-        'Medium' => 'Médio',
-        'Large' => 'Grande',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -5891,6 +5891,10 @@ sub Data {
         'Stream' => '',
         'Expanded' => 'Expandido',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9080,6 +9084,7 @@ Devemos voltar a estar online dentro de momentos.',
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9152,6 +9157,7 @@ Devemos voltar a estar online dentro de momentos.',
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9163,6 +9169,7 @@ Devemos voltar a estar online dentro de momentos.',
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

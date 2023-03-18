@@ -35,7 +35,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.919083969465649;
+    $Self->{Completeness}        = 0.918772257079871;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -464,6 +464,11 @@ sub Data {
             'Проблема с DNS, проверьте вашу конфигурацию и лог ошибок.',
         'The syntax of this email address is incorrect.' => 'Синтаксис этого адреса электронной почты некорректен.',
         'This CustomerID is invalid.' => 'Этот ID компании недействительный.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Маленький',
+        'Medium' => 'Средний',
+        'Large' => 'Большой',
         'Effective Permissions for Customer User' => 'Действующие права для Клиента',
         'Group Permissions' => 'Права доступа группы',
         'This customer user has no group permissions.' => 'Этот клиент не имеет прав в группах.',
@@ -2510,14 +2515,9 @@ sub Data {
             'Вы можете изменить свое изображение аватара, зарегистрировавшись на ваш адрес электронной почты %s на %s. Обратите внимание, что это может занять некоторое время, пока ваш новый аватар не станет доступен из-за кэширования.',
         'Off' => 'Выключено',
         'End' => 'Окончание',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Маленький',
-        'Medium' => 'Средний',
-        'Large' => 'Большой',
         'This setting can currently not be saved.' => 'Этот параметр не может быть изменен в настоящее время.',
         'This setting can currently not be saved' => 'Этот параметр не может быть изменен в настоящее время.',
         'Save this setting' => 'Сохранить эту настройку',
@@ -5901,6 +5901,10 @@ sub Data {
         'Stream' => 'Поток',
         'Expanded' => 'Развернутая',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9099,6 +9103,7 @@ Thanks for your help!
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9171,6 +9176,7 @@ Thanks for your help!
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9182,6 +9188,7 @@ Thanks for your help!
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-12-06 00:19+0000\n"
+"POT-Creation-Date: 2023-03-18 22:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1352,6 +1352,26 @@ msgstr ""
 
 #. Template: AdminCustomerUser
 msgid "This CustomerID is invalid."
+msgstr ""
+
+#. Template: AdminCustomerUser
+msgid "Use modern variant"
+msgstr ""
+
+#. Template: AdminCustomerUser
+msgid "Text size"
+msgstr ""
+
+#. Template: AdminCustomerUser
+msgid "Small"
+msgstr ""
+
+#. Template: AdminCustomerUser
+msgid "Medium"
+msgstr ""
+
+#. Template: AdminCustomerUser
+msgid "Large"
 msgstr ""
 
 #. Template: AdminCustomerUser
@@ -7391,14 +7411,6 @@ msgid "End"
 msgstr ""
 
 #. Template: AgentPreferences
-msgid "Use modern variant"
-msgstr ""
-
-#. Template: AgentPreferences
-msgid "Text size"
-msgstr ""
-
-#. Template: AgentPreferences
 msgid "Example of small text"
 msgstr ""
 
@@ -7408,18 +7420,6 @@ msgstr ""
 
 #. Template: AgentPreferences
 msgid "Example of large text"
-msgstr ""
-
-#. Template: AgentPreferences
-msgid "Small"
-msgstr ""
-
-#. Template: AgentPreferences
-msgid "Medium"
-msgstr ""
-
-#. Template: AgentPreferences
-msgid "Large"
 msgstr ""
 
 #. Template: AgentPreferences
@@ -9160,6 +9160,10 @@ msgstr ""
 
 #. Template: MobileNotAvailableWidget
 msgid "Sorry, but this feature of OTRS is currently not available for mobile devices. If you'd like to use it, you can either switch to desktop mode or use your regular desktop device."
+msgstr ""
+
+#. Template: TicketOverview
+msgid "New Ticket"
 msgstr ""
 
 #. Template: Motd
@@ -16170,6 +16174,18 @@ msgstr ""
 msgid "Expanded"
 msgstr ""
 
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+msgid "Ticket Timeline"
+msgstr ""
+
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+msgid "Select response template:"
+msgstr ""
+
+#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
+msgid "Drop files here or click to browse"
+msgstr ""
+
 #. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
 msgid "Expand all articles"
 msgstr ""
@@ -16180,10 +16196,6 @@ msgstr ""
 
 #. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
 msgid "Collapse article"
-msgstr ""
-
-#. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
-msgid "Drop files here or click to browse"
 msgstr ""
 
 #. JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-ticket.vue
@@ -20939,10 +20951,6 @@ msgstr ""
 
 #. SysConfig
 msgid "NameX"
-msgstr ""
-
-#. SysConfig
-msgid "New Ticket"
 msgstr ""
 
 #. SysConfig

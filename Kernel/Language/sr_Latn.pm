@@ -31,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.983206106870229;
+    $Self->{Completeness}        = 0.982872647108699;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -460,6 +460,11 @@ sub Data {
             'DNS problem, molimo proverite konfiguraciju i greške u logu.',
         'The syntax of this email address is incorrect.' => 'Sintaksa ove imejl adrese je neispravna.',
         'This CustomerID is invalid.' => 'Ovaj ID klijenta je neispravan.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Malo',
+        'Medium' => 'Srednje',
+        'Large' => 'Veliko',
         'Effective Permissions for Customer User' => 'Efektivne dozvole za klijent korisnika',
         'Group Permissions' => 'Dozvole za grupu',
         'This customer user has no group permissions.' => 'Ovaj klijent korisnik nema dozvole za grupe.',
@@ -2506,14 +2511,9 @@ sub Data {
             'Vašu avatar sličicu možete promeniti registracijom vaše imejl adrese %s na %s. Molimo obratite pažnju da je zbog keširanja neophodno da prođe neko vreme pre nego što vaš novi avatar postane vidljiv.',
         'Off' => 'Isključeno',
         'End' => 'Kraj',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Malo',
-        'Medium' => 'Srednje',
-        'Large' => 'Veliko',
         'This setting can currently not be saved.' => 'Ovo podešavanje trenutno ne može biti sačuvano.',
         'This setting can currently not be saved' => 'Ovo podešavanje trenutno ne može biti sačuvano',
         'Save this setting' => 'Sačuvaj ovo podešavanje',
@@ -5897,6 +5897,10 @@ sub Data {
         'Stream' => 'Protok',
         'Expanded' => 'Prošireno',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9095,6 +9099,7 @@ Vaša tehnička podrška
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9167,6 +9172,7 @@ Vaša tehnička podrška
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9178,6 +9184,7 @@ Vaša tehnička podrška
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

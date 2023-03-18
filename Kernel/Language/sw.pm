@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.478710771840543;
+    $Self->{Completeness}        = 0.478548414448024;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -457,6 +457,11 @@ sub Data {
             'Matatizo katika DNS,  tafadhali anagalia usanidi wako na ingio katika makosa.',
         'The syntax of this email address is incorrect.' => 'Sintaksi katika barua pepe hii sio sawa.',
         'This CustomerID is invalid.' => '',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Ndogo',
+        'Medium' => 'Wastani',
+        'Large' => 'Kubwa',
         'Effective Permissions for Customer User' => '',
         'Group Permissions' => '',
         'This customer user has no group permissions.' => '',
@@ -2503,14 +2508,9 @@ sub Data {
             '',
         'Off' => 'Zima',
         'End' => 'Mwisho',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Ndogo',
-        'Medium' => 'Wastani',
-        'Large' => 'Kubwa',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -5894,6 +5894,10 @@ sub Data {
         'Stream' => 'Mfululizo',
         'Expanded' => 'Imepanuliwa',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9084,6 +9088,7 @@ Mfano:
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9156,6 +9161,7 @@ Mfano:
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9167,6 +9173,7 @@ Mfano:
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

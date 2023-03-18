@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.660220525869381;
+    $Self->{Completeness}        = 0.659996608444972;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -457,6 +457,11 @@ sub Data {
             'Problem z DNS, sprawdź konfigurację i log błędów.',
         'The syntax of this email address is incorrect.' => 'Składnia tego adresu e-mail jest niepoprawna.',
         'This CustomerID is invalid.' => 'CustomerID jest nieprawidłowy.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Małe',
+        'Medium' => 'Średnie',
+        'Large' => 'Duże',
         'Effective Permissions for Customer User' => 'Efektywne uprawnienia dla Użytkownika Klienta',
         'Group Permissions' => 'Uprawnienia Grupy',
         'This customer user has no group permissions.' => 'Ten użytkownik klienta, nie jest członkiem żadnej z grup zabezpieczeń,',
@@ -2503,14 +2508,9 @@ sub Data {
             '',
         'Off' => 'Wyłączone',
         'End' => 'Koniec',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Małe',
-        'Medium' => 'Średnie',
-        'Large' => 'Duże',
         'This setting can currently not be saved.' => 'To ustawienie nie może być teraz zapisane',
         'This setting can currently not be saved' => 'To ustawienie nie może być teraz zapisane',
         'Save this setting' => 'Zapisz ustawienie',
@@ -5894,6 +5894,10 @@ sub Data {
         'Stream' => 'Stream',
         'Expanded' => 'Rozszerzony',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9081,6 +9085,7 @@ Thanks for your help!
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9153,6 +9158,7 @@ Thanks for your help!
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9164,6 +9170,7 @@ Thanks for your help!
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

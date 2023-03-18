@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.986938083121289;
+    $Self->{Completeness}        = 0.986603357639478;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -458,6 +458,11 @@ sub Data {
             'DNS probléma, ellenőrizze a beállításokat és a hibanaplót.',
         'The syntax of this email address is incorrect.' => 'Ennek az e-mail címnek hibás a szintaxisa.',
         'This CustomerID is invalid.' => 'Ez az ügyfél-azonosító érvénytelen.',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Kicsi',
+        'Medium' => 'Közepes',
+        'Large' => 'Nagy',
         'Effective Permissions for Customer User' => 'Tényleges jogosultságok az ügyfél-felhasználónál',
         'Group Permissions' => 'Csoportjogosultságok',
         'This customer user has no group permissions.' => 'Ennek az ügyfél-felhasználónak nincsenek csoportjogosultságai.',
@@ -2504,14 +2509,9 @@ sub Data {
             'Megváltoztathatja a profilképét, ha regisztrálja az e-mail címét (%s) a következő oldalon: %s. Ne feledje, hogy a gyorsítótárazás miatt eltarthat egy ideig, amíg az új profilképe elérhetővé válik.',
         'Off' => 'Ki',
         'End' => 'Befejezés',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Kicsi',
-        'Medium' => 'Közepes',
-        'Large' => 'Nagy',
         'This setting can currently not be saved.' => 'Ezt a beállítás jelenleg nem lehet elmenteni.',
         'This setting can currently not be saved' => 'Ezt a beállítás jelenleg nem lehet elmenteni',
         'Save this setting' => 'Beállítás mentése',
@@ -5895,6 +5895,10 @@ sub Data {
         'Stream' => 'Folyam',
         'Expanded' => 'Kifeszített',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9093,6 +9097,7 @@ Az Ön segélyszolgálat csapata
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9165,6 +9170,7 @@ Az Ön segélyszolgálat csapata
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9176,6 +9182,7 @@ Az Ön segélyszolgálat csapata
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

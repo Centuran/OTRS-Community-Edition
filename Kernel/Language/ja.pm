@@ -28,7 +28,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.753011026293469;
+    $Self->{Completeness}        = 0.752755638460234;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -457,6 +457,11 @@ sub Data {
             'DNS上の問題が発生しました。設定とエラーログを確認してください。',
         'The syntax of this email address is incorrect.' => 'このメールアドレスは正しい形式ではありません',
         'This CustomerID is invalid.' => '顧客IDが不正です。',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => '小',
+        'Medium' => '中',
+        'Large' => '大',
         'Effective Permissions for Customer User' => '顧客ユーザーに対する有効な権限',
         'Group Permissions' => 'グループの権限',
         'This customer user has no group permissions.' => 'この顧客ユーザーはグループ権限を保有していません。',
@@ -2506,14 +2511,9 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
             'アバターイメージを変更するには、%sにあなたのメールアドレス(%s)を登録して下さい。キャッシュの影響により新しいアバターが利用可能になるまでには時間がかかることがあります。',
         'Off' => 'オフ',
         'End' => '終了',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => '小',
-        'Medium' => '中',
-        'Large' => '大',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => 'この設定は現在保存できません。',
         'Save this setting' => 'この設定を保存',
@@ -5898,6 +5898,10 @@ OTRSが443ポートを用いてcloud.otrs.comに接続できることを確認�
         'Stream' => 'ストリーム',
         'Expanded' => '展開',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9104,6 +9108,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9176,6 +9181,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9187,6 +9193,7 @@ Contentはダイナミック・フィールドの形式によって設定内容�
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',

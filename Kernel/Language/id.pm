@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.66972010178117;
+    $Self->{Completeness}        = 0.669492962523317;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -454,6 +454,11 @@ sub Data {
             'Masalah DNS, Mohon periksa kembali konfigurasi dan error log anda',
         'The syntax of this email address is incorrect.' => 'Sintaksis alamat email ini salah',
         'This CustomerID is invalid.' => '',
+        'Use modern variant' => '',
+        'Text size' => '',
+        'Small' => 'Kecil',
+        'Medium' => 'Medium',
+        'Large' => 'Besar',
         'Effective Permissions for Customer User' => '',
         'Group Permissions' => '',
         'This customer user has no group permissions.' => '',
@@ -2502,14 +2507,9 @@ bin/otrs.Daemon.pl status\').',
             '',
         'Off' => 'Nonaktifkan',
         'End' => 'Akhir',
-        'Use modern variant' => '',
-        'Text size' => '',
         'Example of small text' => '',
         'Example of medium text' => '',
         'Example of large text' => '',
-        'Small' => 'Kecil',
-        'Medium' => 'Medium',
-        'Large' => 'Besar',
         'This setting can currently not be saved.' => '',
         'This setting can currently not be saved' => '',
         'Save this setting' => '',
@@ -5893,6 +5893,10 @@ bin/otrs.Daemon.pl status\').',
         'Stream' => 'Aliran',
         'Expanded' => 'Diperpanjang',
 
+        # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/agent/agent-ticket.vue
+        'Ticket Timeline' => '',
+        'Select response template:' => '',
+
         # JS File: /opt/otrs/var/httpd/htdocs/js/centuran/customer/customer-new-ticket.vue
         'Drop files here or click to browse' => '',
 
@@ -9092,6 +9096,7 @@ Helpdesk Team Anda
         'Select a customer ID to assign to this ticket',
         'Select a customer ID to assign to this ticket.',
         'Select all',
+        'Select response template:',
         'Send',
         'Sending Update...',
         'Sep',
@@ -9164,6 +9169,7 @@ Helpdesk Team Anda
         'Thu',
         'Thursday',
         'Ticket Information',
+        'Ticket Timeline',
         'Timeline Day',
         'Timeline Month',
         'Timeline Week',
@@ -9175,6 +9181,7 @@ Helpdesk Team Anda
         'Tu',
         'Tue',
         'Tuesday',
+        'Type',
         'Unfortunately deploying is currently not possible, maybe because another agent is already deploying. Please try again later.',
         'Unknown',
         'Unlock setting.',
