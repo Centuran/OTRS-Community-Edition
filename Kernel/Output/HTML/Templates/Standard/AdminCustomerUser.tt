@@ -296,6 +296,39 @@
                         <div class="Clear"></div>
                     </div>
 [% RenderBlockEnd("DynamicField") %]
+[% RenderBlockStart("SkinOptions") %]
+                        <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]:</label>
+                        <div class="Field" style="padding-top: 0.3em;">
+                            <div style="display: flex; align-items: flex-start;">
+                                <input type="hidden" name="Skin" value="default">
+                                <label for="UseModern" style="vertical-align: baseline; margin-right: 2em;">
+                                    [% Translate("Use modern variant") | html %]:
+                                </label>
+                                <div style="display: inline-block; margin-top: -16px;">
+                                    <input type="checkbox" name="UseModern" id="UseModern" value="1" [% Data.UseModern %] [% Data.Readonly %]/>
+                                    <toggleswitch></toggleswitch>
+                                </div>
+                                <div class="ClearLeft"></div>
+                            </div>
+                            <div>
+                                <label style="vertical-align: top; margin-right: 2em;">
+                                    [% Translate("Text size") | html %]:
+                                </label>
+                                <div style="display: inline-block;">
+                                    <input type="radio" name="TextSize" id="TextSizeSmall" value="small" [% Data.TextSize.TextSizeSmall %] />
+                                    <label for="TextSizeSmall" style="float: none; background: none; padding: initial;">[% Translate("Small") | html %]</label>
+                                    <br>
+                                    <input type="radio" name="TextSize" id="TextSizeMedium" value="medium" [% Data.TextSize.TextSizeMedium %] />
+                                    <label for="TextSizeMedium" style="float: none; background: none; padding: initial;">[% Translate("Medium") | html %]</label>
+                                    <br>
+                                    <input type="radio" name="TextSize" id="TextSizeLarge" value="large" [% Data.TextSize.TextSizeLarge %] />
+                                    <label for="TextSizeLarge" style="float: none; background: none; padding: initial;">[% Translate("Large") | html %]</label>
+                                </div>
+                            </div>
+                            <div class="FieldExplanation">[% Translate(Data.Desc) | html %][% Translate(Data.Key) | html %]</div>
+                        </div>
+                        <div class="Clear"></div>
+[% RenderBlockEnd("SkinOptions") %]
 [% RenderBlockEnd("Item") %]
                         <div class="Field SpacingTop">
                             [% IF Data.Action == 'Change' %]

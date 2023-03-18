@@ -124,13 +124,13 @@ sub LoaderCreateAgentCSSCalls {
             $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
 
         if ($SkinSelected eq 'default' && $UseModern) {
-            push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.css';
+            push @FileList, 'thirdparty/vuetify-2.6.14/vuetify.min.css';
             push @FileList, 'centuran/agent.css';
         }
 
         if ($SkinSelected eq 'default') {
             my $TextSize =
-                $Self->{'UserSkinOptions-default-TextSize'} || 'medium';
+                $Self->{'UserSkinOptions-default-TextSize'} || 'small';
             
             push @FileList, {
                 'small'  => 'centuran/agent-font-size-s.css',
@@ -273,7 +273,7 @@ sub LoaderCreateAgentJSCalls {
         if (($UserSkin eq 'default' || $UserSkin eq '') && $UseModern) {
             push @FileList, 'centuran/_use-new-agent-ui.js';
             push @FileList, 'thirdparty/vue-2.7.0/vue.min.js';
-            push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.js';
+            push @FileList, 'thirdparty/vuetify-2.6.14/vuetify.min.js';
             push @FileList, 'thirdparty/http-vue-loader-1.4.2/' .
                 'httpVueLoader.min.js';
         }
@@ -660,13 +660,13 @@ sub LoaderCreateCustomerCSSCalls {
         if ($SkinSelected eq 'default' && $UseModern) {
             # FIXME: We're loading styles from agent skin here, need to move to
             # some common place
-            push @FileList, '../../../Agent/default/css/thirdparty/vuetify-2.6.7/vuetify.min.css';
+            push @FileList, '../../../Agent/default/css/thirdparty/vuetify-2.6.14/vuetify.min.css';
             push @FileList, 'centuran/customer.css';
         }
 
         if ($SkinSelected eq 'default') {
             my $TextSize =
-                $Self->{'UserSkinOptions-default-TextSize'} || 'medium';
+                $Self->{'UserSkinOptions-default-TextSize'} || 'small';
             
             push @FileList, {
                 'small'  => 'centuran/customer-font-size-s.css',
@@ -800,7 +800,7 @@ sub LoaderCreateCustomerJSCalls {
         if (($UserSkin eq 'default' || $UserSkin eq '') && $UseModern) {
             push @FileList, 'centuran/_use-new-customer-ui.js';
             push @FileList, 'thirdparty/vue-2.7.0/vue.min.js';
-            push @FileList, 'thirdparty/vuetify-2.6.7/vuetify.min.js';
+            push @FileList, 'thirdparty/vuetify-2.6.14/vuetify.min.js';
             push @FileList, 'thirdparty/http-vue-loader-1.4.2/' .
                 'httpVueLoader.min.js';
         }
