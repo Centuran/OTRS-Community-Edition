@@ -294,6 +294,160 @@
                 </v-col>
               </v-row>
 
+              <v-row v-for="(field, i) in dynamicFields"
+                :class="field.type != 'textarea' ? 'align-baseline' : ''"
+              >
+                <template v-if="field.type == 'text'">
+                  <v-col cols="12" sm="3"
+                    class="pb-0 pt-0 pt-sm-2"
+                  >
+                    <label
+                      v-html="`${field.label}:`"
+                      class="mb-1 mt-3 mr-4"
+                    ></label>
+                  </v-col>
+                  <v-col
+                    cols="12" sm="9" md="6"
+                    class="pb-0 pt-0 pt-sm-2"
+                  >
+                    <v-text-field
+                      :id="`df_${field.name}`"
+                      v-model="msg.dynamicFields[field.name]"
+                      dense
+                      outlined
+                      :rules="[
+                        val(validateDynamicField, { field: field })
+                      ]"
+                      :error-messages="field.serverError ? [ field.serverError ] : []"
+                      :error="field.serverError ? true : false"                   
+                      class="tooltip-error"
+                      @change="function () { field.serverError = false; }"
+                    >
+                      <template v-slot:message="{ message }">
+                        <v-tooltip bottom
+                          :attach="field.errorAttach"
+                          color="error"
+                          dark
+                          v-model="message"
+                        >
+                          <span>{{ message }}</span>
+                        </v-tooltip>
+                      </template>
+                    </v-text-field>
+                  </v-col>
+                </template>
+                
+                <template v-if="field.type == 'dropdown'">
+                  <v-col cols="12" sm="3"
+                    class="pb-0 pt-0 pt-sm-2"
+                  >
+                    <label
+                      v-html="`${field.label}:`"
+                      class="mb-1 mt-3 mr-4"
+                    ></label>
+                  </v-col>
+                  <v-col
+                    cols="12" sm="9" md="6"
+                    class="pb-0 pt-0 pt-sm-2"
+                  >
+                    <v-select
+                      :id="`df_${field.name}`"
+                      v-model="msg.dynamicFields[field.name]"
+                      dense
+                      outlined
+                      :items="field.options"
+                      item-text="name"
+                      item-value="value"
+                      :rules="[
+                        val(validateDynamicField, { field: field })
+                      ]"
+                      :error-messages="field.serverError ? [ field.serverError ] : []"
+                      :error="field.serverError ? true : false"
+                      class="tooltip-error"
+                      @change="function () { field.serverError = false; }"
+                    >
+                      <template v-slot:item="{ item, on, attrs }">
+                        <v-list-item
+                          v-on="on"
+                          v-bind="attrs"
+                          :value="item.value"
+                          class="select-item"
+                        >
+                          {{ item.name }}
+                        </v-list-item>
+                      </template>
+                    
+                      <template v-slot:message="{ message }">
+                        <v-tooltip bottom
+                          :attach="field.errorAttach"
+                          color="error"
+                          dark
+                          v-model="message"
+                        >
+                          <span>{{ message }}</span>
+                        </v-tooltip>
+                      </template>
+                    </v-select>
+                  </v-col>
+                </template>
+
+                <template v-if="field.type == 'multiselect'">
+                  <v-col cols="12" sm="3"
+                    class="pb-0 pt-0 pt-sm-2"
+                  >
+                    <label
+                      v-html="`${field.label}:`"
+                      class="mb-1 mt-3 mr-4"
+                    ></label>
+                  </v-col>
+                  <v-col
+                    cols="12" sm="9" md="6"
+                    class="pb-0 pt-0 pt-sm-2"
+                  >
+                    <v-select
+                      :id="`df_${field.name}`"
+                      v-model="msg.dynamicFields[field.name]"
+                      multiple
+                      dense
+                      outlined
+                      chips
+                      :items="field.options"
+                      item-text="name"
+                      item-value="value"
+                      :rules="[
+                        val(validateDynamicField, { field: field })
+                      ]"
+                      :error-messages="field.serverError ? [ field.serverError ] : []"
+                      :error="field.serverError ? true : false"
+                      class="tooltip-error"
+                      @change="function () { field.serverError = false; }"
+                    >
+                      <!-- <template v-slot:item="{ item, on, attrs }">
+                        <v-list-item
+                          v-on="on"
+                          v-bind="attrs"
+                          :value="item.value"
+                          class="select-item"
+                        >
+                          {{ item.name }}
+                        </v-list-item>
+                      </template> -->
+                    
+                      <template v-slot:message="{ message }">
+                        <v-tooltip bottom
+                          :attach="field.errorAttach"
+                          color="error"
+                          dark
+                          v-model="message"
+                        >
+                          <span>{{ message }}</span>
+                        </v-tooltip>
+                      </template>
+                    </v-select>
+                  </v-col>
+                </template>
+              </v-row>
+
               <v-row class="my-0">
                 <v-col class="pt-2">
                   <label
@@ -430,6 +584,7 @@ module.exports = {
         height: 200,
       },
       
+      dynamicFields:  [],
       queues:         [],
       priorities:     [],
       priorityColors: {},
@@ -438,14 +593,15 @@ module.exports = {
       types:          [],
 
       msg: {
-        attachments: [],
-        queue:       null,
-        priority:    '',
-        subject:     '',
-        text:        '',
-        type:        null,
-        service:     null,
-        sla:         null,
+        attachments:   [],
+        queue:         null,
+        priority:      '',
+        subject:       '',
+        text:          '',
+        type:          null,
+        service:       null,
+        sla:           null,
+        dynamicFields: {},
       },
 
       msgText:        '',
@@ -489,13 +645,13 @@ module.exports = {
   },
   methods: {
     // Validate a value 
-    validate: function (value, options) {
+    validate: function (value, options, args) {
       if (options == 'required')
         if (value.trim().length == 0)
           return Core.Language.Translate('This field is required');
 
       if (typeof options == 'function') {
-        var result = options.call(this, value);
+        var result = options.call(this, value, args);
 
         if (result !== true)
           return Core.Language.Translate(result);
@@ -505,9 +661,9 @@ module.exports = {
     },
 
     // Helper to return a validation function bound to the component
-    val: function (options) {
+    val: function (options, args) {
       return (function (value) {
-        return this.validate(value, options);
+        return this.validate(value, options, args);
       }).bind(this);
     },
 
@@ -545,7 +701,7 @@ module.exports = {
       return 'This field is required';
     },
 
-    validateSLA: function (service) {
+    validateSLA: function (service) {// FIXME: service -> SLA?
       var label    = sel('#cmt-hide-original-ui label[for="SLAID"]');
       var required = label.classList.contains('Mandatory');
 
@@ -555,6 +711,21 @@ module.exports = {
       if (parseInt(service))
         return true;
       
+      return 'This field is required';
+    },
+
+    validateDynamicField: function (value, options) {
+      var field = options.field;
+
+      var label    = sel('label', field.row);
+      var required = label.classList.contains('Mandatory');
+
+      if (!required)
+        return true;
+
+      if (value.length)
+        return true;
+
       return 'This field is required';
     },
 
@@ -578,6 +749,19 @@ module.exports = {
         origService.value = this.msg.service;
       if (origSla)
         origSla.value = this.msg.sla;
+
+      // Populate original dynamic field inputs
+      Object.keys(this.msg.dynamicFields).forEach(function (name) {
+        var origInput = sel('[name="DynamicField_' + name + '"]');
+        var value = this.msg.dynamicFields[name];
+        
+        if (value instanceof Array)
+          selAll('option', origInput).forEach(function (option) {
+            option.selected = value.includes(option.value);
+          });
+        else
+          origInput.value = this.msg.dynamicFields[name];
+      }, this);
 
       sel('#NewCustomerTicket button[type="submit"]').click();
     },
@@ -711,6 +895,82 @@ module.exports = {
 
     // Set the existing subject
     this.msg.subject = sel('#Subject').value;
+
+    selAll('.Row[class^="Row Row_DynamicField_"]').forEach(function (row) {
+      var name, type, label, options, value, serverError;
+      
+      if (sel('input.DynamicFieldText', row))
+        type = 'text';
+      else if (sel('select.DynamicFieldText', row)) {
+        if (sel('select.DynamicFieldText', row).multiple)
+          type = 'multiselect';
+        else
+          type = 'dropdown';
+      }
+
+      if (type == 'text') {
+        name  = sel('.Field input', row).name;
+        value = sel('.Field input', row).value;
+      }
+      else if (type == 'dropdown') {
+        name  = sel('.Field select', row).name;
+        value = sel('.Field select', row).value;
+        
+        options = [];
+        Array.from(selAll('.Field select option', row)).map(function (option) {
+          options.push({
+            name:  option.textContent,
+            value: option.value
+          });
+        });
+      }
+      else if (type == 'multiselect') {
+        var select = sel('.Field select', row);      
+        
+        name  = select.name;
+        value = [];
+
+        options = [];
+        Array.from(selAll('option', select)).forEach(function (option) {
+          options.push({
+            name:  option.textContent,
+            value: option.value
+          });
+
+          if (option.selected)
+            value.push(option.value);
+        });
+      }
+
+      name = name.replace(/^DynamicField_/, '');
+
+      sel('label', row).childNodes.forEach(function (node) {
+        if (node.nodeType == Node.TEXT_NODE)
+          label = node.textContent;
+      });
+
+      var serverErrorDiv = sel('#DynamicField_' + name + 'ServerError', row);
+      
+      if (serverErrorDiv) {
+        serverError = sel('p', serverErrorDiv).textContent.trim();
+      }
+
+      this.dynamicFields.push({
+        name:  name,
+        type:  type,
+        label: label.trim().replace(/:$/, ''),
+        value: value,
+
+        options: options,
+
+        serverError: serverError,
+
+        row:         row,
+        errorAttach: null
+      });
+
+      this.msg.dynamicFields[name] = value;
+    }, this);
   },
   mounted: function () {
     // Recreate the original action of the "print" icon
@@ -777,6 +1037,12 @@ module.exports = {
     (new MutationObserver(this.refreshServices)).observe(sel('#ServiceID'), {
       childList: true,
       subtree: true
+    });
+
+    this.dynamicFields.forEach(function (field) {
+      var fieldElement = document.querySelector('#df_' + field.name)
+      field.errorAttach =
+        fieldElement.parentElement.parentElement.parentElement;
     });
   }
 }
