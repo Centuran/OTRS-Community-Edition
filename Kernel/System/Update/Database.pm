@@ -569,7 +569,10 @@ sub UpdateData {
 
                     my $Value = $Field->{Content};
                     
-                    if (exists $Field->{Type} && $Field->{Type} eq 'Quote') {
+                    if (!defined $Value) {
+                        $Value = 'NULL';
+                    }
+                    elsif (exists $Field->{Type} && $Field->{Type} eq 'Quote') {
                         $Value = "'" . $DBObject->Quote($Value) . "'";
                     }
 
@@ -581,7 +584,10 @@ sub UpdateData {
                 for my $Field (@$Record) {
                     my $Value = $Field->{Content};
 
-                    if (exists $Field->{Type} && $Field->{Type} eq 'Quote') {
+                    if (!defined $Value) {
+                        $Value = 'NULL';
+                    }
+                    elsif (exists $Field->{Type} && $Field->{Type} eq 'Quote') {
                         $Value = "'" . $DBObject->Quote($Value) . "'";
                     }
 
@@ -590,6 +596,8 @@ sub UpdateData {
 
                 my $UpdateQuery = sprintf("UPDATE $Table SET %s WHERE %s;",
                     join(', ', @Updates), join(' AND ', @Conditions));
+
+                # TODO: Execute the query
             }
         }
     }
