@@ -1,10 +1,17 @@
-# 6.0.39 2023-XX-XX
+# 6.0.39 2023-03-19 - Security release
+ - Fixed a security issue with unrestricted access to ticket form drafts
  - Added support for ticket type field in refreshed customer UI new ticket form
- - Fixed a bug with new customer UI ticket view always expecting ticket priority to be returned with ticket data
- - Wrapped articles in iframes in new customer UI ticket view to prevent wrong styles being applied
- - Fixed a bug with resize feature missing in rich text editors in new agent UI
+ - Added support for dynamic fields (text, dropdown, and multiselect) in refreshed customer UI new ticket form
  - Added modern UI options to customer user edit screen in admin interface (which also fixed a problem with editing causing an overwrite of user's own preferences)
- - Fixed wrong default font size preference for new customer UI
+ - Fixed a number of issues with refreshed customer UI:
+   - Fixed a bug with new ticket view always expecting ticket priority to be returned with ticket data
+   - Wrapped articles in iframes in ticket view to prevent wrong styles being applied
+   - Fixed wrong default font size preference
+ - Fixed a number of issues with refreshed agent UI:
+   - Fixed a bug with resize feature missing in rich text editors
+   - Added missing agent toolbar icons
+ - Fixed a bug with ticket titles being displayed incorrectly in overview
+ - Added licensing information to OAuth2 code
 
 # 6.0.38 2022-12-30
  - Added refreshed version of the default customer user interface skin (optional and not yet ready for production use)
