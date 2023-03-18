@@ -50,6 +50,9 @@ sub new {
         $ConfigObject->Get('Loader::Agent::DefaultSkin::UseModern');
     $Self->{UseModern} =
         $Self->{'UserSkinOptions-default-UseModern'} // $UseModernByDefault;
+    
+    # TODO: Remove this when the new view is ready to be used
+    $Self->{UseModern} = 0;
 
     # In modern UI, select the expanded variant to have all articles available
     # in the content
