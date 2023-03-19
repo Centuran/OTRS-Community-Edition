@@ -1,5 +1,5 @@
 # --
-# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2023 Centuran Consulting, https://centuran.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you

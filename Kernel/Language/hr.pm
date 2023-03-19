@@ -1,6 +1,6 @@
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2021-2022 Centuran Consulting, https://centuran.com/
+# Copyright (C) 2021-2023 Centuran Consulting, https://centuran.com/
 # Copyright (C) 2011 Damir Dzeko <damir punkt dzeko masterspace inet.hr>
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
