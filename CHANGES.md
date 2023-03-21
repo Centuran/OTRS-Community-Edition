@@ -1,4 +1,4 @@
-# 6.0.39 2023-03-20 - Security release
+# 6.0.39 2023-03-21 - Security release
  - Fixed a security issue with unrestricted access to ticket form drafts
  - Added support for ticket type field in refreshed customer UI new ticket form
  - Added support for dynamic fields (text, dropdown, and multiselect) in refreshed customer UI new ticket form
