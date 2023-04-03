@@ -1,12 +1,3 @@
-#!/bin/bash
-
-set -e
-
-FILES_DIR=$1
-INSTALL_DIR=${2:-/opt/otrs}
-
-NEW_VERSION=$(grep '^VERSION\s' "${FILES_DIR}/RELEASE" | sed 's/.*=\s*//')
-
 stop_service() {
     local SERVICE=$1
 
@@ -55,6 +46,9 @@ fix_cron_files_owner() {
 }
 
 stop_background_jobs() {
+    local FILES_DIR=$1
+    local INSTALL_DIR=$2
+
     perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
         -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
         -MKernel::System::ObjectManager \
@@ -71,6 +65,9 @@ stop_background_jobs() {
 }
 
 start_background_jobs() {
+    local FILES_DIR=$1
+    local INSTALL_DIR=$2
+
     perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
         -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
         -MKernel::System::ObjectManager \
@@ -86,7 +83,28 @@ start_background_jobs() {
         '
 }
 
+shell_stop_background_jobs() {
+    local INSTALL_DIR=$1
+
+    if crontab -l -u otrs &>/dev/null; then
+        "${INSTALL_DIR}/bin/Cron.sh" stop otrs >/dev/null 2>&1
+    fi
+
+    run_as_otrs_user "${INSTALL_DIR}/bin/otrs.Daemon.pl" stop >/dev/null 2>&1
+}
+
+shell_start_background_jobs() {
+    local INSTALL_DIR=$1
+
+    "${INSTALL_DIR}/bin/Cron.sh" start otrs >/dev/null 2>&1
+
+    run_as_otrs_user "${INSTALL_DIR}/bin/otrs.Daemon.pl" start >/dev/null 2>&1
+}
+
 stop_user_sessions() {
+    local FILES_DIR=$1
+    local INSTALL_DIR=$2
+
     perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
         -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
         -MKernel::System::ObjectManager \
@@ -103,6 +121,10 @@ stop_user_sessions() {
 }
 
 enable_maintenance_mode() {
+    local FILES_DIR=$1
+    local INSTALL_DIR=$2
+    local NEW_VERSION=$3
+
     local MAINT_ID=$(
         perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
             -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
@@ -130,7 +152,9 @@ enable_maintenance_mode() {
 }
 
 disable_maintenance_mode() {
-    local MAINT_ID=$1
+    local FILES_DIR=$1
+    local INSTALL_DIR=$2
+    local MAINT_ID=$3
 
     perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
         -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
@@ -153,6 +177,9 @@ disable_maintenance_mode() {
 }
 
 update_db() {
+    local FILES_DIR=$1
+    local INSTALL_DIR=$2
+
     perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
         -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
         -MKernel::System::ObjectManager \
@@ -174,6 +201,9 @@ update_db() {
 }
 
 update_files() {
+    local FILES_DIR=$1
+    local INSTALL_DIR=$2
+
     perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
         -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
         -MKernel::System::ObjectManager \
@@ -195,6 +225,9 @@ update_files() {
 }
 
 reset_config_and_cache() {
+    local FILES_DIR=$1
+    local INSTALL_DIR=$2
+
     perl -I"${FILES_DIR}" -I"${FILES_DIR}/Kernel/cpan-lib" \
         -I"${INSTALL_DIR}" -I"${INSTALL_DIR}/Kernel/cpan-lib" \
         -MKernel::System::ObjectManager \
@@ -209,23 +242,3 @@ reset_config_and_cache() {
             $UpdateObject->ResetConfigAndCache();
         '
 }
-
-stop_user_sessions
-
-MAINT_ID=$(enable_maintenance_mode)
-
-fix_cron_files_owner
-
-stop_background_jobs
-
-update_db
-
-update_files
-
-start_background_jobs
-
-reset_config_and_cache
-
-restart_service $(get_webserver_service)
-
-disable_maintenance_mode "${MAINT_ID}"
