@@ -91,6 +91,8 @@ shell_stop_background_jobs() {
     fi
 
     run_as_otrs_user "${INSTALL_DIR}/bin/otrs.Daemon.pl" stop >/dev/null 2>&1
+
+    return $?
 }
 
 shell_start_background_jobs() {
@@ -99,6 +101,8 @@ shell_start_background_jobs() {
     "${INSTALL_DIR}/bin/Cron.sh" start otrs >/dev/null 2>&1
 
     run_as_otrs_user "${INSTALL_DIR}/bin/otrs.Daemon.pl" start >/dev/null 2>&1
+
+    return $?
 }
 
 stop_user_sessions() {
@@ -118,6 +122,8 @@ stop_user_sessions() {
 
             $UpdateObject->StopUserSessions();
         '
+    
+    return $?
 }
 
 enable_maintenance_mode() {
@@ -198,6 +204,8 @@ update_db() {
             );
         ' \
         "${FILES_DIR}"
+    
+    return $?
 }
 
 update_files() {
@@ -222,6 +230,8 @@ update_files() {
             );
         ' \
         "${FILES_DIR}"
+
+    return $?
 }
 
 reset_config_and_cache() {
@@ -241,4 +251,16 @@ reset_config_and_cache() {
 
             $UpdateObject->ResetConfigAndCache();
         '
+
+    return $?
+}
+
+remove_unneeded_files() {
+    local INSTALL_DIR=$1
+
+    if [ -d "${INSTALL_DIR}/scripts/test" ]; then
+        rm -r "${INSTALL_DIR}/scripts/test"
+    fi
+
+    return 0
 }
