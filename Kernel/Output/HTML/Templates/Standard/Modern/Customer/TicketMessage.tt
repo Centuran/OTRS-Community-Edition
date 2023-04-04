@@ -10,6 +10,7 @@
 window.__extraComponents = [ 'customer/customer-new-ticket' ];
 </script>
 <div id="MainBox" class="TicketCompose ARIARoleMain">
+    <input type="hidden" name="cmt.Data.AdditionalDataJSON" value="[% Data.AdditionalDataJSON | html %]"/>
     <input type="hidden" name="cmt.Data.PriorityColorsJSON" value="[% Data.PriorityColorsJSON | html %]"/>
     <div class="Content">
         <customer-new-ticket></customer-new-ticket>

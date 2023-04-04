@@ -1,4 +1,5 @@
 # 6.0.40 2023-04-05
+ - Added support for pasting images into the rich text editor on the new ticket screen of refreshed customer UI
  - Changed the Mail::IMAPClient Perl module to be required rather than optional
 
 # 6.0.39 2023-03-21 - Security release

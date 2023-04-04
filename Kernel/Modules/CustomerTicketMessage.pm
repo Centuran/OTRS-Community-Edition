@@ -1351,6 +1351,22 @@ sub _MaskNew {
         Data => \%PriorityColors,
     );
 
+    # Additional data that's required by the frontend component and normally
+    # would be retrieved from Core.Config, but it's needed before Core.Config
+    # is initialized.
+    my $AdditionalDataJSON = $Kernel::OM->Get('Kernel::System::JSON')->Encode(
+        Data => {
+            'Baselink'     => $LayoutObject->{Baselink},
+            'SessionID'    => $LayoutObject->{SessionID},
+            'SessionName'  => $LayoutObject->{SessionName},
+            'UserLanguage' => $LayoutObject->{UserLanguage},
+            
+            'RichText.PictureUploadAction' =>
+                $LayoutObject->{_JSData}{RichText}{PictureUploadAction} ||
+                    'PictureUpload',
+        },
+    );
+
     my $UseModern = $Self->{'UserSkinOptions-default-UseModern'};
 
     my $TemplateFile =
@@ -1363,6 +1379,7 @@ sub _MaskNew {
         Data         => {
             %Param,
 
+            AdditionalDataJSON => $AdditionalDataJSON,
             PriorityColorsJSON => $PriorityColorsJSON,
         },
     );

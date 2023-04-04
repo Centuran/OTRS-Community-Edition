@@ -553,36 +553,7 @@ function selAll(selector, context) {
 module.exports = {
   data: function () {
     return {
-      editorConfig: {
-        customConfig: '',
-        language: Core.Config.Get('UserLanguage'),
-        defaultLanguage: Core.Config.Get('UserLanguage'),
-        removePlugins: 'elementspath,autogrow,bbcode,devtools,divarea,' +
-          'embed,flash,mathjax,stylesheetparser,image,uploadimage,uploadfile,' +
-          'exportpdf,magicline',
-        toolbar: [
-          {
-            name: 'basicstyles',
-            items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'TextColor' ]
-          },
-          {
-            name: 'styles',
-            items: [ 'Format' ]
-          },
-          {
-            name: 'paragraph',
-            items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
-              'JustifyBlock']
-          },
-          {
-            name: 'paragraph',
-            items: [ 'BulletedList', 'NumberedList' ]
-          }
-        ],
-        resize_enabled: true,
-        resize_minHeight: 100,
-        height: 200,
-      },
+      editorConfig: {},
       
       dynamicFields:  [],
       queues:         [],
@@ -863,9 +834,50 @@ module.exports = {
       });
     }, this);
 
-    // Get priority colors from hidden input
+    // Get priority colors and additional data from hidden inputs
     this.priorityColors =
       JSON.parse(sel('input[name="cmt.Data.PriorityColorsJSON"]').value);
+    this.additionalData =
+      JSON.parse(sel('input[name="cmt.Data.AdditionalDataJSON"]').value);
+
+    this.editorConfig = {
+      customConfig: '',
+      language: this.additionalData['UserLanguage'],
+      defaultLanguage: this.additionalData['UserLanguage'],
+      removePlugins: 'elementspath,autogrow,bbcode,devtools,divarea,' +
+        'embed,flash,mathjax,stylesheetparser,image,' +
+        'exportpdf,magicline',
+      toolbar: [
+        {
+          name: 'basicstyles',
+          items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'TextColor' ]
+        },
+        {
+          name: 'styles',
+          items: [ 'Format' ]
+        },
+        {
+          name: 'paragraph',
+          items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
+            'JustifyBlock' ]
+        },
+        {
+          name: 'paragraph',
+          items: [ 'BulletedList', 'NumberedList' ]
+        }
+      ],
+      resize_enabled: true,
+      resize_minHeight: 100,
+      height: 200,
+
+      extraAllowedContent: 'div[type]{*}; img[*]; col[width]; style[*]{*}; *[id](*)',
+      filebrowserUploadUrl: 
+        this.additionalData['Baselink'] +
+          'Action=' + this.additionalData['RichText.PictureUploadAction'] + '&' +
+          'FormID=' + sel('input[name="FormID"]', sel('#Dest').form).value + '&' +
+          this.additionalData['SessionName'] + '=' +
+            this.additionalData['SessionID']
+    };
 
     selAll('#PriorityID option').forEach(function (element) {
       this.priorities.push({
