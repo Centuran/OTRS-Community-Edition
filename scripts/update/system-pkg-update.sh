@@ -16,7 +16,7 @@ MAINT_ID=$(enable_maintenance_mode "${FILES_DIR}" "${INSTALL_DIR}" \
 
 fix_cron_files_owner
 
-remove_unneeded_files
+remove_unneeded_files "${INSTALL_DIR}"
 
 #stop_background_jobs "${FILES_DIR}" "${INSTALL_DIR}"
 shell_stop_background_jobs "${INSTALL_DIR}"
