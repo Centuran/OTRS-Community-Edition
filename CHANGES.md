@@ -1,3 +1,6 @@
+# 6.0.40 2023-04-05
+ - Changed the Mail::IMAPClient Perl module to be required rather than optional
+
 # 6.0.39 2023-03-21 - Security release
  - Fixed a security issue with unrestricted access to ticket form drafts
  - Added support for ticket type field in refreshed customer UI new ticket form

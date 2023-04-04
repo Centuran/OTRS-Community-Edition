@@ -391,7 +391,7 @@ my @NeededModules = (
         Module          => 'Mail::IMAPClient',
         VersionRequired => '3.22',
         Comment         => 'Required for IMAP TLS connections.',
-        Required        => 0,
+        Required        => 1,
         InstTypes       => {
             aptget => 'libmail-imapclient-perl',
             emerge => 'dev-perl/Mail-IMAPClient',
@@ -401,7 +401,7 @@ my @NeededModules = (
         Depends => [
             {
                 Module              => 'IO::Socket::SSL',
-                Required            => 0,
+                Required            => 1,
                 Comment             => 'Required for SSL connections to web and mail servers.',
                 VersionsRecommended => [
                     {
@@ -418,7 +418,7 @@ my @NeededModules = (
             },
             {
                 Module    => 'Authen::SASL',
-                Required  => 0,
+                Required  => 1,
                 Comment   => 'Required for MD5 authentication mechanisms in IMAP connections.',
                 InstTypes => {
                     aptget => 'libauthen-sasl-perl',
@@ -428,7 +428,7 @@ my @NeededModules = (
             },
             {
                 Module    => 'Authen::NTLM',
-                Required  => 0,
+                Required  => 1,
                 Comment   => 'Required for NTLM authentication mechanism in IMAP connections.',
                 InstTypes => {
                     aptget => 'libauthen-ntlm-perl',
