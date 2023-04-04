@@ -250,7 +250,7 @@ sub Run {
     $Self->Print("<yellow>Updating application files...</yellow>\n");
 
     # Remove unneeded files
-    my $HomeDir = $Kernel::OM->Get('Kernel::Config')->Get('Version');
+    my $HomeDir = $Kernel::OM->Get('Kernel::Config')->Get('Home');
     if ( -d $HomeDir . '/scripts/test' ) {
         my $TestDirRemoved =
             File::Path::remove_tree( $HomeDir . '/scripts/test' );
