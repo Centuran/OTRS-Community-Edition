@@ -924,11 +924,57 @@ sub TicketSubjectClean {
         $Subject =~ s/\Q$TicketHook$TicketHookDivider\E\d+?\s*//g;
     }
 
-    # remove leading number with configured "RE:\s" or "RE[\d+]:\s" e. g. "RE: " or "RE[4]: "
-    $Subject =~ s/^($TicketSubjectRe(\[\d+\])?:\s)+//i;
+    # remove subject prefix(es) e. g. "RE: " or "RE[4]: "
+    $Subject =~ s/^(
+      ( Antw                                    # Dutch
+      | ATB                                     # Welsh
+      | ATB \.                                  # Latvian
+      | AW                                      # German
+      | Odp                                     # Polish
+      | R                                       # Italian
+      | ( Re | \Q$TicketSubjectRe\E ) ( \s* \[ \d+ \] )?
+      | REF                                     # French
+      | RES                                     # Portuguese
+      | Rif                                     # Italian
+      | SV                                      # Scandinavian
+      | V\x{00E1}                               # Magyar, "VA"
+      | VS                                      # Finnish
+      | YNT                                     # Turkish
+      | \x{05D4}\x{05E9}\x{05D1}                # Hebrew, "hashev"
+      | \x{0391}\x{03A0}                        # Greek, "AP"
+      | \x{03A3}\x{03A7}\x{0395}\x{03A4}        # Greek, "SChET"
+      | \x{041D}\x{0410}                        # some Slavic in Cyrillic, "na"
+      | \x{56DE}\x{590D}                        # Simp. Chinese, "huifu"
+      | \x{56DE}\x{8986}                        # Trad. Chinese, "huifu"
+      )
+      \s* [:\x{FF1A}] \s*
+    )+//ix;
 
-    # remove leading number with configured "Fwd:\s" or "Fwd[\d+]:\s" e. g. "Fwd: " or "Fwd[4]: "
-    $Subject =~ s/^($TicketSubjectFwd(\[\d+\])?:\s)+//i;
+    # remove subject prefix(es) e. g. "Fwd: " or "Fwd[4]: "
+    $Subject =~ s/^(
+      ( Doorst \.?                              # Dutch
+      | ENC                                     # Portuguese
+      | FS                                      # Icelandic
+      | ( Fwd | Fw | \Q$TicketSubjectFwd\E ) ( \s* \[ \d+ \] )?
+      | I                                       # Italian
+      | [\x{0130}I]LE?T                         # Turkish, "ILT", "ILET"
+      | P\x{0101}rs \.                          # Latvian, "PARS."
+      | PD                                      # Polish
+      | RV                                      # Spanish
+      | Tov\x{00E1}bb\x{00ED}t\x{00E1}s         # Magyar, "tovabbitas"
+      | TR                                      # French
+      | VB                                      # Swedish
+      | VL                                      # Finnish
+      | VS                                      # Norwegian
+      | WG                                      # German
+      | \x{03A0}\x{03A1}\x{0398}                # Greek, "PRTh"
+      | \x{8F49}\x{5BC4}                        # Trad. Chinese, "zhuanji"
+      | \x{8F49}\x{767C}                        # Trad. Chinese, "zhuanfa"
+      | \x{8F6C}\x{53D1}                        # Simp. Chinese, "zhuanfa"
+      | \x{8F6C}\x{5BC4}                        # Simp. Chinese, "zhuanji"
+      )
+      \s* [:\x{FF1A}] \s*
+    )+//ix;
 
     # trim white space at the beginning or end
     $Subject =~ s/(^\s+|\s+$)//;
