@@ -91,41 +91,53 @@ for my $TicketHook ( 'Ticket#', 'Call#', 'Ticket' ) {
         # TicketSubjectClean()
         $NewSubject = $TicketObject->TicketSubjectClean(
             TicketNumber => '2004040510440485',
-            Subject => 'Re[5]: [' . $TicketHook . ': 2004040510440485] Re: RE: WG: Some Subject',
+            Subject      => 'Re[5]: [' . $TicketHook . ': 2004040510440485] Re: RE: FYI: Some Subject',
         );
         $Self->Is(
             $NewSubject,
-            'WG: Some Subject',
+            'FYI: Some Subject',
             "TicketSubjectClean() Re[5]:",
         );
 
         # TicketSubjectClean()
         $NewSubject = $TicketObject->TicketSubjectClean(
             TicketNumber => '2004040510440485',
-            Subject => 'Re[5]: Re: RE: WG: Some Subject [' . $TicketHook . ': 2004040510440485]',
+            Subject      => 'Re[5]: Re: RE: FYI: Some Subject [' . $TicketHook . ': 2004040510440485]',
         );
         $Self->Is(
             $NewSubject,
-            'WG: Some Subject',
+            'FYI: Some Subject',
             "TicketSubjectClean() Re[5]",
         );
 
+        # TicketSubjectClean()
+        $NewSubject = $TicketObject->TicketSubjectClean(
+            TicketNumber => '2004040510440485',
+            Subject      => "SV: Antw: VS: REF : RE: RE[2]: AW: \x{0391}\x{03a0}: \x{0391}\x{03c0}: \x{03a3}\x{03a7}\x{0395}\x{03a4}: \x{03a3}\x{03c7}\x{03b5}\x{03c4}: \x{041d}\x{0430}: \x{043d}\x{0430}: V\x{00e1}: R: RIF: Atb.: RES: Odp: Ynt: ATB: \x{56de}\x{590d}: \x{56de}\x{8986}\x{ff1a}VS: Doorst: Doorst.: TR: WG: \x{03a0}\x{03a1}\x{0398}: Tov\x{00e1}bb\x{00ed}t\x{00e1}s: I: FS: P\x{0101}rs.: VB: ENC: \x{0130}LT: \x{0130}LET: ILT: ILET: \x{8f6c}\x{53d1}\x{ff1a}\x{8f49}\x{5bc4}: Re: Fwd: Some Subject [" . $TicketHook . ': 2004040510440485]',
+        );
+        $Self->Is(
+            $NewSubject,
+            'Re: Fwd: Some Subject',
+            "TicketSubjectClean() Multilingual",
+        );
+
+        # TicketSubjectBuild()
         # TicketSubjectBuild()
         $NewSubject = $TicketObject->TicketSubjectBuild(
             TicketNumber => '2004040510440485',
-            Subject      => "Re: [$TicketHook: 2004040510440485] Re: RE: WG: Some Subject",
+            Subject      => "Re: [$TicketHook: 2004040510440485] Re: RE: FYI: Some Subject",
         );
         if ( $TicketSubjectConfig eq 'Left' ) {
             $Self->Is(
                 $NewSubject,
-                'RE: [' . $TicketHook . '2004040510440485] WG: Some Subject',
+                'RE: [' . $TicketHook . '2004040510440485] FYI: Some Subject',
                 "TicketSubjectBuild() $TicketSubjectConfig ($NewSubject)",
             );
         }
         else {
             $Self->Is(
                 $NewSubject,
-                'RE: WG: Some Subject [' . $TicketHook . '2004040510440485]',
+                'RE: FYI: Some Subject [' . $TicketHook . '2004040510440485]',
                 "TicketSubjectBuild() $TicketSubjectConfig ($NewSubject)",
             );
         }
@@ -167,7 +179,7 @@ for my $TicketHook ( 'Ticket#', 'Call#', 'Ticket' ) {
             );
         }
 
-        # check Ticket::SubjectRe with "Antwort"
+        # check Ticket::SubjectRe with empty value
         $ConfigObject->Set(
             Key   => 'Ticket::SubjectRe',
             Value => '',
@@ -180,7 +192,7 @@ for my $TicketHook ( 'Ticket#', 'Call#', 'Ticket' ) {
         );
         $Self->Is(
             $NewSubject,
-            'RE: Antwort: Antwort: Some Subject2',
+            'Antwort: Antwort: Some Subject2',
             "TicketSubjectClean() Re: Antwort:",
         );
 
@@ -192,14 +204,14 @@ for my $TicketHook ( 'Ticket#', 'Call#', 'Ticket' ) {
         if ( $TicketSubjectConfig eq 'Left' ) {
             $Self->Is(
                 $NewSubject,
-                '[' . $TicketHook . '2004040510440485] Re: Re: Antwort: Some Subject2',
+                '[' . $TicketHook . '2004040510440485] Antwort: Some Subject2',
                 "TicketSubjectBuild() $TicketSubjectConfig ($NewSubject)",
             );
         }
         else {
             $Self->Is(
                 $NewSubject,
-                'Re: Re: Antwort: Some Subject2 [' . $TicketHook . '2004040510440485]',
+                'Antwort: Some Subject2 [' . $TicketHook . '2004040510440485]',
                 "TicketSubjectBuild() $TicketSubjectConfig ($NewSubject)",
             );
         }
@@ -219,39 +231,39 @@ for my $TicketHook ( 'Ticket#', 'Call#', 'Ticket' ) {
         # TicketSubjectBuild()
         $NewSubject = $TicketObject->TicketSubjectBuild(
             TicketNumber => '2004040510440485',
-            Subject      => "Re: [$TicketHook: 2004040510440485] Re: RE: WG: Some Subject",
+            Subject      => "Re: [$TicketHook: 2004040510440485] Re: RE: FYI: Some Subject",
             Action       => 'Forward',
         );
         if ( $TicketSubjectConfig eq 'Left' ) {
             $Self->Is(
                 $NewSubject,
-                'FWD: [' . $TicketHook . '2004040510440485] WG: Some Subject',
+                'FWD: [' . $TicketHook . '2004040510440485] FYI: Some Subject',
                 "TicketSubjectBuild() $TicketSubjectConfig ($NewSubject)",
             );
         }
         else {
             $Self->Is(
                 $NewSubject,
-                'FWD: WG: Some Subject [' . $TicketHook . '2004040510440485]',
+                'FWD: FYI: Some Subject [' . $TicketHook . '2004040510440485]',
                 "TicketSubjectBuild() $TicketSubjectConfig ($NewSubject)",
             );
         }
 
-        # check Ticket::SubjectFwd with "WG"
+        # check Ticket::SubjectFwd with "Forwarded"
         $ConfigObject->Set(
             Key   => 'Ticket::SubjectFwd',
-            Value => 'WG',
+            Value => 'Forwarded',
         );
         $NewSubject = $TicketObject->TicketSubjectClean(
             TicketNumber => '2004040510440485',
             Subject      => 'Antwort: ['
                 . $TicketHook
-                . ': 2004040510440485] WG: Fwd: Some Subject2',
+                . ': 2004040510440485] Forwarded: Fwd: Some Subject2',
             Action => 'Forward',
         );
         $Self->Is(
             $NewSubject,
-            'Antwort: WG: Fwd: Some Subject2',
+            'Antwort: Forwarded: Fwd: Some Subject2',
             "TicketSubjectClean() Antwort:",
         );
     }
