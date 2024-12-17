@@ -37,7 +37,13 @@ build-otrs-db-image:
     - cd /tmp/otrs-ce-dev-env/setup/otrs-db
     - cp "${CI_PROJECT_DIR}/scripts/database/"*.mysql.sql .
     - docker -D pull "${REGISTRY_PATH}/otrs-db:latest" || true
-    - docker build --cache-from "${REGISTRY_PATH}/otrs-db:latest" -t "${REGISTRY_PATH}/otrs-db:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs-db:latest" .
+    - >
+      docker build \
+        --build-arg BUILDKIT_INLINE_CACHE=1 \
+        --cache-from "${REGISTRY_PATH}/otrs-db:latest" \
+        -t "${REGISTRY_PATH}/otrs-db:${CI_COMMIT_SHORT_SHA}" \
+        -t "${REGISTRY_PATH}/otrs-db:latest" \
+        .
     - docker push "${REGISTRY_PATH}/otrs-db:latest"
 
 build-otrs-db-test-image:
@@ -49,7 +55,13 @@ build-otrs-db-test-image:
   script:
     - cd /tmp/otrs-ce-dev-env/setup/otrs-db-test
     - docker -D pull "${REGISTRY_PATH}/otrs-db-test:latest" || true
-    - docker build --cache-from "${REGISTRY_PATH}/otrs-db-test:latest" -t "${REGISTRY_PATH}/otrs-db-test:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs-db-test:latest" .
+    - >
+      docker build \
+        --build-arg BUILDKIT_INLINE_CACHE=1 \
+        --cache-from "${REGISTRY_PATH}/otrs-db-test:latest" \
+        -t "${REGISTRY_PATH}/otrs-db-test:${CI_COMMIT_SHORT_SHA}" \
+        -t "${REGISTRY_PATH}/otrs-db-test:latest" \
+        .
     - docker push "${REGISTRY_PATH}/otrs-db-test:latest"
 
 build-otrs-image:
@@ -62,7 +74,14 @@ build-otrs-image:
     - cd /tmp/otrs-ce-dev-env/setup/otrs
     - cp -r "${CI_PROJECT_DIR}" otrs-ce
     - docker pull "${REGISTRY_PATH}/otrs:latest" || true
-    - docker build --build-arg OTRS_CE_DIR=./otrs-ce --cache-from "${REGISTRY_PATH}/otrs:latest" -t "${REGISTRY_PATH}/otrs:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/otrs:latest" .
+    - >
+      docker build \
+        --build-arg BUILDKIT_INLINE_CACHE=1 \
+        --cache-from "${REGISTRY_PATH}/otrs:latest" \
+        --build-arg OTRS_CE_DIR=./otrs-ce \
+        -t "${REGISTRY_PATH}/otrs:${CI_COMMIT_SHORT_SHA}" \
+        -t "${REGISTRY_PATH}/otrs:latest" \
+        .
     - docker push "${REGISTRY_PATH}/otrs:latest"
 
 build-selenium-images:
@@ -76,7 +95,14 @@ build-selenium-images:
     - cd /tmp/otrs-ce-dev-env/setup/selenium/chrome
     - cp -R "${CI_PROJECT_DIR}/scripts/test/." test/
     - docker pull "${REGISTRY_PATH}/selenium-chrome:latest" || true
-    - docker build --build-arg OTRS_CE_TEST_DIR=./test --cache-from "${REGISTRY_PATH}/selenium-chrome:latest" -t "${REGISTRY_PATH}/selenium-chrome:${CI_COMMIT_SHORT_SHA}" -t "${REGISTRY_PATH}/selenium-chrome:latest" .
+    - >
+      docker build \
+        --build-arg BUILDKIT_INLINE_CACHE=1 \
+        --cache-from "${REGISTRY_PATH}/selenium-chrome:latest" \
+        --build-arg OTRS_CE_TEST_DIR=./test \
+        -t "${REGISTRY_PATH}/selenium-chrome:${CI_COMMIT_SHORT_SHA}" \
+        -t "${REGISTRY_PATH}/selenium-chrome:latest" \
+        .
     - docker push "${REGISTRY_PATH}/selenium-chrome:latest"
 
     # Build Firefox image
