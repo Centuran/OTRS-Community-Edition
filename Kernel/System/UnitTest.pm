@@ -63,6 +63,7 @@ run all or some tests located in C<scripts/test/**/*.t> and print the result.
     $UnitTestObject->Run(
         Name                   => ['JSON', 'User'],     # optional, execute certain test files only
         Directory              => 'Selenium',           # optional, execute tests in subdirectory
+        TopDirectory           => '/some/path',         # optional, specify the top level directory of the tests
         Verbose                => 1,                    # optional (default 0), only show result details for all tests, not just failing
         SubmitURL              => $URL,                 # optional, send results to unit test result server
         SubmitAuth             => '0abc86125f0fd37baae' # optional authentication string for unit test result server
@@ -93,6 +94,9 @@ sub Run {
     my $Home    = $ConfigObject->Get('Home');
 
     my $Directory = "$Home/scripts/test";
+    if ( defined $Param{TopDirectory} ) {
+        $Directory = $Param{TopDirectory};
+    }
     if ( $Param{Directory} ) {
         $Directory .= "/$Param{Directory}";
         $Directory =~ s/\.//g;

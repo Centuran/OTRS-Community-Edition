@@ -40,6 +40,14 @@ sub Configure {
         ValueRegex  => qr/.*/smx,
     );
     $Self->AddOption(
+        Name        => 'top-directory',
+        Description => "Path to the top level directory of the tests (to " .
+            "override the default).",
+        Required    => 0,
+        HasValue    => 1,
+        ValueRegex  => qr/.*/smx,
+    );
+    $Self->AddOption(
         Name        => 'verbose',
         Description => "Show details for all tests, not just failing.",
         Required    => 0,
@@ -148,6 +156,7 @@ sub Run {
     my $FunctionResult = $Kernel::OM->Get('Kernel::System::UnitTest')->Run(
         Tests                  => $Self->GetOption('test'),
         Directory              => $Self->GetOption('directory') || $DefaultDirectory,
+        TopDirectory           => $Self->GetOption('top-directory'),
         JobID                  => $Self->GetOption('job-id'),
         Scenario               => $Self->GetOption('scenario'),
         SubmitURL              => $Self->GetOption('submit-url'),
