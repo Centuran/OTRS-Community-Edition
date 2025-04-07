@@ -1,3 +1,6 @@
+# 6.0.42 2025-04-XX
+ - Added an option to allow running unit tests from a specified top-level directory
+
 # 6.0.41 2024-12-10
  - Added default settings for new customer UI (to be used if not set explicitly by the user)
  - Added support for date/time, checkbox, and textarea dynamic fields on the new ticket screen of refreshed customer UI
