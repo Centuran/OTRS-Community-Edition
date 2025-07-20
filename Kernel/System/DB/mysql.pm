@@ -80,7 +80,10 @@ sub LoadPreferences {
 
     # init sql setting on db connect
     if ( !$Kernel::OM->Get('Kernel::Config')->Get('Database::ShellOutput') ) {
-        $Self->{'DB::Connect'} = 'SET NAMES utf8';
+        $Self->{'DB::Connect'} = [
+            "SET NAMES utf8",
+            "SET SESSION sql_mode = CONCAT(@\@SESSION.sql_mode, ',ANSI_QUOTES')"
+        ];
     }
 
     return 1;

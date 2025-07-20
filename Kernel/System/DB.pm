@@ -219,7 +219,18 @@ sub Connect {
     }
 
     if ( $Self->{Backend}->{'DB::Connect'} ) {
-        $Self->Do( SQL => $Self->{Backend}->{'DB::Connect'} );
+        my @Queries;
+
+        if ( ref $Self->{Backend}->{'DB::Connect'} eq 'ARRAY' ) {
+            @Queries = @{ $Self->{Backend}->{'DB::Connect'} };
+        }
+        else {
+            @Queries = ( $Self->{Backend}->{'DB::Connect'} );
+        }
+
+        for my $Query (@Queries) {
+            $Self->Do( SQL => $Query );
+        }
     }
 
     # set utf-8 on for PostgreSQL
