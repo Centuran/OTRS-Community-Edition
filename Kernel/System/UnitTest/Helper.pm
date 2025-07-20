@@ -993,6 +993,9 @@ sub TestDatabaseCleanup {
 
         if ( $DBType eq 'mysql' ) {
 
+            # Quote table names to avoid problems with reserved words.
+            $TableList =~ s/([a-zA-Z0-9_]+)/`$1`/g;
+
             # Turn off checking foreign key constraints temporarily.
             $DBObject->Do( SQL => 'SET foreign_key_checks = 0' );
 
