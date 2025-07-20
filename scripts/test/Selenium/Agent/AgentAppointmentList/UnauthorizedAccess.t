@@ -170,7 +170,7 @@ $Selenium->RunTest(
             Bind => [ \$GroupID ],
         );
         $Deleted = $DBObject->Do(
-            SQL  => "DELETE FROM groups WHERE id = ?",
+            SQL  => "DELETE FROM "groups" WHERE id = ?",
             Bind => [ \$GroupID ],
         );
         $Self->True(
