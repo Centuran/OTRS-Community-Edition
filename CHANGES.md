@@ -1,4 +1,5 @@
-# 6.0.42 2025-04-XX
+# 6.0.42 2025-08-XX
+ - Fixed quoting of table names in SQL queries
  - Added an option to allow running unit tests from a specified top-level directory
 
 # 6.0.41 2024-12-10
