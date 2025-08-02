@@ -56,9 +56,15 @@ sub Run {
             Param => 'Files',
         );
 
+        my $Disposition = $ParamObject->GetParam( Param => 'Disposition' ) || '';
+
+        if ( $Disposition ne 'inline' ) {
+            $Disposition = 'attachment';
+        }
+
         $UploadCacheObject->FormIDAddFile(
             FormID      => $Self->{FormID},
-            Disposition => 'attachment',
+            Disposition => $Disposition,
             %UploadStuff,
         );
 
@@ -73,7 +79,7 @@ sub Run {
         for my $Attachment (@Attachments) {
 
             # Hide inline attachments from the display. Please see bug#13498 for more information.
-            next ATTACHMENT if $Attachment->{Disposition} eq 'inline';
+            next ATTACHMENT if $Attachment->{Disposition} ne $Disposition;
 
             # Add human readable data size.
             $Attachment->{HumanReadableDataSize} = $LayoutObject->HumanReadableDataSize(
