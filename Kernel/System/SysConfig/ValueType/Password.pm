@@ -131,7 +131,7 @@ sub SettingRender {
         Type => 'Normal',
     );
 
-    $HTML .= "\" value=\"$HTMLValue\" ";
+    $HTML .= " value=\"$HTMLValue\" ";
 
     if ( !$Param{RW} ) {
         $HTML .= "disabled='disabled' ";
