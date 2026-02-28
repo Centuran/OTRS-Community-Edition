@@ -690,6 +690,12 @@ dl dd {
   margin-left: 0.8em;
 }
 
+/* Reset some properties that get overridden by Vuetify styles */
+fieldset.TableLike textarea {
+  background-color: #fff;
+  border: solid 1px #d2d2d2;
+}
+
 fieldset.TableLike.FixedLabelSmall > label {
   width: 8em;
 }
@@ -950,8 +956,6 @@ body .MainBox > h1 {
   font-size: initial;
   margin-bottom: var(--gap, 8px);
   padding-left: 0;
-  display: flex;
-  margin-bottom: 0;
 }
 .ActionRow .Actions > li {
   float: left;
@@ -959,9 +963,6 @@ body .MainBox > h1 {
   height: auto;
   padding: 0;
   overflow: hidden;
-  box-shadow: none;
-  border-radius: 0;
-  line-height: 1.5;
 }
 .ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
   background: #f8f8f8;
@@ -975,9 +976,14 @@ body .MainBox > h1 {
 }
 .ActionRow .Actions > li:hover > a, .ActionRow .Actions > li:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
+}
+.ActionRow .Actions > li {
+  box-shadow: none;
+  border-radius: 0;
+  line-height: 1.5;
 }
 .ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
   border-radius: 0;
@@ -1000,18 +1006,22 @@ body .MainBox > h1 {
   border-top-right-radius: 4px;
 }
 .ActionRow .Actions > li:last-child:hover > a, .ActionRow .Actions > li:last-child:hover > span.ClusterLink, .ActionRow .Actions > li.cmt-item-action-link-last:hover > a, .ActionRow .Actions > li.cmt-item-action-link-last:hover > span.ClusterLink {
-  border-right: solid 1px #2e53b5 !important;
+  border-right: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
 }
 .ActionRow .Actions > li.Selected a,
 .ActionRow .Actions > li a.Active {
   color: white;
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right-color: #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   font-weight: normal;
 }
 .ActionRow .Actions > li::after {
   content: none;
+}
+.ActionRow .Actions {
+  display: flex;
+  margin-bottom: 0;
 }
 .ActionRow .Actions li {
   font-size: inherit;
@@ -1251,7 +1261,7 @@ button.CallForAction:hover {
   background-color: #f15a22;
   border: solid 1px #ff6a32;
   background-color: #24408c;
-  border: solid 1px #0f1b3b;
+  border: solid 1px rgb(15.1363636364, 26.9090909091, 58.8636363636);
   color: #fff;
   color: white;
 }
@@ -1307,7 +1317,7 @@ a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
 button.CallForAction {
   background: transparent;
   border-radius: 4px;
-  color: rgba(20, 36, 79, 0.8);
+  color: rgba(20.3522727273, 36.1818181818, 79.1477272727, 0.8);
   padding: 0.3em 1.2em;
   border: solid 1px rgba(36, 64, 140, 0.4);
   box-shadow: 0px 1px 0px #99a;
@@ -1330,7 +1340,7 @@ button.CallForAction.Primary {
 a.CallForAction.Primary:hover, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction:hover,
 .v-application a.CallForAction.Primary:hover,
 button.CallForAction.Primary:hover {
-  background-color: #de3e02;
+  background-color: rgb(221.8553191489, 61.583307637, 2.1446808511);
 }
 a.CallForAction.Primary:hover span, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction:hover span,
 .v-application a.CallForAction.Primary:hover span,
@@ -1381,7 +1391,7 @@ button.CallForAction span {
 .WidgetSettingsForm button.CallForAction[id$=_cancel]:hover {
   background-color: rgba(36, 64, 140, 0.1);
   border-color: rgba(36, 64, 140, 0.4);
-  color: rgba(31, 55, 120, 0.8);
+  color: rgba(30.7840909091, 54.7272727273, 119.7159090909, 0.8);
 }
 
 a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
@@ -1402,7 +1412,7 @@ button.CallForAction span i.fa {
 a.CallForAction span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa::before,
 .v-application a.CallForAction span i.fa::before,
 button.CallForAction span i.fa::before {
-  color: rgba(20, 36, 79, 0.8);
+  color: rgba(20.3522727273, 36.1818181818, 79.1477272727, 0.8);
   content: "";
   font-family: "Material Design Icons";
   font-weight: bold;
@@ -1575,7 +1585,7 @@ hr.cmt-flex-break {
   display: none !important;
 }
 #ToolBar li a span.Counter {
-  background-color: #2e53b5;
+  background-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   border-radius: 50px;
   bottom: 25%;
   box-sizing: border-box;
@@ -1816,7 +1826,7 @@ body {
 
 a,
 .v-application a {
-  color: #2e53b5;
+  color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
 }
 
 select {
@@ -2496,9 +2506,6 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   height: auto;
   padding: 0;
   overflow: hidden;
-  box-shadow: none;
-  border-radius: 0;
-  line-height: 1.5;
 }
 .Tab.Actions > li > a, .Tab.Actions > li > span.ClusterLink {
   background: #f8f8f8;
@@ -2512,9 +2519,14 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
 }
 .Tab.Actions > li:hover > a, .Tab.Actions > li:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
+}
+.Tab.Actions > li {
+  box-shadow: none;
+  border-radius: 0;
+  line-height: 1.5;
 }
 .Tab.Actions > li > a, .Tab.Actions > li > span.ClusterLink {
   border-radius: 0;
@@ -2537,14 +2549,14 @@ div.AllocationListContainer div.Size1of2 ul.AllocationList li.ui-sortable-helper
   border-top-right-radius: 4px;
 }
 .Tab.Actions > li:last-child:hover > a, .Tab.Actions > li:last-child:hover > span.ClusterLink, .Tab.Actions > li.cmt-item-action-link-last:hover > a, .Tab.Actions > li.cmt-item-action-link-last:hover > span.ClusterLink {
-  border-right: solid 1px #2e53b5 !important;
+  border-right: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
 }
 .Tab.Actions > li.Selected a,
 .Tab.Actions > li a.Active {
   color: white;
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right-color: #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   font-weight: normal;
 }
 .Tab.Actions > li::after {
@@ -2687,7 +2699,7 @@ body .ItemListGrid > li span.Description {
   margin-left: -0.5em;
 }
 .ItemListGrid.WithIcons > li span.Icons i.fa.Icon2::before {
-  color: #a9b3bd !important;
+  color: rgb(169.4251968504, 179, 188.5748031496) !important;
 }
 .ItemListGrid.WithIcons > li span.Icons i.fa.fa-arrows-h::before {
   content: "\f0e73";
@@ -2761,7 +2773,7 @@ body .ItemListGrid > li span.Description {
 }
 .ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons i.fa.Icon2::before {
   color: #ff9a62 !important;
-  color: #f7a282 !important;
+  color: rgb(247.0765957447, 161.6170212766, 129.9234042553) !important;
 }
 
 .ItemListGrid.WithIcons > li > a {
@@ -2828,8 +2840,8 @@ body .ItemListGrid > li span.Description {
   color: white !important;
 }
 .ItemListGrid.WithIcons > li > a:not(.Disabled):hover span.Icons i.fa.Icon2::before {
-  color: #e6e6e6 !important;
-  color: #f9b49a !important;
+  color: rgb(229.5, 229.5, 229.5) !important;
+  color: rgb(248.5957446809, 179.5212765957, 153.9042553191) !important;
 }
 
 .ItemListGrid.WithIcons li[data-module=AdminACL] span.Icons i.fa::before {
@@ -3241,6 +3253,14 @@ dl dd {
   margin-left: 0.8em;
 }
 
+fieldset.TableLike {
+  /* Reset some properties that get overridden by Vuetify styles */
+}
+fieldset.TableLike textarea {
+  background-color: #fff;
+  border: solid 1px #d2d2d2;
+}
+
 fieldset.TableLike.FixedLabelSmall > label {
   width: 8em;
 }
@@ -3501,8 +3521,6 @@ body .MainBox > h1 {
   font-size: initial;
   margin-bottom: var(--gap, 8px);
   padding-left: 0;
-  display: flex;
-  margin-bottom: 0;
 }
 .ActionRow .Actions > li {
   float: left;
@@ -3510,9 +3528,6 @@ body .MainBox > h1 {
   height: auto;
   padding: 0;
   overflow: hidden;
-  box-shadow: none;
-  border-radius: 0;
-  line-height: 1.5;
 }
 .ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
   background: #f8f8f8;
@@ -3526,9 +3541,14 @@ body .MainBox > h1 {
 }
 .ActionRow .Actions > li:hover > a, .ActionRow .Actions > li:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
+}
+.ActionRow .Actions > li {
+  box-shadow: none;
+  border-radius: 0;
+  line-height: 1.5;
 }
 .ActionRow .Actions > li > a, .ActionRow .Actions > li > span.ClusterLink {
   border-radius: 0;
@@ -3551,18 +3571,22 @@ body .MainBox > h1 {
   border-top-right-radius: 4px;
 }
 .ActionRow .Actions > li:last-child:hover > a, .ActionRow .Actions > li:last-child:hover > span.ClusterLink, .ActionRow .Actions > li.cmt-item-action-link-last:hover > a, .ActionRow .Actions > li.cmt-item-action-link-last:hover > span.ClusterLink {
-  border-right: solid 1px #2e53b5 !important;
+  border-right: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
 }
 .ActionRow .Actions > li.Selected a,
 .ActionRow .Actions > li a.Active {
   color: white;
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right-color: #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   font-weight: normal;
 }
 .ActionRow .Actions > li::after {
   content: none;
+}
+.ActionRow .Actions {
+  display: flex;
+  margin-bottom: 0;
 }
 .ActionRow .Actions li {
   font-size: inherit;
@@ -3802,7 +3826,7 @@ button.CallForAction:hover {
   background-color: #f15a22;
   border: solid 1px #ff6a32;
   background-color: #24408c;
-  border: solid 1px #0f1b3b;
+  border: solid 1px rgb(15.1363636364, 26.9090909091, 58.8636363636);
   color: #fff;
   color: white;
 }
@@ -3858,7 +3882,7 @@ a.CallForAction, .ProcessManagementEditScreen #ProcessElements a.CallForAction,
 button.CallForAction {
   background: transparent;
   border-radius: 4px;
-  color: rgba(20, 36, 79, 0.8);
+  color: rgba(20.3522727273, 36.1818181818, 79.1477272727, 0.8);
   padding: 0.3em 1.2em;
   border: solid 1px rgba(36, 64, 140, 0.4);
   box-shadow: 0px 1px 0px #99a;
@@ -3881,7 +3905,7 @@ button.CallForAction.Primary {
 a.CallForAction.Primary:hover, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction:hover,
 .v-application a.CallForAction.Primary:hover,
 button.CallForAction.Primary:hover {
-  background-color: #de3e02;
+  background-color: rgb(221.8553191489, 61.583307637, 2.1446808511);
 }
 a.CallForAction.Primary:hover span, .ProcessManagementEditScreen #ProcessElements a.Primary.CallForAction:hover span,
 .v-application a.CallForAction.Primary:hover span,
@@ -3932,7 +3956,7 @@ button.CallForAction span {
 .WidgetSettingsForm button.CallForAction[id$=_cancel]:hover {
   background-color: rgba(36, 64, 140, 0.1);
   border-color: rgba(36, 64, 140, 0.4);
-  color: rgba(31, 55, 120, 0.8);
+  color: rgba(30.7840909091, 54.7272727273, 119.7159090909, 0.8);
 }
 
 a.CallForAction span, .ProcessManagementEditScreen #ProcessElements a.CallForAction span,
@@ -3953,7 +3977,7 @@ button.CallForAction span i.fa {
 a.CallForAction span i.fa::before, .ProcessManagementEditScreen #ProcessElements a.CallForAction span i.fa::before,
 .v-application a.CallForAction span i.fa::before,
 button.CallForAction span i.fa::before {
-  color: rgba(20, 36, 79, 0.8);
+  color: rgba(20.3522727273, 36.1818181818, 79.1477272727, 0.8);
   content: "";
   font-family: "Material Design Icons";
   font-weight: bold;
@@ -4129,9 +4153,6 @@ hr.cmt-flex-break {
   height: auto;
   padding: 0;
   overflow: hidden;
-  box-shadow: none;
-  border-radius: 0;
-  line-height: 1.5;
 }
 .fc .fc-button-group > button > a, .fc .fc-button-group > button > span.ClusterLink {
   background: #f8f8f8;
@@ -4145,9 +4166,14 @@ hr.cmt-flex-break {
 }
 .fc .fc-button-group > button:hover > a, .fc .fc-button-group > button:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
+}
+.fc .fc-button-group > button {
+  box-shadow: none;
+  border-radius: 0;
+  line-height: 1.5;
 }
 .fc .fc-button-group > button > a, .fc .fc-button-group > button > span.ClusterLink {
   border-radius: 0;
@@ -4170,14 +4196,14 @@ hr.cmt-flex-break {
   border-top-right-radius: 4px;
 }
 .fc .fc-button-group > button:last-child:hover > a, .fc .fc-button-group > button:last-child:hover > span.ClusterLink, .fc .fc-button-group > button.cmt-item-action-link-last:hover > a, .fc .fc-button-group > button.cmt-item-action-link-last:hover > span.ClusterLink {
-  border-right: solid 1px #2e53b5 !important;
+  border-right: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
 }
 .fc .fc-button-group > button.Selected a,
 .fc .fc-button-group > button a.Active {
   color: white;
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right-color: #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   font-weight: normal;
 }
 .fc .fc-button-group > button::after {
@@ -4349,7 +4375,6 @@ hr.cmt-flex-break {
   caret-color: rgb(251, 140, 0);
   color: #4caf50ff;
   margin-top: var(--pad-y, 10px);
-  border-color: #4caf50ff;
 }
 .LoginScreen .SuccessBox .Icon {
   color: #4caf50ff;
@@ -4406,6 +4431,9 @@ hr.cmt-flex-break {
 .LoginScreen .SuccessBox .Icon + p {
   padding-left: 2.2em;
 }
+.LoginScreen .SuccessBox {
+  border-color: #4caf50ff;
+}
 .LoginScreen .SuccessBox span::before {
   content: "\f05e1";
   font-family: "Material Design Icons";
@@ -4423,7 +4451,6 @@ hr.cmt-flex-break {
   caret-color: rgb(251, 140, 0);
   color: #ff5252ff;
   margin-top: var(--pad-y, 10px);
-  border-color: #ff5252ff;
 }
 .LoginScreen .ErrorBox .Icon {
   color: #ff5252ff;
@@ -4479,6 +4506,9 @@ hr.cmt-flex-break {
 }
 .LoginScreen .ErrorBox .Icon + p {
   padding-left: 2.2em;
+}
+.LoginScreen .ErrorBox {
+  border-color: #ff5252ff;
 }
 .LoginScreen .ErrorBox span::before {
   content: "\f0ce6";
@@ -4905,8 +4935,6 @@ body .QueueOverview {
   font-size: initial;
   margin-bottom: var(--gap, 8px);
   padding-left: 0;
-  float: left;
-  margin-bottom: 0;
 }
 .QueueOverview .QueueOverviewList > li {
   float: left;
@@ -4914,9 +4942,6 @@ body .QueueOverview {
   height: auto;
   padding: 0;
   overflow: hidden;
-  box-shadow: none;
-  border-radius: 0;
-  line-height: 1.5;
 }
 .QueueOverview .QueueOverviewList > li > a, .QueueOverview .QueueOverviewList > li > span.ClusterLink {
   background: #f8f8f8;
@@ -4930,9 +4955,14 @@ body .QueueOverview {
 }
 .QueueOverview .QueueOverviewList > li:hover > a, .QueueOverview .QueueOverviewList > li:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
+}
+.QueueOverview .QueueOverviewList > li {
+  box-shadow: none;
+  border-radius: 0;
+  line-height: 1.5;
 }
 .QueueOverview .QueueOverviewList > li > a, .QueueOverview .QueueOverviewList > li > span.ClusterLink {
   border-radius: 0;
@@ -4955,23 +4985,27 @@ body .QueueOverview {
   border-top-right-radius: 4px;
 }
 .QueueOverview .QueueOverviewList > li:last-child:hover > a, .QueueOverview .QueueOverviewList > li:last-child:hover > span.ClusterLink, .QueueOverview .QueueOverviewList > li.cmt-item-action-link-last:hover > a, .QueueOverview .QueueOverviewList > li.cmt-item-action-link-last:hover > span.ClusterLink {
-  border-right: solid 1px #2e53b5 !important;
+  border-right: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
 }
 .QueueOverview .QueueOverviewList > li.Selected a,
 .QueueOverview .QueueOverviewList > li a.Active {
   color: white;
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right-color: #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   font-weight: normal;
 }
 .QueueOverview .QueueOverviewList > li::after {
   content: none;
 }
+.QueueOverview .QueueOverviewList {
+  float: left;
+  margin-bottom: 0;
+}
 .QueueOverview .QueueOverviewList a.Active {
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right: solid 1px #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182);
   color: white;
   font-weight: initial;
 }
@@ -4994,8 +5028,6 @@ body .QueueOverview {
   font-size: initial;
   margin-bottom: var(--gap, 8px);
   padding-left: 0;
-  float: left;
-  margin-bottom: 0;
 }
 .OverviewControl .ControlRow .Tabs > li,
 .Content.Overview .ControlRow .Tabs > li {
@@ -5004,9 +5036,6 @@ body .QueueOverview {
   height: auto;
   padding: 0;
   overflow: hidden;
-  box-shadow: none;
-  border-radius: 0;
-  line-height: 1.5;
 }
 .OverviewControl .ControlRow .Tabs > li > a, .OverviewControl .ControlRow .Tabs > li > span.ClusterLink,
 .Content.Overview .ControlRow .Tabs > li > a,
@@ -5024,9 +5053,15 @@ body .QueueOverview {
 .Content.Overview .ControlRow .Tabs > li:hover > a,
 .Content.Overview .ControlRow .Tabs > li:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
+}
+.OverviewControl .ControlRow .Tabs > li,
+.Content.Overview .ControlRow .Tabs > li {
+  box-shadow: none;
+  border-radius: 0;
+  line-height: 1.5;
 }
 .OverviewControl .ControlRow .Tabs > li > a, .OverviewControl .ControlRow .Tabs > li > span.ClusterLink,
 .Content.Overview .ControlRow .Tabs > li > a,
@@ -5065,7 +5100,7 @@ body .QueueOverview {
 .Content.Overview .ControlRow .Tabs > li:last-child:hover > span.ClusterLink,
 .Content.Overview .ControlRow .Tabs > li.cmt-item-action-link-last:hover > a,
 .Content.Overview .ControlRow .Tabs > li.cmt-item-action-link-last:hover > span.ClusterLink {
-  border-right: solid 1px #2e53b5 !important;
+  border-right: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
 }
 .OverviewControl .ControlRow .Tabs > li.Selected a,
 .OverviewControl .ControlRow .Tabs > li a.Active,
@@ -5073,13 +5108,18 @@ body .QueueOverview {
 .Content.Overview .ControlRow .Tabs > li a.Active {
   color: white;
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right-color: #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   font-weight: normal;
 }
 .OverviewControl .ControlRow .Tabs > li::after,
 .Content.Overview .ControlRow .Tabs > li::after {
   content: none;
+}
+.OverviewControl .ControlRow .Tabs,
+.Content.Overview .ControlRow .Tabs {
+  float: left;
+  margin-bottom: 0;
 }
 .OverviewControl .ControlRow .Tabs li.Active,
 .Content.Overview .ControlRow .Tabs li.Active {
@@ -5088,8 +5128,8 @@ body .QueueOverview {
 .OverviewControl .ControlRow .Tabs li.Active > a,
 .Content.Overview .ControlRow .Tabs li.Active > a {
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right-color: #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   color: white;
 }
 .OverviewControl .ControlRow .Tabs li > a,
@@ -5164,7 +5204,7 @@ body .QueueOverview {
 .Content.Overview .ActionRow ul.Actions li#BulkAction:hover > a,
 .Content.Overview .ActionRow ul.Actions li#BulkAction:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
 }
@@ -5189,8 +5229,6 @@ body .QueueOverview {
   height: auto;
   padding: 0;
   overflow: hidden;
-  border: solid 1px #ccc;
-  border-radius: 4px;
 }
 .OverviewControl .ActionRow ul.Actions li.SortBy > a, .OverviewControl .ActionRow ul.Actions li.SortBy > span.ClusterLink,
 .Content.Overview .ActionRow ul.Actions li.SortBy > a,
@@ -5208,9 +5246,14 @@ body .QueueOverview {
 .Content.Overview .ActionRow ul.Actions li.SortBy:hover > a,
 .Content.Overview .ActionRow ul.Actions li.SortBy:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
+}
+.OverviewControl .ActionRow ul.Actions li.SortBy,
+.Content.Overview .ActionRow ul.Actions li.SortBy {
+  border: solid 1px #ccc;
+  border-radius: 4px;
 }
 .OverviewControl .ActionRow ul.Actions li.SortBy select,
 .Content.Overview .ActionRow ul.Actions li.SortBy select {
@@ -5773,10 +5816,6 @@ div.Headline .Flag + h1 {
   caret-color: rgb(251, 140, 0);
   color: #2196f3ff;
   margin-top: var(--pad-y, 10px);
-  margin-bottom: var(--pad-y, 10px);
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
 }
 .MessageBrowser .Icon {
   color: #2196f3ff;
@@ -5833,6 +5872,12 @@ div.Headline .Flag + h1 {
 .MessageBrowser .Icon + p {
   padding-left: 2.2em;
 }
+.MessageBrowser {
+  margin-bottom: var(--pad-y, 10px);
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+}
 .MessageBrowser p {
   background: white;
   color: #333;
@@ -5880,7 +5925,6 @@ div.Headline .Flag + h1 {
   font-size: initial;
   margin-bottom: var(--gap, 8px);
   padding-left: 0;
-  box-shadow: none;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li {
   float: left;
@@ -5888,9 +5932,6 @@ div.Headline .Flag + h1 {
   height: auto;
   padding: 0;
   overflow: hidden;
-  box-shadow: none;
-  border-radius: 0;
-  line-height: 1.5;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li > span.ClusterLink {
   background: #f8f8f8;
@@ -5904,9 +5945,14 @@ div.Headline .Flag + h1 {
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li:hover > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li:hover > span.ClusterLink {
   background: #24408c;
-  border: solid 1px #2e53b5 !important;
+  border: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
   color: white;
   text-decoration: none;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions > li {
+  box-shadow: none;
+  border-radius: 0;
+  line-height: 1.5;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li > span.ClusterLink {
   border-radius: 0;
@@ -5929,18 +5975,21 @@ div.Headline .Flag + h1 {
   border-top-right-radius: 4px;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li:last-child:hover > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li:last-child:hover > span.ClusterLink, #ArticleItems .ArticleMailContent .ItemActions .Actions > li.cmt-item-action-link-last:hover > a, #ArticleItems .ArticleMailContent .ItemActions .Actions > li.cmt-item-action-link-last:hover > span.ClusterLink {
-  border-right: solid 1px #2e53b5 !important;
+  border-right: solid 1px rgb(46.4318181818, 82.5454545455, 180.5681818182) !important;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li.Selected a,
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li a.Active {
   color: white;
   background-color: #24408c;
-  border-color: #2e53b5;
-  border-right-color: #2e53b5;
+  border-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
+  border-right-color: rgb(46.4318181818, 82.5454545455, 180.5681818182);
   font-weight: normal;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions > li::after {
   content: none;
+}
+#ArticleItems .ArticleMailContent .ItemActions .Actions {
+  box-shadow: none;
 }
 #ArticleItems .ArticleMailContent .ItemActions .Actions form {
   padding: 0;
