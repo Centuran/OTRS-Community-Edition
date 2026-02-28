@@ -103,6 +103,14 @@ dl {
   }
 }
 
+fieldset.TableLike {
+  /* Reset some properties that get overridden by Vuetify styles */
+  textarea {
+    background-color: #fff;
+    border: solid 1px #d2d2d2;
+  }
+}
+
 fieldset.TableLike.FixedLabelSmall > label {
   width: 8em;
 }
